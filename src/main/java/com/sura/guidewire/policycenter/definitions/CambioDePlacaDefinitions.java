@@ -39,7 +39,6 @@ public class CambioDePlacaDefinitions {
     @When("quiera volver a cambiar la placa")
     public void cambiarPlaca() {
         cambioDePlacaSteps.cambioPlacaSegundaVez();
-
     }
 
     @When("se deben recargar los datos de la placa anterior: $datosPlaca")
@@ -55,11 +54,11 @@ public class CambioDePlacaDefinitions {
     @When("cuando ingrese una placa venezolana <placaVenezolana>")
     public void placaVenezolana(@Named("placaVenezolana") String placaVenezolana) {
         cambioDePlacaSteps.placaVenezolana(placaVenezolana);
-
     }
+
     @When("vaya a vehiculos a ingresar una placa venezolana <venezolana> con circulacion en cucuta <ciudad>")
     public void placaAutorizacion(@Named("venezolana") String venezolana, @Named("ciudad") String ciudad) {
-        cambioDePlacaSteps.ingresarPlacaExtranjera(venezolana,ciudad);
+        cambioDePlacaSteps.ingresarPlacaExtranjera(venezolana, ciudad);
     }
 
     @When("expida el cambio de la poliza")

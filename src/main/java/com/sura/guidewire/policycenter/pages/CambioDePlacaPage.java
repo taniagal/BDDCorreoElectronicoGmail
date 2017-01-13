@@ -196,7 +196,6 @@ public class CambioDePlacaPage extends PageUtil {
             clickElement(botonEditarCambioPolizaExpedicion);
         }
         clickElement(botonEditarCambioPolizaAceptar);
-
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {

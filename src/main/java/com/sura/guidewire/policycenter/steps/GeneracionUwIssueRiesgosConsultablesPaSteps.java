@@ -5,7 +5,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-public class GeneracionUwIssueRiesgosConsultablesPaSteps extends ScenarioSteps{
+public class GeneracionUwIssueRiesgosConsultablesPaSteps extends ScenarioSteps {
 
     private GeneracionUwIssueRiesgosConsultablesPaPage generacionUwIssueRiesgosConsultablesPa;
 
@@ -24,6 +24,7 @@ public class GeneracionUwIssueRiesgosConsultablesPaSteps extends ScenarioSteps{
         generacionUwIssueRiesgosConsultablesPa.aceptarExpedicionPoliza();
     }
 
+    @Step
     public void validarMensajeBloqueanteSarlaft(ExamplesTable mensaje) {
         generacionUwIssueRiesgosConsultablesPa.validarGeneracionMensajeBloqueante(mensaje);
     }
