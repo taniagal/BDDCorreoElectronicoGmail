@@ -144,6 +144,7 @@ public class CambioDePlacaPage extends PageUtil {
     public void mensajePlacaExistente(ExamplesTable mensaje) {
         botonSiguiente.click();
         Map<String, String> datos = mensaje.getRow(0);
+        waitUntil(WAIT_TIME_3000);
         txtMotor.waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExistente.getText().equals(datos.get("mensaje")));
     }
