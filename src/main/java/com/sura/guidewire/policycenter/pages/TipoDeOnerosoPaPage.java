@@ -5,8 +5,8 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import javax.swing.*;
 
 public class TipoDeOnerosoPaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestCardTab-btnInnerEl']")
@@ -33,6 +33,7 @@ public class TipoDeOnerosoPaPage extends PageUtil {
         clickElement(menuItemContacto1);
     }
     public void verificarMarca(){
+        waitFor(ExpectedConditions.attributeContains(radioBotonSeNecesitaCertificadoSi, "background-position", "0px -15px"));
         MatcherAssert.assertThat("Error no se encuentra marcado el campo Requiere certificado en Si","0px -15px".equals(radioBotonSeNecesitaCertificadoSi.getCssValue("background-position")));
     }
 }

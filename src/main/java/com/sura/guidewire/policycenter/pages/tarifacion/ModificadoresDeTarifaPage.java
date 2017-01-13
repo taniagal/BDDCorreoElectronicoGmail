@@ -26,6 +26,16 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     public WebElementFacade campoTxtSuavizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:1:TypeKeyModifier-inputEl']")
     public WebElementFacade comboBoxDescuentoDipositivo;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:2:RateModifier-inputEl']")
+    public WebElementFacade campoTxtBonificacionComercialCambio;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:3:RateModifier-inputEl']")
+    public WebElementFacade campoTxtDescuentoCambio;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:4:RateModifier-inputEl']")
+    public WebElementFacade campoTxtRecargoCambio;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:5:RateModifier-inputEl']")
+    public WebElementFacade campoTxtSuavizacionCambio;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:1:TypeKeyModifier-bodyEl']")
+    public WebElementFacade comboBoxDescuentoDipositivoCambio;
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize']")
     public WebElementFacade labelUW;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div")
@@ -90,5 +100,14 @@ public class ModificadoresDeTarifaPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_30, TimeUnit.SECONDS).waitFor(menuItemVehiculos).waitUntilPresent();
         clickElement(menuItemVehiculos);
         campoTxtBonificacionTecnicaCambio.waitUntilPresent().sendKeys(bonoT);
+    }
+
+    public void verificarModificadoresHabilitados(){
+        MatcherAssert.assertThat("Error, el campo bonificacion comercial no debe ser editable", !esEditable(campoTxtBonificacionComercialCambio));
+        MatcherAssert.assertThat("Error, el campo descuento no debe ser editable", !esEditable(campoTxtDescuentoCambio));
+        MatcherAssert.assertThat("Error, el campo descuento dispositivo no debe ser editable", !esEditable(comboBoxDescuentoDipositivoCambio));
+        MatcherAssert.assertThat("Error, el campo recargo", !esEditable(campoTxtRecargoCambio));
+        MatcherAssert.assertThat("Error, el campo suavizacion no debe ser editable", !esEditable(campoTxtSuavizacionCambio));
+        MatcherAssert.assertThat("Error, el campo bonificacion tecnica debe ser editable", esEditable(campoTxtBonificacionTecnicaCambio));
     }
 }
