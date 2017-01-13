@@ -62,7 +62,6 @@ public class CrearYEditarCumulosDefinitions {
 
     @When("Ingrese la información de un reasegurador en la tabla de reaseguradores $datosReaseguradores")
     public void ingresaInformacionEnTablaParaReasegurado(ExamplesTable datosReaseguradores){
-        datosReasegurador = datosReaseguradores;
         crearYEditarCumulosSteps.ingresarModalidadDeTasaEnTabla(datosReaseguradores);
     }
 

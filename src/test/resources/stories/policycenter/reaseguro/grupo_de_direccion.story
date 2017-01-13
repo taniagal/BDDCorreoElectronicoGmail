@@ -10,7 +10,7 @@ Meta:
 Narrative:
 
 
-Scenario: Validacion de calculos en porcentaje de contratos
+Scenario: Validacion de calculos en porcentaje de contratos NO FACULTATIVOS 100%
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -27,6 +27,10 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 100000000      |
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
 And cotice una poliza
+When ingrese a la opcion de reaseguro
+Then se debe validar los valores del CP, monto retenido y cedido del contrato
+And se debe validar los valores del EX
+
 
 Examples:
 |fechaInicioVigencia|
