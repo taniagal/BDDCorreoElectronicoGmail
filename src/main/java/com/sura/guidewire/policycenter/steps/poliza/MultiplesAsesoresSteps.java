@@ -7,7 +7,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class MultiplesAsesoresSteps extends ScenarioSteps {
-    private MultiplesAsesoresPage multiplesAsesoresPage;
+    MultiplesAsesoresPage multiplesAsesoresPage;
 
     @Step
     public void adicionarAsesoresDeComision() {

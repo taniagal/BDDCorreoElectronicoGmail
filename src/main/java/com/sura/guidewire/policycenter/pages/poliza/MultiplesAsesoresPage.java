@@ -76,7 +76,7 @@ public class MultiplesAsesoresPage extends PageUtil {
         int maximoEjecuciones = 120;
         int ejecuciones = 0;
         while (ejecuciones < maximoEjecuciones && !ejecuto) {
-            this.waitUntil(500);
+            waitUntil(500);
             try {
                 elemento = this.getElemento(pathElemento);
                 this.clicObjeto(elemento);
@@ -153,10 +153,8 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     public void validarRolAsesor(Parametros parametros) {
         int cantidaRol = consultarNumeroElementosTabla(PATH_TABLA_AGENTE);
-        String rol = "";
         for (int i = 1; i <= cantidaRol; i++) {
-            rol = consultarTextoCeldaTabla(PATH_TABLA_AGENTE, 1, 4);
-            if (!rol.equals(parametros.getRol())) {
+            if (!consultarTextoCeldaTabla(PATH_TABLA_AGENTE, 1, 4).equals(parametros.getRol())) {
                 MatcherAssert.assertThat("No se encontro el rol", false);
             }
         }
@@ -172,10 +170,9 @@ public class MultiplesAsesoresPage extends PageUtil {
     public int validarExistenciaCodigoAsesor(Parametros parametros) {
         int codigoAsesorRepetido = 0;
         int cantidaCodigoAsesor = consultarNumeroElementosTabla(PATH_TABLA_AGENTE);
-        String codigoAsesor = "";
+
         for (int i = 1; i <= cantidaCodigoAsesor; i++) {
-            codigoAsesor = consultarTextoCeldaTabla(PATH_TABLA_AGENTE, 1, 2);
-            if (codigoAsesor.equals(parametros.getCodigoAsesor())) {
+            if (consultarTextoCeldaTabla(PATH_TABLA_AGENTE, 1, 2).equals(parametros.getCodigoAsesor())) {
                 codigoAsesorRepetido++;
             }
         }
