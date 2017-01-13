@@ -16,12 +16,6 @@ public class CambioDePlacaDefinitions {
     @Steps
     TarifaAutosSteps tarifaAutosSteps;
 
-    @Steps
-    InformacionPolizaPASteps informacionPolizaPASteps;
-
-    @Steps
-    ExpedicionDePolizaSteps expedicionDePolizaSteps;
-
     @When("cuando cambie la placa <placa>")
     public void cambiarPlaca(@Named("placa") String placa) {
         cambioDePlacaSteps.clickCambiarPlaca();
