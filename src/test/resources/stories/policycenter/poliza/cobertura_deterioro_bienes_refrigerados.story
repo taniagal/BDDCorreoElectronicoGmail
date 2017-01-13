@@ -106,7 +106,6 @@ And intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |
 | Otros Articulos | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
 | Otros Articulos | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
-When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                             |
 | Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio". |
