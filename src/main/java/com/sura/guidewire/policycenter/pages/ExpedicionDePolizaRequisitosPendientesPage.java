@@ -7,10 +7,10 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
-
 
 public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
@@ -126,7 +126,6 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         super(driver);
     }
 
-
     public void valorAccesorios(String accesorios) {
         clickElement(itemNoImportadoPorTerceros);
         campoTxtAccesorios.sendKeys(accesorios);
@@ -216,7 +215,12 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         selectItem(comboBoxPlanSubmission, vehiculo.get("plan"));
         waitUntil(WAIT_TIME_3000);
         selectItem(txtPlacaSubmission, vehiculo.get("placa"));
-        comboBoxModeloSubmission.clear();
+        try {
+            comboBoxModeloSubmission.clear();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            comboBoxModeloSubmission.clear();
+        }
         waitUntil(WAIT_TIME_3000);
         selectItem(comboBoxModeloSubmission, vehiculo.get("modelo"));
         waitUntil(WAIT_TIME_3000);

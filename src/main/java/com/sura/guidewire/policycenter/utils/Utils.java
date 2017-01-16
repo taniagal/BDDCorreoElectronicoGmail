@@ -13,6 +13,9 @@ public class Utils {
     protected static final int CONSTANTE_900000000 = 900000000;
     protected static final int CONSTANTE_999999999 = 999999999;
 
+    private Utils(){
+    }
+
     public static String sumarDiasALaFechaActual(int dias) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Calendar calendar = Calendar.getInstance();

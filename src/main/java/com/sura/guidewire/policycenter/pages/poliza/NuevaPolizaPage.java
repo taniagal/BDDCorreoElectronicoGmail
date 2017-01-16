@@ -85,6 +85,7 @@ public class NuevaPolizaPage extends PageUtil {
             for (WebElementFacade listaElemento : listaElementosCotizacion) {
                 if (listaElemento.containsText(elementoLista)) {
                     listaElemento.click();
+                    waitUntil(WAIT_TIME_1000);
                     break;
                 }
             }

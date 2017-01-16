@@ -171,10 +171,12 @@ public class TarifaAutosPage extends PageUtil {
         waitUntil(WAIT_TIME_800);
         try {
             botonBuscar.waitUntilPresent();
+            campoTxtNumeroDocumento.sendKeys(documento);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_2000);
+            campoTxtNumeroDocumento.sendKeys(documento);
         }
-        campoTxtNumeroDocumento.sendKeys(documento);
         clickElement(botonBuscar);
         seleccionarAsegurado(documento);
         campoTxtNombre.waitUntilPresent();
@@ -211,7 +213,7 @@ public class TarifaAutosPage extends PageUtil {
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        comboBoxLimite.waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
         waitUntil(WAIT_TIME_1500);
         comboBoxLimite.clear();
         waitUntil(WAIT_TIME_500);
