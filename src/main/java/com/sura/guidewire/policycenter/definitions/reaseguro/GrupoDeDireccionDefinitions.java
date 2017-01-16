@@ -40,7 +40,7 @@ public class GrupoDeDireccionDefinitions {
 
     @Then("se debe validar los valores del EX")
     public void thenSeDebeValidarLosValoresDelEX() {
-        // PENDING
+        grupoDeDireccionSteps.validainformaciondeExcedente();
     }
 
 

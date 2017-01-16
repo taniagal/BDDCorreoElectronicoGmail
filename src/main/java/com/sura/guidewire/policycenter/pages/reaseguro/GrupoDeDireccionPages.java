@@ -21,33 +21,34 @@ public class GrupoDeDireccionPages extends PageUtil {
 
     private static final long CONSTANTE_CIEN = 100;
 
-    Utils utils = new Utils();
-
     public GrupoDeDireccionPages(WebDriver driver) {
         super(driver);
     }
 
-    public void validaMontoRetenidoEnContrato() {
+    public void validaMontoRetenidoEnContratoEnCotaparte() {
         MatcherAssert.assertThat("Error en el valor, expected: " + calculaMontoRetenidoEnContrato() +
                 " but was: " + lblValorRetenidoCp.getText(), lblLimiteContratoCp.getText().equals(calculaMontoRetenidoEnContrato()));
     }
 
-    public void validaMontoCedidoEnContrato() {
+    public void validaMontoCedidoEnContratoEnCotaparte() {
         MatcherAssert.assertThat("Error en el valor, expected: " + calculaMontoCedidoEnContrato() +
                 " but was: " + tblRiesgoCedidoContratoBasico.getText(), tblRiesgoCedidoContratoBasico.getText().equals(calculaMontoCedidoEnContrato()));
     }
 
     public String calculaMontoRetenidoEnContrato() {
-        long valorMontoRetenidoEnContrato = (Long.parseLong(lblPorcentajeRetSobreRiesgo.getText()) * utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
-        String cadenaConValor = utils.convierteNumeroEnTexto(valorMontoRetenidoEnContrato);
+        long valorMontoRetenidoEnContrato = (Long.parseLong(lblPorcentajeRetSobreRiesgo.getText()) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
+        String cadenaConValor = Utils.convierteNumeroEnTexto(valorMontoRetenidoEnContrato);
         return cadenaConValor;
     }
 
     public String calculaMontoCedidoEnContrato() {
-        long valorCedidoEnContratoBasico = ((CONSTANTE_CIEN - Long.parseLong(lblPorcentajeRetSobreRiesgo.getText())) * utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN ;
-        String cadenaConValor = utils.convierteNumeroEnTexto(valorCedidoEnContratoBasico);
+        long valorCedidoEnContratoBasico = ((CONSTANTE_CIEN - Long.parseLong(lblPorcentajeRetSobreRiesgo.getText())) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN ;
+        String cadenaConValor = Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasico);
         return cadenaConValor;
     }
 
 
+    public void validaMontoretenidoEnContratoExcedente() {
+
+    }
 }

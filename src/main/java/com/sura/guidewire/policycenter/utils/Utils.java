@@ -14,7 +14,7 @@ public class Utils {
     protected static final int CONSTANTE_99999999 = 99999999;
     protected static final int CONSTANTE_900000000 = 900000000;
     protected static final int CONSTANTE_999999999 = 999999999;
-    java.text.NumberFormat nuevoFormato = java.text.NumberFormat.getInstance();
+
     private Utils(){
     }
 
@@ -54,7 +54,7 @@ public class Utils {
      * @param :  Elemento que contiene el texto del numero
      * @Return:  Numero para hacer operaciones matematicas
      * */
-    public long convierteTextoEnNumero(WebElementFacade valorTextoParaConvertirANumero) {
+    public static long convierteTextoEnNumero(WebElementFacade valorTextoParaConvertirANumero) {
         String[] cadenaSinCaracteres = valorTextoParaConvertirANumero.getText().split(",");
         long valorLimiteContrato = Long.parseLong(cadenaSinCaracteres[0].substring(1).replaceAll("\\.", ""));
         return valorLimiteContrato;
@@ -69,7 +69,8 @@ public class Utils {
      * @Return:  Texto con caracteres especiales
      * */
 
-    public String convierteNumeroEnTexto(long numeroParaConvertirEnCadena) {
+    public static String convierteNumeroEnTexto(long numeroParaConvertirEnCadena) {
+        java.text.NumberFormat nuevoFormato = java.text.NumberFormat.getInstance();
         String signoPesos = "$";
         String caracteresCompletarTexto = ",00 (COP)";
         String valorConFormatoNumero = nuevoFormato.format(numeroParaConvertirEnCadena);

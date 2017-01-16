@@ -9,7 +9,7 @@ Meta:
 
 Narrative:
 como usuario de policycenter en reaseguro
-deseo crear y editar los cumulos correspondientes
+deseo crear y editar los cumulos correspondientes a cada una de las direcciones
 
 
 Scenario: calculo de tasa bruta en acuerdo facultativo

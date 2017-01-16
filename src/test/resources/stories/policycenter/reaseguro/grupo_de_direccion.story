@@ -35,3 +35,4 @@ And se debe validar los valores del EX
 Examples:
 |fechaInicioVigencia|
 |01/01/2016         |
+

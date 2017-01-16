@@ -180,7 +180,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
-        agregarNuevaUbicacion(valoresUbicaion.get("pais"),valoresUbicaion.get("departamento"),
+        agregarNuevaUbicacion(valoresUbicaion.get("departamento"),
                               valoresUbicaion.get("ciudad"),valoresUbicaion.get("direccion"),
                               valoresUbicaion.get("actividadEconomica"));
     }
