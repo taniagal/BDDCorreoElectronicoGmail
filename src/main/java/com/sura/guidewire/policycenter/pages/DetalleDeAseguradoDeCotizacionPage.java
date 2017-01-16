@@ -158,8 +158,8 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
         botonQuitar.click();
     }
 
-    public void validarAseguradoEliminado() {
-        waitUntil(WAIT_TIME_2000);
+    public void validarAseguradoEliminado(String numeroId) {
+        waitForTextToDisappear(numeroId);
         waitFor(tablaAsegurados).waitUntilPresent();
         MatcherAssert.assertThat(tablaAsegurados.getText(), Is.is(Matchers.equalTo("")));
     }

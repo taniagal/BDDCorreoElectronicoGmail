@@ -148,7 +148,7 @@ And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y nu
 And seleccione el contacto a agregar
 And seleccione el contacto agregado
 And quite el contacto de la lista
-Then la lista de asegurados debe quedar vacia
+Then la lista de asegurados debe quedar vacia <numeroId>
 
 Examples:
 | cuenta     | agente  | producto | tipoId | numeroId   |

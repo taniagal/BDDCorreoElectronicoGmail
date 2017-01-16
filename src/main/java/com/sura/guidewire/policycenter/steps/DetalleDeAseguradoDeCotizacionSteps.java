@@ -109,8 +109,8 @@ public class DetalleDeAseguradoDeCotizacionSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validarAseguradoEliminado() {
-        detalleDeAseguradoDeCotizacionPage.validarAseguradoEliminado();
+    public void validarAseguradoEliminado(String numeroId) {
+        detalleDeAseguradoDeCotizacionPage.validarAseguradoEliminado(numeroId);
     }
 
     @Step
