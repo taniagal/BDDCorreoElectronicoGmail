@@ -38,7 +38,6 @@ When intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
 | Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
 | Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-When haga clic en el boton Aceptar
 Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
