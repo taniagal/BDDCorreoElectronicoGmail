@@ -66,7 +66,7 @@ public class Utils {
      * El formato de texto que retorna este metodo es |$10.000.000,00 (COP)|.
      *
      * @param :  Numero (Tipo: long) que sera convertido
-     * @Return:  Texto con caracteres especiales
+     * @Return:  Texto con caracteres especiales ($ y ,00 (COP))
      * */
 
     public static String convierteNumeroEnTexto(long numeroParaConvertirEnCadena) {
