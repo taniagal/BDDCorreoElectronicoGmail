@@ -118,9 +118,9 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.validarMensaje(mensaje);
     }
 
-    @Then("la lista de asegurados debe quedar vacia")
-    public void validarAseguradoEliminado() {
-        detalleDeAseguradoDeCotizacionSteps.validarAseguradoEliminado();
+    @Then("la lista de asegurados debe quedar vacia <numeroId>")
+    public void validarAseguradoEliminado(@Named("numeroId") String numeroId) {
+        detalleDeAseguradoDeCotizacionSteps.validarAseguradoEliminado(numeroId);
     }
 
     @Then("muestre el mensaje de validacion del asegurado <mensaje>")
