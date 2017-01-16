@@ -9,6 +9,7 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
 
@@ -90,6 +91,7 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void cambiarPlaca(String placa) {
+        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
         waitUntil(WAIT_TIME_2000);
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placa);
@@ -123,6 +125,7 @@ public class CambioDePlacaPage extends PageUtil {
     public void ingresarPlacaVenezolana(String placaVenezolana) {
         this.deseleccionarCheckBoxDePlaca();
         this.clickItemCambiarPlaca();
+        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
         waitUntil(WAIT_TIME_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
@@ -203,6 +206,7 @@ public class CambioDePlacaPage extends PageUtil {
         clickElement(menuItemVehiculosModificacion);
         clickElement(checkBoxCambioDePlaca);
         clickElement(checkBoxCambioDePlaca);
+        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
         waitUntil(WAIT_TIME_2000);
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placaRiesgoConsultable);
