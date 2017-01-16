@@ -82,12 +82,12 @@ public class EdificiosUbicacionesDefinitions {
     }
 
 
-    @When("ingrese la entrada de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
-    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
+    @When("ingrese la entrada de las diferentes coberturas con interes <documento> <tipoBeneficiario> adicional  $entradatable")
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String documento, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
-        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula);
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(documento);
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();

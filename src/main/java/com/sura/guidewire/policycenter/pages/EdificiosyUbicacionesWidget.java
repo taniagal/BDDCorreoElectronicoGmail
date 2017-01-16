@@ -178,7 +178,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void removerRiesgos() {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         if (findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
             resetImplicitTimeout();
             waitFor(WAIT_TIME_3).second();
