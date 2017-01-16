@@ -82,7 +82,7 @@ public class PageUtil extends PageObject {
             waitUntil(WAIT_TIME_2000);
         }
         clickElement(element);
-        waitUntil(WAIT_TIME_200);
+        waitUntil(WAIT_TIME_300);
         try {
             element.clear();
         } catch (StaleElementReferenceException g) {
