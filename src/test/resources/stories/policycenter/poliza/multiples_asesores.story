@@ -1,9 +1,7 @@
 multiples_asesores
 Meta:@lote1
 @issue #SUGWUSC-1162
-@tag automatizador: danny_barrientos, informer:danny_barrientos, sprint:10
-@LOB Multiriesgo corporativo
-@Sprint 10
+@tag automatizador: danny_barrientos, informer:danny_barrientos, sprint:12 
 
 
 Narrative:

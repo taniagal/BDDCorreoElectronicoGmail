@@ -2,9 +2,7 @@ AjustePantallaPagosyValidaciones
 
 Meta:@lote1
 @issue #SUGWUSC-1162
-@tag automatizador: danny_barrientos, informer:danny_barrientos, sprint:10
-@LOB Multiriesgo corporativo
-@Sprint 10
+@tag automatizador: danny_barrientos, informer:danny_barrientos, sprint:12
 Narrative:
 "Como usuario de Policy Center
 requiero realizar validaciones en la pantalla de pagos  para una adecuada gestión de los cobros flotantes."

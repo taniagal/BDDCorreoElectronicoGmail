@@ -82,6 +82,7 @@ public class MultiplesAsesoresPage extends PageUtil {
                 this.clicObjeto(elemento);
                 ejecuto = true;
             } catch (Exception ex) {
+                LOGGER.info("Exception " + ex);
             }
             ejecuciones = ejecuciones + 1;
         }
