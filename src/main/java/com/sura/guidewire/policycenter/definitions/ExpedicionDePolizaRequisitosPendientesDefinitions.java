@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.definitions;
 
-
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaRequisitosPendientesSteps;
 import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
@@ -13,44 +12,38 @@ import org.jbehave.core.model.ExamplesTable;
 public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     @Steps
     ExpedicionDePolizaRequisitosPendientesSteps expedicionDePolizaRequisitosPendientesSteps;
+
     @Steps
     InformacionPolizaPASteps informacionPolizaPASteps;
-
 
     @When("ingrese un valor maximo para los accesorios <accesorios>")
     public void ingresarValorAccesorios(@Named("accesorios") String accesorios) {
         expedicionDePolizaRequisitosPendientesSteps.ingresarValorAccesorios(accesorios);
-
     }
 
     @Given("deseleccione la opcion vehiculo cero kilometros")
     public void deseleccionarVehiculoCeroKilometros() {
         expedicionDePolizaRequisitosPendientesSteps.deseleccionarVehiculoCeroKilometros();
-
     }
 
     @When("debo ver un mensaje opcional $mensaje")
     public void mensajeOpcional(ExamplesTable mensaje) {
         expedicionDePolizaRequisitosPendientesSteps.verMensajeOpcional(mensaje);
-
     }
 
     @When("seleccione la opcion importado por terceros")
     public void seleccionarImportado() {
         expedicionDePolizaRequisitosPendientesSteps.seleccionarVehiculoImportado();
-
     }
 
     @Given("ingrese los siguientes datos del vehiculo: $datos")
     public void datosVehiculo(ExamplesTable datos) {
         expedicionDePolizaRequisitosPendientesSteps.datosVehiculo(datos);
-
     }
 
     @When("ingrese un beneficiario oneroso en modificacion <beneficiario>")
     public void ingresarBeneficiarioOnerosoModificacion(@Named("beneficiario") String beneficiario) {
         expedicionDePolizaRequisitosPendientesSteps.clickEnInteresAdicionalModificacion(beneficiario);
-
     }
 
     @When("ingrese algunas coberturas en modificacion <deducible> <perdidaLlaves>")
@@ -66,19 +59,16 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     @Then("debo ver un mensaje bloqueante en modificacion $mensaje")
     public void mensajeBloqueanteModificacion(ExamplesTable mensaje) {
         expedicionDePolizaRequisitosPendientesSteps.verMensajeBloqueante(mensaje);
-
     }
 
     @When("debo ver un mensaje bloqueante $mensaje")
     public void mensajeBloqueante(ExamplesTable mensaje) {
         expedicionDePolizaRequisitosPendientesSteps.verMensaje(mensaje);
-
     }
 
     @Then("debo ver un mensaje bloqueante accesorios $mensaje")
     public void mensajeBloqueanteAccesorios(ExamplesTable mensaje) {
         expedicionDePolizaRequisitosPendientesSteps.verMensaje(mensaje);
-
     }
 
     @Then("debe salir un mensaje de requisitos obligatorios en cancelacion $mensaje")
