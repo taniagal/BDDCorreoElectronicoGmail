@@ -52,11 +52,11 @@ public class Utils {
      * El formato que retorna para ser operado es |1000000000|.
      *
      * @param :  Elemento que contiene el texto del numero
-     * @Return:  Numero para hacer operaciones matematicas
+     * @Return:  Numero (double) para hacer operaciones matematicas
      * */
-    public static long convierteTextoEnNumero(WebElementFacade valorTextoParaConvertirANumero) {
+    public static double convierteTextoEnNumero(WebElementFacade valorTextoParaConvertirANumero) {
         String[] cadenaSinCaracteres = valorTextoParaConvertirANumero.getText().split(",");
-        long valorLimiteContrato = Long.parseLong(cadenaSinCaracteres[0].substring(1).replaceAll("\\.", ""));
+        Double valorLimiteContrato = Double.parseDouble(cadenaSinCaracteres[0].substring(1).replaceAll("\\.", ""));
         return valorLimiteContrato;
     }
 
@@ -65,15 +65,16 @@ public class Utils {
      * El formato de numero que recibe este metodo es |1000000000|
      * El formato de texto que retorna este metodo es |$10.000.000,00 (COP)|.
      *
-     * @param :  Numero (Tipo: long) que sera convertido
+     * @param :  Numero (Tipo: double) que sera convertido
      * @Return:  Texto con caracteres especiales ($ y ,00 (COP))
      * */
 
-    public static String convierteNumeroEnTexto(long numeroParaConvertirEnCadena) {
+    public static String convierteNumeroEnTexto(double numeroParaConvertirEnCadena) {
         java.text.NumberFormat nuevoFormato = java.text.NumberFormat.getInstance();
         String signoPesos = "$";
         String caracteresCompletarTexto = ",00 (COP)";
         String valorConFormatoNumero = nuevoFormato.format(numeroParaConvertirEnCadena);
-        return signoPesos + valorConFormatoNumero + caracteresCompletarTexto;
+        String valor = signoPesos + valorConFormatoNumero + caracteresCompletarTexto;
+        return valor;
     }
 }

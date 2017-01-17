@@ -22,6 +22,6 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
 
     @Step
     public void validainformaciondeExcedente() {
-        grupoDeDireccionPages.validaMontoretenidoEnContratoExcedente();
+        grupoDeDireccionPages.validaMontoCedidoEnContratoEnExcedido();
     }
 }

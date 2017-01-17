@@ -38,7 +38,7 @@ public class GrupoDeDireccionDefinitions {
         grupoDeDireccionSteps.validaInformacionDeCotaparte();
     }
 
-    @Then("se debe validar los valores del EX")
+    @Then("se debe validar los valores del EX, el monto retenido debe ser igual a 0")
     public void thenSeDebeValidarLosValoresDelEX() {
         grupoDeDireccionSteps.validainformaciondeExcedente();
     }
