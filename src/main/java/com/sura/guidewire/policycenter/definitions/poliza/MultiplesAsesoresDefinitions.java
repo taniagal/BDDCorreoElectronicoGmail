@@ -25,7 +25,7 @@ public class MultiplesAsesoresDefinitions {
             " del 100% de los asesores que intervienen en la poliza:$opciones")
     @Aliases(values ={"se ingresa mas de 8 asesores:$opciones","no debe permitir ingresar codigo asesor repetidos:$opciones",
     "se ingresa mas del 100% a los asesores:$opciones"})
-            public void ingresoDeAsesores(ExamplesTable opciones){
+     public void ingresoDeAsesores(ExamplesTable opciones) {
 
         multiplesAsesoresSteps.adicionarAsesoresDeComision();
         multiplesAsesoresSteps.ingresarInformacionDelAsesor(new Parametros(opciones));
@@ -38,8 +38,7 @@ public class MultiplesAsesoresDefinitions {
 
     }
     @Then("Debe quedar un codigo de asesor:$opciones")
-    public void validarCodigoAsesor(ExamplesTable opciones)
-    {
+    public void validarCodigoAsesor(ExamplesTable opciones) {
         Parametros parametros = new Parametros(opciones);
         multiplesAsesoresSteps.validarDatosDelAsesor(parametros);
     }
