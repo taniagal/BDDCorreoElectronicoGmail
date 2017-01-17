@@ -44,7 +44,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
 
-    private static final int WAIT_TIME_250 = 250;
+    private static final int TIEMPO_250 = 250;
 
     TableWidgetPage tabla;
 
@@ -100,7 +100,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarArticuloAPrimerUbicacion() {
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
             obtenerTabla();
@@ -141,21 +141,21 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad) {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
-        clickElement(findBy(LINK_AGREGAR_UBICACION));
+        clickearElemento(findBy(LINK_AGREGAR_UBICACION));
         findBy(LINK_OPCION_UBICACION_NUEVA).shouldBeVisible();
-        clickElement(findBy(LINK_OPCION_UBICACION_NUEVA));
+        clickearElemento(findBy(LINK_OPCION_UBICACION_NUEVA));
         campoTxtDireccion.waitUntilPresent().sendKeys(direccion);
-        selectItem(comboBoxDepartamento, departamento);
-        waitForComboValue(comboBoxDepartamento, departamento);
-        selectItem(comboBoxCiudad, ciudad);
-        waitForComboValue(comboBoxCiudad, ciudad);
-        selectItem(comboBoxActividadEconomica, actividad);
-        waitForComboValue(comboBoxActividadEconomica, actividad);
-        clickElement(botonAceptar);
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        seleccionarItem(comboBoxDepartamento, departamento);
+        esperarPorValor(comboBoxDepartamento, departamento);
+        seleccionarItem(comboBoxCiudad, ciudad);
+        esperarPorValor(comboBoxCiudad, ciudad);
+        seleccionarItem(comboBoxActividadEconomica, actividad);
+        esperarPorValor(comboBoxActividadEconomica, actividad);
+        clickearElemento(botonAceptar);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (botonBorrar.isVisible()) {
-            clickElement(botonAceptar);
-            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, WAIT_TIME_30000);
+            clickearElemento(botonAceptar);
+            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, TIEMPO_30000);
         }
         resetImplicitTimeout();
     }
@@ -178,36 +178,36 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void removerRiesgos() {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
             resetImplicitTimeout();
-            waitFor(WAIT_TIME_3).second();
+            waitFor(TIEMPO_3).second();
             findBy(XPATH_SELECCIONAR_RIESGOS).click();
-            waitFor(WAIT_TIME_3).second();
+            waitFor(TIEMPO_3).second();
             findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
             findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
             findBy(XPATH_BTON_REMOVER_RIESGOS).click();
-            waitFor(WAIT_TIME_3).second();
+            waitFor(TIEMPO_3).second();
         }
         resetImplicitTimeout();
     }
 
     public void editartransacciondepoliza() {
-        waitUntil(WAIT_TIME_5000);
+        esperarHasta(TIEMPO_5000);
         findBy(XPATH_EDITAR_TRANSACCION_POLIZA).waitUntilVisible().click();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         findBy(XPATH_ACEPTAR).click();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         if (findBy(XPATH_DESCARTAR_CAMBIOS).isVisible()) {
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             findBy(XPATH_DESCARTAR_CAMBIOS).click();
-            clickElement(edificiosyUbicacionesRenovacion);
+            clickearElemento(edificiosyUbicacionesRenovacion);
             waitForTextToAppear("Edificios y ubicaciones");
         }
     }
 
     public void seleccionarTab(String tab) {
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         waitForAnyTextToAppear(tab);
         shouldContainText(tab);
         String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
@@ -218,7 +218,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public boolean estaSeleccionadoTab(String tab) {
         Boolean esSeleccionado = false;
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         try {
 
             waitForAnyTextToAppear(tab);
@@ -310,8 +310,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
-                .withTimeout(WAIT_TIME_2, TimeUnit.SECONDS)
-                .pollingEvery(WAIT_TIME_250, TimeUnit.MILLISECONDS)
+                .withTimeout(TIEMPO_2, TimeUnit.SECONDS)
+                .pollingEvery(TIEMPO_250, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
 
@@ -391,7 +391,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
 
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
 
 
         if (esOtroArticulo) {
@@ -403,14 +403,14 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
             cliclearBtnAgregarArticulo();
             ingresarInputTiposDeArticulos(tipoArticulo);
-            waitFor(WAIT_TIME_3).seconds();
+            waitFor(TIEMPO_3).seconds();
             ingresarTextAreaDescripcion(tipoArticulo);
         }
 
 
         if (cobertura.length() > 0) {
             seleccionarCobertura(obtenerDivCobertura(cobertura), cobertura);
-            waitFor(WAIT_TIME_2).seconds();
+            waitFor(TIEMPO_2).seconds();
             ingresarEntrada(entrada, valorEntrada);
         } else {
             ingresarEntrada(entrada, valorEntrada);
@@ -471,21 +471,21 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void cliclearBtnCotizar() {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
         try {
-            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent().click();
+            withTimeoutOf(TIEMPO_7, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent().click();
         } catch (TimeoutException e) {
             LOGGER.info("ElementShouldBePresentException " + e);
-            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+            setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
             if (botonAceptarCambioDePoliza.isPresent()) {
                 botonAceptarCambioDePoliza.click();
-                withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(btnCotizar).click();
+                withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(btnCotizar).click();
             }
         }
-        waitFor(WAIT_TIME_4).second();
+        waitFor(TIEMPO_4).second();
     }
 
     public void descartarCambios() {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
             btnCotizar.click();
@@ -497,7 +497,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitForTextToAppear("Tipos de Artículos");
         String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
-        waitFor(WAIT_TIME_4).second();
+        waitFor(TIEMPO_4).second();
         $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
         esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
     }
@@ -512,22 +512,22 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        clickElement(divMensaje);
+        clickearElemento(divMensaje);
         for (Map<String, String> mensaje : mensajes.getRows()) {
             MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
         }
     }
 
     public void agregarInteresAdicional(String cedula) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
-        waitUntil(WAIT_TIME_300);
+        esperarHasta(TIEMPO_300);
         comboBoxTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         waitForTextToAppear("Primer nombre");
         campoTxtNumeroDocumento.sendKeys(cedula);
-        clickElement(botonBuscar);
+        clickearElemento(botonBuscar);
         botonSeleccionar.waitUntilPresent().click();
         botonAgregarAsegurado.waitUntilPresent();
     }
@@ -537,7 +537,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void validarNoVisibilidadDeObjeto(String xpath) {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         MatcherAssert.assertThat("Alguno de los campos es visible", !findBy(xpath).isVisible());
         resetImplicitTimeout();
     }

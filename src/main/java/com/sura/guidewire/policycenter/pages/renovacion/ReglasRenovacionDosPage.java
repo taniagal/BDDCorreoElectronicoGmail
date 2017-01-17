@@ -51,36 +51,36 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     /*
-    *El metodo contiene los waitUntil debido que espera un refresh en la pantalla para la aparicion de un botón
+    *El metodo contiene los esperarHasta debido que espera un refresh en la pantalla para la aparicion de un botón
     */
     public void clicHastaVehiculo() {
         for (int i = 0; i < CONSTANTE_3; i++) {
             setImplicitTimeout(0, TimeUnit.SECONDS);
             if (!botonCotizar.isPresent()) {
-                waitUntil(WAIT_TIME_3000);
-                clickElement(menuPoliza);
+                esperarHasta(TIEMPO_3000);
+                clickearElemento(menuPoliza);
             }
             resetImplicitTimeout();
         }
-        clickElement(menuItemVehiculo);
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        clickearElemento(menuItemVehiculo);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (findBy(".message").isVisible()) {
-            clickElement(menuItemVehiculo);
+            clickearElemento(menuItemVehiculo);
         }
         resetImplicitTimeout();
     }
 
     public void editarTransaccion() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnEditarTransaccion).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnEditarTransaccion).waitUntilClickable();
         btnEditarTransaccion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarEditarTransaccion).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnAceptarEditarTransaccion).waitUntilClickable();
         btnAceptarEditarTransaccion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonCotizar).waitUntilClickable();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensajes).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonCotizar).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblMensajes).waitUntilPresent();
     }
 
     public void ingresaValorMayorVeintePorciento() {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         int valorDeLabel = Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
         int valorTotalAccesorio = 1 + logicaExtraeOSumaPorcentaje(valorDeLabel, CONSTANTE_02);
         txtvalorAccesorios.clear();
@@ -90,13 +90,13 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     public void ingresaValorAccesoriosEspeciales() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtValorAccesoriosEspe).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(txtValorAccesoriosEspe).waitUntilClickable();
         int valorTotalAccesorioEsp = 1 + Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
         txtValorAccesoriosEspe.clear();
-        clickElement(txtValorAccesoriosEspe);
+        clickearElemento(txtValorAccesoriosEspe);
         txtValorAccesoriosEspe.sendKeys(Integer.toString(valorTotalAccesorioEsp));
-        selectItem(campoTxtCiudadDeCirculacion, "MEDELLIN");
-        clickElement(btnSiguinete);
+        seleccionarItem(campoTxtCiudadDeCirculacion, "MEDELLIN");
+        clickearElemento(btnSiguinete);
     }
 
     public int logicaExtraeOSumaPorcentaje(int valorCalcular, double porcentaje) {
@@ -109,9 +109,9 @@ public class ReglasRenovacionDosPage extends PageUtil {
 
     public void cerrarTransaccion() {
         btnOpcionDeCierre.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
         btnRetirarTransaccion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
         btnAceptarRetirarTransaccion.click();
     }
 

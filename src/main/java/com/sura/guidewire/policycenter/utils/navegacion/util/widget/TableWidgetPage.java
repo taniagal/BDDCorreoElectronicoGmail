@@ -25,8 +25,8 @@ public class TableWidgetPage extends PageObject {
     private static String ENCABEZADO_TABLA = ".//div[ (descendant::*[contains(@id, 'gridcolumn')]) and contains(@id,'headercontainer') and contains(@id,'targetEl') and contains(@class,'x-box-target') and contains(@role,'presentation')]/div";
     private static String TABLA = ".//*[contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
     private static String LISTA_COMBO_DESPLEGABLE = ".//ul[contains(@class,'x-list-plain')]";
-    private static final int WAIT_TIME_4000 = 4000;
-    private static final int WAIT_TIME_3000 = 3000;
+    private static final int TIEMPO_4000 = 4000;
+    private static final int TIEMPO_3000 = 3000;
 
     private List<WebElement> toolbarListWE;
     private WebElement contenedorWE = null;
@@ -119,7 +119,7 @@ public class TableWidgetPage extends PageObject {
 
     public void opcionDeCombo(String nombreDeOpcionDeCombo, String xpathDelCombo) {
         List<WebElement> opcionesDeCombo = getDriver().findElements(By.xpath(xpathDelCombo));
-                PageUtil.waitUntil(WAIT_TIME_3000);
+                PageUtil.esperarHasta(TIEMPO_3000);
         for (WebElement opcion : opcionesDeCombo) {
             try {
                 if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
@@ -128,7 +128,7 @@ public class TableWidgetPage extends PageObject {
                 }
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);
-                PageUtil.waitUntil(WAIT_TIME_4000);
+                PageUtil.esperarHasta(TIEMPO_4000);
                 try {
                     if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
                         opcion.click();
@@ -136,7 +136,7 @@ public class TableWidgetPage extends PageObject {
                     }
                 }catch (StaleElementReferenceException f) {
                     LOGGER.info("StaleElementReferenceException " + f);
-                    PageUtil.waitUntil(WAIT_TIME_4000);
+                    PageUtil.esperarHasta(TIEMPO_4000);
                     if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
                         opcion.click();
                         fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
@@ -172,7 +172,7 @@ public class TableWidgetPage extends PageObject {
                     celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
                 }catch (StaleElementReferenceException e){
                     LOGGER.info("StaleElementReferenceException " + e);
-                    PageUtil.waitUntil(WAIT_TIME_3000);
+                    PageUtil.esperarHasta(TIEMPO_3000);
                     celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
                 }
                 filasPorColumna.add(celda);

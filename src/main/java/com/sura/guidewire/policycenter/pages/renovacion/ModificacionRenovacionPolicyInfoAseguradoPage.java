@@ -19,23 +19,23 @@ public class ModificacionRenovacionPolicyInfoAseguradoPage extends PageUtil{
 
     public void irAInformacionDePoliza() {
         WebElementFacade informacionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']/div/span");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(informacionPoliza).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(informacionPoliza).click();
         WebElementFacade labelInfoPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelInfoPoliza).shouldBeVisible();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(labelInfoPoliza).shouldBeVisible();
     }
 
     public void validarAdicionSegundoTomador(ExamplesTable tomadorSecundario) {
         Map<String, String> infoTomador = tomadorSecundario.getRows().get(0);
         WebElementFacade adicionarSegundoTomador = findBy(".//tr[11]/td/table/tbody/tr/td[2]/table/tbody/tr/td[3]/a/img");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(adicionarSegundoTomador).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(adicionarSegundoTomador).click();
         WebElementFacade itemContactoExistente = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ExistingNamedInsured-textEl']");
-        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(itemContactoExistente).click();
+        withTimeoutOf(TIEMPO_10,TimeUnit.SECONDS).waitFor(itemContactoExistente).click();
         WebElementFacade itemTomadorSecundario = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ExistingNamedInsured:0:UnassignedAccountContact-textEl']");
-        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(itemTomadorSecundario).click();
+        withTimeoutOf(TIEMPO_10,TimeUnit.SECONDS).waitFor(itemTomadorSecundario).click();
         WebElementFacade labelTomadorSecundario = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-inputEl']");
         WebElementFacade labelTipoDocumento = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:DocumentType-inputEl']");
         WebElementFacade labelNumeroDocumento = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']");
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelTipoDocumento).shouldBeVisible();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(labelTipoDocumento).shouldBeVisible();
         MatcherAssert.assertThat(labelTomadorSecundario.getText(), Matchers.is(Matchers.equalTo(infoTomador.get("tomador"))));
         MatcherAssert.assertThat(labelTipoDocumento.getText(), Matchers.is(Matchers.equalTo(infoTomador.get("tipoDocumento"))));
         MatcherAssert.assertThat(labelNumeroDocumento.getText(), Matchers.is(Matchers.equalTo(infoTomador.get("numeroDocumento"))));
@@ -54,7 +54,7 @@ public class ModificacionRenovacionPolicyInfoAseguradoPage extends PageUtil{
     public void cambiarTipoDePlazo(ExamplesTable tipoPlazo) {
         Map<String, String> plazo = tipoPlazo.getRows().get(0);
         WebElementFacade campoTipoPlazo = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-inputEl']");
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(campoTipoPlazo).clear();
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(campoTipoPlazo).clear();
         campoTipoPlazo.typeAndTab(plazo.get("tipoPlazo"));
     }
 
@@ -83,11 +83,11 @@ public class ModificacionRenovacionPolicyInfoAseguradoPage extends PageUtil{
 
     public void irAAsegurados(){
         WebElementFacade itemAsegurados = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PADrivers']/div/span");
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(itemAsegurados).click();
-        waitUntil(WAIT_TIME_1000);
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(itemAsegurados).click();
+        esperarHasta(TIEMPO_1000);
         itemAsegurados.click();
         WebElementFacade labelAsegurados = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelAsegurados).shouldBeVisible();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(labelAsegurados).shouldBeVisible();
     }
 
     public void validarNoEdicionAsegurado() {

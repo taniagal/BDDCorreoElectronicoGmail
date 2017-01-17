@@ -31,9 +31,9 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     }
 
     public void irAAnalisisDeRiesgo() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(resultadosValidacion);
-        clickElement(analisisDeRiesgo);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(resultadosValidacion);
+        clickearElemento(analisisDeRiesgo);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo);
     }
 
     public void validarGeneracionUWIssue(ExamplesTable mensajesBloqueo) {

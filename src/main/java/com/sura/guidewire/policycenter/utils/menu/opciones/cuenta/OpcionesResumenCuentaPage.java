@@ -159,7 +159,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) {
-        waitForTextToAppear("Resumen de la cuenta", WAIT_TIME_2000);
+        waitForTextToAppear("Resumen de la cuenta", TIEMPO_2000);
         MatcherAssert.assertThat(lblResumenCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblResumenCuenta"))));
         MatcherAssert.assertThat(lblTipoDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoDocumento"))));
         MatcherAssert.assertThat(lblNumDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numDocumento"))));
@@ -209,7 +209,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void editarResumenCuenta() {
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         waitFor(btnEditarCuenta).shouldBeVisible();
         btnEditarCuenta.click();
     }
@@ -238,7 +238,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void validarCamposEditablesCompania() {
-        waitForTextToAppear("Editar cuenta", WAIT_TIME_1000);
+        waitForTextToAppear("Editar cuenta", TIEMPO_1000);
         MatcherAssert.assertThat(txtRazonSocial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtNombreComercial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtActEconomica.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -261,16 +261,16 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void editarPais(String pais) {
-        waitForTextToAppear("Editar cuenta", WAIT_TIME_2000);
+        waitForTextToAppear("Editar cuenta", TIEMPO_2000);
         waitFor(txtPais).shouldBeVisible();
         txtPais.click();
         WebElementFacade itmPais = findBy(".//li[contains(.,'" + pais + "')]");
         itmPais.click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void validarDepartamento(String departamento) {
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         waitFor(txtDepartamento).shouldBeVisible();
         MatcherAssert.assertThat(txtDepartamento.getText(), Is.is(Matchers.equalTo(departamento)));
     }
@@ -280,11 +280,11 @@ public class OpcionesResumenCuentaPage extends PageUtil {
         txtDepartamento.click();
         WebElementFacade itmDepto = findBy(".//li[contains(.,'" + departamento + "')]");
         itmDepto.click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void validarCiudad(String ciudad) {
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         waitFor(txtCiudad).shouldBePresent();
         MatcherAssert.assertThat(txtCiudad.getText(), Is.is(Matchers.equalTo(ciudad)));
     }

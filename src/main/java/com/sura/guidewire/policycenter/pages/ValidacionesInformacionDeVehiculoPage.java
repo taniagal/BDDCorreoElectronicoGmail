@@ -69,7 +69,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_false-inputEl']")
     private WebElementFacade comboBoxNoTransporteCombustible;
 
-    protected static final int WAIT_TIME_28000 = 28000;
+    protected static final int TIEMPO_28000 = 28000;
     private String opcion = "Si";
     private static final String VALOR_ASEGURADO = "valor_asegurado";
 
@@ -79,8 +79,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).waitUntilPresent();
-        waitUntil(WAIT_TIME_2000);
-        clickElement(menuItemVehiculos);
+        esperarHasta(TIEMPO_2000);
+        clickearElemento(menuItemVehiculos);
     }
 
     public void crearVehiculo() {
@@ -91,12 +91,12 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void agregarPlaca(String placa) {
         campoTxtPlaca.sendKeys(placa);
         campoTxtchasis.click();
-        waitForTextToAppear(placa, WAIT_TIME_28000);
+        waitForTextToAppear(placa, TIEMPO_28000);
     }
 
     public void clickSiguienteConMensaje() {
         clickSiguiente();
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if ($(".message").isPresent()) {
             clickSiguiente();
         }
@@ -105,18 +105,18 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void clickSiguiente() {
         try {
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
         }
-        clickElement(botonSiguiente);
+        clickearElemento(botonSiguiente);
     }
 
     public void clickLinkDescartarCambios() {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
-            waitUntil(WAIT_TIME_1000);
+            esperarHasta(TIEMPO_1000);
             botonSiguiente.click();
         }
         resetImplicitTimeout();
@@ -125,8 +125,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxPlan, vehiculo.get("plan"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(comboBoxPlan, vehiculo.get("plan"));
         ingresarPlaca(vehiculo);
         clickVehiculoServicio();
         seleccionarComboBoxModelo(vehiculo);
@@ -135,15 +135,15 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             campoTxtPlaca.click();
         }
         waitForCampoTxtValorAsegurado(vehiculo);
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         seleccionarCiudadDeCirculacion(vehiculo);
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         try {
             waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException" + e);
         }
-        selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
+        seleccionarItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         agregarDescuento(vehiculo);
         if (opcion.equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
@@ -163,7 +163,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException" + e);
 
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get(VALOR_ASEGURADO) +
                     " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get(VALOR_ASEGURADO)));
         }
@@ -174,35 +174,35 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void seleccionarVehiculoBlindado() {
-        waitUntil(WAIT_TIME_2000);
-        clickElement(comboBoxSiVehiculoBLindado);
+        esperarHasta(TIEMPO_2000);
+        clickearElemento(comboBoxSiVehiculoBLindado);
     }
 
     public void seleccionarTransporteDeCombustible(String opcion) {
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         if ("Si".equals(opcion)) {
-            clickElement(comboBoxSiTransporteCombustible);
+            clickearElemento(comboBoxSiTransporteCombustible);
         } else {
-            clickElement(comboBoxNoTransporteCombustible);
+            clickearElemento(comboBoxNoTransporteCombustible);
             this.opcion = "Si";
         }
     }
 
     public void seleccionarCiudadDeCirculacion(Map<String, String> vehiculo) {
-        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+        seleccionarItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+        esperarPorValor(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
     }
 
     public void ingresarPlacaConModelo2011(Map<String, String> vehiculo) {
         campoVehiculoCeroKm.click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         ingresarPlaca(vehiculo);
-        clickElement(tablaVehiculo);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2011"));
+        clickearElemento(tablaVehiculo);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2011"));
     }
 
     public void ingresarPlaca(Map<String, String> vehiculo) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
         } else {
@@ -211,20 +211,20 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             try {
                 ingresarDato(campoTxtPlaca, placa);
             } catch (StaleElementReferenceException e) {
-                waitUntil(WAIT_TIME_2000);
+                esperarHasta(TIEMPO_2000);
                 ingresarDato(campoTxtPlaca, placa);
                 LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo Page 129 " + e);
             }
         }
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void waitForCampoTxtValorAsegurado(Map<String, String> vehiculo) {
         try {
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get(VALOR_ASEGURADO)));
+            withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get(VALOR_ASEGURADO)));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-            selectItem(comboBoxModelo, "2010");
+            seleccionarItem(comboBoxModelo, "2010");
             waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2010"));
             seleccionarComboBoxModelo(vehiculo);
         } catch (ElementNotVisibleException e) {
@@ -234,13 +234,13 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
         try {
-            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+            seleccionarItem(comboBoxModelo, vehiculo.get("modelo"));
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo Page 131 " + e);
-            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+            seleccionarItem(comboBoxModelo, vehiculo.get("modelo"));
         }
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get("modelo")));
-        waitUntil(WAIT_TIME_2000);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get("modelo")));
+        esperarHasta(TIEMPO_2000);
     }
 
     public void agregarDescuento(Map<String, String> vehiculo) {
@@ -265,17 +265,17 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         } catch (NoSuchElementException f) {
             LOGGER.info("NoSuchElementException " + f);
         }
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
         comboBoxModelo.waitUntilPresent();
-        selectItem(comboBoxModelo, "2015");
+        seleccionarItem(comboBoxModelo, "2015");
         waitForTextToAppear("2015");
         campoTxtCodigoFasecolda.sendKeys(codigo);
         campoTxtPlaca.click();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
@@ -287,20 +287,20 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void relacionarAseguradoDelVehiculo(String asegurado) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonRelacionarAsegurado).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonRelacionarAsegurado).waitUntilClickable();
         botonRelacionarAsegurado.click();
         waitFor(botonAsegurado);
         botonAsegurado.click();
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(nitAsegurado).shouldBePresent();
-        waitUntil(WAIT_TIME_3000);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(nitAsegurado).shouldBePresent();
+        esperarHasta(TIEMPO_3000);
     }
 
     public void validarAvanceSiguientePagina() {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         WebElementFacade labelTituloCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelTituloCoberturasAuto).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(labelTituloCoberturasAuto).shouldBePresent();
         MatcherAssert.assertThat(labelTituloCoberturasAuto.getText(), Is.is(Matchers.equalTo("Coberturas de auto personal")));
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void agregarCiudadDeCirculacion(ExamplesTable datosCotizacion) {
@@ -310,8 +310,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
         }
-        clickElement(campoVehiculoCeroKm);
-        waitUntil(WAIT_TIME_3000);
+        clickearElemento(campoVehiculoCeroKm);
+        esperarHasta(TIEMPO_3000);
         seleccionarCiudadDeCirculacion(vehiculo);
     }
 
@@ -321,7 +321,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void validarQueNoPermiteAgregarMasDeUnAuto() {
-        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         MatcherAssert.assertThat("El botón de crear vehículo debe estar oculto cuando ya hay un vehículo creado ", botonCrearVehiculo.isVisible(), Is.is(Matchers.equalTo(false)));
         resetImplicitTimeout();
     }

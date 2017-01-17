@@ -12,7 +12,7 @@ public class AnalisisDeRiesgoSteps extends ScenarioSteps {
 
 
     private AnalisisDeRiesgosPage analisisDeRiesgosPage;
-    protected static final int WAIT_TIME_2 = 2;
+    protected static final int TIEMPO_2 = 2;
 
 
     public AnalisisDeRiesgosPage obtenerRiesgosPage() {
@@ -22,7 +22,7 @@ public class AnalisisDeRiesgoSteps extends ScenarioSteps {
 
     @Step
     public void seleccion_opcion_analisis_de_riesgos() {
-        waitFor(WAIT_TIME_2);
+        waitFor(TIEMPO_2);
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgo();
 
     }

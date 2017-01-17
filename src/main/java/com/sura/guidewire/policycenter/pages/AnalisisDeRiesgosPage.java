@@ -26,16 +26,16 @@ public class AnalisisDeRiesgosPage extends PageUtil {
     public WebElementFacade obtenerCompromisoBloqueado() {
 
         String xpathCompromisoBloqueado = "//a[@class='g-actionable']";
-        waitFor(WAIT_TIME_2).second();
+        waitFor(TIEMPO_2).second();
         return findBy(xpathCompromisoBloqueado);
     }
 
     public void ingresarAOpcionAnalisisdeRiesgo() {
 
-        waitFor(WAIT_TIME_2).second();
+        waitFor(TIEMPO_2).second();
         String xpathAnalisisRiesgos = ".//*[@id='CancellationWizard:RiskAnalysis']/div";
         findBy(xpathAnalisisRiesgos).waitUntilClickable().click();
-        waitFor(WAIT_TIME_2).second();
+        waitFor(TIEMPO_2).second();
 
     }
 
@@ -62,10 +62,10 @@ public class AnalisisDeRiesgosPage extends PageUtil {
             waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         }
 
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
             resetImplicitTimeout();
-            waitUntil(WAIT_TIME_1000);
+            esperarHasta(TIEMPO_1000);
             botonBorrar.click();
         }
         resetImplicitTimeout();
@@ -77,13 +77,13 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
         findBy(xpathAnalisisRiesgos).click();
         waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
-        waitFor(WAIT_TIME_2).second();
+        waitFor(TIEMPO_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
             waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
-            waitUntil(WAIT_TIME_5000);
+            esperarHasta(TIEMPO_5000);
             botonBorrar.click();
         }
     }
@@ -92,17 +92,17 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathAnalisisRiesgos = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RiskAnalysis']/div";
         String xpathMensajeAlertaEdificiosYUbicaciones = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']";
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         findBy(xpathAnalisisRiesgos).click();
-        waitFor(WAIT_TIME_2).second();
+        waitFor(TIEMPO_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
             waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
-            waitUntil(WAIT_TIME_3000);
+            esperarHasta(TIEMPO_3000);
             botonBorrar.click();
-            waitUntil(WAIT_TIME_3000);
+            esperarHasta(TIEMPO_3000);
         }
     }
 
@@ -117,11 +117,11 @@ public class AnalisisDeRiesgosPage extends PageUtil {
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);
             }
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             botonSolicitarAprobacion.click();
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             aceptarInicioSolicitudAprobacion();
-            waitUntil(WAIT_TIME_3000);
+            esperarHasta(TIEMPO_3000);
         }
         setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }

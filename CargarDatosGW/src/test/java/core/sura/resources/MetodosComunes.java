@@ -1,28 +1,26 @@
 package core.sura.resources;
 
 
-
 import com.google.common.base.Function;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Wait;
 
 
 public class MetodosComunes {
-
     public Properties loadProperty() throws Exception {
         Properties prop = new Properties();
         InputStream input = null;
         try {
             input = new FileInputStream("src/main/resources/gradle.properties");
             prop.load(input);
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
             if (input != null) {

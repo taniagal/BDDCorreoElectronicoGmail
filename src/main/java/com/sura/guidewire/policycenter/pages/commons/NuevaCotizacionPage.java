@@ -67,16 +67,16 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void copiarEnvio() {
         menuAcciones.waitUntilPresent();
-        clickElement(menuAcciones);
+        clickearElemento(menuAcciones);
         menuItemCopiarEnvio.waitUntilPresent().click();
         try {
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
+            withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
         } catch (StaleElementReferenceException f){
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
         }
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void seleccionDeProducto(String nomProducto) {
@@ -84,22 +84,22 @@ public class NuevaCotizacionPage extends PageUtil {
             waitForTextToAppear(nomProducto);
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-            selectItem(comboBoxNombreAgente, "A");
+            seleccionarItem(comboBoxNombreAgente, "A");
             waitForTextToAppear(nomProducto);
         }
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
-                waitUntil(WAIT_TIME_1000);
+                esperarHasta(TIEMPO_1000);
                 if (nomProducto.equals(descripcion.getText())) {
                     botones.get(i).click();
                     if ("Multiriesgo corporativo".equals(nomProducto)) {
-                        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+                        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
                         if (botonAceptarPopup.isVisible()) {
-                            waitUntil(WAIT_TIME_1000);
+                            esperarHasta(TIEMPO_1000);
                             botonAceptarPopup.click();
                             botonAceptarPopup.waitUntilNotVisible();
                         }
@@ -115,7 +115,7 @@ public class NuevaCotizacionPage extends PageUtil {
 
 
     public void irANuevaCotizacion() {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (!botonAcciones.isPresent()) {
             menuItemEscritorio.click();
         }
@@ -126,7 +126,7 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void nuevaCotizacionEnCuenta() {
         menuAccionesCuenta.waitUntilPresent();
-        clickElement(menuAccionesCuenta);
+        clickearElemento(menuAccionesCuenta);
         menuItemNuevaCotizacionCuenta.waitUntilPresent().click();
     }
 
@@ -140,7 +140,7 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void seleccionarAgente(){
         comboBoxNombreAgenteCuenta.waitUntilPresent();
-        clickElement(comboBoxNombreAgenteCuenta);
+        clickearElemento(comboBoxNombreAgenteCuenta);
     }
 
     public void seleccionarProductoDesdeCuenta(ExamplesTable datosCotizacion) {
@@ -152,23 +152,23 @@ public class NuevaCotizacionPage extends PageUtil {
         actions.sendKeys(Keys.ENTER).build().perform();
         seleccionDeProducto(dato.get("producto"));
         if ("Autos".equals(dato.get("producto"))) {
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilPresent().click();
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
             if (!comboBoxOrganizacion.getValue().equals(dato.get(ORGANIZACION))) {
-                selectItem(comboBoxOrganizacion, dato.get(ORGANIZACION));
-                waitForComboValue(comboBoxOrganizacionW, dato.get(ORGANIZACION));
-                waitUntil(WAIT_TIME_3000);
-                selectItem(comboBoxCanal, dato.get("canal"));
-                waitForComboValue(comboBoxCanal, dato.get("canal"));
+                seleccionarItem(comboBoxOrganizacion, dato.get(ORGANIZACION));
+                esperarPorValor(comboBoxOrganizacionW, dato.get(ORGANIZACION));
+                esperarHasta(TIEMPO_3000);
+                seleccionarItem(comboBoxCanal, dato.get("canal"));
+                esperarPorValor(comboBoxCanal, dato.get("canal"));
                 try {
-                    selectItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
+                    seleccionarItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
                 } catch (ElementNotVisibleException e) {
                     LOGGER.info("ElementNotVisibleException " + e);
-                    waitUntil(WAIT_TIME_3000);
-                    selectItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
+                    esperarHasta(TIEMPO_3000);
+                    seleccionarItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
                 }
-                waitForComboValue(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
+                esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
             }
         }
     }
@@ -176,38 +176,38 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void cotizarEnvioCopiada() {
         menuItemInformacionDePoliza.waitUntilPresent();
-        clickElement(menuItemInformacionDePoliza);
+        clickearElemento(menuItemInformacionDePoliza);
         botonBotonCotizar.waitUntilPresent().click();
     }
 
 
     public void llenarInfoPoliza() {
         menuItemInformacionDePoliza.waitUntilPresent();
-        clickElement(menuItemInformacionDePoliza);
+        clickearElemento(menuItemInformacionDePoliza);
         try {
-            withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
+            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
         } catch (StaleElementReferenceException f) {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
-            waitUntil(WAIT_TIME_2000);
-            withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
+            esperarHasta(TIEMPO_2000);
+            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
         }
         if (!"Sura".equals(comboBoxOrganizacion.getText())) {
-            selectItem(comboBoxOrganizacion, "Sura");
-            waitForComboValue(comboBoxOrganizacion, "Sura");
-            selectItem(comboBoxCanal, "Canal Tradicional");
-            waitForComboValue(comboBoxCanal, "Canal Tradicional");
+            seleccionarItem(comboBoxOrganizacion, "Sura");
+            esperarPorValor(comboBoxOrganizacion, "Sura");
+            seleccionarItem(comboBoxCanal, "Canal Tradicional");
+            esperarPorValor(comboBoxCanal, "Canal Tradicional");
             try {
-                selectItem(comboBoxTipoPoliza, INDIVIDUAL);
+                seleccionarItem(comboBoxTipoPoliza, INDIVIDUAL);
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
-                waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, INDIVIDUAL);
+                esperarHasta(TIEMPO_2000);
+                seleccionarItem(comboBoxTipoPoliza, INDIVIDUAL);
             } catch (StaleElementReferenceException f) {
                 LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
-                waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, INDIVIDUAL);
+                esperarHasta(TIEMPO_2000);
+                seleccionarItem(comboBoxTipoPoliza, INDIVIDUAL);
             }
-            waitForComboValue(comboBoxTipoPoliza, INDIVIDUAL);
+            esperarPorValor(comboBoxTipoPoliza, INDIVIDUAL);
         }
     }
 

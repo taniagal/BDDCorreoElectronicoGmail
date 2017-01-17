@@ -73,23 +73,23 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void seleccionarCuenta(String numCuenta) {
-        waitUntil(WAIT_TIME_2000);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
-        clickElement(mnuCuenta);
-        waitUntil(WAIT_TIME_3500);
-        clickElement(mnuCuenta);
-        waitUntil(WAIT_TIME_500);
+        esperarHasta(TIEMPO_2000);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
+        clickearElemento(mnuCuenta);
+        esperarHasta(TIEMPO_3500);
+        clickearElemento(mnuCuenta);
+        esperarHasta(TIEMPO_500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         txtNumCuenta.waitUntilPresent();
         ingresarDato(txtNumCuenta, numCuenta);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
 
     public void seleccionarHistorial() {
-        clickElement(mnuHistorial);
-        waitUntil(WAIT_TIME_3000);
+        clickearElemento(mnuHistorial);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void buscarCuentaRelacionadoCon(){
@@ -98,17 +98,17 @@ public class HistorialCuentaPage extends PageUtil {
         itmRelacionadoCon.waitUntilEnabled();
         itmRelacionadoCon.click();
         btnBuscarItem.click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void buscarCuentaProducto(){
         waitFor(btnMostrarProducto).shouldBePresent();
         btnMostrarProducto.click();
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         itmProducto.click();
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         btnBuscarItem.click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void validarResultadoBusqueda(){
@@ -132,20 +132,20 @@ public class HistorialCuentaPage extends PageUtil {
 
     public void buscarCuentaConMultiplesOpciones(String usuario, String producto, String fechaDesde, String fechaHasta){
         botonRestablecer.waitUntilPresent().click();
-        waitForTextToDisappear(usuario, WAIT_TIME_30000);
+        waitForTextToDisappear(usuario, TIEMPO_30000);
         txtUsuario.waitUntilEnabled();
         txtUsuario.type(usuario);
         waitFor(btnMostrarProducto).shouldBePresent();
         btnMostrarProducto.click();
         itmProducto.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         txtFechaDesde.waitUntilEnabled();
         txtFechaDesde.type(fechaDesde);
         txtFechaHasta.waitUntilEnabled();
         txtFechaHasta.type(fechaHasta);
         btnBuscarItem.waitUntilEnabled();
         btnBuscarItem.click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void validarDatosOpcionesMultiples() {

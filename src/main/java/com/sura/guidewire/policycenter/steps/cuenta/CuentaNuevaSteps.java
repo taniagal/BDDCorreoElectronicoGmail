@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.steps.cuenta;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.cuenta.CuentaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -29,8 +30,8 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     private void initRandoms() {
-        cedula = gw.cedulaRandom();
-        nit = gw.nitRandom();
+        cedula = Utils.cedulaRandom();
+        nit = Utils.nitRandom();
 
     }
 

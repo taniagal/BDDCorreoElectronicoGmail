@@ -9,7 +9,7 @@ Meta:
 
 Narrative:
 Como usuario de policy center
-Deseo poder obtener y/o agregar la bonificacion comercial y la tecnica a un vehiculo durante una cotizacion
+Deseo poder obtener y/o agregar la bonificacion comercial y la tecnica a un vehiculo durante una cotizacion o modificacion
 
 Scenario: Verificar generacion de UW Issue al cambiar la bonificacion consultada Cambio de Poliza.
 GivenStories: stories/policycenter/login_policy.story
@@ -31,8 +31,8 @@ And expido la poliza
 Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
-|tipo_documento      |documento |bonoT|mensaje|
-|CEDULA DE CIUDADANIA|1060447895|2    |La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
+|tipo_documento      |documento|bonoT|mensaje|
+|CEDULA DE CIUDADANIA|11111111 |2    |La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
 
 
 

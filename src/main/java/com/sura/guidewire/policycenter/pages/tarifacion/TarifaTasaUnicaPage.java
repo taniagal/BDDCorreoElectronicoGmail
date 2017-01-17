@@ -102,9 +102,11 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade labelPrimaTotalRenovacion;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:StartPolicyChangeDV:sustitutionPA_true-inputEl']")
+    private WebElementFacade radioBotonEsSustitucionSi;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static final int WAIT_TIME_7000 = 7000;
+    private static final int TIEMPO_7000 = 7000;
     private static final int DOS = 2;
     private static final int TREINTA_Y_TRES = 33;
     String primaTotal = "";
@@ -116,7 +118,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void verificarElementosExportacion() {
         botonHojaDeCalculo.waitUntilPresent();
-        clickElement(botonHojaDeCalculo);
+        clickearElemento(botonHojaDeCalculo);
         menuItemExportar.waitUntilPresent().click();
         botonExportarAHojaDeCalculo.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
@@ -138,7 +140,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
         botonImportar.waitUntilPresent();
         MatcherAssert.assertThat("No esta presente el boton examinar", filaExaminar.containsText("Examinar..."));
     }
-
 
     public int verificarEstadoDelEnvio(String cotizacion) {
         int val = 1;
@@ -176,6 +177,13 @@ public class TarifaTasaUnicaPage extends PageUtil {
         botonSiguienteCambioDePoliza.click();
     }
 
+    public void comenzarSustitucion() {
+        clickAccionesYCambiarPoliza();
+        radioBotonEsSustitucionSi.waitUntilPresent();
+        clickearElemento(radioBotonEsSustitucionSi);
+        clickearElemento(botonSiguienteCambioDePoliza);
+    }
+
     public void cambiarValorAsegurado(String valorAsegurado) {
         menuItemVehiculos.waitUntilPresent().click();
         isMessagePresent(menuItemVehiculos);
@@ -190,12 +198,12 @@ public class TarifaTasaUnicaPage extends PageUtil {
         campoTxtNombre.waitUntilPresent().clear();
         campoTxtNombre.sendKeys(primerNombre);
         campoTxtSegundoNombre.sendKeys(segundoNombre);
-        selectItem(comboBoxEstadoCivil, estadoCivil);
+        seleccionarItem(comboBoxEstadoCivil, estadoCivil);
         botonCotizarAsegurado.click();
     }
 
     public void isMessagePresent(WebElementFacade element) {
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (findBy(".message").isPresent()) {
             element.click();
         }
@@ -215,41 +223,41 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
         botonHojaDeCalculoRenovacion.waitUntilPresent();
-        waitUntil(WAIT_TIME_7000);
-        clickElement(botonSiguiente);
-        setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
+        esperarHasta(TIEMPO_7000);
+        clickearElemento(botonSiguiente);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (!botonEditarTransaccionDePolizaAsegurado.isPresent()) {
-            clickElement(botonVolver);
-            waitUntil(WAIT_TIME_5000);
-            clickElement(botonSiguiente);
+            clickearElemento(botonVolver);
+            esperarHasta(TIEMPO_5000);
+            clickearElemento(botonSiguiente);
         }
-        clickElement(botonVolver);
+        clickearElemento(botonVolver);
         resetImplicitTimeout();
         editarTransaccion();
     }
 
     public void irAInformacionDePolizaRenovacion() {
         menuItemInformacionDePolizaRenovacion.waitUntilPresent();
-        clickElement(menuItemInformacionDePolizaRenovacion);
+        clickearElemento(menuItemInformacionDePolizaRenovacion);
     }
 
     public void editarTransaccion() {
         botonEditarTransaccionDePolizaInfo.waitUntilPresent();
-        clickElement(botonEditarTransaccionDePolizaInfo);
+        clickearElemento(botonEditarTransaccionDePolizaInfo);
         botonAceptar.waitUntilPresent().click();
         botonEditarTransaccionDePolizaInfo.waitUntilNotVisible();
         descartarCambios();
     }
 
     public void renovarPoliza() {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         checkBoxTasaUnica.shouldBePresent();
-        clickElement(botonCotizarRenovacion);
+        clickearElemento(botonCotizarRenovacion);
         descartarCambios();
     }
 
     public void descartarCambios() {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
         }
@@ -262,7 +270,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
     public void verificarTarifaRenovacionSinCambio() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelPrimaTotalRenovacion).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelPrimaTotalRenovacion).waitUntilPresent();
         MatcherAssert.assertThat("No hay tarifa en la renovacion", labelPrimaTotalRenovacion.containsText("00 (COP)"));
     }
 

@@ -32,14 +32,14 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
     }
 
     public void abrirPanelInferior() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(panelInferiorTitulo);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(panelInferiorTitulo);
         if (!panelInferiorBotonBorrar.isVisible()) {
             panelInferiorBotonArriba.click();
         }
     }
 
     public void validarMensajeDireccion(String mensaje) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(panelInferiorTablaDeMensajes);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(panelInferiorTablaDeMensajes);
         verificarMensaje(panelInferiorTablaDeMensajes, mensaje);
     }
 
@@ -62,9 +62,9 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
     }
 
     public void borrarEspacioDeTrabajo() {
-        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         if (panelInferiorBotonBorrar.isPresent()) {
-            clickElement(panelInferiorBotonBorrar);
+            clickearElemento(panelInferiorBotonBorrar);
             waitForTextToDisappear("Workspace");
         }
         resetImplicitTimeout();

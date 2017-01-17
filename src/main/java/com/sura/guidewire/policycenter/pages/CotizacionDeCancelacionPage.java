@@ -56,12 +56,12 @@ public class CotizacionDeCancelacionPage extends PageUtil {
 
 
     public void ingresaDatosFormulario() {
-        selectItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
-        waitUntil(WAIT_TIME_1000);
+        seleccionarItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
+        esperarHasta(TIEMPO_1000);
         inicioCancelacionPage.txtDescripMotivo.click();
         inicioCancelacionPage.txtDescripMotivo.sendKeys("Motivo");
         btnIniciarCancelacion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(inputNumPoliza).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(inputNumPoliza).waitUntilClickable();
     }
 
     public void validacionesCamposPoliza() {
@@ -82,13 +82,13 @@ public class CotizacionDeCancelacionPage extends PageUtil {
 
     public void cerrarTransaccionPoliza() {
         btnOpcionDeCierre.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilClickable();
         btnRetirarTransaccion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarRetirarTransaccion).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnAceptarRetirarTransaccion).waitUntilClickable();
         btnAceptarRetirarTransaccion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(linkVisualizaPoliza).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(linkVisualizaPoliza).waitUntilClickable();
         linkVisualizaPoliza.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
 

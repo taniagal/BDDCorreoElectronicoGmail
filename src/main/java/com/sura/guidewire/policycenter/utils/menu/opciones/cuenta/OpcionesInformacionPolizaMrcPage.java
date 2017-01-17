@@ -162,47 +162,47 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void ingresarTomadorAdicional(String tipoDocumento, String documento) {
         btnAgregar.waitUntilPresent();
-        clickElement(btnAgregar);
+        clickearElemento(btnAgregar);
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
         itemTipoDocumento.waitUntilPresent().clear();
-        waitUntil(WAIT_TIME_300);
+        esperarHasta(TIEMPO_300);
         itemTipoDocumento.sendKeys(tipoDocumento);
         itemTipoDocumento.sendKeys(Keys.ENTER);
         waitForAnyTextToAppear("Primer nombre", "Razón social");
         txtNumDocumento.sendKeys(documento);
-        clickElement(btnBuscar);
+        clickearElemento(btnBuscar);
         btnSelecciona.waitUntilPresent();
-        clickElement(btnSelecciona);
+        clickearElemento(btnSelecciona);
         waitInfoPoliza(lblInformaPoliza);
-        clickElement(btnSiguiente);
+        clickearElemento(btnSiguiente);
     }
 
     public void seleccionBotonSiguiente() {
         btnSiguiente.waitUntilPresent();
         try {
-            clickElement(btnSiguiente);
+            clickearElemento(btnSiguiente);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            clickElement(btnSiguiente);
+            clickearElemento(btnSiguiente);
         }
     }
 
     public void seleccionBotonSiguienteenCambioDePoliza() {
-        waitUntil(WAIT_TIME_5000);
+        esperarHasta(TIEMPO_5000);
         btnSiguienteCambioDePoliza.click();
-        waitUntil(WAIT_TIME_5000);
+        esperarHasta(TIEMPO_5000);
         waitForTextToAppear("Edificios y ubicaciones");
     }
 
     public void seleccionBotonSiguienteenRenovacionDePoliza() {
-        waitFor(WAIT_TIME_7).second();
+        waitFor(TIEMPO_7).second();
         btnSiguienteRenovacionDePoliza.click();
     }
 
     public void seleccionaRiesgoAceptado() {
         waitInfoPoliza(lblInformaPoliza);
         radioBotReaseguroEspecial.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(checkiReaseguroAceptado).waitUntilVisible();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(checkiReaseguroAceptado).waitUntilVisible();
         checkiReaseguroAceptado.click();
     }
 
@@ -227,13 +227,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarProducto(String nomProducto) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         String xpathBotonElegirProducto = BTNELEGIRPRODUCTO + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
         botonElegirProducto.click();
         if ("Multiriesgo corporativo".equals(nomProducto)) {
-            setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+            setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
             if (botonAceptarPopup.isVisible()) {
                 botonAceptarPopup.click();
                 botonAceptarPopup.waitUntilNotVisible();
@@ -244,18 +244,18 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void seleccionarOpcionCotizar() {
         botonCotizar.waitUntilPresent();
-        clickElement(botonCotizar);
+        clickearElemento(botonCotizar);
         waitForTextToAppear("Cotización");
     }
 
     public void seleccionarOpcionCotizarPolizaPrincipal() {
         botonCotizar.waitUntilPresent();
-        clickElement(botonCotizar);
+        clickearElemento(botonCotizar);
         waitForTextToAppear("Número de cotización");
     }
 
     public Integer encontrarProducto(String producto) {
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
@@ -274,13 +274,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void ingresarAInformacionDePoliza() {
-        clickElement(menuItemInformacionDePoliza);
+        clickearElemento(menuItemInformacionDePoliza);
         waitForTextToAppear("Información de póliza");
     }
 
     public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras) {
-        waitFor(WAIT_TIME_3).second();
-        clickElement(menuItemInformacionDePoliza);
+        waitFor(TIEMPO_3).second();
+        clickearElemento(menuItemInformacionDePoliza);
         divMensaje.waitUntilPresent();
         menuItemInformacionDePoliza.click();
         agregarCoaseguro.waitUntilPresent().click();
@@ -290,14 +290,14 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
 
     public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         if ("Cedido".equals(tipoCoaseguro)) {
             if ("0% 0%".equals($(radioButtonCedido).getCssValue("background-position"))) {
-                waitUntil(WAIT_TIME_2000);
+                esperarHasta(TIEMPO_2000);
                 radioButtonCedido.click();
             }
         } else {
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             radioButtonAceptado.click();
         }
 
@@ -312,15 +312,15 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 if (!"Seguros Generales Suramericana S.A.".equals(asegurados.get(ASEGURADORA))) {
                     desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get(ASEGURADORA));
                 }
-                waitFor(WAIT_TIME_2).second();
-                clickElement(findBy(LISTA_TIPO_BENEFICIARIO_UNO));
-                waitFor(WAIT_TIME_2).second();
+                waitFor(TIEMPO_2).second();
+                clickearElemento(findBy(LISTA_TIPO_BENEFICIARIO_UNO));
+                waitFor(TIEMPO_2).second();
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
             } else {
                 desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO, asegurados.get(ASEGURADORA));
-                waitFor(WAIT_TIME_2).second();
+                waitFor(TIEMPO_2).second();
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
@@ -359,7 +359,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void desplegarListaTipoAsegurado(String xPathAsegurado, String elemento) {
         WebElementFacade listaTipoAsegurado = findBy(xPathAsegurado);
         listaTipoAsegurado.click();
-        waitFor(WAIT_TIME_3);
+        waitFor(TIEMPO_3);
         seleccionarElementoDeLaLista(elemento);
     }
 
@@ -421,7 +421,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void validaReaseguro() {
-        setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if (!"Compañía cedente".equals(lblTomador.getText())) {
             notPresent.append("salida errada: Compañía cedente|");
@@ -452,7 +452,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+                setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
                 MatcherAssert.assertThat("Alguno de los campos es visible", !elementoMenu.isVisible());
                 resetImplicitTimeout();
             }
@@ -477,7 +477,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void seleccionarTipoNoReaseguro() {
         btnNoReaseguroEspecial.waitUntilPresent().click();
-        waitUntil(WAIT_TIME_5000);
+        esperarHasta(TIEMPO_5000);
     }
 
     public void validaFormularioDescripDireccion() {
@@ -489,7 +489,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(webElementFacade).waitUntilPresent();
     }
 
     public void darClicEnAceptarDeCoaseuguro() {

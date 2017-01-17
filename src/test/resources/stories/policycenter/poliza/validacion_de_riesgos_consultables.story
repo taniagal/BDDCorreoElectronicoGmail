@@ -14,11 +14,10 @@ Given estoy cotizando una poliza de mrc:
 |Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |JUAN        |ELIAS       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When quiera agregar un tomador adicional que es riesgo consultable <tipo_documento> <documento>
 And intente ingresar una nueva ubicacion
-And ingrese la entrada de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
+And ingrese la entrada de las diferentes coberturas con interes <documento> <tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100            |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100            |
-
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                            |
 | El asegurado es un riesgo no estándar|
@@ -27,8 +26,8 @@ Then se deben validar los riesgos consultables mostrando los siguientes mensaje 
 
 
 Examples:
-| numSubscripcion | rolUsuario |tipo_documento      |documento| tipoBeneficiario |
-| 22222211        | Asesor     |CEDULA DE CIUDADANIA|9876543  | Asegurado        |
+|tipo_documento      |documento| tipoBeneficiario |
+|CEDULA DE CIUDADANIA|9876543  | Asegurado        |
 
 Scenario: 2 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al modificar nueva poliza
 

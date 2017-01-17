@@ -43,7 +43,7 @@ public class NuevaPolizaPage extends PageUtil {
     }
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         acciones.click(elementoDeLaLista).build().perform();
     }
 
@@ -52,7 +52,7 @@ public class NuevaPolizaPage extends PageUtil {
         Map<String, String> organizaciones;
         for (int i = 0; i < listaOrganizaciones.getRowCount(); i++) {
             organizaciones = listaOrganizaciones.getRows().get(i);
-            elemetoDeLaLista = withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).find("//li[contains(.,'" + organizaciones.get("organizacion") + "')]");
+            elemetoDeLaLista = withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).find("//li[contains(.,'" + organizaciones.get("organizacion") + "')]");
             MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(organizaciones.get("organizacion"))));
         }
     }
@@ -61,7 +61,7 @@ public class NuevaPolizaPage extends PageUtil {
         String[] arregloListaCanal = datosListaCanal.split("[,]");
         WebElementFacade elemetoDeLaLista;
         for (int i = 0; i < arregloListaCanal.length; i++) {
-            elemetoDeLaLista = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).find("//li[contains(.,'" + arregloListaCanal[i] + "')]");
+            elemetoDeLaLista = withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).find("//li[contains(.,'" + arregloListaCanal[i] + "')]");
             MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(arregloListaCanal[i])));
         }
     }
@@ -70,13 +70,13 @@ public class NuevaPolizaPage extends PageUtil {
         Map<String, String> dato = datosAutos.getRow(0);
         waitForTextToAppear("Información de póliza");
         listaOrganizacion.waitUntilPresent();
-        selectItem(listaOrganizacion, dato.get("organizacion"));
-        waitForComboValue(listaOrganizacionW, dato.get("organizacion"));
-        waitUntil(WAIT_TIME_1000);
-        selectItem(listaCanal, dato.get("canal"));
-        waitForComboValue(listaCanal, dato.get("canal"));
-        selectItem(listaTipoPoliza, dato.get("tipoPoliza"));
-        waitForComboValue(listaTipoPoliza, dato.get("tipoPoliza"));
+        seleccionarItem(listaOrganizacion, dato.get("organizacion"));
+        esperarPorValor(listaOrganizacionW, dato.get("organizacion"));
+        esperarHasta(TIEMPO_1000);
+        seleccionarItem(listaCanal, dato.get("canal"));
+        esperarPorValor(listaCanal, dato.get("canal"));
+        seleccionarItem(listaTipoPoliza, dato.get("tipoPoliza"));
+        esperarPorValor(listaTipoPoliza, dato.get("tipoPoliza"));
     }
 
     public void seleccionarElementoDeLaLista(String elementoLista) {
@@ -85,7 +85,7 @@ public class NuevaPolizaPage extends PageUtil {
             for (WebElementFacade listaElemento : listaElementosCotizacion) {
                 if (listaElemento.containsText(elementoLista)) {
                     listaElemento.click();
-                    waitUntil(WAIT_TIME_1000);
+                    esperarHasta(TIEMPO_1000);
                     break;
                 }
             }
@@ -110,10 +110,10 @@ public class NuevaPolizaPage extends PageUtil {
     }
 
     public void buscarCuenta(String numeroCuenta) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilPresent();
-        waitUntil(WAIT_TIME_3000);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilPresent();
+        esperarHasta(TIEMPO_3000);
         botonBuscar.click();
-        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(botonCuentas).click();
+        withTimeoutOf(TIEMPO_10,TimeUnit.SECONDS).waitFor(botonCuentas).click();
         txtNumeroCuenta.waitUntilPresent().sendKeys(numeroCuenta);
         WebElementFacade botonBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         botonBuscarCuenta.click();

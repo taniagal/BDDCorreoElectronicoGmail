@@ -42,7 +42,7 @@ public class BusquedaDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     WebElementFacade botonRestablecer;
 
-    protected static final int WAIT_TIME_3500 = 3500;
+    protected static final int TIEMPO_3500 = 3500;
     protected static final int CONSTANTE_9 = 9;
     protected static final int CONSTANTE_8 = 8;
     protected static final int CONSTANTE_7 = 7;
@@ -108,7 +108,7 @@ public class BusquedaDePolizaPage extends PageUtil {
     public void limpiarCampos() {
         waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
         botonRestablecer.click();
-        waitUntil(WAIT_TIME_3500);
+        esperarHasta(TIEMPO_3500);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
@@ -120,7 +120,7 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void clicEnBotonBuscar(){
         waitFor(btnBuscar).waitUntilPresent().waitUntilClickable();
-        clickElement(btnBuscar);
+        clickearElemento(btnBuscar);
     }
 
 

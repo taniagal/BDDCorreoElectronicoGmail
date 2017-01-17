@@ -44,13 +44,13 @@ public class CoaseguroPage extends PageUtil {
     }
 
     public void validarCampos() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
-        waitUntil(WAIT_TIME_1000);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
+        esperarHasta(TIEMPO_1000);
         waitFor(campoTxtDastosAdministrativos).shouldBePresent();
         radioBotonLider.shouldBePresent();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!botonAgregar.isPresent()) {
             right.append("boton_agregar, ");
@@ -81,10 +81,11 @@ public class CoaseguroPage extends PageUtil {
                 MatcherAssert.assertThat("Sura debe estar por defecto en las aseguradoras", campoAseguradora.containsText("Sura"));
             } else {
                 act.click().build().perform();
-                waitUntil(WAIT_TIME_500);
+                esperarHasta(TIEMPO_500);
                 act.sendKeys(aseguradora.getNombre()).build().perform();
+                esperarHasta(TIEMPO_500);
                 act.sendKeys(Keys.TAB).build().perform();
-                waitUntil(WAIT_TIME_500);
+                esperarHasta(TIEMPO_500);
                 act.sendKeys(aseguradora.getParticipacion()).build().perform();
             }
             i++;
@@ -94,7 +95,7 @@ public class CoaseguroPage extends PageUtil {
 
 
     public void verificarPorcentajeParticipacion(){
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         MatcherAssert.assertThat("El total asegurado no es del 100%", pieDeTabla.getText().contains("100"));
     }
 
@@ -105,7 +106,7 @@ public class CoaseguroPage extends PageUtil {
 
 
     public void verificarCoaseguro() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 
