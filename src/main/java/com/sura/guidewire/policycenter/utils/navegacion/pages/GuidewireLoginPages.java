@@ -47,7 +47,7 @@ public class GuidewireLoginPages extends PageUtil {
         getDriver().manage().window().maximize();
         WebElementFacade elemento = null;
         try {
-            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+            setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
             waitFor($(xpath)).shouldBeVisible();
             elemento = element(find(By.xpath(xpath)));
             resetImplicitTimeout();

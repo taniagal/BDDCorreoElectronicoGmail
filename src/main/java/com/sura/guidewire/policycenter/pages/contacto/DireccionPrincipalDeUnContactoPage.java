@@ -48,21 +48,21 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
 
 
     public void irADirecciones(){
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         botonDirecciones.click();
         contactoPage.botonAgregar.waitUntilPresent().click();
     }
 
     public void agregarDireccion(ExamplesTable datos) {
         Map<String,String> dato = datos.getRow(0);
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         campoTxtDireccion.sendKeys(dato.get("direccion"));
-        selectItem(comboBoxDepartamento,dato.get("departamento"));
-        waitForComboValue(comboBoxDepartamento,dato.get("departamento"));
-        selectItem(comboBoxCiudad,dato.get("ciudad"));
-        waitForComboValue(comboBoxCiudad,dato.get("ciudad"));
-        selectItem(comboBoxTipoDireccion, dato.get("tipo_direccion"));
-        waitForComboValue(comboBoxTipoDireccion,dato.get("tipo_direccion"));
+        seleccionarItem(comboBoxDepartamento,dato.get("departamento"));
+        esperarPorValor(comboBoxDepartamento,dato.get("departamento"));
+        seleccionarItem(comboBoxCiudad,dato.get("ciudad"));
+        esperarPorValor(comboBoxCiudad,dato.get("ciudad"));
+        seleccionarItem(comboBoxTipoDireccion, dato.get("tipo_direccion"));
+        esperarPorValor(comboBoxTipoDireccion,dato.get("tipo_direccion"));
     }
 
 
@@ -81,7 +81,7 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
     }
     
     public void validarDatosPantalla() {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
         noPresente = concatenarElementoNoPresente(labelPais, " pais,", noPresente);
         noPresente = concatenarElementoNoPresente(labelDepartamento, " deprtamento,", noPresente);

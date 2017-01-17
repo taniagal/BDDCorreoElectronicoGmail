@@ -34,7 +34,7 @@ public class ModificacionVehiculoPage extends PageUtil {
         WebElementFacade tituloInformacionPoliza = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:ttlBar']");
         waitFor(tituloInformacionPoliza).shouldBePresent();
         waitFor(botonSiguiente).click();
-        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         if(validacionVigencia.isPresent()){
             waitFor(botonSiguiente).click();
         }
@@ -47,15 +47,15 @@ public class ModificacionVehiculoPage extends PageUtil {
     public void digitarFasecoldaYModelo(String numeroFasecolda, String modelo) {
         WebElementFacade modeloVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']");
         waitFor(modeloVehiculo).typeAndTab(modelo);
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         WebElementFacade fasecolda = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']");
         waitFor(fasecolda).typeAndTab(numeroFasecolda);
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         waitFor(campoCiudadCirculacion).typeAndTab("MEDELLIN");
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         WebElementFacade tipoServicio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:service_DV-inputEl']");
         waitFor(tipoServicio).typeAndTab("Particular");
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void mostrarDatosVehiculo(String claseVehiculo, String marca, String linea) {
@@ -65,11 +65,11 @@ public class ModificacionVehiculoPage extends PageUtil {
         MatcherAssert.assertThat("Error en el valor de la marca",campoMarca.getValue().contains(marca));
         WebElementFacade campoLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
         MatcherAssert.assertThat("Error en el valor de la linea",campoLinea.getValue().contains(linea));
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void registrarZonaCirculacion(String ciudadCirculacion) {
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
         try {
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,"11"));
@@ -77,7 +77,7 @@ public class ModificacionVehiculoPage extends PageUtil {
             LOGGER.info("TimeoutException at ModificacionVehiculoPage Page 71 " + e);
         }
         waitFor(botonSiguiente).click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void validarZonaCirculacion(String mensaje) {

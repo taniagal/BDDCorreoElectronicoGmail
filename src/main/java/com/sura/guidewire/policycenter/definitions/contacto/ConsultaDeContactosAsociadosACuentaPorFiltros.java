@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private static final int WAIT_TIME_1000 = 1000;
+    private static final int TIEMPO_1000 = 1000;
 
     @Steps
     GuidewireLoginSteps login;
@@ -48,7 +48,7 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
             MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
         }catch (StaleElementReferenceException e){
             LOGGER.info("StaleElementReferenceException " + e);
-            PageUtil.waitUntil(WAIT_TIME_1000);
+            PageUtil.esperarHasta(TIEMPO_1000);
             MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
         }
 

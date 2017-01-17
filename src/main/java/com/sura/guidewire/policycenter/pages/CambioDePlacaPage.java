@@ -9,6 +9,7 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
 
@@ -90,10 +91,11 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void cambiarPlaca(String placa) {
-        waitUntil(WAIT_TIME_2000);
+        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
+        esperarHasta(TIEMPO_2000);
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placa);
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void clickCambiarPlaca() {
@@ -123,7 +125,8 @@ public class CambioDePlacaPage extends PageUtil {
     public void ingresarPlacaVenezolana(String placaVenezolana) {
         this.deseleccionarCheckBoxDePlaca();
         this.clickItemCambiarPlaca();
-        waitUntil(WAIT_TIME_2000);
+        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
+        esperarHasta(TIEMPO_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
     }
@@ -131,7 +134,7 @@ public class CambioDePlacaPage extends PageUtil {
     public void cambiarPorPlacaExistente(String placaExistente) {
         int intentos = 0;
         while (intentos < CONSTANTE_3) {
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             if ("".equals(campoTxtPlaca.getText())) {
                 campoTxtPlaca.clear();
                 campoTxtPlaca.sendKeys(placaExistente);
@@ -144,7 +147,7 @@ public class CambioDePlacaPage extends PageUtil {
     public void mensajePlacaExistente(ExamplesTable mensaje) {
         botonSiguiente.click();
         Map<String, String> datos = mensaje.getRow(0);
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         txtMotor.waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExistente.getText().equals(datos.get("mensaje")));
     }
@@ -153,7 +156,7 @@ public class CambioDePlacaPage extends PageUtil {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
         while (intentos < CONSTANTE_3) {
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             if (!"0px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position")) || !"-15px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position"))) {
                 actions.click(checkBoxCambioDePlaca).build().perform();
             } else {
@@ -161,17 +164,17 @@ public class CambioDePlacaPage extends PageUtil {
             }
             intentos++;
         }
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void deseleccionarCheckBoxDePlaca() {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
         while (intentos < CONSTANTE_3) {
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             if ("0px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position")) || "-15px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position"))) {
                 actions.click(checkBoxCambioDePlaca).build().perform();
-                waitUntil(WAIT_TIME_2000);
+                esperarHasta(TIEMPO_2000);
             } else {
                 break;
             }
@@ -192,18 +195,19 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void editarCambioPoliza() {
         if (botonEditarCambioPoliza.isPresent()) {
-            clickElement(botonEditarCambioPoliza);
+            clickearElemento(botonEditarCambioPoliza);
         } else if (botonEditarCambioPolizaExpedicion.isPresent()) {
-            clickElement(botonEditarCambioPolizaExpedicion);
+            clickearElemento(botonEditarCambioPolizaExpedicion);
         }
-        clickElement(botonEditarCambioPolizaAceptar);
+        clickearElemento(botonEditarCambioPolizaAceptar);
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
-        clickElement(menuItemVehiculosModificacion);
-        clickElement(checkBoxCambioDePlaca);
-        clickElement(checkBoxCambioDePlaca);
-        waitUntil(WAIT_TIME_2000);
+        clickearElemento(menuItemVehiculosModificacion);
+        clickearElemento(checkBoxCambioDePlaca);
+        clickearElemento(checkBoxCambioDePlaca);
+        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
+        esperarHasta(TIEMPO_2000);
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placaRiesgoConsultable);
     }
@@ -216,7 +220,7 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
         ingresarPlacaRiesgoConsultable(venezolana);
-        selectItem(campoTxtCiudad, ciudad);
+        seleccionarItem(campoTxtCiudad, ciudad);
     }
 
     public String validarMensajeAutorizacion() {

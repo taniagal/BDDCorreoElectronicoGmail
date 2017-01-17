@@ -34,11 +34,11 @@ public class PolizaPage extends GuidewirePage {
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
     protected static final int CONSTANTE_61 = 61;
-    protected static final int WAIT_TIME_20 = 20;
+    protected static final int TIEMPO_20 = 20;
     protected static final int CONSTANTE_10 = 10;
-    protected static final int WAIT_TIME_5 = 5;
-    protected static final int WAIT_TIME_2 = 2;
-    protected static final int WAIT_TIME_1 = 1;
+    protected static final int TIEMPO_5 = 5;
+    protected static final int TIEMPO_2 = 2;
+    protected static final int TIEMPO_1 = 1;
     public static final String TRACE = "\nTRACE: \n";
 
 
@@ -92,7 +92,7 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void seleccionarBotonSiguienteEnInicioDeCambioDePoliza() {
-        waitFor(WAIT_TIME_5).seconds();
+        waitFor(TIEMPO_5).seconds();
         waitForTextToAppear("Iniciar cambios en póliza");
         String btnSiguienteCambioPoliza = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
         findBy(btnSiguienteCambioPoliza).waitUntilVisible().waitUntilClickable().click();
@@ -104,9 +104,9 @@ public class PolizaPage extends GuidewirePage {
         WebElementFacade btnEditarTransaccion = null;
         String xpatBtnAceptarConfirmacion = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         try {
-            btnEditarTransaccion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
+            btnEditarTransaccion = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e);
         }
@@ -138,7 +138,7 @@ public class PolizaPage extends GuidewirePage {
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
-            setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+            setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
             if (findBy(xpathimgMensajesWarnig).isVisible()) {
                 opcion.waitUntilClickable().click();
             }
@@ -213,11 +213,11 @@ public class PolizaPage extends GuidewirePage {
         String xpathTextareaDescripcion = "//textarea[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']";
 
         findBy(xpathInputMotivo).type(motivo);
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(TIEMPO_2).seconds();
         findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(TIEMPO_2).seconds();
         findBy(xpathTextareaDescripcion).type(descripcion);
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(TIEMPO_2).seconds();
         findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
 
     }
@@ -272,7 +272,7 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public WebElementFacade obtenerFechacancelacionElemento() {
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(TIEMPO_2).seconds();
         return findBy(xpathFechaVigenteCancelacion);
     }
 
@@ -282,7 +282,7 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public String obtenerMetodoDeReembolso() {
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(TIEMPO_2).seconds();
         return findBy(xpathMetodoDeReembolso).getText();
     }
 
@@ -304,7 +304,7 @@ public class PolizaPage extends GuidewirePage {
         String existeTransaccion = "No existe la póliza";
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (tipo.equals(cells.get(WAIT_TIME_5).getText())) {
+            if (tipo.equals(cells.get(TIEMPO_5).getText())) {
                 existeTransaccion = "Se encontró la póliza en las transacciones";
             }
         }

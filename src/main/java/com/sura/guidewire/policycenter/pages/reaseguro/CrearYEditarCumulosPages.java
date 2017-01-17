@@ -92,15 +92,15 @@ public class CrearYEditarCumulosPages extends PageUtil {
         linkNombreReasegurador.waitUntilPresent();
         linkNombreReasegurador.click();
         listPaisSeleccionar.waitUntilClickable();
-        selectItem(listPaisSeleccionar, PAIS_ALEMANIA);
-        selectItem(listNombreReaseugurador, ASEGURA_ALLIANZ);
-        clickElement(btnAceptarReasegurador);
+        seleccionarItem(listPaisSeleccionar, PAIS_ALEMANIA);
+        seleccionarItem(listNombreReaseugurador, ASEGURA_ALLIANZ);
+        clickearElemento(btnAceptarReasegurador);
     }
 
     public void ingresaParticipacion(ExamplesTable datosReaseguradores) {
-        waitAndClickOnButton(btnAgregaInformacionReaseguro);
+        esperarYClickearBoton(btnAgregaInformacionReaseguro);
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
-        waitAndClickOnButton(listPorcParticipacion);
+        esperarYClickearBoton(listPorcParticipacion);
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("porcentajeParticipacion"));
     }
 
@@ -109,7 +109,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
         listcomisionReaseguroCedido.click();
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionReasegurador"));
         actions.sendKeys(Keys.TAB).build().perform();
-        waitAndClickOnButton($(VALOR));
+        esperarYClickearBoton($(VALOR));
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("valorReaseguro"));
         actions.sendKeys(Keys.TAB).build().perform();
     }
@@ -117,30 +117,30 @@ public class CrearYEditarCumulosPages extends PageUtil {
     public void seleccionaModalidadPrima(ExamplesTable datosReaseguradores) {
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
         try {
-            clickElement(listFormaCotizacionModalidad);
+            clickearElemento(listFormaCotizacionModalidad);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            waitUntil(WAIT_TIME_2000);
-            clickElement(listFormaCotizacionModalidad);
+            esperarHasta(TIEMPO_2000);
+            clickearElemento(listFormaCotizacionModalidad);
         }catch (ElementNotVisibleException e){
             LOGGER.info("ElementNotVisibleException " + e);
-            waitUntil(WAIT_TIME_2000);
-            clickElement(listFormaCotizacionModalidad);
+            esperarHasta(TIEMPO_2000);
+            clickearElemento(listFormaCotizacionModalidad);
         }
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         $(CELDA_VALOR).clear();
         txtFormaCotizacionModalidad.sendKeys(datoReaseguradores.get("modalidad"));
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         actions.sendKeys(Keys.ENTER).build().perform();
     }
 
     public void ingresaComisionPromotoraEIntermediario(ExamplesTable datosReaseguradores) {
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
-        waitAndClickOnButton(listcomisionIntermediario);
+        esperarYClickearBoton(listcomisionIntermediario);
         $(CELDA_VALOR).clear();
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionIntermediario"));
         actions.sendKeys(Keys.TAB).build().perform();
-        waitAndClickOnButton(listcomisionPromotora);
+        esperarYClickearBoton(listcomisionPromotora);
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionPromotora"));
         actions.sendKeys(Keys.TAB).build().perform();
     }

@@ -33,9 +33,9 @@ public class CuentasAsociadasAContactoPage extends PageUtil {
 
     public void validarCamposLista(String nombre, String direccion,
                                    String telefono, String email, String rol) {
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(mnuLateralCuenta).waitUntilPresent();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(mnuLateralCuenta).waitUntilPresent();
         mnuLateralCuenta.click();
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(nombreContactoCuenta).waitUntilPresent();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(nombreContactoCuenta).waitUntilPresent();
         MatcherAssert.assertThat(nombreContactoCuenta.getText(), Matchers.containsString(nombre));
         MatcherAssert.assertThat(direccionContactoCuenta.getText(), Matchers.containsString(direccion));
         MatcherAssert.assertThat(telContactoCuenta.getText(), Matchers.containsString(telefono));
@@ -44,9 +44,9 @@ public class CuentasAsociadasAContactoPage extends PageUtil {
     }
 
     public void validarMensaje(String mensaje) {
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(mnuLateralCuenta).waitUntilPresent();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(mnuLateralCuenta).waitUntilPresent();
         mnuLateralCuenta.click();
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(msjCuentaNoEncontrada).waitUntilPresent();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(msjCuentaNoEncontrada).waitUntilPresent();
         MatcherAssert.assertThat(msjCuentaNoEncontrada.getText(), Matchers.containsString(mensaje));
     }
 }

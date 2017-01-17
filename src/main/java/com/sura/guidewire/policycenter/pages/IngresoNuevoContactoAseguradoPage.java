@@ -52,7 +52,7 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil{
     }
 
     public void ingresarDatosComunesDeContacto(Map<String, String> datosContacto){
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
         campoTipoDocumento.clear();
         campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
         campoTipoDocumento.sendKeys(Keys.ENTER);
@@ -60,18 +60,18 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil{
         campoPais.clear();
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         campoDepartamento.clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_3000);
-        campoCiudad.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        esperarHasta(TIEMPO_3000);
+        campoCiudad.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoCiudad.sendKeys(datosContacto.get("ciudad"));
         campoCiudad.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_2000);
-        campoDireccion.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        esperarHasta(TIEMPO_2000);
+        campoDireccion.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         campoTipoDireccion.clear();
         campoTipoDireccion.sendKeys(datosContacto.get("tipoDireccion"));
         campoTipoDireccion.sendKeys(Keys.ENTER);
@@ -82,10 +82,10 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil{
         this.ingresarDatosComunesDeContacto(datosNuevaPersona);
         campoPrimerNombre.sendKeys(datosNuevaPersona.get("primerNombre"));
         campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         botonAceptar.click();
         campoMonedaPreferida.waitUntilPresent();
-        selectItem(campoMonedaPreferida,"COP");
+        seleccionarItem(campoMonedaPreferida,"COP");
     }
 
     public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica) {

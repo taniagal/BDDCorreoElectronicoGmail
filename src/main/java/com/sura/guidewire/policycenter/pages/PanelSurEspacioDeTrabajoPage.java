@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -25,22 +26,20 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
     WebElementFacade panelInferiorBotonBorrar;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     WebElementFacade panelInferiorTablaDeMensajes;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Cancel-btnInnerEl']")
-    WebElementFacade btnCancelar;
 
     public PanelSurEspacioDeTrabajoPage(WebDriver driver) {
         super(driver);
     }
 
     public void abrirPanelInferior() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(panelInferiorTitulo);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(panelInferiorTitulo);
         if (!panelInferiorBotonBorrar.isVisible()) {
             panelInferiorBotonArriba.click();
         }
     }
 
     public void validarMensajeDireccion(String mensaje) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(panelInferiorTablaDeMensajes);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(panelInferiorTablaDeMensajes);
         verificarMensaje(panelInferiorTablaDeMensajes, mensaje);
     }
 
@@ -62,9 +61,12 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
         MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 
-    public void borrarEspacioDeTrabajo(){
-        panelInferiorBotonBorrar.click();
-        waitForTextToDisappear("Workspace");
-        btnCancelar.click();
+    public void borrarEspacioDeTrabajo() {
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        if (panelInferiorBotonBorrar.isPresent()) {
+            clickearElemento(panelInferiorBotonBorrar);
+            waitForTextToDisappear("Workspace");
+        }
+        resetImplicitTimeout();
     }
 }

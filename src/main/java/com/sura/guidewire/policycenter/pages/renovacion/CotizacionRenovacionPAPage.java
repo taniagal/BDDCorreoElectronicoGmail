@@ -68,7 +68,7 @@ public class CotizacionRenovacionPAPage extends PageUtil {
     }
 
     public void verDetalleCotizacion() {
-        withTimeoutOf(WAIT_TIME_30, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
         MatcherAssert.assertThat(labelCotizacion.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 

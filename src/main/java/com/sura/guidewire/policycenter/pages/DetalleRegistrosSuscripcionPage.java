@@ -59,7 +59,7 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
     }
 
     public Integer encontrarPoliza(String numeroPoliza) {
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaEnvios).waitUntilVisible();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(tablaEnvios).waitUntilVisible();
         Integer filaPoliza = 0;
         boolean encontrado = false;
         List<WebElement> filas = tablaEnvios.findElements(By.tagName("tr"));
@@ -84,7 +84,7 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
             fila = this.encontrarPoliza(nroEnvio).toString();
             if (fila.equals(MENOS_UNO)) {
                 botonSiguienteTabla.click();
-                waitUntil(WAIT_TIME_3);
+                esperarHasta(TIEMPO_3);
             }
         }
         WebElementFacade filaNroEnvio = findBy(".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV:" + fila + ":Submission']");

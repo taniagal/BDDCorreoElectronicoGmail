@@ -43,13 +43,13 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil {
     }
 
     public void validarFigurasIgualDNI(String tipoDocumento, String numeroDocumento) {
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         if (campoTipoDocumento.isCurrentlyVisible()) {
-            withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
+            withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
             MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(tipoDocumento)));
             MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
         } else if (campoTipoDocumentoModificacion.isCurrentlyVisible()) {
-            withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoTipoDocumentoModificacion).shouldBeVisible();
+            withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTipoDocumentoModificacion).shouldBeVisible();
             MatcherAssert.assertThat(campoTipoDocumentoModificacion.getText(), Is.is(Matchers.equalTo(tipoDocumento)));
             MatcherAssert.assertThat(campoNumeroDocumentoModificacion.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
         }
@@ -57,29 +57,29 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil {
 
     public void emitirPoliza() {
         botonExpedirPoliza.waitUntilPresent();
-        clickElement(botonExpedirPoliza);
+        clickearElemento(botonExpedirPoliza);
     }
 
     public void aceptarExpedir() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptar).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnAceptar).waitUntilClickable();
         btnAceptar.click();
     }
 
     public void verificarGeneracionUW() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(tituloBloqueo).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(tituloBloqueo).shouldBePresent();
         MatcherAssert.assertThat(tituloBloqueo.getText(), Is.is(Matchers.equalTo("Asuntos que bloquean la expedición")));
     }
 
     public void validarMensajePEP(String mensaje) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBeVisible();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBeVisible();
         try {
             MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElement" + e);
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         }
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).
                 waitFor(menuPoliza).
                 waitUntilClickable();
     }

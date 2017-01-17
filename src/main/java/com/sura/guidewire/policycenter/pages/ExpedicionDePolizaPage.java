@@ -71,7 +71,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
             } catch (NoAlertPresentException e) {
                 LOGGER.info("NoAlertPresentException " + e);
             }
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
         }
         waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPoliza));
@@ -99,16 +99,16 @@ public class ExpedicionDePolizaPage extends PageUtil {
     public void aceptarMensajeRequisitosPendientes() {
         if (mensajeRequisitosPendientes.isVisible()) {
             botonBorrar.click();
-            waitUntil(WAIT_TIME_3000);
+            esperarHasta(TIEMPO_3000);
             botonExpedirPoliza.click();
-            waitUntil(WAIT_TIME_3000);
+            esperarHasta(TIEMPO_3000);
             botonAceptarMensaje.click();
             waitForTextToAppear("Cotización Expedida");
         }
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCotizacion) {
-        waitForTextToAppear("Cotización Expedida", WAIT_TIME_30000);
+        waitForTextToAppear("Cotización Expedida", TIEMPO_30000);
         waitFor(campoNumeroCotizacion);
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacion)));
     }
@@ -123,7 +123,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
         String[] mensajes = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mensajeRiesgos).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(mensajeRiesgos).waitUntilPresent();
         List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
         for (int i = 0; i < numeroMensajes; i++) {
             for (WebElementFacade lista : mensajesRiesgos) {
@@ -158,10 +158,10 @@ public class ExpedicionDePolizaPage extends PageUtil {
     }
 
     public void validarMensajeRequisitos(String requisitos) {
-        waitForTextToAppear(requisitos, WAIT_TIME_30000);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        waitForTextToAppear(requisitos, TIEMPO_30000);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
         botonBorrar.waitUntilNotVisible();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonAceptarMensaje).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonAceptarMensaje).click();
     }
 }

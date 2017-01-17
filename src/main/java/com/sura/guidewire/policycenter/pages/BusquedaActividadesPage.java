@@ -57,7 +57,7 @@ public class BusquedaActividadesPage extends PageUtil {
         waitFor(menuBuscar);
         actions.click(menuBuscar).build().perform();
         waitFor(menuBuscarActividades);
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         actions.click(menuBuscarActividades).build().perform();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
@@ -71,7 +71,7 @@ public class BusquedaActividadesPage extends PageUtil {
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         actions.click(btnBuscar).build().perform();
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
-        waitForTextToAppear(exampleTable.get("asunto"), WAIT_TIME_30000);
+        waitForTextToAppear(exampleTable.get("asunto"), TIEMPO_30000);
         String xpathTabla = "//tr[" + this.encontrarActividad(exampleTable.get("id")).toString() + "]";
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[4]/div").waitUntilVisible().getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[5]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
@@ -101,7 +101,7 @@ public class BusquedaActividadesPage extends PageUtil {
     public void limpiarFiltros() {
         waitFor(botonRestablecer).waitUntilVisible();
         actions.click(botonRestablecer).build().perform();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
@@ -119,7 +119,7 @@ public class BusquedaActividadesPage extends PageUtil {
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         waitFor(btnBuscar).waitUntilPresent();
         actions.click(btnBuscar).build().perform();
         divMensaje.waitUntilPresent();
@@ -138,7 +138,7 @@ public class BusquedaActividadesPage extends PageUtil {
             txtAsignadoA.sendKeys(usuario);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             txtAsignadoA.sendKeys(usuario);
         }
         this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
@@ -161,7 +161,7 @@ public class BusquedaActividadesPage extends PageUtil {
             elemento.clear();
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             elemento.clear();
         }
         elemento.sendKeys(dato);
@@ -169,7 +169,7 @@ public class BusquedaActividadesPage extends PageUtil {
             elemento.sendKeys(Keys.ENTER);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            waitUntil(WAIT_TIME_500);
+            esperarHasta(TIEMPO_500);
             ingresarDatoEnCombo(elemento, dato);
         }
     }

@@ -40,23 +40,23 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     }
 
     public void accionarNuevoEnvio() {
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(btnAccionesCuenta).waitUntilPresent().click();
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(opcionNuevoEnvio).waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(btnAccionesCuenta).waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(opcionNuevoEnvio).waitUntilPresent().click();
     }
 
     public void verInformacionDePoliza() {
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
     }
 
 
     public void seleccionarAgente(String agente) {
         this.seleccionarAgentePorNombre(agente);
-        waitForTextToAppear("Productos ofrecidos", WAIT_TIME_30000);
+        waitForTextToAppear("Productos ofrecidos", TIEMPO_30000);
     }
 
     public void seleccionarAgentePorNombre(String nombreAgente) {
         waitFor(campoNombreAgente).waitUntilPresent();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {
@@ -87,8 +87,8 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     public void seleccionarAgenteDeRegistro(){
         campoTxtOficinaDeRadicacion.waitUntilPresent().clear();
         campoTxtOficinaDeRadicacion.sendKeys("SURA");
-        clickElement(comboBoxCodigoDeAgente);
-        waitForComboValue(campoTxtOficinaDeRadicacion,"SURA");
-        selectItem(comboBoxCodigoDeAgente,"4999");
+        clickearElemento(comboBoxCodigoDeAgente);
+        esperarPorValor(campoTxtOficinaDeRadicacion,"SURA");
+        seleccionarItem(comboBoxCodigoDeAgente,"4999");
     }
 }

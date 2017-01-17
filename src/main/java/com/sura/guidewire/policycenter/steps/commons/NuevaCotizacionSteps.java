@@ -110,7 +110,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     @Step
     public void cotizarLaPolizaRiesgoConTasaUnica(ExamplesTable datos) {
         Map<String, String> datosAsegurado = datos.getRows().get(0);
-        tarifaAutosPage.seleccionarAsegurado(datosAsegurado.get("tipoDocumento"), datosAsegurado.get("documento"));
+        tarifaAutosPage.agregarAsegurado(datosAsegurado.get("tipoDocumento"), datosAsegurado.get("documento"));
         vehiculoPage.clickSiguiente();
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();

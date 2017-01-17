@@ -158,7 +158,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     }
 
     public void seleccionarProducto() {
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:" + this.encontrarProducto().toString() + ":addSubmission']");
         botonElegirProducto.click();
     }
@@ -218,15 +218,15 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
             validacion = e.getMessage();
         }
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
-        selectItem(tipoPlazoPoliza, tipoPlazo);
-        waitForComboValue(tipoPlazoPoliza, tipoPlazo);
-        waitUntil(WAIT_TIME_1000);
+        seleccionarItem(tipoPlazoPoliza, tipoPlazo);
+        esperarPorValor(tipoPlazoPoliza, tipoPlazo);
+        esperarHasta(TIEMPO_1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         fechaVigenciaPoliza.click();
         $(fechaVigenciaPoliza).type(fechaInicioVigencia);
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         fechaExpiracionPoliza.click();
     }
 
@@ -238,12 +238,12 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void adicionarSegundoTomador(String tipoDocumento, String primerNombre, String primerApellido) {
         waitForTextToAppear("Tomador secundario");
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         waitFor(botonAseguradoSecundario).shouldBeVisible();
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();
         itemPersonaDelDirectorio.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         waitFor(botonTipoDocumento).shouldBeVisible();
         botonTipoDocumento.click();
         waitFor(textoTipoDocumento).shouldBeVisible();
@@ -288,7 +288,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         waitFor(textoDescuentoPoliza);
         textoDescuentoPoliza.type(porcentaje);
         waitFor(botonSiguiente);
-        botonSiguiente.click();
+        clickearElemento(botonSiguiente);
     }
 
     public void validarMensajePorcentajePoliza(String mensaje) {
@@ -320,18 +320,18 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     }
 
     public void definirPolizaFinanciada() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(polizaFinanciada).click();
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(polizaFinanciada).click();
     }
 
     public void ingresarNumeroCuotas() {
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelNumeroCuotas).shouldBePresent();
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(textoNumeroCuotas).clear();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(labelNumeroCuotas).shouldBePresent();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(textoNumeroCuotas).clear();
         textoNumeroCuotas.typeAndTab("11");
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void validarRetroactividadPoliza(String mensaje) {
-        waitUntil(WAIT_TIME_30000);
+        esperarHasta(TIEMPO_30000);
         botonSiguiente.click();
         waitFor(mensajeValidacion).shouldBePresent();
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
@@ -354,51 +354,51 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         botonTipoPlazo.click();
         waitFor(tipoPlazoPoliza).shouldBeVisible();
         $(tipoPlazoPoliza).typeAndTab(tipoPlazo);
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
         fechaVigenciaPoliza.click();
         $(fechaVigenciaPoliza).type(fechaInicioVigencia);
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         fechaExpiracionPoliza.click();
     }
 
     public void pasarASiguienteOpcion() {
         waitFor(botonSiguiente).shouldBeVisible();
         botonSiguiente.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void identificarTipoYNumeroIdentificacion(String tipoDocumento, String numeroDocumento) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         String validacion = null;
         WebElementFacade campoTipoDocumento = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-inputEl']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
         WebElementFacade campoNumeroDocumento = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoNumeroDocumento).shouldBeVisible();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoNumeroDocumento).shouldBeVisible();
         try {
             MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(tipoDocumento)));
             MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
         } catch (Exception e) {
             LOGGER.error(validacion, e);
         }
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void validarMensajeBloqueoPEP(String mensaje) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         botonSiguiente.click();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void permitirContinuarCotizacionAsegurados() {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         WebElementFacade labelTituloAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         waitFor(labelTituloAsegurados).shouldBePresent();
         MatcherAssert.assertThat(labelTituloAsegurados.getText(), Is.is(Matchers.equalTo("Asegurados")));
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void irAInformacionDePoliza() {
@@ -408,7 +408,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void noIndicarPolizaFinanciada() {
         polizaFinanciadaNo.waitUntilPresent();
-        clickElement(polizaFinanciadaNo);
+        clickearElemento(polizaFinanciadaNo);
     }
 
     public void noHabilitarNumeroCuotas() {
@@ -418,7 +418,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void seleccionarOpcionSiguiente() {
         botonSiguiente.click();
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
     }
 
     public void validarMensajeFinanciacion(String mensaje){

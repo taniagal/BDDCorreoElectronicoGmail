@@ -54,28 +54,28 @@ public class InspeccionVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:1:UWIssueRowSet:ShortDescription']")
     private WebElementFacade registroBloqueoInspeccion;
 
-    protected static final int WAIT_TIME_10000 = 10000;
+    protected static final int TIEMPO_10000 = 10000;
 
     public InspeccionVehiculoPage(WebDriver driver){
         super(driver);
     }
 
     public void chekear0km() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
-        waitUntil(WAIT_TIME_1000);
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
+        esperarHasta(TIEMPO_1000);
     }
 
     public void validarVigenciaPlaca(String placa) {
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
         campoPlaca.type(placa);
         act.sendKeys(Keys.TAB).build().perform();
-        waitForTextToAppear("Camperos y pickups", WAIT_TIME_30000);
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(campoModelo).isDisplayed();
+        waitForTextToAppear("Camperos y pickups", TIEMPO_30000);
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(campoModelo).isDisplayed();
         campoNumeroVehiculo.click();
     }
 
     public void validarDatosVehiculo(ExamplesTable datosVehiculo) {
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         for (Map<String,String> row : datosVehiculo.getRows()){
             String modelo = row.get("modelo");
             String fasecolda = row.get("codigoFasecolda");
@@ -93,7 +93,7 @@ public class InspeccionVehiculoPage extends PageUtil {
     }
 
     public void validarValorAsegurado(String valorAsegurado) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         String validacion = null;
         try{
             MatcherAssert.assertThat(campoValorAsegurado.getTextValue(),Is.is(Matchers.equalTo(valorAsegurado)));
@@ -105,12 +105,12 @@ public class InspeccionVehiculoPage extends PageUtil {
 
     public void expedirPoliza() {
         botonExpedirPoliza.waitUntilPresent().click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         act.sendKeys(Keys.ENTER).build().perform();
     }
 
     public void validarVehiculoSinInspeccion(String placa) {
-    withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(labelPlaca).shouldBeVisible();
+    withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(labelPlaca).shouldBeVisible();
         MatcherAssert.assertThat(labelPlaca.getText(),Is.is(Matchers.equalTo(placa)));
     }
 
@@ -119,13 +119,13 @@ public class InspeccionVehiculoPage extends PageUtil {
     }
 
     public void generarUW(String mensaje) {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(menuAnalisisRiesgo).click();
-        waitUntil(WAIT_TIME_2500);
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(menuAnalisisRiesgo).click();
+        esperarHasta(TIEMPO_2500);
         MatcherAssert.assertThat(registroBloqueoInspeccion.getText(),Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void validarCotizacionExpedida() {
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
         MatcherAssert.assertThat(labelCotizacionExpedida.getText(),Is.is(Matchers.equalTo("Cotización Expedida")));
     }
 }

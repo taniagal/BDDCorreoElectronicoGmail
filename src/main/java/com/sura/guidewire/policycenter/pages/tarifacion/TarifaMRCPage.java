@@ -84,13 +84,13 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarTarifacion(String prima) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelPrimaTotal);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelPrimaTotal);
         MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " +
                 labelPrimaTotal.getText(), labelPrimaTotal.containsText(prima));
     }
 
     public void irAArticulo() {
-        clickElement(botonAgregarArticulos);
+        clickearElemento(botonAgregarArticulos);
     }
 
     public void seleccionarCobertura(ExamplesTable datos) {
@@ -100,14 +100,14 @@ public class TarifaMRCPage extends PageUtil {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
             } else {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
-                waitUntil(WAIT_TIME_1000);
+                esperarHasta(TIEMPO_1000);
             }
 
             try {
-                clickElement(checkBoxCobertura);
+                clickearElemento(checkBoxCobertura);
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);
-                clickElement(checkBoxCobertura);
+                clickearElemento(checkBoxCobertura);
             }
             valorAsegurado = Double.parseDouble(dato.get("valorAsegurado"));
         }
@@ -150,10 +150,10 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void descartarCambios() {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
-            clickElement(linkDescartarCambios);
-            clickElement(botonCotizar);
+            clickearElemento(linkDescartarCambios);
+            clickearElemento(botonCotizar);
         }
         resetImplicitTimeout();
     }
@@ -206,7 +206,7 @@ public class TarifaMRCPage extends PageUtil {
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
         campoTxtIndiceVariable.sendKeys(valorIndice);
-        clickElement(checkBoxDaniosMateriales);
+        clickearElemento(checkBoxDaniosMateriales);
     }
 
     public void agregarContactoDelDirectorio(){

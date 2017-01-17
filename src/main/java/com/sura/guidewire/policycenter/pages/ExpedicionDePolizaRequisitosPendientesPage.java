@@ -127,7 +127,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void valorAccesorios(String accesorios) {
-        clickElement(itemNoImportadoPorTerceros);
+        clickearElemento(itemNoImportadoPorTerceros);
         campoTxtAccesorios.sendKeys(accesorios);
     }
 
@@ -142,23 +142,23 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
 
     public void clickAgregarVehiculo() {
         waitFor(botonCrearVehiculo).waitUntilPresent();
-        clickElement(botonCrearVehiculo);
+        clickearElemento(botonCrearVehiculo);
     }
 
     public void relacionarAsegurado() {
         waitFor(botonRelacionarAsegurado).waitUntilPresent();
-        clickElement(botonRelacionarAsegurado);
-        clickElement(menuItemAsegurado);
+        clickearElemento(botonRelacionarAsegurado);
+        clickearElemento(menuItemAsegurado);
     }
 
     public void vehiculoImportadoTerceros() {
-        clickElement(itemImportado);
-        clickElement(itemImportadoPorTerceros);
+        clickearElemento(itemImportado);
+        clickearElemento(itemImportadoPorTerceros);
     }
 
     public void ingresarBeneficiarioOneroso() {
         itemNoImportadoPorTerceros.click();
-        clickElement(botonInteresAdicional);
+        clickearElemento(botonInteresAdicional);
         botonAgregarInteresAdicional.click();
         botonOtrosContactos.click();
         botonContacto.click();
@@ -167,8 +167,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void clickVehiculosModificacion() {
-        clickElement(botonVehiculosModificacion);
-        clickElement(botonVehiculosModificacion);
+        clickearElemento(botonVehiculosModificacion);
+        clickearElemento(botonVehiculosModificacion);
     }
 
     public void agregarAccesorios(String accesorios) {
@@ -177,15 +177,15 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void cotizarModificacionPoliza() {
-        clickElement(botonCotizarModificacion);
+        clickearElemento(botonCotizarModificacion);
     }
 
     public void clickVehiculoCeroKilometros() {
-        clickElement(radioBotonVehiculoCeroKilometros);
+        clickearElemento(radioBotonVehiculoCeroKilometros);
     }
 
     public void clickArchivoDePoliza() {
-        clickElement(menuItemArchivoDePoliza);
+        clickearElemento(menuItemArchivoDePoliza);
     }
 
     public void seleccionarOpcionCeroKilometros() {
@@ -193,7 +193,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void irAVehiculos() {
-        clickElement(menuItemVehiculos);
+        clickearElemento(menuItemVehiculos);
     }
 
     public void verMensajeOpcional(ExamplesTable mensaje) {
@@ -212,39 +212,39 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     public void agregarVehiculo(ExamplesTable datos) {
         Map<String, String> vehiculo = datos.getRow(0);
         comboBoxPlanSubmission.clear();
-        selectItem(comboBoxPlanSubmission, vehiculo.get("plan"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(txtPlacaSubmission, vehiculo.get("placa"));
+        seleccionarItem(comboBoxPlanSubmission, vehiculo.get("plan"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(txtPlacaSubmission, vehiculo.get("placa"));
         try {
             comboBoxModeloSubmission.clear();
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             comboBoxModeloSubmission.clear();
         }
-        waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxModeloSubmission, vehiculo.get("modelo"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(txtCodigoFasecoldaSubmission, vehiculo.get("codigo_fasecolda"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxClaseVehiculoSubmission, vehiculo.get("clase_vehiculo"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxMarcaSubmission, vehiculo.get("marca"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxLinea, vehiculo.get("linea"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxCiudadCirculacionSubmission, vehiculo.get("ciudad_circulacion"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxTipoServicio, vehiculo.get("vehiculo_servicio"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(txtMotorSubmission, vehiculo.get("motor"));
-        waitUntil(WAIT_TIME_3000);
-        selectItem(txtChasisSubmission, vehiculo.get("chasis"));
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(comboBoxModeloSubmission, vehiculo.get("modelo"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(txtCodigoFasecoldaSubmission, vehiculo.get("codigo_fasecolda"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(comboBoxClaseVehiculoSubmission, vehiculo.get("clase_vehiculo"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(comboBoxMarcaSubmission, vehiculo.get("marca"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(comboBoxLinea, vehiculo.get("linea"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(comboBoxCiudadCirculacionSubmission, vehiculo.get("ciudad_circulacion"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(comboBoxTipoServicio, vehiculo.get("vehiculo_servicio"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(txtMotorSubmission, vehiculo.get("motor"));
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(txtChasisSubmission, vehiculo.get("chasis"));
+        esperarHasta(TIEMPO_3000);
         txtValorAseguradoSubmission.clear();
-        selectItem(txtValorAseguradoSubmission, vehiculo.get("valor_asegurado"));
-        waitUntil(WAIT_TIME_2000);
+        seleccionarItem(txtValorAseguradoSubmission, vehiculo.get("valor_asegurado"));
+        esperarHasta(TIEMPO_2000);
         radioBotonVehiculoCeroKilometros.click();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void cambiarValorAccesorios() {
@@ -262,13 +262,13 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
 
     public void beneficiarioOnerosoModificacion(String beneficiario) {
         linkInteresAdicional.waitUntilPresent();
-        clickElement(linkInteresAdicional);
+        clickearElemento(linkInteresAdicional);
         botonAgregarBeneficiario.waitUntilPresent();
-        clickElement(botonAgregarBeneficiario);
+        clickearElemento(botonAgregarBeneficiario);
         menuItemOtrosContactos.waitUntilPresent();
-        clickElement(menuItemOtrosContactos);
+        clickearElemento(menuItemOtrosContactos);
         menuItemContacto1.waitUntilPresent();
-        clickElement(menuItemContacto1);
+        clickearElemento(menuItemContacto1);
         comboBoxTipoBeneficiario.waitUntilPresent().click();
         NuevaPolizaPage nuevaPolizaPage = new NuevaPolizaPage(getDriver());
         nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
@@ -276,9 +276,9 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
 
     public void cancelarPoliza() {
         txtCancelarPoliza.click();
-        clickElement(txtMotivoCancelarPoliza);
+        clickearElemento(txtMotivoCancelarPoliza);
         botonIniciarTransaccion.click();
-        clickElement(botonOpcionesDeCompromiso);
+        clickearElemento(botonOpcionesDeCompromiso);
         botonAceptarCancelacion.click();
     }
 
@@ -292,17 +292,17 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void agregarCiudadCirculacion(String ciudad) {
-        selectItem(txtciudadPolizaModificacion, ciudad);
+        seleccionarItem(txtciudadPolizaModificacion, ciudad);
     }
 
     public void ingresarCoberturas(String deducible, String perdidaLlaves) {
-        clickElement(botonSiguienteModificacion);
+        clickearElemento(botonSiguienteModificacion);
         botonBorrar.waitUntilPresent();
-        clickElement(botonBorrar);
+        clickearElemento(botonBorrar);
         botonBorrar.waitUntilNotVisible();
-        selectItem(txtLimiteCobertura, "1.440");
-        selectItem(comboBoxDeducible, deducible);
-        selectItem(txtPerdidaDeLLaves, perdidaLlaves);
+        seleccionarItem(txtLimiteCobertura, "1.440");
+        seleccionarItem(comboBoxDeducible, deducible);
+        seleccionarItem(txtPerdidaDeLLaves, perdidaLlaves);
     }
 }
 

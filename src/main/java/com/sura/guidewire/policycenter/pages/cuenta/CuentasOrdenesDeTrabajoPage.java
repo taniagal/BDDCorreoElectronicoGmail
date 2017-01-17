@@ -44,11 +44,11 @@ public class CuentasOrdenesDeTrabajoPage extends LoginPage {
     public void filtrarTransaccionesPorEstado(String estado){
         waitFor(CONSTANTE_2).seconds();
         filtroEstado.click();
-        getDriver().manage().timeouts().implicitlyWait(WAIT_TIME_4,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4,TimeUnit.SECONDS);
         filtroEstado.sendKeys(estado);
-        getDriver().manage().timeouts().implicitlyWait(WAIT_TIME_4,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4,TimeUnit.SECONDS);
         filtroEstado.sendKeys(Keys.ENTER);
-        getDriver().manage().timeouts().implicitlyWait(WAIT_TIME_4,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4,TimeUnit.SECONDS);
     }
 
     public void validarMensaje(String mensaje) {

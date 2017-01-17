@@ -29,7 +29,7 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
 
     public void clickEnPagos() {
         waitPayment(btnPago);
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         btnPago.click();
     }
 
@@ -43,12 +43,12 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
 
     public void validaPrograma(String programa){
         MatcherAssert.assertThat("El Programa de pagos cambio o no corresponde al enviado por Billing", programa.equals(lblPrograma.getText()));
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilClickable();
     }
 
     // TODO: 07/09/2016 Metodo wait para implementar generico
     public void waitPayment(WebElementFacade webElementFacade) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
 

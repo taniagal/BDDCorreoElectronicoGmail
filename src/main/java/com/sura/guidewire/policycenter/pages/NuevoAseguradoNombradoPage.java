@@ -1,19 +1,17 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
 public class NuevoAseguradoNombradoPage extends PageUtil {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(PageUtil.class);
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade cboTipoDocumento;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -52,9 +50,6 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
     private WebElementFacade botonCancelar;
 
 
-
-
-
     public NuevoAseguradoNombradoPage(WebDriver driver) {
         super(driver);
     }
@@ -63,7 +58,7 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
     public Boolean asociarNuevoAseguradoNombradoACuenta() {
         Boolean esAsociado;
         try {
-            txtNumeroDocumento.type("11".concat(cedulaRandom()));
+            txtNumeroDocumento.type("11".concat(Utils.cedulaRandom()));
             txtNombre.type("JOHAN");
             txtApellido.type("MUSTACHE");
             txtTelefonoTrabajo.type("435-3434");
@@ -80,15 +75,15 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
             cboTipoDocumento.sendKeys(Keys.ENTER);
             cboDepartamento.type("ANTIOQUIA");
             cboDepartamento.sendKeys(Keys.ENTER);
-            waitUntil(WAIT_TIME_3000);
-            waitUntil(WAIT_TIME_1500);
+            esperarHasta(TIEMPO_3000);
+            esperarHasta(TIEMPO_1500);
             cboCiudad.type("MEDELLIN");
             cboCiudad.sendKeys(Keys.ENTER);
-            waitUntil(WAIT_TIME_3000);
+            esperarHasta(TIEMPO_3000);
             txtDireccion.clear();
-            waitUntil(WAIT_TIME_1000);
+            esperarHasta(TIEMPO_1000);
             txtDireccion.type("CL 45 - 56 A 109");
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             clickActualizar();
             esAsociado = Boolean.TRUE;
         } catch (Exception e) {
@@ -111,7 +106,7 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
     public void clickActualizar() {
         btnActualizar.click();
         try {
-            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(botonCrearcontacto).waitUntilPresent();
+            withTimeoutOf(TIEMPO_7, TimeUnit.SECONDS).waitFor(botonCrearcontacto).waitUntilPresent();
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
             btnActualizar.click();
@@ -122,7 +117,7 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
     public void clickCancelar() {
         botonCancelar.click();
         try {
-            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(botonCrearcontacto).waitUntilPresent();
+            withTimeoutOf(TIEMPO_7, TimeUnit.SECONDS).waitFor(botonCrearcontacto).waitUntilPresent();
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
             botonCancelar.click();

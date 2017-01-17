@@ -45,7 +45,7 @@ public class UbicacionesDeUnaCuentaPage extends PageUtil {
     }
 
     public void irAUbicacionesDeUnaCuenta(String cuenta) {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTxtIrA).waitUntilPresent();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoTxtIrA).waitUntilPresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
         menuItemCuentas.waitUntilPresent();
@@ -64,18 +64,18 @@ public class UbicacionesDeUnaCuentaPage extends PageUtil {
     }
 
     public void agregaDireccion(String departamento, String ciudad, String tipoDireccion){
-        waitUntil(WAIT_TIME_1000);
-        selectItem(comboBoxDepartamento,departamento);
-        waitForComboValue(comboBoxDepartamento,departamento);
-        selectItem(comboBoxCiudad,ciudad);
-        waitForComboValue(comboBoxCiudad,ciudad);
-        selectItem(comboBoxTipoDireccion, tipoDireccion);
-        waitForComboValue(comboBoxTipoDireccion,tipoDireccion);
+        esperarHasta(TIEMPO_1000);
+        seleccionarItem(comboBoxDepartamento,departamento);
+        esperarPorValor(comboBoxDepartamento,departamento);
+        seleccionarItem(comboBoxCiudad,ciudad);
+        esperarPorValor(comboBoxCiudad,ciudad);
+        seleccionarItem(comboBoxTipoDireccion, tipoDireccion);
+        esperarPorValor(comboBoxTipoDireccion,tipoDireccion);
         botonActualizar.click();
     }
 
     public void verificarTipoDeDireccion(){
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         labelTipoDeDireccion.waitUntilPresent();
         MatcherAssert.assertThat("No está el campo tipo de direccion", labelTipoDeDireccion.isPresent());
     }
