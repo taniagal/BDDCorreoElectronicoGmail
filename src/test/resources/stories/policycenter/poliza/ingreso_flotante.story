@@ -18,6 +18,15 @@ Aplica definición al incluir el artículo flotante.
 Aplica para multiriesgo
 
 Scenario: Ingreso artículo Flotante (Multiriesgo)
-Given a system state
-When I do something
-Then system is in a different state
+Given estoy cotizando una poliza de mrc:
+| organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 45000090        | 10/10/1974       | JUAN        | ALBERTO        | DIRECCION DE RESIDENCIA | CALLE 28F #70-80 | Antioquia    | Medellin | INT-3  |
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO             | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Existencias Flotantes     |                     |                  | Valor asegurado máximo           | 100000000      |
+| Información de Artículos | Existencias Flotantes     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+When en la pantalla "Edificios y ubicaciones" debe permitir seleccionar el tipo de flotante:
+ |tipo|
+ |Automatico|
