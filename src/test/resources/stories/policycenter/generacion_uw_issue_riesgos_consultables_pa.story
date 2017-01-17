@@ -66,7 +66,7 @@ And  vaya a  opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 
 
-Scenario: Analisis de riesgo - Uw issue - ModificacionDos
+Scenario: Analisis de riesgo - Uw issue - Renovacion
 Meta:
 @manual
 Given se ha realizado la cotizacion de una renovacion
