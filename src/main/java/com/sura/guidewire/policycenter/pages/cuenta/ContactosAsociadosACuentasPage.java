@@ -222,6 +222,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
             if (contacto.getText().equals(nombreContacto)) {
                 checkBoxes.get(i).click();
                 btnEliminar.click();
+                waitUntil(WAIT_TIME_1000);
                 break;
             }
             i++;
