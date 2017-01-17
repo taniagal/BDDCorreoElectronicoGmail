@@ -29,8 +29,8 @@ public class TipoDeOnerosoPaPage extends PageUtil {
     public void agregarInteresAdicional() {
         linkInteresAdicional.waitUntilPresent().click();
         botonAgregar.waitUntilPresent().click();
-        clickElement(menuIntemOtrosContactos);
-        clickElement(menuItemContacto1);
+        clickearElemento(menuIntemOtrosContactos);
+        clickearElemento(menuItemContacto1);
     }
     public void verificarMarca(){
         waitFor(ExpectedConditions.attributeContains(radioBotonSeNecesitaCertificadoSi, "background-position", "0px -15px"));

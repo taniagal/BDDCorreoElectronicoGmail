@@ -19,8 +19,8 @@ public class BuscarNavBarPages extends PageObject {
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
     private WebElementFacade linkCuenta;
 
-    protected static final int WAIT_TIME_1000 = 1000;
-    protected static final int WAIT_TIME_2 = 2;
+    protected static final int TIEMPO_1000 = 1000;
+    protected static final int TIEMPO_2 = 2;
     private static String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
 
     public enum Opciones {
@@ -45,7 +45,7 @@ public class BuscarNavBarPages extends PageObject {
         lblCuenta.clear();
         lblCuenta.sendKeys(numCuenta);
         btnBuscaCuenta.click();
-        PageUtil.waitUntil(WAIT_TIME_1000);
+        PageUtil.esperarHasta(TIEMPO_1000);
         linkCuenta.click();
     }
 
@@ -55,7 +55,7 @@ public class BuscarNavBarPages extends PageObject {
         WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_BUSCAR));
         element(menuBuscar).setWindowFocus();
         element(menuBuscar).sendKeys(Keys.ARROW_DOWN);
-        fluent().await().atMost(WAIT_TIME_2, TimeUnit.SECONDS);
+        fluent().await().atMost(TIEMPO_2, TimeUnit.SECONDS);
     }
 
     public void clicenOpcionCuentas() {

@@ -33,7 +33,7 @@ public class SeleccionDeOfertasPage extends PageUtil {
 
     public void seleccionarLineaPA() {
         btnLineaAutosPersonal.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void validarVisibilidadMenu() {

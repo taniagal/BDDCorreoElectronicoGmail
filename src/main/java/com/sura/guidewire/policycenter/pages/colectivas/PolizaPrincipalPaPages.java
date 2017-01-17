@@ -19,7 +19,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
     public boolean validarElementosDeshabilitadosDelMenu() {
         final String contratoDePoliza = "Contrato de póliza";
         List<WebElementFacade> elementosDelMenuDeshabilitados = findAll(By.xpath(".//td[contains(@class, 'x-grid-cell-treecolumn x-grid-cell-first x-grid-cell-last x-grid-cell-treecolumn g-accordion-item g-accordion-depth-1 x-tree-node-depth-1 g-disabled')]/div/span"));
-        setImplicitTimeout(WAIT_TIME_3000, TimeUnit.MILLISECONDS);
+        setImplicitTimeout(TIEMPO_3000, TimeUnit.MILLISECONDS);
         boolean deshabilitado = false;
         if (!elementosDelMenuDeshabilitados.isEmpty()) {
             for (int i = 0; i < elementosDelMenuDeshabilitados.size(); i++) {
@@ -151,7 +151,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
 
     public boolean validarCamposEditables(List<WebElementFacade> camposEnPantalla) {
         boolean editables = false;
-        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         for (int i = 0; i < camposEnPantalla.size(); i++) {
             if ("textbox".equals(camposEnPantalla.get(i).getAttribute("role")) && camposEnPantalla.get(i).isVisible()) {
                 if (camposEnPantalla.get(i).getText() != null) {
@@ -184,7 +184,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
 
     private boolean esElElementoWebVisible(WebElementFacade elemento) {
         boolean visible;
-        setImplicitTimeout(WAIT_TIME_3000, TimeUnit.MILLISECONDS);
+        setImplicitTimeout(TIEMPO_3000, TimeUnit.MILLISECONDS);
         if (!elemento.isVisible()) {
             visible = false;
         } else {

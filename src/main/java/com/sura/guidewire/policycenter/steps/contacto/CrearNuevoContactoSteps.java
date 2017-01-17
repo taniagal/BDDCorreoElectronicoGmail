@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.steps.contacto;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.contacto.NuevoContactoPage;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -24,8 +25,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     private void initRandoms() {
-        cedula = gw.cedulaRandom();
-        nit = gw.nitRandom();
+        cedula = Utils.cedulaRandom();
+        nit = Utils.nitRandom();
     }
 
     @Step

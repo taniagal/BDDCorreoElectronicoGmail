@@ -48,8 +48,8 @@ public class CotizacionPage extends GuidewirePage {
     public static final String LBL_OPCIONES_MENU_INICIAL =  ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
     public static final  String LBL_OPCIONES_MENU_FINAL =  "')]";
     public static final String TRACE = "\nTRACE: \n";
-    protected static final int WAIT_TIME_15 = 15;
-    protected static final int WAIT_TIME_2000 = 2000;
+    protected static final int TIEMPO_15 = 15;
+    protected static final int TIEMPO_2000 = 2000;
 
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
@@ -98,7 +98,7 @@ public class CotizacionPage extends GuidewirePage {
         List<WebElementFacade> elementos = null;
         try {
             waitFor($(xpath)).shouldBeVisible();
-            elementos = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
+            elementos = withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + TRACE + e);
@@ -123,7 +123,7 @@ public class CotizacionPage extends GuidewirePage {
             }
         }catch (StaleElementReferenceException e){
             LOGGER.info("StaleElementReferenceException " + e);
-            PageUtil.waitUntil(WAIT_TIME_2000);
+            PageUtil.esperarHasta(TIEMPO_2000);
             if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
                 return Boolean.TRUE;
             }

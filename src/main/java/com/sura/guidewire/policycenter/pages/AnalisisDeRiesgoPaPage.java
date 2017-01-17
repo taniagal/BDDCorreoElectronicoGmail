@@ -35,7 +35,7 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
     public void validarBloqueoExpedicion(ExamplesTable mensaje) {
         Map<String, String> mensajeBloqueo = mensaje.getRows().get(0);
         WebElementFacade labelBloqueo = findBy(".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelBloqueo).shouldBeVisible();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelBloqueo).shouldBeVisible();
         WebElementFacade grupoMensajes = findBy(".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']");
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensajeBloqueo.get("mensaje")));
     }
@@ -43,14 +43,14 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
     public void validarGeneracionUWIssue(ExamplesTable uwissue) {
         Map<String, String> uwissues = uwissue.getRows().get(0);
         WebElementFacade itemAnalisisRiesgo = findBy(".//*[@id='SubmissionWizard:RiskAnalysis']/div/span");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemAnalisisRiesgo).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(itemAnalisisRiesgo).click();
         WebElementFacade labelAnalisisRiesgo = findBy(".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:0']");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelAnalisisRiesgo).shouldBeVisible();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelAnalisisRiesgo).shouldBeVisible();
         WebElementFacade grupoUWIssues = findBy(".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']");
         MatcherAssert.assertThat(grupoUWIssues.getText(), Matchers.containsString(uwissues.get("UWIssue")));
     }
 
     public void ingresarAnalisisDeRiesgo(){
-        clickElement(analisiDeRiesgo);
+        clickearElemento(analisiDeRiesgo);
     }
 }

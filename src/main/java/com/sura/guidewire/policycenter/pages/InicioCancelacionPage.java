@@ -49,24 +49,24 @@ public class InicioCancelacionPage extends PageUtil {
     }
 
     public void inicioCancelacion() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilEnabled().waitUntilClickable();
-        clickElement(btnAcciones);
-        waitUntil(WAIT_TIME_3000);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilEnabled().waitUntilClickable();
+        clickearElemento(btnAcciones);
+        esperarHasta(TIEMPO_3000);
         btnCancelarPoliza.waitUntilClickable().click();
     }
 
     public void ingresarFechaRetroactiva() {
-        selectItem(txtMotivo, "Financiación cancelación por");
-        waitUntil(WAIT_TIME_1000);
+        seleccionarItem(txtMotivo, "Financiación cancelación por");
+        esperarHasta(TIEMPO_1000);
         try {
-            clickElement(txtDescripMotivo);
+            clickearElemento(txtDescripMotivo);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            waitUntil(WAIT_TIME_2000);
-            clickElement(txtDescripMotivo);
+            esperarHasta(TIEMPO_2000);
+            clickearElemento(txtDescripMotivo);
         }
         txtDescripMotivo.sendKeys("Motivo de prueba");
-        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(txtFechaVigenciaCancelacion);
+        withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(txtFechaVigenciaCancelacion);
         LocalDate fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();
@@ -75,16 +75,16 @@ public class InicioCancelacionPage extends PageUtil {
     }
 
     public void ingresarFechaEmisionAnticipada() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
         String cadenaAux = "Financiación cancelación por";
-        selectItem(txtMotivo, cadenaAux);
-        waitUntil(WAIT_TIME_1000);
-        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(txtFechaVigenciaCancelacion);
+        seleccionarItem(txtMotivo, cadenaAux);
+        esperarHasta(TIEMPO_1000);
+        withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(txtFechaVigenciaCancelacion);
         String fecha = calculaEmisionAnticipada61Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.sendKeys(fecha);
         txtDescripMotivo.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         txtDescripMotivo.sendKeys(cadenaAux);
     }
 
@@ -106,18 +106,18 @@ public class InicioCancelacionPage extends PageUtil {
     }
 
     public void cancelaTransaccion() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
         btnCancelarTransaccion.click();
-        waitUntil(WAIT_TIME_300);
+        esperarHasta(TIEMPO_300);
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         MatcherAssert.assertThat("Mensaje no corresponde al referenciado", lblMensaje.getText().contains(mensaje));
     }
 
     public void validaListaMotivoDiferenteBancolombia(ExamplesTable listaMotivo) {
-        waitUntil(WAIT_TIME_800);
+        esperarHasta(TIEMPO_800);
         txtLista.click();
         this.validarDatosDeLaLista(listaMotivo);
         btnCancelarTransaccion.click();
@@ -128,7 +128,7 @@ public class InicioCancelacionPage extends PageUtil {
         List<WebElementFacade> elementoInstruccion;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(listaMotivo);
         for (String tipo : elementosRequeridos) {
-            elementoInstruccion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            elementoInstruccion = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementoInstruccion) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }

@@ -31,15 +31,15 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
 
     public void seleccionarDeseoFinanciacionSi() {
         WebElementFacade deseoFinanciacionSi = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']");
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(deseoFinanciacionSi).click();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(deseoFinanciacionSi).click();
         WebElementFacade numeroCuotas = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']");
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(numeroCuotas).clear();
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(numeroCuotas).clear();
         numeroCuotas.typeAndTab("12");
     }
 
     public void seleccionarOpcionSiguiente() {
         WebElementFacade botonSiguiente = findBy(".//*[@id='RenewalWizard:Next-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(botonSiguiente).click();
     }
 
     public void validarMensajeDeseoFinanciacion(ExamplesTable mensaje) {
@@ -49,14 +49,14 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
 
     public void irARevisionDePoliza(){
         WebElementFacade revisionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyReview']/div");
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(revisionPoliza).click();
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(revisionPoliza).click();
         WebElementFacade labelRevisionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_DifferencesScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelRevisionPoliza).shouldBeVisible();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(labelRevisionPoliza).shouldBeVisible();
     }
 
     public void cotizarRenovacionPoliza() {
         WebElementFacade cotizarRenovacion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_DifferencesScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(cotizarRenovacion).click();
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(cotizarRenovacion).click();
     }
 
     public void validarMensajeFinanciacionCotizacionRenovacion(ExamplesTable mensaje) {
@@ -66,10 +66,10 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
     public void validarNumeroDeCuotas(ExamplesTable numeroCuotas) {
         Map<String, String> cuotas = numeroCuotas.getRows().get(0);
         WebElementFacade campoNumeroCuotas = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']");
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(campoNumeroCuotas).click();
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(campoNumeroCuotas).click();
         WebElementFacade cuota11 = findBy(".//li[contains(.,'11')]");
         WebElementFacade cuota12 = findBy(".//li[contains(.,'12')]");
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(cuota11).shouldBeCurrentlyVisible();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(cuota11).shouldBeCurrentlyVisible();
         MatcherAssert.assertThat(cuota11.getText(), Matchers.is(Matchers.equalTo(cuotas.get("cuota11"))));
         MatcherAssert.assertThat(cuota12.getText(), Matchers.is(Matchers.equalTo(cuotas.get("cuota12"))));
     }
@@ -84,9 +84,9 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
 
     public void expedirPolizaRenovacion() {
         WebElementFacade botonOpcionesCompromiso = findBy(".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:JobWizardToolbarButtonSet:BindOptions-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(botonOpcionesCompromiso).click();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(botonOpcionesCompromiso).click();
         WebElementFacade botonEmitir = findBy(".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:JobWizardToolbarButtonSet:BindOptions:IssueNow-textEl']");
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(botonEmitir).click();
+        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(botonEmitir).click();
         waitForTextToAppear("¿Está seguro de que desea emitir la renovación de la póliza?");
         actions.sendKeys(Keys.ENTER).build().perform();
     }
@@ -95,6 +95,6 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
         menuItemInformacionDePoliza.waitUntilPresent().click();
         radioBotonDeseaFinanciarLaPolizaSi.waitUntilPresent().click();
         comboBoxNumeroDeCuotas.waitUntilPresent();
-        selectItem(comboBoxNumeroDeCuotas, "12");
+        seleccionarItem(comboBoxNumeroDeCuotas, "12");
     }
 }

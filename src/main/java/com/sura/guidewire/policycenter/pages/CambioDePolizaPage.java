@@ -55,14 +55,14 @@ public class CambioDePolizaPage extends PageUtil {
 
 
     public void irAMenuAcciones() {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         menuAcciones.click();
     }
 
     public void cambiarPoliza() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
         opcionCambiarPoliza.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblinicioCambioPoliza).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblinicioCambioPoliza).waitUntilPresent();
     }
 
     public void esReaseguroEspecial(String reaseguro) {
@@ -86,12 +86,12 @@ public class CambioDePolizaPage extends PageUtil {
         irAInformacionDePoliza();
         radioBotonReaseguroEspeciaSi.waitUntilPresent().click();
         checkBoxFronting.waitUntilPresent().click();
-        clickElement(botonSiguiente);
+        clickearElemento(botonSiguiente);
     }
 
     public void irAInformacionDePoliza() {
         menuItemInformacionDePoliza.waitUntilPresent();
-        clickElement(menuItemInformacionDePoliza);
+        clickearElemento(menuItemInformacionDePoliza);
     }
 
     public void cambiarFechaDeVigencia(String dias) {
@@ -102,9 +102,9 @@ public class CambioDePolizaPage extends PageUtil {
         String fecha = Utils.sumarDiasALaFechaActual(Integer.parseInt(dias));
         campoTxtFechaInicioDeVigencia.waitUntilPresent().clear();
         campoTxtFechaInicioDeVigencia.sendKeys(fecha);
-        clickElement(comboBoxTipoPlazo);
+        clickearElemento(comboBoxTipoPlazo);
         try {
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(campoTxtFechaFinDeVigencia, fecha.substring(0, WAIT_TIME_5)));
+            withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(campoTxtFechaFinDeVigencia, fecha.substring(0, TIEMPO_5)));
         }catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
         }

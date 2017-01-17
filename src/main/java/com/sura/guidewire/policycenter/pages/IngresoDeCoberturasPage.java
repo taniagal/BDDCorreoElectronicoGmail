@@ -29,16 +29,16 @@ public class IngresoDeCoberturasPage extends PageUtil{
 
     public void ingresarLimite(){
         waitForTextToAppear("Cobertura");
-        pageUtil.selectItem(campoLimite,"32.000.000");
+        pageUtil.seleccionarItem(campoLimite,"32.000.000");
     }
 
     public void ingresarDeducible(){
-        pageUtil.selectItem(campoDeducible,"0");
+        pageUtil.seleccionarItem(campoDeducible,"0");
     }
 
     public void cotizar(){
         botonCotizar.click();
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).waitUntilPresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).waitUntilPresent();
     }
 
     public void clickEnCheckHurto(){

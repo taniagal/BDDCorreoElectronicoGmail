@@ -49,26 +49,26 @@ public class DetallesDeUbicacionPage extends PageUtil {
 
 
     public void irAUbicacion() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
-        clickElement(botonSiguiente);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        clickearElemento(botonSiguiente);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
 
     public void setDireccion(String direccion, String departamento, String ciudad) {
         campoTxtDireccion.sendKeys(direccion);
         this.direccion = direccion;
-        selectItem(comboBoxDepartamento, departamento);
-        waitForComboValue(comboBoxDepartamento, departamento);
-        selectItem(comboBoxCiudad, ciudad);
-        waitForComboValue(comboBoxCiudad, ciudad);
+        seleccionarItem(comboBoxDepartamento, departamento);
+        esperarPorValor(comboBoxDepartamento, departamento);
+        seleccionarItem(comboBoxCiudad, ciudad);
+        esperarPorValor(comboBoxCiudad, ciudad);
     }
 
     public void setUbicacion(String descripcion, String actividad) {
         waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
-        selectItem(comboBoxActividadEconomica, actividad);
-        waitForComboValue(comboBoxActividadEconomica, actividad);
-        clickElement(botonAceptar);
+        seleccionarItem(comboBoxActividadEconomica, actividad);
+        esperarPorValor(comboBoxActividadEconomica, actividad);
+        clickearElemento(botonAceptar);
     }
 
 

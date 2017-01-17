@@ -112,7 +112,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     public void seleccionarAcciones() {
         band = 0;
         int i = 0;
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -145,12 +145,12 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void crearNuevaCotizacion() {
-        waitForTextToAppear("Cotizaciones de la cuenta", WAIT_TIME_1000);
+        waitForTextToAppear("Cotizaciones de la cuenta", TIEMPO_1000);
         btnNuevaCotizacion.click();
     }
 
     public void validarCreacionCotizacion() {
-        waitForTextToAppear("Nueva cotización", WAIT_TIME_1000);
+        waitForTextToAppear("Nueva cotización", TIEMPO_1000);
         boolean validacion = false;
         if (labelCodigoAgente.isPresent() && labelNombreAgente.isPresent()) {
             validacion = true;
@@ -165,25 +165,25 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void seleccionarFiltros(String cotizacion, String producto) {
-        waitForTextToAppear("Cotizaciones de la cuenta", WAIT_TIME_1000);
+        waitForTextToAppear("Cotizaciones de la cuenta", TIEMPO_1000);
         waitFor(txtCotizaciones).shouldBeVisible();
         txtCotizaciones.click();
         WebElementFacade cbxCotizacion = findBy(".//li[contains(.,'" + cotizacion + "')]");
-        waitForTextToAppear(cotizacion, WAIT_TIME_2000);
+        waitForTextToAppear(cotizacion, TIEMPO_2000);
         waitFor(cbxCotizacion).shouldBeVisible();
         cbxCotizacion.click();
         waitFor(txtProductos).shouldBeVisible();
         txtProductos.click();
         WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
-        waitForTextToAppear(producto, WAIT_TIME_2000);
+        waitForTextToAppear(producto, TIEMPO_2000);
         waitFor(cbxProducto).shouldBeVisible();
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
     }
 
     public void mostrarInfoCotizacion(String producto) {
-        waitForTextToAppear(producto, WAIT_TIME_2500);
-        waitUntil(WAIT_TIME_1000);
+        waitForTextToAppear(producto, TIEMPO_2500);
+        esperarHasta(TIEMPO_1000);
         String tProductos = "Todos Los Productos";
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
@@ -294,13 +294,13 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void mostrarTodosLosProductos(String producto) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         txtProductos.click();
         WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
     }
 
     public void seleccionarAccionesDeclinar() {
@@ -336,7 +336,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     public void ingresaRechazo(String razon) {
         txtCodRazon.waitUntilPresent();
-        selectItem(txtCodRazon, razon);
+        seleccionarItem(txtCodRazon, razon);
         txtRazonCartaDeclina.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
         btnRechazar.click();
     }
@@ -348,7 +348,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void ingresaRechazoNoTomar(String razon) {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
         listaTipoRazonNoTomar.clear();
         listaTipoRazonNoTomar.sendKeys(razon);
         txtRazonCartaNoTomar.click();
@@ -364,13 +364,13 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     private List<WebElementFacade> getListaCotizaciones() {
         List<WebElementFacade> numerosCotizacion;
-        numerosCotizacion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
+        numerosCotizacion = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
         return numerosCotizacion;
     }
 
     private List<WebElementFacade> getListaEstado() {
         List<WebElementFacade> numeroEstado;
-        numeroEstado = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
+        numeroEstado = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
         return numeroEstado;
     }
 
@@ -435,7 +435,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
-            elementosTipoCanalVentas = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            elementosTipoCanalVentas = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementosTipoCanalVentas) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }
@@ -449,9 +449,9 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
             botonActualizar.waitUntilPresent();
         }
-        clickElement(botonActualizar);
+        clickearElemento(botonActualizar);
         botonCotizar.waitUntilPresent().click();
-        waitForTextToAppear("Cotizado", WAIT_TIME_30000);
+        waitForTextToAppear("Cotizado", TIEMPO_30000);
         if ("declinar".equalsIgnoreCase(accion)) {
             numeroCotizacionDeclinar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
         } else {

@@ -35,7 +35,7 @@ public class CancelacionPolizaClaimsPage extends PageUtil {
         lstMotivo.click();
         lstMotivo.sendKeys(motivo);
         txtDescripcionMotivo.click();
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         txtDescripcionMotivo.sendKeys(motivo);
         txtDescripcionMotivo.sendKeys(Keys.ENTER);
     }
@@ -45,7 +45,7 @@ public class CancelacionPolizaClaimsPage extends PageUtil {
     }
 
     public void cancelarTransaccion() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
         btnCancelarTransaccion.click();
     }
 

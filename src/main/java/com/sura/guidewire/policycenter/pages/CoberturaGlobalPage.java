@@ -69,23 +69,23 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void irACoberturasGlobales() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent();
-        clickElement(menuItemCoberturaGlobal);
-        clickElement(menuItemCoberturaGlobal);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent();
+        clickearElemento(menuItemCoberturaGlobal);
+        clickearElemento(menuItemCoberturaGlobal);
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura) {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
-            waitUntil(WAIT_TIME_1000);
+            esperarHasta(TIEMPO_1000);
             botonAgregarCoberturaGeneral.waitUntilPresent().click();
         }
         resetImplicitTimeout();
         waitFor(campoTxtDescripcion).sendKeys(descripcion);
-        selectItem(comboBoxTipoCobertura, tipoCobertura);
-        waitUntil(WAIT_TIME_1000);
+        seleccionarItem(comboBoxTipoCobertura, tipoCobertura);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void ingresarAgregarCoberturaGlobal() {
@@ -117,8 +117,8 @@ public class CoberturaGlobalPage extends PageUtil {
 
     public void cargarCoberturaUnica(String nombreCobertura, String valor) {
         comboBoxCoberturas.waitUntilPresent();
-        selectItem(comboBoxCoberturas, nombreCobertura);
-        waitUntil(WAIT_TIME_2500);
+        seleccionarItem(comboBoxCoberturas, nombreCobertura);
+        esperarHasta(TIEMPO_2500);
         linkCoberturas.click();
         checkBoxGenerico.waitUntilPresent().click();
         campoTxtGenerico.sendKeys(valor);
@@ -127,7 +127,7 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void cargarMultiplesUbicaciones(String valor) {
-        clickElement(linkCoberturas);
+        clickearElemento(linkCoberturas);
         checkBoxDanosMateriales.click();
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
         linkDetalles.click();
@@ -149,10 +149,10 @@ public class CoberturaGlobalPage extends PageUtil {
         Map<String, String> dato = datosCobertura.getRow(0);
         navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
         comboBoxCoberturas.waitUntilPresent();
-        selectItem(comboBoxCoberturas, dato.get("nombre_cobertura"));
-        waitUntil(WAIT_TIME_2500);
+        seleccionarItem(comboBoxCoberturas, dato.get("nombre_cobertura"));
+        esperarHasta(TIEMPO_2500);
         botonAceptar.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void seleccionarBotonAceptar() {
@@ -160,7 +160,7 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void ingresarDescripcionDetalleCoberturaGlobal(String descripcion) {
-        waitFor(WAIT_TIME_2);
+        waitFor(TIEMPO_2);
         labelDescripcionCoberturaGlobal.sendKeys(descripcion);
     }
 

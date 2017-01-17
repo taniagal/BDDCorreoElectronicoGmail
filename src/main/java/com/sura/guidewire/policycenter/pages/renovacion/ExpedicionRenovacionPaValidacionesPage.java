@@ -39,16 +39,16 @@ public class ExpedicionRenovacionPaValidacionesPage extends PageUtil{
     public void editarInformacionVehiculoRenovacion(ExamplesTable infoVehiculo) {
         WebElementFacade validacionRetroactividad = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']/div");
         WebElementFacade itemVehiculos = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']/div/span");
-        setImplicitTimeout(WAIT_TIME_5,TimeUnit.SECONDS);
-        withTimeoutOf(WAIT_TIME_3, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
+        setImplicitTimeout(TIEMPO_5,TimeUnit.SECONDS);
+        withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
         if(validacionRetroactividad.isPresent()){
-            withTimeoutOf(WAIT_TIME_3, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
+            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
         }
         resetImplicitTimeout();
         WebElementFacade labelVehiculos = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelVehiculos).shouldBePresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelVehiculos).shouldBePresent();
         WebElementFacade botonEditarTransaccion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']");
-        setImplicitTimeout(WAIT_TIME_5,TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_5,TimeUnit.SECONDS);
         if(botonEditarTransaccion.isPresent()){
             botonEditarTransaccion.click();
             waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual y podría ser necesaria una nueva aprobación de la aseguranza. ¿Está seguro de que desea continuar?");
@@ -59,8 +59,8 @@ public class ExpedicionRenovacionPaValidacionesPage extends PageUtil{
         WebElementFacade motor = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']");
         WebElementFacade chasis = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']");
         if ("null".equals(datosVehiculo.get("motor")) && "null".equals(datosVehiculo.get("chasis"))){
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(motor).clear();
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(chasis).clear();
+            withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(motor).clear();
+            withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(chasis).clear();
         }else {
             motor.sendKeys(datosVehiculo.get("motor"));
             chasis.sendKeys(datosVehiculo.get("chasis"));

@@ -132,38 +132,38 @@ public class DetallesContactoPage extends PageUtil {
     }
 
     public void irABuscarContacto() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
         menuItemContactos.click();
     }
 
 
     public void editarContacto() {
-        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
         MatcherAssert.assertThat("El boton de editar no está presente en el DOM", botonEditarContacto.isPresent());
         botonEditarContacto.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
 
     public void actualizaContacto() {
         botonActualizar.click();
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
     }
 
 
     public void setDireccion() {
         botonAgregar.click();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
 
     public void setNombre(String segundoNombre) {
         campoTxtSegundoNombre.waitUntilPresent();
-        waitUntil(WAIT_TIME_800);
+        esperarHasta(TIEMPO_800);
         campoTxtSegundoNombre.clear();
         campoTxtSegundoNombre.sendKeys(segundoNombre);
         dtlContact[CONSTANTE_2] = segundoNombre;
@@ -172,16 +172,16 @@ public class DetallesContactoPage extends PageUtil {
 
     public void setApellido(String segundoApellido) {
         campoTxtSegundoApellido.clear();
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         campoTxtSegundoApellido.sendKeys(segundoApellido);
         dtlContact[CONSTANTE_3] = segundoApellido;
     }
 
 
     public void setDatosComboBoxes(String profesion, String estadoCivil, String tipoFamilia) {
-        selectItem(comboBoxProfesion, profesion);
-        selectItem(comboBoxEstadoCivil, estadoCivil);
-        selectItem(comboBoxTipoFamilia, tipoFamilia);
+        seleccionarItem(comboBoxProfesion, profesion);
+        seleccionarItem(comboBoxEstadoCivil, estadoCivil);
+        seleccionarItem(comboBoxTipoFamilia, tipoFamilia);
         dtlContact[CONSTANTE_6] = profesion;
         dtlContact[CONSTANTE_7] = estadoCivil;
         dtlContact[CONSTANTE_8] = tipoFamilia;
@@ -190,7 +190,7 @@ public class DetallesContactoPage extends PageUtil {
 
     public void setTelefonosResidencial(String telefonoResidencial) {
         campoTxtTelefonoResidencial.clear();
-        waitUntil(WAIT_TIME_500);
+        esperarHasta(TIEMPO_500);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[CONSTANTE_11] = telefonoResidencial;
     }
@@ -223,14 +223,14 @@ public class DetallesContactoPage extends PageUtil {
         campoTxtNombreComercial.waitUntilPresent();
         campoTxtNombreComercial.clear();
         campoTxtNombreComercial.sendKeys(nombreComercial);
-        selectItem(comboBoxActividadComercial, actividadComercial);
+        seleccionarItem(comboBoxActividadComercial, actividadComercial);
         dtlCntJ[0] = nombreComercial;
         dtlCntJ[CONSTANTE_1] = actividadComercial;
     }
 
 
     public void setEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
-        waitUntil(WAIT_TIME_500);
+        esperarHasta(TIEMPO_500);
         campoTxtNumeroEmpleados.clear();
         campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
         campoTxtValorActivos.clear();

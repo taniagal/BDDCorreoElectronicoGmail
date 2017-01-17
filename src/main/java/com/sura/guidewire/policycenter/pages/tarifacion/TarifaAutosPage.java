@@ -130,7 +130,7 @@ public class TarifaAutosPage extends PageUtil {
 
 
     public void desMarcarCoberturas() {
-        clickElement(checkBoxHurto);
+        clickearElemento(checkBoxHurto);
         comboBoxPerdidaTotalHurto.waitUntilNotVisible();
         checkBoxDaniosCarro.click();
         comboBoxPerdidaTotalDaniosDeducible.waitUntilNotVisible();
@@ -139,16 +139,16 @@ public class TarifaAutosPage extends PageUtil {
 
     public void cotizar() {
         intentarCotizar();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
     }
 
     public void intentarCotizar() {
         try {
-            clickElement(botonCotizar);
+            clickearElemento(botonCotizar);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
-            waitUntil(WAIT_TIME_2000);
-            clickElement(botonCotizar);
+            esperarHasta(TIEMPO_2000);
+            clickearElemento(botonCotizar);
         }
     }
 
@@ -162,14 +162,14 @@ public class TarifaAutosPage extends PageUtil {
 
     public void agregarAsegurado(String tipoDocumento, String documento) {
         esCambioDePoliza();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemAsegurados).waitUntilPresent();
-        clickElement(menuItemAsegurados);
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemAsegurados).waitUntilPresent();
+        clickearElemento(menuItemAsegurados);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if ($(".message").isPresent()) {
-            clickElement(menuItemAsegurados);
+            clickearElemento(menuItemAsegurados);
         }
         resetImplicitTimeout();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         seleccionarAsegurado(tipoDocumento, documento);
         campoTxtNombre.waitUntilPresent();
@@ -188,30 +188,30 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarAsegurado(String tipoDocumento, String documento){
         comboBoxTipoDocumento.waitUntilPresent().clear();
-        waitUntil(WAIT_TIME_300);
+        esperarHasta(TIEMPO_300);
         comboBoxTipoDocumento.sendKeys(tipoDocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_800);
+        esperarHasta(TIEMPO_800);
         try {
             botonBuscar.waitUntilPresent();
             campoTxtNumeroDocumento.sendKeys(documento);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             campoTxtNumeroDocumento.sendKeys(documento);
         }
-        clickElement(botonBuscar);
+        clickearElemento(botonBuscar);
         seleccionarAseguradoEncontrado(documento);
     }
 
     public void seleccionarAseguradoEncontrado(String documento) {
-        setImplicitTimeout(WAIT_TIME_10, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_10, TimeUnit.SECONDS);
         if (botonSeleccionar.isPresent()) {
             botonSeleccionar.click();
         } else {
             resetImplicitTimeout();
             campoTxtNumeroDocumento.sendKeys(documento);
-            clickElement(botonBuscar);
+            clickearElemento(botonBuscar);
             botonSeleccionar.click();
         }
         resetImplicitTimeout();
@@ -223,31 +223,31 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarCoberturasRC(datosCoberturas);
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
         if (!"".equals(dato.get("abogado"))) {
-            selectItem(comboBoxAbogado, dato.get("abogado"));
+            seleccionarItem(comboBoxAbogado, dato.get("abogado"));
         }
     }
 
     public void seleccionarCoberturasRC(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-        setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
             botonBorrar.waitUntilPresent().click();
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
-        waitUntil(WAIT_TIME_1500);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
+        esperarHasta(TIEMPO_1500);
         comboBoxLimite.clear();
-        waitUntil(WAIT_TIME_500);
+        esperarHasta(TIEMPO_500);
         comboBoxLimite.sendKeys(dato.get("limite"));
         comboBoxLimite.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_800);
-        selectItem(comboBoxDeducible, dato.get("deducible"));
+        esperarHasta(TIEMPO_800);
+        seleccionarItem(comboBoxDeducible, dato.get("deducible"));
     }
 
     public void seleccionarPerdidaDeLlaves(String llaves) {
         if (!"".equals(llaves)) {
-            selectItem(comboBoxPerdidaDeLlaves, llaves);
+            seleccionarItem(comboBoxPerdidaDeLlaves, llaves);
         }
     }
 
@@ -255,68 +255,68 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturas1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCoberturasHurto(coberturas);
-        clickElement(checkBoxAccidentes);
-        selectItem(comboBoxAccidentes, dato.get("AC"));
+        clickearElemento(checkBoxAccidentes);
+        seleccionarItem(comboBoxAccidentes, dato.get("AC"));
         checkBoxGastosTaspaso.click();
-        selectItem(comboBoxGastosTraspaso, dato.get("GTR"));
+        seleccionarItem(comboBoxGastosTraspaso, dato.get("GTR"));
         checkBoxGAstosDeParqueadero.click();
-        selectItem(comboBoxgastosDeParqueadero, dato.get("GP"));
+        seleccionarItem(comboBoxgastosDeParqueadero, dato.get("GP"));
     }
 
     public void seleccionarCoberturasHurto(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
+        seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         try {
             labelGatosTransporte.waitUntilPresent();
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             labelGatosTransporte.waitUntilPresent();
         }
-        selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
-        selectItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
-        waitForComboValue(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
+        seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
+        seleccionarItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
+        esperarPorValor(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
     }
 
 
     public void seleccionarCoberturasDanios(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         try {
             if (!comboBoxGastosDeTransporteCarro.isPresent()) {
                 labelGatosTransporteCarro.waitUntilPresent();
             }
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             if (!comboBoxGastosDeTransporteCarro.isPresent()) {
                 labelGatosTransporteCarro.waitUntilPresent();
             }
         }
-        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
-        waitForComboValue(comboBoxGastosDeTransporteCarro, dato.get("GT"));
+        seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+        seleccionarItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
+        esperarPorValor(comboBoxGastosDeTransporteCarro, dato.get("GT"));
     }
 
 
     public void seleccionarCoberturas2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        clickElement(checkBoxTaller);
-        selectItem(comboBoxTaller, dato.get("Taller"));
+        clickearElemento(checkBoxTaller);
+        seleccionarItem(comboBoxTaller, dato.get("Taller"));
         checkBoxGrua.click();
-        selectItem(comboBoxGrua, dato.get("Grua"));
+        seleccionarItem(comboBoxGrua, dato.get("Grua"));
         checkBoxTallerMovil.click();
-        selectItem(comboBoxTallerMovil, dato.get("TM"));
+        seleccionarItem(comboBoxTallerMovil, dato.get("TM"));
         checkBoxCentroDeServicios.click();
-        selectItem(comboBoxCentroDeServicios, dato.get("CS"));
+        seleccionarItem(comboBoxCentroDeServicios, dato.get("CS"));
         checkBoxCarroDeReemplazo.click();
-        selectItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("PT"));
+        seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("PT"));
     }
 
 
     public void seleccionarCoberturas3(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxConductorElegido.click();
-        selectItem(comboBoxConductorElegido, dato.get("CE"));
+        seleccionarItem(comboBoxConductorElegido, dato.get("CE"));
     }
 
 
@@ -342,13 +342,13 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturasCorbeta(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
-        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         if (!"null".equals(dato.get("AC"))) {
-            clickElement(checkBoxAccidentes);
-            selectItem(comboBoxAccidentes, dato.get("AC"));
-            clickElement(checkBoxAsistencia);
-            selectItem(comboBoxAsistencia, dato.get("AS"));
+            clickearElemento(checkBoxAccidentes);
+            seleccionarItem(comboBoxAccidentes, dato.get("AC"));
+            clickearElemento(checkBoxAsistencia);
+            seleccionarItem(comboBoxAsistencia, dato.get("AS"));
         }
     }
 
@@ -374,7 +374,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
     public void marcharCoberturaAccidentes() {
-        clickElement(checkBoxAccidentes);
+        clickearElemento(checkBoxAccidentes);
     }
 
     public void verificarCoberturaAccidentes() {

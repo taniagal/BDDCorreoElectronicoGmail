@@ -81,7 +81,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
 
     public void agregarModificadores(ExamplesTable valores) {
         Map<String, String> valor = valores.getRow(0);
-        selectItem(comboBoxDescuentoDipositivo, valor.get("descientoD"));
+        seleccionarItem(comboBoxDescuentoDipositivo, valor.get("descientoD"));
         campoTxtBonificacionComercial.clear();
         campoTxtBonificacionComercial.sendKeys(valor.get("bonificacionC"));
         campoTxtDescuento.sendKeys(valor.get("descuento"));
@@ -127,8 +127,8 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     }
 
     public void irAVehiculos() {
-        withTimeoutOf(WAIT_TIME_30, TimeUnit.SECONDS).waitFor(menuItemVehiculos).waitUntilPresent();
-        clickElement(menuItemVehiculos);
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(menuItemVehiculos).waitUntilPresent();
+        clickearElemento(menuItemVehiculos);
     }
 
     public void verificarModificadoresHabilitados() {
@@ -148,24 +148,24 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     public void verificarPermanenciaDeBonificacion(ExamplesTable planes, String bonoC) {
         irAVehiculos();
         checkBoxTablaVehiculo.waitUntilPresent();
-        clickElement(checkBoxTablaVehiculo);
+        clickearElemento(checkBoxTablaVehiculo);
         botonEliminarVehiculo.click();
         botonCrearVehiculo.waitUntilPresent().waitUntilClickable();
-        clickElement(botonCrearVehiculo);
+        clickearElemento(botonCrearVehiculo);
         for (Map<String, String> plan : planes.getRows()) {
-            selectItem(comboBoxPlan, plan.get("plan"));
-            waitForComboValue(comboBoxPlan, plan.get("plan"));
+            seleccionarItem(comboBoxPlan, plan.get("plan"));
+            esperarPorValor(comboBoxPlan, plan.get("plan"));
             MatcherAssert.assertThat("Error, la bonificacion comercial es diferente a la del vehiculo anterior",
                     campoTxtBonificacionComercialCambio.containsText(bonoC));
         }
     }
 
     public void verificarRecalculoDeBonificacion(String plan, String placa, String bonoC) {
-        selectItem(comboBoxPlan, plan);
-        waitForComboValue(comboBoxPlan, plan);
+        seleccionarItem(comboBoxPlan, plan);
+        esperarPorValor(comboBoxPlan, plan);
         campoTxtPlaca.sendKeys(placa);
-        clickElement(radioBotonCehiculo0KmNo);
-        clickElement(radioBotonCehiculo0KmNo);
+        clickearElemento(radioBotonCehiculo0KmNo);
+        clickearElemento(radioBotonCehiculo0KmNo);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtBonificacionComercialCambio, bonoC));
         MatcherAssert.assertThat("Error, la bonificacion comercial no se recalculó, espected: " + bonoC + " but was: " +
                 campoTxtBonificacionComercialCambio.getText(), campoTxtBonificacionComercialCambio.containsText(bonoC));
@@ -173,16 +173,18 @@ public class ModificadoresDeTarifaPage extends PageUtil {
 
     public void verificarBonificacionDeNuevoAsegurado(Map<String, String> dato) {
         campoTxtBonificacionComercialCambio.waitUntilPresent();
-        clickElement(checkBoxTablaAsegurado);
-        clickElement(botonQuitarAsegurado);
-        clickElement(botonAgregarAsegurado);
+        clickearElemento(checkBoxTablaAsegurado);
+        clickearElemento(botonQuitarAsegurado);
+        clickearElemento(botonAgregarAsegurado);
         menuItemAsegurado.waitUntilPresent();
-        clickElement(menuItemAsegurado);
+        clickearElemento(menuItemAsegurado);
         checkBoxTablaAsegurado.waitUntilPresent();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was " +
-                campoTxtBonificacionComercialCambio.getValue(), campoTxtBonificacionComercialCambio.getValue().contains(dato.get("bonoC")));
+                campoTxtBonificacionComercialCambio.getValue(), campoTxtBonificacionComercialCambio.getValue()
+                .contains(dato.get("bonoC")));
         MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was " +
-                campoTxtBonificacionTecnicaCambio.getValue(), campoTxtBonificacionTecnicaCambio.getValue().contains(dato.get("bonoT")));
+                campoTxtBonificacionTecnicaCambio.getValue(), campoTxtBonificacionTecnicaCambio.getValue()
+                .contains(dato.get("bonoT")));
     }
 }

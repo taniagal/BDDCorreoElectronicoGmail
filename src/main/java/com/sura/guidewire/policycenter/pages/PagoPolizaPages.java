@@ -21,7 +21,7 @@ public class PagoPolizaPages extends PageUtil {
     }
 
     public void ingresarALAOpcionDePagos() {
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         menuItemPago.waitUntilClickable().click();
         waitForTextToAppear("Pago");
     }

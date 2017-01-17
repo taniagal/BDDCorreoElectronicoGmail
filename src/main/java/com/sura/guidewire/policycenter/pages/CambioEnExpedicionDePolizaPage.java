@@ -34,8 +34,8 @@ public class CambioEnExpedicionDePolizaPage extends PageUtil {
     public void aceptarExpedirPoliza() {
         botonAceptarMensaje.waitUntilVisible();
         botonAceptarMensaje.click();
-        waitUntil(WAIT_TIME_1000);
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(msjAdvertenciaCaja).waitUntilVisible();
+        esperarHasta(TIEMPO_1000);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(msjAdvertenciaCaja).waitUntilVisible();
         botonExpedirPoliza.click();
         botonAceptarMensaje.click();
     }
