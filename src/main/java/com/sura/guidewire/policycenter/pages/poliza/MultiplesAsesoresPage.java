@@ -76,7 +76,7 @@ public class MultiplesAsesoresPage extends PageUtil {
         int maximoEjecuciones = 120;
         int ejecuciones = 0;
         while (ejecuciones < maximoEjecuciones && !ejecuto) {
-            waitUntil(500);
+            esperarHasta(500);
             try {
                 elemento = this.getElemento(pathElemento);
                 this.clicObjeto(elemento);

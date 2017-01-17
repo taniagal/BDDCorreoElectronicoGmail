@@ -33,7 +33,7 @@ public class AjustePantallaPagosYValidacionesPage extends PageUtil{
 
     public void seleccionarArticuloFlotante(Parametros parametros) {
         multiplesAsesoresPage.esperarObjetoClikeableServidor(ENCABEZADO_EDIFICIO_Y_UBICACIONES);
-        selectItem(list_Tipode_Mercancia,parametros.getTipo());
+        seleccionarItem(list_Tipode_Mercancia,parametros.getTipo());
         multiplesAsesoresPage.clicObjeto(btnCotizar);
         multiplesAsesoresPage.esperarObjetoClikeableServidor(ENCABEZADO_COTIZACION);
     }
