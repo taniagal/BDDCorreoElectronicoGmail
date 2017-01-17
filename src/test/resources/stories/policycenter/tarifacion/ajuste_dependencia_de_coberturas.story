@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @sprint 11
-@tag automator: nelson_jhair_mosquera_palacios
+@tag team: 4
 
 Narrative:
 Como usuario de policy center

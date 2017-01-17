@@ -3,7 +3,7 @@ Cuentas Asociadas A Contacto
 Meta: @lote1
 
 @issue #CDSEG-976
-@tag automator: eliana_alvarez, sprint:1
+@tag team: 1, sprint:1
 @Sprint 1
 
 Narrative:

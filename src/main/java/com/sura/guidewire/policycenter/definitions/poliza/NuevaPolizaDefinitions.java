@@ -1,7 +1,11 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.google.inject.name.Named;
+import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.NuevaPolizaSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -10,17 +14,36 @@ import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Map;
+
 public class NuevaPolizaDefinitions {
-
-    @Managed
-    WebDriver driver;
-
     @Steps
     NuevaPolizaSteps nuevaPolizaSteps;
+
+    @Steps
+    NuevaCotizacionSteps nuevaCotizacionSteps;
+
+    @Steps
+    TarifaAutosSteps tarifaAutosSteps;
+
+    @Steps
+    TarifaTasaUnicaSteps tasaUnicaSteps;
 
     @Given("que voy a buscar la cuenta <numCuenta>")
     public void buscarCuenta(@Named("numCuenta") String numCuenta) {
         nuevaPolizaSteps.buscarCuenta(numCuenta);
+    }
+
+    @Given("tengo una poliza de PA con los siguientes datos: $datos")
+    public void crearPoliza(ExamplesTable datos) {
+        Map<String, String> dato = datos.getRow(0);
+        nuevaCotizacionSteps.irANuevaCotizacion();
+        nuevaCotizacionSteps.seleccionarProducto(datos);
+        tarifaAutosSteps.agregarAsegurados(dato.get("tipo_documento"), dato.get("documento"));
+        tarifaAutosSteps.agregarVehiculo(datos);
+        tarifaAutosSteps.agregarCoberturas(datos);
+        tasaUnicaSteps.expedirPoliza();
+        tasaUnicaSteps.irAArchivoDePolizaExpedida();
     }
 
     @When("seleccione la organizacion, el canal y el tipo de poliza: $datosAutos")

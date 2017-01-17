@@ -1,6 +1,6 @@
 Meta: @lote4
 @issue #SUGWUSC-14975
-@tag automator: nelson_jhair_mosquera_palacios
+@tag team: 4
 
 
 Narrative:

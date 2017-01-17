@@ -3,7 +3,7 @@ Expedicion Renovacion Pa Validaciones
 Meta:
 @lote3
 @issue #CDSEG-2296
-@tag automator: diego_cardona_acevedo
+@tag team: 5
 @local
 @Sprint 7
 

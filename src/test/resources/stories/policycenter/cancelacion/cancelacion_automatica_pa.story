@@ -4,7 +4,7 @@ Meta:
 @lote1
 @issue #CDSEG-3437
 @sprint 12
-@tag automator: juan_carlos_restrepo
+@tag team: 3
 @local
 
 Scenario: Boton cancelar poliza

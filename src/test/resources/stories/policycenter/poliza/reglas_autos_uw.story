@@ -4,7 +4,7 @@ Meta:
 @lote3
 @issue #CDSEG-4621
 @sprint 11
-@tag automator: juan_carlos_restrepo
+@tag team: 3
 @local
 
 

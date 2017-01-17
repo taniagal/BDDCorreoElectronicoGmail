@@ -4,7 +4,7 @@ Meta:
 @lote3
 @issue #CDSEG-2886
 @sprint 7
-@tag automator: jonathan_mejia_leon
+@tag team: 3
 @local
 
 Narrative:

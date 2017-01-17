@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @sprint 5
-@tag automator: nelson_jhair_mosquera_palacios
+@tag team: 4
 @local
 
 Narrative:

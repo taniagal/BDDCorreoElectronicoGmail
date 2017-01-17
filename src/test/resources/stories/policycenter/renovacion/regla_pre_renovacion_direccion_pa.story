@@ -3,7 +3,7 @@ Regla Pre Renovacion Direccion Pa
 Meta:
 @lote3
 @issue #CDSEG-997
-@tag automator: Jonathan_Mejia_Leon
+@tag team: 3
 @local
 Sprint 7
 

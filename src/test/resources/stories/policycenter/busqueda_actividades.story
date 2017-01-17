@@ -2,7 +2,7 @@ Busqueda Actividades
 
 Meta: @lote2
 @issue #CDSEG-730
-@tag automator: eliana_alvarez, sprint:1
+@tag team: 1, sprint:1
 @Sprint 1
 
 Narrative:

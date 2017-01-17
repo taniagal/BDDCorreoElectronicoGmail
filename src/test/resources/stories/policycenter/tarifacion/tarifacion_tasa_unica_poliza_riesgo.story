@@ -1,6 +1,6 @@
 Meta:
 @lote4
-@tag automator: eliana_alvarez
+@tag team: 1
 @sprint 12
 
 Narrative:
