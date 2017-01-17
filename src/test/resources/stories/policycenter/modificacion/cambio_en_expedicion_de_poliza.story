@@ -13,9 +13,9 @@ quiero ser capaz de emitir cambios para las pólizas de auto en PolicyCenter.
 
 Scenario: Validacion de resumen de la poliza expedirla
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+Given estoy cotizando una poliza de autos:
+|organizacion|producto|canal            |tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Sura        |Autos   |Canal Tradicional|Individual|CEDULA DE CIUDADANIA|02/12/1990      |EREN         |JAEGER         |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
@@ -29,7 +29,7 @@ Then debe mostrar el resumen de la poliza expedida con la informacion del cambio
 
 Examples:
 |tipo_documento      |documento |infoCambio                 |infoPoliza     |escritorio      |
-|CEDULA DE CIUDADANIA|1060447895|El cambio en la póliza (N.°|Ver póliza (N.°|Ir al escritorio|
+|CEDULA DE CIUDADANIA|11111111  |El cambio en la póliza (N.°|Ver póliza (N.°|Ir al escritorio|
 
 
 Scenario: Validacion etiquetas y mensaje de ventana
