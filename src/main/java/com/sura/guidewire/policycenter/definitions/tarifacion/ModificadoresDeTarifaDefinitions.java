@@ -48,22 +48,43 @@ public class ModificadoresDeTarifaDefinitions {
     }
 
     @Then("se debe generar un UW con el mensaje <mensaje>")
-    public void verificarUW(@Named("mensaje") String mensaje){
+    public void verificarUW(@Named("mensaje") String mensaje) {
         modificadoresDeTarifaSteps.verificarUW(mensaje);
     }
 
     @When("cambio la fecha de vigencia")
-    public void cambiarFechaDeVigencia(){
+    public void cambiarFechaDeVigencia() {
         modificadoresDeTarifaSteps.cambiarFechaDeVigencia();
     }
 
     @When("cambio la bonificacion tecnica <bonoT>")
-    public void cambiarBonificacionTecnica(@Named("bonoT") String bonoT){
+    public void cambiarBonificacionTecnica(@Named("bonoT") String bonoT) {
         modificadoresDeTarifaSteps.cambiarBonificacionTecnica(bonoT);
     }
 
     @When("comience el cambio de poliza")
-    public void comenzarCambioDePoliza(){
+    public void comenzarCambioDePoliza() {
         modificadoresDeTarifaSteps.comenzarCambioDePoliza();
+    }
+
+    @When("comience una sustitucion")
+    public void comenzarSustitucion() {
+        modificadoresDeTarifaSteps.comenzarSustitucion();
+    }
+
+    @Then("se debe conservar la bonificacion <bonoC> calculada con los siguientes planes: $planes")
+    public void verificarPermanenciaDeBonificacion(ExamplesTable planes, @Named("bonoC") String bonoC) {
+        modificadoresDeTarifaSteps.verificarPermanenciaDeBonificacion(planes, bonoC);
+    }
+
+    @Then("se debe recalcular la bonificacion como poliza nueva con el plan <plan> <placa> <bonoCo>")
+    public void verificarRecalculoDeBonificacion(@Named("plan") String plan, @Named("placa") String placa,
+                                                 @Named("bonoCo") String bonoC) {
+        modificadoresDeTarifaSteps.verificarRecalculoDeBonificacion(plan, placa, bonoC);
+    }
+
+    @Then("al cambiar el asegurado se debe recalcular la bonificacion como poliza nueva: $datos")
+    public void verificarBonificacionAlCambiarAsegurado(ExamplesTable datos) {
+        modificadoresDeTarifaSteps.verificarBonificacionAlCambiarAsegurado(datos);
     }
 }

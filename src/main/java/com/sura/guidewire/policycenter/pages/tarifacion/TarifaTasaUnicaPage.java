@@ -102,6 +102,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade labelPrimaTotalRenovacion;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:StartPolicyChangeDV:sustitutionPA_true-inputEl']")
+    private WebElementFacade radioBotonEsSustitucionSi;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static final int WAIT_TIME_7000 = 7000;
@@ -139,7 +141,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
         MatcherAssert.assertThat("No esta presente el boton examinar", filaExaminar.containsText("Examinar..."));
     }
 
-
     public int verificarEstadoDelEnvio(String cotizacion) {
         int val = 1;
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, cotizacion));
@@ -174,6 +175,13 @@ public class TarifaTasaUnicaPage extends PageUtil {
         campoTxtFechaDeInicioDeVigencia.waitUntilPresent().clear();
         campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(TREINTA_Y_TRES));
         botonSiguienteCambioDePoliza.click();
+    }
+
+    public void comenzarSustitucion() {
+        clickAccionesYCambiarPoliza();
+        radioBotonEsSustitucionSi.waitUntilPresent();
+        clickElement(radioBotonEsSustitucionSi);
+        clickElement(botonSiguienteCambioDePoliza);
     }
 
     public void cambiarValorAsegurado(String valorAsegurado) {

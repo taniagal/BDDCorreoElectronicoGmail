@@ -107,6 +107,8 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade comboBoxTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxAsistencia;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:0_header_hd-textEl']")
+    private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV:0:numDocument']")
     private WebElementFacade itemdocNum;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-labelEl']")
@@ -114,7 +116,7 @@ public class TarifaAutosPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-labelEl']")
     private WebElementFacade labelGatosTransporteCarro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
-    private WebElementFacade meniItemAsegurados;
+    private WebElementFacade menuItemAsegurados;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddFromSearch']")
     private WebElementFacade menuItemDelDireciotio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver']")
@@ -158,12 +160,33 @@ public class TarifaAutosPage extends PageUtil {
         itemdocNum.waitUntilPresent();
     }
 
-
-    public void seleccionarAsegurado(String tipoDocumento, String documento) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent();
-        clickElement(meniItemAsegurados);
+    public void agregarAsegurado(String tipoDocumento, String documento) {
+        esCambioDePoliza();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemAsegurados).waitUntilPresent();
+        clickElement(menuItemAsegurados);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        if ($(".message").isPresent()) {
+            clickElement(menuItemAsegurados);
+        }
+        resetImplicitTimeout();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
+        seleccionarAsegurado(tipoDocumento, documento);
+        campoTxtNombre.waitUntilPresent();
+    }
+
+    public void esCambioDePoliza(){
+        setImplicitTimeout(0,TimeUnit.SECONDS);
+        if (headerEnvio.isPresent()){
+            menuItemAsegurados = $(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PADrivers']");
+            botonAgregarAsegurado = $(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver']");
+            menuItemDelDireciotio = $(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddFromSearch']");
+            campoTxtNombre = $(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']");
+        }
+        resetImplicitTimeout();
+    }
+
+    public void seleccionarAsegurado(String tipoDocumento, String documento){
         comboBoxTipoDocumento.waitUntilPresent().clear();
         waitUntil(WAIT_TIME_300);
         comboBoxTipoDocumento.sendKeys(tipoDocumento);
@@ -178,11 +201,10 @@ public class TarifaAutosPage extends PageUtil {
             campoTxtNumeroDocumento.sendKeys(documento);
         }
         clickElement(botonBuscar);
-        seleccionarAsegurado(documento);
-        campoTxtNombre.waitUntilPresent();
+        seleccionarAseguradoEncontrado(documento);
     }
 
-    public void seleccionarAsegurado(String documento) {
+    public void seleccionarAseguradoEncontrado(String documento) {
         setImplicitTimeout(WAIT_TIME_10, TimeUnit.SECONDS);
         if (botonSeleccionar.isPresent()) {
             botonSeleccionar.click();

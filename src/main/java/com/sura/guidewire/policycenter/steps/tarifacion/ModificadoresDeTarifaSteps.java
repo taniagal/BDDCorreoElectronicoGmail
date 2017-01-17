@@ -11,6 +11,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.Map;
+
 public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     @Page
     ModificadoresDeTarifaPage modificadoresDeTarifaPage;
@@ -74,11 +76,6 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarUW(String mensaje) {
-        modificadoresDeTarifaPage.verificarUW(mensaje);
-    }
-
-    @Step
     public void cambiarFechaDeVigencia() {
         tasaUnicaPage.cambiarFechaDeVigencia();
     }
@@ -90,7 +87,37 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void comenzarCambioDePoliza(){
+    public void comenzarCambioDePoliza() {
         tasaUnicaPage.nuevoCambioDePoliza();
     }
+
+    @Step
+    public void comenzarSustitucion() {
+        tasaUnicaPage.comenzarSustitucion();
+    }
+
+    @Step
+    public void verificarPermanenciaDeBonificacion(ExamplesTable planes, String bonoC) {
+        modificadoresDeTarifaPage.verificarPermanenciaDeBonificacion(planes, bonoC);
+    }
+
+    @Step
+    public void verificarUW(String mensaje) {
+        modificadoresDeTarifaPage.verificarUW(mensaje);
+    }
+
+    @Step
+    public void verificarRecalculoDeBonificacion(String plan, String placa, String bonoC) {
+        modificadoresDeTarifaPage.verificarRecalculoDeBonificacion(plan, placa, bonoC);
+    }
+
+    @Step
+    public void verificarBonificacionAlCambiarAsegurado(ExamplesTable datos) {
+        Map<String, String> dato = datos.getRow(0);
+        tarifaAutosPage.agregarAsegurado(dato.get("tipo_documento"), dato.get("documento"));
+        modificadoresDeTarifaPage.irAVehiculos();
+        modificadoresDeTarifaPage.verificarBonificacionDeNuevoAsegurado(dato);
+    }
+
+
 }
