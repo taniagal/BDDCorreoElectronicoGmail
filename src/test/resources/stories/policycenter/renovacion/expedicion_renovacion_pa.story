@@ -1,6 +1,6 @@
 Expedicion Renovacion Pa
 
-Meta: @lote1
+Meta: @lote4
 @issue #CDSEG-7469
 @tag automator: diego_cardona_acevedo
 @local
