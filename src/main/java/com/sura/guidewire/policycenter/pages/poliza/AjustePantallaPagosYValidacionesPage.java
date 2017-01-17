@@ -9,15 +9,12 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 public class AjustePantallaPagosYValidacionesPage extends PageUtil{
-    public MultiplesAsesoresPage multiplesAsesoresPage;
-    public AjustePantallaPagosYValidacionesPage(WebDriver driver) {
-        super(driver);
-    }
-   private  static final String CONSTANTE_NO ="NO";
+    private MultiplesAsesoresPage multiplesAsesoresPage;
+    private  static final String CONSTANTE_NO ="NO";
    private static final String ENCABEZADO_EDIFICIO_Y_UBICACIONES = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']";
     private static final String ENCABEZADO_COTIZACION = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']")
-    private WebElementFacade lista_Tipo_de_Mercancia;
+    private WebElementFacade listaTipodeMercancia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade btnCotizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:BillingMethod-inputEl']")
@@ -28,9 +25,11 @@ public class AjustePantallaPagosYValidacionesPage extends PageUtil{
     private  WebElementFacade labelNecesitaAuditoriaFinalInput;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:FinalAudit-bodyEl']")
     private  WebElementFacade labelNecesitaAuditoriaFinal;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:PlanInputSet:PremiumReportPlan-triggerWrap']")
     private  WebElementFacade listPlandeInformacion;
+    public AjustePantallaPagosYValidacionesPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void seleccionarArticuloFlotante(Parametros parametros) {
         multiplesAsesoresPage.esperarObjetoClikeableServidor(ENCABEZADO_EDIFICIO_Y_UBICACIONES);
