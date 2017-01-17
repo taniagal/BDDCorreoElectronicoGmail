@@ -1,8 +1,5 @@
-Tarifa Tasa Unica Cambio De Poliza Y Renovacion
-
 Meta:
 @lote4
-@issue #CDSEG-2417
 @sprint 8
 @tag automator: nelson_jhair_mosquera_palacios
 @local

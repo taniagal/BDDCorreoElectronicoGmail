@@ -1,8 +1,5 @@
-Tarifa Corbeta Pa
-
 Meta:
 @lote1
-@issue #CDSEG-4769
 @sprint 12
 @tag automator: nelson_jhair_mosquera_palacios
 

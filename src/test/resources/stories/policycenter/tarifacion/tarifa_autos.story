@@ -1,7 +1,5 @@
-Tarifa Autos
-
-Meta: @lote1
-@issue #CDSEG-1348
+Meta:
+@lote1
 @sprint 5
 @tag automator: nelson_jhair_mosquera_palacios
 @local

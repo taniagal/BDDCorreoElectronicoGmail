@@ -1,8 +1,5 @@
-Impuestos De Tarifa
-
 Meta:
 @lote4
-@issue #CDSEG-735
 @sprint 10
 @tag automator: nelson_jhair_mosquera_palacios
 

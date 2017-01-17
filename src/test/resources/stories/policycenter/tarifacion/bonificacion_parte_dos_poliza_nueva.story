@@ -1,9 +1,6 @@
-Bonificacion Parte Dos Poliza Nueva
-
 Meta:
 @lote1
-@issue #CDSEG-5001
-@Sprint 12
+@sprint 12
 @tag automator: nelson_jhair_mosquera_palacios
 
 

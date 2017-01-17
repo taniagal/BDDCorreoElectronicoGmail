@@ -1,8 +1,5 @@
-Calculo Prima Indice Variable Mrc
-
 Meta:
 @lote4
-@issue #CDSEG-4322
 @sprint 12
 @tag automator: nelson_jhair_mosquera_palacios
 

@@ -1,8 +1,5 @@
-Ajuste Dependencia De Coberturas
-
 Meta:
 @lote1
-@issue #CDSEG-5364
 @sprint 11
 @tag automator: nelson_jhair_mosquera_palacios
 
