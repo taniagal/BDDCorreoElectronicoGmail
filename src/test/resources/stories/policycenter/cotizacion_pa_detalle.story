@@ -3,7 +3,7 @@ Cotizacion PA Detalle
 Meta: @lote3
 
 @issue #CDSEG-807
-@tag automator: diego_cardona_acevedo
+@tag team: 5
 @local
 @Sprint 3
 

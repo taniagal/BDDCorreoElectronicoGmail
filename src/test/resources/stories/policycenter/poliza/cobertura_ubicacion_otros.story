@@ -3,7 +3,7 @@ Cobertura Ubicacion Otros
 Meta: @lote2
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag team: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 

@@ -3,7 +3,7 @@ Expedicion De Poliza
 Meta:
 @lote1
 @issue #SUGWUSC-15128, CDSEG-856
-@tag automator: eliana_alvarez, sprint:2
+@tag team: 1, sprint:2
 @Sprint 2
 @local
 

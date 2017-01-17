@@ -4,7 +4,7 @@ Meta:
 @lote4
 @issue #CDSEG-5505
 @sprint 12
-@tag automator: eliana_alvarez
+@tag team: 1
 @local
 
 Scenario: 1 Validacion de expedicion: Liberar  Excepcion deducibles especiales

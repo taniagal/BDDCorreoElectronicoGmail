@@ -3,7 +3,7 @@ Modificacion Vehiculo
 Meta: @lote3
 
 @issue #CDSEG-1248
-@tag automator: diego_cardona_acevedo
+@tag team: 5
 @local
 @Sprint 4
 

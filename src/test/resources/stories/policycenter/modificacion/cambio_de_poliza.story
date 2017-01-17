@@ -3,7 +3,7 @@ Cambio De Poliza
 Meta:
 @lote3
 @issue #SUGWUSC-15127
-@tag automator: Jonathan_Mejia_Leon
+@tag team: 3
 @local
 Sprint 5
 

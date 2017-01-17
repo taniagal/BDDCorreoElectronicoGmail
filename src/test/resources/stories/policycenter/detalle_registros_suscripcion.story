@@ -3,7 +3,7 @@ Detalle Registros Suscripcion
 Meta:
 @lote2
 @issue #SUGWUSC-14959
-@tag automator: Eliana_Alvarez
+@tag team: 1
 
 Narrative:
 Como usuario PolicyCenter

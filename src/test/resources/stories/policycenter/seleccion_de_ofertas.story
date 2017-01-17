@@ -3,7 +3,7 @@ Seleccion De Ofertas
 Meta: @lote4
 
 @issue CDSEG-1023
-@tag automator: eliana_alvarez, sprint:2
+@tag team: 1, sprint:2
 @Sprint 2
 
 Narrative:

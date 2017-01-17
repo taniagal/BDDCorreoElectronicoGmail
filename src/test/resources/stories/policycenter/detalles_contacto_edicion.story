@@ -1,9 +1,7 @@
-Detalles Contacto Edicion
-
-Meta: @lote2
-@issue #CDSEG-830
+Meta:
+@lote2
 @sprint 1
-@tag automator: nelson_jhair_mosquera_palacios
+@tag team: 4
 
 
 Narrative:

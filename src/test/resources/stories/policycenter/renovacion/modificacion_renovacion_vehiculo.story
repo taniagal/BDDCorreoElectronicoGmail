@@ -3,7 +3,7 @@ Modificacion Renovacion Vehiculo
 Meta: @lote1
 
 @issue #CDSEG-2976
-@tag automator: diego_cardona_acevedo
+@tag team: 5
 @Sprint 7
 
 Narrative:
