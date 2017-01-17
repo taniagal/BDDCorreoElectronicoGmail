@@ -5,8 +5,8 @@ Meta:@lote1
 @tag automator: danny_barrientos
 @sprint 12
 Narrative:
-"Como usuario de Policy Center
-requiero realizar validaciones en la pantalla de pagos  para una adecuada gestión de los cobros flotantes."
+Como usuario de Policy Center
+requiero realizar validaciones en la pantalla de pagos  para una adecuada gestión de los cobros flotantes.
 
 
 
