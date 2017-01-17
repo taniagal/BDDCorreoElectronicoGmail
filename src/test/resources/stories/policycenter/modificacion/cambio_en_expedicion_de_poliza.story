@@ -3,7 +3,7 @@ cambio en expedicion de Poliza
 Meta:
 @lote2
 @issue #CDSEG-1251
-@tag automator: Jonathan_Mejia_Leon
+@tag team: 3
 @Sprint 4
 
 Narrative:

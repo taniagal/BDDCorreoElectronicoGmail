@@ -1,9 +1,7 @@
-Direccion Principal De Un Contacto
-
-Meta: @lote3
-@issue #CDSEG-886
+Meta:
+@lote3
 @sprint 1
-@tag automator: nelson_jhair_mosquera_palacios
+@tag team: 4
 
 Narrative:
 como usuario de PolicyCenter

@@ -3,7 +3,7 @@ Expedicion De Poliza Riesgo Direccion
 Meta:
 @lote2
 @issue #SUGWUSC-15128
-@tag automator: Jonathan_Mejia_Leon
+@tag team: 3
 @local
 Sprint 5
 

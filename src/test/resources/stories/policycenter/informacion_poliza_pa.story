@@ -3,7 +3,7 @@ Informacion Poliza Pa
 Meta: @lote3
 
 @issue #CDSEG-995
-@tag automator: diego_cardona_acevedo
+@tag team: 5
 @local
 @Sprint 2
 

@@ -6,13 +6,4 @@ import org.junit.Test;
 
 
 public class CoberturaUbicacionSustraccion extends SerenityStory {
-
-    public CoberturaUbicacionSustraccion(){
-        runSerenity().inASingleSession();
-    }
-
-    @Test
-    public void postStory(){
-        SerenityWebdriverManager.inThisTestThread().closeAllDrivers();
-    }
 }

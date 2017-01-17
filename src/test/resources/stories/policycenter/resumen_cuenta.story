@@ -3,7 +3,7 @@ Resumen Cuenta
 Meta: @lote1
 
 @issue #CDSEG-666
-@tag automator: diego_cardona_acevedo
+@tag team: 5
 @Sprint 2
 
 Narrative:
