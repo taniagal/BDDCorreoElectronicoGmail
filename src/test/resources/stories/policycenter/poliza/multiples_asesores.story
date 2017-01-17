@@ -11,7 +11,7 @@ Narrative:
 3.Para el ingreso de los datos del asesor se debe tener los siguientes campos :
 - Código de asesor (productor): Este campo es obligatorio.
 - Porcentaje: cada uno de los asesores debe tener un porcentaje de participación la suma de estos  siempre debe de ser del 100%.
-- Rol de asesor : Siempre debe haber un asesor líder.  El producer of record será considerado como el asesor líder de la póliza.
+- Rol de asesor: Siempre debe haber un asesor líder.  El producer of record será considerado como el asesor líder de la póliza.
 4 - El cambio de los asesores se hace como un traspaso de cartera y se implementará en otras HU.
 
 Disponibilidad Detalle Producto
