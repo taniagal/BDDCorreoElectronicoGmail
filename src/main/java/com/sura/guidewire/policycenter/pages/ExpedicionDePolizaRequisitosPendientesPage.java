@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
-
 public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade botonBorrar;
@@ -126,7 +125,6 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     public ExpedicionDePolizaRequisitosPendientesPage(WebDriver driver) {
         super(driver);
     }
-
 
     public void valorAccesorios(String accesorios) {
         clickElement(itemNoImportadoPorTerceros);

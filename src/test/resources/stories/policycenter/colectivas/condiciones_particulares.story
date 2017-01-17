@@ -191,7 +191,7 @@ Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And ingrese la entrada de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
+And ingrese la entrada de las diferentes coberturas con interes <documento> <tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
 | Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |

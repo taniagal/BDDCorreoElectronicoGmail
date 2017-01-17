@@ -9,16 +9,13 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-
 public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
 
     ExpedicionDePolizaRequisitosPendientesPage expedicionDePolizaRequisitosPendientesPage;
-
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
     NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
     int token = 1;
-
 
     public ExpedicionDePolizaRequisitosPendientesSteps(Pages pages) {
         super(pages);
@@ -73,7 +70,6 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
     @Step
     public void ingresarCiudadModificacionPoliza(String ciudad) {
         expedicionDePolizaRequisitosPendientesPage.agregarCiudadCirculacion(ciudad);
-
     }
 
     @Step
@@ -111,7 +107,6 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
         expedicionDePolizaRequisitosPendientesPage.agregarVehiculo(datos);
-
     }
 
     @Step

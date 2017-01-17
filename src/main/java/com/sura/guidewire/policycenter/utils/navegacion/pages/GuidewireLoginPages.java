@@ -66,27 +66,28 @@ public class GuidewireLoginPages extends PageUtil {
         return $(TITULO_PAGINA_PPL_DE_ACCESO).getText();
     }
 
-
     public void ingresarPorRol(String rol) {
         LOGGER.info("INICIO GuidewireLoginPages.ingresarPorRol( " + rol + ")");
         if ("Asesor".equals(rol)) {
             setImplicitTimeout(0, TimeUnit.SECONDS);
-            if (!menuContacto.isPresent() && campoUsuario1.isPresent() && !findAll(TXT_USUARIO).isEmpty()) {
-                enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
-                enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
-                elemento(GuidewireLoginPages.BTN_LOGIN).click();
-            } else {
-                this.campoUsuario.waitUntilPresent();
-                this.campoUsuario.clear();
-                this.campoContrasenia.clear();
-                this.campoPais.click();
-                this.campoPais.selectByVisibleText("Colombia");
-                this.campoUsuario.type("pedrvevi");
-                this.campoContrasenia.type("pedrvevi");
-                botonEnviar.click();
+            if (!menuContacto.isPresent()) {
+                if (campoUsuario1.isPresent() && !findAll(TXT_USUARIO).isEmpty()) {
+                    enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
+                    enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
+                    elemento(GuidewireLoginPages.BTN_LOGIN).click();
+                } else {
+                    this.campoUsuario.waitUntilPresent();
+                    this.campoUsuario.clear();
+                    this.campoContrasenia.clear();
+                    this.campoPais.click();
+                    this.campoPais.selectByVisibleText("Colombia");
+                    this.campoUsuario.type("pedrvevi");
+                    this.campoContrasenia.type("pedrvevi");
+                    botonEnviar.click();
+                }
             }
+            resetImplicitTimeout();
         }
-        resetImplicitTimeout();
         waitForPresenceOf(MNU_CONTACTO);
         LOGGER.info("FIN GuidewireLoginPages.ingresarPorRol( " + rol + ")");
     }

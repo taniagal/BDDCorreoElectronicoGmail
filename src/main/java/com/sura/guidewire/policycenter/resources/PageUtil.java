@@ -82,7 +82,7 @@ public class PageUtil extends PageObject {
             waitUntil(WAIT_TIME_2000);
         }
         clickElement(element);
-        waitUntil(WAIT_TIME_200);
+        waitUntil(WAIT_TIME_300);
         try {
             element.clear();
         } catch (StaleElementReferenceException g) {
@@ -120,7 +120,7 @@ public class PageUtil extends PageObject {
 
 
     public void verificarMensajes(WebElementFacade divMensaje, ExamplesTable mensajes) {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
             MatcherAssert.assertThat("Error: en la validacion del mensaje, expected: " + mensaje.get("mensaje")
                     + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("mensaje")));
