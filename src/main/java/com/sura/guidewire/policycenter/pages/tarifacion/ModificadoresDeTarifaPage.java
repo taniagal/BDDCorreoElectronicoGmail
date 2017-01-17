@@ -57,7 +57,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     public WebElementFacade labelUW;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver']")
+    @FindBy(xpath = ".//a[contains(.,'DANIEL MEJIA CUARTAS') and contains(@id,'PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV')]")
     private WebElementFacade menuItemAsegurado;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade radioBotonCehiculo0KmNo;
@@ -179,7 +179,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
         menuItemAsegurado.waitUntilPresent();
         clickearElemento(menuItemAsegurado);
         checkBoxTablaAsegurado.waitUntilPresent();
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_2000);
         MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was " +
                 campoTxtBonificacionComercialCambio.getValue(), campoTxtBonificacionComercialCambio.getValue()
                 .contains(dato.get("bonoC")));

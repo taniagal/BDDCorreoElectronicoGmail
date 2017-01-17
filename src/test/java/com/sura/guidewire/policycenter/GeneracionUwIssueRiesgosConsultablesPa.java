@@ -1,4 +1,6 @@
 package com.sura.guidewire.policycenter;
 
-public class GeneracionUwIssueRiesgosConsultablesPa{
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class GeneracionUwIssueRiesgosConsultablesPa extends SerenityStory{
 }
