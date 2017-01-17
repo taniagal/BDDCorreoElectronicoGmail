@@ -2,7 +2,8 @@ Ajuste Pantalla Pagos Y Validaciones
 
 Meta:@lote1
 @issue #SUGWUSC-1162
-@tag automatizador: danny_barrientos, informer:danny_barrientos, sprint:12
+@tag automator: danny_barrientos
+@Sprint 12
 Narrative:
 "Como usuario de Policy Center
 requiero realizar validaciones en la pantalla de pagos  para una adecuada gestión de los cobros flotantes."
