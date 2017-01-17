@@ -31,7 +31,7 @@ public class BusquedaContactoDelDirectorioPage extends PageUtil {
         cboTipoContacto.click();
         WebElementFacade optCboTipoContacto = findBy(".//li[contains(.,'" + tipoContacto + "')]");
         optCboTipoContacto.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         txtPrimerNombre.type(nombre);
         txtPrimerApellido.type(apellido);
         btnBuscar.click();

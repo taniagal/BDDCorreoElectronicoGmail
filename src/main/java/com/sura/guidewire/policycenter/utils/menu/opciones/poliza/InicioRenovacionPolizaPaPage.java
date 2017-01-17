@@ -77,9 +77,9 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     }
 
     public void irARenovacion() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilPresent();
-        clickElement(btnAcciones);
-        clickElement(btnRenovarPoliza);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilPresent();
+        clickearElemento(btnAcciones);
+        clickearElemento(btnRenovarPoliza);
     }
 
     public void cancelaOperacionRenovacion() {
@@ -88,7 +88,7 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
 
     public void aceptaOperacionRenovacion() {
         btnAceptarRenovacion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilClickable();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilClickable();
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
@@ -96,24 +96,24 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     }
 
     public void validacionesPantallaFormularios(ExamplesTable datosTomador) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         Map<String, String> datos = datosTomador.getRow(0);
         if ("tomador".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("cedula del tomador no valida", datoCedeulaTomador.getText().equals(datos.get("cedulaTomador")));
             MatcherAssert.assertThat("el nombre del tomador no es valido", datoNombre.getText().equals(datos.get("nombre")));
             MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getValue().equals(datos.get("oficinaRadicacion")));
             MatcherAssert.assertThat("el nombre de agente", datoAgente.getValue().contains(datos.get("codAgente")));
-            clickElement(botonSiguiente);
+            clickearElemento(botonSiguiente);
         } else if ("asegurado".equals(datos.get("rol"))) {
-            setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+            setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
             if (findBy(".message").isPresent()) {
-                clickElement(botonSiguiente);
+                clickearElemento(botonSiguiente);
             }
             resetImplicitTimeout();
             MatcherAssert.assertThat("cedula del Asegurado no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
             MatcherAssert.assertThat("primer nombre no valido", datoPrimerNombreAsegurado.getValue().equals(datos.get("pNombre")));
             MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getValue().equals(datos.get("pApellido")));
-            clickElement(botonSiguiente);
+            clickearElemento(botonSiguiente);
         } else if ("vehiculo".equals(datos.get("rol"))) {
             botonCotizaeV.waitUntilPresent();
             MatcherAssert.assertThat("modelo no valido", datoModelo.getValue().equals(datos.get("modelo")));
@@ -130,8 +130,8 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     }
 
     public void retirarTransaccion() {
-        clickElement(btnOpcionDeCierre);
-        clickElement(btnRetiraTransaccion);
-        clickElement(btnAceptarRetiraTransaccion);
+        clickearElemento(btnOpcionDeCierre);
+        clickearElemento(btnRetiraTransaccion);
+        clickearElemento(btnAceptarRetiraTransaccion);
     }
 }

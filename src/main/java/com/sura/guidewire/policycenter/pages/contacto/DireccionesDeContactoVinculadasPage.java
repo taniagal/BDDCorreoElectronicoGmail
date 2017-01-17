@@ -79,7 +79,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     private static final String DESCRIPCION = "descripcion";
     private static final String PAIS = "pais";
     private static final String TIPO_DIRECCION = "tipoDireccion";
-    private static final int WAIT_TIME_10000 = 10000;
+    private static final int TIEMPO_10000 = 10000;
     private static final int CONSTANTE_3 = 3;
     private static final int CONSTANTE_2 = 2;
 
@@ -232,14 +232,14 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
                     MatcherAssert.assertThat(combo.getValue(), Is.is(Matchers.equalTo(dato)));
                     break;
                 } else {
-                    waitUntil(WAIT_TIME_1000);
+                    esperarHasta(TIEMPO_1000);
                 }
             } catch (StaleElementReferenceException elemento) {
                 LOGGER.info("El elemento no ha sido encontrado " + elemento);
             }
             intentos++;
         }
-        waitForTextToAppear("Contactos de archivo de cuenta", WAIT_TIME_10000);
+        waitForTextToAppear("Contactos de archivo de cuenta", TIEMPO_10000);
     }
 
     public void validarDireccionEstandarizada(String direccionEstandarizada, String nombreContacto) {

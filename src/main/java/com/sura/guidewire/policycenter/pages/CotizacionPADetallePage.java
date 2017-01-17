@@ -33,14 +33,14 @@ public class CotizacionPADetallePage extends PageUtil {
     }
 
     public void verDetalleCotizacion() {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 
     public void validarTerminoCobertura() {
         waitFor(tablaCoberturas).shouldBeVisible();
         List<WebElement> allRows = tablaCoberturas.findElements(By.tagName("tr"));
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         String validacion = null;
         Map<String, String> terminoCoberturas = new HashMap<>();
         try {
@@ -57,7 +57,7 @@ public class CotizacionPADetallePage extends PageUtil {
 
             waitFor(botonCoberturasPA).shouldBeVisible();
             botonCoberturasPA.click();
-            waitForTextToAppear("Coberturas de auto personal", WAIT_TIME_1000);
+            waitForTextToAppear("Coberturas de auto personal", TIEMPO_1000);
 
             for (int j = 1; j <= i; j++) {
                 WebElementFacade coberturaAuto = findBy(".//div[contains(.,'" + terminoCoberturas.get("dato" + j) + "')]");
@@ -67,7 +67,7 @@ public class CotizacionPADetallePage extends PageUtil {
 
             waitFor(botonCotizacion).shouldBeVisible();
             botonCotizacion.click();
-            waitForTextToAppear("Cotización", WAIT_TIME_1000);
+            waitForTextToAppear("Cotización", TIEMPO_1000);
 
         } catch (Exception e) {
             LOGGER.error("This is error", e);

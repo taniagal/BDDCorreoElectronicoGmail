@@ -101,14 +101,14 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void irAModificarInformacionPoliza() {
-        clickElement(menuAcciones);
+        clickearElemento(menuAcciones);
         itemCambiarPoliza.waitUntilPresent().click();
         waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
     }
 
     public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza) {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBePresent();
+        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBePresent();
         Map<String, String> datosPoliza;
         MatcherAssert.assertThat(labelTipoDocumento.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("tipoDocumento"))));
         MatcherAssert.assertThat(labelNumeroDocumento.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("numeroDocumento"))));
@@ -149,24 +149,24 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void adicionarSegundoTomador(String tipoDocumento, String numeroDocumento) {
-        waitUntil(WAIT_TIME_5000);
+        esperarHasta(TIEMPO_5000);
         waitFor(labelTomadorSecundario).shouldBePresent();
         WebElementFacade botonTomadorSecundario = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']");
         waitFor(botonTomadorSecundario).click();
         WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
         adicionarContacto(tipoDocumento, numeroDocumento);
     }
 
     public void adicionarContacto(String tipoDocumento, String numeroDocumento){
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         WebElementFacade campoTxtTipoDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTxtTipoDocumento).typeAndTab(tipoDocumento);
-        waitUntil(WAIT_TIME_1000);
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoTxtTipoDocumento).typeAndTab(tipoDocumento);
+        esperarHasta(TIEMPO_1000);
         WebElementFacade campoTxtNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTxtNumeroDocumento).type(numeroDocumento);
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoTxtNumeroDocumento).type(numeroDocumento);
         WebElementFacade botonBuscarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']");
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         waitFor(botonBuscarContacto).click();
         WebElementFacade botonSeleccionarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']");
         waitFor(botonSeleccionarContacto).shouldBeVisible();
@@ -207,7 +207,7 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     public void validarTomadorRiesgo() {
         waitFor(botonCotizar).click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void validarBloqueoSegundoTomador(String mensaje) {
@@ -236,35 +236,35 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void presionarBotonSiguiente(){
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBeVisible();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBeVisible();
         botonSiguiente.click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void validarMensajeWarningTomador(String mensaje) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         WebElementFacade grupoMensajes = findBy(".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:_msgs']/div");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         botonSiguiente.click();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void validarMensajeWarningAsegurado(String mensaje) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         WebElementFacade grupoMensajes = findBy(".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:_msgs']/div");
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         botonSiguiente.click();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void permitirContinuarCotizacion() {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         WebElementFacade labelTituloAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelTituloAsegurados).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(labelTituloAsegurados).shouldBePresent();
         MatcherAssert.assertThat(labelTituloAsegurados.getText(), Is.is(Matchers.equalTo("Asegurados")));
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void irAOpcionAsegurados() {
@@ -273,11 +273,11 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void adicionarAsegurado(String tipoDocumento, String numeroDocumento) {
-        waitUntil(WAIT_TIME_5000);
+        esperarHasta(TIEMPO_5000);
         WebElementFacade botonAgregar= findBy(". //span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnEl']/span");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregar).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregar).click();
         WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddFromSearch-textEl']");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
         adicionarContacto(tipoDocumento, numeroDocumento);
     }
 
@@ -287,11 +287,11 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void validarContinuacionDeCotizacion(String encabezado, String xpathEncabezado) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         WebElementFacade labelTitulo = findBy(xpathEncabezado);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelTitulo).shouldBePresent();
-        waitUntil(WAIT_TIME_1500);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelTitulo).shouldBePresent();
+        esperarHasta(TIEMPO_1500);
         MatcherAssert.assertThat(labelTitulo.getText(), Is.is(Matchers.equalTo(encabezado)));
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
     }
 }

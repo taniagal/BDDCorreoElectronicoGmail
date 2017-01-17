@@ -39,17 +39,17 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Cotización", WAIT_TIME_5000);
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        waitForTextToAppear("Cotización", TIEMPO_5000);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (tituloDePagina.isPresent()) {
-            waitForTextToAppear(tituloDePagina.getText(), WAIT_TIME_2000);
+            waitForTextToAppear(tituloDePagina.getText(), TIEMPO_2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
         }
         resetImplicitTimeout();
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).waitUntilPresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).waitUntilPresent();
         Map<String, String> datosCotizacion = informacionCotizacion.getRows().get(0);
         MatcherAssert.assertThat(campoTomador.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tomador"))));
         MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDocumento"))));

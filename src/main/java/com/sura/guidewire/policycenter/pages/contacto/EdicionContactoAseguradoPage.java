@@ -40,7 +40,7 @@ public class EdicionContactoAseguradoPage extends PageUtil{
     }
 
     public void editarDatosComunesDeContacto(Map<String, String> datosContacto){
-        campoTipoDocumento.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoTipoDocumento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
         campoTipoDocumento.sendKeys(Keys.ENTER);
         campoNumeroDocumento.clear();
@@ -48,18 +48,18 @@ public class EdicionContactoAseguradoPage extends PageUtil{
         campoPais.clear();
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_3000);
-        campoDepartamento.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        esperarHasta(TIEMPO_3000);
+        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_3000);
-        campoCiudad.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        esperarHasta(TIEMPO_3000);
+        campoCiudad.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoCiudad.sendKeys(datosContacto.get("ciudad"));
         campoCiudad.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_1000);
-        campoDireccion.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        esperarHasta(TIEMPO_1000);
+        campoDireccion.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         campoTipoDireccion.clear();
         campoTipoDireccion.sendKeys(datosContacto.get("tipoDireccion"));
         campoTipoDireccion.sendKeys(Keys.ENTER);

@@ -30,7 +30,7 @@ public class ConfiguracionModeloDeDatosColectivosPages extends PageUtil {
 
     public void ingresarAPolicyInfo() {
         menuItemInformacionDePoliza.waitUntilPresent();
-        clickElement(menuItemInformacionDePoliza);
+        clickearElemento(menuItemInformacionDePoliza);
     }
 
     public void verificarEstadosDeCamposNuevos(String tipoFacturacion) {

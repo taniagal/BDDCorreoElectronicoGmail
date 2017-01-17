@@ -74,7 +74,7 @@ public class CotizacionMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
     private WebElementFacade campoTxtSubN;
 
-    protected static final int WAIT_TIME_7000 = 7000;
+    protected static final int TIEMPO_7000 = 7000;
 
     public CotizacionMRCPage(WebDriver driver) {
         super(driver);
@@ -91,7 +91,7 @@ public class CotizacionMRCPage extends PageUtil {
         WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:PolicyInfo']/div/span");
         WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']");
         if (titulo.isCurrentlyVisible()) {
-            waitForTextToAppear("Información de póliza", WAIT_TIME_5000);
+            waitForTextToAppear("Información de póliza", TIEMPO_5000);
         } else {
             waitFor(botonInformacionPoliza).shouldBeVisible();
             botonInformacionPoliza.click();
@@ -99,8 +99,8 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void verDetalleCotizacion() {
-        waitUntil(WAIT_TIME_2000);
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
+        esperarHasta(TIEMPO_2000);
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
         MatcherAssert.assertThat(tituloPagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 
@@ -133,12 +133,12 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void validarPrima(String primaTotal) {
-        waitUntil(WAIT_TIME_7000);
+        esperarHasta(TIEMPO_7000);
         MatcherAssert.assertThat(campoPrimaTotal.getText(), Is.is(Matchers.equalTo(primaTotal)));
     }
 
     public void mostrarDetallePrima(Map<String, String> labelsCotizacionPoliza) {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tabPrimaPoliza).shouldBeVisible();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(tabPrimaPoliza).shouldBeVisible();
         MatcherAssert.assertThat(tabPrimaPoliza.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("tabPrimaPoliza"))));
         MatcherAssert.assertThat(botonAnularClasificacion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("botonAnularClasificacion"))));
         MatcherAssert.assertThat(columnaDescripcion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaDescripcion"))));
@@ -146,8 +146,8 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        WebElementFacade resultadosValidacion = withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
+        WebElementFacade resultadosValidacion = withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         MatcherAssert.assertThat(tablaMensajes.getText(), Matchers.containsString(mensaje));
     }
@@ -158,10 +158,10 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void validarTipoRiesgo() {
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
-        waitUntil(WAIT_TIME_5000);
+        esperarHasta(TIEMPO_5000);
     }
 }

@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 public class BusquedaDeCuentaPage extends PageObject {
     private static String TXT_NUMERO_DE_CUENTA = "//input[contains(@id,'AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl')]";
     private static String BTN_BUSCAR = "//a[contains(@id,'AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search')]";
-    protected static final int WAIT_TIME_5 = 5;
+    protected static final int TIEMPO_5 = 5;
 
     public BusquedaDeCuentaPage(WebDriver driver) {
         super(driver);
@@ -45,7 +45,7 @@ public class BusquedaDeCuentaPage extends PageObject {
         WebElementFacade enlaceNumCuenta = find(By.linkText(numCuenta)).waitUntilVisible();
         shouldBeVisible(enlaceNumCuenta);
         enlaceNumCuenta.click();
-        fluent().await().atMost(WAIT_TIME_5, TimeUnit.SECONDS);
+        fluent().await().atMost(TIEMPO_5, TimeUnit.SECONDS);
         return switchToPage(CuentaPages.class);
     }
 }

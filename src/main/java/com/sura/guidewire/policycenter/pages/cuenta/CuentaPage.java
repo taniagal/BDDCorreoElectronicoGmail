@@ -96,22 +96,22 @@ public class CuentaPage extends PageUtil {
     public void agregarDireccion(ExamplesTable datos) {
         Map<String, String> dato = datos.getRow(0);
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(dato.get("direccion"));
-        selectItem(comboBoxDepartamento, dato.get("departamento"));
-        waitForComboValue(comboBoxDepartamento, dato.get("departamento"));
-        selectItem(comboBoxCiudad, dato.get("ciudad"));
-        waitForComboValue(comboBoxCiudad, dato.get("ciudad"));
-        selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
-        waitForComboValue(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
+        seleccionarItem(comboBoxDepartamento, dato.get("departamento"));
+        esperarPorValor(comboBoxDepartamento, dato.get("departamento"));
+        seleccionarItem(comboBoxCiudad, dato.get("ciudad"));
+        esperarPorValor(comboBoxCiudad, dato.get("ciudad"));
+        seleccionarItem(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
+        esperarPorValor(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         waitFor(botonAgregarOrganizacion).click();
-        waitUntil(WAIT_TIME_500);
+        esperarHasta(TIEMPO_500);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
-        waitUntil(WAIT_TIME_500);
-        selectItem(comboBoxCodigoAgente, agente);
+        esperarHasta(TIEMPO_500);
+        seleccionarItem(comboBoxCodigoAgente, agente);
     }
 
     public void agregarNombrecomercial(String nombreComercial) {
@@ -126,15 +126,15 @@ public class CuentaPage extends PageUtil {
 
     public void actualizar() {
         botonActualizar.click();
-        waitUntil(WAIT_TIME_1000);
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        esperarHasta(TIEMPO_1000);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (linkElegir.isPresent()) {
             linkElegir.click();
-            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonActualizarCoincidente);
+            withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonActualizarCoincidente);
             if ("".equals(campoTxtDocumentoNuevaCuenta.getValue())){
                 campoTxtDocumentoNuevaCuenta.sendKeys(Utils.cedulaRandom());
             }
-            clickElement(botonActualizarCoincidente);
+            clickearElemento(botonActualizarCoincidente);
         }
         resetImplicitTimeout();
     }
@@ -150,7 +150,7 @@ public class CuentaPage extends PageUtil {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
     }
 
     public void verificarMensaje(String mensaje) {
@@ -158,12 +158,12 @@ public class CuentaPage extends PageUtil {
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
         MatcherAssert.assertThat("Falló la creación de la cuenta", labelCuentaNumero.containsText(nombreCuenta));
     }
 
     public void verificarEstadoDeMensaje(String mensaje) {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("El mensaje erroneo sigue apareciendo", !divMensaje.containsText(mensaje));
     }
 }

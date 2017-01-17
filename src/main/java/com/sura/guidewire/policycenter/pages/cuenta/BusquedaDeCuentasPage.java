@@ -107,7 +107,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         acciones.click(menuBuscar).build().perform();
         waitForTextToAppear("Buscar pólizas");
         waitFor(menuBuscarCuentas).waitUntilVisible();
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         acciones.click(menuBuscarCuentas).build().perform();
     }
 
@@ -125,7 +125,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
     private void limpiarFormulario() {
         waitFor(botonRestablecer).waitUntilVisible().waitUntilClickable();
         acciones.click(botonRestablecer).build().perform();
-        PageUtil.waitUntil(WAIT_TIME_2000);
+        PageUtil.esperarHasta(TIEMPO_2000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {

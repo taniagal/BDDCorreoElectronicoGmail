@@ -31,19 +31,19 @@ public class PlanDeTrabajoPage extends PageUtil {
 
     public void ingresarALaOpcionPlanDeTrabajo() {
         findBy(xPathOpcionPlanDeTrabajo).click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         waitForTextToAppear("Plan de trabajo");
     }
 
     public void ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza() {
         findBy(xPathOpcionPlanDeTrabajoEnCambioDePoliza).click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         waitForTextToAppear("Plan de trabajo");
     }
 
     public void ingresarALaOpcionPlanDeTrabajoEnRenovacionDePoliza() {
         findBy(xPathOpcionPlanDeTrabajoEnRenovacionDePoliza).click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         waitForTextToAppear("Plan de trabajo");
     }
 
@@ -56,7 +56,7 @@ public class PlanDeTrabajoPage extends PageUtil {
         }
         if (numeroDeRiesgosEnAnalisisDeRiesgos == listaNombresAgentesElement.size()) {
             MatcherAssert.assertThat("Se genero una actividad por cada riesgo consultable", true);
-            waitUntil(WAIT_TIME_1000);
+            esperarHasta(TIEMPO_1000);
         }
     }
 }

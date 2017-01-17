@@ -56,7 +56,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void seleccionarTransacciones() {
@@ -67,7 +67,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
         waitFor(fechaCreacion).waitUntilPresent();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(findBy(".//*[contains(text(), '" + poliza + "')]").getText(), Matchers.containsString(poliza));
         MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
@@ -93,7 +93,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
             allRows = table.findElements(By.tagName("tr"));
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
-            waitUntil(WAIT_TIME_2000);
+            esperarHasta(TIEMPO_2000);
             allRows = table.findElements(By.tagName("tr"));
         }
         for (WebElement row : allRows) {
@@ -102,7 +102,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
                 estadoStr = cells.get(CONSTANTE_5).getText();
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);
-                waitUntil(WAIT_TIME_3000);
+                esperarHasta(TIEMPO_3000);
                 cells = row.findElements(By.tagName("td"));
                 estadoStr = cells.get(CONSTANTE_5).getText();
             }
@@ -125,7 +125,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
         waitFor(table).waitUntilVisible();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
@@ -136,9 +136,9 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         waitFor(this.filtroProducto).waitUntilPresent();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
         this.filtroProducto.sendKeys(Keys.ENTER);
@@ -146,7 +146,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     public void validarTransaccionesPorProducto(String filtroProducto) {
         waitFor(table).waitUntilVisible();
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {

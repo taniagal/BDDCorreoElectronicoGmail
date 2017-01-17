@@ -90,14 +90,14 @@ public class SustitucionesPage extends PageUtil {
         ValidacionesInformacionDeVehiculoPage validacionesInformacionDeVehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosAgregarVehiculo.getRow(0);
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         validacionesInformacionDeVehiculoPage.ingresarPlaca(vehiculo);
         validacionesInformacionDeVehiculoPage.clickVehiculoServicio();
         validacionesInformacionDeVehiculoPage.seleccionarComboBoxModelo(vehiculo);
         validacionesInformacionDeVehiculoPage.ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
         validacionesInformacionDeVehiculoPage.waitForCampoTxtValorAsegurado(vehiculo);
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
         validacionesInformacionDeVehiculoPage.agregarDescuento(vehiculo);
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
         validacionesInformacionDeVehiculoPage.clickSiguiente();

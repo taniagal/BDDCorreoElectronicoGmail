@@ -107,7 +107,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         btnItemDirec.click();
         opcionPolizaMrc.waitInfoPoliza(lblBuscarDirec);
         txtTipoDoc.clear();
-        waitUntil(WAIT_TIME_800);
+        esperarHasta(TIEMPO_800);
         txtTipoDoc.type(tipoDocumento);
         txtTipoDoc.sendKeys(Keys.ENTER);
         opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);
@@ -116,15 +116,15 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
         btnSeleccion.click();
         opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
-        waitUntil(WAIT_TIME_1500);
+        esperarHasta(TIEMPO_1500);
         if(lstTipoBeneficia.isCurrentlyVisible()){
             lstTipoBeneficia.click();
             itmAsegurado.click();
         }else if(lstTipoBeneficia2.isCurrentlyVisible()){
-            waitUntil(WAIT_TIME_1000);
+            esperarHasta(TIEMPO_1000);
             itmAsegurado.click();
         }
-        clickElement(btnDetalleVehiculo);
+        clickearElemento(btnDetalleVehiculo);
         campoTxtPlaca.waitUntilPresent();
     }
 
@@ -132,10 +132,10 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         txtValorAccesorios.clear();
         ingresarDato(txtValorAccesorios,valorAccesorio);
         txtValorAsegurado.click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         ingresarDato(txtAcceEspeciales,valorAccesorioEsp);
         txtValorAsegurado.click();
-        waitUntil(WAIT_TIME_3000);
+        esperarHasta(TIEMPO_3000);
         int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
         int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
         int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
@@ -182,22 +182,22 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
     }
 
     public void validarInteresAdicionalPEP() {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
-        waitUntil(WAIT_TIME_1500);
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        esperarHasta(TIEMPO_1500);
     }
 
     public void validarMensajePEPInteresAdicional(String mensaje) {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
-        waitUntil(WAIT_TIME_2000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void permitirContinuarCotizacion() {
-        waitUntil(WAIT_TIME_2000);
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_2000);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        esperarHasta(TIEMPO_1000);
         WebElementFacade labelCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelCoberturasAuto).click();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(labelCoberturasAuto).click();
     }
 }
 

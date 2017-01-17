@@ -31,7 +31,7 @@ public class SolicitarRequisitoPaPage extends PageUtil{
         Map<String, String> advertencia = mensaje.getRows().get(0);
         WebElementFacade mensajeAdvertencia = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         MatcherAssert.assertThat(mensajeAdvertencia.getText(), Matchers.containsString(advertencia.get("mensaje")));
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
     }
 
     public void validarRequisitos() {
@@ -44,6 +44,6 @@ public class SolicitarRequisitoPaPage extends PageUtil{
         WebElementFacade mensajeAdvertencia = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         MatcherAssert.assertThat(mensajeAdvertencia.getText(), Matchers.containsString(bloqueo.get("mensajeB")));
         MatcherAssert.assertThat("El mensaje no es de bloqueo ",findBy(".//img[@class='error_icon']").isVisible(), Is.is(Matchers.equalTo(true)));
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
     }
 }

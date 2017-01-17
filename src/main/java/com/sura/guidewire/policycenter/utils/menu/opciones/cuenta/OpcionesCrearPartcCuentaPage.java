@@ -43,7 +43,7 @@ public class OpcionesCrearPartcCuentaPage extends PageUtil {
             mnuOpcionesCuenta.waitUntilPresent().click();
             btnEditCuenta.waitUntilPresent().click();
             btnAgregaCuenta.waitUntilPresent().click();
-            waitUntil(WAIT_TIME_1000);
+            esperarHasta(TIEMPO_1000);
             listRol.click();
             act.sendKeys(Keys.TAB).build().perform();
             act.sendKeys(Keys.ENTER).build().perform();
@@ -55,7 +55,7 @@ public class OpcionesCrearPartcCuentaPage extends PageUtil {
             btnBuscarUsuario.click();
             botonSeleccionar.waitUntilPresent().click();
             lblPartArc.waitUntilPresent();
-            waitUntil(WAIT_TIME_1000);
+            esperarHasta(TIEMPO_1000);
             act.sendKeys(Keys.TAB).build().perform();
             act.sendKeys(Keys.TAB).build().perform();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -65,7 +65,7 @@ public class OpcionesCrearPartcCuentaPage extends PageUtil {
     }
 
     public void verificarCamposParticipantes() {
-        waitUntil(WAIT_TIME_1000);
+        esperarHasta(TIEMPO_1000);
         MatcherAssert.assertThat("Error al agregar el rol del participante de la cuenta", rol.containsText("Asegurador"));
     }
 }
