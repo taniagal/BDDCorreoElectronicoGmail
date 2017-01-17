@@ -50,7 +50,7 @@ public class InicioCancelacionPage extends PageUtil {
 
     public void inicioCancelacion() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilEnabled().waitUntilClickable();
-        btnAcciones.click();
+        clickElement(btnAcciones);
         waitUntil(WAIT_TIME_3000);
         btnCancelarPoliza.waitUntilClickable().click();
     }

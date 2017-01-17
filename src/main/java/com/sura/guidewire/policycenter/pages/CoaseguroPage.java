@@ -81,7 +81,7 @@ public class CoaseguroPage extends PageUtil {
                 MatcherAssert.assertThat("Sura debe estar por defecto en las aseguradoras", campoAseguradora.containsText("Sura"));
             } else {
                 act.click().build().perform();
-                waitUntil(WAIT_TIME_500);
+                waitUntil(WAIT_TIME_800);
                 act.sendKeys(aseguradora.getNombre()).build().perform();
                 act.sendKeys(Keys.TAB).build().perform();
                 waitUntil(WAIT_TIME_500);
