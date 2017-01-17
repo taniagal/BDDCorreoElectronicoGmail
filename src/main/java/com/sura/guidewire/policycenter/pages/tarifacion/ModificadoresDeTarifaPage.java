@@ -179,7 +179,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
         menuItemAsegurado.waitUntilPresent();
         clickearElemento(menuItemAsegurado);
         checkBoxTablaAsegurado.waitUntilPresent();
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_2500);
         MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was " +
                 campoTxtBonificacionComercialCambio.getValue(), campoTxtBonificacionComercialCambio.getValue()
                 .contains(dato.get("bonoC")));

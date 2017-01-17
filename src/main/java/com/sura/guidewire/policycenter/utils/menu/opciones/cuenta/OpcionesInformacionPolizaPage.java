@@ -288,7 +288,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         waitFor(textoDescuentoPoliza);
         textoDescuentoPoliza.type(porcentaje);
         waitFor(botonSiguiente);
-        botonSiguiente.click();
+        clickearElemento(botonSiguiente);
     }
 
     public void validarMensajePorcentajePoliza(String mensaje) {
