@@ -9,14 +9,12 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 public class AjustePantallaPagosYValidacionesPage extends PageUtil{
-    public MultiplesAsesoresPage multiplesAsesoresPage;
-    public AjustePantallaPagosYValidacionesPage(WebDriver driver) {
-        super(driver);
-    }
-    private static final String ENCABEZADO_EDIFICIO_Y_UBICACIONES = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']";
+    private MultiplesAsesoresPage multiplesAsesoresPage;
+    private  static final String CONSTANTE_NO ="NO";
+   private static final String ENCABEZADO_EDIFICIO_Y_UBICACIONES = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']";
     private static final String ENCABEZADO_COTIZACION = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']")
-    private WebElementFacade list_Tipode_Mercancia;
+    private WebElementFacade listaTipodeMercancia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade btnCotizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:BillingMethod-inputEl']")
@@ -27,19 +25,21 @@ public class AjustePantallaPagosYValidacionesPage extends PageUtil{
     private  WebElementFacade labelNecesitaAuditoriaFinalInput;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:FinalAudit-bodyEl']")
     private  WebElementFacade labelNecesitaAuditoriaFinal;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:PlanInputSet:PremiumReportPlan-triggerWrap']")
     private  WebElementFacade listPlandeInformacion;
+    public AjustePantallaPagosYValidacionesPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void seleccionarArticuloFlotante(Parametros parametros) {
         multiplesAsesoresPage.esperarObjetoClikeableServidor(ENCABEZADO_EDIFICIO_Y_UBICACIONES);
-        seleccionarItem(list_Tipode_Mercancia,parametros.getTipo());
+        seleccionarItem(listaTipodeMercancia,parametros.getTipo());
         multiplesAsesoresPage.clicObjeto(btnCotizar);
         multiplesAsesoresPage.esperarObjetoClikeableServidor(ENCABEZADO_COTIZACION);
     }
 
     public void validacionDatosDePantalla(Parametros parametros) {
-        if(parametros.getAuditoria().equals("NO")){
+        if(parametros.getAuditoria().equals(CONSTANTE_NO)){
         validarSiEsEditableDato(labelNecesitaAuditoriaFinalInput,parametros.getAuditoria());
         }
         validarDatosDePantalla(parametros);
@@ -50,15 +50,13 @@ public class AjustePantallaPagosYValidacionesPage extends PageUtil{
         boolean resultado = true;
         String txtmetodoFacturacion = labelMetodoFacturacion.getText();
         String tipoPlan = labelTipoPlan.getText();
-        switch (parametros.getTipo())
-        {
+        switch (parametros.getTipo()) {
             case Parametros.AUTOMATICO:
                 if(!(txtmetodoFacturacion.equals(parametros.getMetodoFacturacion()) && tipoPlan.equals(parametros.getTipoPlan()))){
                     MatcherAssert.assertThat("El metodo de facturacion y el tipo de plan no son iguales.", resultado);
                 }
                     break;
             case Parametros.DECLARATIVO:
-
                 if(!(txtmetodoFacturacion.equals(parametros.getMetodoFacturacion()) && tipoPlan.equals(parametros.getTipoPlan()))){
                     MatcherAssert.assertThat("El metodo de facturacion y el tipo de plan no son iguales.", resultado);
                 }
