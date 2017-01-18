@@ -5,10 +5,11 @@ import com.sura.guidewire.policycenter.definitions.InformacionDePolizaMrcDefinit
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.GrupoDeDireccionSteps;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.Named;
 
 public class GrupoDeDireccionDefinitions {
 
@@ -28,20 +29,20 @@ public class GrupoDeDireccionDefinitions {
         informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
     }
 
-    @When("ingrese a la opcion de reaseguro")
+    @When("quiera reasegurar la poliza expedida")
     public void whenIngreseALaOpcionDeReaseguro() {
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
     }
 
-    @Then("se debe validar los valores del CP, monto retenido y cedido del contrato")
+    @Then("debo ver el resultado del reaseguro aplicable por cada riesgo para un contrato cuota parte y excedente segun porcentajes de retencion y cesion")
     public void thenSeDebeValidarLosValoresDelCP() {
         grupoDeDireccionSteps.validaInformacionDeCotaparte();
-    }
-
-    @Then("se debe validar los valores del EX, el monto retenido debe ser igual a 0")
-    public void thenSeDebeValidarLosValoresDelEX() {
         grupoDeDireccionSteps.validainformaciondeExcedente();
     }
 
-
+    @Then("se debe validar los valores del EX, el monto retenido debe ser igual a 0")
+    @Alias("se debe validar los valores del Exedidos en el contrato")
+    public void thenSeDebeValidarLosValoresDelEX() {
+        grupoDeDireccionSteps.validainformaciondeExcedente();
+    }
 }

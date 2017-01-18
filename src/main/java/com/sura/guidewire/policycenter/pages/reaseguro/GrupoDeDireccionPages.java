@@ -12,8 +12,6 @@ public class GrupoDeDireccionPages extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:DefaultGrossRetention-inputEl']")
     WebElementFacade lblLimiteContratoCp;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:RetainedPropShare-inputEl']")
-    WebElementFacade lblPorcentajeRetSobreRiesgo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:PropRetention-inputEl']")
     WebElementFacade lblValorRetenidoCp;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body']/div/table/tbody/tr[1]/td[7]")
@@ -22,14 +20,45 @@ public class GrupoDeDireccionPages extends PageUtil {
     WebElementFacade tblRiesgoCedidoContratoExcedenteBasico;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body']/div/table/tbody/tr[1]/td[2]")
     WebElementFacade tblnumeroDeAcuerdoContrato;
+    @FindBy(xpath = ".//*[@id='EditAgreementPopup:__crumb__']")
+    WebElementFacade linkVolverAReaseguro;
+    @FindBy(xpath = ".//*[@id='EditAgreementPopup:AgreementScreen:AgreementCoverageInputSet:ReteinedShare-inputEl']")
+    WebElementFacade lblPorcentajeRetencionVigente;
+    @FindBy(xpath = ".//*[@id='EditAgreementPopup:AgreementScreen:AgreementCoverageInputSet:CededShare-inputEl']")
+    WebElementFacade lblPorcentajeCesionVigente;
 
     private static final double CONSTANTE_CIEN = 100.0;
     private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
-    private static double porcentajeDeCesionContratoCotaparte = 0;
-    private static double porcentajeDeRetencionContratoCotaparte = 0;
+    private static String porcentajeDeCesionContratoCotaparte = null;
+    private static String porcentajeDeRetencionContratoCotaparte = null;
 
     public GrupoDeDireccionPages(WebDriver driver) {
         super(driver);
+    }
+
+    public void obtienePorcentajeDeCesionYRetencionEnContratoCotaparte(){
+        esperarYClickearBoton(tblnumeroDeAcuerdoContrato);
+        porcentajeDeRetencionContratoCotaparte = lblPorcentajeRetencionVigente.getText();
+        porcentajeDeCesionContratoCotaparte = lblPorcentajeCesionVigente.getText();
+        esperarYClickearBoton(linkVolverAReaseguro);
+    }
+
+    public String calculaMontoRetenidoEnContrato() {
+        double valorMontoRetenidoEnContrato = (Double.parseDouble(porcentajeDeRetencionContratoCotaparte.replace(",", ".")) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
+        String cadenaConValor = Utils.convierteNumeroEnTexto(valorMontoRetenidoEnContrato);
+        return cadenaConValor;
+    }
+
+    public String calculaMontoCedidoEnContratoCotaparte() {
+        double valorCedidoEnContratoBasico = ((CONSTANTE_CIEN - Double.parseDouble(porcentajeDeRetencionContratoCotaparte)) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
+        String textoConValor = Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasico);
+        return textoConValor;
+    }
+
+    public String calculaMontoCedidoEnContratoExdente() {
+        double valorCedidoEnContratoBasicoExcedido = CONSTANTE_CONTRATO_COUTAPARTE - Utils.convierteTextoEnNumero(lblLimiteContratoCp);
+        String textoConValor = Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasicoExcedido);
+        return textoConValor;
     }
 
     public void validaMontoRetenidoEnContratoEnCotaparte() {
@@ -44,27 +73,7 @@ public class GrupoDeDireccionPages extends PageUtil {
     public void validaMontoCedidoEnContratoEnExcedido() {
         MatcherAssert.assertThat("Error en el valor en contrato excedido, expected: " + calculaMontoCedidoEnContratoCotaparte() +
                 " but was: " + tblRiesgoCedidoContratoExcedenteBasico.getText(), tblRiesgoCedidoContratoExcedenteBasico.getText().equals(calculaMontoCedidoEnContratoExdente()));
-    }
-
-    public String calculaMontoRetenidoEnContrato() {
-        double valorMontoRetenidoEnContrato = (Double.parseDouble(lblPorcentajeRetSobreRiesgo.getText().replace(",", ".")) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
-        String cadenaConValor = Utils.convierteNumeroEnTexto(valorMontoRetenidoEnContrato);
-        return cadenaConValor;
-    }
-
-    public String calculaMontoCedidoEnContratoCotaparte() {
-        double valorCedidoEnContratoBasico = ((CONSTANTE_CIEN - Double.parseDouble(lblPorcentajeRetSobreRiesgo.getText())) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
-        String textoConValor = Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasico);
-        return textoConValor;
-    }
-
-    public String calculaMontoCedidoEnContratoExdente() {
-        double valorCedidoEnContratoBasicoExcedido = CONSTANTE_CONTRATO_COUTAPARTE - Utils.convierteTextoEnNumero(lblLimiteContratoCp);
-        String textoConValor = Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasicoExcedido);
-        return textoConValor;
-    }
-
-    public void obtienePorcentajeDeCesionYRetencionEnContratoCotaparte(){
 
     }
+
 }
