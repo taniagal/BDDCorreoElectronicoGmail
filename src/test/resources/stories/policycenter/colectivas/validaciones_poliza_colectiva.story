@@ -1,11 +1,6 @@
-Validaciones Poliza colectiva
-
-
 Meta:
 @lote2
-@Story CDSEG-4620 @Story CDSEG-4618
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata
+@tag team: 2
 @Sprint 11
 
 Scenario: 1 Validacion de campos en menu lateral de poliza riesgo
@@ -69,8 +64,6 @@ And deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Tipo de cobertura         |
 
-
-
 Examples:
 | numSubscripcion | rolUsuario | estadouno  | estadodos  |
 | 33344336        | Asesor     | Visible    | No visible |
@@ -115,7 +108,6 @@ And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opci
 And en revision de poliza deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Edificios   |
-
 
 Examples:
 | numSubscripcion | rolUsuario | estadouno | estadodos  |

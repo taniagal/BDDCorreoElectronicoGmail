@@ -1,18 +1,15 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.google.inject.name.Named;
-import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.NuevaPolizaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
