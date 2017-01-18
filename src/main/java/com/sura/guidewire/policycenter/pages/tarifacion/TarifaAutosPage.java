@@ -322,7 +322,8 @@ public class TarifaAutosPage extends PageUtil {
 
     public void verificarTarifacion(String valor) {
         WebElementFacade tablaDescripcion = findBy(TABLAXPATH + "1]/td[3]");
-        MatcherAssert.assertThat("Error en el valor de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor));
+        MatcherAssert.assertThat("Error en el valor de la tarifacion Expected: " + valor + " But was: " +
+                tablaDescripcion.getText(), tablaDescripcion.containsText(valor));
     }
 
 
@@ -336,7 +337,8 @@ public class TarifaAutosPage extends PageUtil {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
             WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");
             MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " +
-                    cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
+                    cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " +
+                    tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
         }
     }
 

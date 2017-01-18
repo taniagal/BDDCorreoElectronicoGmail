@@ -61,3 +61,14 @@ Then el resultado de la cotizacion en cada cobertura debe ser:
 Examples:
 |tipo_documento      |documento |
 |CEDULA DE CIUDADANIA|1060447895|
+
+
+
+Scenario:realizar cambio de poliza
+Given tengo una poliza expedida
+When modifique los datos de la poliza
+Then se debe generar una tarifa valorada
+
+Examples:
+||
+||
