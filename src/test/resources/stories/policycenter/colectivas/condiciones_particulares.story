@@ -104,7 +104,7 @@ Examples:
 ||
 
 
-Scenario: 9 Validacion de bloqueo de vehiculo cero kilometros en estado SI
+Scenario: 9 Bloqueo de expedicion de vehiculo cero kilometros
 GivenStories: stories/policycenter/login_policy.story
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
@@ -138,7 +138,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 10 Validacion de bloqueo de vehiculo cero kilometros en estado NO
+Scenario: 10 Bloqueo de expedicion de vehiculo NO cero kilometros
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -165,7 +165,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 11 Validacion de expedicion de vehiculo cero kilometros -Validación riesgo consultable tomador en póliza riesgo en PA
+Scenario: 11 Expedicion de poliza riesgo en PA con riesgo consultable aceptado en poliza principal
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -186,7 +186,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|33355366  |
 |CEDULA DE CIUDADANIA|1060447895|33355338  |
 
-Scenario: 12 Validación riesgo consultable tomador en póliza riesgo en CP
+Scenario: 12 Expedicion de poliza riesgo en CP con riesgo consultable aceptado en poliza principal
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
@@ -205,7 +205,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|33355337  |Asegurado       | 94537281|
 
 
-Scenario: 13 Validacion bloqueo de vehiculo por maximo valor accesorios
+Scenario: 13  Bloqueo de expedicion de vehiculo por maximo valor accesorios
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -237,7 +237,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|33355439  |
 
 
-Scenario: 14 Validacion de expedicion por maximo valor accesorios
+Scenario: 14 Expedicion de vehiculo por maximo valor accesorios
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -259,7 +259,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 15 Validacion bloqueo de vehiculo blindado en estado SI
+Scenario: 15  Bloqueo de expedicion de vehiculo blindado
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -286,7 +286,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 16 Validacion expedicion de vehiculo blindado en estado NO
+Scenario: 16  Expedicion de vehiculo NO blindado
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -306,7 +306,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 17 Validacion bloqueo de vehiculo blindado para poliza sin condicion particular(CP)
+Scenario: 17  Bloqueo de expedicion de vehiculo blindado para poliza sin condicion particular(CP)
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -333,7 +333,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 18 Validacion bloqueo: vehiculo de transporte de combustible en estado SI
+Scenario: 18  Bloqueo: vehiculo de transporte de combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -356,7 +356,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
 
-Scenario: 19 Validacion expedicion: vehiculo de transporte de combustible en estado NO
+Scenario: 19 Expedicion de vehiculo que NO transporta combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -376,7 +376,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
 
-Scenario: 20 Validacion de expedicion sin seleccionar opcion de transporte de combustible
+Scenario: 20 Expedicion de poliza sin seleccionar opcion de transporte de combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -396,7 +396,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
 
-Scenario: 21 Validacion de expedicion: vehiculo de transporte de combustible para poliza sin condicion particular(CP)
+Scenario: 21 Expedicion: vehiculo de transporte de combustible para poliza sin condicion particular(CP)
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
