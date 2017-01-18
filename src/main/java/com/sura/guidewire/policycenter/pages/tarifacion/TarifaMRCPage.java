@@ -215,7 +215,7 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        campoTxtIndiceVariable.sendKeys(valorIndice);
+        ingresarDato(campoTxtIndiceVariable, valorIndice);
         clickearElemento(checkBoxDaniosMateriales);
     }
 
