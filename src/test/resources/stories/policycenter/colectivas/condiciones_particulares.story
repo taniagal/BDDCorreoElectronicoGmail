@@ -356,7 +356,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
 
-Scenario: 19 Expedicion de vehiculo de transporte de combustible en estado NO
+Scenario: 19 Expedicion de vehiculo que NO transporta combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
