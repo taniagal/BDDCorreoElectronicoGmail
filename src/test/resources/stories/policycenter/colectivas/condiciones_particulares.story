@@ -165,7 +165,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 11 Expedicion de poliza riesgo en PA con riesgo consultable aceptado en poliza principal
+Scenario: 11 Expedicion de poliza riesgo con riesgo consultable aceptado en poliza principal, para vehiculo cero kilometros
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -237,7 +237,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|33355439  |
 
 
-Scenario: 14 Expedicion de vehiculo por maximo valor accesorios
+Scenario: 14 Expedicion de poliza de vehiculo por maximo valor accesorios
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -333,7 +333,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 18  Bloqueo: vehiculo de transporte de combustible
+Scenario: 18  Bloqueo de expedicion para vehiculo que transporte combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -356,7 +356,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
 
-Scenario: 19 Expedicion de vehiculo que NO transporta combustible
+Scenario: 19 Expedicion de poliza para vehiculo que NO transporta combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -396,7 +396,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
 
-Scenario: 21 Expedicion: vehiculo de transporte de combustible para poliza sin condicion particular(CP)
+Scenario: 21 Expedicion de vehiculo de transporte de combustible para poliza sin condicion particular(CP)
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
