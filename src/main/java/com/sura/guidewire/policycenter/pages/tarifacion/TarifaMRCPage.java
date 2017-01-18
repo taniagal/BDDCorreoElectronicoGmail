@@ -5,7 +5,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -143,7 +146,13 @@ public class TarifaMRCPage extends PageUtil {
      */
 
     public void agregarArticulo() {
-        clickearElemento(botonActualizar);
+        try {
+            botonActualizar.waitUntilPresent();
+            clickearElemento(botonActualizar);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            clickearElemento(botonActualizar);
+        }
         botonCotizar.waitUntilPresent();
         clickearElemento(botonCotizar);
         descartarCambios();
@@ -201,16 +210,16 @@ public class TarifaMRCPage extends PageUtil {
     public void verificarValorIva() {
         primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_8).replace(".", ""));
         int iva = (int) (primaTotal * CONSTANTE_016);
-        MatcherAssert.assertThat("Error en el calculo del valor del IVA expected:" + iva +", was: " + campoIva.getText(),
+        MatcherAssert.assertThat("Error en el calculo del valor del IVA expected:" + iva + ", was: " + campoIva.getText(),
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        campoTxtIndiceVariable.sendKeys(valorIndice);
+        ingresarDato(campoTxtIndiceVariable, valorIndice);
         clickearElemento(checkBoxDaniosMateriales);
     }
 
-    public void agregarContactoDelDirectorio(){
+    public void agregarContactoDelDirectorio() {
         botonAgregarContacto.waitUntilPresent().click();
         botonAgregarContactoDelDirectorio.click();
     }
