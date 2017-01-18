@@ -35,4 +35,8 @@ Given que voy a la busqueda de riesgos
 When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE860 |
-Then debe mostrar el mensaje <mensaje> indicando lo ocurrido
+Then debe mostrar el mensaje <mensaje> ---
+
+Examples:
+|mensaje|
+|La búsqueda no devolvió resultados.|
