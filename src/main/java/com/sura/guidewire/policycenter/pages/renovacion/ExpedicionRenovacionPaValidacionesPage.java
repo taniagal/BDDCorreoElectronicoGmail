@@ -12,11 +12,11 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class ExpedicionRenovacionPaValidacionesPage extends PageUtil{
+public class ExpedicionRenovacionPaValidacionesPage extends PageUtil {
 
     Actions act = new Actions(getDriver());
 
-    public ExpedicionRenovacionPaValidacionesPage(WebDriver driver){
+    public ExpedicionRenovacionPaValidacionesPage(WebDriver driver) {
         super(driver);
     }
 
@@ -39,17 +39,17 @@ public class ExpedicionRenovacionPaValidacionesPage extends PageUtil{
     public void editarInformacionVehiculoRenovacion(ExamplesTable infoVehiculo) {
         WebElementFacade validacionRetroactividad = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']/div");
         WebElementFacade itemVehiculos = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']/div/span");
-        setImplicitTimeout(TIEMPO_5,TimeUnit.SECONDS);
-        withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
-        if(validacionRetroactividad.isPresent()){
-            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        clickearElemento(itemVehiculos);
+        if (validacionRetroactividad.isPresent()) {
+            clickearElemento(itemVehiculos);
         }
         resetImplicitTimeout();
         WebElementFacade labelVehiculos = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelVehiculos).shouldBePresent();
         WebElementFacade botonEditarTransaccion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']");
-        setImplicitTimeout(TIEMPO_5,TimeUnit.SECONDS);
-        if(botonEditarTransaccion.isPresent()){
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        if (botonEditarTransaccion.isPresent()) {
             botonEditarTransaccion.click();
             waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual y podría ser necesaria una nueva aprobación de la aseguranza. ¿Está seguro de que desea continuar?");
             actions.sendKeys(Keys.ENTER).build().perform();
@@ -58,10 +58,10 @@ public class ExpedicionRenovacionPaValidacionesPage extends PageUtil{
         Map<String, String> datosVehiculo = infoVehiculo.getRows().get(0);
         WebElementFacade motor = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']");
         WebElementFacade chasis = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']");
-        if ("null".equals(datosVehiculo.get("motor")) && "null".equals(datosVehiculo.get("chasis"))){
+        if ("null".equals(datosVehiculo.get("motor")) && "null".equals(datosVehiculo.get("chasis"))) {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(motor).clear();
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(chasis).clear();
-        }else {
+        } else {
             motor.sendKeys(datosVehiculo.get("motor"));
             chasis.sendKeys(datosVehiculo.get("chasis"));
         }
