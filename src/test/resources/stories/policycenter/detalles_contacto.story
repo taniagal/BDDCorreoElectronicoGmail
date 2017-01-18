@@ -1,9 +1,7 @@
-Detalles Contacto
-
-Meta: @lote3
-@issue #CDSEG-940
+Meta:
+@lote3
 @sprint 1
-@tag automator: nelson_jhair_mosquera_palacios
+@tag team: 4
 
 Narrative:
 Como usuario

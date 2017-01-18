@@ -1,9 +1,6 @@
-Flujo de actividades Rc Mrc renovar
-
 Meta:
 @lote4
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
+@tag team: 2
 @Sprint 9
 
 Narrative:

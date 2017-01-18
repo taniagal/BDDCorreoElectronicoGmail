@@ -3,7 +3,7 @@ Bugs Coberturas Ubicacion
 Meta:
 @lote3
 @Story CDSEG-2887
-@tag automator:andres_alarcon_guerrero
+@tag team: 2
 @Sprint 6
 
 

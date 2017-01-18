@@ -1,10 +1,6 @@
-Procesar Cancelacion
-
 Meta:
 @lote1
-@Story CDSEG-3425
-@URL https://jira.suramericana.com.co/browse/CDSEG-3425
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
+@tag team: 2
 @Sprint 8
 
 Scenario: 1 Programar cancelacion de poliza
@@ -63,8 +59,6 @@ Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de trámite, Descripción: Prueba cancelacion  de poliza
 And realice la cancelacion de poliza
 Then la cancelacion de la poliza es correcta si se muestra el texto: Cancelación Expedida
-
-
 Examples:
 | numPoliza     | rolUsuario |
 | TEST_22263226 | Asesor     |

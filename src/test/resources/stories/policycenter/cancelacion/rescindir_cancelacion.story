@@ -1,11 +1,7 @@
-Rescindir Cancelacion
-
-
 Meta:
 @lote2
 @manual
-@Story CDSEG-???
-@tag automator:juan_gabriel_zapata
+@tag team: 2
 @Sprint 9
 
 Scenario: 1 Rescindir Cancelacion de poliza
@@ -15,8 +11,6 @@ And ingrese fecha superior al dia actual
 And realice la programacion de cancelacion
 And rescinda la cancelacion de la poliza <numPoliza>
 Then la revocacion de la poliza es correcta si se muestra el texto: Cancelación Revocado
-
-
 Examples:
 | numPoliza     | rolUsuario |
 | TEST_99999999 | Asesor     |

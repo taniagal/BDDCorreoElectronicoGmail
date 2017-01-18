@@ -1,10 +1,7 @@
-Calculo Bonificacion
-
 Meta:
 @lote2
-@issue #CDSEG-1938
 @Sprint 6
-@tag automator: nelson_jhair_mosquera_palacios
+@tag team: 4
 @local
 
 Narrative:

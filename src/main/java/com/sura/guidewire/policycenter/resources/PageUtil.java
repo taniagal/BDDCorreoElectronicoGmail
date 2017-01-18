@@ -146,7 +146,6 @@ public class PageUtil extends PageObject {
                 esperarHasta(TIEMPO_2000);
                 waitFor(elemento).waitUntilPresent();
             }
-
             try {
                 elemento.clear();
             } catch (ElementNotVisibleException e) {

@@ -13,7 +13,11 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MultiplesAsesoresPage extends PageUtil {
-
+    private static final int CONSTANTE_UNO = 1;
+    private static final int CONSTANTE_DOS = 2;
+    private static final int CONSTANTE_TRES = 3;
+    private static final int CONSTANTE_CUATRO = 4;
+    protected static final int CONSTANTE_VEINTE = 20;
     private static final String PATH_ENCABEZADO_INFORMACIONPOLIZA = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     private static final String PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
     private static final String PATH_TABLA_ENCABEZADO_AGENTE = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']";
@@ -49,12 +53,11 @@ public class MultiplesAsesoresPage extends PageUtil {
     }
 
     public void ingresarCodigoAsesor(Parametros parametros) {
-
         for (int i = 1; i <= parametros.getListaAgentes().size(); i++) {
             esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
-            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, 2, parametros.getListaAgentes().get(i - 1));
-            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, 3, parametros.getListaPorcentaje().get(i - 1));
-            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, 4, parametros.getListaroles().get(i - 1));
+            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_DOS, parametros.getListaAgentes().get(i - CONSTANTE_UNO));
+            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_TRES, parametros.getListaPorcentaje().get(i - CONSTANTE_UNO));
+            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_CUATRO, parametros.getListaroles().get(i - CONSTANTE_UNO));
 
             if (i < parametros.getListaAgentes().size()) {
                 clicObjeto(btnAgregar);
@@ -70,13 +73,12 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     //TODO Metodos que pueden agregar a utileria de comando
     public void esperarObjetoClikeableServidor(String pathElemento) {
-
         WebElementFacade elemento;
         boolean ejecuto = false;
-        int maximoEjecuciones = 120;
-        int ejecuciones = 0;
+        int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
+        int ejecuciones = CONSTANTE_CUENTA_EJECUCIONES;
         while (ejecuciones < maximoEjecuciones && !ejecuto) {
-            esperarHasta(500);
+            esperarHasta(TIEMPO_500);
             try {
                 elemento = this.getElemento(pathElemento);
                 this.clicObjeto(elemento);
@@ -84,9 +86,8 @@ public class MultiplesAsesoresPage extends PageUtil {
             } catch (Exception ex) {
                 LOGGER.info("Exception " + ex);
             }
-            ejecuciones = ejecuciones + 1;
+            ejecuciones = ejecuciones + TIEMPO_1;
         }
-
         if (!ejecuto) {
             MatcherAssert.assertThat("No se pudo dar click a botón", false);
         }
@@ -110,7 +111,7 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     //TODO Metodos que pueden agregar a utileria de comando
     public List<WebElementFacade> getList(String locator) {
-        return withTimeoutOf(55, TimeUnit.SECONDS).findAll(locator);
+        return withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).findAll(locator);
     }
 
     //TODO Metodos que pueden agregar a utileria de comando
@@ -121,10 +122,9 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     //TODO Metodos que pueden agregar a utileria de comando
     public void escribirTextoCeldaTabla(String path, int indiceFila, int indiceColumna, String texto) {
-
         WebElementFacade elemento = consultarElementoFilaColumna(path, indiceFila, indiceColumna);
         clicObjeto(elemento);
-        borrarRegistroDatos(20);
+        borrarRegistroDatos(CONSTANTE_VEINTE);
         actions.sendKeys(texto).build().perform();
         esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
 
@@ -142,7 +142,6 @@ public class MultiplesAsesoresPage extends PageUtil {
     }
 
     public void validarDatosDelAsesor(Parametros parametros) {
-
         if (parametros.getValidarDato().equals(Parametros.CODIGOASESOR)) {
             esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
             validarCodigoAsesor(parametros);
@@ -155,7 +154,7 @@ public class MultiplesAsesoresPage extends PageUtil {
     public void validarRolAsesor(Parametros parametros) {
         int cantidaRol = consultarNumeroElementosTabla(PATH_TABLA_AGENTE);
         for (int i = 1; i <= cantidaRol; i++) {
-            if (!consultarTextoCeldaTabla(PATH_TABLA_AGENTE, 1, 4).equals(parametros.getRol())) {
+            if (!consultarTextoCeldaTabla(PATH_TABLA_AGENTE, CONSTANTE_UNO, CONSTANTE_CUATRO).equals(parametros.getRol())) {
                 MatcherAssert.assertThat("No se encontro el rol", false);
             }
         }
@@ -171,9 +170,8 @@ public class MultiplesAsesoresPage extends PageUtil {
     public int validarExistenciaCodigoAsesor(Parametros parametros) {
         int codigoAsesorRepetido = 0;
         int cantidaCodigoAsesor = consultarNumeroElementosTabla(PATH_TABLA_AGENTE);
-
         for (int i = 1; i <= cantidaCodigoAsesor; i++) {
-            if (consultarTextoCeldaTabla(PATH_TABLA_AGENTE, 1, 2).equals(parametros.getCodigoAsesor())) {
+            if (consultarTextoCeldaTabla(PATH_TABLA_AGENTE, CONSTANTE_UNO, CONSTANTE_DOS).equals(parametros.getCodigoAsesor())) {
                 codigoAsesorRepetido++;
             }
         }

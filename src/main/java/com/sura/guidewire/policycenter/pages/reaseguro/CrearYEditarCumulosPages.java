@@ -122,7 +122,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
             clickearElemento(listFormaCotizacionModalidad);
-        }catch (ElementNotVisibleException e){
+        } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
             esperarHasta(TIEMPO_2000);
             clickearElemento(listFormaCotizacionModalidad);
@@ -169,7 +169,12 @@ public class CrearYEditarCumulosPages extends PageUtil {
     }
 
     public void validaPrimaBrutaDeCesion() {
-        MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        try {
+            MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        }
     }
 
     public void validaUtilidadesNegativas(String mensaje) {

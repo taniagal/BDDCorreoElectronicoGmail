@@ -2,7 +2,7 @@
 Meta:
 @lote2
 @issue
-@tag automator: eliana_alvarez
+@tag team: 1
 @local
 @Sprint 12
 

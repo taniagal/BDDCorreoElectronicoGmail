@@ -3,7 +3,7 @@ Analisis De Riesgo Mrc
 Meta:
 @lote1
 @issue #CDSEG-993
-@tag automator: eliana_alvarez
+@tag team: 1
 @Sprint 9
 
 Narrative:

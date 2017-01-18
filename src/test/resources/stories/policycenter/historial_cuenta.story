@@ -3,7 +3,7 @@ Historial Cuenta
 Meta: @lote1
 
 @issue #CDSEG-925
-@tag automator: diego_cardona_acevedo
+@tag team: 5
 @Sprint 1
 
 Narrative:

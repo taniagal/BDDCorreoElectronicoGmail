@@ -3,7 +3,7 @@ Busqueda Contacto
 Meta: @lote1
 
 @issue #CDSEG-894
-@tag automator: diego_cardona_acevedo
+@tag team: 5
 @Sprint 1
 
 Narrative:

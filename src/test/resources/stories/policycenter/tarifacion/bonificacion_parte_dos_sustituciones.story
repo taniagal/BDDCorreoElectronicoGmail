@@ -1,10 +1,7 @@
-Bonificacion Parte Dos Sustituciones
-
 Meta:
 @lote1
-@issue #CDSEG-5576
 @Sprint 12
-@tag automator: nelson_jhair_mosquera_palacios
+@tag team: 4
 
 
 Narrative:
