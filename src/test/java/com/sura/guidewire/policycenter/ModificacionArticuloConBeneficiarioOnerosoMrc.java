@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter;
 
-/**
- * Created by juanrert on 18/01/2017.
- */
-public class ModificacionArticuloConBeneficiarioOnerosoMrc {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class ModificacionArticuloConBeneficiarioOnerosoMrc extends SerenityStory {
 }
