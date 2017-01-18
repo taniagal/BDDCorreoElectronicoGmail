@@ -22,8 +22,6 @@ public class CrearYEditarCumulosDefinitions {
     @Steps
     CrearYEditarCumulosSteps crearYEditarCumulosSteps;
 
-    ExamplesTable datosReasegurador;
-
     @Given("ingrese a edificios y ubicaciones")
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
         informacionDePolizaMrcSteps.ingresarAEdificiosYUbicaciones();
@@ -84,5 +82,4 @@ public class CrearYEditarCumulosDefinitions {
     public void thenElValorDeprimaBrutaDeCesionDebeTomarElMismoValorDeLaColumnavalor() {
         crearYEditarCumulosSteps.validaPrimaBruta();
     }
-
 }
