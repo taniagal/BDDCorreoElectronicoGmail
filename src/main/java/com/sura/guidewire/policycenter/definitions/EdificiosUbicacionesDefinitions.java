@@ -94,6 +94,10 @@ public class EdificiosUbicacionesDefinitions {
 
     }
 
+    @When("Ingresar interes adicional a cada cobertura")
+    public void agregarInteresAdicional(){
+    }
+
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 

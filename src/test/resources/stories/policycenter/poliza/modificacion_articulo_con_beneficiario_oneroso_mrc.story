@@ -19,7 +19,7 @@ And ingrese la entrada de las diferentes coberturas con interes <documento> <tip
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
 | Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
 | Interes Adicional        | Interes Adicional |                     |                  | NULL                             | 00000          |
-
+And Ingresar interes adicional a cada cobertura
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
