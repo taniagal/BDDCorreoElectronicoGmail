@@ -84,7 +84,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void crearVehiculo() {
-        botonCrearVehiculo.waitUntilPresent().click();
+        botonCrearVehiculo.waitUntilPresent();
+        clickearElemento(botonCrearVehiculo);
         campoTxtPlaca.waitUntilPresent();
     }
 

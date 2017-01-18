@@ -35,4 +35,4 @@ And al cambiar el asegurado se debe recalcular la bonificacion como poliza nueva
 
 Examples:
 |tipo_documento      |documento|bonoT|bonoC|bonoCo|placa |plan                      |
-|CEDULA DE CIUDADANIA|11111111 |0    |38   |18    |CYU123|Plan Utilitarios y Pesados|
+|CEDULA DE CIUDADANIA|11111111 |0    |18   |18    |CYU123|Plan Utilitarios y Pesados|
