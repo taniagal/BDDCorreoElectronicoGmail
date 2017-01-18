@@ -32,6 +32,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresarNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion) {
+        edificiosyUbicacionesWidget.ingresarNuevaUbicacionSinRiesgoConsultable(datosUbicacion);
+    }
+
+    @Step
     public void seleccionarBotonAgregarArticuloAUnaUbicacion() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacion();
     }

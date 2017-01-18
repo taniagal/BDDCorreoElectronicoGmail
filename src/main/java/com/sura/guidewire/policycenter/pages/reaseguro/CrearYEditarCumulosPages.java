@@ -37,8 +37,6 @@ public class CrearYEditarCumulosPages extends PageUtil {
     WebElementFacade btnAceptarReasegurador;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]/div")
     WebElementFacade listFormaCotizacionModalidad;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[7]/div")
-    WebElementFacade listFormaCotizacionValor;
     @FindBy(xpath = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]")
     WebElementFacade txtFormaCotizacionModalidad;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[3]")

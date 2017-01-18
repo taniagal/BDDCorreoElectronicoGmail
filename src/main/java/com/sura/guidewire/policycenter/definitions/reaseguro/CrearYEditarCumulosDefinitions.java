@@ -35,6 +35,12 @@ public class CrearYEditarCumulosDefinitions {
         edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo();
     }
 
+    @Given("intente ingresar una nueva ubicacion sin riesgo consultable $datosUbicacion")
+    public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion) {
+        edificiosUbicacionesSteps.removerRiesgos();
+        edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo(datosUbicacion);
+    }
+
     @Given("intente ingresar las entradas de las diferentes coberturas $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
@@ -56,7 +62,6 @@ public class CrearYEditarCumulosDefinitions {
 
     @When("Ingrese la información de un reasegurador en la tabla de reaseguradores $datosReaseguradores")
     public void ingresaInformacionEnTablaParaReasegurado(ExamplesTable datosReaseguradores){
-        datosReasegurador = datosReaseguradores;
         crearYEditarCumulosSteps.ingresarModalidadDeTasaEnTabla(datosReaseguradores);
     }
 
