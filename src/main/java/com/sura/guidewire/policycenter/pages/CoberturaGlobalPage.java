@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -161,11 +162,16 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void ingresarDescripcionDetalleCoberturaGlobal(String descripcion) {
-        waitFor(TIEMPO_2000);
+        esperarHasta(TIEMPO_2000);
         try {
             labelDescripcionCoberturaGlobal.sendKeys(descripcion);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
+            esperarHasta(TIEMPO_2000);
+            labelDescripcionCoberturaGlobal.sendKeys(descripcion);
+        } catch (StaleElementReferenceException f) {
+            LOGGER.info("StaleElementReferenceException " + f);
+            esperarHasta(TIEMPO_2000);
             labelDescripcionCoberturaGlobal.sendKeys(descripcion);
         }
     }
