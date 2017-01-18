@@ -56,8 +56,7 @@ public class Utils {
      * */
     public static double convierteTextoEnNumero(WebElementFacade valorTextoParaConvertirANumero) {
         String[] cadenaSinCaracteres = valorTextoParaConvertirANumero.getText().split(",");
-        Double valorLimiteContrato = Double.parseDouble(cadenaSinCaracteres[0].substring(1).replaceAll("\\.", ""));
-        return valorLimiteContrato;
+        return Double.parseDouble(cadenaSinCaracteres[0].substring(1).replaceAll("\\.", ""));
     }
 
     /**
@@ -74,7 +73,6 @@ public class Utils {
         String signoPesos = "$";
         String caracteresCompletarTexto = ",00 (COP)";
         String valorConFormatoNumero = nuevoFormato.format(numeroParaConvertirEnCadena);
-        String valor = signoPesos + valorConFormatoNumero + caracteresCompletarTexto;
-        return valor;
+        return signoPesos + valorConFormatoNumero + caracteresCompletarTexto;
     }
 }

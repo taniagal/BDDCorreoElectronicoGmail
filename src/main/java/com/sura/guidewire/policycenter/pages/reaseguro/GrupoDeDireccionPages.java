@@ -11,21 +11,21 @@ import org.openqa.selenium.WebDriver;
 public class GrupoDeDireccionPages extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:DefaultGrossRetention-inputEl']")
-    WebElementFacade lblLimiteContratoCp;
+    private WebElementFacade lblLimiteContratoCp;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:PropRetention-inputEl']")
-    WebElementFacade lblValorRetenidoCp;
+    private WebElementFacade lblValorRetenidoCp;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body']/div/table/tbody/tr[1]/td[7]")
-    WebElementFacade tblRiesgoCedidoContratoCotaparteBasico;
+    private WebElementFacade tblRiesgoCedidoContratoCotaparteBasico;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body']/div/table/tbody/tr[2]/td[7]")
-    WebElementFacade tblRiesgoCedidoContratoExcedenteBasico;
+    private WebElementFacade tblRiesgoCedidoContratoExcedenteBasico;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body']/div/table/tbody/tr[1]/td[2]")
-    WebElementFacade tblnumeroDeAcuerdoContrato;
+    private WebElementFacade tblnumeroDeAcuerdoContrato;
     @FindBy(xpath = ".//*[@id='EditAgreementPopup:__crumb__']")
-    WebElementFacade linkVolverAReaseguro;
+    private WebElementFacade linkVolverAReaseguro;
     @FindBy(xpath = ".//*[@id='EditAgreementPopup:AgreementScreen:AgreementCoverageInputSet:ReteinedShare-inputEl']")
-    WebElementFacade lblPorcentajeRetencionVigente;
+    private WebElementFacade lblPorcentajeRetencionVigente;
     @FindBy(xpath = ".//*[@id='EditAgreementPopup:AgreementScreen:AgreementCoverageInputSet:CededShare-inputEl']")
-    WebElementFacade lblPorcentajeCesionVigente;
+    private WebElementFacade lblPorcentajeCesionVigente;
 
     private static final double CONSTANTE_CIEN = 100.0;
     private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
@@ -45,20 +45,17 @@ public class GrupoDeDireccionPages extends PageUtil {
 
     public String calculaMontoRetenidoEnContrato() {
         double valorMontoRetenidoEnContrato = (Double.parseDouble(porcentajeDeRetencionContratoCotaparte.replace(",", ".")) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
-        String cadenaConValor = Utils.convierteNumeroEnTexto(valorMontoRetenidoEnContrato);
-        return cadenaConValor;
+        return Utils.convierteNumeroEnTexto(valorMontoRetenidoEnContrato);
     }
 
     public String calculaMontoCedidoEnContratoCotaparte() {
         double valorCedidoEnContratoBasico = ((CONSTANTE_CIEN - Double.parseDouble(porcentajeDeRetencionContratoCotaparte)) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
-        String textoConValor = Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasico);
-        return textoConValor;
+        return Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasico);
     }
 
     public String calculaMontoCedidoEnContratoExdente() {
         double valorCedidoEnContratoBasicoExcedido = CONSTANTE_CONTRATO_COUTAPARTE - Utils.convierteTextoEnNumero(lblLimiteContratoCp);
-        String textoConValor = Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasicoExcedido);
-        return textoConValor;
+        return Utils.convierteNumeroEnTexto(valorCedidoEnContratoBasicoExcedido);
     }
 
     public void validaMontoRetenidoEnContratoEnCotaparte() {
@@ -75,5 +72,4 @@ public class GrupoDeDireccionPages extends PageUtil {
                 " but was: " + tblRiesgoCedidoContratoExcedenteBasico.getText(), tblRiesgoCedidoContratoExcedenteBasico.getText().equals(calculaMontoCedidoEnContratoExdente()));
 
     }
-
 }
