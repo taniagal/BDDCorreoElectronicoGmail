@@ -143,8 +143,9 @@ public class TarifaMRCPage extends PageUtil {
      */
 
     public void agregarArticulo() {
-        botonActualizar.click();
-        botonCotizar.waitUntilPresent().click();
+        clickearElemento(botonActualizar);
+        botonCotizar.waitUntilPresent();
+        clickearElemento(botonCotizar);
         descartarCambios();
         waitForTextToAppear("Cotizado");
     }
