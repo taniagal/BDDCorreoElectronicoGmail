@@ -38,9 +38,11 @@ public class GrupoDeDireccionPages extends PageUtil {
     }
 
     public void obtienePorcentajeDeCesionYRetencionEnContratoCotaparte(){
-        esperarYClickearBoton(tblnumeroDeAcuerdoContrato);
+        tblnumeroDeAcuerdoContrato.waitUntilPresent();
+        clickearElemento(tblnumeroDeAcuerdoContrato);
         porcentajeDeRetencionContratoCotaparte = lblPorcentajeRetencionVigente.getText();
-        esperarYClickearBoton(linkVolverAReaseguro);
+        linkVolverAReaseguro.waitUntilPresent();
+        clickearElemento(linkVolverAReaseguro);
     }
 
     public String calculaMontoRetenidoEnContrato() {
