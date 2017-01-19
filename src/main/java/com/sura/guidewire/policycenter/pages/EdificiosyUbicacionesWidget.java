@@ -526,12 +526,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void agregarInteresAdicional(String cedula) {
+    public void agregarInteresAdicional(String cedula,String tipodocumento) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
         esperarHasta(TIEMPO_300);
-        comboBoxTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        comboBoxTipoDocumento.sendKeys(tipodocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         waitForTextToAppear("Primer nombre");
         campoTxtNumeroDocumento.sendKeys(cedula);
