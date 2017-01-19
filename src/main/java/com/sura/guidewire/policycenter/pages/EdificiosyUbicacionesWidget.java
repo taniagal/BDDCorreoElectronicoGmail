@@ -173,8 +173,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         agregarNuevaUbicacion("Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
     }
 
+    // TODO: 11/01/2017 : Se debe borrar este metodo, dado que esta sobrecargado, dado que se requiere variabilidad en datos
     public void ingresarNuevaUbicacionSinRiesgoConsultable() {
         agregarNuevaUbicacion("Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
+    }
+
+    public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
+        Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
+        agregarNuevaUbicacion(valoresUbicaion.get("departamento"),
+                              valoresUbicaion.get("ciudad"),valoresUbicaion.get("direccion"),
+                              valoresUbicaion.get("actividadEconomica"));
     }
 
     public void removerRiesgos() {

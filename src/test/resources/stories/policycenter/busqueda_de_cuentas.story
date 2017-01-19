@@ -2,7 +2,7 @@ Busqueda de Cuentas
 
 Meta: @lote1
 @issue #CDSEG-921
-@tag automator: eliana_alvarez, sprint:1
+@tag equipo: 1, sprint:1
 @Sprint 1
 
 Narrative:

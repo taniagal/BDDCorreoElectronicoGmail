@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @issue #SUGWUSC-14966
-@tag automator: Jonathan_Mejia_Leon
+@tag equipo: 3
 @local
 
 Narrative:

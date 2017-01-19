@@ -4,7 +4,7 @@ Meta:
 @lote4
 @issue #CDSEG-1951
 @issue #CDSEG-1295
-@tag automator: diego_cardona_acevedo
+@tag equipo: 5
 @Sprint 8
 
 Narrative:

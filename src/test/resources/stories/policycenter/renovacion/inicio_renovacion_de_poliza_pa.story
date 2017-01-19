@@ -3,7 +3,7 @@ inicio renovacion de poliza pa
 Meta:
 @lote4
 @issue #CDSEG-821
-@tag automator: Jonathan_Mejia_Leon
+@tag equipo: 3
 @local
 Sprint 6
 

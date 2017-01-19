@@ -3,7 +3,7 @@ Solicitar Requisito Pa
 Meta:
 @lote3
 @issue #CDSEG-2881
-@tag automator: diego_cardona_acevedo
+@tag equipo: 5
 @local
 @Sprint 9
 

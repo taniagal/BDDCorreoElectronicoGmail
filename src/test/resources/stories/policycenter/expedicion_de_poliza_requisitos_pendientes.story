@@ -3,7 +3,7 @@ Expedicion De Poliza Requisitos Pendientes
 Meta:
 @lote3
 @issue #CDSEG-4316
-@tag automator: tania_grajales_alzate
+@tag equipo: 5
 @local
 @Sprint 12
 

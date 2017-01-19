@@ -3,7 +3,7 @@ Cotizaciones De La Cuenta
 Meta: @lote4
 
 @issue #CDSEG-684
-@tag automator: diego_cardona_acevedo
+@tag equipo: 5
 @local
 @Sprint 2
 

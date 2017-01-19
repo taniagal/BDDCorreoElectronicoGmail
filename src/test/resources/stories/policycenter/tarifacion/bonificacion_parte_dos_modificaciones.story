@@ -1,10 +1,7 @@
-Bonificacion Parte Dos Modificaciones
-
 Meta:
 @lote1
-@issue #CDSEG-5575
-@Sprint 12
-@tag automator: nelson_jhair_mosquera_palacios
+@sprint 12
+@tag equipo: 4
 
 
 Narrative:

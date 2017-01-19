@@ -3,7 +3,7 @@ Reglas Renovacion Dos
 Meta:
 @lote3
 @issue #CDSEG-3014
-@tag automator: Jonathan_Mejia_Leon
+@tag equipo: 3
 @local
 Sprint 8
 

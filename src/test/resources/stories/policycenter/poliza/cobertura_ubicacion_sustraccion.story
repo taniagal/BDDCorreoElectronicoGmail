@@ -6,7 +6,7 @@ Scenario: 1 Validacion de sublimites maximos para las otras coberturas de sustra
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -36,7 +36,7 @@ Scenario: 2 Sublimite sustraccion con violencia de bienes fuera de predios (Cobe
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @manual true
 @Sprint 5
@@ -52,7 +52,7 @@ Scenario: 3 Sublimite de sustraccion con violencia de bienes fuera de predios (c
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -73,7 +73,7 @@ Scenario: 4 Sublimite sustraccion sin violencia de bienes fuera de predios (Cobe
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @manual
 @Sprint 5
@@ -89,7 +89,7 @@ Scenario: 5 Sublimite de sustraccion sin violencia de bienes fuera de predios (C
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -110,7 +110,7 @@ Scenario: 6 Sublimite sustraccion con violencia de dinero dentro de caja fuerte 
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @manual
 @Sprint 5
@@ -126,7 +126,7 @@ Scenario: 7 Sublimite de sustraccion con violencia de dinero dentro de caja fuer
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -145,7 +145,7 @@ Scenario: 8 Sustraccion con violencia de dinero fuera de caja fuerte (Coberturas
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @manual
 @Sprint 5
@@ -161,7 +161,7 @@ Scenario: 9 Sublimite de sustraccion con violencia de dinero fuera de caja fuert
 Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>

@@ -1,7 +1,7 @@
 Meta: @lote1
 
 @issue #SUGWUSC-14460
-@tag automator: Jonathan_Mejia_Leon
+@tag equipo: 3
 @local
 @Sprint 3
 

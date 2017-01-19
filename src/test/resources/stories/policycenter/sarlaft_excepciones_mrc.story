@@ -3,7 +3,7 @@ Sarlaft Excepciones Mrc
 Meta:
 @lote1
 @issue #CDSEG-4393
-@tag automator: tania_grajales_alzate
+@tag equipo: 5
 @local
 @Sprint 12
 
@@ -14,21 +14,6 @@ en el caso de que alguna se cumpla no se debe solicitar Sarlaft para ninguna de 
 tambien deseo que se aplique la validacion de sarlaft en la operacion modificacion es decir, se debe validar si se
 requiere sarlaft o no para un tomador o asegurado que se adicione al momento de realizar una modificacion.
 
-Sarlaft Excepciones Mrc
-
-Meta:
-@lote3
-@issue #CDSEG-4393
-@tag automator: tania_grajales_alzate
-@local
-@Sprint 12
-
-Narrative:
-Como usuario de negocio
-Se requiere que al momento de validar si una persona requiere o no sarlaft, se realicen las siguientes excepciones:
-en el caso de que alguna se cumpla no se debe solicitar Sarlaft para ninguna de las figuras asi se requiera,
-tambien deseo que se aplique la validacion de sarlaft en la operacion modificacion es decir, se debe validar si se
-requiere sarlaft o no para un tomador o asegurado que se adicione al momento de realizar una modificacion.
 
 Scenario: Validar sarlaft en tomador-expedicion
 GivenStories: stories/policycenter/login_policy.story

@@ -37,8 +37,6 @@ public class CrearYEditarCumulosPages extends PageUtil {
     WebElementFacade btnAceptarReasegurador;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]/div")
     WebElementFacade listFormaCotizacionModalidad;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[7]/div")
-    WebElementFacade listFormaCotizacionValor;
     @FindBy(xpath = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]")
     WebElementFacade txtFormaCotizacionModalidad;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[3]")
@@ -124,7 +122,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
             clickearElemento(listFormaCotizacionModalidad);
-        }catch (ElementNotVisibleException e){
+        } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
             esperarHasta(TIEMPO_2000);
             clickearElemento(listFormaCotizacionModalidad);
@@ -171,7 +169,12 @@ public class CrearYEditarCumulosPages extends PageUtil {
     }
 
     public void validaPrimaBrutaDeCesion() {
-        MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        try {
+            MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        }
     }
 
     public void validaUtilidadesNegativas(String mensaje) {

@@ -2,7 +2,7 @@ Tipo de Oneroso PA
 
 Meta:
 @lote3
-@tag automator: juan_carlos_restrepo
+@tag equipo: 3
 @issue #CDSEG-5111
 @sprint 12
 
