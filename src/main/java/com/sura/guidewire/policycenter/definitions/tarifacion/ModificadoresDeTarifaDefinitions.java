@@ -59,6 +59,11 @@ public class ModificadoresDeTarifaDefinitions {
 
     @When("cambio la bonificacion tecnica <bonoT>")
     public void cambiarBonificacionTecnica(@Named("bonoT") String bonoT) {
+        modificadoresDeTarifaSteps.cambiarBonificacionTecnicaYValidarCampos(bonoT);
+    }
+
+    @When("cambio la bonificacion tecnica <bonoTec>")
+    public void cambiarBonificacionTecnicaO(@Named("bonoTec") String bonoT) {
         modificadoresDeTarifaSteps.cambiarBonificacionTecnica(bonoT);
     }
 

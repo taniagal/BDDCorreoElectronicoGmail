@@ -1,8 +1,5 @@
-Informacion Titular Cuenta
-
-Meta: @lote1
-
-@issue #CDSEG-657
+Meta:
+@lote1
 @tag equipo: 5
 @Sprint 1
 
