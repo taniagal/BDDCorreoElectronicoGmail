@@ -2,7 +2,6 @@ Renovacion Deseo Financiacion Pa
 
 Meta:
 @lote4
-@issue #CDSEG-2309
 @tag equipo: 5
 @local
 @Sprint 8
