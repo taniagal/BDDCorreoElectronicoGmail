@@ -2,9 +2,8 @@ Grupo De Direccion
 
 Meta:
 @lote4
-@issue #
 @sprint 8
-@tag automator: jonathan_mejia_leon
+@tag equipo: reaseguro
 @local
 
 Narrative:

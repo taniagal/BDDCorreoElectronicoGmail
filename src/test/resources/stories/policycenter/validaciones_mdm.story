@@ -1,7 +1,5 @@
-Validaciones MDM
-
-Meta: @lote4
-@issue #NotFound
+Meta:
+@lote4
 @sprint 2
 @tag equipo: 4
 
