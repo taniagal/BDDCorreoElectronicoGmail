@@ -81,7 +81,7 @@ public class BusquedaDeRiesgosPAPage extends PageUtil {
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         if (botonRestablecer.isVisible()) {
             clickearElemento(botonRestablecer);
-            waitFor(ExpectedConditions.attributeContains(comboProducto, "value", "<ninguno>"));
+            waitFor(ExpectedConditions.attributeContains(campoPlaca, "value", ""));
         }
         resetImplicitTimeout();
     }
