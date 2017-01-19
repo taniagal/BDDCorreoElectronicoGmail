@@ -97,6 +97,10 @@ public class ReglasRenovacionDosPage extends PageUtil {
         txtValorAccesoriosEspe.sendKeys(Integer.toString(valorTotalAccesorioEsp));
         seleccionarItem(campoTxtCiudadDeCirculacion, "MEDELLIN");
         clickearElemento(btnSiguinete);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        if ($(".messaje").isPresent()) {
+            clickearElemento(btnSiguinete);
+        }
     }
 
     public int logicaExtraeOSumaPorcentaje(int valorCalcular, double porcentaje) {
