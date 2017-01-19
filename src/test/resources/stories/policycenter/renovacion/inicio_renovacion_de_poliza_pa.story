@@ -3,7 +3,7 @@ inicio renovacion de poliza pa
 Meta:
 @lote4
 @issue #CDSEG-821
-@tag team: 3
+@tag equipo: 3
 @local
 Sprint 6
 

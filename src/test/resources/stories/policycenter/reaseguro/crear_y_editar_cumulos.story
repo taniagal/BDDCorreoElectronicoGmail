@@ -4,7 +4,7 @@ Meta:
 @lote3
 @issue #CDSEG-2886
 @sprint 7
-@tag team: 3
+@tag equipo: 3
 @local
 
 Narrative:

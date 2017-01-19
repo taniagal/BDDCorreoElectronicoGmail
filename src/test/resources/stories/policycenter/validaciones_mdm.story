@@ -3,7 +3,7 @@ Validaciones MDM
 Meta: @lote4
 @issue #NotFound
 @sprint 2
-@tag team: 4
+@tag equipo: 4
 
 
 Narrative:

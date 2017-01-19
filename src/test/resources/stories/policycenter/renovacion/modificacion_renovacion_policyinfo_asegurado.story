@@ -1,7 +1,7 @@
 Meta: @lote4
 
 @issue #CDSEG-914
-@tag team: 5
+@tag equipo: 5
 @Sprint 8
 
 Narrative:

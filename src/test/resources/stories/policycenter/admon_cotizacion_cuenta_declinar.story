@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @issue #SUGWUSC-14966
-@tag team: 3
+@tag equipo: 3
 @local
 
 Narrative:

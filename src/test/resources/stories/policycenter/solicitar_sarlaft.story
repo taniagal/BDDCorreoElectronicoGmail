@@ -2,7 +2,7 @@ Solicitar Sarlaft
 
 Meta:@lote3
 @issue #CDSEG-834
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 10
 

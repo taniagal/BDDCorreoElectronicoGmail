@@ -29,7 +29,6 @@ public class GrupoDeDireccionPages extends PageUtil {
 
     private static final double CONSTANTE_CIEN = 100.0;
     private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
-    private static String porcentajeDeCesionContratoCotaparte = null;
     private static String porcentajeDeRetencionContratoCotaparte = null;
 
     public GrupoDeDireccionPages(WebDriver driver) {
@@ -39,7 +38,6 @@ public class GrupoDeDireccionPages extends PageUtil {
     public void obtienePorcentajeDeCesionYRetencionEnContratoCotaparte(){
         esperarYClickearBoton(tblnumeroDeAcuerdoContrato);
         porcentajeDeRetencionContratoCotaparte = lblPorcentajeRetencionVigente.getText();
-        porcentajeDeCesionContratoCotaparte = lblPorcentajeCesionVigente.getText();
         esperarYClickearBoton(linkVolverAReaseguro);
     }
 

@@ -3,7 +3,7 @@ Modificacion Renovacion Vehiculo
 Meta: @lote1
 
 @issue #CDSEG-2976
-@tag team: 5
+@tag equipo: 5
 @Sprint 7
 
 Narrative:
