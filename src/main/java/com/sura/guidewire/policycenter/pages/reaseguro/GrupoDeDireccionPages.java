@@ -8,6 +8,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
+import java.text.DecimalFormat;
+
 public class GrupoDeDireccionPages extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:DefaultGrossRetention-inputEl']")
@@ -42,8 +44,9 @@ public class GrupoDeDireccionPages extends PageUtil {
     }
 
     public String calculaMontoRetenidoEnContrato() {
+        DecimalFormat formateador = new DecimalFormat("###,###.##");
         double valorMontoRetenidoEnContrato = (Double.parseDouble(porcentajeDeRetencionContratoCotaparte.replace(",", ".")) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
-        return Utils.convierteNumeroEnTexto(valorMontoRetenidoEnContrato);
+        return formateador.format(valorMontoRetenidoEnContrato);
     }
 
     public String calculaMontoCedidoEnContratoCotaparte() {

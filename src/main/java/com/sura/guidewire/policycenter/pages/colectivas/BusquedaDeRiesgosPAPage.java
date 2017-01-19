@@ -69,12 +69,12 @@ public class BusquedaDeRiesgosPAPage extends PageUtil {
         }
     }
 
-    public String obtenerPlaca(){
+    public String obtenerPlaca() {
         WebElementFacade placa = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[3]/div");
         return placa.getText();
     }
 
-    public String obtenerTipoDePoliza(){
+    public String obtenerTipoDePoliza() {
         WebElementFacade placa = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[1]/div");
         return placa.getText();
     }
@@ -91,5 +91,23 @@ public class BusquedaDeRiesgosPAPage extends PageUtil {
             waitFor(ExpectedConditions.attributeContains(campoPlaca, "value", ""));
         }
         resetImplicitTimeout();
+    }
+
+    public void clickEnElLinkPlaca() {
+        WebElementFacade linkPlaca = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:LicensePlate']");
+        linkPlaca.click();
+    }
+
+    public String validarConsultaDePolizaDesdeLaConsultaDeRiesgos() {
+        waitForTextToAppear("Resumen");
+        findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Vehicles']/div").click();
+        WebElementFacade campoPlaca = findBy(".//*[@id='PolicyFile_PersonalAuto_Vehicles:PolicyFile_PersonalAuto_VehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']");
+        return campoPlaca.getText();
+    }
+
+    public void clickEnElLinkPoliza() {
+        WebElementFacade linkPoliza = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:PolicyNumber']");
+        linkPoliza.click();
+        waitForTextToAppear("Resumen");
     }
 }

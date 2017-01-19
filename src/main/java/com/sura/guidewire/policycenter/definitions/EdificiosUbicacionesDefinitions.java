@@ -247,9 +247,4 @@ public class EdificiosUbicacionesDefinitions {
     public void noDebeDejarContinuarYDebePermanecerEnLaPagina(String pagina) {
         //Metodo Vacio
     }
-
-    @Then("no debe estar visible $variable")
-    public void entoncesNoDebeEstarVisibleNingunContactoPorDefecto() {
-        edificiosUbicacionesSteps.validarNoVisibilidadDeObjeto();
-    }
 }
