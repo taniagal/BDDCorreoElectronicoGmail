@@ -175,6 +175,12 @@ public class CrearYEditarCumulosPages extends PageUtil {
             esperarHasta(TIEMPO_2000);
             listTasaBrutaDeCesion.waitUntilPresent();
             MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
+        } catch (StaleElementReferenceException f) {
+            LOGGER.info("StaleElementReferenceException " + f);
+            WebElementFacade listTasaBrutaDeCesion = $(".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]");
+            esperarHasta(TIEMPO_2000);
+            listTasaBrutaDeCesion.waitUntilPresent();
+            MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
         }
     }
 
