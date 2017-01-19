@@ -4,6 +4,7 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -44,7 +45,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
 
     public void expedirPoliza() {
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
-        if (!botonExpedirPoliza.isPresent()){
+        if (!botonExpedirPoliza.isPresent()) {
             clickearElemento(menuItemCotizacion);
         }
         resetImplicitTimeout();
@@ -54,12 +55,17 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         botonCancelarMensaje.shouldBeCurrentlyVisible();
         botonAceptarMensaje.click();
         setImplicitTimeout(TIEMPO_4, TimeUnit.SECONDS);
-        if(botonBorrar.isPresent()) {
-            clickearElemento(botonExpedirPoliza);
-            waitFor(botonAceptarMensaje);
-            botonAceptarMensaje.click();
+        if (botonBorrar.isPresent()) {
+            try {
+                esperarHasta(TIEMPO_2000);
+                botonExpedirPoliza.click();
+                waitFor(botonAceptarMensaje);
+                botonAceptarMensaje.click();
+            } catch (NoSuchElementException e) {
+                LOGGER.info("NoSuchElementException " + e);
+            }
         }
         resetImplicitTimeout();
-        waitForAnyTextToAppear("Cotización Expedida","Cambio en la póliza Expedida","Asuntos que bloquean la expedición");
+        waitForAnyTextToAppear("Cotización Expedida", "Cambio en la póliza Expedida", "Asuntos que bloquean la expedición");
     }
 }
