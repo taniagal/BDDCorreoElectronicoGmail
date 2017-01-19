@@ -95,14 +95,17 @@ public class EdificiosUbicacionesDefinitions {
 
     }
 
-    @When("Ingrese la entrada de las diferentes coberturas mrc $ingresotable")
+    @When("ingrese la entrada de las diferentes coberturas mrc $ingresotable")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasMrc(ExamplesTable ingresotable){
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(ingresotable);
     }
 
-    @When("Ingresar interes adicional a cada cobertura")
-    public void agregarInteresAdicional(){
+    @When("ingresar interes adicional <tipoBeneficiario> a cada cobertura $interesados")
+    public void agregarInteresAdicional(ExamplesTable interesados,String tipoBeneficiario){
+        edificiosUbicacionesSteps.ingresarInteresesAdicionalesACadaArticulo(interesados);
+        edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
+
     }
 
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")

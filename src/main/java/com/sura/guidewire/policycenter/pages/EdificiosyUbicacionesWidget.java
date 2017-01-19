@@ -43,7 +43,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String LABEL_EDIFICIOS_Y_UBICACIONES = "Edificios y ubicaciones";
     private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
-
+    private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final int TIEMPO_250 = 250;
 
     TableWidgetPage tabla;
@@ -74,7 +74,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade edificiosyUbicacionesRenovacion;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch']")
+    @FindBy(xpath = ".//*[contains(@id,'ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl')]")
     private WebElementFacade menuItemDelDireciotio;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade comboBoxDepartamento;
@@ -86,7 +86,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade comboBoxActividadEconomica;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
-
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']")
+    private WebElementFacade botonInteresAdicionalEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']")
+    private WebElementFacade botonInteresAdicionalMaquinariaYEquipo;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -181,8 +184,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
         agregarNuevaUbicacion(valoresUbicaion.get("departamento"),
-                              valoresUbicaion.get("ciudad"),valoresUbicaion.get("direccion"),
-                              valoresUbicaion.get("actividadEconomica"));
+                valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"),
+                valoresUbicaion.get("actividadEconomica"));
     }
 
     public void removerRiesgos() {
@@ -394,6 +397,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     }
 
+
     // TODO: 01/09/2016 Code Smell
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
 
@@ -526,18 +530,34 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void agregarInteresAdicional(String cedula,String tipodocumento) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+    public void agregarInteresAdicional(String cedula, String tipodocumento) {
+        agregarInteresAdicionalDelDirectorio(botonAgregarAsegurado, cedula, tipodocumento);
+    }
+
+    public void agregarInteresAdicionalDelDirectorio(WebElementFacade elemento, String cedula, String tipodocumento) {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
         esperarHasta(TIEMPO_300);
         comboBoxTipoDocumento.sendKeys(tipodocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
-        waitForTextToAppear("Primer nombre");
+        if (tipodocumento.contains(TIPO_DOCUMENTO)) {
+            waitForTextToAppear("Primer nombre");
+        }
+        esperarHasta(TIEMPO_300);
         campoTxtNumeroDocumento.sendKeys(cedula);
         clickearElemento(botonBuscar);
         botonSeleccionar.waitUntilPresent().click();
         botonAgregarAsegurado.waitUntilPresent();
+    }
+
+    public void ingresarInteresesAdicionalesACadaArticulo(ExamplesTable interesados) {
+        for (Map<String, String> interesadosadicionales : interesados.getRows()) {
+            String tipodocumento = interesadosadicionales.get("TIPO_DE_DOCUMENTO");
+            String documento = interesadosadicionales.get("DOCUMENTO");
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalMaquinariaYEquipo, documento, tipodocumento);
+        }
     }
 
     public void validarNoVisibilidad() {

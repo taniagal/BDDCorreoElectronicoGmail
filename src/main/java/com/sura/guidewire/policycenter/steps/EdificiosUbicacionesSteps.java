@@ -40,26 +40,30 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void seleccionarBotonAgregarArticuloAUnaUbicacion() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacion();
     }
+
     @Step
-    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza(){
+    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnCambioDePoliza();
-    }
-    @Step
-    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza(){
-        edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
-    }
-    @Step
-    public void ingresarInteresAdicionalAArticulo(String numerocedula,String tipodocumento){
-        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula,tipodocumento);
     }
 
     @Step
-    public void ingresarTipoBeneficiario(String beneficiario){
+    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza() {
+        edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
+    }
+
+    @Step
+    public void ingresarInteresAdicionalAArticulo(String numerocedula, String tipodocumento) {
+        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula, tipodocumento);
+    }
+
+    @Step
+    public void ingresarTipoBeneficiario(String beneficiario) {
         agregarArticuloEdificiosyUbicacionesWidget.desplegarListaTipoBeneficiario();
         nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
     }
+
     @Step
-    public void seleccionarBotonCotizar(){
+    public void seleccionarBotonCotizar() {
         edificiosyUbicacionesWidget.cliclearBtnCotizar();
     }
 
@@ -97,18 +101,20 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void seleccionarBotonAceptarEnLaParteSuperiorIzquierda() {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParteSuperiorIzquierda();
     }
+
     @Step
     public void cancelarIngresoDeNuevaUbicacion() {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
+
     @Step
-    public void removerRiesgos(){
+    public void removerRiesgos() {
         edificiosyUbicacionesWidget.removerRiesgos();
 
     }
 
     @Step
-    public void seleccionarBotonEditarTransaccionDePoliza(){
+    public void seleccionarBotonEditarTransaccionDePoliza() {
         edificiosyUbicacionesWidget.editartransacciondepoliza();
 
     }
@@ -140,7 +146,8 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
         return mensajeStepReporte;
     }
-    public void ingresarCoberturas(ExamplesTable entradas){
+
+    public void ingresarCoberturas(ExamplesTable entradas) {
         int index = 0;
         for (Map<String, String> entradaCobertura : entradas.getRows()) {
             index++;
@@ -159,10 +166,15 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         }
     }
 
+    @Step
+    public void ingresarInteresesAdicionalesACadaArticulo(ExamplesTable interesados) {
+        edificiosyUbicacionesWidget.ingresarInteresesAdicionalesACadaArticulo(interesados);
+    }
+
     // TODO: 01/09/2016 code smell
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
         // Registro de tarea dinámica en el reporte de Serenity
-          ingresar_valor_de_entrada_de_la_cobertura(armarMensajeParaElReporteDeSerenity(tab, cobertura, entrada, valorEntrada, tipoArticulo));
+        ingresar_valor_de_entrada_de_la_cobertura(armarMensajeParaElReporteDeSerenity(tab, cobertura, entrada, valorEntrada, tipoArticulo));
 
         if ("Coberturas del Riesgo".equals(tab)) {
             seleccionarTab(tab);
@@ -187,7 +199,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
             edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada, esOtroArticulo, esUltimaFilaDeExampleTable);
         }
 
-        if("Interes Adicional".equals(tab)){
+        if ("Interes Adicional".equals(tab)) {
             seleccionarTab(tab);
             seleccionarTipoDeArticulo(tipoArticulo);
         }
@@ -197,8 +209,8 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         // Registro de tarea dinámica en el reporte de Serenity
 
 
-            seleccionarCoberturaDelRiesgo(cobertura);
-            edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
+        seleccionarCoberturaDelRiesgo(cobertura);
+        edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
 
 
     }
@@ -227,11 +239,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarMensaje(ExamplesTable mensajes){
+    public void verificarMensaje(ExamplesTable mensajes) {
         edificiosyUbicacionesWidget.verificarMensajes(mensajes);
     }
 
-    public void validarNoVisibilidadDeObjeto(){
+    public void validarNoVisibilidadDeObjeto() {
         edificiosyUbicacionesWidget.validarNoVisibilidad();
     }
 
