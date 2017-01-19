@@ -1,6 +1,6 @@
 Meta:
 @lote2
-@tag team: 2
+@tag equipo: 2
 @Sprint 9
 
 

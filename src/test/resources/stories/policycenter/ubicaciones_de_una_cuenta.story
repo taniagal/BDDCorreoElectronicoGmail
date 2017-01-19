@@ -1,6 +1,6 @@
-Meta: @lote4
+Meta: @lote2
 @issue #SUGWUSC-14975
-@tag team: 4
+@tag equipo: 4
 
 
 Narrative:

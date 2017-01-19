@@ -2,7 +2,7 @@
 Meta:
 @lote2
 @issue
-@tag team: 1
+@tag equipo: 1
 @local
 @Sprint 12
 

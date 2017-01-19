@@ -3,7 +3,7 @@ Busqueda Contacto
 Meta: @lote1
 
 @issue #CDSEG-894
-@tag team: 5
+@tag equipo: 5
 @Sprint 1
 
 Narrative:

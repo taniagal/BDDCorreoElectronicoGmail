@@ -1,6 +1,6 @@
 Meta:
 @lote2
-@tag team: 2
+@tag equipo: 2
 @Sprint 9
 
 Narrative:
@@ -16,7 +16,7 @@ Given estoy cotizando una poliza:
 |C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion
-And ingrese la entrada de las diferentes coberturas con interes <documento> <tipoBeneficiario> adicional
+And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100000000      |
@@ -26,8 +26,8 @@ Then se debe generar una actividad por cada DNI o direccion diferente que sea ri
 
 
 Examples:
-| rolUsuario | documento  | tipoBeneficiario |
-| Asesor     | 9876543 | Asegurado        |
+| rolUsuario | documento  | tipoBeneficiario |  tipodocumento        |
+| Asesor     | 9876543    | Asegurado        |  CEDULA DE CIUDADANIA |
 
 
 

@@ -3,7 +3,7 @@ Cotizacion PA Detalle
 Meta: @lote3
 
 @issue #CDSEG-807
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 3
 

@@ -3,7 +3,7 @@ Modificacion Cotizacion De Poliza Pa
 Meta:
 @lote2
 @issue #CDSEG-1286
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 4
 

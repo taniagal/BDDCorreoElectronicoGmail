@@ -1,7 +1,7 @@
 Meta:
 @lote2
 @sprint 1
-@tag team: 4
+@tag equipo: 4
 
 
 Narrative:
