@@ -1,6 +1,6 @@
 Meta:
 @sprint 2
-@tag team: 4
+@tag equipo: 4
 
 
 Narrative:

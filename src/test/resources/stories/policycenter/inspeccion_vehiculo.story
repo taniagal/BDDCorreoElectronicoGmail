@@ -3,7 +3,7 @@ Inspeccion Vehiculo
 Meta:
 @lote4
 @issue #CDSEG-751
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 5
 

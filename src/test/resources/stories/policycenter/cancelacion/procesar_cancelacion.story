@@ -1,6 +1,6 @@
 Meta:
 @lote1
-@tag team: 2
+@tag equipo: 2
 @Sprint 8
 
 Scenario: 1 Programar cancelacion de poliza

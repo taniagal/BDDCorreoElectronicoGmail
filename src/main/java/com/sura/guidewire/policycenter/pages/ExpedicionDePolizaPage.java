@@ -6,7 +6,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -16,40 +18,28 @@ import java.util.concurrent.TimeUnit;
 public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     WebElementFacade tituloVentana;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']")
     WebElementFacade campoNumeroEnvio;
-
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     WebElementFacade botonBorrar;
-
     @FindBy(xpath = "//a[contains(.,'Expedir póliza') and contains(@id,'JobWizardToolbarButtonSet:IssuesPolicy')]")
     WebElementFacade botonExpedirPoliza;
-
     @FindBy(id = "PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl")
     WebElementFacade botonExpedirPolizaPorCambio;
-
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
-
     @FindBy(xpath = ".//*[contains(@id,'WebMessageWorksheet:WebMessageWorksheetScreen') and contains(.,'Existen requisitos pendientes')]")
     WebElementFacade mensajeRequisitosPendientes;
-
     @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
     WebElementFacade botonCancelarMensaje;
-
     @FindBy(xpath = ".//td[contains(.,'¿Está seguro de que desea expedir esta póliza?')]")
     WebElementFacade mensajeConfirmacion;
-
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     WebElementFacade campoNumeroCotizacion;
-
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
     WebElementFacade botonEscritorio;
-
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
     WebElementFacade mensajeRiesgos;
-
     @FindBy(xpath = ".//img[@class='error_icon']")
     WebElementFacade iconoError;
 
@@ -59,25 +49,15 @@ public class ExpedicionDePolizaPage extends PageUtil {
     }
 
     public void expedirPoliza() {
+        botonExpedirPoliza.waitUntilPresent();
         try {
-            waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                LOGGER.info("NoAlertPresentException " + e);
-            }
+            clickearElemento(botonExpedirPoliza);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
-            waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
+            clickearElemento(botonExpedirPoliza);
         }
-        waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPoliza));
-        botonExpedirPoliza.click();
     }
-
 
     public void expedirPolizaPorCambio() {
         waitFor(ExpectedConditions.visibilityOf(botonExpedirPolizaPorCambio));

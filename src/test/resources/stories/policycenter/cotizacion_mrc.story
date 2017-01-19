@@ -3,7 +3,7 @@ Cotizacion MRC
 Meta:
 @lote2
 @issue #CDSEG-774
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 3
 

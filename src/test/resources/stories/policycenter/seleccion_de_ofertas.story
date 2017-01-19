@@ -1,9 +1,6 @@
-Seleccion De Ofertas
-
-Meta: @lote4
-
-@issue CDSEG-1023
-@tag team: 1, sprint:2
+Meta:
+@lote2
+@tag equipo: 1
 @Sprint 2
 
 Narrative:

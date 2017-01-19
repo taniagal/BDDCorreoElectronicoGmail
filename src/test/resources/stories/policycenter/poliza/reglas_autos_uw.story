@@ -4,7 +4,7 @@ Meta:
 @lote3
 @issue #CDSEG-4621
 @sprint 11
-@tag team: 3
+@tag equipo: 3
 @local
 
 

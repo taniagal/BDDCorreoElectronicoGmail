@@ -1,8 +1,8 @@
 Meta:
-@lote4
+@lote3
 @sprint 3
 @sprint 7
-@tag team: 4
+@tag equipo: 4
 @local
 
 
