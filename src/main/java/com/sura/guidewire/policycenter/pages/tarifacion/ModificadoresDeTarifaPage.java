@@ -5,6 +5,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -167,8 +168,15 @@ public class ModificadoresDeTarifaPage extends PageUtil {
         clickearElemento(radioBotonCehiculo0KmNo);
         clickearElemento(radioBotonCehiculo0KmNo);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtBonificacionComercialCambio, bonoC));
-        MatcherAssert.assertThat("Error, la bonificacion comercial no se recalculó, espected: " + bonoC + " but was: " +
-                campoTxtBonificacionComercialCambio.getText(), campoTxtBonificacionComercialCambio.containsText(bonoC));
+        try {
+            esperarHasta(TIEMPO_2000);
+            MatcherAssert.assertThat("Error, la bonificacion comercial no se recalculó, espected: " + bonoC + " but was: " +
+                    campoTxtBonificacionComercialCambio.getText(), campoTxtBonificacionComercialCambio.containsText(bonoC));
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("ElementNotVisibleException " + e);
+            MatcherAssert.assertThat("Error, la bonificacion comercial no se recalculó, espected: " + bonoC + " but was: " +
+                    campoTxtBonificacionComercialCambio.getText(), campoTxtBonificacionComercialCambio.containsText(bonoC));
+        }
     }
 
     public void verificarBonificacionDeNuevoAsegurado(Map<String, String> dato) {

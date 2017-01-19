@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -20,6 +21,9 @@ public class InformacionDePolizaMrcDefinitions {
 
     @Steps
     IngresoAPolicyCenterDefinitions guidewireLogin;
+
+    @Steps
+    TarifaTasaUnicaSteps tasaUnicaSteps;
 
 
     @Given("se inicio una nueva suscripcion <numeroCuenta>")
@@ -64,6 +68,13 @@ public class InformacionDePolizaMrcDefinitions {
     @When("cotice una poliza")
     public void cuandoCotizeUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+    }
+
+    @When("cotice y expida la sustitucion")
+    @Alias("cotice y expida la poliza")
+    public void cuandoCotizeYExpidaPoliza() {
+        informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+        tasaUnicaSteps.expedirPoliza();
     }
 
     @When("cotice una poliza principal")
