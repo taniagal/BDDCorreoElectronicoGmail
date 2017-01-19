@@ -14,8 +14,8 @@ When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE860 |
 Then debo ver la informacion de los riesgos asociados
-| placa  |tipoPoliza|
-| BLE860 |Individual|
+| placa  | tipoPoliza |
+| BLE860 | Individual |
 And cuando vaya a ver los detalles de la placa debo ver la informacion del vehiculo
 
 Examples:
@@ -37,8 +37,8 @@ When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE600 |
 Then debo ver la informacion de los riesgos asociados
-| placa  |
-| BLE600 |
+| placa  | tipoPoliza |
+| BLE860 | Colectiva  |
 And cuando vaya a ver los detalles de la placa debo ver la informacion de la poliza riesgo
 
 Scenario: validar la informacion de la poliza colectiva asociada a la placa
@@ -58,7 +58,7 @@ When este buscando un riesgo por los filtros producto y placa del vehiculo
 Then debe mostrar el mensaje <mensaje> ---
 
 Examples:
-|mensaje|
-|La búsqueda no devolvió resultados.|
+| mensaje                             |
+| La búsqueda no devolvió resultados. |
 
 Scenario: validar que solamente se muestra la poliza en el ultimo estado
