@@ -14,8 +14,8 @@ When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE860 |
 Then debo ver la informacion de los riesgos asociados
-| placa  |
-| BLE860 |
+| placa  |tipoPoliza|
+| BLE860 |Individual|
 And cuando vaya a ver los detalles de la placa debo ver la informacion del vehiculo
 
 Examples:

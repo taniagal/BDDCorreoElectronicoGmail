@@ -59,17 +59,24 @@ public class BusquedaDeRiesgosPAPage extends PageUtil {
         campoPlaca.sendKeys(datos.get("placa"));
     }
 
-    public void validarDatosDeTabla(ExamplesTable placa) {
+    public void validarDatosDeTabla() {
         final String xpath1 = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[";
         final String xpath2 = "]/div";
         String dato;
         for (int i = 1; i == 7; i++) {
             dato = findBy(xpath1 + i + xpath2).getText();
             MatcherAssert.assertThat(dato, Is.is(Matchers.notNullValue()));
-            if (i == 1) {
-                MatcherAssert.assertThat(dato, Is.is(Matchers.equalTo(placa.getRows().get(0).get("placa"))));
-            }
         }
+    }
+
+    public String obtenerPlaca(){
+        WebElementFacade placa = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[3]/div");
+        return placa.getText();
+    }
+
+    public String obtenerTipoDePoliza(){
+        WebElementFacade placa = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[1]/div");
+        return placa.getText();
     }
 
     public void clicEnBuscar() {
