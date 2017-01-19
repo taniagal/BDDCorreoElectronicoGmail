@@ -49,8 +49,8 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
     }
     @Step
-    public void ingresarInteresAdicionalAArticulo(String numerocedula){
-        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula);
+    public void ingresarInteresAdicionalAArticulo(String numerocedula,String tipodocumento){
+        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula,tipodocumento);
     }
 
     @Step
