@@ -3,7 +3,7 @@ Cotizacion Renovacion Pa Validaciones
 Meta:
 @lote4
 @issue #CDSEG-2295
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 7
 

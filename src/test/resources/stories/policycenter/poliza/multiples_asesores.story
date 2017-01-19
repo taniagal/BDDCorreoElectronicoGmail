@@ -1,5 +1,6 @@
-Meta:@lote4
-@tag team: billing
+Meta:
+@lote4
+@tag equipo: billing
 @sprint 12
 
 

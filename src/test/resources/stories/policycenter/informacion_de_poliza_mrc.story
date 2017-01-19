@@ -1,7 +1,7 @@
 Meta: @lote1
 
 @issue #SUGWUSC-14460
-@tag team: 3
+@tag equipo: 3
 @local
 @Sprint 3
 

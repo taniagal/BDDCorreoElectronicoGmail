@@ -1,7 +1,7 @@
 Meta:
 @lote2
 @manual
-@tag team: 2
+@tag equipo: 2
 @Sprint 9
 
 Scenario: 1 Rescindir Cancelacion de poliza

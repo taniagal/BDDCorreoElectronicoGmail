@@ -146,12 +146,14 @@ public class PageUtil extends PageObject {
                 esperarHasta(TIEMPO_2000);
                 waitFor(elemento).waitUntilPresent();
             }
-
             try {
                 elemento.clear();
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
-                LOGGER.info(e.getStackTrace().toString());
+                esperarHasta(TIEMPO_2000);
+                elemento.clear();
+            } catch (StaleElementReferenceException f) {
+                LOGGER.info("StaleElementReferenceException " + f);
                 esperarHasta(TIEMPO_2000);
                 elemento.clear();
             }

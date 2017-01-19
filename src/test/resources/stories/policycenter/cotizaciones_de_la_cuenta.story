@@ -1,9 +1,8 @@
 Cotizaciones De La Cuenta
 
-Meta: @lote4
-
-@issue #CDSEG-684
-@tag team: 5
+Meta:
+@lote4
+@tag equipo: 5
 @local
 @Sprint 2
 
@@ -98,7 +97,8 @@ Examples:
 | C001888888 |
 
 Scenario: No permitir crear carta de declinacion
-Meta: @manual
+Meta:
+@manual
 Given estoy en una cuenta
 When ingrese a cotizaciones de la cuenta
 And una cotizacion sea producto Auto Personal

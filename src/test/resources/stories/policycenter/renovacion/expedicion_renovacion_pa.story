@@ -1,8 +1,6 @@
-Expedicion Renovacion Pa
-
-Meta: @lote4
-@issue #CDSEG-7469
-@tag team: 5
+Meta:
+@lote4
+@tag equipo: 5
 @local
 @Sprint 6
 

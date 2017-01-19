@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @sprint 9
-@tag team: 4
+@tag equipo: 4
 @local
 
 Narrative:
@@ -27,6 +27,7 @@ Examples:
 |101.667|Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Acabado de productos textiles|
 
 
+
 Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas con deducible
 Given estoy cotizando una poliza de mrc:
 |cuenta     |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -45,6 +46,7 @@ Examples:
 |154.000|Caldas      |Manizales|CR 44 A # 44 - 00|Edificio Core|Acabado de productos textiles|
 
 
+
 Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas sin deducible
 Given estoy cotizando una poliza de mrc:
 |cuenta     |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -61,6 +63,7 @@ Then debo poder ver el valor de la prima <prima> en la cotizacion
 Examples:
 |prima  |departamento|ciudad   |direccion        |descripcion  |actividad|
 |128.333|Caldas      |Manizales|CR 44 A # 46 - 00|Edificio Core|Acabado de productos textiles|
+
 
 
 Scenario: Tarifa MRC - Cobertura AMIT

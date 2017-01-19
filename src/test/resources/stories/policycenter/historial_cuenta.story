@@ -3,7 +3,7 @@ Historial Cuenta
 Meta: @lote1
 
 @issue #CDSEG-925
-@tag team: 5
+@tag equipo: 5
 @Sprint 1
 
 Narrative:

@@ -1,10 +1,6 @@
-Cobertura Deterioro Bienes Refrigerados
-
-Meta: @lote4
-@Story CDSEG-943
-@URL https://jira.suramericana.com.co/browse/CDSEG-943
-@tag team: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
+Meta:
+@lote4
+@tag equipo: 2
 @Sprint 5
 
 Scenario: 1 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo)
