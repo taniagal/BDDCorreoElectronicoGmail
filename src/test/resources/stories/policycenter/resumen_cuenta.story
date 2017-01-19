@@ -3,7 +3,7 @@ Resumen Cuenta
 Meta: @lote1
 
 @issue #CDSEG-666
-@tag team: 5
+@tag equipo: 5
 @Sprint 2
 
 Narrative:

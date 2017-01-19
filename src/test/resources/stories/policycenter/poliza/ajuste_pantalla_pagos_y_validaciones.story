@@ -2,7 +2,7 @@ Ajuste Pantalla Pagos Y Validaciones
 
 Meta:@lote1
 @issue #SUGWUSC-1162
-@tag team: billing
+@tag equipo: billing
 @sprint 12
 Narrative:
 Como usuario de Policy Center

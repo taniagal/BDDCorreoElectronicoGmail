@@ -3,7 +3,7 @@ Modificacion Informacion Poliza Pa
 Meta:
 @lote4
 @issue #CDSEG-977
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 4
 

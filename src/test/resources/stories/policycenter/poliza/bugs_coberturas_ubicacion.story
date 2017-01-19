@@ -3,7 +3,7 @@ Bugs Coberturas Ubicacion
 Meta:
 @lote3
 @Story CDSEG-2887
-@tag team: 2
+@tag equipo: 2
 @Sprint 6
 
 

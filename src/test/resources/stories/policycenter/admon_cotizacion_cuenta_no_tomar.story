@@ -1,7 +1,7 @@
-Meta: @lote3
+Meta: @lote2
 
 @issue #SUGWUSC-14968
-@tag team: 3
+@tag equipo: 3
 @local
 
 
