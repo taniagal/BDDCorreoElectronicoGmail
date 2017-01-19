@@ -79,13 +79,13 @@ public class InformacionTitularCuentaPage extends PageUtil {
     WebElementFacade colProductoSiniestros;
     @FindBy(xpath = "//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[3]/DIV/span")
     WebElementFacade colAsegurado;
-    @FindBy(xpath = "//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[4]/DIV/span")
-    WebElementFacade colFechaPerdida;
     @FindBy(xpath = "//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[5]/DIV/span")
-    WebElementFacade colNumeroSiniestros;
+    WebElementFacade colFechaOcurrencia;
     @FindBy(xpath = "//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[6]/DIV/span")
-    WebElementFacade colEstadoSiniestro;
+    WebElementFacade colNumeroSiniestros;
     @FindBy(xpath = "//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[7]/DIV/span")
+    WebElementFacade colEstadoSiniestro;
+    @FindBy(xpath = "//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[8]/DIV/span")
     WebElementFacade colTotalIncurrido;
     @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountsActividadEconomica-labelEl']")
     WebElementFacade lblActividadEconomica;
@@ -168,7 +168,7 @@ public class InformacionTitularCuentaPage extends PageUtil {
         MatcherAssert.assertThat(colNumeroPoliza.getText(), Matchers.is(Matchers.equalTo(nroPoliza)));
         MatcherAssert.assertThat(colProductoSiniestros.getText(), Matchers.is(Matchers.equalTo(producto)));
         MatcherAssert.assertThat(colAsegurado.getText(), Matchers.is(Matchers.equalTo(asegurado)));
-        MatcherAssert.assertThat(colFechaPerdida.getText(), Matchers.is(Matchers.equalTo(fechaPerdida)));
+        MatcherAssert.assertThat(colFechaOcurrencia.getText(), Matchers.is(Matchers.equalTo(fechaPerdida)));
         MatcherAssert.assertThat(colNumeroSiniestros.getText(), Matchers.is(Matchers.equalTo(numeroSiniestros)));
         MatcherAssert.assertThat(colEstadoSiniestro.getText(), Matchers.is(Matchers.equalTo(estado)));
         MatcherAssert.assertThat(colTotalIncurrido.getText(), Matchers.is(Matchers.equalTo(totalIncurrido)));
