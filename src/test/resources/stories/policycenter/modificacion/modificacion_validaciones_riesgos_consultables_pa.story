@@ -4,7 +4,7 @@ Meta:
 @lote4
 @issue #CDSEG-1951
 @issue #CDSEG-1295
-@tag team: 5
+@tag equipo: 5
 @Sprint 8
 
 Narrative:

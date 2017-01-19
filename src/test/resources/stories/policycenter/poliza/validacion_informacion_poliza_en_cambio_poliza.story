@@ -4,7 +4,7 @@ Validacion informacion poliza en cambio poliza
 Meta: @lote4
 @Story CDSEG-920
 @URL https://jira.suramericana.com.co/browse/CDSEG-920
-@tag team: 2, informer:alejandro_esteban_villada_marin, sprint:4
+@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:4
 @Sprint 4
 
 Scenario: Validacion de elementos bloqueados en informacion de la poliza en el proceso del cambio de poliza

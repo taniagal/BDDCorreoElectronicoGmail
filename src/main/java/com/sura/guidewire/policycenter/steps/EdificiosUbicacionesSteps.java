@@ -32,6 +32,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresarNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion) {
+        edificiosyUbicacionesWidget.ingresarNuevaUbicacionSinRiesgoConsultable(datosUbicacion);
+    }
+
+    @Step
     public void seleccionarBotonAgregarArticuloAUnaUbicacion() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacion();
     }
@@ -44,8 +49,8 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
     }
     @Step
-    public void ingresarInteresAdicionalAArticulo(String numerocedula){
-        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula);
+    public void ingresarInteresAdicionalAArticulo(String numerocedula,String tipodocumento){
+        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula,tipodocumento);
     }
 
     @Step

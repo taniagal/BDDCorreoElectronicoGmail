@@ -3,7 +3,7 @@ Cotizaciones De La Cuenta
 Meta: @lote4
 
 @issue #CDSEG-684
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 2
 

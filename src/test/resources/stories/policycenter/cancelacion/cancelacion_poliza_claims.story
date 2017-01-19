@@ -2,7 +2,7 @@ Cancelacion Poliza Claims
 
 Meta: @lote1
 @issue #CDSEG-3842
-@tag team: 3
+@tag equipo: 3
 @local
 Sprint 9
 

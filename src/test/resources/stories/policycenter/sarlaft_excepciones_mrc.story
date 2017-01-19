@@ -3,7 +3,7 @@ Sarlaft Excepciones Mrc
 Meta:
 @lote1
 @issue #CDSEG-4393
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 12
 

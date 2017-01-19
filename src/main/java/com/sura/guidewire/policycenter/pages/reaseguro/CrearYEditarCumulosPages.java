@@ -6,10 +6,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import java.util.Map;
 
@@ -37,8 +34,6 @@ public class CrearYEditarCumulosPages extends PageUtil {
     WebElementFacade btnAceptarReasegurador;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]/div")
     WebElementFacade listFormaCotizacionModalidad;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[7]/div")
-    WebElementFacade listFormaCotizacionValor;
     @FindBy(xpath = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]")
     WebElementFacade txtFormaCotizacionModalidad;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[3]")
@@ -124,7 +119,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
             clickearElemento(listFormaCotizacionModalidad);
-        }catch (ElementNotVisibleException e){
+        } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
             esperarHasta(TIEMPO_2000);
             clickearElemento(listFormaCotizacionModalidad);
@@ -148,7 +143,15 @@ public class CrearYEditarCumulosPages extends PageUtil {
     }
 
     public String calculaTasaNetaDeCesionRegla() {
-        valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
+        try {
+            listcomisionReaseguroCedido.waitUntilPresent();
+            valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            listcomisionReaseguroCedido.waitUntilPresent();
+            esperarHasta(TIEMPO_1000);
+            valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
+        }
         valorTasa = Double.parseDouble($(VALOR).getText().replace(",", "."));
         double valorTasaBrutaDeCesion = valorTasa / (CONSTANTE_UNO - valorComisionReaseguroCedido);
         return Double.toString(valorTasaBrutaDeCesion).replace(".", ",");
@@ -163,7 +166,22 @@ public class CrearYEditarCumulosPages extends PageUtil {
     }
 
     public void validaTasaBrutaDeCesion() {
-        MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
+        try {
+            listTasaBrutaDeCesion.waitUntilPresent();
+            MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
+        } catch (NoSuchElementException e) {
+            LOGGER.info("NoSuchElementException " + e);
+            WebElementFacade listTasaBrutaDeCesion = $(".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]");
+            esperarHasta(TIEMPO_2000);
+            listTasaBrutaDeCesion.waitUntilPresent();
+            MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
+        } catch (StaleElementReferenceException f) {
+            LOGGER.info("StaleElementReferenceException " + f);
+            WebElementFacade listTasaBrutaDeCesion = $(".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]");
+            esperarHasta(TIEMPO_2000);
+            listTasaBrutaDeCesion.waitUntilPresent();
+            MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
+        }
     }
 
     public void validaTasaNetaDeCesion() {
@@ -171,7 +189,12 @@ public class CrearYEditarCumulosPages extends PageUtil {
     }
 
     public void validaPrimaBrutaDeCesion() {
-        MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        try {
+            MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+        }
     }
 
     public void validaUtilidadesNegativas(String mensaje) {

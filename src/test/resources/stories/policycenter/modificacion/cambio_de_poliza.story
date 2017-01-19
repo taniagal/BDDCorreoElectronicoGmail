@@ -3,7 +3,7 @@ Cambio De Poliza
 Meta:
 @lote3
 @issue #SUGWUSC-15127
-@tag team: 3
+@tag equipo: 3
 @local
 Sprint 5
 

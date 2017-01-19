@@ -2,7 +2,7 @@ Busqueda De Poliza
 
 Meta: @lote4
 @issue #CDSEG-1012
-@tag team: 1, sprint:1
+@tag equipo: 1, sprint:1
 @Sprint 1
 
 Narrative:

@@ -3,7 +3,7 @@ Disponibilidad Detalle Producto
 Meta: @lote3
 
 @issue #CDSEG-745
-@tag team: 1, sprint:1
+@tag equipo: 1, sprint:1
 @Sprint 1
 
 Narrative:

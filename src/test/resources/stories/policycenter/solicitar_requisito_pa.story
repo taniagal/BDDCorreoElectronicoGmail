@@ -3,7 +3,7 @@ Solicitar Requisito Pa
 Meta:
 @lote3
 @issue #CDSEG-2881
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 9
 

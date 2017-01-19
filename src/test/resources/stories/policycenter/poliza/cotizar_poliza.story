@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @Story CDSEG-907
-@tag team: 2, informer:juan_esteban_restrepo, sprint:7
+@tag equipo: 2, informer:juan_esteban_restrepo, sprint:7
 @Sprint 7
 
 Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando por
