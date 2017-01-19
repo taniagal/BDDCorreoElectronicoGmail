@@ -7,6 +7,7 @@ Meta:
 Narrative:
 como usuario de policycenter en reaseguro
 deseo crear y editar los cumulos correspondientes a cada una de las direcciones
+para poder asegurar los valores de edificios y primas en cada uno de los contrato
 
 
 Scenario: calculo de tasa bruta en acuerdo facultativo

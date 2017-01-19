@@ -42,7 +42,7 @@ public class GrupoDeDireccionPages extends PageUtil {
     }
 
     public String calculaMontoRetenidoEnContrato() {
-        double valorMontoRetenidoEnContrato = (Double.parseDouble(porcentajeDeRetencionContratoCotaparte.replace(",", ".")) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
+        double valorMontoRetenidoEnContrato = (Double.parseDouble(porcentajeDeRetencionContratoCotaparte.replaceAll(",", ".")) * Utils.convierteTextoEnNumero(lblLimiteContratoCp)) / CONSTANTE_CIEN;
         return Utils.convierteNumeroEnTexto(valorMontoRetenidoEnContrato);
     }
 
