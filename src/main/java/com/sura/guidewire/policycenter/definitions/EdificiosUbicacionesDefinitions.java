@@ -81,13 +81,12 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresarCoberturas(coberturas);
     }
 
-
     @When("ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional  $entradatable")
-    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String documento,String tipodocumento,String tipoBeneficiario) {
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String documento, String tipodocumento, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
-        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(documento,tipodocumento);
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(documento, tipodocumento);
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
@@ -95,11 +94,11 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")
-    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario,String tipodocumento) {
+    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {
 
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
-        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula,tipodocumento);
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula, tipodocumento);
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
 
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
@@ -108,11 +107,11 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")
-    public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario,String tipodocumento) {
+    public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {
 
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
-        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula,tipodocumento);
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula, tipodocumento);
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
@@ -250,7 +249,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @Then("no debe estar visible $variable")
-    public void entoncesNoDebeEstarVisibleNingunContactoPorDefecto(){
+    public void entoncesNoDebeEstarVisibleNingunContactoPorDefecto() {
         edificiosUbicacionesSteps.validarNoVisibilidadDeObjeto();
     }
 }

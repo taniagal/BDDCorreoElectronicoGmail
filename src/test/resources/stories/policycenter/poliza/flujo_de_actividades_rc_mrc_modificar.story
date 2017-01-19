@@ -34,5 +34,5 @@ And se solicite aprobacion para los riesgos en cambio de poliza
 Then se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable en cambio de poliza
 
 Examples:
-| rolUsuario | cedula  | tipoBeneficiario |tipodocumento|
-| Asesor     | 9876543 | Asegurado        |             |
+| rolUsuario | cedula  | tipoBeneficiario | tipodocumento                   |
+| Asesor     | 9876543 | Asegurado        | CEDULA DE CIUDADANIA            |
