@@ -7,7 +7,9 @@ import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
+import gherkin.formatter.model.Examples;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.reports.html.ExampleTable;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.CoreMatchers;
@@ -81,7 +83,6 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresarCoberturas(coberturas);
     }
 
-
     @When("ingrese la entrada de las diferentes coberturas con interes <documento> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String documento, String tipoBeneficiario) {
 
@@ -92,6 +93,12 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
 
+    }
+
+    @When("Ingrese la entrada de las diferentes coberturas mrc $ingresotable")
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasMrc(ExamplesTable ingresotable){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
+        edificiosUbicacionesSteps.ingresarCoberturas(ingresotable);
     }
 
     @When("Ingresar interes adicional a cada cobertura")

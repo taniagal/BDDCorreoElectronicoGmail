@@ -14,11 +14,12 @@ Given estoy cotizando una poliza de mrc:
 |Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|10/10/1968      |ROGELIO         |QUINTERO        |DIRECCION DE RESIDENCIA|CALLE 2I #21-22|Antioquia   |Medellin|INT-3|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And ingrese la entrada de las diferentes coberturas con interes <documento> <tipoBeneficiario> adicional
-| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
-| Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-| Interes Adicional        | Interes Adicional |                     |                  | NULL                             | 00000          |
+And Ingrese la entrada de las diferentes coberturas mrc
+| TAB                      | TIPO_ARTICULO          | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios              |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios              |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+| Información de Artículos | Maquinaria y equipo    |                     |                  | Valor Asegurable                 | 100000000      |
+| Información de Artículos | Maquinaria y equipo    |                     |
 And Ingresar interes adicional a cada cobertura
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
