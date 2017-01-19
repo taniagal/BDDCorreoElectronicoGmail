@@ -6,10 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
@@ -131,7 +128,15 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
 
     public void modificarDeduciblesYLimites() {
         String editable = "input";
-        MatcherAssert.assertThat(campoLimiteRC.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        try {
+            esperarHasta(TIEMPO_2000);
+            campoLimiteRC.waitUntilPresent();
+            MatcherAssert.assertThat(campoLimiteRC.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        } catch (ElementNotVisibleException g) {
+            LOGGER.info("ElementNotVisibleException " + g);
+            esperarHasta(TIEMPO_2000);
+            MatcherAssert.assertThat(campoLimiteRC.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        }
         try {
             MatcherAssert.assertThat(campoDeducibleRC.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         } catch (StaleElementReferenceException e) {
@@ -140,7 +145,13 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
             MatcherAssert.assertThat(campoDeducibleRC.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         }
         MatcherAssert.assertThat(campoPerdidaTotalDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoPerdidaParcialDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        try {
+            MatcherAssert.assertThat(campoPerdidaParcialDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        } catch (ElementNotVisibleException f) {
+            LOGGER.info("ElementNotVisibleException " + f);
+            esperarHasta(TIEMPO_2000);
+            MatcherAssert.assertThat(campoPerdidaParcialDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        }
         MatcherAssert.assertThat(campoPerdidaFranquiciaDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         MatcherAssert.assertThat(campoAbogado.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         clickearElemento(checkBoxHurto);

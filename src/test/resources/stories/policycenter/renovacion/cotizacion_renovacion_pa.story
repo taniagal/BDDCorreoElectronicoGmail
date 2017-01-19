@@ -1,8 +1,5 @@
-Cotizacion Renovacion Pa
-
 Meta:
 @lote4
-@issue #CDSEG-842
 @tag equipo: 5
 @local
 @Sprint 6

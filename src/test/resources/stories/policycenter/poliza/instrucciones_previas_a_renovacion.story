@@ -1,5 +1,8 @@
 Instrucciones previas a renovacion
-Meta: @lote4
+Meta:
+@lote4
+@tag equipo: 2
+@Sprint 7
 
 Narrative:
 las Instrucciones previas a la renovación que se quieren para el producto multirriesgo corporativo son :
@@ -23,12 +26,6 @@ Las opciones de no renovación para las opciones No tomada deben ser:
 Las demás funciones se dejan  como vienen de caja GW y no requiere cambios.
 
 Scenario: 1 Validacion que existan todas las instrucciones esperadas
-Meta: @lote4
-@Story CDSEG-907
-@URL https://jira.suramericana.com.co/browse/CDSEG-907
-@tag equipo: 2, informer:juan_esteban_restrepo, sprint:7
-@Sprint 7
-
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When desee seleccionar instrucciones previas a la renovacion
 Then espero ver las opciones de instrucciones siguientes
@@ -45,12 +42,6 @@ Examples:
 
 
 Scenario: 2 Validacion que existan todas las razones de No renovable
-Meta: @lote4
-@Story CDSEG-907
-@URL https://jira.suramericana.com.co/browse/CDSEG-907
-@tag equipo: 2, informer:juan_esteban_restrepo, sprint:7
-@Sprint 7
-
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When desee seleccionar instrucciones previas a la renovacion
 And seleccione instruccion No renovable previa a la renovacion
@@ -68,12 +59,6 @@ Examples:
 | TEST_22222236 | Asesor     |             |
 
 Scenario: 3 Validacion que existan todas las razones de No renovable y consultar al asegurador
-Meta: @lote4
-@Story CDSEG-907
-@URL https://jira.suramericana.com.co/browse/CDSEG-907
-@tag equipo: 2, informer:juan_esteban_restrepo, sprint:7
-@Sprint 7
-
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When desee seleccionar instrucciones previas a la renovacion
 And seleccione instruccion No renovable y consultar al asegurador previa a la renovacion
@@ -91,12 +76,6 @@ Examples:
 | TEST_22222236 | Asesor     |             |
 
 Scenario: 4 Validacion que existan todas las razones de No tomada
-Meta: @lote4
-@Story CDSEG-907
-@URL https://jira.suramericana.com.co/browse/CDSEG-907
-@tag equipo: 2, informer:juan_esteban_restrepo, sprint:7
-@Sprint 7
-
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When desee seleccionar instrucciones previas a la renovacion
 And seleccione instruccion No tomada previa a la renovacion

@@ -1,10 +1,7 @@
-Crear Y Editar Cumulos
-
 Meta:
 @lote3
-@issue #CDSEG-2886
 @sprint 7
-@tag equipo: 3
+@tag equipo: reaseguro
 @local
 
 Narrative:
