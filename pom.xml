@@ -118,7 +118,7 @@
                     </excludes>
                     <reuseForks>false</reuseForks>
                     <forkCount>1C</forkCount>
-                    <forkedProcessTimeoutInSeconds>1500</forkedProcessTimeoutInSeconds>
+                    <forkedProcessTimeoutInSeconds>0</forkedProcessTimeoutInSeconds>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
