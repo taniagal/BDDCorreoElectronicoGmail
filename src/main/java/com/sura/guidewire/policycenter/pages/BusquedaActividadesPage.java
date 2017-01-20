@@ -128,7 +128,12 @@ public class BusquedaActividadesPage extends PageUtil {
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
         waitFor(txtAsignadoA).waitUntilVisible();
-        txtAsignadoA.sendKeys(usuario);
+        try {
+            txtAsignadoA.sendKeys(usuario);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            txtAsignadoA.sendKeys(usuario);
+        }
         this.ingresarDatoEnCombo(txtPrioridad, prioridad);
     }
 
