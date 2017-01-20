@@ -31,6 +31,28 @@ public class BusquedaDeRiesgosPAPage extends PageUtil {
     private WebElementFacade botonRestablecer;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']")
     private WebElementFacade tablaDeResultados;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[1]/div")
+    private WebElementFacade tablaCampoTipoPoliza;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[2]/div")
+    private WebElementFacade tablaCampoNumeroPoliza;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[3]/div")
+    private WebElementFacade tablaCampoPlaca;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[4]/div")
+    private WebElementFacade tablaCampoAsegurado;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[5]/div")
+    private WebElementFacade tablaCampoFechaVigencia;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[5]/div")
+    private WebElementFacade tablaCampoFechaVencimiento;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[5]/div")
+    private WebElementFacade tablaCampoEstado;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:LicensePlate']")
+    private WebElementFacade linkPlaca;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:PolicyNumber']")
+    private WebElementFacade linkPoliza;
+    @FindBy(xpath = "//span[contains(text(), 'Vehículos')]")
+    private WebElementFacade menuBotonVehiculo;
+    @FindBy(xpath = ".//*[@id='PolicyFile_PersonalAuto_Vehicles:PolicyFile_PersonalAuto_VehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
+    private WebElementFacade campoPlacaVehiculos;
 
 
     public BusquedaDeRiesgosPAPage(WebDriver driver) {
@@ -45,43 +67,49 @@ public class BusquedaDeRiesgosPAPage extends PageUtil {
 
     public void seleccionarLaOpcionRiesgos() {
         opcionRiesgos.waitUntilPresent();
-        clickearElemento(opcionRiesgos);
+        super.clickearElemento(opcionRiesgos);
         waitForTextToAppear("Buscar riesgos");
     }
 
     public void seleccionarProducto(ExamplesTable filtros) {
         Map<String, String> datos = filtros.getRows().get(0);
-        seleccionarItem(comboProducto, datos.get("producto"));
+        comboProducto.waitUntilPresent();
+        super.seleccionarItem(comboProducto, datos.get("producto"));
     }
 
     public void ingresarPlaca(ExamplesTable filtros) {
         Map<String, String> datos = filtros.getRows().get(0);
-        campoPlaca.sendKeys(datos.get("placa"));
+        campoPlaca.waitUntilPresent();
+        super.ingresarDato(campoPlaca, datos.get("placa"));
     }
 
     public void validarDatosDeTabla() {
-        final String xpath1 = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[";
-        final String xpath2 = "]/div";
-        String dato;
-        for (int i = 1; i == 7; i++) {
-            dato = findBy(xpath1 + i + xpath2).getText();
-            MatcherAssert.assertThat(dato, Is.is(Matchers.notNullValue()));
-        }
+        waitForTextToDisappear("No hay datos para mostrar");
+        tablaDeResultados.waitUntilPresent();
+        MatcherAssert.assertThat(tablaCampoNumeroPoliza.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(tablaCampoAsegurado.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(tablaCampoFechaVigencia.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(tablaCampoFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
     }
 
     public String obtenerPlaca() {
-        WebElementFacade placa = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[3]/div");
-        return placa.getText();
+        tablaCampoPlaca.waitUntilPresent();
+        return tablaCampoPlaca.getText();
     }
 
     public String obtenerTipoDePoliza() {
-        WebElementFacade placa = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[1]/div");
-        return placa.getText();
+        tablaCampoTipoPoliza.waitUntilPresent();
+        return tablaCampoTipoPoliza.getText();
+    }
+
+    public String obtenerEstado() {
+        tablaCampoEstado.waitUntilPresent();
+        return tablaCampoEstado.getText();
     }
 
     public void clicEnBuscar() {
-        clickearElemento(botonBuscar);
-        tablaDeResultados.waitUntilPresent();
+        botonBuscar.waitUntilPresent();
+        super.clickearElemento(botonBuscar);
     }
 
     public void clicEnElBotonRestablecer() {
@@ -94,19 +122,19 @@ public class BusquedaDeRiesgosPAPage extends PageUtil {
     }
 
     public void clickEnElLinkPlaca() {
-        WebElementFacade linkPlaca = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:LicensePlate']");
+        linkPlaca.waitUntilPresent();
         linkPlaca.click();
     }
 
     public String validarConsultaDePolizaDesdeLaConsultaDeRiesgos() {
         waitForTextToAppear("Resumen");
-        findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Vehicles']/div").click();
-        WebElementFacade campoPlaca = findBy(".//*[@id='PolicyFile_PersonalAuto_Vehicles:PolicyFile_PersonalAuto_VehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']");
-        return campoPlaca.getText();
+        menuBotonVehiculo.waitUntilPresent().click();
+        campoPlacaVehiculos.waitUntilPresent();
+        return campoPlacaVehiculos.getText();
     }
 
     public void clickEnElLinkPoliza() {
-        WebElementFacade linkPoliza = findBy(".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:PolicyNumber']");
+        linkPoliza.waitUntilPresent();
         linkPoliza.click();
         waitForTextToAppear("Resumen");
     }

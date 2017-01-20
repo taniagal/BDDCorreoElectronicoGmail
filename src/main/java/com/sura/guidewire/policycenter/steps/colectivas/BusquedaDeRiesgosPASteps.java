@@ -33,12 +33,18 @@ public class BusquedaDeRiesgosPASteps extends ScenarioSteps {
         Map<String, String> datosEsperados = riesgos.getRows().get(0);
         MatcherAssert.assertThat(busquedaDeRiesgosPAPage.obtenerPlaca(), Is.is(Matchers.equalTo(datosEsperados.get("placa"))));
         MatcherAssert.assertThat(busquedaDeRiesgosPAPage.obtenerTipoDePoliza(), Is.is(Matchers.equalTo(datosEsperados.get("tipoPoliza"))));
+        MatcherAssert.assertThat(busquedaDeRiesgosPAPage.obtenerEstado(), Is.is(Matchers.equalTo(datosEsperados.get("estado"))));
         busquedaDeRiesgosPAPage.validarDatosDeTabla();
     }
 
     @Step
     public void validarConsultaDePolizaDesdeLaConsultaDeRiesgos(String placaEsperada) {
         busquedaDeRiesgosPAPage.clickEnElLinkPlaca();
+        MatcherAssert.assertThat(busquedaDeRiesgosPAPage.validarConsultaDePolizaDesdeLaConsultaDeRiesgos(), Is.is(Matchers.equalTo(placaEsperada)));
+    }
+
+    @Step
+    public void validarConsultaDePolizaDesdeLaConsultaDeRiesgosPorPoliza(String placaEsperada) {
         MatcherAssert.assertThat(busquedaDeRiesgosPAPage.validarConsultaDePolizaDesdeLaConsultaDeRiesgos(), Is.is(Matchers.equalTo(placaEsperada)));
     }
 

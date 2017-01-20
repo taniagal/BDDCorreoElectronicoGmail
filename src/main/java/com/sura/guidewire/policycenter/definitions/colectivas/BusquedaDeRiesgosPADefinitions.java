@@ -43,15 +43,14 @@ public class BusquedaDeRiesgosPADefinitions {
         busquedaDeRiesgosPASteps.validarConsultaDePolizaDesdeLaConsultaDeRiesgos(placa);
     }
 
-    @Then("cuando vaya a ver los detalles de la placa debo ver la informacion de la poliza riesgo <placa>")
+    @Then("debo poder ver la informacion de la poliza asociada <placa>")
     public void validarConsultaDeRiesgoDesdeLaConsultaDeRiesgos(@Named("placa") String placa) {
-        busquedaDeRiesgosPASteps.validarConsultaDePolizaDesdeLaConsultaDeRiesgos(placa);
+        busquedaDeRiesgosPASteps.validarConsultaDePolizaDesdeLaConsultaDeRiesgosPorPoliza(placa);
     }
 
     @Then("debo poder ver el resumen de la poliza colectiva")
     public void validarConsultaDeRiesgoDesdeElLinkPoliza() {
         polizaPrincipalPaSteps.validarQueLasOpcionesDeAseguradosVehiculosCoberturasNoSonVisibles();
         polizaPrincipalPaSteps.validarQueLasOpcionesDelMenuLateralEnHerramientasEnPolizaExpedidaSonVisibles();
-        polizaPrincipalPaSteps.validarQueLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables();
     }
 }
