@@ -181,8 +181,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
         agregarNuevaUbicacion(valoresUbicaion.get("departamento"),
-                              valoresUbicaion.get("ciudad"),valoresUbicaion.get("direccion"),
-                              valoresUbicaion.get("actividadEconomica"));
+                valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"),
+                valoresUbicaion.get("actividadEconomica"));
     }
 
     public void removerRiesgos() {
@@ -298,7 +298,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         withAction().moveToElement(inputValorEntrada).perform();
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
-       // esperarAQueElementoTengaValor(findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
+        esperarAQueElementoTengaValor(findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
     }
 
     public void ingresarValorAEntradaInformacionArticulo(String tipoArticulo, String entrada, String valorEntrada) {
@@ -313,7 +313,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
-       // esperarAQueElementoTengaValor(trWE.findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
+        esperarAQueElementoTengaValor(trWE.findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
     }
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
@@ -507,7 +507,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
         waitFor(TIEMPO_4).second();
         $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
-       // esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
+        esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
     }
 
     public void ingresarTextAreaDescripcion(String tipoArticulo) {
@@ -516,7 +516,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         enter(tipoArticulo).into($(xTextAreaDescripcion));
         waitFor(TIEMPO_1).second();
         $(xTextAreaDescripcion).waitUntilClickable().click();
-       // esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
+        esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
@@ -526,7 +526,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void agregarInteresAdicional(String cedula,String tipodocumento) {
+    public void agregarInteresAdicional(String cedula, String tipodocumento) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
@@ -549,5 +549,4 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         MatcherAssert.assertThat("Alguno de los campos es visible", !findBy(xpath).isVisible());
         resetImplicitTimeout();
     }
-
 }

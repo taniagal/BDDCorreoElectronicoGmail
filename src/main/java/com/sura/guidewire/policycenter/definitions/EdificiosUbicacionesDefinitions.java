@@ -200,24 +200,14 @@ public class EdificiosUbicacionesDefinitions {
 
     @Then("se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacio(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
+        edificiosUbicacionesSteps.validarMensajeDeAlerta(mensajesEsperados);
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
 
     @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
     public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
+        edificiosUbicacionesSteps.validarMensajeDeAlerta(mensajesEsperados);
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
         polizaSteps.confirmarCancelacion();

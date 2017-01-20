@@ -18,11 +18,22 @@ Examples:
 | buscarNumeroPoliza | mensaje                             |
 | 34565456543        | La búsqueda no devolvió resultados. |
 
+Scenario: Consulta de  poliza por numero de cuenta existente
+When la busco por numero de cuenta <numeroCuenta>
+Then se debe visualizar la siguiente información:
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto                | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza        |
+| TEST_33355481 | EVANS RENE                      | C002888991   | Multiriesgo corporativo | Vigentes   | 21/12/2016    | 21/12/2017      | SURA   | Póliza principal  |
+
+Examples:
+| numeroCuenta |
+| C002888991   |
+
 Scenario: Consultar polizas por numero de cuenta existente
 When la busco por numero de cuenta <numeroCuenta>
 Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza       |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual|
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto                | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza        |
+| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos                   | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual |
+| TEST_22222236 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Multiriesgo corporativo | Vigentes   | 20/11/2016    | 20/11/2017      | SURA   | Póliza individual |
 
 Examples:
 | numeroCuenta |
