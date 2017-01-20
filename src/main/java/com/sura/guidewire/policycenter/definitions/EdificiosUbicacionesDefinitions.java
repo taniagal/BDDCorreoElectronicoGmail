@@ -44,33 +44,23 @@ public class EdificiosUbicacionesDefinitions {
 
     @Given("que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>")
     public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario) {
-
-        //TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
-
-
         LOGGER.info("EdificiosUbicacionesDefinitions.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
-
         if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
         }
-
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
-
         guidewire.irANavegacionSuperior()
                 .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
-
         try {
             polizaSteps.seleccionarBotonLlamadoEditarTransaccionDePoliza();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
         }
-
         polizaSteps.seleccionarOpcionEdificiosYUbicaciones();
     }
 
     @When("intente ingresar las entradas de las diferentes coberturas $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
-
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradas);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();

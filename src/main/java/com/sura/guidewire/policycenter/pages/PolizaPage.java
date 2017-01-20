@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -9,6 +10,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,9 +21,15 @@ import java.util.concurrent.TimeUnit;
 import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;
 
-public class PolizaPage extends GuidewirePage {
+public class PolizaPage extends PageUtil {
+    public PolizaPage(WebDriver driver) {
+        super(driver);
+    }
+
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
-    WebElementFacade headerEnvio;
+    private WebElementFacade headerEnvio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
+    private WebElementFacade comboBoxOrganizacionMrc;
 
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
@@ -122,6 +130,9 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void seleccionarOpcionEdificiosyUbicaciones() {
+        comboBoxOrganizacionMrc.waitUntilPresent();
+        seleccionarItem(comboBoxOrganizacionMrc, "Sura");
+        esperarPorValor(comboBoxOrganizacionMrc, "Sura");
         seleccionarOpcion(Opcion.LINK_EDIFICIOS_Y_UBICACIONES.xpath(), "Edificios y ubicaciones");
         LOGGER.info("PolizaPage.seleccionarOpcionEdificiosyUbicaciones");
     }
