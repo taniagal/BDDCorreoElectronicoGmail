@@ -97,6 +97,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade listaTipoOnerosoEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[2]/td[4]")
     private WebElementFacade listaTipoOnerosoMaquinariaYEquipo;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
+    private WebElementFacade chekInteresAdicionaledificios;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -577,6 +579,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         nuevaPolizaPage.seleccionarElementoDeLaLista(tipoBeneficiario);
         act.sendKeys(Keys.TAB).build().perform();
 
+    }
+
+    public void desseleccionarArticulo(){
+        chekInteresAdicionaledificios.waitUntilPresent().click();
     }
 
     public void validarNoVisibilidad() {

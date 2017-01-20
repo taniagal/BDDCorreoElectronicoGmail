@@ -24,6 +24,13 @@ And ingresar interes adicional <tipoBeneficiario> a cada cobertura
 | TIPO_DE_DOCUMENTO        | DOCUMENTO          |TIPOBENEFICIARIO|
 | NIT                      | 9202086744         |Oneroso         |
 And intente cotizar y expedir la poliza
+And ingrese al resumen de la poliza expedida
+And cuando intente cambiar informacion de la poliza MRC
+And ingrese a edificios y ubicaciones en cambio de poliza
+And ingrese las entradas en cambio de poliza y verificar las reglas de oneroso
+Then se debe mostrar un mensaje de advertencia $mensaje
+| mensaje                                                                                                                                                                                       |
+| Modificación con beneficario oneroso. Si la modificación afecta los intereses del beneficiario, por favor verifique que este haya suministrado la carta de autorización de dicha modificación |
 
 Examples:
 ||

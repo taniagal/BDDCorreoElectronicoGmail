@@ -119,6 +119,12 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
     }
 
+    @Step
+    public void desseleccionarArticulo(){
+        edificiosyUbicacionesWidget.desseleccionarArticulo();
+
+    }
+
     public String armarMensajeParaElReporteDeSerenity(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo) {
         // Se arma el mensaje que se mostrará en el reporte de Serenity según los parametros enviados por medio de los parametros tabulares
         String mensajeStepReporte = "";

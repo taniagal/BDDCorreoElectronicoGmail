@@ -122,6 +122,14 @@ public class EdificiosUbicacionesDefinitions {
 
     }
 
+    @When("ingrese las entradas en cambio de poliza y verificar las reglas de oneroso")
+    public void cuandoIntenteIngresarLasEntradasVerificarReglasOneroso(){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.desseleccionarArticulo();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
+    }
+
     @When("ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {
 
