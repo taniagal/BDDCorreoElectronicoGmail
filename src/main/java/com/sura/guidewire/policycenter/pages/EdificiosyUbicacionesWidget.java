@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
+import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
@@ -12,6 +13,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.Map;
@@ -47,6 +49,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final int TIEMPO_250 = 250;
 
     TableWidgetPage tabla;
+    NuevaPolizaPage nuevaPolizaPage;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
@@ -90,6 +93,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonInteresAdicionalEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']")
     private WebElementFacade botonInteresAdicionalMaquinariaYEquipo;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[2]/td[4]")
+    private WebElementFacade listaTipoOnerosoEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[2]/td[4]")
+    private WebElementFacade listaTipoOnerosoMaquinariaYEquipo;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -555,9 +562,21 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         for (Map<String, String> interesadosadicionales : interesados.getRows()) {
             String tipodocumento = interesadosadicionales.get("TIPO_DE_DOCUMENTO");
             String documento = interesadosadicionales.get("DOCUMENTO");
+            String tipobeneficiario = interesadosadicionales.get("TIPOBENEFICIARIO");
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
+            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoEdificios);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalMaquinariaYEquipo, documento, tipodocumento);
+            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoMaquinariaYEquipo);
         }
+    }
+
+    public void ingresarBeneficiarioOneroso(String tipoBeneficiario,WebElementFacade elemento){
+        Actions act = new Actions(getDriver());
+        waitFor(TIEMPO_2).second();
+        desplegarElementoDeLista(elemento);
+        nuevaPolizaPage.seleccionarElementoDeLaLista(tipoBeneficiario);
+        act.sendKeys(Keys.TAB).build().perform();
+
     }
 
     public void validarNoVisibilidad() {

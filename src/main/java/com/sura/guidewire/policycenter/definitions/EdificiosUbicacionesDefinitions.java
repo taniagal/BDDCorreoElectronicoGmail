@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
+import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
@@ -102,9 +103,9 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingresar interes adicional <tipoBeneficiario> a cada cobertura $interesados")
-    public void agregarInteresAdicional(ExamplesTable interesados,String tipoBeneficiario){
+    public void agregarInteresAdicional(ExamplesTable interesados){
         edificiosUbicacionesSteps.ingresarInteresesAdicionalesACadaArticulo(interesados);
-        edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
 
     }
 

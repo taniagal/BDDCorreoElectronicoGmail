@@ -19,11 +19,12 @@ And ingrese la entrada de las diferentes coberturas mrc
 | Información de Artículos | Edificios              |                     |                  | Valor Reconstrucción                                                                 | 100000000      |
 | Información de Artículos | Edificios              |                     | Danos materiales | Valor asegurado danos materiales                                                     | 100000000      |
 | Información de Artículos | Maquinaria y equipo    |                     |                  | Valor Asegurable                                                                     | 100000000      |
-| Información de Artículos | Maquinaria y equipo    |                     | Terremoto        |                                                                                      | 1000000        |
+| Información de Artículos | Maquinaria y equipo    |                     | Terremoto        |                                                                                      | 100000000      |
 And ingresar interes adicional <tipoBeneficiario> a cada cobertura
-| TIPO_DE_DOCUMENTO        | DOCUMENTO          |
-| NIT                      | 9202086744         |
+| TIPO_DE_DOCUMENTO        | DOCUMENTO          |TIPOBENEFICIARIO|
+| NIT                      | 9202086744         |Oneroso         |
+And intente cotizar y expedir la poliza
 
 Examples:
-|tipoBeneficiario|
-|Oneroso         |
+||
+||
