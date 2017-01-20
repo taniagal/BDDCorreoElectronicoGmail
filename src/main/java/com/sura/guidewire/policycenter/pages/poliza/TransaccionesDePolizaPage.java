@@ -19,14 +19,18 @@ public class TransaccionesDePolizaPage extends PageUtil{
     private WebElementFacade campoFechaVigencia;
     @FindBy(xpath = ".//*[@id='PolicyFile_Jobs:Policy_JobsScreen:DetailPanel:Policy_JobInfoDV:CloseDate-inputEl']")
     private WebElementFacade campoFechaExpedicion;
-    @FindBy(xpath = "//div[2]/div/div/div/div/span/div")
-    private WebElementFacade cajaChequeoTransaccion;
+    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div[3]/div/table/tbody/tr[1]/td[1]/div/img")
+    private WebElementFacade cajaChequeoTransaccion1;
+    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div[3]/div/table/tbody/tr[2]/td[1]/div/img")
+    private WebElementFacade cajaChequeoTransaccion2;
     @FindBy(xpath = ".//*[@id='PolicyFile_Jobs:Policy_JobsScreen:DetailPanel:JobsLV_tb:Policy_Jobs_DiffButton-btnInnerEl']")
     private WebElementFacade botonComparar;
     @FindBy(xpath = ".//div/div/div[2]/div/span")
     private WebElementFacade campoCotizacion;
     @FindBy(xpath = ".//div/div/div[3]/div/span")
     private WebElementFacade campoCambioPoliza;
+    @FindBy(xpath = "//span[contains(.,'Fecha de inicio de vigencia')]")
+    private WebElementFacade columnaFechaInicioVigencia;
 
     public TransaccionesDePolizaPage (WebDriver driver) {
         super(driver);
@@ -51,7 +55,9 @@ public class TransaccionesDePolizaPage extends PageUtil{
     }
 
     public void seleccionarTransacciones() {
-        clickearElemento(cajaChequeoTransaccion);
+        clickearElemento(columnaFechaInicioVigencia);
+        clickearElemento(cajaChequeoTransaccion1);
+        clickearElemento(cajaChequeoTransaccion2);
     }
 
     public void compararTransacciones() {
