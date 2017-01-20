@@ -3,13 +3,13 @@ package com.sura.guidewire.policycenter.definitions;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
@@ -38,39 +38,26 @@ public class EdificiosUbicacionesDefinitions {
     GuidewireSteps guidewire;
     @Steps
     TarifaTasaUnicaSteps tasaUnicaSteps;
+    @Steps
+    NuevaCotizacionSteps nuevaCotizacionSteps;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
     @Given("que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>")
     public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario) {
-
-        //TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
-
-
         LOGGER.info("EdificiosUbicacionesDefinitions.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
-
-        if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
-            SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
-        }
-
-        guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
-
-        guidewire.irANavegacionSuperior()
-                .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
-
+        nuevaCotizacionSteps.irABuscarCotizacion(numSubscripcion);
         try {
             polizaSteps.seleccionarBotonLlamadoEditarTransaccionDePoliza();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
         }
-
         polizaSteps.seleccionarOpcionEdificiosYUbicaciones();
     }
 
     @When("intente ingresar las entradas de las diferentes coberturas $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
-
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradas);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
@@ -83,52 +70,43 @@ public class EdificiosUbicacionesDefinitions {
 
     @When("ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String documento, String tipodocumento, String tipoBeneficiario) {
-
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(documento, tipodocumento);
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
-
     }
 
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {
-
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula, tipodocumento);
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
-
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
-
     }
 
     @When("ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {
-
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula, tipodocumento);
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
-
     }
 
 
     //// TODO: 21/10/2016 Construilo con example table
     @When("intente ingresar una nueva ubicacion")
     public void cuandoIntenteIngresarUnaNuevaUbicacion() {
-        edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacion();
     }
 
     @When("intente ingresar una nueva ubicacion sin riesgo consultable")
     public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo() {
-        edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo();
     }
 
@@ -200,12 +178,7 @@ public class EdificiosUbicacionesDefinitions {
 
     @Then("se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacio(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
+        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 

@@ -1,12 +1,12 @@
-Scenario: 1 Tener deducible (porcentual o minimo) sin tipo de deducible (porcentual o minimo) en articulo
-
-Meta: @lote1
+Meta:
+@lote1
 @Story CDSEG-2443
-@URL https://jira.suramericana.com.co/browse/CDSEG-2443
-@tag equipo: 2, informer:juan_esteban_restrepo_castanno, sprint:6
-@LOB Multiriesgo corporativo
+@tag equipo: 2
 @Sprint 6
-As a <rolUsuario>
+
+
+Scenario: 1 Tener deducible (porcentual o minimo) sin tipo de deducible (porcentual o minimo) en articulo
+GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                      | VALOR_ENTRADAS   |
