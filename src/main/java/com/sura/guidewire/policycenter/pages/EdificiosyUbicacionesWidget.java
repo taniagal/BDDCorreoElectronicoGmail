@@ -213,7 +213,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarTab(String tab) {
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         waitForAnyTextToAppear(tab);
         shouldContainText(tab);
         String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
@@ -224,9 +224,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public boolean estaSeleccionadoTab(String tab) {
         Boolean esSeleccionado = false;
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         try {
-
             waitForAnyTextToAppear(tab);
             shouldContainText(tab);
             String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;

@@ -265,10 +265,11 @@ public class TarifaMRCPage extends PageUtil {
             }
             clickearElemento(checkBoxArticulo);
             campoTxtValorAsegurable.waitUntilPresent().sendKeys(dato.get("valor_asegurable"));
-            List<WebElementFacade> checkBoxesCoberturas = $(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverageFurniture:ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
-            for (int i = 0; i <= checkBoxesCoberturas.size(); i++) {
+            List<WebElementFacade> checkBoxesCoberturas = findAll(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
+            for (int i = 0; i < checkBoxesCoberturas.size(); i++) {
                 String checkBoxCobertura = ".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:" + i + ":CoverageInputSet:CovPatternInputGroup:_checkbox']";
                 clickearElemento($(checkBoxCobertura));
+                esperarHasta(TIEMPO_2000);
             }
         }
     }
