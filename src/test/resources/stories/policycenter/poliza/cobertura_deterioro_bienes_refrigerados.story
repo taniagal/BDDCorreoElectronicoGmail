@@ -44,20 +44,6 @@ Examples:
 | 22222211        | Asesor     |             |
 
 
-Scenario: 3 Parametro del 40 porciento
-Meta:
-@manual
-Given he ingresado al Product Designer
-When seleccione en System Tables
-And seleccione cp_term_articles_rules_ext.xml
-And ingrese el porcentaje para el MRCBRefrigRotMaqLimSubUbic en la columna PercentInsuredValue
-And guarde los cambios y suba dichos cambios al servidor
-Then debe poner cambiar el porcentaje del parametro
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222211        | Asesor     |             |
-
-
 
 Scenario: 4 Cobertura de terremoto para suelos y terrenos (categoría otros)
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -123,3 +109,17 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
 
+
+
+Scenario: 3 Parametro del 40 porciento
+Meta:
+@manual
+Given he ingresado al Product Designer
+When seleccione en System Tables
+And seleccione cp_term_articles_rules_ext.xml
+And ingrese el porcentaje para el MRCBRefrigRotMaqLimSubUbic en la columna PercentInsuredValue
+And guarde los cambios y suba dichos cambios al servidor
+Then debe poner cambiar el porcentaje del parametro
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22222211        | Asesor     |             |

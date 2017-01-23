@@ -99,14 +99,15 @@ public class EdificiosUbicacionesDefinitions {
     }
 
 
-    //// TODO: 21/10/2016 Construilo con example table
     @When("intente ingresar una nueva ubicacion")
     public void cuandoIntenteIngresarUnaNuevaUbicacion() {
+        edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacion();
     }
 
     @When("intente ingresar una nueva ubicacion sin riesgo consultable")
     public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo() {
+        edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo();
     }
 
@@ -116,7 +117,6 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacion();
     }
-
 
     @When("haga clic en el boton Aceptar")
     public void cuandoHagaClicEnElBotonAceptar() {
