@@ -1,14 +1,12 @@
-cobertura ubicacion sustraccion
+Meta:
+@lote1
+@Story CDSEG-847
+@tag equipo: 2
+@Sprint 5
 
-Meta: @lote1
 
 Scenario: 1 Validacion de sublimites maximos para las otras coberturas de sustraccion (coberturas de riesgo)
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
+GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |

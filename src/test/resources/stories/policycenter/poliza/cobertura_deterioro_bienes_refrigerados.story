@@ -4,6 +4,7 @@ Meta:
 @Sprint 5
 
 Scenario: 1 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo)
+GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |

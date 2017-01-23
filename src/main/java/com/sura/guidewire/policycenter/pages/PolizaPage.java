@@ -132,13 +132,12 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void seleccionarOpcion(String xpath, String tituloPaginaEsperada) {
-
         try {
             WebElementFacade opcion = findBy(xpath).waitUntilVisible();
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
-            setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+            setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
             if (findBy(xpathimgMensajesWarnig).isVisible()) {
                 opcion.waitUntilClickable().click();
             }
@@ -148,9 +147,7 @@ public class PolizaPage extends GuidewirePage {
         } catch (Exception e) {
             LOGGER.info("SE SELECCIONÓ UN ELEMENTO NO CLICLEABLE (EJ. DIV) " + e);
         }
-
         LOGGER.info("PolizaPage.seleccionarOpcion");
-
     }
 
     public String obtenerEnvio(String numeroSubscripcion) {
