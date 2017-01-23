@@ -4,9 +4,9 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import java.util.concurrent.TimeUnit;
 
 public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
@@ -65,8 +65,14 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
-            waitFor(botonActualizar).waitUntilPresent();
+        waitFor(botonActualizar).waitUntilPresent();
+        try {
             clickearElemento(botonActualizar);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            esperarHasta(TIEMPO_2000);
+            clickearElemento(botonActualizar);
+        }
     }
 
     public void desplegarListaTipoBeneficiario() {

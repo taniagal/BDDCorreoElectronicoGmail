@@ -15,7 +15,6 @@ When intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Edificios     | Danos materiales | Tipo Primera Perdida                          | Relativa         |
 | Información de Artículos | Edificios     | Danos materiales | Deducible porcentual danos materiales         |                  |
 | Información de Artículos | Edificios     | Danos materiales | Tipo de deducible porcentual danos materiales | Valor Asegurable |
-
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                                                                                  |

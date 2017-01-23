@@ -45,6 +45,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
 
     private static final int TIEMPO_250 = 250;
+    private static final int CONSTANTE_3 = 3;
 
     TableWidgetPage tabla;
 
@@ -479,7 +480,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        divMensaje.waitUntilPresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
             waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
             MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));

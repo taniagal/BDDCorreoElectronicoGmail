@@ -1,5 +1,4 @@
 Meta:
-@manual
 @lote1
 @tag equipo: 2
 @sprint 9
@@ -9,7 +8,9 @@ Como usuario de policy center quiero poder solicitar autorización a los comites
 quiero poder solicitar autorización a los comites de Riesgos consultables
 
 Scenario: 1 Validar que se genere actividad de riesgo
-Given  que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
+Meta:
+@manual
+Given  que esto y iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
 When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion

@@ -1,10 +1,8 @@
-Condiciones particulares
-
 Meta:
 @lote3
 @Story CDSEG-5732 @Story CDSEG-5517 @Story CDSEG-5307 @Story CDSEG-5319 @Story CDSEG-5314 @Story CDSEG-5507
 @sprint 11
-@tag automator: juan_gabriel_zapata
+@tag equipo: 2
 @local
 
 
