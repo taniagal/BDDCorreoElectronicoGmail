@@ -25,8 +25,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
     private WebElementFacade campoTxtValorReconstruccion;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:AmountSubject_Input-inputEl']")
-    private WebElementFacade campoTxtValorAsegurableMaquina;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoTxtValorComercial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:0:RateModifier-inputEl']")
@@ -43,10 +41,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtIndiceVariable;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasMachine-inputEl']")
-    private WebElementFacade checkBoxMaquinariaYEquipo;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasFixture-inputEl']")
-    private WebElementFacade checkBoxMueblesYEnseres;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCobertura;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -58,7 +52,7 @@ public class TarifaMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:2:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxAmitMaquinaria;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
-    private WebElementFacade checkBoxTeremoto;
+    private WebElementFacade checkBoxTeremotoMaquinaria;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
@@ -107,6 +101,7 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void irAArticulo() {
+        botonAgregarArticulos.waitUntilPresent();
         clickearElemento(botonAgregarArticulos);
     }
 
@@ -261,8 +256,20 @@ public class TarifaMRCPage extends PageUtil {
         return filaActividad;
     }
 
-    public void seleccionarCoberturasMaquinaria(ExamplesTable datos){
-
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos) {
+        for (Map<String, String> dato : datos.getRows()) {
+            WebElementFacade campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:AmountSubject_Input-inputEl']");
+            WebElementFacade checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:Has" + dato.get("articulo") + "-inputEl']");
+            if ("Furniture".equals(dato.get("articulo"))) {
+                checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFixture-inputEl']");
+            }
+            clickearElemento(checkBoxArticulo);
+            campoTxtValorAsegurable.waitUntilPresent().sendKeys(dato.get("valor_asegurable"));
+            List<WebElementFacade> checkBoxesCoberturas = $(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverageFurniture:ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
+            for (int i = 0; i <= checkBoxesCoberturas.size(); i++) {
+                String checkBoxCobertura = ".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:" + i + ":CoverageInputSet:CovPatternInputGroup:_checkbox']";
+                clickearElemento($(checkBoxCobertura));
+            }
+        }
     }
-
 }

@@ -17,10 +17,11 @@ Given estoy cotizando una poliza de mrc:
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                    |
 |Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Acabado de productos textiles|
-And seleccione la cobertura:
-|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
-|100000000          |100000000     |120000000     |Asonada  |
-|100000000          |100000000     |120000000     |Terremoto|
+And seleccione algunos articulos y sus cobertura:
+|articulo |valor_asegurable|
+|Machine  |300000000       |
+|Furniture|300000000       |
+|Mobile   |300000000       |
 And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 

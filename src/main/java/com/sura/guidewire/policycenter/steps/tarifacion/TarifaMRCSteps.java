@@ -84,9 +84,8 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarCoberturaParaMaquinaria(ExamplesTable datos) {
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos){
         tarifaMRCPage.irAArticulo();
-        tarifaMRCPage.ingresarValorReconstruccion(datos);
-        tarifaMRCPage.seleccionarCobertura(datos);
+        tarifaMRCPage.seleccionarArticulosYTodadsSusCoberturas(datos);
     }
 }

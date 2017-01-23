@@ -29,13 +29,11 @@ public class TarifaMRCDefinitions {
     @When("seleccione la cobertura: $datos")
     public void seleccionarCobertura(ExamplesTable datos){
         tarifaMRCSteps.seleccionarCobertura(datos);
-
     }
 
-    @When("seleccione la coberturas par maquinaria y equipo contratista: $datos")
-    public void seleccionarCoberturaParaMaquinaria(ExamplesTable datos){
-        tarifaMRCSteps.seleccionarCoberturaParaMaquinaria(datos);
-
+    @When("seleccione algunos articulos y sus cobertura: $datos")
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos){
+        tarifaMRCSteps.seleccionarArticulosYTodadsSusCoberturas(datos);
     }
 
     @When("seleccione la cobertura de daños materiales con valor <valor> e indice variable <valorIndice>")
