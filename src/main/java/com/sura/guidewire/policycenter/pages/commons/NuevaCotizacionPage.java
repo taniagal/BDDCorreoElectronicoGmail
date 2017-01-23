@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class NuevaCotizacionPage extends PageUtil {
-
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
@@ -171,10 +170,14 @@ public class NuevaCotizacionPage extends PageUtil {
                 esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
             }
         }else {
-            comboBoxOrganizacionMrc.waitUntilPresent();
-            seleccionarItem(comboBoxOrganizacionMrc, dato.get(ORGANIZACION));
-            esperarPorValor(comboBoxOrganizacionMrc, dato.get(ORGANIZACION));
+            llenarOrganizacion(dato.get(ORGANIZACION));
         }
+    }
+
+    public void llenarOrganizacion(String organizacion) {
+        comboBoxOrganizacionMrc.waitUntilPresent();
+        seleccionarItem(comboBoxOrganizacionMrc, organizacion);
+        esperarPorValor(comboBoxOrganizacionMrc, organizacion);
     }
 
 

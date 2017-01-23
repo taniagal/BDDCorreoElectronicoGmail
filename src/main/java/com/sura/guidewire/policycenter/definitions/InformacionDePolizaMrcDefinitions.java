@@ -54,20 +54,24 @@ public class InformacionDePolizaMrcDefinitions {
     @When("este expidiendo una poliza de propiedad comercial")
     public void expidePolizaPropiedadComercial() {
         informacionDePolizaMrcSteps.seleccionaCotizacionParaProducto();
+        informacionDePolizaMrcSteps.agregarOrganizacion("Sura");
     }
 
 
     @When("quiero expedir una poliza nueva con los siguientes datos: <agente> <producto>")
     public void cuandoQuieroExpedirUnaPolizaNuevaConLosSiguientesDatos(@Named("agente") String agente,
                                                                        @Named("producto") String producto) {
-
         informacionDePolizaMrcSteps.ingresarNuevaCotizacion(agente, producto);
-
     }
 
     @When("cotice una poliza")
     public void cuandoCotizeUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+    }
+
+    @When("agrege la organizacion <organizacion>")
+    public void agregarOrganizacion(@Named("organizacion") String organizacion) {
+        informacionDePolizaMrcSteps.agregarOrganizacion(organizacion);
     }
 
     @When("cotice y expida la sustitucion")
@@ -89,6 +93,7 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("ingrese a edificios y ubicaciones")
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
+        informacionDePolizaMrcSteps.agregarOrganizacion("Sura");
         informacionDePolizaMrcSteps.ingresarAEdificiosYUbicaciones();
     }
 
