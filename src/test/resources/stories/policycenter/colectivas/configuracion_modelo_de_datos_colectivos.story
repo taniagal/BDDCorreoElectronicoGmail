@@ -1,10 +1,9 @@
 Configuracion Modelo De Datos Colectivos
 
 Meta:
-@lote4
-@issue #CDSEG-4621
+@lote3
 @sprint 10
-@tag automator: nelson_jhair_mosquera_palacios
+@tag equipo: 4
 @local
 
 Narrative:

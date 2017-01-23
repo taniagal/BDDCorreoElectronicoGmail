@@ -3,7 +3,7 @@ Cotizacion MRC
 Meta:
 @lote2
 @issue #CDSEG-774
-@tag automator: diego_cardona_acevedo
+@tag equipo: 5
 @local
 @Sprint 3
 

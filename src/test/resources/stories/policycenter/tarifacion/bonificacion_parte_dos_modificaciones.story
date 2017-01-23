@@ -1,10 +1,7 @@
-Bonificacion Parte Dos Modificaciones
-
 Meta:
 @lote1
-@issue #CDSEG-5575
-@Sprint 12
-@tag automator: nelson_jhair_mosquera_palacios
+@sprint 12
+@tag equipo: 4
 
 
 Narrative:
@@ -26,8 +23,7 @@ And ingrese las coberturas:
 And expido la poliza y voy al archivo de poliza
 And comience el cambio de poliza
 And cambio la bonificacion tecnica <bonoT>
-And cotice una poliza
-And expido la poliza
+And cotice y expida la poliza
 Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
@@ -50,8 +46,7 @@ And ingrese las coberturas:
 And expido la poliza y voy al archivo de poliza
 And cambio la fecha de vigencia
 And cambio la bonificacion tecnica <bonoT>
-And cotice una poliza
-And expido la poliza
+And cotice y expida la poliza
 Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:

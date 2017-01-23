@@ -1,8 +1,6 @@
-Expedicion Renovacion Pa
-
-Meta: @lote4
-@issue #CDSEG-7469
-@tag automator: diego_cardona_acevedo
+Meta:
+@lote4
+@tag equipo: 5
 @local
 @Sprint 6
 
@@ -12,16 +10,29 @@ Quiero ser capaz de renovar de forma manual y automaticamente las politicas de a
 
 Scenario: Expedir renovacion - Mensaje de confirmacion
 GivenStories: stories/policycenter/login_policy.story
-Given se esta cotizando una renovacion de poliza <cotizacion>
-When emita la renovacion
+Given estoy cotizando una poliza:
+|cuenta     |organizacion|producto|canal            |tipoPoliza |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+When ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+And ingrese las coberturas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
+And expido la poliza y voy al archivo de poliza
+And quiera realizar esta renovacion
+And edite la informacion del vehiculo en la renovacion
+|chasis  |motor  |
+|DAC478  |M45754 |
+And cotice la renovacion
+And emita la renovacion
 Then se debe mostrar un mensaje que indique
 |mensaje                                                     |
 |¿Está seguro de que desea emitir la renovación de la póliza?|
-
 Examples:
-|cotizacion|
-|22222333  |
-
+|tipo_documento      |documento |
+|CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: Expedir renovacion - Confirmacion expedicion
 Meta:

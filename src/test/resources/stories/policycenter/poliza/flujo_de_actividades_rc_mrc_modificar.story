@@ -1,10 +1,7 @@
-Flujo De Actividades Rc Mrc Modificar
-
 Meta:
 @lote2
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
-@Sprint 9
+@tag equipo: 2
+@sprint 9
 
 Narrative:
 Como usuario de policy center quiero poder solicitar autorización a los comites de Riesgos consultables
@@ -28,7 +25,7 @@ And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
 And intente ingresar una nueva ubicacion
-And ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
+And ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                              | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
@@ -37,5 +34,5 @@ And se solicite aprobacion para los riesgos en cambio de poliza
 Then se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable en cambio de poliza
 
 Examples:
-| rolUsuario | cedula  | tipoBeneficiario |
-| Asesor     | 9876543 | Asegurado        |
+| rolUsuario | cedula  | tipoBeneficiario | tipodocumento                   |
+| Asesor     | 9876543 | Asegurado        | CEDULA DE CIUDADANIA            |

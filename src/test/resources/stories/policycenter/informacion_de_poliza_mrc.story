@@ -1,7 +1,7 @@
 Meta: @lote1
 
 @issue #SUGWUSC-14460
-@tag automator: Jonathan_Mejia_Leon
+@tag equipo: 3
 @local
 @Sprint 3
 
@@ -42,9 +42,9 @@ And modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>
 Then se debe mostrar un mensaje <mensaje> de error
 
 Examples:
-|numeroCuenta  |nomProducto            |fechaInicioVigencia|mensaje                                                                                    |
-|C000888888    |Multiriesgo corporativo|01/01/2016         |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
-|C000888888    |Multiriesgo corporativo|30/12/2017         |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
+|numeroCuenta  |nomProducto            |fechaInicioVigencia|organizacion|mensaje                                                                                    |
+|C000888888    |Multiriesgo corporativo|01/01/2016         |Sura        |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
+|C000888888    |Multiriesgo corporativo|30/12/2017         |Sura        |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario: Ocultar descipcion de la direccion cuando el campo no tenga datos informativos
 Given se inicio una nueva suscripcion <numeroCuenta>

@@ -1,10 +1,6 @@
-Modificacion Validaciones Riesgos Consultables Pa
-
 Meta:
 @lote4
-@issue #CDSEG-1951
-@issue #CDSEG-1295
-@tag automator: diego_cardona_acevedo
+@tag equipo: 5
 @Sprint 8
 
 Narrative:
@@ -71,7 +67,8 @@ Then no se debe permitir continuar con la cotización, y se debe mostrar el sigu
 “El asegurado es un riesgo no estandar y no es posi...” + “Para solicitar la autorizacion dirijase a la opcion Analisis de riesgo”
 
 Scenario: Cotizar - ISSUE - Riesgo consultable Bloqueo - Causal Tecnico
-Meta: @lote4  @manual
+Meta:
+@manual
 Given que ingrese toda la informacion necesaria para realizar una nueva cotizacion de modificacion de autos
 And cotice
 When la figura es ASEGURADO, TOMADOR, el tipo de causal es TECNICO, el tipo de riesgo DNI

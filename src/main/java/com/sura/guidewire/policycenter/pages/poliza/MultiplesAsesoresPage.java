@@ -53,7 +53,6 @@ public class MultiplesAsesoresPage extends PageUtil {
     }
 
     public void ingresarCodigoAsesor(Parametros parametros) {
-
         for (int i = 1; i <= parametros.getListaAgentes().size(); i++) {
             esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
             escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_DOS, parametros.getListaAgentes().get(i - CONSTANTE_UNO));
@@ -74,7 +73,6 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     //TODO Metodos que pueden agregar a utileria de comando
     public void esperarObjetoClikeableServidor(String pathElemento) {
-
         WebElementFacade elemento;
         boolean ejecuto = false;
         int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
@@ -90,7 +88,6 @@ public class MultiplesAsesoresPage extends PageUtil {
             }
             ejecuciones = ejecuciones + TIEMPO_1;
         }
-
         if (!ejecuto) {
             MatcherAssert.assertThat("No se pudo dar click a botón", false);
         }
@@ -125,7 +122,6 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     //TODO Metodos que pueden agregar a utileria de comando
     public void escribirTextoCeldaTabla(String path, int indiceFila, int indiceColumna, String texto) {
-
         WebElementFacade elemento = consultarElementoFilaColumna(path, indiceFila, indiceColumna);
         clicObjeto(elemento);
         borrarRegistroDatos(CONSTANTE_VEINTE);
@@ -146,7 +142,6 @@ public class MultiplesAsesoresPage extends PageUtil {
     }
 
     public void validarDatosDelAsesor(Parametros parametros) {
-
         if (parametros.getValidarDato().equals(Parametros.CODIGOASESOR)) {
             esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
             validarCodigoAsesor(parametros);
@@ -175,7 +170,6 @@ public class MultiplesAsesoresPage extends PageUtil {
     public int validarExistenciaCodigoAsesor(Parametros parametros) {
         int codigoAsesorRepetido = 0;
         int cantidaCodigoAsesor = consultarNumeroElementosTabla(PATH_TABLA_AGENTE);
-
         for (int i = 1; i <= cantidaCodigoAsesor; i++) {
             if (consultarTextoCeldaTabla(PATH_TABLA_AGENTE, CONSTANTE_UNO, CONSTANTE_DOS).equals(parametros.getCodigoAsesor())) {
                 codigoAsesorRepetido++;

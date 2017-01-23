@@ -1,7 +1,6 @@
-Tarifa Tasa Unica Pa Cargar Archivo
-Meta: @lote1
-@issue #CDSEG-2415
-@tag automator: nelson_jhair_mosquera_palacios
+Meta:
+@lote1
+@tag equipo: 4
 @sprint 6
 
 Narrative:

@@ -1,8 +1,7 @@
-Validaciones Cambio De Poliza Vehiculos
-
-Meta: @lote4
+Meta:
+@lote4
 @issue CDSEG-1296
-@tag automator: diego_cardona_acevedo
+@tag equipo: 5
 @local
 @Sprint 4
 

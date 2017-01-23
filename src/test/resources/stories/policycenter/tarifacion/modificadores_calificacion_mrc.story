@@ -1,9 +1,7 @@
-Modificadores Calificacion MRC
-
-Meta: @lote1
-@issue #CDSEG-3431
+Meta:
+@lote1
 @sprint 9
-@tag automator: nelson_jhair_mosquera_palacios
+@tag equipo: 4
 @local
 
 Narrative:

@@ -5,7 +5,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -42,6 +45,14 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade checkBoxCobertura;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxDaniosMateriales;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxDaniosMaterialesMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxRoturaMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:2:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxAmitMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxTeremotoMaquinaria;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
@@ -90,6 +101,7 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void irAArticulo() {
+        botonAgregarArticulos.waitUntilPresent();
         clickearElemento(botonAgregarArticulos);
     }
 
@@ -102,7 +114,6 @@ public class TarifaMRCPage extends PageUtil {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
                 esperarHasta(TIEMPO_1000);
             }
-
             try {
                 clickearElemento(checkBoxCobertura);
             } catch (StaleElementReferenceException e) {
@@ -143,8 +154,15 @@ public class TarifaMRCPage extends PageUtil {
      */
 
     public void agregarArticulo() {
-        botonActualizar.click();
-        botonCotizar.waitUntilPresent().click();
+        try {
+            botonActualizar.waitUntilPresent();
+            clickearElemento(botonActualizar);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            clickearElemento(botonActualizar);
+        }
+        botonCotizar.waitUntilPresent();
+        clickearElemento(botonCotizar);
         descartarCambios();
         waitForTextToAppear("Cotizado");
     }
@@ -200,16 +218,16 @@ public class TarifaMRCPage extends PageUtil {
     public void verificarValorIva() {
         primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_8).replace(".", ""));
         int iva = (int) (primaTotal * CONSTANTE_016);
-        MatcherAssert.assertThat("Error en el calculo del valor del IVA expected:" + iva +", was: " + campoIva.getText(),
+        MatcherAssert.assertThat("Error en el calculo del valor del IVA expected:" + iva + ", was: " + campoIva.getText(),
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        campoTxtIndiceVariable.sendKeys(valorIndice);
+        ingresarDato(campoTxtIndiceVariable, valorIndice);
         clickearElemento(checkBoxDaniosMateriales);
     }
 
-    public void agregarContactoDelDirectorio(){
+    public void agregarContactoDelDirectorio() {
         botonAgregarContacto.waitUntilPresent().click();
         botonAgregarContactoDelDirectorio.click();
     }
@@ -238,4 +256,20 @@ public class TarifaMRCPage extends PageUtil {
         return filaActividad;
     }
 
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos) {
+        for (Map<String, String> dato : datos.getRows()) {
+            WebElementFacade campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:AmountSubject_Input-inputEl']");
+            WebElementFacade checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:Has" + dato.get("articulo") + "-inputEl']");
+            if ("Furniture".equals(dato.get("articulo"))) {
+                checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFixture-inputEl']");
+            }
+            clickearElemento(checkBoxArticulo);
+            campoTxtValorAsegurable.waitUntilPresent().sendKeys(dato.get("valor_asegurable"));
+            List<WebElementFacade> checkBoxesCoberturas = $(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverageFurniture:ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
+            for (int i = 0; i <= checkBoxesCoberturas.size(); i++) {
+                String checkBoxCobertura = ".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:" + i + ":CoverageInputSet:CovPatternInputGroup:_checkbox']";
+                clickearElemento($(checkBoxCobertura));
+            }
+        }
+    }
 }

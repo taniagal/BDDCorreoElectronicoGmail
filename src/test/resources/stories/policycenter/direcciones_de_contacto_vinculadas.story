@@ -3,7 +3,7 @@ Direcciones De Contacto Vinculadas
 Meta: @lote3
 
 @issue #CDSEG-732, CDSEG-876
-@tag automator: eliana_alvarez, sprint:3
+@tag equipo: 1, sprint:3
 @Sprint 3
 
 Narrative:

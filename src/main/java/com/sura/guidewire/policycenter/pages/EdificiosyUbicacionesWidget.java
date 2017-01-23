@@ -45,6 +45,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
 
     private static final int TIEMPO_250 = 250;
+    private static final int CONSTANTE_3 = 3;
 
     TableWidgetPage tabla;
 
@@ -62,13 +63,15 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonBorrar;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade botonBuscar;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Cancel']")
+    private WebElementFacade botonCancelar;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionar;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
     private WebElementFacade comboBoxTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
     private WebElementFacade campoTxtNumeroDocumento;
-    @FindBy(css = ".message")
+    @FindBy(id = "WebMessageWorksheet")
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:CPBuildings']")
     private WebElementFacade edificiosyUbicacionesRenovacion;
@@ -161,20 +164,23 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
-        try {
-            findBy(".//*[@id='CPLocationPopup:Cancel']").waitUntilVisible().waitUntilClickable().click();
-
-        } catch (Exception e) {
-            LOGGER.info("ELEMENTO NO CLICKEABLE" + e);
-        }
+        clickearElemento(botonCancelar);
     }
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
         agregarNuevaUbicacion("Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
     }
 
+    // TODO: 11/01/2017 : Se debe borrar este metodo, dado que esta sobrecargado, dado que se requiere variabilidad en datos
     public void ingresarNuevaUbicacionSinRiesgoConsultable() {
         agregarNuevaUbicacion("Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
+    }
+
+    public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
+        Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
+        agregarNuevaUbicacion(valoresUbicaion.get("departamento"),
+                valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"),
+                valoresUbicaion.get("actividadEconomica"));
     }
 
     public void removerRiesgos() {
@@ -295,14 +301,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarValorAEntradaInformacionArticulo(String tipoArticulo, String entrada, String valorEntrada) {
         waitForAnyTextToAppear(entrada);
-        shouldContainText(entrada);
-
         WebElementFacade trWE = findBy(XPATH_TRWE_PARTE1 + tipoArticulo + XPATH_TRWE_PARTE2);
-
         String xpathTREntrada = XPATH2_PARTE1 + entrada + "') ]) and @class='x-form-item-input-row' ]";
         WebElementFacade inputValorEntrada = trWE.findBy(xpathTREntrada).find(By.tagName(INPUT));
         withAction().moveToElement(inputValorEntrada).perform();
-
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
         esperarAQueElementoTengaValor(trWE.findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
@@ -350,11 +352,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         try {
             waitForAnyTextToAppear(cobertura);
             shouldContainText(cobertura);
-
-
             String xpathLegendCoberturaDeRiesgo = XPATH_LEGEND_COBERTURA_DE_RIESGO + cobertura + CIERRE_XPATH1;
             WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName(INPUT));
-
             if (CSS_POSICION2.equals(inputCoberturaDeRiesgo.waitUntilPresent().getCssValue(BACKGROUND_POSICION)) || CSS_POSICION.equals(inputCoberturaDeRiesgo.waitUntilPresent().getCssValue(BACKGROUND_POSICION))) {
                 estaSeleccionado = true;
             }
@@ -362,7 +361,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM " + e);
         }
         return estaSeleccionado;
-
     }
 
     public boolean estaPresenteEnLaPaginaEdificiosyUbicaciones() {
@@ -375,39 +373,27 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         shouldContainText(tipoArticulo);
         String xpathTrCoberturaDeRiesgo = XPATH2_PARTE1 + tipoArticulo + XPATH2_PARTE2;
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathTrCoberturaDeRiesgo).find(By.tagName(INPUT));
-
         if (CSS_POSICION2.equals(inputCoberturaDeRiesgo.waitUntilPresent().getCssValue(BACKGROUND_POSICION)) || CSS_POSICION.equals(inputCoberturaDeRiesgo.waitUntilPresent().getCssValue(BACKGROUND_POSICION))) {
             estaSeleccionado = true;
         } else {
             estaSeleccionado = false;
         }
-
         return estaSeleccionado;
-
     }
 
-    // TODO: 01/09/2016 Code Smell
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
-
         String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
-
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
-
-
         if (esOtroArticulo) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
             findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
         }
-
         if (isElementVisible(By.xpath(xLinkAgregarOtrosArticulos))) {
-
             cliclearBtnAgregarArticulo();
             ingresarInputTiposDeArticulos(tipoArticulo);
             waitFor(TIEMPO_3).seconds();
             ingresarTextAreaDescripcion(tipoArticulo);
         }
-
-
         if (cobertura.length() > 0) {
             seleccionarCobertura(obtenerDivCobertura(cobertura), cobertura);
             waitFor(TIEMPO_2).seconds();
@@ -415,55 +401,40 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         } else {
             ingresarEntrada(entrada, valorEntrada);
         }
-
         if (esUltimaFilaDeExampleTable) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
             findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
         }
-
         resetImplicitTimeout();
-
     }
 
     public void ingresarEntrada(String entrada, String valorEntrada) {
         WebElementFacade divEntradasAgregarOtroArticulo;
-
         if (isElementVisible(By.xpath(XPATH_PARTE1 + entrada + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + entrada + XPATH_PARTE2);
-
             WebElementFacade entradaOtroArticulo = divEntradasAgregarOtroArticulo.findBy(XPATH2_PARTE1 + entrada + XPATH2_PARTE2);
             WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName(INPUT));
             enter(valorEntrada).into(inputValorEntrada);
-
         }
     }
 
     public WebElementFacade obtenerDivCobertura(String cobertura) {
         WebElementFacade divEntradasAgregarOtroArticulo = null;
-
-        // Pregunta si es visible el div que contiene el nombre de la cobertura que deseo seleecionar
         if (isElementVisible(By.xpath(XPATH_PARTE1 + cobertura + XPATH_PARTE2))) {
-
-            // captura el elemento que contenga el div con el nombre de la cobertura que será el que se usará para capturar el checkbox de la cobertura a seleccionar
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + cobertura + XPATH_PARTE2);
-
         }
-
         return divEntradasAgregarOtroArticulo;
     }
 
     public void seleccionarCobertura(WebElementFacade divEntradasAgregarOtroArticulo, String cobertura) {
         WebElementFacade xpathTrCoberturaDeRiesgo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::div[contains(., '" + cobertura + "')])] ");
         WebElementFacade inputCoberturaDeRiesgo = xpathTrCoberturaDeRiesgo.find(By.tagName(INPUT));
-
-        // Le da clic al checkbox de la cobertura siempre y cuando haya encontrado el elemento a cliclear
         withAction().moveToElement(inputCoberturaDeRiesgo).perform();
         inputCoberturaDeRiesgo.click();
     }
 
     public void cliclearBtnAgregarArticulo() {
         String xBtnAgregarArticulo = ".//a[@id='CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add']";
-
         WebElementFacade btnAgregarArticulo = findBy(xBtnAgregarArticulo).waitUntilVisible().waitUntilClickable();
         btnAgregarArticulo.click();
     }
@@ -480,7 +451,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(btnCotizar).click();
             }
         }
-        waitFor(TIEMPO_4).second();
     }
 
     public void descartarCambios() {
@@ -504,26 +474,24 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarTextAreaDescripcion(String tipoArticulo) {
         String xTextAreaDescripcion = ".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']";
-
         enter(tipoArticulo).into($(xTextAreaDescripcion));
-        waitFor(1).second();
-        $(xTextAreaDescripcion).waitUntilClickable().click();
+        clickearElemento($(xTextAreaDescripcion));
         esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        clickearElemento(divMensaje);
         for (Map<String, String> mensaje : mensajes.getRows()) {
+            waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
             MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
         }
     }
 
-    public void agregarInteresAdicional(String cedula) {
+    public void agregarInteresAdicional(String cedula, String tipodocumento) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
         esperarHasta(TIEMPO_300);
-        comboBoxTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        comboBoxTipoDocumento.sendKeys(tipodocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         waitForTextToAppear("Primer nombre");
         campoTxtNumeroDocumento.sendKeys(cedula);
@@ -541,5 +509,4 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         MatcherAssert.assertThat("Alguno de los campos es visible", !findBy(xpath).isVisible());
         resetImplicitTimeout();
     }
-
 }

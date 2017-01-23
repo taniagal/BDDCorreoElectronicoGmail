@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class NuevaCotizacionPage extends PageUtil {
-
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
@@ -173,6 +172,12 @@ public class NuevaCotizacionPage extends PageUtil {
         }
     }
 
+    public void llenarOrganizacion(String organizacion) {
+        comboBoxOrganizacionMrc.waitUntilPresent();
+        seleccionarItem(comboBoxOrganizacionMrc, organizacion);
+        esperarPorValor(comboBoxOrganizacionMrc, organizacion);
+    }
+
 
     public void cotizarEnvioCopiada() {
         menuItemInformacionDePoliza.waitUntilPresent();
@@ -191,9 +196,9 @@ public class NuevaCotizacionPage extends PageUtil {
             esperarHasta(TIEMPO_2000);
             withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
         }
-        if (!"Sura".equals(comboBoxOrganizacion.getText())) {
-            seleccionarItem(comboBoxOrganizacion, "Sura");
-            esperarPorValor(comboBoxOrganizacion, "Sura");
+        if (!"Sura".equals(comboBoxOrganizacionPa.getText())) {
+            seleccionarItem(comboBoxOrganizacionPa, "Sura");
+            esperarPorValor(comboBoxOrganizacionPa, "Sura");
             seleccionarItem(comboBoxCanal, "Canal Tradicional");
             esperarPorValor(comboBoxCanal, "Canal Tradicional");
             try {

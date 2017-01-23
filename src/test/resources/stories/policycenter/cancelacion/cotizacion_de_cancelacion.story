@@ -3,7 +3,7 @@ Cotizacion De Cancelacion
 Meta:
 @lote1
 @issue #USC-14740
-@tag automator: Jonathan_Mejia_Leon
+@tag equipo: 3
 @local
 Sprint 8
 

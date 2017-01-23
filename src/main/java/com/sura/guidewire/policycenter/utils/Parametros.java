@@ -20,17 +20,16 @@ public class Parametros {
     private static final String PARAMETROS_TIPO_PLAN = "tipoPlan";
     private static final String PARAMETROS_PLAN_INFORMACION = "planDeInformacion";
 
-
-    private String  planDeInformacion;
+    private String planDeInformacion;
     private String codigoAsesor;
-    private String  porcentaje;
-    private String  rol;
-    private String  mensaje;
+    private String porcentaje;
+    private String rol;
+    private String mensaje;
     private String validarDato;
     private String tipo;
     private String tipoPlan;
     private String metodoFacturacion;
-    private  String auditoria;
+    private String auditoria;
     List<String> listaroles;
     List<String> listaAgentes;
     List<String> listaPorcentaje;
@@ -39,6 +38,40 @@ public class Parametros {
     public static final String AUTOMATICO = "Automatico";
     public static final String DECLARATIVO = "Declarativo";
 
+    public Parametros(ExamplesTable opciones) {
+        for (Map<String, String> opcion : opciones.getRows()) {
+            String valor;
+            this.codigoAsesor = opcion.get(PARAMETRO_CODIGOASESOR);
+            this.porcentaje = opcion.get(PARAMETRO_PORCENTAJE);
+            this.rol = opcion.get(PARAMETRO_ROL);
+            this.mensaje = opcion.get(PARAMETROS_MENSAJE);
+            this.validarDato = opcion.get(PARAMETROS_VALIDAR_DATO);
+            this.tipo = opcion.get(PARAMETROS_TIPO);
+            this.auditoria = opcion.get(PARAMETRO_AUDITORIA);
+            this.metodoFacturacion = opcion.get(PARAMETRO_METODOFACTURACION);
+            this.tipoPlan = opcion.get(PARAMETROS_TIPO_PLAN);
+            this.planDeInformacion = opcion.get(PARAMETROS_PLAN_INFORMACION);
+            valor = opcion.get(PARAMETRO_CODIGOASESOR);
+            if (valor != null) {
+                String[] arrayAgentes = this.codigoAsesor.split(",");
+                listaAgentes = new ArrayList<>();
+                Collections.addAll(listaAgentes, arrayAgentes);
+            }
+            valor = opcion.get(PARAMETRO_PORCENTAJE);
+            if (valor != null) {
+                String[] arrayPorcentaje = this.porcentaje.split(",");
+                listaPorcentaje = new ArrayList<>();
+                Collections.addAll(listaPorcentaje, arrayPorcentaje);
+            }
+            valor = opcion.get(PARAMETRO_ROL);
+            if (valor != null) {
+                String[] arrayRol = this.rol.split(",");
+                listaroles = new ArrayList<>();
+                Collections.addAll(listaroles, arrayRol);
+            }
+        }
+    }
+
     public String getPlanDeInformacion() {
         return planDeInformacion;
     }
@@ -46,6 +79,7 @@ public class Parametros {
     public void setPlanDeInformacion(String planDeInformacion) {
         this.planDeInformacion = planDeInformacion;
     }
+
     public String getTipoPlan() {
         return tipoPlan;
     }
@@ -53,6 +87,7 @@ public class Parametros {
     public void setTipoPlan(String tipoPlan) {
         this.tipoPlan = tipoPlan;
     }
+
     public String getMetodoFacturacion() {
         return metodoFacturacion;
     }
@@ -76,6 +111,7 @@ public class Parametros {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
     public String getValidarDato() {
         return validarDato;
     }
@@ -83,6 +119,7 @@ public class Parametros {
     public void setValidarDato(String validarDato) {
         this.validarDato = validarDato;
     }
+
     public List<String> getListaroles() {
         return listaroles;
     }
@@ -102,6 +139,7 @@ public class Parametros {
     public String getRol() {
         return rol;
     }
+
     public void setRol(String rol) {
         this.rol = rol;
     }
@@ -137,40 +175,6 @@ public class Parametros {
 
     public void setPorcentaje(String porcentaje) {
         this.porcentaje = porcentaje;
-    }
-
-    public Parametros(ExamplesTable opciones) {
-        for (Map<String, String> opcion : opciones.getRows()) {
-            String valor;
-            this.codigoAsesor = opcion.get(PARAMETRO_CODIGOASESOR);
-            this.porcentaje = opcion.get(PARAMETRO_PORCENTAJE);
-            this.rol =opcion.get(PARAMETRO_ROL);
-            this.mensaje = opcion.get(PARAMETROS_MENSAJE);
-            this.validarDato = opcion.get(PARAMETROS_VALIDAR_DATO);
-            this.tipo = opcion.get(PARAMETROS_TIPO);
-            this.auditoria = opcion.get(PARAMETRO_AUDITORIA);
-            this.metodoFacturacion = opcion.get(PARAMETRO_METODOFACTURACION);
-            this.tipoPlan = opcion.get(PARAMETROS_TIPO_PLAN);
-            this.planDeInformacion = opcion.get(PARAMETROS_PLAN_INFORMACION);
-            valor = opcion.get(PARAMETRO_CODIGOASESOR);
-            if (valor != null) {
-                String[] arrayAgentes = this.codigoAsesor.split(",");
-                listaAgentes= new ArrayList<>();
-                Collections.addAll(listaAgentes, arrayAgentes);
-            }
-            valor = opcion.get(PARAMETRO_PORCENTAJE);
-            if (valor != null) {
-                String[] arrayPorcentaje = this.porcentaje.split(",");
-                listaPorcentaje = new ArrayList<>();
-                Collections.addAll(listaPorcentaje, arrayPorcentaje);
-            }
-            valor = opcion.get(PARAMETRO_ROL);
-            if (valor != null) {
-                String[] arrayRol = this.rol.split(",");
-                listaroles = new ArrayList<>();
-                Collections.addAll(listaroles, arrayRol);
-            }
-        }
     }
 }
 

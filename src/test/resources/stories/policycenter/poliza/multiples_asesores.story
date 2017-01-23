@@ -1,7 +1,6 @@
-multiples_asesores
-Meta:@lote1
-@issue #SUGWUSC-1162
-@tag automator: danny_barrientos
+Meta:
+@lote4
+@tag equipo: billing
 @sprint 12
 
 

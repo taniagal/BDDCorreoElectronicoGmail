@@ -3,7 +3,7 @@ Consulta Contactos En Cuenta
 Meta:
 @lote2
 @Story CDSEG-845
-@tag automator:andres_alarcon_guerrero
+@tag equipo: 2
 @Sprint 1
 
 Narrative: Consultar detalle de un contacto específico de la cuenta

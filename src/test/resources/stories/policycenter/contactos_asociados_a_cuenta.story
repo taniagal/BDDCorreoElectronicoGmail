@@ -3,8 +3,7 @@ Contactos Asociados A Cuenta
 Meta:
 @lote1
 @Story CDSEG-845
-@tag automator:andres_alarcon_guerrero
-@tag automator:juan_carlos_restrepo
+@tag equipo: 2
 @Sprint 1
 
 Narrative: Modificación de la lista de los  filtros de búsqueda de los contactos de la cuenta (Rol y tipo de persona)

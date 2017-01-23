@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.steps.contacto;
 
-import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.contacto.NuevoContactoPage;
 import com.sura.guidewire.policycenter.utils.Utils;
@@ -13,7 +12,6 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     private String cedula = "";
     private String nit = "";
     private String tipoDoc = "";
-    private final PageUtil gw = new PageUtil(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
 
     public CrearNuevoContactoSteps(Pages pages) {

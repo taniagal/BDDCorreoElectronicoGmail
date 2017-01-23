@@ -1,12 +1,7 @@
-Ajustes Coaseguros
-
 Meta:
 @lote2
-@Story CDSEG-2778
-@URL https://jira.suramericana.com.co/browse/CDSEG-2778
-@tag automator:juan_gabriel_zapata
+@tag equipo: 2
 @Sprint 9
-
 
 
 Scenario:  1 Validacion de campos obligatorios en tipo de coaseguro aceptado
@@ -25,8 +20,6 @@ Then se debe validar que se muestren los mensajes de obligatoriedad siguientes
 | MENSAJES_WORKSPACE                                |
 | Póliza de referencia : Falta el campo obligatorio |
 | Número de documento : Falta el campo obligatorio  |
-
-
 
 Examples:
 | TipoCo   | numCuenta  | departamento | ciudad   | direccion         | descripcion   | actividad                     |

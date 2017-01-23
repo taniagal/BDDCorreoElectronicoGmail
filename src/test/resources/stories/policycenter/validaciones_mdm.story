@@ -1,9 +1,7 @@
-Validaciones MDM
-
-Meta: @lote4
-@issue #NotFound
+Meta:
+@lote4
 @sprint 2
-@tag automator: nelson_jhair_mosquera_palacios
+@tag equipo: 4
 
 
 Narrative:

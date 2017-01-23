@@ -1,13 +1,10 @@
-Validaciones Informacion De Vehiculo
-
-Meta: @lote4
-@tag automator: nelson_jhair_mosquera_palacios
-@local
-@issue #CDSEG-1013
+Meta:
+@lote3
 @sprint 3
-
-@issue #CDSEG-3354
 @sprint 7
+@tag equipo: 4
+@local
+
 
 Narrative:
 En este story no se contemplan explicitamente los escenarios de la histoia "SUGW_USC-Planes" "issue #CDSEG-3354"

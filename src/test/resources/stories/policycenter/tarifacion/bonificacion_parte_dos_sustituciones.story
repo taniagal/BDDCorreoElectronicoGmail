@@ -1,10 +1,7 @@
-Bonificacion Parte Dos Sustituciones
-
 Meta:
 @lote1
-@issue #CDSEG-5576
 @Sprint 12
-@tag automator: nelson_jhair_mosquera_palacios
+@tag equipo: 4
 
 
 Narrative:
@@ -35,7 +32,10 @@ And se debe recalcular la bonificacion como poliza nueva con el plan <plan> <pla
 And al cambiar el asegurado se debe recalcular la bonificacion como poliza nueva:
 |tipo_documento      |documento |bonoC|bonoT|
 |CEDULA DE CIUDADANIA|1060447895|0    |20   |
+When cambio la bonificacion tecnica <bonoTec>
+And cotice y expida la sustitucion
+Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
-|tipo_documento      |documento|bonoT|bonoC|bonoCo|placa |plan                      |
-|CEDULA DE CIUDADANIA|11111111 |0    |38   |18    |CYU123|Plan Utilitarios y Pesados|
+|tipo_documento      |documento|bonoT|bonoTec|bonoC|bonoCo|placa |plan                      |mensaje                                                                    |
+|CEDULA DE CIUDADANIA|11111111 |0    |5      |38   |18    |CYU123|Plan Utilitarios y Pesados|La bonificación no coincide con lo arrojado por el sistema, Favor verificar|

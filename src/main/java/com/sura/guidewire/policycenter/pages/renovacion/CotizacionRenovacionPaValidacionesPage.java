@@ -76,9 +76,9 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
 
     public void irAInformacionPolizaRenovacion() {
         WebElementFacade itemInformacionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']/div");
-        withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(itemInformacionPoliza).click();
+        clickearElemento(itemInformacionPoliza);
         WebElementFacade labelInformacionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:ttlBar']");
-        withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(labelInformacionPoliza).shouldBePresent();
+        clickearElemento(labelInformacionPoliza);
         WebElementFacade botonEditarTransaccion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']");
         setImplicitTimeout(TIEMPO_5,TimeUnit.SECONDS);
         if(botonEditarTransaccion.isPresent()){
@@ -92,9 +92,9 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
         WebElementFacade labelTomadorSecundario = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-labelEl']");
         waitFor(labelTomadorSecundario).shouldBePresent();
         WebElementFacade botonTomadorSecundario = findBy(".//a[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img");
-        waitFor(botonTomadorSecundario).click();
+        clickearElemento(botonTomadorSecundario);
         WebElementFacade itemPersonaDirectorio = findBy(".//a[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-itemEl']/span");
-        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        clickearElemento(itemPersonaDirectorio);
         Map<String, String> informacionTomador = datosTomador.getRows().get(0);
         ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPaPage = new ModificacionInformacionPolizaPAPage(getDriver());
         modificacionInformacionPolizaPaPage.adicionarContacto(informacionTomador.get("tipoDocumento"), informacionTomador.get("numeroDocumento"));
@@ -105,9 +105,11 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
         WebElementFacade botonCotizarVehiculos = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']");
         setImplicitTimeout(TIEMPO_5,TimeUnit.SECONDS);
         if(botonCotizarInfoPolicy.isPresent()){
-            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonCotizarInfoPolicy).click();
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonCotizarInfoPolicy);
+            clickearElemento(botonCotizarInfoPolicy);
         }else if(botonCotizarVehiculos.isPresent()){
-            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonCotizarVehiculos).click();
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonCotizarVehiculos);
+            clickearElemento(botonCotizarVehiculos);
         }
         resetImplicitTimeout();
     }

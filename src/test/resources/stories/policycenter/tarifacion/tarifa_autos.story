@@ -1,9 +1,7 @@
-Tarifa Autos
-
-Meta: @lote1
-@issue #CDSEG-1348
+Meta:
+@lote1
 @sprint 5
-@tag automator: nelson_jhair_mosquera_palacios
+@tag equipo: 4
 @local
 
 Narrative:
@@ -28,7 +26,6 @@ Then el resultado de la cotizacion debe ser <valor>
 Examples:
 |valor  |tipo_documento      |documento |
 |975.890|CEDULA DE CIUDADANIA|1060447895|
-
 
 
 

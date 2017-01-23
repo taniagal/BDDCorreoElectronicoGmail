@@ -3,7 +3,7 @@ Cambio De Placa
 Meta:
 @lote2
 @issue #CDSEG-4756
-@tag automator: tania_grajales_alzate
+@tag equipo: 5
 @Sprint 12
 
 Narrative:
@@ -12,18 +12,10 @@ Se requiere poder corregir la placa, en el caso de que la poliza fuera expedida 
 
 Scenario: Primer cambio de placa
 GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar la cuenta <numCuenta>
-And estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
-And ingrese los datos del asegurado <tipo_documento> <documento>
-And ingrese los datos del vehiculo:
-|placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|ABB180 |2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
-And seleccione algunas coberturas:
-| limite | deducible | abogado  | PTH | PPH | PPHF | GTH | AC | AS                 | PTD | PPD | PPDF | GT | PP | PT | GTR      | GP       | PLlaves  |
-| 1.440  | 0         | Opción 1 | 10  | 910 | 1.50 | 40. | 35 | Asistencia Clásica | 10  | 0   | 1.50 | 40 | 16 | 20 | Opción 1 | Opción 1 | Opción 1 |
-When expido la poliza y voy al archivo de poliza
-And ingrese a modificar dicha cotizacion
+Given tengo una poliza de PA con los siguientes datos:
+|tipo_documento      |documento |cuenta    |organizacion|producto|canal            |tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado |PLlaves |
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Sura        |Autos   |Canal Tradicional|Individual|ABB195|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|1.440 |0        |Opción 1|Opción 1|
+When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cuando cambie la placa <placa>
 And se deben recargar los datos de la placa anterior:
@@ -57,6 +49,6 @@ Then debe mostrar un mensaje de autorizacion para expedir
 
 
 Examples:
-|tipo_documento      |documento |numCuenta |placa  |placaInicial |placaVenezolana|ciudad|placaExistente|placaRiesgoConsultable|venezolana|                                                                     |
-|CEDULA DE CIUDADANIA|1234567890|C000888888|rando21|ABB180       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
+|placa  |placaInicial |placaVenezolana|ciudad|placaExistente|placaRiesgoConsultable|venezolana|                                                                     |
+|rando21|ABB195       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
 
