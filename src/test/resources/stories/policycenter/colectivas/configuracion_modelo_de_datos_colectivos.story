@@ -1,8 +1,7 @@
 Configuracion Modelo De Datos Colectivos
 
 Meta:
-@lote4
-@issue #CDSEG-4621
+@lote3
 @sprint 10
 @tag equipo: 4
 @local

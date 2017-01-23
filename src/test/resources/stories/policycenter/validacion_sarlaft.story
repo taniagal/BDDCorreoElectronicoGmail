@@ -1,9 +1,5 @@
-Validacion Sarlaft
-
 Meta:
-
 @lote4
-@issue #CDSEG-4086
 @tag equipo: 5
 @local
 @Sprint 9

@@ -1,6 +1,5 @@
-Validaciones Cambio De Poliza Vehiculos
-
-Meta: @lote4
+Meta:
+@lote4
 @issue CDSEG-1296
 @tag equipo: 5
 @local

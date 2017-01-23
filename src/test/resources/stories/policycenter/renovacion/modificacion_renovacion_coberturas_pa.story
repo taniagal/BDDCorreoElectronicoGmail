@@ -1,8 +1,5 @@
-Modificacion Renovacion Coberturas Pa
-
 Meta:
 @lote2
-@issue #CDSEG-2977
 @tag equipo: 5
 @local
 @Sprint 7

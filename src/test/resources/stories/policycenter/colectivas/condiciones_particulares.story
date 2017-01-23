@@ -191,7 +191,7 @@ Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And ingrese la entrada de las diferentes coberturas con interes <documento> <tipoBeneficiario> adicional
+And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
 | Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
@@ -201,8 +201,8 @@ And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-|tipo_documento      |documento |cotizacion|tipoBeneficiario|cedula   |
-|CEDULA DE CIUDADANIA|1060447895|33355337  |Asegurado       | 94537281|
+|tipo_documento      |documento |cotizacion|tipoBeneficiario|cedula   | tipodocumento       |
+|CEDULA DE CIUDADANIA|1060447895|33355337  |Asegurado       | 94537281| CEDULA DE CIUDADANIA|
 
 
 Scenario: 13  Bloqueo de expedicion de vehiculo por maximo valor accesorios
