@@ -43,7 +43,7 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
         verificarMensaje(panelInferiorTablaDeMensajes, mensaje);
     }
 
-    public void validarMensaje(String mensaje) {
+    public void validarMensajes(String mensaje) {
         String[] mensajes = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;
@@ -57,7 +57,15 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
                 }
             }
         }
-        MatcherAssert.assertThat("Se esperaba que se mostrara mensaje", contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+        MatcherAssert.assertThat("Se esperaba que se mostrara mensaje " + mensaje.replace("\\^", " "), contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+    }
+
+    public void validarMensaje(String mensaje) {
+        this.validarMensajes(mensaje);
+        this.validarIconoMensajeError();
+    }
+
+    public void validarIconoMensajeError(){
         MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 

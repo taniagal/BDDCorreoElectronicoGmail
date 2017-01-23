@@ -38,6 +38,11 @@ public class CoberturaGlobalDefinitions {
         coberturaGlobalSteps.ir_a_agregar_cobertura_global();
     }
 
+    @When("muestre los mensajes de advertencia para las reglas de coberturas <mensajes>")
+    public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(@Named("mensajes") String mensajes){
+        coberturaGlobalSteps.verLosMensajesDeAdvertenciaDeReglasDeCoberturas(mensajes);
+    }
+
     @When("ingrese las diferentes coberturas globales $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
 

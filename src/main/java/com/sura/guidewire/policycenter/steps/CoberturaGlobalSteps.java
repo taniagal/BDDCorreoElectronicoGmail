@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.steps;
 
 
 import com.sura.guidewire.policycenter.pages.CoberturaGlobalPage;
+import com.sura.guidewire.policycenter.pages.PanelSurEspacioDeTrabajoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -9,6 +10,8 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class CoberturaGlobalSteps extends ScenarioSteps {
     CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
+    PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
+
     public CoberturaGlobalSteps(Pages pages){
         super(pages);
     }
@@ -67,4 +70,8 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
         coberturaGlobalPage.verificarMensajeError(mensaje);
     }
 
+    @Step
+    public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(String mensajes) {
+        panelSurEspacioDeTrabajoPage.validarMensajes(mensajes);
+    }
 }
