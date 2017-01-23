@@ -25,6 +25,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
     private WebElementFacade campoTxtValorReconstruccion;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:AmountSubject_Input-inputEl']")
+    private WebElementFacade campoTxtValorAsegurableMaquina;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoTxtValorComercial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:0:RateModifier-inputEl']")
@@ -41,10 +43,22 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtIndiceVariable;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasMachine-inputEl']")
+    private WebElementFacade checkBoxMaquinariaYEquipo;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasFixture-inputEl']")
+    private WebElementFacade checkBoxMueblesYEnseres;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCobertura;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxDaniosMateriales;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxDaniosMaterialesMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxRoturaMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:2:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxAmitMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxTeremoto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
@@ -105,7 +119,6 @@ public class TarifaMRCPage extends PageUtil {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
                 esperarHasta(TIEMPO_1000);
             }
-
             try {
                 clickearElemento(checkBoxCobertura);
             } catch (StaleElementReferenceException e) {
@@ -246,6 +259,10 @@ public class TarifaMRCPage extends PageUtil {
             filaActividad++;
         }
         return filaActividad;
+    }
+
+    public void seleccionarCoberturasMaquinaria(ExamplesTable datos){
+
     }
 
 }
