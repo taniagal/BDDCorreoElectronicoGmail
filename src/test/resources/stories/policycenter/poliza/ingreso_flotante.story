@@ -30,3 +30,6 @@ And intente ingresar las entradas de las diferentes coberturas
 When en la pantalla "Edificios y ubicaciones" debe permitir seleccionar el tipo de flotante:
  |tipo|
  |Automatico|
+Examples:
+ ||
+ ||
