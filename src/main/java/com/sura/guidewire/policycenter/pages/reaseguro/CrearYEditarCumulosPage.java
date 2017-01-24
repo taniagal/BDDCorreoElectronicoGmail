@@ -10,7 +10,7 @@ import org.openqa.selenium.*;
 
 import java.util.Map;
 
-public class CrearYEditarCumulosPages extends PageUtil {
+public class CrearYEditarCumulosPage extends PageUtil {
 
     @FindBy(xpath = ".//td[@id='SubmissionWizard:Reinsurance']/div/span")
     WebElementFacade btnReaseguro;
@@ -63,7 +63,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
     private static double valorExpuesto = 0;
 
 
-    public CrearYEditarCumulosPages(WebDriver driver) {
+    public CrearYEditarCumulosPage(WebDriver driver) {
         super(driver);
     }
 

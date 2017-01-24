@@ -8,7 +8,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
-public class GrupoDeDireccionPages extends PageUtil {
+public class GrupoDeDireccionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:DefaultGrossRetention-inputEl']")
     private WebElementFacade lblLimiteContratoCp;
@@ -31,7 +31,7 @@ public class GrupoDeDireccionPages extends PageUtil {
     private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
     private static String porcentajeDeRetencionContratoCotaparte = null;
 
-    public GrupoDeDireccionPages(WebDriver driver) {
+    public GrupoDeDireccionPage(WebDriver driver) {
         super(driver);
     }
 
