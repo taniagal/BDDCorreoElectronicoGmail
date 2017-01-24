@@ -21,7 +21,7 @@ Scenario: Ingreso articulo Flotante (Multiriesgo)
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 11545133        | 10/10/1974       | LUV           | BAR             | DIRECCION DE RESIDENCIA | CALLE 28F #70-80 | Antioquia    | Medellin | INT-3  |
+| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 11545135        | 10/10/1974       | LUV           | BAR             | DIRECCION DE RESIDENCIA | CALLE 28F #70-80 | Antioquia    | Medellin | INT-3  |
 And ingresar informacion de edificio y ubicaciones
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO             | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
@@ -31,14 +31,7 @@ When debe permitir seleccionar el tipo de flotante:
  |tipo|
  |Automatico|
 And realiza la cotizacion,expide la poliza,modifica la poliza e intena ingresar una nueva ubicacion
-And ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional
-| TAB                      | TIPO_ARTICULO             | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Existencias Flotantes     |                     |                  | Valor asegurado máximo           | 100000000      |
-| Información de Artículos | Existencias Flotantes     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-When debe permitir seleccionar el tipo de flotante:
- |tipo|
- |Automatico|
-And se solicite aprobacion para los riesgos en cambio de poliza
+
 Examples:
-| rolUsuario | cedula  | tipoBeneficiario | tipodocumento       |
-| Asesor     | 11545133| Asegurado        | CEDULA DE CIUDADANIA|
+||
+||

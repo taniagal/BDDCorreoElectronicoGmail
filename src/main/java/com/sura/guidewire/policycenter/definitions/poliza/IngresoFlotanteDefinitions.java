@@ -54,10 +54,11 @@ public class IngresoFlotanteDefinitions {
         polizaSteps.seleccionarBotonAcciones();
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
+        /*
         //TODO ingrese a edificios y ubicaciones en cambio de poliza
         informacionDePolizaMrcSteps.ingresarAEdificiosYUbicacionesEnCambioDePoliza();
         //TODO intente ingresar una nueva ubicacion
         edificiosUbicacionesSteps.removerRiesgos();
-        edificiosUbicacionesSteps.ingresarNuevaUbicacion();
+        edificiosUbicacionesSteps.ingresarNuevaUbicacion();*/
     }
 }
