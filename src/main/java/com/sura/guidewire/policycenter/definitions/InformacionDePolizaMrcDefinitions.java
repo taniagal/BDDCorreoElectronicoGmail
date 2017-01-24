@@ -93,7 +93,6 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("ingrese a edificios y ubicaciones")
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
-        informacionDePolizaMrcSteps.agregarOrganizacion("Sura");
         informacionDePolizaMrcSteps.ingresarAEdificiosYUbicaciones();
     }
 
