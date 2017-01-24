@@ -24,6 +24,10 @@ And cotice y expida una poliza
 When El usuario quiera visualizar las primas cedidas
 Then se debe mostrar la informacion de la cobertura y sus montos generales
 
+Examples:
+||
+||
+
 
 
 
