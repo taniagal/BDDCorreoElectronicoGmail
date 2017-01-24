@@ -54,7 +54,6 @@ public class InformacionDePolizaMrcDefinitions {
     @When("este expidiendo una poliza de propiedad comercial")
     public void expidePolizaPropiedadComercial() {
         informacionDePolizaMrcSteps.seleccionaCotizacionParaProducto();
-        informacionDePolizaMrcSteps.agregarOrganizacion("Sura");
     }
 
 

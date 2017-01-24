@@ -16,7 +16,7 @@ public class ExpedicionDePolizaDefinitions {
 
     @Given("Que tengo una cotizacion <cotizacion> y voy a crear una poliza")
     public void ingresaInformacionPoliza(@Named("cotizacion")String cotizacion) {
-        expedicionDePolizaSteps.navegar_barra_superior(cotizacion);
+        expedicionDePolizaSteps.navegarBarraSuperior(cotizacion);
     }
 
     @When("voy a expedir una poliza")
