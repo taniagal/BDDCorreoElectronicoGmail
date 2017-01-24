@@ -18,9 +18,10 @@ Aplica definición al incluir el artículo flotante.
 Aplica para multiriesgo
 
 Scenario: Ingreso articulo Flotante (Multiriesgo)
-Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal            |
-|C000112402|Sura        |Multiriesgo corporativo|Canal Tradicional|
+GivenStories: stories/policycenter/login_policy.story
+Given estoy cotizando una poliza de mrc:
+| organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 450902          | 10/10/1974       | LUV           | BAR             | DIRECCION DE RESIDENCIA | CALLE 28F #70-80 | Antioquia    | Medellin | INT-3  |
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
