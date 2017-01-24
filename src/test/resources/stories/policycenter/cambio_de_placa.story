@@ -14,7 +14,7 @@ Scenario: Primer cambio de placa
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 |tipo_documento      |documento |cuenta    |organizacion|producto|canal            |tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado |PLlaves |
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Sura        |Autos   |Canal Tradicional|Individual|ABB181|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|1.440 |0        |Opción 1|Opción 1|
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Sura        |Autos   |Canal Tradicional|Individual|ABB195|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|1.440 |0        |Opción 1|Opción 1|
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cuando cambie la placa <placa>
@@ -50,5 +50,5 @@ Then debe mostrar un mensaje de autorizacion para expedir
 
 Examples:
 |placa  |placaInicial |placaVenezolana|ciudad|placaExistente|placaRiesgoConsultable|venezolana|                                                                     |
-|rando21|ABB181       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
+|rando21|ABB195       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
 

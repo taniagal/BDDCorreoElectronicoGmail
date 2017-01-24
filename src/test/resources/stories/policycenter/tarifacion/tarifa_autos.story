@@ -29,7 +29,6 @@ Examples:
 
 
 
-
 Scenario:  Realizar una cotizacion con todas las coberturas para autos
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza |

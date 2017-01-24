@@ -4,6 +4,7 @@ Meta:@lote1
 @issue #SUGWUSC-1162
 @tag equipo: billing
 @sprint 12
+
 Narrative:
 Como usuario de Policy Center
 requiero realizar validaciones en la pantalla de pagos  para una adecuada gestión de los cobros flotantes.

@@ -46,7 +46,7 @@ public class PageUtil extends PageObject {
     protected static final int TIEMPO_1 = 1;
     protected static final int CONSTANTE_MAXIMO_EJECUCIONES = 120;
     protected static final int CONSTANTE_CUENTA_EJECUCIONES = 0;
-    protected static final int CONSTANTE_20 = 20;
+    protected static final int CONSTANTE_12 = 12;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
 
@@ -214,14 +214,30 @@ public class PageUtil extends PageObject {
     }
 
     public void clickearElemento(WebElementFacade element) {
-        for (int i = 0; i < CONSTANTE_20; i++) {
+        for (int i = 0; i < CONSTANTE_12; i++) {
             try {
                 element.click();
                 break;
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_500);
                 LOGGER.info("WebDriverException " + e);
+                LOGGER.info(e.getMessage());
                 LOGGER.info("--- click " + i);
+            }
+        }
+    }
+
+    public void clickearElemento(WebElementFacade elemento, int veces) {
+        for (int i = 0; i < veces; i++) {
+            try {
+                elemento.click();
+                break;
+            } catch (WebDriverException e) {
+                esperarHasta(TIEMPO_1000);
+                LOGGER.info("WebDriverException " + e);
+                LOGGER.info(e.getMessage());
+                LOGGER.info("--- click " + i);
+                LOGGER.info(e.getStackTrace().toString());
             }
         }
     }
