@@ -27,7 +27,7 @@ public class ExpedicionCambioDePolizaUWPEPSDefinitions {
 
     @Given("existe una cotizacion <numeroCotizacion>")
     public void irABuscarCotizacion(@Named("numeroCotizacion") String cotizacion){
-        expedicionDePolizaSteps.navegar_barra_superior(cotizacion);
+        expedicionDePolizaSteps.navegarBarraSuperior(cotizacion);
     }
 
     @Given("existe una cotizacion <numeroCotizacion> la cual se va a modificar")

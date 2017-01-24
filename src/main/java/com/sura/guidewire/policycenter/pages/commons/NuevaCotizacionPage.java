@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class NuevaCotizacionPage extends PageUtil {
-
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
@@ -103,7 +102,6 @@ public class NuevaCotizacionPage extends PageUtil {
                             botonAceptarPopup.click();
                             botonAceptarPopup.waitUntilNotVisible();
                         }
-
                         resetImplicitTimeout();
                     }
                     break;
@@ -171,19 +169,21 @@ public class NuevaCotizacionPage extends PageUtil {
                 esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
             }
         }else {
-            comboBoxOrganizacionMrc.waitUntilPresent();
-            seleccionarItem(comboBoxOrganizacionMrc, dato.get(ORGANIZACION));
-            esperarPorValor(comboBoxOrganizacionMrc, dato.get(ORGANIZACION));
+            llenarOrganizacion(dato.get(ORGANIZACION));
         }
     }
 
+    public void llenarOrganizacion(String organizacion) {
+        comboBoxOrganizacionMrc.waitUntilPresent();
+        seleccionarItem(comboBoxOrganizacionMrc, organizacion);
+        esperarPorValor(comboBoxOrganizacionMrc, organizacion);
+    }
 
     public void cotizarEnvioCopiada() {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickearElemento(menuItemInformacionDePoliza);
         botonBotonCotizar.waitUntilPresent().click();
     }
-
 
     public void llenarInfoPoliza() {
         menuItemInformacionDePoliza.waitUntilPresent();
@@ -216,6 +216,8 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void seleccionarReaseguroEspecialNo() {
-        findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']").waitUntilPresent().click();
+        WebElementFacade botonReaseguroEspecialNo = $(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']");
+        botonReaseguroEspecialNo.waitUntilPresent();
+        clickearElemento(botonReaseguroEspecialNo);
     }
 }

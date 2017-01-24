@@ -125,17 +125,14 @@ public class EdificiosUbicacionesDefinitions {
 
     @When("cuando intente ingresar un articulo para una ubicacion para comprobar las validaciones de error del articulo")
     public void cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo() {
-
         try {
             polizaSteps.seleccionarBotonLlamadoEditarTransaccionDePoliza();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
         }
-
         polizaSteps.seleccionarOpcionEdificiosYUbicaciones();
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
-
         LOGGER.info("Poliza.cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo");
     }
 
@@ -148,7 +145,6 @@ public class EdificiosUbicacionesDefinitions {
     public void cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo() {
         edificiosUbicacionesSteps.seleccionarCheckDelArticuloAAgregar();
         edificiosUbicacionesSteps.seleccionarCheckDeCoberturaQueDeseaAplicar();
-
         /*
         Se ingresa valor asegurado superior al valor del articulo a asegurar y se ingresa valores a sublimites
         que superen el valor asegurado con el fin de validar en el paso de comprobaciones que se verifiquen los limites
@@ -186,7 +182,6 @@ public class EdificiosUbicacionesDefinitions {
     @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
     public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
         List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-
         for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
             MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
@@ -194,7 +189,6 @@ public class EdificiosUbicacionesDefinitions {
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
         polizaSteps.confirmarCancelacion();
-
     }
 
     @Then("se debe mostrar el siguiente mensaje $mensajesEsperados")
@@ -207,12 +201,10 @@ public class EdificiosUbicacionesDefinitions {
     public void entoncesSeEsperaQueElMensajeSeMuestreUnaSolaVez(String mensajesEsperado) {
         List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
         int contadorDeOcurrencias = 0;
-
         if (mensajesWSList.contains(mensajesEsperado)) {
             contadorDeOcurrencias++;
         }
         MatcherAssert.assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, Is.is(CoreMatchers.equalTo(1)));
-
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
