@@ -2,17 +2,22 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.DisponibilidadDetalleProductoPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
+    @Page
     DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
-
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
+    @Page
+    NuevaCotizacionPage nuevaCotizacionPage;
+    @Page
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
     public InformacionDePolizaMrcSteps(Pages pages) {
         super(pages);
@@ -62,7 +67,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
     @Step
     public void ingresarTomadorAdicional(String tipoDocumento, String documento) {
-        opcionesInformacionPolizaMrcPage.ingresarTomadorAdicional(tipoDocumento,documento);
+        opcionesInformacionPolizaMrcPage.ingresarTomadorAdicional(tipoDocumento, documento);
     }
 
     @Step
@@ -92,12 +97,12 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarOpcionCotizar(){
+    public void seleccionarOpcionCotizar() {
         opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizar();
     }
 
     @Step
-    public void seleccionarOpcionCotizarPolizaPrincipal(){
+    public void seleccionarOpcionCotizarPolizaPrincipal() {
         opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizarPolizaPrincipal();
     }
 
@@ -115,35 +120,42 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     public void validarCamposInhabilitados() {
         opcionesInformacionPolizaMrcPage.noHabilitarNumeroDocumentoCoaseguro();
     }
-    public void validarCampos(String estadouno, String estadodos, ExamplesTable menusesperados){
-        opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno,estadodos,menusesperados);
+
+    public void validarCampos(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno, estadodos, menusesperados);
     }
-    public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados){
-        opcionesInformacionPolizaMrcPage.validarCamposInformacionPoliza(estadouno,estadodos,menusesperados);
+
+    public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCamposInformacionPoliza(estadouno, estadodos, menusesperados);
     }
 
     @Step
     public void ingresarAEdificiosYUbicaciones() {
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguiente();
-    }    
+    }
+
     @Step
-    public void ingresarAEdificiosYUbicacionesEnCambioDePoliza(){
+    public void ingresarAEdificiosYUbicacionesEnCambioDePoliza() {
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenCambioDePoliza();
     }
+
     @Step
-    public void ingresarAEdificiosYUbicacionesEnRenovacionDePoliza(){
+    public void ingresarAEdificiosYUbicacionesEnRenovacionDePoliza() {
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
     }
+
     @Step
-    public void ingresarAInformacionDePoliza(){
+    public void ingresarAInformacionDePoliza() {
         opcionesInformacionPolizaMrcPage.seleccionarInformacionDePoliza();
     }
+
     @Step
-    public void ingresarAOpcionInformacionDePoliza(){
+    public void ingresarAOpcionInformacionDePoliza() {
         opcionesInformacionPolizaMrcPage.ingresarAInformacionDePoliza();
     }
+
     @Step
-    public void seleccionarPolizaTipoNoReaseguro(){
+    public void seleccionarPolizaTipoNoReaseguro() {
         opcionesInformacionPolizaMrcPage.seleccionarTipoNoReaseguro();
     }
 
@@ -152,8 +164,13 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.darClicEnAceptarDeCoaseuguro();
     }
 
-    public void validarCamposNoEditablesEnInformacionDePoliza(){
+    public void validarCamposNoEditablesEnInformacionDePoliza() {
         opcionesInformacionPolizaMrcPage.validarcamposNoEditablesEnInformacionDePoliza();
+    }
+
+    @Step
+    public void agregarOrganizacion(String organizacion) {
+        nuevaCotizacionPage.llenarOrganizacion(organizacion);
     }
 }
 

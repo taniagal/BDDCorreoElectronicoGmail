@@ -11,7 +11,6 @@ import org.openqa.selenium.*;
 import java.util.Map;
 
 public class CrearYEditarCumulosPage extends PageUtil {
-
     @FindBy(xpath = ".//td[@id='SubmissionWizard:Reinsurance']/div/span")
     WebElementFacade btnReaseguro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV_tb:ReinsuranceWorksheet-btnInnerEl']")
@@ -171,13 +170,11 @@ public class CrearYEditarCumulosPage extends PageUtil {
             MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
         } catch (NoSuchElementException e) {
             LOGGER.info("NoSuchElementException " + e);
-            WebElementFacade listTasaBrutaDeCesion = $(".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]");
             esperarHasta(TIEMPO_2000);
             listTasaBrutaDeCesion.waitUntilPresent();
             MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
         } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
-            WebElementFacade listTasaBrutaDeCesion = $(".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]");
             esperarHasta(TIEMPO_2000);
             listTasaBrutaDeCesion.waitUntilPresent();
             MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));

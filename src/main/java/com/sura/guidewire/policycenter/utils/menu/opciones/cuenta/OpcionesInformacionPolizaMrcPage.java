@@ -243,7 +243,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarOpcionCotizar() {
-        botonCotizar.waitUntilPresent();
+        try {
+            botonCotizar.waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            esperarHasta(TIEMPO_2000);
+            botonCotizar.waitUntilPresent();
+        }
         clickearElemento(botonCotizar);
         waitForTextToAppear("Cotización");
     }
@@ -287,7 +293,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         seleccionarElTipoDeCoaseguro(tipoCo);
         agregoLasAseguradoras(tablaaseguradoras);
     }
-
 
     public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro) {
         esperarHasta(TIEMPO_1000);
@@ -495,7 +500,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
     }
-
 
     public void validarcamposNoEditablesEnInformacionDePoliza() {
         validarCamposNoEditables(LBL_INFORMACION_POLIZA);
