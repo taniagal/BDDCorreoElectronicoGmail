@@ -102,7 +102,6 @@ public class NuevaCotizacionPage extends PageUtil {
                             botonAceptarPopup.click();
                             botonAceptarPopup.waitUntilNotVisible();
                         }
-
                         resetImplicitTimeout();
                     }
                     break;
@@ -180,13 +179,11 @@ public class NuevaCotizacionPage extends PageUtil {
         esperarPorValor(comboBoxOrganizacionMrc, organizacion);
     }
 
-
     public void cotizarEnvioCopiada() {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickearElemento(menuItemInformacionDePoliza);
         botonBotonCotizar.waitUntilPresent().click();
     }
-
 
     public void llenarInfoPoliza() {
         menuItemInformacionDePoliza.waitUntilPresent();

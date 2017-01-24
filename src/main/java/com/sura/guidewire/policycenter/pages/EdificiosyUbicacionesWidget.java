@@ -447,8 +447,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             LOGGER.info("ElementShouldBePresentException " + e);
             setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
             if (botonAceptarCambioDePoliza.isPresent()) {
-                botonAceptarCambioDePoliza.click();
-                withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(btnCotizar).click();
+                clickearElemento(botonAceptarCambioDePoliza);
+                withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(btnCotizar);
+                clickearElemento(btnCotizar);
             }
         }
     }
