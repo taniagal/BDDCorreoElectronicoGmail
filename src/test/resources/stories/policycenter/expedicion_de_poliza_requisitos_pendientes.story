@@ -90,7 +90,7 @@ When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And debo ver un mensaje opcional
 | mensaje                                                        |
-| Existen requisitos opcionales pendientes, por favor verifique. |
+|Existen requisitos opcionales pendientes, por favor verifique. |
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
 And seleccione la opcion importado por terceros
