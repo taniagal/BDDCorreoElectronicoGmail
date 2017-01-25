@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class TransaccionesDePolizaPage extends PageUtil{
+public class TransaccionesDePolizaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Jobs']/div/span")
     private WebElementFacade menuTransaccionesPoliza;
@@ -32,7 +32,7 @@ public class TransaccionesDePolizaPage extends PageUtil{
     @FindBy(xpath = "//span[contains(.,'Fecha de inicio de vigencia')]")
     private WebElementFacade columnaFechaInicioVigencia;
 
-    public TransaccionesDePolizaPage (WebDriver driver) {
+    public TransaccionesDePolizaPage(WebDriver driver) {
         super(driver);
     }
 
@@ -47,11 +47,7 @@ public class TransaccionesDePolizaPage extends PageUtil{
 
     public boolean validarDetalleTransaccion() {
         withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoFechaVigencia).shouldBeCurrentlyVisible();
-        if("null".equals(campoFechaVigencia.getText()) && "null".equals(campoFechaExpedicion.getText())) {
-            return false;
-        }else{
-            return true;
-        }
+        return ("null".equals(campoFechaVigencia.getText()) && "null".equals(campoFechaExpedicion.getText()));
     }
 
     public void seleccionarTransacciones() {
@@ -64,11 +60,11 @@ public class TransaccionesDePolizaPage extends PageUtil{
         clickearElemento(botonComparar);
     }
 
-    public boolean validarDiferenciasTransacciones(String cotizacion, String cambioPoliza){
+    public boolean validarDiferenciasTransacciones(String cotizacion, String cambioPoliza) {
         waitForTextToAppear("Diferencias entre transacciones");
         boolean datosIguales = false;
         setImplicitTimeout(TIEMPO_10, TimeUnit.SECONDS);
-        if(cotizacion.equals(campoCotizacion.getText()) && cambioPoliza.equals(campoCambioPoliza.getText())){
+        if (cotizacion.equals(campoCotizacion.getText()) && cambioPoliza.equals(campoCambioPoliza.getText())) {
             datosIguales = true;
         }
         resetImplicitTimeout();

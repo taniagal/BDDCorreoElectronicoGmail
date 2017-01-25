@@ -19,27 +19,27 @@ public class InformacionDePagoDefinitions {
 
     @Given("que estoy en la pantalla de pago con la <cotizacion>")
     public void givenQueEstoyEnLaPantallaDePagoConLacotizacion(@Named("cotizacion") String cotizacion) {
-        expedicionDePolizaSteps.navegar_barra_superior(cotizacion);
+        expedicionDePolizaSteps.navegarBarraSuperior(cotizacion);
     }
 
     @When("visualice la pantalla de pagos")
     public void whenVisualiceLaPantallaDePagos() {
-        informacionDePagoSteps.ingresar_a_pantalla_pagos();
+        informacionDePagoSteps.ingresarAPantallaPagos();
     }
 
     @Then("se deben mostrar los datos correspondientes a formas de pago")
     public void thenSeDebenMostrarLosDatosCorrespondientesAFormasDePago() {
-        informacionDePagoSteps.valida_ingreso_a_pantalla_pago();
+        informacionDePagoSteps.validaIngresoAPantallaPago();
     }
 
     @Then("se debe mostrar el <nombreMetodoPago>")
     public void thenSeDebeMostrarElnombreMetodoPago(@Named("nombreMetodoPago") String nombreMetodoPago) {
-        informacionDePagoSteps.valida_metodo_de_pago(nombreMetodoPago);
+        informacionDePagoSteps.validaMetodoDePago(nombreMetodoPago);
     }
 
     @Then("se debe mostrar el plan de pago que retorna billing <programa>")
     public void thenSeDebeMostrarElPlanDePagoQueRetornaBilling(@Named("programa") String programa) {
-        informacionDePagoSteps.valida_programa(programa);
+        informacionDePagoSteps.validaPrograma(programa);
     }
 
 }

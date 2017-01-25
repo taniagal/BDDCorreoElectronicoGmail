@@ -1,10 +1,8 @@
 Cobertura Ubicacion Otros
 
-Meta: @lote2
-@Story CDSEG-767
-@URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
+Meta:
+@lote2
+@tag equipo: 2
 @Sprint 5
 
 Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)

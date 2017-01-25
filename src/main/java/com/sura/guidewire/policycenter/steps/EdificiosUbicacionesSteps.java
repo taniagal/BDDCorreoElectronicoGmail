@@ -1,14 +1,21 @@
 package com.sura.guidewire.policycenter.steps;
 
+import com.sura.guidewire.policycenter.definitions.Poliza;
 import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
+import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
@@ -16,6 +23,9 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
     private static NuevaPolizaPage nuevaPolizaPage;
+
+    @Steps
+    private PolizaSteps polizaSteps;
 
     public EdificiosUbicacionesSteps(Pages pages) {
         super(pages);
@@ -116,7 +126,6 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     @Step
     public void seleccionarBotonEditarTransaccionDePoliza() {
         edificiosyUbicacionesWidget.editartransacciondepoliza();
-
     }
 
 
