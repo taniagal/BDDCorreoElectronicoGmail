@@ -29,20 +29,20 @@ public class CotizacionRenovacionPaValidacionesDefinitions {
 
     @When("cotice con algunas de las figuras que son Riesgo consultable bloqueante")
     public void validarFigurasRiesgoConsultable(){
-        cotizacionRenovacionPaValidacionesSteps.ir_A_Revision_De_Poliza();
-        cotizacionRenovacionPaValidacionesSteps.seleccionar_Opcion_Cotizar();
+        cotizacionRenovacionPaValidacionesSteps.irARevisionDePoliza();
+        cotizacionRenovacionPaValidacionesSteps.seleccionarOpcionCotizar();
     }
 
     @When("cotice con algunas de las figuras que son Riesgo consultable bloqueante sin validar fecha")
     public void validarFigurasRiesgoConsultableSinValidaFecha(){
-        cotizacionRenovacionPaValidacionesSteps.ir_A_Revision_De_Poliza_Sin_Valida_Fecha();
-        cotizacionRenovacionPaValidacionesSteps.seleccionar_Opcion_Cotizar();
+        cotizacionRenovacionPaValidacionesSteps.irARevisionDePolizaSinValidaFecha();
+        cotizacionRenovacionPaValidacionesSteps.seleccionarOpcionCotizar();
     }
 
 
     @When("el motor, chasis y/o placa sean Riesgo consultable bloqueante")
     public void validarMotorChasisYPlaca(){
-        cotizacionRenovacionPaValidacionesSteps.seleccionar_Opcion_Cotizar();
+        cotizacionRenovacionPaValidacionesSteps.seleccionarOpcionCotizar();
     }
 
     @When("vaya a informacion de poliza en la renovacion")
@@ -62,7 +62,7 @@ public class CotizacionRenovacionPaValidacionesDefinitions {
 
     @Then("se debe bloquear la cotizacion y mostrar el mensaje que devuelve el servicio $mensajeRC")
     public void validarMensajeValidacionRC(ExamplesTable mensajeRC){
-        cotizacionRenovacionPaValidacionesSteps.validar_Que_Se_Bloquee_Cotizacion_Y_Muestre_Mensaje(mensajeRC);
+        cotizacionRenovacionPaValidacionesSteps.validarQueSeBloqueeCotizacionYMuestreMensaje(mensajeRC);
         cotizacionRenovacionPaValidacionesSteps.limpiarEspacioDeTrabajo();
     }
 }

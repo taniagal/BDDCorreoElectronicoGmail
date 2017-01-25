@@ -7,11 +7,13 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class CambioDePlacaPage extends PageUtil {
 
@@ -206,7 +208,11 @@ public class CambioDePlacaPage extends PageUtil {
         clickearElemento(menuItemVehiculosModificacion);
         clickearElemento(checkBoxCambioDePlaca);
         clickearElemento(checkBoxCambioDePlaca);
-        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
+        try {
+            withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+        }
         esperarHasta(TIEMPO_2000);
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placaRiesgoConsultable);

@@ -75,7 +75,8 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathAnalisisRiesgos = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div";
         String xpathMensajeAlertaEdificiosYUbicaciones = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']";
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
-        findBy(xpathAnalisisRiesgos).click();
+        $(xpathAnalisisRiesgos).waitUntilPresent();
+        clickearElemento($(xpathAnalisisRiesgos));
         waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         waitFor(TIEMPO_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
@@ -83,8 +84,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
             waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
-            esperarHasta(TIEMPO_5000);
-            botonBorrar.click();
+            clickearElemento(botonBorrar, TIEMPO_3);
         }
     }
 
@@ -125,7 +125,6 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         }
         setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }
-
 
     public void aceptarInicioSolicitudAprobacion() {
         String xpathAceptarInicioSolicitud = ".//a[contains(.,'Aceptar')]";
