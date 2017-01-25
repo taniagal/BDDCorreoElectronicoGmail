@@ -1,5 +1,5 @@
 Meta:
-@lote1
+@lote4
 @sprint 13
 @tag equipo: 4
 
@@ -25,8 +25,12 @@ And ingrese las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Sustraccion | Valor asegurado sustraccion con violencia | 300000000      |
 And cotice el articulo
-Then debo poder ver el valor de la prima <prima> en la cotizacion
-
+Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
+|descripcion                      |valor  |
+|Cobertura de Danos materiales    |755.550|
+|Cobertura de Terremoto           |306.600|
+|Cobertura de Asonada             |32.850 |
+|Cobertura de Rotura de maquinaria|0,00   |
 Examples:
-|prima  |
-|101.667|
+||
+||
