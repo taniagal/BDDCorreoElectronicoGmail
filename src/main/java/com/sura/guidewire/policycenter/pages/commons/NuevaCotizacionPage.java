@@ -102,7 +102,6 @@ public class NuevaCotizacionPage extends PageUtil {
                             botonAceptarPopup.click();
                             botonAceptarPopup.waitUntilNotVisible();
                         }
-
                         resetImplicitTimeout();
                     }
                     break;
@@ -178,13 +177,11 @@ public class NuevaCotizacionPage extends PageUtil {
         esperarPorValor(comboBoxOrganizacion, organizacion);
     }
 
-
     public void cotizarEnvioCopiada() {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickearElemento(menuItemInformacionDePoliza);
         botonBotonCotizar.waitUntilPresent().click();
     }
-
 
     public void llenarInfoPoliza() {
         menuItemInformacionDePoliza.waitUntilPresent();
@@ -217,6 +214,8 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void seleccionarReaseguroEspecialNo() {
-        findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']").waitUntilPresent().click();
+        WebElementFacade botonReaseguroEspecialNo = $(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']");
+        botonReaseguroEspecialNo.waitUntilPresent();
+        clickearElemento(botonReaseguroEspecialNo);
     }
 }

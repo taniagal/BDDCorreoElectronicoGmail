@@ -43,6 +43,7 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade botonRestablecer;
 
     protected static final int TIEMPO_3500 = 3500;
+    protected static final int CONSTANTE_10 = 10;
     protected static final int CONSTANTE_9 = 9;
     protected static final int CONSTANTE_8 = 8;
     protected static final int CONSTANTE_7 = 7;
@@ -86,6 +87,7 @@ public class BusquedaDePolizaPage extends PageUtil {
         MatcherAssert.assertThat(celdas.get(CONSTANTE_7).getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(celdas.get(CONSTANTE_8).getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(celdas.get(CONSTANTE_9).getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_10).getText(), Is.is(Matchers.equalTo(sampleData.get("tipoPoliza"))));
 
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
