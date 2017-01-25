@@ -174,14 +174,14 @@ public class EdificiosUbicacionesDefinitions {
 
     @Then("se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacio(ExamplesTable mensajesEsperados) {
-        edificiosUbicacionesSteps.validarMensajeDeAlerta(mensajesEsperados);
+        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
 
     @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
     public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
-        edificiosUbicacionesSteps.validarMensajeDeAlerta(mensajesEsperados);
+        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
         polizaSteps.confirmarCancelacion();
