@@ -32,6 +32,8 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade comboBoxCanal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
     private WebElementFacade comboBoxTipoPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
+    private WebElementFacade comboBoxOficinaDeRadicacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd-textEl']")
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']")
