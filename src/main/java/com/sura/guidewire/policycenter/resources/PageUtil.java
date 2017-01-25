@@ -142,7 +142,6 @@ public class PageUtil extends PageObject {
                 waitFor(elemento).waitUntilPresent();
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);
-                LOGGER.info(e.getStackTrace().toString());
                 esperarHasta(TIEMPO_2000);
                 waitFor(elemento).waitUntilPresent();
             }
@@ -235,9 +234,7 @@ public class PageUtil extends PageObject {
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_1000);
                 LOGGER.info("WebDriverException " + e);
-                LOGGER.info(e.getMessage());
                 LOGGER.info("--- click " + i);
-                LOGGER.info(e.getStackTrace().toString());
             }
         }
     }
