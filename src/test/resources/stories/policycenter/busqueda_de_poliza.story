@@ -1,7 +1,7 @@
 Meta:
 @lote4
 @tag equipo: 1
-@Sprint 1
+@Sprint 13
 
 Narrative:
 Como usuario de PolicyCenter
@@ -18,11 +18,22 @@ Examples:
 | buscarNumeroPoliza | mensaje                             |
 | 34565456543        | La búsqueda no devolvió resultados. |
 
+Scenario: Consulta de  poliza por numero de cuenta existente
+When la busco por numero de cuenta <numeroCuenta>
+Then se debe visualizar la siguiente información:
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto                | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza        |
+| TEST_33355481 | EVANS RENE                      | C002888991   | Multiriesgo corporativo | Vigentes   | 21/12/2016    | 21/12/2017      | SURA   | Póliza principal  |
+
+Examples:
+| numeroCuenta |
+| C002888991   |
+
 Scenario: Consultar polizas por numero de cuenta existente
 When la busco por numero de cuenta <numeroCuenta>
 Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   |
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto                | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza        |
+| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos                   | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual |
+| TEST_22222236 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Multiriesgo corporativo | Vigentes   | 20/11/2016    | 20/11/2017      | SURA   | Póliza individual |
 
 Examples:
 | numeroCuenta |
@@ -63,8 +74,8 @@ Examples:
 Scenario: Consultar polizas por numero de cuenta y producto
 When la busco por numero de cuenta <numeroCuenta> y producto <producto>
 Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   |
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza       |
+| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual|
 
 Examples:
 | numeroCuenta | producto |
@@ -73,8 +84,8 @@ Examples:
 Scenario: Consultar polizas por numero de cuenta y agente
 When la busco por numero de cuenta <numeroCuenta> y agente <agente>
 Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   |
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza       |
+| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual|
 
 Examples:
 | numeroCuenta | agente |
@@ -83,8 +94,8 @@ Examples:
 Scenario: Consultar polizas por numero de cuenta  y codigo de agente
 When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   |
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza       |
+| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual|
 
 Examples:
 | numeroCuenta | codigoAgente |
@@ -93,8 +104,8 @@ Examples:
 Scenario: Consultar polizas por numero de cuenta, producto y codigo de agente
 When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   |
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza       |
+| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual|
 
 Examples:
 | numeroCuenta | producto | codigoAgente |

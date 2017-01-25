@@ -25,7 +25,7 @@ public class CambioEnExpedicionDePolizaDefinitios {
 
     @Given("Que tengo una cotizacion <cotizacion>")
     public void givenQueTengoUnaCotizacioncotizacion(@Named("cotizacion")String cotizacion) {
-        expedicionDePolizaSteps.navegar_barra_superior(cotizacion);
+        expedicionDePolizaSteps.navegarBarraSuperior(cotizacion);
     }
 
 

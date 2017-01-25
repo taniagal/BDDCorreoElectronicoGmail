@@ -19,7 +19,8 @@ Then se deben mostrar los datos correspondientes a formas de pago
 
 Examples:
 |cotizacion|nombreMetodoPago|
-|22222212  |Factura directa|
+|22222212  |Factura directa |
+
 
 Scenario: Visualizar datos, metodos y plande pagos de facturacion para CP y PA
 Given que estoy en la pantalla de pago con la <cotizacion>
@@ -30,7 +31,7 @@ And se debe mostrar el plan de pago que retorna billing <programa>
 Examples:
 |cotizacion|nombreMetodoPago|programa     |
 |22222212  |Factura directa |Plan de pagos|
-|22222210   |Factura directa |Plan de pagos|
+|22222210  |Factura directa |Plan de pagos|
 
 
 Scenario: Visualizar seleccion en programa de pagos retorno billing

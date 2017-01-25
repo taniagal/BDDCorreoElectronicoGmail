@@ -181,11 +181,7 @@ public class EdificiosUbicacionesDefinitions {
 
     @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
     public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
+        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
         polizaSteps.confirmarCancelacion();
