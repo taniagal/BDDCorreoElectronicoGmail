@@ -16,20 +16,20 @@ public class InformacionDePagoSteps extends ScenarioSteps{
     }
 
     @Step
-    public void ingresar_a_pantalla_pagos(){opcionesInformacionDePagoPage.clickEnPagos();
+    public void ingresarAPantallaPagos(){opcionesInformacionDePagoPage.clickEnPagos();
     }
 
     @Step
-    public void valida_ingreso_a_pantalla_pago(){opcionesInformacionDePagoPage.validaIngresoAPago();
+    public void validaIngresoAPantallaPago(){opcionesInformacionDePagoPage.validaIngresoAPago();
     }
 
     @Step
-    public void valida_metodo_de_pago(String nombreMetodoPago) {
+    public void validaMetodoDePago(String nombreMetodoPago) {
         opcionesInformacionDePagoPage.validaPago(nombreMetodoPago);
     }
 
     @Step
-    public void valida_programa(String programa) {
+    public void validaPrograma(String programa) {
         opcionesInformacionDePagoPage.validaPrograma(programa);
     }
 

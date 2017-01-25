@@ -7,6 +7,9 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
+
+import java.util.Map;
 
 
 public class DetallesDeUbicacionDefinitions {
@@ -27,14 +30,19 @@ public class DetallesDeUbicacionDefinitions {
         detallesDeUbicacionSteps.agregarUbicacion(descripcion, actividad);
     }
 
+    @When("agregue una nueva ubicacion: $datos")
+    public void agregaNuevaUbicacion(ExamplesTable datos){
+        Map<String, String> dato = datos.getRow(0);
+        detallesDeUbicacionSteps.validarCamposNuevos();
+        detallesDeUbicacionSteps.agregarDireccion(dato.get("direccion"), dato.get("departamento"), dato.get("ciudad"));
+        detallesDeUbicacionSteps.agregarUbicacion(dato.get("descripcion"), dato.get("actividad"));
+    }
+
     @Then("espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaciones la nueva ubicaciOn ingresada")
     public void verificarUbicacion(){
         detallesDeUbicacionSteps.validarIngresoUbicacion();
     }
 
-    /**
-     * ESCENARIO 2
-     */
     @Then("que se muestre el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
          detallesDeUbicacionSteps.verificarMensaje(mensaje);

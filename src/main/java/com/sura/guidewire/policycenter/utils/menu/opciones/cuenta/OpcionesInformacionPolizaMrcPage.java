@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.serenitybdd.core.annotations.findby.By;
@@ -229,6 +230,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionarProducto(String nomProducto) {
         esperarHasta(TIEMPO_1000);
         String xpathBotonElegirProducto = BTNELEGIRPRODUCTO + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
+        NuevaCotizacionPage cotizacionPage = new NuevaCotizacionPage(getDriver());
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
         botonElegirProducto.click();
@@ -239,11 +241,18 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 botonAceptarPopup.waitUntilNotVisible();
             }
             resetImplicitTimeout();
+            cotizacionPage.llenarOrganizacion("Sura");
         }
     }
 
     public void seleccionarOpcionCotizar() {
-        botonCotizar.waitUntilPresent();
+        try {
+            botonCotizar.waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            esperarHasta(TIEMPO_2000);
+            botonCotizar.waitUntilPresent();
+        }
         clickearElemento(botonCotizar);
         waitForTextToAppear("Cotización");
     }
@@ -287,7 +296,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         seleccionarElTipoDeCoaseguro(tipoCo);
         agregoLasAseguradoras(tablaaseguradoras);
     }
-
 
     public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro) {
         esperarHasta(TIEMPO_1000);
@@ -495,7 +503,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
     }
-
 
     public void validarcamposNoEditablesEnInformacionDePoliza() {
         validarCamposNoEditables(LBL_INFORMACION_POLIZA);
