@@ -4,8 +4,32 @@ Meta: @lote4
 
 Narrative:
 Como usuario de negocio
-Quiero poder visualizar los requisitos po DNI diferente
-Para la solución de autos
+Quiero poder visualizar los requisitos por DNI diferente
+Para la solucion de autos
+
+Scenario: Expedicion de poliza con beneficiario-asegurado-tomador que requieren requisitos
+GivenStories: stories/policycenter/login_policy.story
+Given estoy cotizando una poliza de mrc con documento:
+| organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1036543787 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
+When ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo en expedicion:
+|placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
+|ABB182 |2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
+And seleccione algunas coberturas:
+| limite | deducible | abogado  | PTH | PPH | PPHF | GTH | AC | AS                 | PTD | PPD | PPDF | GT | PP | PT | GTR      | GP       | PLlaves  |
+| 1.440  | 0         | Opción 1 | 10  | 910 | 1.50 | 40. | 35 | Asistencia Clásica | 10  | 0   | 1.50 | 40 | 16 | 20 | Opción 1 | Opción 1 | Opción 1 |
+And agrege un beneficiario <tipoDocumento> <numeroDocumento><tipoBeneficiario>
+When intente cotizar y expedir la poliza
+Then debo ver un mensaje indicando requisitos pendientes
+|mensaje                                                      |
+|Existen requisitos pendientes, diríjase a Análisis de riesgos|
+
+Examples:
+|tipoDocumento       |tipo_documento       |documento  |numeroDocumento|tipoBeneficiario|
+|CEDULA DE CIUDADANIA|CEDULA DE CIUDADANIA |71318883   |71123456       |Oneroso Leasing |
+
+
 
 Scenario: frenar expedicion de poliza cuando existan requsiitos pendientes obligatorios
 Given estoy cotizando una poliza:

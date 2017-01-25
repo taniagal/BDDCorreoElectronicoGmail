@@ -7,7 +7,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class RequisitosPorDniAutosPage extends PageUtil {
@@ -47,8 +46,10 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade botonRequisitosModificacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:RequirementsScreen:0']")
     private WebElementFacade tablaRequisitos;
-
-
+    @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade tablaRequisitosModificacion;
+    @FindBy(xpath = "//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade tablaRequisitosExpedicion;
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
         super(driver);
@@ -91,7 +92,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void nombresDni(ExamplesTable mensajes) {
-        verificarMensajes(tablaRequisitos,mensajes);
+        verificarMensajes(tablaRequisitos, mensajes);
        /* withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonRequisitosExpedicion).waitUntilPresent();
         Map<String, String> mensajesRC;
         boolean validacionMensajes = false;
@@ -105,6 +106,11 @@ public class RequisitosPorDniAutosPage extends PageUtil {
         }
 
         return botonRequisitosExpedicion.getText();*/
+    }
+
+    public String validarMensajeRequisitosPendientes() {
+        tablaRequisitosExpedicion.waitUntilPresent();
+        return tablaRequisitosExpedicion.getText();
     }
 }
 

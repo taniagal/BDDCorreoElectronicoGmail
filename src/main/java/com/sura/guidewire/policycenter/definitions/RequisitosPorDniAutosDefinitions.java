@@ -32,6 +32,10 @@ public class RequisitosPorDniAutosDefinitions {
     public void validarDniRequisitos(ExamplesTable mensaje) {
         requisitosPorDniAutosSteps.validarDniRequisitos(mensaje);
     }
+    @Then("debo ver un mensaje indicando requisitos pendientes $mensaje")
+    public void validarMensajeRequisitosPendientes(ExamplesTable mensaje) {
+        requisitosPorDniAutosSteps.validarMensajeRequsiitosPendientes(mensaje);
+    }
 
 
 

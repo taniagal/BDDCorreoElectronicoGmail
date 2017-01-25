@@ -50,6 +50,10 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
         requisitosPorDniAutosPage.nombresDni(mensaje);
     }
 
+    public void validarMensajeRequsiitosPendientes(ExamplesTable mensaje) {
+        String mensajeRequisitosPendientes = mensaje.getRow(0).get("mensajeDeAutorizacion");
+        MatcherAssert.assertThat("mensaje personalizado", requisitosPorDniAutosPage.validarMensajeRequisitosPendientes(), Matchers.containsString(mensajeRequisitosPendientes));
+    }
 }
 
 
