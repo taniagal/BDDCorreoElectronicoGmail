@@ -32,8 +32,8 @@ And quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|tipo_documento      |documento |dias|cuenta     | producto| agente  |mensaje|
-|CEDULA DE CIUDADANIA|1060447895|-31 |C1060447895| Autos   | DIRECTO |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días) |
+|tipo_documento      |documento |dias|cuenta     | producto|agente|mensaje|
+|CEDULA DE CIUDADANIA|1060447895|-31 |C1060447895| Autos   |AGUAS |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días) |
 
 
 Scenario:  Realizar cambio de una poliza PA con emision anticipada
