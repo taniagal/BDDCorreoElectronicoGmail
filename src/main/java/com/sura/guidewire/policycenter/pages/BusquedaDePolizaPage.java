@@ -79,19 +79,19 @@ public class BusquedaDePolizaPage extends PageUtil {
         waitFor(tablaResultados).waitUntilPresent();
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
         Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
-        List<WebElement> celdas = allRows.get(this.encontrarPoliza(sampleData.get("numeroPoliza"), allRows)).findElements(By.tagName("td"));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_2).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_3).getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_5).getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_6).getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_7).getText(), Is.is(Matchers.notNullValue()));
+        List<WebElement> celdas = allRows.get(this.encontrarPoliza(sampleData.get("tipoPoliza"), allRows)).findElements(By.tagName("td"));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_2).getText(), Is.is(Matchers.equalTo(sampleData.get("tipoPoliza"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_3).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_4).getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_6).getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
         MatcherAssert.assertThat(celdas.get(CONSTANTE_8).getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_9).getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_10).getText(), Is.is(Matchers.equalTo(sampleData.get("tipoPoliza"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_9).getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_7).getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_10).getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
 
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            MatcherAssert.assertThat(cells.get(CONSTANTE_4).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroCuenta"))));
+            MatcherAssert.assertThat(cells.get(CONSTANTE_5).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroCuenta"))));
         }
     }
 

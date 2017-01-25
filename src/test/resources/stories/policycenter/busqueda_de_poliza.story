@@ -18,14 +18,11 @@ Examples:
 | buscarNumeroPoliza | mensaje                             |
 | 34565456543        | La búsqueda no devolvió resultados. |
 
-Scenario: Consulta sin resultados al ingresar poliza riesgo
-
-
 Scenario: Consulta de  poliza por numero de cuenta existente
 When la busco por numero de cuenta <numeroCuenta>
 Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto                | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza        |
-| TEST_33355481 | EVANS RENE                      | C002888991   | Multiriesgo corporativo | Vigentes   | 21/12/2016    | 21/12/2017      | SURA   | Póliza principal  |
+| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto                | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza                           |
+| TEST_33355481 | EVANS RENE                      | C002888991   | Multiriesgo corporativo | Vigentes   | 21/12/2016    | 21/12/2017      | SURA   | Web.PolicySearch.Results.Collectiva  |
 
 Examples:
 | numeroCuenta |
