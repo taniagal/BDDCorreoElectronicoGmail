@@ -87,6 +87,14 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresarCoberturas(ingresotable);
     }
 
+    @When("ingrese a modificar articulo con beneficiario oneroso en cambio de poliza $modificararticulo")
+    public void cuandoIntenteModificarArticuloConBeneficiarioOneroso(ExamplesTable modificararticulo){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.ingresarCoberturas(modificararticulo);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
+    }
+
     @When("ingresar interes adicional <tipoBeneficiario> a cada cobertura $interesados")
     public void agregarInteresAdicional(ExamplesTable interesados){
         edificiosUbicacionesSteps.ingresarInteresesAdicionalesACadaArticulo(interesados);
