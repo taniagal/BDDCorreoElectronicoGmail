@@ -173,9 +173,9 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void llenarOrganizacion(String organizacion) {
-        comboBoxOrganizacionMrc.waitUntilPresent();
-        seleccionarItem(comboBoxOrganizacionMrc, organizacion);
-        esperarPorValor(comboBoxOrganizacionMrc, organizacion);
+        comboBoxOrganizacion.waitUntilPresent();
+        seleccionarItem(comboBoxOrganizacion, organizacion);
+        esperarPorValor(comboBoxOrganizacion, organizacion);
     }
 
 
@@ -196,9 +196,9 @@ public class NuevaCotizacionPage extends PageUtil {
             esperarHasta(TIEMPO_2000);
             withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
         }
-        if (!"Sura".equals(comboBoxOrganizacionPa.getText())) {
-            seleccionarItem(comboBoxOrganizacionPa, "Sura");
-            esperarPorValor(comboBoxOrganizacionPa, "Sura");
+        if (!"Sura".equals(comboBoxOrganizacion.getText())) {
+            seleccionarItem(comboBoxOrganizacion, "Sura");
+            esperarPorValor(comboBoxOrganizacion, "Sura");
             seleccionarItem(comboBoxCanal, "Canal Tradicional");
             esperarPorValor(comboBoxCanal, "Canal Tradicional");
             try {

@@ -1,4 +1,3 @@
-Reglas de Negocio para las coberturas - pesos y dolares
 
 Meta:
 @lote1
@@ -27,14 +26,12 @@ And intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos          | Maquinaria y equipo de contratistas |                                                | Valor Asegurable                                                                                  | 1477450001     |
 | Otros Articulos          | Maquinaria y equipo de contratistas |                                                | Índice variable                                                                                   | 1              |
 | Otros Articulos          | Maquinaria y equipo de contratistas | Danos materiales                               | Valor asegurado danos materiales                                                                  | 1477450001     |
-And haga clic en el boton Aceptar
 And muestre los mensajes de advertencia para las reglas de coberturas <mensajes>
+And cotice y expida la poliza
 
 Examples:
-| mensajes                                                                                                                                                                               |
-| La sumatoria de los valores asegurables de los artículos maquinaria y equipo contratistas de toda la póliza debe ser menor o igual a $1.477.450.000,00 (COP) (US$500.000,00).^
-El valor asegurado del sublimite Deterioro de bienes refigerados por rotura maquinaria en la cobertura de Daños materiales debe ser menor a $8.864.700.000,00 (COP) (US$3.000.000,00).^
-El límite de la cobertura todo riesgo construcción y/o montaje dentro de los predios asegurados debe ser máximo $5.909.800.000,00 (COP) (US$2.000.000,00).|
+| mensajes |
+| La sumatoria de los valores asegurables de los artículos maquinaria y equipo contratistas de toda la póliza debe ser menor o igual a $1.477.450.000,00 (COP) (US$500.000,00).^El valor asegurado del sublimite Deterioro de bienes refigerados por rotura maquinaria en la cobertura de Daños materiales debe ser menor a $8.864.700.000,00 (COP) (US$3.000.000,00).^El límite de la cobertura todo riesgo construcción y/o montaje dentro de los predios asegurados debe ser máximo $5.909.800.000,00 (COP) (US$2.000.000,00). |
 
 
 Scenario: Validacion deducible terremoto del 2% en expedicion de poliza MRC
