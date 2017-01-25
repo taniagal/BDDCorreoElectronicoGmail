@@ -31,6 +31,8 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |Cobertura de Terremoto           |306.600|
 |Cobertura de Asonada             |32.850 |
 |Cobertura de Rotura de maquinaria|0,00   |
+|Cobertura de Sustraccion         |0,00   |
+
 Examples:
 ||
 ||
