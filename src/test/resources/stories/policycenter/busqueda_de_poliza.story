@@ -18,6 +18,9 @@ Examples:
 | buscarNumeroPoliza | mensaje                             |
 | 34565456543        | La búsqueda no devolvió resultados. |
 
+Scenario: Consulta sin resultados al ingresar poliza riesgo
+
+
 Scenario: Consulta de  poliza por numero de cuenta existente
 When la busco por numero de cuenta <numeroCuenta>
 Then se debe visualizar la siguiente información:
