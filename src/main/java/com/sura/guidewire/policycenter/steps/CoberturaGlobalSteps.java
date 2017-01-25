@@ -8,6 +8,8 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.Map;
+
 public class CoberturaGlobalSteps extends ScenarioSteps {
     CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
     PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
@@ -71,7 +73,14 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(String mensajes) {
-        panelSurEspacioDeTrabajoPage.validarMensajes(mensajes);
+    public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(ExamplesTable mensajes) {
+        Map<String, String> mensajesEsperados = mensajes.getRows().get(0);
+        String listaDeMensajes = "";
+        String llave;
+        for (int i = 0; i < mensajesEsperados.size(); i++){
+            llave = "mensaje" + i;
+            listaDeMensajes = listaDeMensajes + mensajesEsperados.get(llave);
+        }
+        panelSurEspacioDeTrabajoPage.validarMensajes(listaDeMensajes);
     }
 }

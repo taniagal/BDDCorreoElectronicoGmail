@@ -51,6 +51,7 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
         List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
         for (int i = 0; i < numeroMensajes; i++) {
             for (WebElementFacade lista : mensajesRiesgos) {
+                System.out.println("mensaje en posicion " + i + " " + lista.getText());
                 if (lista.getText().contains(mensajes[i])) {
                     contadorMensajesOk++;
                     break;
