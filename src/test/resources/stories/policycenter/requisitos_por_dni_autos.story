@@ -7,7 +7,6 @@ Como usuario de negocio
 Quiero poder visualizar los requisitos po DNI diferente
 Para la solución de autos
 
-
 Scenario: frenar expedicion de poliza cuando existan requsiitos pendientes obligatorios
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |tipoPoliza  |
@@ -22,7 +21,9 @@ And seleccione algunas coberturas:
 | 1.440  | 0         | Opción 1 | 10  | 910 | 1.50 | 40. | 35 | Asistencia Clásica | 10  | 0   | 1.50 | 40 | 16 | 20 | Opción 1 | Opción 1 | Opción 1 |
 And agrege un beneficiario <tipoDocumento> <numeroDocumento><tipoBeneficiario>
 When intente cotizar y expedir la poliza
-Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
+Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
+|mensaje                                                      |
+|Existen requisitos pendientes, diríjase a Análisis de riesgos|
 
 Examples:
 |tipoDocumento       |primerNombre|primerApellido |tipo_documento       |documento  |numeroDocumento|tipoBeneficiario|mensaje                                          |
