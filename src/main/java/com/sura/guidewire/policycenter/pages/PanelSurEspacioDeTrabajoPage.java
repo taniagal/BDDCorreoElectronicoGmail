@@ -85,7 +85,10 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
     }
 
     public void validarMensajesNoVisibles(String mensajes) {
-        Integer numeroDeMensajesEncontrados = this.validarMensajesDePanel(mensajes);
+        Integer numeroDeMensajesEncontrados = 0;
+        if(panelInferiorTablaDeMensajes.isVisible()) {
+            numeroDeMensajesEncontrados = this.validarMensajesDePanel(mensajes);
+        }
         MatcherAssert.assertThat("Se esperaba que NO se mostrara alguno de los mensajes " + mensajes.replace("\\^", " "), numeroDeMensajesEncontrados.toString(), Is.is(Matchers.equalTo("0")));
     }
 }
