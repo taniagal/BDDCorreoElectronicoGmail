@@ -38,7 +38,7 @@ Examples:
 | numSubscripcion | documento  | tipoBeneficiario |  tipodocumento        | mensaje                             |
 | 33355336        | 1060447895 | Asegurado        |  CEDULA DE CIUDADANIA |La búsqueda no devolvió resultados.  |
 
-Scenario: Consulta de  poliza por numero de cuenta existente
+Scenario: Consulta de poliza colectiva por numero de cuenta existente
 When la busco por numero de cuenta <numeroCuenta>
 Then se debe visualizar la siguiente información:
 | numeroPoliza  | nombreAsegurado | numeroCuenta | producto                | estado   | fechaVigencia | fechaExpiracion | agente | tipoPoliza |
