@@ -18,11 +18,31 @@ Examples:
 | buscarNumeroPoliza | mensaje                             |
 | 34565456543        | La búsqueda no devolvió resultados. |
 
+
+Scenario: Consulta sin resultados al ingresar poliza riesgo
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When copie la poliza
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+| Interes Adicional        | Interes Adicional |                     |                  | NULL                             | 00000          |
+And expido la poliza
+And voy a buscar la  poliza
+Then debe mostrar el mensaje <mensaje>
+
+
+Examples:
+| numSubscripcion | documento  | tipoBeneficiario |  tipodocumento        | mensaje                             |
+| 33355336        | 1060447895 | Asegurado        |  CEDULA DE CIUDADANIA |La búsqueda no devolvió resultados.  |
+
 Scenario: Consulta de  poliza por numero de cuenta existente
 When la busco por numero de cuenta <numeroCuenta>
 Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto                | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza                           |
-| TEST_33355481 | EVANS RENE                      | C002888991   | Multiriesgo corporativo | Vigentes   | 21/12/2016    | 21/12/2017      | SURA   | Web.PolicySearch.Results.Collectiva  |
+| numeroPoliza  | nombreAsegurado | numeroCuenta | producto                | estado   | fechaVigencia | fechaExpiracion | agente | tipoPoliza |
+| TEST_33355481 | EVANS RENE      | C002888991   | Multiriesgo corporativo | Vigentes | 21/12/2016    | 21/12/2017      | SURA   | Colectiva  |
 
 Examples:
 | numeroCuenta |

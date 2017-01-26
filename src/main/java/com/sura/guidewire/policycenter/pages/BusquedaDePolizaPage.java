@@ -2,8 +2,7 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import java.util.List;
-import java.util.Map;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -14,6 +13,9 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class BusquedaDePolizaPage extends PageUtil {
@@ -41,6 +43,8 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade tituloBuscarPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     WebElementFacade botonRestablecer;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
+    WebElementFacade numPoliza;
 
     protected static final int TIEMPO_3500 = 3500;
     protected static final int CONSTANTE_10 = 10;
@@ -79,7 +83,7 @@ public class BusquedaDePolizaPage extends PageUtil {
         waitFor(tablaResultados).waitUntilPresent();
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
         Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
-        List<WebElement> celdas = allRows.get(this.encontrarPoliza(sampleData.get("tipoPoliza"), allRows)).findElements(By.tagName("td"));
+        List<WebElement> celdas = allRows.get(this.encontrarPoliza(sampleData.get("numeroPoliza"), allRows)).findElements(By.tagName("td"));
         MatcherAssert.assertThat(celdas.get(CONSTANTE_2).getText(), Is.is(Matchers.equalTo(sampleData.get("tipoPoliza"))));
         MatcherAssert.assertThat(celdas.get(CONSTANTE_3).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
         MatcherAssert.assertThat(celdas.get(CONSTANTE_4).getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
@@ -99,7 +103,7 @@ public class BusquedaDePolizaPage extends PageUtil {
         Integer filaPoliza = 0;
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (poliza.equals(columna.get(CONSTANTE_2).getText())) {
+            if (poliza.equals(columna.get(CONSTANTE_3).getText())) {
                 return filaPoliza;
             }
             filaPoliza++;
@@ -189,5 +193,11 @@ public class BusquedaDePolizaPage extends PageUtil {
         this.ingresarDatoEnCampoProducto(producto);
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
+    }
+    public void capturarNumeroDePoliza(){
+        String poliza = Utils.quitaCaracteresACadena(numPoliza);
+        irABuscarPoliza();
+        buscarPolizaPorNumeroDePoliza(poliza);
+
     }
 }
