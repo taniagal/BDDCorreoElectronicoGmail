@@ -13,10 +13,7 @@ import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
-import org.jbehave.core.annotations.Aliases;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
@@ -155,6 +152,11 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresarValorSublimiteTranslados("10002");
         edificiosUbicacionesSteps.ingresarValorSublimiteParaCombustion("10002");
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+    }
+
+    @When("seleccione el tipo de mercancia flotante <tipoMercancia>")
+    public void seleccionarElTipoDeMercanciaFlotante(@Named("tipoMercancia") String tipoMercancia){
+        edificiosUbicacionesSteps.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
     }
 
 

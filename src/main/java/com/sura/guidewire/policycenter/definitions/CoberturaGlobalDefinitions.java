@@ -81,11 +81,17 @@ public class CoberturaGlobalDefinitions {
         String estadodos = "";
         coberturaGlobalSteps.validar_campos_agregar_cobertura(estadouno,estadodos,menusesperados);
     }
+
     @Then("debe estar en la pestaña coberturas en estado <estadouno> las siguientes opciones $menusesperados")
     public void entoncesEnLaPestanaCoberturasSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,
                                                                                  @Named("estadodos") String estadodos,
                                                                                  ExamplesTable menusesperados) {
         coberturaGlobalSteps.validar_campos_pestaña_coberturas(estadouno,estadodos,menusesperados);
+    }
+
+    @Then("no debe mostrar los mensajes de advertencia para las reglas de coberturas $mensajes")
+    public void validarMensajesNoSeMuestranLosMensajes(ExamplesTable mensajes) {
+        coberturaGlobalSteps.validarMensajesNoSeMuestranLosMensajes(mensajes);
     }
 
 

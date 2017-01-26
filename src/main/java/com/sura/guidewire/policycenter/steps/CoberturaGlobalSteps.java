@@ -74,13 +74,23 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
 
     @Step
     public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(ExamplesTable mensajes) {
+        panelSurEspacioDeTrabajoPage.validarMensajes(this.obtenerMensajes(mensajes));
+    }
+
+    @Step
+    public void validarMensajesNoSeMuestranLosMensajes(ExamplesTable mensajes) {
+        panelSurEspacioDeTrabajoPage.validarMensajesNoVisibles(this.obtenerMensajes(mensajes));
+    }
+
+    public String obtenerMensajes(ExamplesTable mensajes){
         Map<String, String> mensajesEsperados = mensajes.getRows().get(0);
         String listaDeMensajes = "";
         String llave;
         for (int i = 0; i < mensajesEsperados.size(); i++){
-            llave = "mensaje" + i;
+            llave = "mensaje" + (i+1);
             listaDeMensajes = listaDeMensajes + mensajesEsperados.get(llave);
         }
-        panelSurEspacioDeTrabajoPage.validarMensajes(listaDeMensajes);
+        return listaDeMensajes;
     }
+
 }
