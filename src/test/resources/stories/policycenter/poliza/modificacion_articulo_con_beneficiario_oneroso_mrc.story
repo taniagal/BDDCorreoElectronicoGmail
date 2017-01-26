@@ -1,5 +1,5 @@
 Meta:
-@lote3
+@lote1
 @tag equipo: 3
 @local
 @Sprint 13
@@ -37,10 +37,6 @@ When ingrese a modificar articulo con beneficiario oneroso en cambio de poliza
 | TAB                      | TIPO_ARTICULO          | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                             | VALOR_ENTRADAS |
 | Información de Artículos | Edificios              |                     |                  | Valor Reconstrucción                                                                 | 200000000      |
 | Información de Artículos | Edificios              |                     | Danos materiales | Valor asegurado danos materiales                                                     | 200000000      |
-Then se debe mostrar un mensaje de advertencia
-| mensaje                                                                                                                                                                                       |
-| Modificación con beneficario oneroso. Si la modificación afecta los intereses del beneficiario, por favor verifique que este haya suministrado la carta de autorización de dicha modificación |
-
 
 Examples:
 ||
