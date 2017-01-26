@@ -40,7 +40,7 @@ Then el cliente debe quedar asegurado
 And y su plan de pago debe ser anual
 
 Examples:
-| riesgos   |
-| rc        |
+| cobertura	|
+| rc       	|
 | hurto     |
 | daño      |
