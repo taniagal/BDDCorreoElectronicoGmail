@@ -32,18 +32,13 @@ And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
-And intente ingresar una nueva ubicacion sin riesgo consultable
-And intente ingresar las entradas de las diferentes coberturas
+And ingrese las entradas en cambio de poliza de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO             | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Existencias Flotantes     |                     |                  | Valor asegurado máximo           | 100000000      |
 | Información de Artículos | Existencias Flotantes     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-And en la pantalla "Edificios y ubicaciones" debe permitir seleccionar el tipo de flotante:
+Then validar tipo de mercancia flotante en cambio:
  |tipo|
  |Automatico|
-Then en la pantalla de payment en el item schedule debe asignar por default plan type "Installment plan" no editable.
-El item "audits" debe aparecer por default "SI" y tampoco es editable:
-    |tipo      |metodoFacturacion|tipoPlan          |auditoria|
-    |Automatico|Factura directa  |Installment Plan  |SI       |
 Examples:
 ||
 ||

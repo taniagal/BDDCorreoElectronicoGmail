@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Parametros;
 import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -51,6 +52,9 @@ public class CambioDePolizaPage extends PageUtil {
     WebElementFacade radioBotonReaseguroEspeciaSi;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:CPBuildings']")
     WebElementFacade opcionEdificioYubicaciones;
+
+    protected static final String LABELCONSTANTE= ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']";
+
 
 
     public CambioDePolizaPage(WebDriver driver) {
@@ -122,6 +126,14 @@ public class CambioDePolizaPage extends PageUtil {
     public void ingresarAEdificionYUbicacionesPolyceChange() {
         botonSiguientePolyceChange.waitUntilPresent();
         clickearElemento(botonSiguientePolyceChange);
+
+    }
+
+    public void validarMercanciaFlotante(Parametros parametros) {
+
+        WebElementFacade grupoMensajes = findBy(LABELCONSTANTE);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(parametros.getTipo()));
 
     }
 }

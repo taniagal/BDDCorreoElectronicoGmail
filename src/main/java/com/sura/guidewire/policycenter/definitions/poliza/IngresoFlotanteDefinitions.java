@@ -11,6 +11,7 @@ import com.sura.guidewire.policycenter.utils.Parametros;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
@@ -44,10 +45,10 @@ public class IngresoFlotanteDefinitions {
     public void seleccionarTipoArticuloFlotante(ExamplesTable opciones) {
         ajustePantallaPagosYValidacionesSteps.seleccionarArticuloFlotante(new Parametros(opciones));
     }
-    @When("vaya a edificio y ubicaciones de polyceChange")
-    public void irEdificioYUbicacionesPolyceChage(){
-        cambioDePolizaSteps.IrAMenuEdificiosYUbicaciones();
-       // cambioDePolizaSteps.ingresarAEdificionYUbicacionesPolyceChange();
+    @Then("validar tipo de mercancia flotante en cambio:$opciones")
+    public void validarMercanciaFlotante(ExamplesTable opciones){
+        cambioDePolizaSteps.validarMercanciaFlotante(new Parametros(opciones));
+
     }
 
     @When("realiza la cotizacion,expide la poliza,modifica la poliza e intena ingresar una nueva ubicacion")

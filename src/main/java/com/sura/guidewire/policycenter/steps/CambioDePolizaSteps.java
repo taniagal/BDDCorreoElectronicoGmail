@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.pages.CambioDePolizaPage;
 import com.sura.guidewire.policycenter.pages.PolizaPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
+import com.sura.guidewire.policycenter.utils.Parametros;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
@@ -81,5 +82,9 @@ public class CambioDePolizaSteps extends ScenarioSteps {
     @Step
     public void ingresarAEdificionYUbicacionesPolyceChange() {
         cambioDePolizaPage.ingresarAEdificionYUbicacionesPolyceChange();
+    }
+    @Step
+    public void validarMercanciaFlotante(Parametros parametros) {
+        cambioDePolizaPage.validarMercanciaFlotante(parametros);
     }
 }
