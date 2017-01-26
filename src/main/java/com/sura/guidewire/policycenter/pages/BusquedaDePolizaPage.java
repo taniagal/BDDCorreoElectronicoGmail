@@ -31,7 +31,7 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade btnBuscar;
     @FindBy(xpath = ".//div[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']/div/table")
     WebElementFacade tablaResultados;
-    @FindBy(xpath = "//div[@id='PolicySearch:PolicySearchScreen:_msgs']/div")
+    @FindBy(xpath = "//div[contains(@id, '_msgs')]/div")
     WebElementFacade msjValidacion;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
     WebElementFacade menuBuscar;
