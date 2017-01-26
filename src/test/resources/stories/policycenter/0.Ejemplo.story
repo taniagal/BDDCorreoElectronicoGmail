@@ -8,13 +8,13 @@ Como [Rol del usuario]
 Quiero [Objetivo]
 Para poder [Beneficio]
 
-Scenario: Nombre del escenario en lenguaje de negocio, no tÃ©cnico
+Scenario: Nombre del escenario en lenguaje de negocio, no técnico
 Given preparacion de la prueba en lenguaje de negocio
 And opcional (arrange)
 When ejecucion de la prueba como tal, que vamos a probar en lenguaje de negocio
 And obligatorio (act)
-Then resultado esperado de la prueba en lenguaje de negocio
-And obligatorio (assert)
+Then resultado esperado de la prueba en lenguaje de negocio <xxxx>
+And obligatorio (assert) <yyyy>
 Examples:
 | xxxx  | yyyy |
 | x     | y    |
@@ -43,4 +43,4 @@ Examples:
 | riesgos   |
 | rc        |
 | hurto     |
-| daÃ±o      |
+| daño      |
