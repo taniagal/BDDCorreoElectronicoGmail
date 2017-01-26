@@ -5,6 +5,7 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 public class OpcionesDeCierreDefinitions {
     @Steps
@@ -15,8 +16,8 @@ public class OpcionesDeCierreDefinitions {
         opcionesDeCierreSteps.irAOpcionesDeCierre();
     }
 
-    @Then("deben aparecer todas las razones de declinar poliza")
-    public void validarInformacionDeclinar() {
-        opcionesDeCierreSteps.validarInformacionDeclinar();
+    @Then("deben aparecer todas las razones de declinar poliza $opcionesDeclinacion")
+    public void validarInformacionDeclinar(ExamplesTable opcionesDeclinacion) {
+        opcionesDeCierreSteps.validarInformacionDeclinar(opcionesDeclinacion);
     }
 }

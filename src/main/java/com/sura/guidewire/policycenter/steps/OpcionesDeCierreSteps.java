@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.pages.OpcionesDeCierrePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
+import org.jbehave.core.model.ExamplesTable;
 
 public class OpcionesDeCierreSteps extends ScenarioSteps {
     @Page
@@ -14,7 +15,7 @@ public class OpcionesDeCierreSteps extends ScenarioSteps {
         opcionesDeCierrePage.irAOpcionesDeCierre();
     }
 
-    public void validarInformacionDeclinar(String razones) {
-        opcionesDeCierrePage.validarRazonesDeclinar(razones);
+    public void validarInformacionDeclinar(ExamplesTable opcionesDeclinacion) {
+        opcionesDeCierrePage.validarRazonesDeclinar(opcionesDeclinacion);
     }
 }
