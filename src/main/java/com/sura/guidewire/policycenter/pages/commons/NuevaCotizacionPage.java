@@ -135,9 +135,6 @@ public class NuevaCotizacionPage extends PageUtil {
         numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuenta"));
         comboBoxNombreAgente.click();
         linkNombre.waitUntilVisible();
-        seleccionarItem(comboBoxOficinaDeRadicacion, "1073");
-        esperarPorValor(comboBoxOficinaDeRadicacion, "1073");
-        comboBoxNombreAgente.click();
         seleccionarProductoDesdeCuenta(datosCotizacion);
     }
 
@@ -149,6 +146,9 @@ public class NuevaCotizacionPage extends PageUtil {
     public void seleccionarProductoDesdeCuenta(ExamplesTable datosCotizacion) {
         Map<String, String> dato = datosCotizacion.getRow(0);
         Actions actions = new Actions(getDriver());
+        seleccionarItem(comboBoxOficinaDeRadicacion, "1073");
+        esperarPorValor(comboBoxOficinaDeRadicacion, "1073");
+        comboBoxNombreAgente.click();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();

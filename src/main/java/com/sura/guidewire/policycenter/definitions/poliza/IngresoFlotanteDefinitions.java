@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 
+import com.sura.guidewire.policycenter.steps.CambioDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
@@ -25,6 +26,8 @@ public class IngresoFlotanteDefinitions {
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
     @Steps
     TarifaTasaUnicaSteps tasaUnicaSteps;
+    @Steps
+    CambioDePolizaSteps cambioDePolizaSteps;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -41,10 +44,15 @@ public class IngresoFlotanteDefinitions {
     public void seleccionarTipoArticuloFlotante(ExamplesTable opciones) {
         ajustePantallaPagosYValidacionesSteps.seleccionarArticuloFlotante(new Parametros(opciones));
     }
+    @When("vaya a edificio y ubicaciones de polyceChange")
+    public void irEdificioYUbicacionesPolyceChage(){
+        cambioDePolizaSteps.IrAMenuEdificiosYUbicaciones();
+       // cambioDePolizaSteps.ingresarAEdificionYUbicacionesPolyceChange();
+    }
 
     @When("realiza la cotizacion,expide la poliza,modifica la poliza e intena ingresar una nueva ubicacion")
     public void realizaCotizacionExpedicionModificaionEIngresarUbicacion() {
-     //TODO intente cotizar y expedir la poliza
+        //TODO intente cotizar y expedir la poliza
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
         tasaUnicaSteps.expedirPoliza();
         //TODO ingrese al resumen de la poliza expedida

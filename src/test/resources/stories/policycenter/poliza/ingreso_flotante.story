@@ -20,18 +20,30 @@ Aplica para multiriesgo
 Scenario: Ingreso articulo Flotante (Multiriesgo)
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
-| organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 11545135        | 10/10/1974       | LUV           | BAR             | DIRECCION DE RESIDENCIA | CALLE 28F #70-80 | Antioquia    | Medellin | INT-3  |
-And ingresar informacion de edificio y ubicaciones
+|organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+When ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+And intente cotizar y expedir la poliza
+And ingrese al resumen de la poliza expedida
+And cuando intente cambiar informacion de la poliza MRC
+And ingrese a edificios y ubicaciones en cambio de poliza
+And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO             | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Existencias Flotantes     |                     |                  | Valor asegurado máximo           | 100000000      |
 | Información de Artículos | Existencias Flotantes     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-When debe permitir seleccionar el tipo de flotante:
+And en la pantalla "Edificios y ubicaciones" debe permitir seleccionar el tipo de flotante:
  |tipo|
  |Automatico|
-And realiza la cotizacion,expide la poliza,modifica la poliza e intena ingresar una nueva ubicacion
-
+Then en la pantalla de payment en el item schedule debe asignar por default plan type "Installment plan" no editable.
+El item "audits" debe aparecer por default "SI" y tampoco es editable:
+    |tipo      |metodoFacturacion|tipoPlan          |auditoria|
+    |Automatico|Factura directa  |Installment Plan  |SI       |
 Examples:
-||
-||
+| cedula  | tipoBeneficiario | tipodocumento                   |
+| 8128554 | Asegurado        | CEDULA DE CIUDADANIA            |

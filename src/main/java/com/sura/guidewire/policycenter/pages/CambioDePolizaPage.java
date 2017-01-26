@@ -19,6 +19,8 @@ import java.util.concurrent.TimeUnit;
 public class CambioDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next']")
+    WebElementFacade botonSiguientePolyceChange;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarPopup;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy']")
@@ -47,6 +49,8 @@ public class CambioDePolizaPage extends PageUtil {
     WebElementFacade opcionCambiarPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     WebElementFacade radioBotonReaseguroEspeciaSi;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:CPBuildings']")
+    WebElementFacade opcionEdificioYubicaciones;
 
 
     public CambioDePolizaPage(WebDriver driver) {
@@ -94,6 +98,11 @@ public class CambioDePolizaPage extends PageUtil {
         clickearElemento(menuItemInformacionDePoliza);
     }
 
+    public void irAMenuEdificiosYUbicaciones(){
+        opcionEdificioYubicaciones.waitUntilPresent();
+        clickearElemento(opcionEdificioYubicaciones);
+    }
+
     public void cambiarFechaDeVigencia(String dias) {
         NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
         botonEditarTransaccionDePoliza.waitUntilPresent().click();
@@ -108,5 +117,11 @@ public class CambioDePolizaPage extends PageUtil {
         }catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
         }
+    }
+
+    public void ingresarAEdificionYUbicacionesPolyceChange() {
+        botonSiguientePolyceChange.waitUntilPresent();
+        clickearElemento(botonSiguientePolyceChange);
+
     }
 }
