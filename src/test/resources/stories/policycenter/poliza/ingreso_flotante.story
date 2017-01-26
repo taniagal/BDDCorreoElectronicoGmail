@@ -45,5 +45,5 @@ El item "audits" debe aparecer por default "SI" y tampoco es editable:
     |tipo      |metodoFacturacion|tipoPlan          |auditoria|
     |Automatico|Factura directa  |Installment Plan  |SI       |
 Examples:
-| cedula  | tipoBeneficiario | tipodocumento                   |
-| 8128554 | Asegurado        | CEDULA DE CIUDADANIA            |
+||
+||
