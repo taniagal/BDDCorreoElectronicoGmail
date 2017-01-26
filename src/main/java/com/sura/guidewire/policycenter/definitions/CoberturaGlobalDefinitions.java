@@ -1,13 +1,9 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
-import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.CoberturaGlobalSteps;
-
+import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import net.thucydides.core.annotations.Steps;
-
-import org.jbehave.core.annotations.Aliases;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -18,8 +14,6 @@ import java.util.Map;
 public class CoberturaGlobalDefinitions {
     @Steps
     CoberturaGlobalSteps coberturaGlobalSteps;
-    @Steps
-    LoginSteps loginSteps;
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
 
@@ -38,13 +32,16 @@ public class CoberturaGlobalDefinitions {
         coberturaGlobalSteps.ir_a_agregar_cobertura_global();
     }
 
+    @When("muestre los mensajes de advertencia para las reglas de coberturas $mensajes")
+    public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(ExamplesTable mensajes){
+        coberturaGlobalSteps.verLosMensajesDeAdvertenciaDeReglasDeCoberturas(mensajes);
+    }
+
     @When("ingrese las diferentes coberturas globales $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
 
 
-        int index = 0;
         for (Map<String, String> entradaCoberturaGlobal : entradas.getRows()) {
-            index++;
             String descripcion = entradaCoberturaGlobal.get("DESCRIPCION");
             String cobertura = entradaCoberturaGlobal.get("COBERTURA");
             String entrada = entradaCoberturaGlobal.get("ENTRADAS");
@@ -84,11 +81,17 @@ public class CoberturaGlobalDefinitions {
         String estadodos = "";
         coberturaGlobalSteps.validar_campos_agregar_cobertura(estadouno,estadodos,menusesperados);
     }
+
     @Then("debe estar en la pestaña coberturas en estado <estadouno> las siguientes opciones $menusesperados")
-    public void entoncesEnLaPestañaCoberturasSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,
+    public void entoncesEnLaPestanaCoberturasSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,
                                                                                  @Named("estadodos") String estadodos,
                                                                                  ExamplesTable menusesperados) {
         coberturaGlobalSteps.validar_campos_pestaña_coberturas(estadouno,estadodos,menusesperados);
+    }
+
+    @Then("no debe mostrar los mensajes de advertencia para las reglas de coberturas $mensajes")
+    public void validarMensajesNoSeMuestranLosMensajes(ExamplesTable mensajes) {
+        coberturaGlobalSteps.validarMensajesNoSeMuestranLosMensajes(mensajes);
     }
 
 

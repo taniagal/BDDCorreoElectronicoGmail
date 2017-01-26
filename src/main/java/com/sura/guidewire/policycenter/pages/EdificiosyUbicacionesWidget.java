@@ -89,6 +89,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade comboBoxActividadEconomica;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']")
+    private WebElementFacade listaTipoDeMercancia;
 
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
@@ -509,5 +511,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         MatcherAssert.assertThat("Alguno de los campos es visible", !findBy(xpath).isVisible());
         resetImplicitTimeout();
+    }
+
+    public void seleccionarElTipoDeMercanciaFlotante(String tipoMercancia) {
+        listaTipoDeMercancia.waitUntilPresent();
+        seleccionarItem(listaTipoDeMercancia, tipoMercancia);
     }
 }
