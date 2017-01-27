@@ -46,7 +46,7 @@ public class Utils {
         return Integer.toString(nit);
     }
 
-     /**
+    /**
      * Retorna un numero para hacer operaciones matematicas.
      * El formato que recibe este metodo es |$1.000.000.000,00 (COP)|
      * El formato que retorna para ser operado es |1000000000|.
@@ -74,5 +74,10 @@ public class Utils {
         String caracteresCompletarTexto = ",00 (COP)";
         String valorConFormatoNumero = nuevoFormato.format(numeroParaConvertirEnCadena);
         return signoPesos + valorConFormatoNumero + caracteresCompletarTexto;
+    }
+
+    public static String quitaCaracteresACadena(WebElementFacade texto) {
+        String[] cadenaSinCaracteres = texto.getText().split("\\)");
+        return cadenaSinCaracteres[0].replace("Ver póliza (N.° ","");
     }
 }

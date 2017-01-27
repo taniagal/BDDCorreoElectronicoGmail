@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class PageUtil extends PageObject {
-    protected Actions actions = new Actions(getDriver());
     protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     protected static final int TIEMPO_30000 = 30000;
     protected static final int TIEMPO_5000 = 5000;
@@ -49,6 +48,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_12 = 12;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
+    protected Actions actions = new Actions(getDriver());
 
 
     public PageUtil(WebDriver driver) {
@@ -221,7 +221,6 @@ public class PageUtil extends PageObject {
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_500);
                 LOGGER.info("WebDriverException " + e);
-                LOGGER.info(e.getMessage());
                 LOGGER.info("--- click " + i);
             }
         }
@@ -235,9 +234,7 @@ public class PageUtil extends PageObject {
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_1000);
                 LOGGER.info("WebDriverException " + e);
-                LOGGER.info(e.getMessage());
                 LOGGER.info("--- click " + i);
-                LOGGER.info(e.getStackTrace().toString());
             }
         }
     }

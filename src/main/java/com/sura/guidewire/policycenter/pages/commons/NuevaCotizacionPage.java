@@ -72,7 +72,7 @@ public class NuevaCotizacionPage extends PageUtil {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-        } catch (StaleElementReferenceException f){
+        } catch (StaleElementReferenceException f) {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
         }
         esperarHasta(TIEMPO_2000);
@@ -136,7 +136,7 @@ public class NuevaCotizacionPage extends PageUtil {
         seleccionarProductoDesdeCuenta(datosCotizacion);
     }
 
-    public void seleccionarAgente(){
+    public void seleccionarAgente() {
         comboBoxNombreAgenteCuenta.waitUntilPresent();
         clickearElemento(comboBoxNombreAgenteCuenta);
     }
@@ -168,8 +168,7 @@ public class NuevaCotizacionPage extends PageUtil {
                 }
                 esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
             }
-        }else {
-            llenarOrganizacion(dato.get(ORGANIZACION));
+            esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
         }
     }
 
