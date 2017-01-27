@@ -16,12 +16,16 @@ public class OpcionesDeCierrePage extends PageUtil {
     private WebElementFacade botonOpcionesDeCierre;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:CloseOptions:Decline-textEl']")
     private WebElementFacade botonDeclinarPoliza;
-    /*@FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:CloseOptions:Decline']")
-    private WebElementFacade txtRazon;*/
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
-    private WebElementFacade campoCodigoRazon;
-    @FindBy(xpath = ".html/body/div[6]")
+    private WebElementFacade campoCodigoRazonDeclinacion;
+    @FindBy(xpath = ".//div[contains(.,'<ninguno>SiniestrosCarteraSin respaldo de reaseguradores o coaseguradoresRiesgo no objetivoNo acuerdo de pago')]")
     private WebElementFacade listaDeclinacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:CloseOptions:NotTakenJob-itemEl']")
+    private WebElementFacade botonNoTomar;
+    @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    private WebElementFacade campoCodigoRazonNoTomar;
+    @FindBy(xpath = ".//div[contains(.,'<ninguno>Precio y condiciones no satisfactoriasSe aseguró en otra compañiaNo acuerdo de pagoNo cumple condiciones de licitación')]")
+    private WebElementFacade listaNoTomar;
 
     public OpcionesDeCierrePage(WebDriver driver) {
         super(driver);
@@ -29,18 +33,29 @@ public class OpcionesDeCierrePage extends PageUtil {
 
     public void irAOpcionesDeCierre() {
         esperarYClickearBoton(botonOpcionesDeCierre);
-        esperarYClickearBoton(botonDeclinarPoliza);
-        //esperarYClickearBoton(txtRazon);
-        esperarYClickearBoton(campoCodigoRazon);
     }
 
-    /*public void validarRazonesDeclinar(ExamplesTable opcionesDeclinacion) {
-        Map<String, String> advertencia = opcionesDeclinacion.getRows().get(0);
-        WebElementFacade opcionesDeclinar = findBy(".html/body/div[6]");
-        MatcherAssert.assertThat(opcionesDeclinar.getText(), Matchers.containsString(advertencia.get("opcionesDeclinacion")));
+    public void declinarTransaccion() {
+        esperarYClickearBoton(botonDeclinarPoliza);
+        esperarYClickearBoton(campoCodigoRazonDeclinacion);
+    }
+
+    public void noTomarPoliza() {
+        esperarYClickearBoton(botonNoTomar);
+        esperarYClickearBoton(campoCodigoRazonNoTomar);
+    }
+
+    /*public String validarItemsDeclinacion() {
+        return (listaDeclinacion.getText());
     }*/
 
-    public Boolean validarItemsDeclinacion(String itemDeclinacion) {
-        return (listaDeclinacion.getText().contains(itemDeclinacion));
+    public String validarItems() {
+        String listaObtenida = null;
+        if(listaDeclinacion.isCurrentlyVisible()){
+            listaObtenida = listaDeclinacion.getText();
+        }else if(listaNoTomar.isCurrentlyVisible()){
+            listaObtenida = listaNoTomar.getText();
+        }
+        return listaObtenida;
     }
 }

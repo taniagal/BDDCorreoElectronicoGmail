@@ -22,11 +22,32 @@ public class OpcionesDeCierreSteps extends ScenarioSteps {
     }
 
     @Step
+    public void declinarTransaccion() {
+        opcionesDeCierrePage.declinarTransaccion();
+    }
+
+    @Step
     public void validarInformacionDeclinar(ExamplesTable opcionesDeclinacion) {
         Map<String, String> itemsDeclinacion;
+        String listaOpcionesDeclinacion = opcionesDeCierrePage.validarItems();
         for (int i = 0; i < opcionesDeclinacion.getRowCount(); i++) {
             itemsDeclinacion = opcionesDeclinacion.getRows().get(i);
-            MatcherAssert.assertThat("La lista no contiene el item esperado", opcionesDeCierrePage.validarItemsDeclinacion(itemsDeclinacion.get("itemDeclinacion")), Is.is(Matchers.equalTo(true)));
+            MatcherAssert.assertThat("La lista no contiene el item esperado", listaOpcionesDeclinacion, Matchers.containsString(itemsDeclinacion.get("itemDeclinacion")));
+        }
+    }
+
+    @Step
+    public void noTomarPoliza() {
+        opcionesDeCierrePage.noTomarPoliza();
+    }
+
+    @Step
+    public void validarInformacionNoTomar(ExamplesTable opcionesNoTomar) {
+        Map<String, String> itemsNoTomar;
+        String listaOpcionesDeclinacion = opcionesDeCierrePage.validarItems();
+        for (int i = 0; i < opcionesNoTomar.getRowCount(); i++) {
+            itemsNoTomar = opcionesNoTomar.getRows().get(i);
+            MatcherAssert.assertThat("La lista no contiene el item esperado", listaOpcionesDeclinacion, Matchers.containsString(itemsNoTomar.get("itemsNoTomar")));
         }
     }
 }
