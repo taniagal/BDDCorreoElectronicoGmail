@@ -109,6 +109,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade chekTipoOnerosoEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:Remove-btnInnerEl']")
     private WebElementFacade botonQuitar;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[3]/td[4]")
+    private WebElementFacade agregarTipoOnerosoEdificios;
 
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
@@ -553,6 +555,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documentos, tipodocumentos);
             ingresarBeneficiarioOneroso(tipobeneficiarios,listaTipoOnerosoEdificios);
 
+        }
+    }
+
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
+        for (Map<String, String> agregarinteresadosadicionalesuno: agregaroneroso.getRows()) {
+            String agretipodocumentos = agregarinteresadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
+            String agredocumentos = agregarinteresadosadicionalesuno.get("DOCUMENTO");
+            String agretipobeneficiarios = agregarinteresadosadicionalesuno.get("TIPOBENEFICIARIO");
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, agredocumentos, agretipodocumentos);
+            ingresarBeneficiarioOneroso(agretipobeneficiarios, agregarTipoOnerosoEdificios);
         }
     }
 

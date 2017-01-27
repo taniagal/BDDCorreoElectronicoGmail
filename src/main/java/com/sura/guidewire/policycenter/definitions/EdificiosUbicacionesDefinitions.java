@@ -108,6 +108,14 @@ public class EdificiosUbicacionesDefinitions {
 
     }
 
+    @When("agregar algun interés adicional <agregarTipoBeneficiario> a un artículo que tiene beneficiario oneroso en cambio de poliza $agregaroneroso")
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.agregarInteresAdicionalCambioPoliza(agregaroneroso);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
+    }
+
     @When("ingresar interes adicional <tipoBeneficiarios> a una sola cobertura $interesado")
     public void agregarInteresAdicionalUnacobertura(ExamplesTable interesado){
         edificiosUbicacionesSteps.ingresarInteresAdicionalAUnSoloArticulo(interesado);
