@@ -13,12 +13,10 @@ Al realizar el cambio de una poliza quiero identificar cuando una poliza tiene r
 
 Scenario:  Realizar cambio de una poliza PA con retroactividad
 GivenStories: stories/policycenter/login_policy.story
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
-When seleccione el producto <producto> para expedir la poliza
-And ingrese la informacion de poliza
-And ingrese los datos del asegurado <tipo_documento> <documento>
+Given estoy cotizando una poliza de autos:
+|organizacion|producto|canal            |tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Sura        |Autos   |Canal Tradicional|Individual|CEDULA DE CIUDADANIA|02/12/1990      |EREN         |JAEGER         |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
