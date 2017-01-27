@@ -11,26 +11,36 @@ import org.openqa.selenium.WebDriver;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class OpcionesDeCierrePage extends PageUtil{
-    @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:CloseOptions-btnInnerEl\"]\n")
+public class OpcionesDeCierrePage extends PageUtil {
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:CloseOptions-btnInnerEl']")
     private WebElementFacade botonOpcionesDeCierre;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:CloseOptions:Decline']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:CloseOptions:Decline-textEl']")
     private WebElementFacade botonDeclinarPoliza;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:CloseOptions:Decline']")
-    private WebElementFacade txtRazon;
-    public OpcionesDeCierrePage (WebDriver driver){
+    /*@FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:CloseOptions:Decline']")
+    private WebElementFacade txtRazon;*/
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    private WebElementFacade campoCodigoRazon;
+    @FindBy(xpath = ".html/body/div[6]")
+    private WebElementFacade listaDeclinacion;
+
+    public OpcionesDeCierrePage(WebDriver driver) {
         super(driver);
     }
 
     public void irAOpcionesDeCierre() {
-       esperarYClickearBoton(botonOpcionesDeCierre);
+        esperarYClickearBoton(botonOpcionesDeCierre);
         esperarYClickearBoton(botonDeclinarPoliza);
-        esperarYClickearBoton(txtRazon);
+        //esperarYClickearBoton(txtRazon);
+        esperarYClickearBoton(campoCodigoRazon);
     }
 
-    public void validarRazonesDeclinar(ExamplesTable opcionesDeclinacion) {
+    /*public void validarRazonesDeclinar(ExamplesTable opcionesDeclinacion) {
         Map<String, String> advertencia = opcionesDeclinacion.getRows().get(0);
         WebElementFacade opcionesDeclinar = findBy(".html/body/div[6]");
         MatcherAssert.assertThat(opcionesDeclinar.getText(), Matchers.containsString(advertencia.get("opcionesDeclinacion")));
+    }*/
+
+    public Boolean validarItemsDeclinacion(String itemDeclinacion) {
+        return (listaDeclinacion.getText().contains(itemDeclinacion));
     }
 }

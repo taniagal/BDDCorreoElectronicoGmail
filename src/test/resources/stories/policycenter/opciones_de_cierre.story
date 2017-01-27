@@ -19,6 +19,7 @@ And seleccione algunas coberturas:
 |1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
 When ingrese a opciones de cierre
 Then deben aparecer todas las razones de declinar poliza
+|itemDeclinacion                                |
 |Siniestros                                     |
 |Cartera                                        |
 |Sin respaldo de reaseguradores o coaseguradores|
