@@ -58,7 +58,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         if (botonBorrar.isPresent()) {
             try {
                 esperarHasta(TIEMPO_2000);
-                botonExpedirPoliza.click();
+                clickearElemento(botonExpedirPoliza);
                 waitFor(botonAceptarMensaje);
                 botonAceptarMensaje.click();
             } catch (NoSuchElementException e) {
