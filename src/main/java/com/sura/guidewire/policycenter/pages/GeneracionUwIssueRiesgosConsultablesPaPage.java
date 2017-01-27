@@ -31,7 +31,6 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     }
 
     public void irAAnalisisDeRiesgo() {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(resultadosValidacion);
         clickearElemento(analisisDeRiesgo);
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo);
     }

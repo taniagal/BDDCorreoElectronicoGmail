@@ -157,6 +157,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
                 if (camposEnPantalla.get(i).getText() != null) {
                     editables = true;
                 } else {
+                    resetImplicitTimeout();
                     return false;
                 }
             }
