@@ -114,7 +114,7 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void seleccionarOpcionRetirarTransaccion() {
         waitFor(1).second();
-        String xpathBttonRetirarTransaccion = "//a[contains(.,'Retirar transacción')]";
+        String xpathBttonRetirarTransaccion = "//a[contains(.,'Retirar operación')]";
         getDriver().findElement(By.xpath(xpathBttonRetirarTransaccion)).click();
     }
 
