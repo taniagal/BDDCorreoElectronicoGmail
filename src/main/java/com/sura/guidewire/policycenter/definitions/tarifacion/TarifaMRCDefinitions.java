@@ -75,4 +75,9 @@ public class TarifaMRCDefinitions {
     public void verificarImpuestos(){
         tarifaMRCSteps.verificarImpuestos();
     }
+
+    @Then("debo poder verificar el valor de la prima para las coberuras de la cotizacion $datos")
+    public void verificarTarifacion(ExamplesTable datos){
+        tarifaMRCSteps.verificarTarifacion(datos);
+    }
 }

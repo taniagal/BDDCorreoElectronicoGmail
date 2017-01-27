@@ -10,6 +10,7 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 
@@ -215,7 +216,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarTab(String tab) {
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        setImplicitTimeout(0, TimeUnit.SECONDS);
         waitForAnyTextToAppear(tab);
         shouldContainText(tab);
         String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
@@ -226,9 +227,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public boolean estaSeleccionadoTab(String tab) {
         Boolean esSeleccionado = false;
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        setImplicitTimeout(0, TimeUnit.SECONDS);
         try {
-
             waitForAnyTextToAppear(tab);
             shouldContainText(tab);
             String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
@@ -314,7 +314,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
-                .withTimeout(TIEMPO_2, TimeUnit.SECONDS)
+                .withTimeout(TIEMPO_1, TimeUnit.SECONDS)
                 .pollingEvery(TIEMPO_250, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
@@ -484,8 +484,14 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void verificarMensajes(ExamplesTable mensajes) {
         for (Map<String, String> mensaje : mensajes.getRows()) {
-            waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
-            MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
+            try {
+                waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
+                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
+            }catch (StaleElementReferenceException e){
+                waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
+                esperarHasta(TIEMPO_2000);
+                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
+            }
         }
     }
 
