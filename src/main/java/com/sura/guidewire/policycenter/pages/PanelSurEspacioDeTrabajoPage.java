@@ -43,7 +43,7 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
         verificarMensaje(panelInferiorTablaDeMensajes, mensaje);
     }
 
-    public void validarMensaje(String mensaje) {
+    public Integer validarMensajesDePanel(String mensaje){
         String[] mensajes = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;
@@ -57,7 +57,21 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
                 }
             }
         }
-        MatcherAssert.assertThat("Se esperaba que se mostrara mensaje", contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+        return contadorMensajesOk;
+    }
+
+    public void validarMensajes(String mensaje) {
+        String[] mensajes = mensaje.split("\\^");
+        Integer numeroMensajes = mensajes.length;
+        MatcherAssert.assertThat("Se esperaba que se mostrara mensaje " + mensaje.replace("\\^", " "), validarMensajesDePanel(mensaje).toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+    }
+
+    public void validarMensaje(String mensaje) {
+        this.validarMensajes(mensaje);
+        this.validarIconoMensajeError();
+    }
+
+    public void validarIconoMensajeError(){
         MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 
@@ -68,5 +82,13 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
             waitForTextToDisappear("Workspace");
         }
         resetImplicitTimeout();
+    }
+
+    public void validarMensajesNoVisibles(String mensajes) {
+        Integer numeroDeMensajesEncontrados = 0;
+        if(panelInferiorTablaDeMensajes.isVisible()) {
+            numeroDeMensajesEncontrados = this.validarMensajesDePanel(mensajes);
+        }
+        MatcherAssert.assertThat("Se esperaba que NO se mostrara alguno de los mensajes " + mensajes.replace("\\^", " "), numeroDeMensajesEncontrados.toString(), Is.is(Matchers.equalTo("0")));
     }
 }

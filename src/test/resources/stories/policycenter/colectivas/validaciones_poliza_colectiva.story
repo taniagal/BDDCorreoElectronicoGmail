@@ -233,8 +233,8 @@ Then deben estar en estado <estadouno> las siguientes opciones
 | Número de cotización    |
 
 Examples:
-| numSubscripcion | documento | tipoBeneficiario | estadouno | estadodos  | tipodocumento        |
-| 33355336        | 123456    | Asegurado        | Visible   | No visible | CEDULA DE CIUDADANIA |
+| numSubscripcion | documento  | tipoBeneficiario | estadouno | estadodos  | tipodocumento        |
+| 33355336        | 1060447895 | Asegurado        | Visible   | No visible | CEDULA DE CIUDADANIA |
 
 
 Scenario: 14 Validacion datos asegurado en poliza riesgo

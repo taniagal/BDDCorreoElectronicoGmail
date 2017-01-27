@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class NuevaCotizacionPage extends PageUtil {
-
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
@@ -26,11 +25,11 @@ public class NuevaCotizacionPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-triggerWrap']")
     private WebElementFacade comboBoxNombreAgenteCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
-    private WebElementFacade comboBoxOrganizacion;
+    private WebElementFacade comboBoxOrganizacionPa;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
+    private WebElementFacade comboBoxOrganizacionMrc;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
     private WebElementFacade comboBoxCanal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
-    private WebElementFacade comboBoxOrganizacionW;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
     private WebElementFacade comboBoxTipoPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd-textEl']")
@@ -73,7 +72,7 @@ public class NuevaCotizacionPage extends PageUtil {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-        } catch (StaleElementReferenceException f){
+        } catch (StaleElementReferenceException f) {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
         }
         esperarHasta(TIEMPO_2000);
@@ -103,7 +102,6 @@ public class NuevaCotizacionPage extends PageUtil {
                             botonAceptarPopup.click();
                             botonAceptarPopup.waitUntilNotVisible();
                         }
-
                         resetImplicitTimeout();
                     }
                     break;
@@ -138,7 +136,7 @@ public class NuevaCotizacionPage extends PageUtil {
         seleccionarProductoDesdeCuenta(datosCotizacion);
     }
 
-    public void seleccionarAgente(){
+    public void seleccionarAgente() {
         comboBoxNombreAgenteCuenta.waitUntilPresent();
         clickearElemento(comboBoxNombreAgenteCuenta);
     }
@@ -154,10 +152,10 @@ public class NuevaCotizacionPage extends PageUtil {
         if ("Autos".equals(dato.get("producto"))) {
             withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
-            comboBoxOrganizacion.waitUntilPresent();
-            if (!comboBoxOrganizacion.getValue().equals(dato.get(ORGANIZACION))) {
-                seleccionarItem(comboBoxOrganizacion, dato.get(ORGANIZACION));
-                esperarPorValor(comboBoxOrganizacionW, dato.get(ORGANIZACION));
+            comboBoxOrganizacionPa.waitUntilPresent();
+            if (!comboBoxOrganizacionPa.getValue().equals(dato.get(ORGANIZACION))) {
+                seleccionarItem(comboBoxOrganizacionPa, dato.get(ORGANIZACION));
+                esperarPorValor(comboBoxOrganizacionPa, dato.get(ORGANIZACION));
                 esperarHasta(TIEMPO_3000);
                 seleccionarItem(comboBoxCanal, dato.get("canal"));
                 esperarPorValor(comboBoxCanal, dato.get("canal"));
@@ -170,9 +168,15 @@ public class NuevaCotizacionPage extends PageUtil {
                 }
                 esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
             }
+            esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
         }
     }
 
+    public void llenarOrganizacion(String organizacion) {
+        withTimeoutOf(TIEMPO_30,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionMrc);
+        seleccionarItem(comboBoxOrganizacionMrc, organizacion);
+        esperarPorValor(comboBoxOrganizacionMrc, organizacion);
+    }
 
     public void cotizarEnvioCopiada() {
         menuItemInformacionDePoliza.waitUntilPresent();
@@ -180,20 +184,19 @@ public class NuevaCotizacionPage extends PageUtil {
         botonBotonCotizar.waitUntilPresent().click();
     }
 
-
     public void llenarInfoPoliza() {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickearElemento(menuItemInformacionDePoliza);
         try {
-            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
+            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
         } catch (StaleElementReferenceException f) {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
             esperarHasta(TIEMPO_2000);
-            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
+            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
         }
-        if (!"Sura".equals(comboBoxOrganizacion.getText())) {
-            seleccionarItem(comboBoxOrganizacion, "Sura");
-            esperarPorValor(comboBoxOrganizacion, "Sura");
+        if (!"Sura".equals(comboBoxOrganizacionPa.getText())) {
+            seleccionarItem(comboBoxOrganizacionPa, "Sura");
+            esperarPorValor(comboBoxOrganizacionPa, "Sura");
             seleccionarItem(comboBoxCanal, "Canal Tradicional");
             esperarPorValor(comboBoxCanal, "Canal Tradicional");
             try {
@@ -212,6 +215,8 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void seleccionarReaseguroEspecialNo() {
-        findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']").waitUntilPresent().click();
+        WebElementFacade botonReaseguroEspecialNo = $(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']");
+        botonReaseguroEspecialNo.waitUntilPresent();
+        clickearElemento(botonReaseguroEspecialNo);
     }
 }

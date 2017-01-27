@@ -4,6 +4,7 @@ Meta:
 @Sprint 5
 
 Scenario: 1 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo)
+GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
@@ -38,20 +39,6 @@ Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de tra
 | MENSAJES_WORKSPACE                                                                                                                                                                              |
 | El valor de "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " deber ser menor o igual al "40,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222211        | Asesor     |             |
-
-
-Scenario: 3 Parametro del 40 porciento
-Meta:
-@manual
-Given he ingresado al Product Designer
-When seleccione en System Tables
-And seleccione cp_term_articles_rules_ext.xml
-And ingrese el porcentaje para el MRCBRefrigRotMaqLimSubUbic en la columna PercentInsuredValue
-And guarde los cambios y suba dichos cambios al servidor
-Then debe poner cambiar el porcentaje del parametro
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
@@ -122,3 +109,17 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
 
+
+
+Scenario: 3 Parametro del 40 porciento
+Meta:
+@manual
+Given he ingresado al Product Designer
+When seleccione en System Tables
+And seleccione cp_term_articles_rules_ext.xml
+And ingrese el porcentaje para el MRCBRefrigRotMaqLimSubUbic en la columna PercentInsuredValue
+And guarde los cambios y suba dichos cambios al servidor
+Then debe poner cambiar el porcentaje del parametro
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22222211        | Asesor     |             |

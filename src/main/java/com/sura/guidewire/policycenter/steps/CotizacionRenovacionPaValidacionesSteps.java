@@ -10,22 +10,22 @@ public class CotizacionRenovacionPaValidacionesSteps extends ScenarioSteps {
     private CotizacionRenovacionPaValidacionesPage cotizacionRenovacionPAValidacionesPage;
 
     @Step
-    public void ir_A_Revision_De_Poliza() {
+    public void irARevisionDePoliza() {
         cotizacionRenovacionPAValidacionesPage.irARevisionDePoliza();
     }
 
     @Step
-    public void ir_A_Revision_De_Poliza_Sin_Valida_Fecha() {
+    public void irARevisionDePolizaSinValidaFecha() {
         cotizacionRenovacionPAValidacionesPage.irAPantallairARevisionDePolizaSinValidacionFecha();
     }
 
     @Step
-    public void seleccionar_Opcion_Cotizar() {
+    public void seleccionarOpcionCotizar() {
         cotizacionRenovacionPAValidacionesPage.cotizarRenovacion();
     }
 
     @Step
-    public void validar_Que_Se_Bloquee_Cotizacion_Y_Muestre_Mensaje(ExamplesTable mensajeRC) {
+    public void validarQueSeBloqueeCotizacionYMuestreMensaje(ExamplesTable mensajeRC) {
         cotizacionRenovacionPAValidacionesPage.validarBloqueoYMensajeRC(mensajeRC);
     }
 

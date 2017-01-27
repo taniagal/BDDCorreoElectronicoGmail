@@ -43,9 +43,6 @@ public class DetallesDeUbicacionDefinitions {
         detallesDeUbicacionSteps.validarIngresoUbicacion();
     }
 
-    /**
-     * ESCENARIO 2
-     */
     @Then("que se muestre el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
          detallesDeUbicacionSteps.verificarMensaje(mensaje);

@@ -55,7 +55,7 @@ public class ExpedicionRenovacionPaValidacionesDefinitions {
 
     @Then("mostrar el siguiente mensaje de bloqueo $mensaje")
     public void validarMensajeMotorYChasis(ExamplesTable mensaje){
-        cotizacionRenovacionPaValidacionesSteps.validar_Que_Se_Bloquee_Cotizacion_Y_Muestre_Mensaje(mensaje);
+        cotizacionRenovacionPaValidacionesSteps.validarQueSeBloqueeCotizacionYMuestreMensaje(mensaje);
         modificacionRenovacionCoberturasPASteps.borrar_espacio_trabajo();
     }
 

@@ -1,14 +1,21 @@
 package com.sura.guidewire.policycenter.steps;
 
+import com.sura.guidewire.policycenter.definitions.Poliza;
 import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
+import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
@@ -16,6 +23,9 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
     private static NuevaPolizaPage nuevaPolizaPage;
+
+    @Steps
+    private PolizaSteps polizaSteps;
 
     public EdificiosUbicacionesSteps(Pages pages) {
         super(pages);
@@ -40,26 +50,30 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void seleccionarBotonAgregarArticuloAUnaUbicacion() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacion();
     }
+
     @Step
-    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza(){
+    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnCambioDePoliza();
-    }
-    @Step
-    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza(){
-        edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
-    }
-    @Step
-    public void ingresarInteresAdicionalAArticulo(String numerocedula,String tipodocumento){
-        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula,tipodocumento);
     }
 
     @Step
-    public void ingresarTipoBeneficiario(String beneficiario){
+    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza() {
+        edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
+    }
+
+    @Step
+    public void ingresarInteresAdicionalAArticulo(String numerocedula, String tipodocumento) {
+        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula, tipodocumento);
+    }
+
+    @Step
+    public void ingresarTipoBeneficiario(String beneficiario) {
         agregarArticuloEdificiosyUbicacionesWidget.desplegarListaTipoBeneficiario();
         nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
     }
+
     @Step
-    public void seleccionarBotonCotizar(){
+    public void seleccionarBotonCotizar() {
         edificiosyUbicacionesWidget.cliclearBtnCotizar();
     }
 
@@ -97,50 +111,25 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void seleccionarBotonAceptarEnLaParteSuperiorIzquierda() {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParteSuperiorIzquierda();
     }
+
     @Step
     public void cancelarIngresoDeNuevaUbicacion() {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
+
     @Step
-    public void removerRiesgos(){
+    public void removerRiesgos() {
         edificiosyUbicacionesWidget.removerRiesgos();
 
     }
 
     @Step
-    public void seleccionarBotonEditarTransaccionDePoliza(){
+    public void seleccionarBotonEditarTransaccionDePoliza() {
         edificiosyUbicacionesWidget.editartransacciondepoliza();
-
     }
 
-    public String armarMensajeParaElReporteDeSerenity(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo) {
-        // Se arma el mensaje que se mostrará en el reporte de Serenity según los parametros enviados por medio de los parametros tabulares
-        String mensajeStepReporte = "";
-        if (cobertura.length() > 0) {
-            if (tipoArticulo.length() > 0) {
-                mensajeStepReporte = "En tab " + tab +
-                        " seleccionar tipo de artículo " + tipoArticulo +
-                        " seleccionar la cobertura " + cobertura +
-                        " para " + entrada +
-                        " ingresar " + valorEntrada;
-            } else {
-                mensajeStepReporte = "En tab " + tab +
-                        " seleccionar la cobertura " + cobertura +
-                        " para " + entrada +
-                        " ingresar " + valorEntrada;
-            }
-        } else {
-            if (tipoArticulo.length() > 0) {
-                mensajeStepReporte = "En tab " + tab +
-                        " seleccionar tipo de artículo " + tipoArticulo +
-                        " para " + entrada +
-                        " ingresar " + valorEntrada;
-            }
-        }
 
-        return mensajeStepReporte;
-    }
-    public void ingresarCoberturas(ExamplesTable entradas){
+    public void ingresarCoberturas(ExamplesTable entradas) {
         int index = 0;
         for (Map<String, String> entradaCobertura : entradas.getRows()) {
             index++;
@@ -154,26 +143,19 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
             }
             boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
             String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
-
             ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
         }
     }
 
-    // TODO: 01/09/2016 code smell
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
-        // Registro de tarea dinámica en el reporte de Serenity
-          ingresar_valor_de_entrada_de_la_cobertura(armarMensajeParaElReporteDeSerenity(tab, cobertura, entrada, valorEntrada, tipoArticulo));
-
         if ("Coberturas del Riesgo".equals(tab)) {
             seleccionarTab(tab);
             seleccionarCoberturaDelRiesgo(cobertura);
             edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
         }
-
         if ("Información de Artículos".equals(tab)) {
             seleccionarTab(tab);
             seleccionarTipoDeArticulo(tipoArticulo);
-
             if (cobertura.length() > 0 && !edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura, tipoArticulo)) {
                 edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura, tipoArticulo);
                 edificiosyUbicacionesWidget.ingresarValorAEntradaInformacionArticulo(tipoArticulo, entrada, valorEntrada);
@@ -181,26 +163,19 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
                 edificiosyUbicacionesWidget.ingresarValorAEntradaInformacionArticulo(tipoArticulo, entrada, valorEntrada);
             }
         }
-
         if ("Otros Articulos".equals(tab)) {
             seleccionarTab(tab);
             edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada, esOtroArticulo, esUltimaFilaDeExampleTable);
         }
-
-        if("Interes Adicional".equals(tab)){
+        if ("Interes Adicional".equals(tab)) {
             seleccionarTab(tab);
             seleccionarTipoDeArticulo(tipoArticulo);
         }
     }
 
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgoPolizaColectiva(String cobertura, String entrada, String valorEntrada) {
-        // Registro de tarea dinámica en el reporte de Serenity
-
-
-            seleccionarCoberturaDelRiesgo(cobertura);
-            edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
-
-
+        seleccionarCoberturaDelRiesgo(cobertura);
+        edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
     }
 
     private void seleccionarCoberturaDelRiesgo(String cobertura) {
@@ -222,18 +197,16 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresar_valor_de_entrada_de_la_cobertura(String valorDeEntradaDeCobertura) {
-        // este metodo vacio permite generar pasos en el reporte de Serenity de forma dinámica
-    }
-
-    @Step
-    public void verificarMensaje(ExamplesTable mensajes){
+    public void verificarMensaje(ExamplesTable mensajes) {
         edificiosyUbicacionesWidget.verificarMensajes(mensajes);
     }
 
-    public void validarNoVisibilidadDeObjeto(){
+    public void validarNoVisibilidadDeObjeto() {
         edificiosyUbicacionesWidget.validarNoVisibilidad();
     }
 
 
+    public void seleccionarElTipoDeMercanciaFlotante(String tipoMercancia) {
+        edificiosyUbicacionesWidget.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
+    }
 }
