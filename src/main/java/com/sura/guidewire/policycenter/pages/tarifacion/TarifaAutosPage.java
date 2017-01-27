@@ -199,6 +199,10 @@ public class TarifaAutosPage extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
             campoTxtNumeroDocumento.sendKeys(documento);
+        }catch (ElementNotVisibleException f){
+            LOGGER.info("StaleElementReferenceException " + f);
+            esperarHasta(TIEMPO_2000);
+            campoTxtNumeroDocumento.sendKeys(documento);
         }
         clickearElemento(botonBuscar);
         seleccionarAseguradoEncontrado(documento);

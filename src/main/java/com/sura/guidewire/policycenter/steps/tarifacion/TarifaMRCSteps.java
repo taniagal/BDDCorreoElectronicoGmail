@@ -88,4 +88,9 @@ public class TarifaMRCSteps extends ScenarioSteps {
         tarifaMRCPage.irAArticulo();
         tarifaMRCPage.seleccionarArticulosYTodadsSusCoberturas(datos);
     }
+
+    @Step
+    public void verificarTarifacion(ExamplesTable datos){
+        tarifaMRCPage.verificarTarifacion(datos);
+    }
 }

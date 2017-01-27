@@ -45,10 +45,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
     WebElementFacade lblNombreCompleto;
-    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ttlBar']")
-    WebElementFacade lblBuscarDirectorio;
-    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
-    WebElementFacade lblPrimerNombre;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     WebElementFacade mensajePantalla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
