@@ -263,31 +263,64 @@ public class TarifaMRCPage extends PageUtil {
             WebElementFacade checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:Has" + dato.get("articulo") + "-inputEl']");
             if ("Furniture".equals(dato.get("articulo"))) {
                 checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFixture-inputEl']");
+            } else if ("Building".equals(dato.get("articulo"))) {
+                campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']");
+                checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']");
             }
             clickearElemento(checkBoxArticulo);
             campoTxtValorAsegurable.waitUntilPresent().sendKeys(dato.get("valor_asegurable"));
+            llenarCoberturas(dato);
+        }
+    }
+
+    public void llenarCoberturas(Map<String, String> dato) {
+        String coberturas[] = dato.get("coberturas").split(",");
+        for (String cobertura : coberturas) {
             List<WebElementFacade> checkBoxesCoberturas = findAll(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
-            for (int i = 0; i < checkBoxesCoberturas.size(); i++) {
-                String checkBoxCobertura = ".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:" + i + ":CoverageInputSet:CovPatternInputGroup:_checkbox']";
-                clickearElemento($(checkBoxCobertura));
-                esperarHasta(TIEMPO_2000);
+            for (int j = 0; j < checkBoxesCoberturas.size(); j++) {
+                WebElementFacade labelNombreCobertura = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:" + j + ":CoverageInputSet:CovPatternInputGroup-legendTitle']");
+                if (labelNombreCobertura.containsText(cobertura)) {
+                    WebElementFacade checkBoxCobertura = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get("articulo") + ":ArticleTypeDetailDV:" + j + ":CoverageInputSet:CovPatternInputGroup:_checkbox']");
+                    clickearElemento(checkBoxCobertura);
+                    break;
+                }
             }
+            esperarHasta(TIEMPO_2000);
         }
     }
 
     public void verificarTarifacion(ExamplesTable datos) {
+        int i = 1;
+        int k = 1;
+        String articulo = "";
         for (Map<String, String> dato : datos.getRows()) {
             List<WebElementFacade> tablaPrimaDePoliza = findAll(XPATH_TABLA_PRIMA_DE_POLIZA_TR);
-            for (int i = 1; i <= tablaPrimaDePoliza.size(); i++) {
-                WebElementFacade descripcionCobertura = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[1]");
-                if (descripcionCobertura.containsText(dato.get("descripcion"))) {
-                    WebElementFacade montoPrima = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[3]");
-                    MatcherAssert.assertThat("Error en el valor de la tarifa, en la cobertura "+ descripcionCobertura.getText() +
-                           " . Expected: " + dato.get("valor") + " but was: " + montoPrima.getText()
-                            ,montoPrima.containsText(dato.get("valor")));
-                    break;
+            if (!articulo.equals(dato.get("articulo"))) {
+                articulo = dato.get("articulo");
+                for (int j = 1; j <= tablaPrimaDePoliza.size(); j++) {
+                    WebElementFacade descripcionCobertura = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + j + "]/td[1]");
+                    if (descripcionCobertura.containsText(dato.get("articulo"))) {
+                        k = j;
+                        break;
+                    }
                 }
             }
+            i = k;
+            verificarValorDeCobertura(i, dato, tablaPrimaDePoliza);
+        }
+    }
+
+    public void verificarValorDeCobertura(int i, Map<String, String> dato, List<WebElementFacade> tablaPrimaDePoliza) {
+        while (i <= tablaPrimaDePoliza.size()) {
+            WebElementFacade descripcionCobertura = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[1]");
+            if (descripcionCobertura.containsText(dato.get("descripcion"))) {
+                WebElementFacade montoPrima = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[3]");
+                MatcherAssert.assertThat("Error en el valor de la tarifa, en la cobertura " + descripcionCobertura.getText() +
+                        " del articulo " + dato.get("articulo") + " . Expected: " + dato.get("valor") +
+                        " but was: " + montoPrima.getText(), montoPrima.containsText(dato.get("valor")));
+                break;
+            }
+            i++;
         }
     }
 }

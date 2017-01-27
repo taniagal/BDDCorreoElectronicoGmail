@@ -174,7 +174,7 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void llenarOrganizacion(String organizacion) {
-        comboBoxOrganizacionMrc.waitUntilPresent();
+        withTimeoutOf(TIEMPO_30,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionMrc);
         seleccionarItem(comboBoxOrganizacionMrc, organizacion);
         esperarPorValor(comboBoxOrganizacionMrc, organizacion);
     }
