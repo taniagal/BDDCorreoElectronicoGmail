@@ -105,7 +105,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade listaTipoOnerosoMaquinariaYEquipo;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade chekInteresAdicionaledificios;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[1]/td[1]")
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[2]/td[1]")
     private WebElementFacade chekTipoOnerosoEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:Remove-btnInnerEl']")
     private WebElementFacade botonQuitar;
