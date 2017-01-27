@@ -113,9 +113,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void seleccionarOpcionRetirarTransaccion() {
-        waitFor(1).second();
-        String xpathBttonRetirarTransaccion = "//a[contains(.,'Retirar operación')]";
-        getDriver().findElement(By.xpath(xpathBttonRetirarTransaccion)).click();
+        polizaPage.seleccionarOpcionRetirarTransaccion();
     }
 
     @Step
@@ -134,9 +132,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void confirmarCancelacion() {
-        waitFor(CONSTANTE_5).seconds();
-        String xpathBttonConfirmarCancelacion = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]";
-        getDriver().findElement(By.xpath(xpathBttonConfirmarCancelacion)).click();
+        polizaPage.confirmarCancelacion();
     }
 
     @Step
@@ -148,21 +144,16 @@ public class PolizaSteps extends GuidewireSteps {
 
     public String obtenerTituloPagina() {
         return getDriver().findElement(By.xpath("//span[@id='JobComplete:JobCompleteScreen:ttlBar']")).getText();
-
     }
 
     @Step
     public void seMuestraBloqueoCancelacionDePoliza(String mensaje) {
-
         MatcherAssert.assertThat(obtenerPolizaPage().obtenerTituloBloqueoCancelacionPoliza().getText(), Matchers.containsString(mensaje));
-
     }
 
     @Step
     public void seMuestraMensajeDeBeneficiarioOneroso(String mensaje) {
-
         MatcherAssert.assertThat(obtenerPolizaPage().obtenerMensajeDeCancelacionPolizaConOneroso().getText(), Matchers.containsString(mensaje));
-
     }
 
     @Step
