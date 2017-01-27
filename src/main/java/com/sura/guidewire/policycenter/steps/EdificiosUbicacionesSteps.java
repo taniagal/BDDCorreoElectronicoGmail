@@ -134,6 +134,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
     }
 
+    @Step
+    public void retirarBeneficiarioOnerosoAlArticulo(){
+        edificiosyUbicacionesWidget.retirarBeneficiarioOnerosoAlArticulo();
+    }
+
     public void ingresarCoberturas(ExamplesTable entradas) {
         int index = 0;
         for (Map<String, String> entradaCobertura : entradas.getRows()) {

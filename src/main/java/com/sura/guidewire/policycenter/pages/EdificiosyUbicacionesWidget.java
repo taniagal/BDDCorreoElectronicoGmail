@@ -105,6 +105,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade listaTipoOnerosoMaquinariaYEquipo;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade chekInteresAdicionaledificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[1]/td[1]")
+    private WebElementFacade chekTipoOnerosoEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:Remove-btnInnerEl']")
+    private WebElementFacade botonQuitar;
+
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -542,11 +547,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
         for (Map<String, String> interesadosadicionalesuno: interesado.getRows()){
-            String tipodocumento = interesadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
-            String documento = interesadosadicionalesuno.get("DOCUMENTO");
-            String tipobeneficiario = interesadosadicionalesuno.get("TIPOBENEFICIARIO");
-            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
-            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoEdificios);
+            String tipodocumentos = interesadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
+            String documentos = interesadosadicionalesuno.get("DOCUMENTO");
+            String tipobeneficiarios = interesadosadicionalesuno.get("TIPOBENEFICIARIO");
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documentos, tipodocumentos);
+            ingresarBeneficiarioOneroso(tipobeneficiarios,listaTipoOnerosoEdificios);
 
         }
     }
@@ -562,6 +567,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void desseleccionarArticulo(){
         chekInteresAdicionaledificios.waitUntilPresent().click();
+    }
+
+    public void retirarBeneficiarioOnerosoAlArticulo(){
+        chekTipoOnerosoEdificios.waitUntilPresent();
+        clickearElemento(chekTipoOnerosoEdificios);
+        botonQuitar.waitUntilPresent();
+        clickearElemento(botonQuitar);
     }
 
     public void validarNoVisibilidad() {

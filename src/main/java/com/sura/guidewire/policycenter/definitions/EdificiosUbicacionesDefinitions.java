@@ -92,6 +92,15 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
     }
 
+    @When("intente retirar un beneficiario oneroso de algun articulo en cambio de poliza")
+    public void cuandoIntenteRetirarUnBeneficiarioOneroso(){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.retirarBeneficiarioOnerosoAlArticulo();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
+
+    }
+
     @When("ingresar interes adicional <tipoBeneficiario> a cada cobertura $interesados")
     public void agregarInteresAdicional(ExamplesTable interesados){
         edificiosUbicacionesSteps.ingresarInteresesAdicionalesACadaArticulo(interesados);
@@ -99,7 +108,7 @@ public class EdificiosUbicacionesDefinitions {
 
     }
 
-    @When("ingresar interes adicional <tipoBeneficiario> a una sola cobertura $interesado")
+    @When("ingresar interes adicional <tipoBeneficiarios> a una sola cobertura $interesado")
     public void agregarInteresAdicionalUnacobertura(ExamplesTable interesado){
         edificiosUbicacionesSteps.ingresarInteresAdicionalAUnSoloArticulo(interesado);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
