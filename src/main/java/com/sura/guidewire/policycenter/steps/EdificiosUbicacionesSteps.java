@@ -157,6 +157,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.ingresarInteresesAdicionalesACadaArticulo(interesados);
     }
 
+    @Step
+    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
+        edificiosyUbicacionesWidget.ingresarInteresAdicionalAUnSoloArticulo(interesado);
+    }
+
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
         if ("Coberturas del Riesgo".equals(tab)) {
             seleccionarTab(tab);

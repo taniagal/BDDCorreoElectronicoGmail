@@ -102,6 +102,12 @@ public class EdificiosUbicacionesDefinitions {
 
     }
 
+    @When("ingresar interes adicional <tipoBeneficiario> a una sola cobertura $interesado")
+    public void agregarInteresAdicionalUnacobertura(ExamplesTable interesado){
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAUnSoloArticulo(interesado);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+    }
+
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();

@@ -532,6 +532,17 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
+    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
+        for (Map<String, String> interesadosadicionalesuno: interesado.getRows()){
+            String tipodocumento = interesadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
+            String documento = interesadosadicionalesuno.get("DOCUMENTO");
+            String tipobeneficiario = interesadosadicionalesuno.get("TIPOBENEFICIARIO");
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
+            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoEdificios);
+
+        }
+    }
+
     public void ingresarBeneficiarioOneroso(String tipoBeneficiario,WebElementFacade elemento){
         Actions act = new Actions(getDriver());
         waitFor(TIEMPO_2).second();
