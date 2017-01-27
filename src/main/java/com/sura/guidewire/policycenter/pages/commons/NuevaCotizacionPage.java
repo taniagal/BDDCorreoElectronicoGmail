@@ -168,12 +168,13 @@ public class NuevaCotizacionPage extends PageUtil {
                 }
                 esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
             }
-            esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
+        } else {
+            llenarOrganizacion(dato.get(ORGANIZACION));
         }
     }
 
     public void llenarOrganizacion(String organizacion) {
-        withTimeoutOf(TIEMPO_30,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionMrc);
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(comboBoxOrganizacionMrc);
         seleccionarItem(comboBoxOrganizacionMrc, organizacion);
         esperarPorValor(comboBoxOrganizacionMrc, organizacion);
     }
@@ -188,11 +189,11 @@ public class NuevaCotizacionPage extends PageUtil {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickearElemento(menuItemInformacionDePoliza);
         try {
-            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
+            withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
         } catch (StaleElementReferenceException f) {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
             esperarHasta(TIEMPO_2000);
-            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
+            withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
         }
         if (!"Sura".equals(comboBoxOrganizacionPa.getText())) {
             seleccionarItem(comboBoxOrganizacionPa, "Sura");
