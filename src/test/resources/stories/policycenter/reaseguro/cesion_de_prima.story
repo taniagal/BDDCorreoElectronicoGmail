@@ -23,12 +23,14 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 2000000000      |
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 2000000000      |
 And cotice y expida una poliza
-When El usuario quiera visualizar las primas cedidas
-Then se debe mostrar la informacion de la cobertura y sus montos generales
+When El usuario quiera visualizar la informacion completa de las primas cedidas
+Then se debe mostrar la informacion de la cobertura con el contrato definido por suramericana
 
 Examples:
 ||
 ||
+
+
 
 
 

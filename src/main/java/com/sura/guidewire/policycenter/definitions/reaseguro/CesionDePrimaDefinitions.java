@@ -1,12 +1,14 @@
 package com.sura.guidewire.policycenter.definitions.reaseguro;
 
 
+import com.sura.guidewire.policycenter.steps.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CesionDePrimaSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -24,26 +26,43 @@ public class CesionDePrimaDefinitions {
     @Steps
     CesionDePrimaSteps cesionDePrimaSteps;
 
+    @Steps
+    CotizacionMRCSteps cotizacionMRCSteps;
+
 
     @Given("cotice y expida una poliza")
     public void givenCoticeYExpidaUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
         expedicionDePolizaSteps.clicEnExpedirPoliza();
         expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
-
     }
 
     @When("El usuario quiera visualizar las primas cedidas")
     public void whenElUsuarioQuieraVisualizarLasPrimasCedidas() {
-        cesionDePrimaSteps.irAResumenDePoliza();
+        cesionDePrimaSteps.tomaYbuscaConNumeroDeEnvio();
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
         cesionDePrimaSteps.ingresarPrimasCedidas();
+    }
+
+    @Then("se debe mostrar la informacion de la cobertura y sus montos generales $informacionGeneralCobertura")
+    public void thenSeDebeMostrarLaInformacionDeLaCoberturaYSusMontosGenerales(@Named("informacionGeneralCobertura") String informacionGeneralCobertura) {
+        cesionDePrimaSteps.mostrarInformacionGeneralDeCobertura(informacionGeneralCobertura);
+    }
+
+    @When("El usuario quiera visualizar la informacion completa de las primas cedidas")
+    public void whenElUsuarioQuieraVisualizarLaInformacionCompletaDeLasPrimasCedidas() {
+        cesionDePrimaSteps.tomaYbuscaConNumeroDeEnvio();
+        crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
+
+        //cesionDePrimaSteps.ingresarPrimasCedidas();
         cesionDePrimaSteps.ejecutaTareaPrimasCedidas();
+        cesionDePrimaSteps.ingresarPrimasDespuesDeEjecutarTareaEnCedidas();
         cesionDePrimaSteps.ingresarATodasLasTransacciones();
     }
 
-    @Then("se debe mostrar la informacion de la cobertura y sus montos generales")
-    public void thenSeDebeMostrarLaInformacionDeLaCoberturaYSusMontosGenerales() {
+    @Then("se debe mostrar la informacion de la cobertura con el contrato definido por suramericana")
+    public void thenSeDebeMostrarLaInformacionDeLaCoberturaConElContratoDefinidoPorSuramericana() {
         // PENDING
     }
+
 }
