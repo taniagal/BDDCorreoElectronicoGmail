@@ -15,7 +15,7 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
 
 
     @Step
-    public void navegar_barra_superior(String cotizacion) {
+    public void navegarBarraSuperior(String cotizacion) {
         cotizacionMRCPage.irABuscarCotizacion(cotizacion);
     }
 

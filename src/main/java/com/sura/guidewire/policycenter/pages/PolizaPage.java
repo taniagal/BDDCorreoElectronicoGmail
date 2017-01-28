@@ -30,6 +30,10 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade comboBoxOrganizacionMrc;
+    @FindBy(xpath = ".//a[contains(.,'Retirar operación')]")
+    private WebElementFacade menuItemRetirarTransaccion;
+    @FindBy(xpath = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]")
+    private WebElementFacade botonRetirarCancelacion;
 
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
@@ -130,9 +134,12 @@ public class PolizaPage extends PageUtil {
     }
 
     public void seleccionarOpcionEdificiosyUbicaciones() {
-        comboBoxOrganizacionMrc.waitUntilPresent();
-        seleccionarItem(comboBoxOrganizacionMrc, "Sura");
-        esperarPorValor(comboBoxOrganizacionMrc, "Sura");
+        headerEnvio.waitUntilPresent();
+        setImplicitTimeout(0,TimeUnit.SECONDS);
+        if (comboBoxOrganizacionMrc.isPresent()) {
+            seleccionarItem(comboBoxOrganizacionMrc, "Sura");
+            esperarPorValor(comboBoxOrganizacionMrc, "Sura");
+        }
         seleccionarOpcion(Opcion.LINK_EDIFICIOS_Y_UBICACIONES.xpath(), "Edificios y ubicaciones");
         LOGGER.info("PolizaPage.seleccionarOpcionEdificiosyUbicaciones");
     }
@@ -339,6 +346,16 @@ public class PolizaPage extends PageUtil {
         String xpathLinkAcciones = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
         WebElementFacade botonAcciones = findBy(xpathLinkAcciones);
         botonAcciones.waitUntilPresent().click();
+    }
+
+    public void seleccionarOpcionRetirarTransaccion() {
+        menuItemRetirarTransaccion.waitUntilPresent();
+        clickearElemento(menuItemRetirarTransaccion);
+    }
+
+    public void confirmarCancelacion(){
+        botonRetirarCancelacion.waitUntilPresent();
+        clickearElemento(botonRetirarCancelacion);
     }
 
 }

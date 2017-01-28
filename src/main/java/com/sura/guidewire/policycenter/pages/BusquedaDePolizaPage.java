@@ -2,8 +2,7 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import java.util.List;
-import java.util.Map;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -14,6 +13,9 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class BusquedaDePolizaPage extends PageUtil {
@@ -31,7 +33,7 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade btnBuscar;
     @FindBy(xpath = ".//div[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']/div/table")
     WebElementFacade tablaResultados;
-    @FindBy(xpath = "//div[@id='PolicySearch:PolicySearchScreen:_msgs']/div")
+    @FindBy(xpath = "//div[contains(@id, '_msgs')]/div")
     WebElementFacade msjValidacion;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
     WebElementFacade menuBuscar;
@@ -41,8 +43,11 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade tituloBuscarPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     WebElementFacade botonRestablecer;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
+    WebElementFacade numPoliza;
 
     protected static final int TIEMPO_3500 = 3500;
+    protected static final int CONSTANTE_10 = 10;
     protected static final int CONSTANTE_9 = 9;
     protected static final int CONSTANTE_8 = 8;
     protected static final int CONSTANTE_7 = 7;
@@ -79,17 +84,18 @@ public class BusquedaDePolizaPage extends PageUtil {
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
         Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
         List<WebElement> celdas = allRows.get(this.encontrarPoliza(sampleData.get("numeroPoliza"), allRows)).findElements(By.tagName("td"));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_2).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_3).getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_5).getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_6).getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_7).getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_2).getText(), Is.is(Matchers.equalTo(sampleData.get("tipoPoliza"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_3).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_4).getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_6).getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
         MatcherAssert.assertThat(celdas.get(CONSTANTE_8).getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(celdas.get(CONSTANTE_9).getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_9).getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_7).getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_10).getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
 
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            MatcherAssert.assertThat(cells.get(CONSTANTE_4).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroCuenta"))));
+            MatcherAssert.assertThat(cells.get(CONSTANTE_5).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroCuenta"))));
         }
     }
 
@@ -97,7 +103,7 @@ public class BusquedaDePolizaPage extends PageUtil {
         Integer filaPoliza = 0;
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (poliza.equals(columna.get(CONSTANTE_2).getText())) {
+            if (poliza.equals(columna.get(CONSTANTE_3).getText())) {
                 return filaPoliza;
             }
             filaPoliza++;
@@ -187,5 +193,11 @@ public class BusquedaDePolizaPage extends PageUtil {
         this.ingresarDatoEnCampoProducto(producto);
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
+    }
+    public void capturarNumeroDePoliza(){
+        String poliza = Utils.quitaCaracteresACadena(numPoliza);
+        irABuscarPoliza();
+        buscarPolizaPorNumeroDePoliza(poliza);
+
     }
 }

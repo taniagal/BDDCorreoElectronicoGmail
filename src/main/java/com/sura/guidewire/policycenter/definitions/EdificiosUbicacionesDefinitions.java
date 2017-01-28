@@ -13,10 +13,7 @@ import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
-import org.jbehave.core.annotations.Aliases;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
@@ -157,6 +154,11 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
 
+    @When("seleccione el tipo de mercancia flotante <tipoMercancia>")
+    public void seleccionarElTipoDeMercanciaFlotante(@Named("tipoMercancia") String tipoMercancia){
+        edificiosUbicacionesSteps.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
+    }
+
 
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
     @Aliases(values = {
@@ -181,11 +183,7 @@ public class EdificiosUbicacionesDefinitions {
 
     @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
     public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
+        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
         polizaSteps.confirmarCancelacion();
@@ -211,10 +209,5 @@ public class EdificiosUbicacionesDefinitions {
     @Then("no debe dejar continuar y debe permanecer en la pagina $pagina")
     public void noDebeDejarContinuarYDebePermanecerEnLaPagina(String pagina) {
         //Metodo Vacio
-    }
-
-    @Then("no debe estar visible $variable")
-    public void entoncesNoDebeEstarVisibleNingunContactoPorDefecto() {
-        edificiosUbicacionesSteps.validarNoVisibilidadDeObjeto();
     }
 }
