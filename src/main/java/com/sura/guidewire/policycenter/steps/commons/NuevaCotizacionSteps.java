@@ -61,6 +61,11 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     }
 
     @Step
+    public void seleccionarAgente(String cuenta, String agente) {
+        nuevaCotizacionPage.seleccionarAgente(cuenta, agente);
+    }
+
+    @Step
     public void seleccionDeProducto(String producto) {
         nuevaCotizacionPage.seleccionDeProducto(producto);
     }
@@ -120,5 +125,10 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         tarifaAutosPage.seleccionarCoberturasHurto(datos);
         tarifaAutosPage.seleccionarCoberturasDanios(datos);
         opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizarPolizaPrincipal();
+    }
+
+    @Step
+    public void verificarFechaEfectivaDeCotizacion() {
+        nuevaCotizacionPage.verificarFechaEfectivaDeCotizacion();
     }
 }
