@@ -57,6 +57,7 @@ public class Poliza {
     NuevaCotizacionSteps nuevaCotizacionSteps;
 
 
+
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
@@ -126,6 +127,14 @@ public class Poliza {
         polizaSteps.seleccionarBotonAcciones();
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
+    }
+    @When("cuando intente cambiar informacion de la poliza MRC con reaseguro especial")
+    public void cuandoIntenteCambiarInformacionPolizaMRCReaseguroEspecial(){
+        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+        polizaSteps.seleccionarBotonAcciones();
+        polizaSteps.seleccionarOpcionCambiarPoliza();
+        polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
+        polizaSteps.seleccionarReaseguroEspecialSi();
     }
 
     @When("ingrese al resumen de la poliza expedida")
@@ -368,8 +377,6 @@ public class Poliza {
     public void cuandoSeleccioneMotivosdeCancelacion(){
         LOGGER.info("Poliza.cuandoSeleccioneMotivosdeCancelacion");
         polizaSteps.desplegarListaMotivosCancelacion();
-
-
 
     }
     @When("seleccione el <motivo> de cancelacion")
