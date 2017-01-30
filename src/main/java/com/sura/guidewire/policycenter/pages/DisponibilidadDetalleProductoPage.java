@@ -51,7 +51,7 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
 
 //TODO CAMBIO DE CAMBIO NUEVO POR BILLING
     public void seleccionarAgente(String agente) {
-        seleccionarItem(comboBoxOficinaDeRadicacion, "1073");
+        seleccionarItem(comboBoxOficinaDeRadicacion, "3554");
         seleccionarItem(campoNombreAgente, agente);
     }
 
