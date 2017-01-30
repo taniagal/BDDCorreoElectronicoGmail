@@ -187,8 +187,8 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void seleccionarOficinaDeRadicacion() {
-        seleccionarItem(comboBoxOficinaDeRadicacion, "1073");
-        esperarPorValor(comboBoxOficinaDeRadicacion, "1073");
+        seleccionarItem(comboBoxOficinaDeRadicacion, "3554");
+        esperarPorValor(comboBoxOficinaDeRadicacion, "3554");
     }
 
     public void llenarOrganizacion(String organizacion) {
