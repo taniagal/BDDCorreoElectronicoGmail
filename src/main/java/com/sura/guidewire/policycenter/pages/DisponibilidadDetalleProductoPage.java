@@ -49,7 +49,7 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
     }
 
-//TODO CAMBIO DE CAMBIO NUEVO POR BILLING
+//TODO CAMBIO NUEVO POR BILLING
     public void seleccionarAgente(String agente) {
         seleccionarItem(comboBoxOficinaDeRadicacion, "3554");
         seleccionarItem(campoNombreAgente, agente);
