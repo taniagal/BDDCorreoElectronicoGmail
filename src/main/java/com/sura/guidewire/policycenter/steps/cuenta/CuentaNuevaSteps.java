@@ -30,7 +30,6 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     private void initRandoms() {
         cedula = Utils.cedulaRandom();
         nit = Utils.nitRandom();
-
     }
 
     @Step
@@ -52,8 +51,9 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         agregarDatosCuenta(datosCotizacion, datosCuenta);
     }
 
+    @Step
     private void agregarDatosCuenta(ExamplesTable datosCotizacion, Map<String, String> datosCuenta) {
-        agregarOrganizacion(datosCuenta.get("organizacion"), datosCuenta.get("agente"));
+        agregarOrganizacion("Sura", datosCuenta.get("agente"));
         agregarNombre(datosCuenta.get("primer_nombre"), datosCuenta.get("primer_apellido"), datosCuenta.get("fecha_nacimiento"));
         agregarDireccion(datosCotizacion);
     }

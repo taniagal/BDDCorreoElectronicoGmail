@@ -72,7 +72,7 @@ public class NuevaCotizacionPage extends PageUtil {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-        } catch (StaleElementReferenceException f){
+        } catch (StaleElementReferenceException f) {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
         }
         esperarHasta(TIEMPO_2000);
@@ -136,7 +136,7 @@ public class NuevaCotizacionPage extends PageUtil {
         seleccionarProductoDesdeCuenta(datosCotizacion);
     }
 
-    public void seleccionarAgente(){
+    public void seleccionarAgente() {
         comboBoxNombreAgenteCuenta.waitUntilPresent();
         clickearElemento(comboBoxNombreAgenteCuenta);
     }
@@ -168,13 +168,13 @@ public class NuevaCotizacionPage extends PageUtil {
                 }
                 esperarPorValor(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
             }
-        }else {
+        } else {
             llenarOrganizacion(dato.get(ORGANIZACION));
         }
     }
 
     public void llenarOrganizacion(String organizacion) {
-        comboBoxOrganizacionMrc.waitUntilPresent();
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(comboBoxOrganizacionMrc);
         seleccionarItem(comboBoxOrganizacionMrc, organizacion);
         esperarPorValor(comboBoxOrganizacionMrc, organizacion);
     }
@@ -189,11 +189,11 @@ public class NuevaCotizacionPage extends PageUtil {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickearElemento(menuItemInformacionDePoliza);
         try {
-            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
+            withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
         } catch (StaleElementReferenceException f) {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
             esperarHasta(TIEMPO_2000);
-            withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
+            withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(comboBoxOrganizacionPa);
         }
         if (!"Sura".equals(comboBoxOrganizacionPa.getText())) {
             seleccionarItem(comboBoxOrganizacionPa, "Sura");

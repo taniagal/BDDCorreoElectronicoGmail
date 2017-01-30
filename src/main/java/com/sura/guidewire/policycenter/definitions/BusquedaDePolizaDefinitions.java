@@ -17,6 +17,12 @@ public class BusquedaDePolizaDefinitions {
         busquedaDePolizaSteps.irABuscarPoliza();
     }
 
+    @When("voy a buscar la poliza")
+    public void BuscarPoliza() {
+        busquedaDePolizaSteps.capturarNumeroDePoliza();
+
+    }
+
     @When("la busco por numero de poliza <buscarNumeroPoliza>")
     public void buscarPolizaPorNumeroDePoliza(@Named("buscarNumeroPoliza") String buscarNumeroPoliza) {
         busquedaDePolizaSteps.buscarPolizaPorNumeroDePoliza(buscarNumeroPoliza);

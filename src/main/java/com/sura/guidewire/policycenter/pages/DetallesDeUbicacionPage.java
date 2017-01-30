@@ -47,12 +47,12 @@ public class DetallesDeUbicacionPage extends PageUtil {
         super(driver);
     }
 
-
     public void irAUbicacion() {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente);
         clickearElemento(botonSiguiente);
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
-        botonAgregarNuevaUbicacion.click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion);
+        clickearElemento(botonAgregarUbicacion);
+        clickearElemento(botonAgregarNuevaUbicacion);
     }
 
     public void setDireccion(String direccion, String departamento, String ciudad) {
@@ -70,7 +70,6 @@ public class DetallesDeUbicacionPage extends PageUtil {
         esperarPorValor(comboBoxActividadEconomica, actividad);
         clickearElemento(botonAceptar);
     }
-
 
     public void validarCamposNuevos() {
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
@@ -100,6 +99,4 @@ public class DetallesDeUbicacionPage extends PageUtil {
     public void verificarMensaje(String mensaje) {
         verificarMensaje(divMensaje, mensaje);
     }
-
-
 }

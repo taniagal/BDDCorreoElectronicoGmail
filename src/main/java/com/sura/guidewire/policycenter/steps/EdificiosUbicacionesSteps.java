@@ -206,4 +206,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
 
+    public void seleccionarElTipoDeMercanciaFlotante(String tipoMercancia) {
+        edificiosyUbicacionesWidget.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
+    }
 }
