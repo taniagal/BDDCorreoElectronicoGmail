@@ -1,9 +1,6 @@
-Modificacion Renovacion Vehiculo
-
-Meta: @lote1
-
-@issue #CDSEG-2976
+Meta:
 @tag equipo: 5
+@lote4
 @Sprint 7
 
 Narrative:
@@ -21,6 +18,7 @@ Valor accesorios especiales
 Examples:
 |cotizacion|
 |22222333  |
+
 
 Scenario: Editar Transaccion - Datos que no se pueden modificar
 Given estoy editando la renovacion de una poliza <cotizacion>
