@@ -55,7 +55,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         botonCancelarMensaje.shouldBeCurrentlyVisible();
         botonAceptarMensaje.click();
         setImplicitTimeout(TIEMPO_4, TimeUnit.SECONDS);
-        if (botonBorrar.isPresent()) {
+        if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
             try {
                 esperarHasta(TIEMPO_2000);
                 clickearElemento(botonExpedirPoliza);
