@@ -2,8 +2,10 @@ package com.sura.guidewire.policycenter.pages.commons;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -20,6 +22,8 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade botonAceptarPopup;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonBotonCotizar;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']")
+    private WebElementFacade campoFechaEfectivaDeCotizacion;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     private WebElementFacade comboBoxNombreAgente;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-triggerWrap']")
@@ -132,10 +136,14 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void seleccionarProducto(ExamplesTable datosCotizacion) {
         Map<String, String> dato = datosCotizacion.getRow(0);
-        numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuenta"));
+        ingresarCuenta(dato.get("cuenta"));
+        seleccionarProductoDesdeCuenta(datosCotizacion);
+    }
+
+    public void ingresarCuenta(String cuenta) {
+        numeroDeCuenta.waitUntilPresent().sendKeys(cuenta);
         comboBoxNombreAgente.click();
         linkNombre.waitUntilVisible();
-        seleccionarProductoDesdeCuenta(datosCotizacion);
     }
 
     public void seleccionarAgente() {
@@ -143,11 +151,18 @@ public class NuevaCotizacionPage extends PageUtil {
         clickearElemento(comboBoxNombreAgenteCuenta);
     }
 
+    public void seleccionarAgente(String cuenta, String agente) {
+        seleccionarOficinaDeRadicacion();
+        ingresarCuenta(cuenta);
+        comboBoxNombreAgente.clear();
+        comboBoxNombreAgente.sendKeys(agente);
+        comboBoxNombreAgente.sendKeys(Keys.TAB);
+    }
+
     public void seleccionarProductoDesdeCuenta(ExamplesTable datosCotizacion) {
         Map<String, String> dato = datosCotizacion.getRow(0);
         Actions actions = new Actions(getDriver());
-        seleccionarItem(comboBoxOficinaDeRadicacion, "1073");
-        esperarPorValor(comboBoxOficinaDeRadicacion, "1073");
+        seleccionarOficinaDeRadicacion();
         comboBoxNombreAgente.click();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -169,6 +184,11 @@ public class NuevaCotizacionPage extends PageUtil {
         } else {
             llenarOrganizacion(dato.get(ORGANIZACION));
         }
+    }
+
+    public void seleccionarOficinaDeRadicacion() {
+        seleccionarItem(comboBoxOficinaDeRadicacion, "253");
+        esperarPorValor(comboBoxOficinaDeRadicacion, "253");
     }
 
     public void llenarOrganizacion(String organizacion) {
@@ -217,5 +237,11 @@ public class NuevaCotizacionPage extends PageUtil {
         WebElementFacade botonReaseguroEspecialNo = $(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']");
         botonReaseguroEspecialNo.waitUntilPresent();
         clickearElemento(botonReaseguroEspecialNo);
+    }
+
+    public void verificarFechaEfectivaDeCotizacion() {
+        campoFechaEfectivaDeCotizacion.waitUntilPresent();
+        MatcherAssert.assertThat("Error, el campo fecha efectiva de cotizacion no contiene la fecha actual", campoFechaEfectivaDeCotizacion.containsText(Utils.sumarDiasALaFechaActual(0)));
+        MatcherAssert.assertThat("Error, el campo fecha efectiva de cotizacion no debe ser editable", !esEditable(campoFechaEfectivaDeCotizacion));
     }
 }
