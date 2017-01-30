@@ -24,7 +24,7 @@ public class OpcionesDeCierrePage extends PageUtil {
     private WebElementFacade botonNoTomar;
     @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade campoCodigoRazonNoTomar;
-    @FindBy(xpath = ".//div[contains(.,'<ninguno>Precio y condiciones no satisfactoriasSe aseguró en otra compañiaNo acuerdo de pagoNo cumple condiciones de licitación')]")
+    @FindBy(xpath = ".//div[contains(.,'<ninguno>Precio y condiciones no satisfactoriasSe aseguró en otra compañíaNo acuerdo de pagoNo cumple condiciones de licitación')]")
     private WebElementFacade listaNoTomar;
 
     public OpcionesDeCierrePage(WebDriver driver) {
@@ -44,10 +44,6 @@ public class OpcionesDeCierrePage extends PageUtil {
         esperarYClickearBoton(botonNoTomar);
         esperarYClickearBoton(campoCodigoRazonNoTomar);
     }
-
-    /*public String validarItemsDeclinacion() {
-        return (listaDeclinacion.getText());
-    }*/
 
     public String validarItems() {
         String listaObtenida = null;

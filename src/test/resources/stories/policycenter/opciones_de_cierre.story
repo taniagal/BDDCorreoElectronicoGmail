@@ -46,7 +46,7 @@ And decida no tomar la poliza
 Then deben aparecer todas las razones para no tomar la poliza
 |itemsNoTomar                           |
 |Precio y condiciones no satisfactorias |
-|Se aseguró en otra compañia            |
+|Se aseguró en otra compañía            |
 |No acuerdo de pago                     |
 |No cumple condiciones de licitación    |
 |No acuerdo de pago                     |
@@ -54,3 +54,9 @@ Then deben aparecer todas las razones para no tomar la poliza
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |
 |CEDULA DE CIUDADANIA|71318883  |C000888888 |Autos   |DIRECTO|
+
+Scenario: Visualizar estado de la cotizacion en el administrador
+Meta: @manual
+Given se cerro una cotizacion con estado Declinada o No Tomada
+When se revise la informacion de dicha cotizacion
+Then se debe visualizar el estado con el que quedo
