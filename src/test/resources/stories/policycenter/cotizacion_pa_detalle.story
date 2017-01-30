@@ -15,8 +15,8 @@ Asi ver los detalles de la cotizacion de una poliza de Autos por cada uno de los
 Scenario: Cotizacion y validacion que no se permite agregar mas de un vehiculo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
