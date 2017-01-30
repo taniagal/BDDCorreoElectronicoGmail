@@ -25,8 +25,9 @@ And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC con reaseguro especial
 And ingrese a edificios y ubicaciones en cambio de poliza
 And cotice el cambio de poliza con reaseguro especial en si
-And intente expedir la poliza
+And expida el cambio de la poliza
+Then Se debe generar un UW issue para poder expedir la modificación <mensaje>
 
 Examples:
-| |
-| |
+| mensaje                                                                |
+| La póliza tiene reaseguro especial y la expedición debe ser autorizada |
