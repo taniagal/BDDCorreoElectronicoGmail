@@ -82,17 +82,20 @@ public class CesionDePrimaPage extends PageUtil {
     }
 
     public void sumaPorcentajeParticipacionEnTablaDePrimas() {
-        int i = 0;
-        String XPATH_COLUMNAS1 = ".//*[@id='RICededPremiumReinsurersPopup:ParticipantsCededPremiumLV-body']/div/table/tbody/tr[";
-        String XPATH_COLUMNAS2 = "]/td[4]";
+        Double valorTotal = 0d;
         if (!getListaInformacionPorReasegurador().isEmpty()) {
             for (WebElementFacade nombreDeTarea : getListaInformacionPorReasegurador()) {
-                 WebElementFacade tomaValoresDeTabla = $(XPATH_COLUMNAS1 + i + XPATH_COLUMNAS2);
-                 //tomaValoresDeTabla.getText();
-                 i++;
+                try{
+                    valorTotal += Double.parseDouble(nombreDeTarea.getText().replaceAll("," , "\\."));
+                }catch(NumberFormatException ex){
+                    LOGGER.info("NumberFormatException, se esperaba un numero" + ex);
+                }
             }
+             MatcherAssert.assertThat("Error: El valor total no es igual que la cesion del contrato", valorTotal.equals(Double.parseDouble(lblPorcentajeDeCesion.getText())) );
+
         }
     }
+
 
     private List<WebElementFacade> getListaInformacionPorReasegurador() {
         List<WebElementFacade> porcentajeParticipacion;
