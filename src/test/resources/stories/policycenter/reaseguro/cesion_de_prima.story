@@ -49,7 +49,7 @@ Examples:
 ||
 ||
 
-Scenario: mostrar nombre de cobertura en el riesgo
+Scenario: validar nombre de reasegurados en la informacion de reasego
 Meta: @manual
 Given que tengo una poliza cotizada
 When quiera reasegurar la poliza cotizada
@@ -59,6 +59,11 @@ Then se deben mostrar los nombres de las tablas correspondientes a las cobertura
 Examples:
 ||
 ||
+
+
+
+
+
 
 
 

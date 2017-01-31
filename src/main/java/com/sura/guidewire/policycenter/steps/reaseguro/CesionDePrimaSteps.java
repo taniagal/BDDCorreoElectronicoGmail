@@ -20,7 +20,8 @@ public class CesionDePrimaSteps extends ScenarioSteps {
 
     @Step
     public void ingresarPrimasCedidas() {
-        cotizacionMRCPage.irABuscarCotizacion(numeroDeEnvio);
+        //cotizacionMRCPage.irABuscarCotizacion(numeroDeEnvio);
+        cesionDePrimaPage.clicEnBotonPrimasCedidas();
     }
 
     @Step

@@ -78,10 +78,10 @@ public class CesionDePrimaPage extends PageUtil {
 
     public void ingresaADetalleDeContratoCuotaParte() {
         esperarYClickearBoton(linkVerDetallePorReaseguradoraContratoCuotaparte);
-        sumaPorcentajeParticipacionEnTablaDePrimas();
+        MatcherAssert.assertThat("Error: El valor total no es igual que la cesion del contrato", sumaPorcentajeParticipacionEnTablaDePrimas().equals(Double.parseDouble(lblPorcentajeDeCesion.getText())) );
     }
 
-    public void sumaPorcentajeParticipacionEnTablaDePrimas() {
+    public Double sumaPorcentajeParticipacionEnTablaDePrimas() {
         Double valorTotal = 0d;
         if (!getListaInformacionPorReasegurador().isEmpty()) {
             for (WebElementFacade nombreDeTarea : getListaInformacionPorReasegurador()) {
@@ -91,9 +91,8 @@ public class CesionDePrimaPage extends PageUtil {
                     LOGGER.info("NumberFormatException, se esperaba un numero" + ex);
                 }
             }
-             MatcherAssert.assertThat("Error: El valor total no es igual que la cesion del contrato", valorTotal.equals(Double.parseDouble(lblPorcentajeDeCesion.getText())) );
-
         }
+        return (double) Math.round(valorTotal);
     }
 
 
