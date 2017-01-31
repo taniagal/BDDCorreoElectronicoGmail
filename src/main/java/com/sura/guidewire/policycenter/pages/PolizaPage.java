@@ -34,6 +34,10 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade menuItemRetirarTransaccion;
     @FindBy(xpath = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]")
     private WebElementFacade botonRetirarCancelacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
+    private WebElementFacade optionReaseguroEspecialSi;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Accepted-inputEl']")
+    private WebElementFacade checkReaseguroEspecialSi;
 
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
@@ -358,4 +362,10 @@ public class PolizaPage extends PageUtil {
         clickearElemento(botonRetirarCancelacion);
     }
 
+    public void seleccionarReaseguroEspecialSi(){
+        optionReaseguroEspecialSi.waitUntilPresent();
+        clickearElemento(optionReaseguroEspecialSi);
+        checkReaseguroEspecialSi.waitUntilPresent();
+        clickearElemento(checkReaseguroEspecialSi);
+    }
 }

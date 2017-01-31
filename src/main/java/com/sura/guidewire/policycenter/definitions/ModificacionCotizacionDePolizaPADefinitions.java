@@ -91,6 +91,11 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
     }
 
+    @When("cotice el cambio de poliza con reaseguro especial en si")
+    public void cotizarCambioDePolizaReaseguroEspecial(){
+        informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+    }
+
     @Then("debo ver de la cotizacion la siguiente informacion $informacionCotizacion")
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
         cotizacionDePolizaSteps.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);

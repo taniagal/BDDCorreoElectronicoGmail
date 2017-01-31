@@ -113,7 +113,7 @@ public class NuevaPolizaPage extends PageUtil {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilPresent();
         esperarHasta(TIEMPO_3000);
         botonBuscar.click();
-        withTimeoutOf(TIEMPO_10,TimeUnit.SECONDS).waitFor(botonCuentas).click();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonCuentas).click();
         txtNumeroCuenta.waitUntilPresent().sendKeys(numeroCuenta);
         WebElementFacade botonBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         botonBuscarCuenta.click();

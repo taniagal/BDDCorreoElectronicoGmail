@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
+import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
@@ -8,7 +9,9 @@ import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
+import gherkin.formatter.model.Examples;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.reports.html.ExampleTable;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
@@ -75,6 +78,50 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
     }
 
+    @When("ingrese la entrada de las diferentes coberturas mrc $ingresotable")
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasMrc(ExamplesTable ingresotable){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
+        edificiosUbicacionesSteps.ingresarCoberturas(ingresotable);
+    }
+
+    @When("ingrese a modificar articulo con beneficiario oneroso en cambio de poliza $modificararticulo")
+    public void cuandoIntenteModificarArticuloConBeneficiarioOneroso(ExamplesTable modificararticulo){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.ingresarCoberturas(modificararticulo);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
+    }
+
+    @When("intente retirar un beneficiario oneroso de algun articulo en cambio de poliza")
+    public void cuandoIntenteRetirarUnBeneficiarioOneroso(){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.retirarBeneficiarioOnerosoAlArticulo();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
+
+    }
+
+    @When("ingresar interes adicional <tipoBeneficiario> a cada cobertura $interesados")
+    public void agregarInteresAdicional(ExamplesTable interesados){
+        edificiosUbicacionesSteps.ingresarInteresesAdicionalesACadaArticulo(interesados);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+
+    }
+
+    @When("agregar algun interés adicional <agregarTipoBeneficiario> a un artículo que tiene beneficiario oneroso en cambio de poliza $agregaroneroso")
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.agregarInteresAdicionalCambioPoliza(agregaroneroso);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
+    }
+
+    @When("ingresar interes adicional <tipoBeneficiarios> a una sola cobertura $interesado")
+    public void agregarInteresAdicionalUnacobertura(ExamplesTable interesado){
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAUnSoloArticulo(interesado);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+    }
+
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
@@ -85,14 +132,13 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
     }
 
-    @When("ingrese las entradas en cambio de poliza de las diferentes coberturas $entradatable")
-    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable) {
+    @When("ingrese las entradas en cambio de poliza y verificar las reglas de oneroso")
+    public void cuandoIntenteIngresarLasEntradasVerificarReglasOneroso(){
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
-        edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
+        edificiosUbicacionesSteps.desseleccionarArticulo();
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
     }
-
 
     @When("ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {

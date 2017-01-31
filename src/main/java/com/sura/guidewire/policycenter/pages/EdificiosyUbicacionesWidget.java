@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
+import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
@@ -13,6 +14,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.Map;
@@ -44,11 +46,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String LABEL_EDIFICIOS_Y_UBICACIONES = "Edificios y ubicaciones";
     private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
-
+    private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final int TIEMPO_250 = 250;
     private static final int CONSTANTE_3 = 3;
 
     TableWidgetPage tabla;
+    NuevaPolizaPage nuevaPolizaPage;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
@@ -78,7 +81,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade edificiosyUbicacionesRenovacion;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch']")
+    @FindBy(xpath = ".//*[contains(@id,'ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl')]")
     private WebElementFacade menuItemDelDireciotio;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade comboBoxDepartamento;
@@ -92,6 +95,22 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']")
     private WebElementFacade listaTipoDeMercancia;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']")
+    private WebElementFacade botonInteresAdicionalEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']")
+    private WebElementFacade botonInteresAdicionalMaquinariaYEquipo;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[2]/td[4]")
+    private WebElementFacade listaTipoOnerosoEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[2]/td[4]")
+    private WebElementFacade listaTipoOnerosoMaquinariaYEquipo;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
+    private WebElementFacade chekInteresAdicionaledificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[2]/td[1]")
+    private WebElementFacade chekTipoOnerosoEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:Remove-btnInnerEl']")
+    private WebElementFacade botonQuitar;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[3]/td[4]")
+    private WebElementFacade agregarTipoOnerosoEdificios;
 
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
@@ -496,17 +515,77 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarInteresAdicional(String cedula, String tipodocumento) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        agregarInteresAdicionalDelDirectorio(botonAgregarAsegurado, cedula, tipodocumento);
+    }
+
+    public void agregarInteresAdicionalDelDirectorio(WebElementFacade elemento, String cedula, String tipodocumento) {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
         esperarHasta(TIEMPO_300);
         comboBoxTipoDocumento.sendKeys(tipodocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
-        waitForTextToAppear("Primer nombre");
+        if (tipodocumento.contains(TIPO_DOCUMENTO)) {
+            waitForTextToAppear("Primer nombre");
+        }
+        esperarHasta(TIEMPO_300);
         campoTxtNumeroDocumento.sendKeys(cedula);
         clickearElemento(botonBuscar);
         botonSeleccionar.waitUntilPresent().click();
         botonAgregarAsegurado.waitUntilPresent();
+    }
+
+    public void ingresarInteresesAdicionalesACadaArticulo(ExamplesTable interesados) {
+        for (Map<String, String> interesadosadicionales : interesados.getRows()) {
+            String tipodocumento = interesadosadicionales.get("TIPO_DE_DOCUMENTO");
+            String documento = interesadosadicionales.get("DOCUMENTO");
+            String tipobeneficiario = interesadosadicionales.get("TIPOBENEFICIARIO");
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
+            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoEdificios);
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalMaquinariaYEquipo, documento, tipodocumento);
+            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoMaquinariaYEquipo);
+        }
+    }
+
+    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
+        for (Map<String, String> interesadosadicionalesuno: interesado.getRows()){
+            String tipodocumentos = interesadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
+            String documentos = interesadosadicionalesuno.get("DOCUMENTO");
+            String tipobeneficiarios = interesadosadicionalesuno.get("TIPOBENEFICIARIO");
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documentos, tipodocumentos);
+            ingresarBeneficiarioOneroso(tipobeneficiarios,listaTipoOnerosoEdificios);
+
+        }
+    }
+
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
+        for (Map<String, String> agregarinteresadosadicionalesuno: agregaroneroso.getRows()) {
+            String agretipodocumentos = agregarinteresadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
+            String agredocumentos = agregarinteresadosadicionalesuno.get("DOCUMENTO");
+            String agretipobeneficiarios = agregarinteresadosadicionalesuno.get("TIPOBENEFICIARIO");
+            agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, agredocumentos, agretipodocumentos);
+            ingresarBeneficiarioOneroso(agretipobeneficiarios, agregarTipoOnerosoEdificios);
+        }
+    }
+
+    public void ingresarBeneficiarioOneroso(String tipoBeneficiario,WebElementFacade elemento){
+        Actions act = new Actions(getDriver());
+        waitFor(TIEMPO_2).second();
+        desplegarElementoDeLista(elemento);
+        nuevaPolizaPage.seleccionarElementoDeLaLista(tipoBeneficiario);
+        act.sendKeys(Keys.TAB).build().perform();
+
+    }
+
+    public void desseleccionarArticulo(){
+        chekInteresAdicionaledificios.waitUntilPresent().click();
+    }
+
+    public void retirarBeneficiarioOnerosoAlArticulo(){
+        chekTipoOnerosoEdificios.waitUntilPresent();
+        clickearElemento(chekTipoOnerosoEdificios);
+        botonQuitar.waitUntilPresent();
+        clickearElemento(botonQuitar);
     }
 
     public void validarNoVisibilidad() {
