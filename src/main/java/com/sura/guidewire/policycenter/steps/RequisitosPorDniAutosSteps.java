@@ -10,6 +10,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.Map;
+
 
 public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     @Page
@@ -45,14 +47,16 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
 
     @Step
     public void validarDniRequisitos(ExamplesTable mensaje) {
-       // String nombresPorDni = mensaje.getRow(0).get("mensaje");
-        //MatcherAssert.assertThat("nombres por dni no encontrados", requisitosPorDniAutosPage.nombresDni(), Matchers.containsString(nombresPorDni));
         requisitosPorDniAutosPage.nombresDni(mensaje);
     }
 
     public void validarMensajeRequsiitosPendientes(ExamplesTable mensaje) {
-        String mensajeRequisitosPendientes = mensaje.getRow(0).get("mensajeDeAutorizacion");
-        MatcherAssert.assertThat("mensaje personalizado", requisitosPorDniAutosPage.validarMensajeRequisitosPendientes(), Matchers.containsString(mensajeRequisitosPendientes));
+        Map<String, String> asuntosBloquantes;
+        for (int i = 0; i < mensaje.getRowCount(); i++) {
+            asuntosBloquantes = mensaje.getRows().get(i);
+            MatcherAssert.assertThat("mensaje personalizado", requisitosPorDniAutosPage.validarMensajeRequisitosPendientes(), Matchers.containsString(String.valueOf(asuntosBloquantes)));
+        }
+
     }
 }
 

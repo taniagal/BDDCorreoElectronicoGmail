@@ -22,8 +22,14 @@ And seleccione algunas coberturas:
 And agrege un beneficiario <tipoDocumento> <numeroDocumento><tipoBeneficiario>
 When intente cotizar y expedir la poliza
 Then debo ver un mensaje indicando requisitos pendientes
-|mensaje                                                      |
-|Existen requisitos pendientes, diríjase a Análisis de riesgos|
+|mensaje                                                                                                             |
+|Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos.              |
+|Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos|
+Then debe salir el nombre de los usuarios que requieren requisitos
+|mensaje         |
+|ANTONIO RESTREPO|
+|LUCIANA LONDOÑO |
+|CAROLINA OCHOA  |
 
 Examples:
 |tipoDocumento       |tipo_documento       |documento  |numeroDocumento|tipoBeneficiario|
@@ -46,8 +52,8 @@ And seleccione algunas coberturas:
 And agrege un beneficiario <tipoDocumento> <numeroDocumento><tipoBeneficiario>
 When intente cotizar y expedir la poliza
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-|mensaje                                                      |
-|Existen requisitos pendientes, diríjase a Análisis de riesgos|
+|mensaje                                                         |
+|Existen requisitos pendientes, diríjase a Análisis de riesgos   |
 
 Examples:
 |tipoDocumento       |primerNombre|primerApellido |tipo_documento       |documento  |numeroDocumento|tipoBeneficiario|mensaje                                          |
