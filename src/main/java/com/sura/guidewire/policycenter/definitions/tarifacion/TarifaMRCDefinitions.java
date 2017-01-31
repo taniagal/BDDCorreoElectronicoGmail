@@ -36,6 +36,11 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.seleccionarArticulosYTodadsSusCoberturas(datos);
     }
 
+    @When("agrego el valor comercial <valor> y el indice variable <valor_indice>")
+    public void seleccionarArticulosYTodadsSusCoberturas(@Named("valor") String valor, @Named("valor_indice") String valorIndice){
+        tarifaMRCSteps.ingresarValorcomercial(valor,valorIndice);
+    }
+
     @When("seleccione la cobertura de daños materiales con valor <valor> e indice variable <valorIndice>")
     public void seleccionarCobertura(@Named("valor") String valor, @Named("valorIndice") String valorIndice){
         tarifaMRCSteps.seleccionarCoberturaDaños(valor, valorIndice);

@@ -161,6 +161,10 @@ public class PolizaSteps extends GuidewireSteps {
         return getDriver().findElement(By.xpath(".//*[@id='StartCancellation:StartCancellationScreen:WarningMessageCancellation']")).getText();
     }
 
+    @Step
+    public void seleccionarReaseguroEspecialSi(){
+        polizaPage.seleccionarReaseguroEspecialSi();
+    }
 
     @Step
     public void desplegarListaMotivosCancelacion() {
