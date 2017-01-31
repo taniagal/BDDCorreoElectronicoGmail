@@ -56,7 +56,6 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarProductoDesdeCuenta(ExamplesTable datosCotizacion) {
-        nuevaCotizacionPage.seleccionarAgente();
         nuevaCotizacionPage.seleccionarProductoDesdeCuenta(datosCotizacion);
     }
 
