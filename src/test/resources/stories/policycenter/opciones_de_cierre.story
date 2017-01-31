@@ -4,9 +4,11 @@ Meta:
 @sprint 13
 
 Narrative:
-Como
-I want to perform an action
-So that I can achieve a business goal
+Como usuario de Policy Center con un rol especifico
+Quiero estar habilitado para retirar, declinar o marcar una transaccion de poliza como no tomada,
+ademas inlcuir los detalles asociados con la declinacion o no toma por parte del asegurado o agente
+Para poder tener seguimiento a traves del administrador de cotizaciones
+de las transacciones de poliza que fueron declinadadas o no tomadas
 
 Scenario: Validar informacion al declinar una poliza
 GivenStories: stories/policycenter/login_policy.story
