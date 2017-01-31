@@ -93,4 +93,9 @@ public class TarifaMRCSteps extends ScenarioSteps {
     public void verificarTarifacion(ExamplesTable datos){
         tarifaMRCPage.verificarTarifacion(datos);
     }
+
+    @Step
+    public void ingresarValorcomercial(String valor, String valorIndice) {
+        tarifaMRCPage.ingrasarValorComercial(valor, valorIndice);
+    }
 }
