@@ -49,19 +49,23 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.mostrarInformacionGeneralDeCobertura(informacionGeneralCobertura);
     }
 
-    @When("El usuario quiera visualizar la informacion completa de las primas cedidas")
+    @When("quiera visualizar la informacion completa de las primas cedidas")
     public void whenElUsuarioQuieraVisualizarLaInformacionCompletaDeLasPrimasCedidas() {
         cesionDePrimaSteps.tomaYbuscaConNumeroDeEnvio();
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
-
-        //cesionDePrimaSteps.ingresarPrimasCedidas();
         cesionDePrimaSteps.ejecutaTareaPrimasCedidas();
         cesionDePrimaSteps.ingresarPrimasDespuesDeEjecutarTareaEnCedidas();
         cesionDePrimaSteps.ingresarATodasLasTransacciones();
     }
 
-    @Then("se debe mostrar la informacion de la cobertura con el contrato definido por suramericana")
-    public void thenSeDebeMostrarLaInformacionDeLaCoberturaConElContratoDefinidoPorSuramericana() {
+    @When("quiera validar que el reaseguro para el contrato cuotaparte o excedente")
+    public void whenQuieraValidarQueElReaseguroParaElContratoCotaparteOExcedenteSeRealice() {
+        cesionDePrimaSteps.ingresaADetalleDeContratoExcedente();
+        cesionDePrimaSteps.ingresaADetalleDeContratoCuotaparte();
+    }
+
+    @Then("se deben mostrar los valores correspondientes de primas de reasegurador")
+    public void thenSeDebenMostrarLosValoresCorrespondientesDePrimasDeReasegurador() {
         // PENDING
     }
 

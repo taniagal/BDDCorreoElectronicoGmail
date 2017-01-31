@@ -33,7 +33,16 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade linkVolverAPrimasCedidas;
     @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:1']")
     private WebElementFacade linkInformacionDeDireccionYCobertura;
-
+    @FindBy(xpath = ".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV:0:DetailReinsurer']")
+    private WebElementFacade linkVerDetallePorReaseguradoraContratoExcedente;
+    @FindBy(xpath = ".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV:1:DetailReinsurer']")
+    private WebElementFacade linkVerDetallePorReaseguradoraContratoCuotaparte;
+    @FindBy(xpath = ".//*[@id='RICededPremiumReinsurersPopup:CededShare-inputEl']")
+    private WebElementFacade lblPorcentajeDeCesion;
+    @FindBy(xpath = ".//*[@id='RICededPremiumReinsurersPopup:ReteinedShare-inputEl']")
+    private WebElementFacade lblPorcentajeDeRetencion;
+    @FindBy(xpath = ".//*[@id='RICededPremiumReinsurersPopup:__crumb__']")
+    private WebElementFacade lblVolverAPrimasCedidas;
 
     String numeroDeEnvio = null;
 
@@ -47,6 +56,70 @@ public class CesionDePrimaPage extends PageUtil {
 
     public void irAResumenDePoliza() {
         esperarYClickearBoton(btnPoliza);
+    }
+
+    public void ejecutarTareaPrimasCedidas() {
+        String nombreTarea = "PremiumCeding";
+        btnVerPrimasCedidas.sendKeys(Keys.ALT, Keys.SHIFT, "t");
+        buscaEnTablaTareaDeLote(nombreTarea);
+        esperarYClickearBoton(btnAcciones);
+        esperarYClickearBoton(linkVolverAPolicy);
+    }
+
+    public String tomaNumeroDeEnvio() {
+        esperarYClickearBoton(linkVerExpedicion);
+        numeroDeEnvio = lblNumeroCotizacion.getText();
+        return numeroDeEnvio;
+    }
+
+    public void ingresaADetalleDeContratoExcedente() {
+        esperarYClickearBoton(linkVerDetallePorReaseguradoraContratoExcedente);
+    }
+
+    public void ingresaADetalleDeContratoCuotaParte() {
+        esperarYClickearBoton(linkVerDetallePorReaseguradoraContratoCuotaparte);
+        sumaPorcentajeParticipacionEnTablaDePrimas();
+    }
+
+    public void sumaPorcentajeParticipacionEnTablaDePrimas() {
+        int i = 0;
+        String XPATH_COLUMNAS1 = ".//*[@id='RICededPremiumReinsurersPopup:ParticipantsCededPremiumLV-body']/div/table/tbody/tr[";
+        String XPATH_COLUMNAS2 = "]/td[4]";
+        if (!getListaInformacionPorReasegurador().isEmpty()) {
+            for (WebElementFacade nombreDeTarea : getListaInformacionPorReasegurador()) {
+                 WebElementFacade tomaValoresDeTabla = $(XPATH_COLUMNAS1 + i + XPATH_COLUMNAS2);
+                 //tomaValoresDeTabla.getText();
+                 i++;
+            }
+        }
+    }
+
+    private List<WebElementFacade> getListaInformacionPorReasegurador() {
+        List<WebElementFacade> porcentajeParticipacion;
+        porcentajeParticipacion = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll(".//*[@id='RICededPremiumReinsurersPopup:ParticipantsCededPremiumLV-body']/div/table/tbody/tr/td[4]");
+        return porcentajeParticipacion;
+    }
+
+    public void buscaEnTablaTareaDeLote(String nombreTarea) {
+        int i = 0;
+        String XPATH1 = ".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV:";
+        String XPATH2 = ":RunBatchWithoutNotify']";
+        if (!getListaNombreProcesoPorLotes().isEmpty()) {
+            for (WebElementFacade nombreDeTarea : getListaNombreProcesoPorLotes()) {
+                if (nombreTarea.equals(nombreDeTarea.getText())) {
+                    WebElementFacade ejecutarAccionTarea = $(XPATH1 + i + XPATH2);
+                    ejecutarAccionTarea.click();
+                    break;
+                }
+                i++;
+            }
+        }
+    }
+
+    private List<WebElementFacade> getListaNombreProcesoPorLotes() {
+        List<WebElementFacade> numerosCotizacion;
+        numerosCotizacion = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll(".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV-body']/div/table/tbody/tr/td[1]");
+        return numerosCotizacion;
     }
 
     public void ingresaATodasTransacciones() {
@@ -68,46 +141,21 @@ public class CesionDePrimaPage extends PageUtil {
                 ejecuciones = ejecuciones + 1;
             }
         }
-       // MatcherAssert.assertThat("Error: Se esperaba tabla de ");
-    }
-
-    private List<WebElementFacade> getListaNombreProcesoPorLotes() {
-        List<WebElementFacade> numerosCotizacion;
-        numerosCotizacion = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll(".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV-body']/div/table/tbody/tr/td[1]");
-        return numerosCotizacion;
-    }
-
-    public void ejecutarTareaPrimasCedidas() {
-        String nombreTarea = "PremiumCeding";
-        btnVerPrimasCedidas.sendKeys(Keys.ALT, Keys.SHIFT, "t");
-        buscaEnTablaTareaDeLote(nombreTarea);
-        esperarYClickearBoton(btnAcciones);
-        esperarYClickearBoton(linkVolverAPolicy);
-    }
-
-    public void buscaEnTablaTareaDeLote(String nombreTarea) {
-        int i = 0;
-        String XPATH1 = ".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV:";
-        String XPATH2 = ":RunBatchWithoutNotify']";
-        if (!getListaNombreProcesoPorLotes().isEmpty()) {
-            for (WebElementFacade nombreDeTarea : getListaNombreProcesoPorLotes()) {
-                if (nombreTarea.equals(nombreDeTarea.getText())) {
-                    WebElementFacade ejecutarAccionTarea = $(XPATH1 + i + XPATH2);
-                    ejecutarAccionTarea.click();
-                    break;
-                }
-                i++;
-            }
-        }
-    }
-
-    public String tomaNumeroDeEnvio() {
-        esperarYClickearBoton(linkVerExpedicion);
-        numeroDeEnvio = lblNumeroCotizacion.getText();
-        return numeroDeEnvio;
+        MatcherAssert.assertThat("Error: Se esperaba la tabla de contratos", tabla.isVisible());
     }
 
     public void validarInformacionGeneralDeCobertura(String informacionGeneralCobertura) {
         MatcherAssert.assertThat("No aparece la informacion general de la coberturta", linkInformacionDeDireccionYCobertura.getText().equals(informacionGeneralCobertura));
     }
+
+    public void validarCondicionesDeContratoExcedente() {
+        lblVolverAPrimasCedidas.waitUntilPresent();
+        setImplicitTimeout(0, TimeUnit.SECONDS);
+        MatcherAssert.assertThat("Error: en los contratos excedentes no debe haber % de cesion", !lblPorcentajeDeCesion.isVisible());
+        MatcherAssert.assertThat("Error: en los contratos excedentes no debe haber % de cesion", !lblPorcentajeDeRetencion.isVisible());
+        resetImplicitTimeout();
+        esperarYClickearBoton(lblVolverAPrimasCedidas);
+    }
+
+
 }

@@ -17,14 +17,15 @@ Given estoy cotizando una poliza de mrc:
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS  |
 | Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 2000000000      |
 | Información de Artículos | Edificios           |                     | Danos materiales | Valor asegurado danos materiales | 2000000000      |
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 2000000000      |
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 2000000000      |
 And cotice y expida una poliza
-When El usuario quiera visualizar la informacion completa de las primas cedidas
-Then se debe mostrar la informacion de la cobertura con el contrato definido por suramericana
+When quiera visualizar la informacion completa de las primas cedidas
+And quiera validar que el reaseguro para el contrato cuotaparte o excedente
+Then se deben mostrar los valores correspondientes de primas de reasegurador
 
 Examples:
 ||

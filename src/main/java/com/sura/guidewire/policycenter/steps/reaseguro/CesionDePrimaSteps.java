@@ -53,4 +53,13 @@ public class CesionDePrimaSteps extends ScenarioSteps {
        crearYEditarCumulosPage.ingresarReaseguroOpciones();
        cesionDePrimaPage.clicEnBotonPrimasCedidas();
     }
+
+    public void ingresaADetalleDeContratoExcedente() {
+        cesionDePrimaPage.ingresaADetalleDeContratoExcedente();
+        cesionDePrimaPage.validarCondicionesDeContratoExcedente();
+    }
+
+    public void ingresaADetalleDeContratoCuotaparte() {
+        cesionDePrimaPage.ingresaADetalleDeContratoCuotaParte();
+    }
 }
