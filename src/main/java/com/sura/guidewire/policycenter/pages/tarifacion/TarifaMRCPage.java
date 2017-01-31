@@ -41,6 +41,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtIndiceVariable;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:checkCommercialValue-inputEl']")
+    private WebElementFacade checkBoxChecBoxAseguradoAValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCobertura;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -322,5 +324,12 @@ public class TarifaMRCPage extends PageUtil {
             }
             i++;
         }
+    }
+
+    public void ingrasarValorComercial(String valor, String valorIndice) {
+        clickearElemento(checkBoxChecBoxAseguradoAValorComercial);
+        esperarHasta(TIEMPO_1500);
+        campoTxtValorComercial.sendKeys(valor);
+        ingresarDato(campoTxtIndiceVariable, valorIndice);
     }
 }
