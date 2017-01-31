@@ -1,12 +1,12 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.CotizacionMRCPage;
-import java.util.Map;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
+
+import java.util.Map;
 
 
 public class CotizacionMRCSteps extends ScenarioSteps {
@@ -60,5 +60,10 @@ public class CotizacionMRCSteps extends ScenarioSteps {
     @Step
     public void validarBloqueoExclusividad(String mensaje) {
         cotizacionMRCPage.validarBloqueoExclusividad(mensaje);
+    }
+
+    @Step
+    public void validarMensajeUWAlExpedir(String mensaje){
+        cotizacionMRCPage.validarMensajeUWAlExpedir(mensaje);
     }
 }
