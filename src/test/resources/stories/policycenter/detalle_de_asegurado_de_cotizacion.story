@@ -15,7 +15,9 @@ Scenario: Validar asegurado que es persona publicamente expuesta
 GivenStories: stories/policycenter/login_policy.story
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -25,13 +27,15 @@ And seleccione el contacto a agregar
 Then se debe continuar al siguiente paso de la cotizacion
 
 Examples:
-| cuenta     | agente  | producto | tipoId               | numeroId | mensaje                                                                                              |
-| C000888888 | DIRECTO | Autos    | CEDULA DE CIUDADANIA | 71123456 | ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado. |
+| cuenta     | producto | tipoId               | numeroId | mensaje                                                                                              |
+| C000888888 | Autos    | CEDULA DE CIUDADANIA | 71123456 | ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado. |
 
 Scenario: Opciones para agregar asegurado
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -43,13 +47,15 @@ And Se debe mostrar las opciones:
 | Contactos de la cuenta |
 
 Examples:
-| cuenta     | agente  | producto |
-| C000888888 | DIRECTO | Autos    |
+| cuenta     | producto |
+| C000888888 | Autos    |
 
 Scenario: Agregar varios asegurados: Agregar asegurado de los contactos de la cuenta y validar asegurado del directorio riesgo consultable
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -65,13 +71,15 @@ Then deben quedar agregados como asegurados:
 And se debe continuar al siguiente paso de la cotizacion
 
 Examples:
-| cuenta     | agente  | producto | tipoId               | numeroId | mensaje                                                                                                   |
-| C000888888 | DIRECTO | Autos    | CEDULA DE CIUDADANIA | 32536001 | DIEGO VELEZ, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal. |
+| cuenta     | producto | tipoId               | numeroId | mensaje                                                                                                   |
+| C000888888 | Autos    | CEDULA DE CIUDADANIA | 32536001 | DIEGO VELEZ, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal. |
 
 Scenario: Agregar asegurado y Editar campos en creacion tipo persona natural
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -90,13 +98,15 @@ Then deben quedar agregados como asegurados:
 | LUCIANA CALLE | CEDULA DE CIUDADANIA | 1234568999      |
 
 Examples:
-| cuenta     | agente  | producto |
-| C000888888 | DIRECTO | Autos    |
+| cuenta     | producto |
+| C000888888 | Autos    |
 
 Scenario: Agregar y Editar campos en creacion tipo persona juridica
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -115,13 +125,15 @@ Then deben quedar agregados como asegurados:
 | COOPERATIVA LALO | NIT           | 9998887777      |
 
 Examples:
-| cuenta     | agente  | producto |
-| C000888888 | DIRECTO | Autos    |
+| cuenta     | producto |
+| C000888888 | Autos    |
 
 Scenario: Mostrar errores al validar las reglas de MDM al dar siguiente
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -133,13 +145,15 @@ And vaya al siguiente paso de la cotizacion
 Then muestre el mensaje de validacion del asegurado <mensaje>
 
 Examples:
-| cuenta     | agente  | producto | mensaje                                                                                             |
-| C000888888 | DIRECTO | Autos    | La longitud del número de documento de identificación no es válida, mínimo 3 y máximo 10 caracteres |
+| cuenta     | producto | mensaje                                                                                             |
+| C000888888 | Autos    | La longitud del número de documento de identificación no es válida, mínimo 3 y máximo 10 caracteres |
 
 Scenario: Quitar asegurado
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -151,13 +165,15 @@ And quite el contacto de la lista
 Then la lista de asegurados debe quedar vacia <numeroId>
 
 Examples:
-| cuenta     | agente  | producto | tipoId | numeroId   |
-| C000888888 | DIRECTO | Autos    | NIT    | 9202086744 |
+| cuenta     | producto | tipoId | numeroId   |
+| C000888888 | Autos    | NIT    | 9202086744 |
 
 Scenario: Validar asegurado que es riesgo consultable
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -167,5 +183,5 @@ And seleccione el contacto a agregar
 Then se debe continuar al siguiente paso de la cotizacion
 
 Examples:
-| cuenta     | agente  | producto | tipoId               | numeroId | mensaje                                                                                                |
-| C000888888 | DIRECTO | Autos    | CEDULA DE CIUDADANIA | 123456   | FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado. |
+| cuenta     | producto | tipoId               | numeroId | mensaje                                                                                                |
+| C000888888 | Autos    | CEDULA DE CIUDADANIA | 123456   | FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado. |

@@ -30,8 +30,8 @@ Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
 And seleccione la organizacion, el canal y el tipo de poliza:
-|organizacion   |canal              |tipoPoliza |
-|Sura           |Canal Tradicional  |Individual    |
+|tipoPoliza |
+|Individual |
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo
 
@@ -44,8 +44,8 @@ Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
 And seleccione la organizacion, el canal y el tipo de poliza:
-|organizacion   |canal              |tipoPoliza |
-|Sura           |Canal Tradicional  |Individual    |
+|tipoPoliza |
+|Individual    |
 And adicione un segundo tomador <tipoDocumento>, <primerNombre>, <primerApellido>
 Then debe quedar registrado en la informacion de la poliza
 
@@ -58,8 +58,8 @@ Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
 And seleccione la organizacion, el canal y el tipo de poliza:
-|organizacion   |canal              |tipoPoliza |
-|Sura           |Canal Tradicional  |Individual    |
+|tipoPoliza |
+|Individual    |
 And ingrese un porcentaje <porcentaje> de poliza superior al 50.00
 Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder el 50
 
@@ -73,8 +73,8 @@ Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
 And seleccione la organizacion, el canal y el tipo de poliza:
-|organizacion   |canal              |tipoPoliza |
-|Sura           |Canal Tradicional  |Individual    |
+|tipoPoliza |
+|Individual    |
 And ingrese un porcentaje <porcentaje> de poliza con mas de dos enteros y dos decimales
 Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder la longitud de dos digitos a
 izquierda o derecha
@@ -88,8 +88,8 @@ Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
 And seleccione la organizacion, el canal y el tipo de poliza:
-|organizacion   |canal              |tipoPoliza |
-|Sura           |Canal Tradicional  |Individual    |
+|tipoPoliza |
+|Individual |
 And no indique que deseo financiar la poliza
 Then no se debe habilitar la opcion de numero de cuotas
 
@@ -102,8 +102,8 @@ Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
 And seleccione la organizacion, el canal y el tipo de poliza:
-|organizacion   |canal              |tipoPoliza |
-|Sura           |Canal Tradicional  |Individual    |
+|tipoPoliza |
+|Individual    |
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then se debe cumplir con la retroactividad permitida <mensaje>
 

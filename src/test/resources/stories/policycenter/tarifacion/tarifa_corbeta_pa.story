@@ -11,8 +11,8 @@ Al cotizar una poliza de PA quiero ser capaz de utilizar la tarifa para el plan 
 Scenario:  Realizar una cotizacion donde la organización y canal son Corbeta
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |producto|organizacion|canal   |tipoPoliza |
-|C1060447895|Autos   |Corberta    |Corberta|Individual |
+|cuenta     |producto|oficina|agente |tipoPoliza |
+|C1060447895|Autos   |3300   |DIRECTO|Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan           |
@@ -31,8 +31,8 @@ Examples:
 
 Scenario:  Realizar una cotizacion donde la organización y canal son Corbeta en Bogota
 Given estoy cotizando una poliza:
-|cuenta     |producto|organizacion|canal   |tipoPoliza |
-|C1060447895|Autos   |Corberta    |Corberta|Individual |
+|cuenta     |producto|oficina|agente |tipoPoliza |
+|C1060447895|Autos   |3550   |DIRECTO|Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan           |

@@ -11,8 +11,8 @@ Deseo poder obtener y/o agregar la bonificacion comercial y la tecnica a un vehi
 Scenario: Verificar generacion de UW Issue al cambiar la bonificacion consultada Cambio de Poliza.
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
@@ -34,8 +34,8 @@ Examples:
 
 Scenario: Verificar generacion de UW Issue al cambiar la bonificacion consultada y la fecha de inicio de vigencia del cambio de poliza.
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |

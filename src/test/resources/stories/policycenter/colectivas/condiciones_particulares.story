@@ -413,3 +413,19 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
+
+
+Scenario: 22 Deducibles especiales
+Meta:@manual
+Given  Que tengo una póliza riesgo donde en CP se libera la regla de excepcion a deducibles especiales
+When ingrese la informacion del vehiculo y este es de excepcion de deducibles especiales}
+Then  Se debe expedir la transacción sin inconveniente
+And  Se debe generar el UW que existe "Vehiculo de excepcion de deducibles, dedebe ser autorizado"
+
+Examples:
+||
+||
+
+
+
+
