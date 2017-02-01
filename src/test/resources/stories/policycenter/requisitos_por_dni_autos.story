@@ -32,12 +32,12 @@ Examples:
 |tipoDocumento       |tipo_documento       |documento  |numeroDocumento|tipoBeneficiario|
 |CEDULA DE CIUDADANIA|CEDULA DE CIUDADANIA |71318883   |71123456       |Oneroso Leasing |
 
-Scenario: transaccion de poliza con requisitos opcionales
+Scenario: transaccion de poliza con requisitos
 Meta:
 @manual
 Given que estoy en una transaccion de poliza
 When los dni tengan requisitos pendientes opcionales
 And debe indicar mediante un mensaje que existenten requisitos pendientes opcionales
 And cuando edite la transaccion de poliza
-And
-Then se debe permitir la expedicion
+And cambie algun dni con requisitos pendientes por uno que no los tenga
+Then me deben aparecer solo los requisitos de los dni que lo requieran
