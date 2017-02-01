@@ -100,7 +100,7 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     //TODO Metodos que pueden agregar a utileria de comando
     public void clicObjeto(WebElementFacade objeto) {
-        objeto.waitUntilClickable().click();
+        clickearElemento(objeto);
     }
 
     //TODO Metodos que pueden agregar a utileria de comando

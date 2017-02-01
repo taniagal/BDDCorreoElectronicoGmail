@@ -12,7 +12,7 @@ Scenario:  Verificar independencia de cobertura de accidentes al conductor a las
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |producto|tipoPoliza |
-|C1060447895|Autos   Individual |
+|C1060447895|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |
