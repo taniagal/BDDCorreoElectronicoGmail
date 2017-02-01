@@ -9,7 +9,12 @@ Quiero prorrogar una poliza de MRC o de Autos
 
 
 Scenario: Validar opcion de Prorroga
-Given voy a cotizar una poliza de autos con la cuenta <cuenta>, agente <agente>, producto <producto>,
-asegurado con tipo de documento <tipo_documento> y documento <documento>
-When
-Then system is in a different state
+GivenStories: stories/policycenter/login_policy.story
+Given ya se tiene una poliza expedida <numeroPoliza>
+When quiero relizar el cambio de una poliza
+And se esta realizando una prorroga
+Then se debe habilitar la fecha de fin de vigencia de la poliza
+
+Examples:
+| numeroPoliza  |
+| TEST_22222222 |
