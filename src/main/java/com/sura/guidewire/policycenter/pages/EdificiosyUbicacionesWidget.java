@@ -48,7 +48,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final int TIEMPO_250 = 250;
-    private static final int CONSTANTE_3 = 3;
 
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
@@ -112,6 +111,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[3]/td[4]")
     private WebElementFacade agregarTipoOnerosoEdificios;
 
+    private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -504,12 +504,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void verificarMensajes(ExamplesTable mensajes) {
         for (Map<String, String> mensaje : mensajes.getRows()) {
             try {
-                waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
-                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
+                waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
+                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }catch (StaleElementReferenceException e){
-                waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
+                LOGGER.info("StaleElementReferenceException " + e);
+                waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 esperarHasta(TIEMPO_2000);
-                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
+                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }
         }
     }

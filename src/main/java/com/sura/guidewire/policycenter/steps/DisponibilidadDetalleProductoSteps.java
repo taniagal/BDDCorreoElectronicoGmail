@@ -5,7 +5,6 @@ import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
-import org.yecht.Data;
 
 import java.util.Map;
 
