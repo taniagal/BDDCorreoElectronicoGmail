@@ -11,8 +11,8 @@ Para las polizas de mrc en policy center
 Scenario: Comparacion de polizas al cambiar un dato por otro
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal            |
-|C000112402|Sura        |Multiriesgo corporativo|Canal Tradicional|
+|cuenta    |producto               |
+|C000112402|Multiriesgo corporativo|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -31,8 +31,8 @@ Examples:
 
 Scenario: Comparacion de polizas al cambiar el valor de la reconstruccion
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal            |
-|C000112402|Sura        |Multiriesgo corporativo|Canal Tradicional|
+|cuenta    |producto               |
+|C000112402|Multiriesgo corporativo|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -51,8 +51,8 @@ Examples:
 
 Scenario: Comparacion de polizas al agregar asegurado
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal            |
-|C000112402|Sura        |Multiriesgo corporativo|Canal Tradicional|
+|cuenta    |producto               |
+|C000112402|Multiriesgo corporativo|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas

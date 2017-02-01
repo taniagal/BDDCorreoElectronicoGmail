@@ -14,8 +14,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
     @Page
     DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
-    @Page
-    NuevaCotizacionPage nuevaCotizacionPage;
+
     @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
@@ -170,7 +169,6 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
     @Step
     public void agregarOrganizacion(String organizacion) {
-        nuevaCotizacionPage.llenarOrganizacion(organizacion);
     }
 }
 

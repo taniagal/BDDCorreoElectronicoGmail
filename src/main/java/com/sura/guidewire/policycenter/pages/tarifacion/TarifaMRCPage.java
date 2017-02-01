@@ -111,6 +111,7 @@ public class TarifaMRCPage extends PageUtil {
     public void seleccionarCobertura(ExamplesTable datos) {
         cobertura = datos.getRow(0).get("cobertura");
         for (Map<String, String> dato : datos.getRows()) {
+            labelcobertura.waitUntilPresent();
             if (labelcobertura.containsText(dato.get("cobertura"))) {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
             } else {
