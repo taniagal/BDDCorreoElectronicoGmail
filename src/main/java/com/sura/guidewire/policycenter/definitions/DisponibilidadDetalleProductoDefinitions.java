@@ -3,10 +3,8 @@ package com.sura.guidewire.policycenter.definitions;
 import com.sura.guidewire.policycenter.steps.DisponibilidadDetalleProductoSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings("WeakerAccess")
@@ -23,13 +21,13 @@ public class DisponibilidadDetalleProductoDefinitions {
         disponibilidadDetalleProductoSteps.accionarNuevoEnvio();
     }
 
-    @Given("seleccione el agente <agente>")
-    public void seleccionarAgente(@Named("agente") String agente){
+    @Given("seleccione el agente y la oficina de radicacion: $agente")
+    public void seleccionarAgente(ExamplesTable agente){
         disponibilidadDetalleProductoSteps.seleccionarAgente(agente);
     }
 
-    @When("seleccione el agente <agente>")
-    public void seleccionarAgenteCotizacion(@Named("agente") String agente){
+    @When("seleccione el agente y la oficina de radicacion: $agente")
+    public void seleccionarAgenteCotizacion(ExamplesTable agente){
         disponibilidadDetalleProductoSteps.seleccionarAgente(agente);
     }
 

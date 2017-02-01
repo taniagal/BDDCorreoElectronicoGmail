@@ -15,9 +15,11 @@ Scenario: Validar elementos de la pantalla cuando voy a crear una poliza individ
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 Then se debe visualizar la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones para elegir producto habilitados
 
 Examples:
-| numCuenta  | agente  |
-| C000888888 | DIRECTO |
+| numCuenta  |
+| C000888888 |
