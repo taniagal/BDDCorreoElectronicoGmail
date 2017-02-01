@@ -82,8 +82,11 @@ And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas|
 |Building |100000000       |Asonada,Terremoto|
 And cotice el articulo
-Then debo poder ver el valor de la prima <prima> en la cobertura
+Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
+|articulo  |descripcion                      |valor  |
+|Edificio  |Cobertura de Asonada             |5.351  |
+|Edificio  |Cobertura de Terremoto           |101.667|
 
 Examples:
-|prima|departamento|ciudad  |direccion        |descripcion  |actividad|
-|5.351|Antioquia   |Medellin|CR 44 A # 47 - 00|Edificio Core|Acabado de productos textiles|
+|departamento|ciudad  |direccion        |descripcion  |actividad|
+|Antioquia   |Medellin|CR 44 A # 47 - 00|Edificio Core|Acabado de productos textiles|
