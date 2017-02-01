@@ -34,8 +34,8 @@ Scenario: Opciones para agregar asegurado
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| oficina | agente_oficina |
+| 1060    | DIRECTO	   |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -79,7 +79,7 @@ Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
 | oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| 1060    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -133,7 +133,7 @@ Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
 | oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| 1060    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
@@ -173,7 +173,7 @@ Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
 | oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| 1060    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
 And vaya a la opcion agregar
