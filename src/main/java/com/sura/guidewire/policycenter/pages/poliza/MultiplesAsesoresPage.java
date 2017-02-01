@@ -127,8 +127,7 @@ public class MultiplesAsesoresPage extends PageUtil {
         WebElementFacade elemento = consultarElementoFilaColumna(path, indiceFila, indiceColumna);
         clicObjeto(elemento);
         borrarRegistroDatos(CONSTANTE_VEINTE);
-        elemento.sendKeys(texto);
-        //actions.sendKeys(texto).build().perform();
+        actions.sendKeys(texto).build().perform();
         esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
 
     }
