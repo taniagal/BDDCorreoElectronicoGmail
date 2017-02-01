@@ -26,7 +26,7 @@ When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje de advertencia
 | mensaje                                                        |
-| Existen requisitos opcionales pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos. |
 
 
 Examples:

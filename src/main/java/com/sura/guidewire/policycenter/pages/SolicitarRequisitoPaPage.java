@@ -13,21 +13,18 @@ import org.openqa.selenium.WebDriver;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class SolicitarRequisitoPaPage extends PageUtil{
+public class SolicitarRequisitoPaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     WebElementFacade botonBorrar;
 
-    public SolicitarRequisitoPaPage (WebDriver driver) {
+    public SolicitarRequisitoPaPage(WebDriver driver) {
         super(driver);
     }
 
-    public void validarOpcionHabilitada() {
-        WebElementFacade botonRequisitos = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:RequestRequirement-btnInnerEl']");
-        MatcherAssert.assertThat(botonRequisitos.getAttribute("unselectable"), Matchers.equalTo("on"));
-    }
-
-    public void validarAdvertenciaRequisitos(ExamplesTable mensaje){
+    public void validarAdvertenciaRequisitos(ExamplesTable mensaje) {
+        WebElementFacade botonRequisitos = findBy("//div[contains(.,'Requisitos')]");
+        withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(botonRequisitos).waitUntilPresent();
         Map<String, String> advertencia = mensaje.getRows().get(0);
         WebElementFacade mensajeAdvertencia = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         MatcherAssert.assertThat(mensajeAdvertencia.getText(), Matchers.containsString(advertencia.get("mensaje")));
@@ -43,7 +40,7 @@ public class SolicitarRequisitoPaPage extends PageUtil{
         Map<String, String> bloqueo = mensajeB.getRows().get(0);
         WebElementFacade mensajeAdvertencia = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         MatcherAssert.assertThat(mensajeAdvertencia.getText(), Matchers.containsString(bloqueo.get("mensajeB")));
-        MatcherAssert.assertThat("El mensaje no es de bloqueo ",findBy(".//img[@class='error_icon']").isVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat("El mensaje no es de bloqueo ", findBy(".//img[@class='error_icon']").isVisible(), Is.is(Matchers.equalTo(true)));
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
     }
 }
