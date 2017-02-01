@@ -38,7 +38,7 @@ Examples:
 Scenario: Validar informacion al no tomar una poliza
 Given voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto, asegurado con tipo de documento y documento
 | tipoDocumento        | documento | cuenta     | producto | agente  | oficina |
-| CEDULA DE CIUDADANIA | 71318883  | C000888888 | Autos    | DIRECTO | 1105    |
+| CEDULA DE CIUDADANIA | 71318883  | C000888888 | Autos    | DIRECTO | 1060    |
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         |
 | TYU131 | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular |

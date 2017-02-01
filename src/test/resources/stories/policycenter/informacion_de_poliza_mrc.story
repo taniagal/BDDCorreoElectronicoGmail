@@ -27,7 +27,7 @@ Scenario: Validar campos especiales de reaseguros
 Given se inicio una nueva suscripcion <numeroCuenta>
 When seleccione el agente y la oficina de radicacion:
 | oficina | agente  |
-| 1105    | DIRECTO |
+| 1060    | DIRECTO |
 And seleccione el producto <nomProducto> a expedir
 And seleccione la poliza como reaseguro especial
 Then la etiqueta del tomador debe cambiar a tomador cedente
@@ -56,7 +56,7 @@ Scenario: Ocultar descipcion de la direccion cuando el campo no tenga datos info
 Given se inicio una nueva suscripcion <numeroCuenta>
 When seleccione el agente y la oficina de radicacion:
 | oficina | agente  |
-| 1105    | DIRECTO |
+| 1060    | DIRECTO |
 And seleccione el producto <nomProducto> a expedir
 And requiera quitar la descripcion de la direccion del contacto
 Then debe desaparecer del formulario principal
