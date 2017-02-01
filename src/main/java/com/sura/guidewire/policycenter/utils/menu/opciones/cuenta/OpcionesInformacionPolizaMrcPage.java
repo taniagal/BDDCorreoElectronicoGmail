@@ -142,14 +142,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         super(driver);
     }
 
-    public void ingresaAgente() {
-        waitInfoPoliza(lblNuevaCotizacion);
-        txtNomAgente.clear();
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ENTER).build().perform();
-        waitInfoPoliza(lblTabla);
-    }
-
     public void ingresarFechaVigencia(String fechaInicioVigencia) {
         waitInfoPoliza(lblInformaPoliza);
         txtFechaVigencia.clear();

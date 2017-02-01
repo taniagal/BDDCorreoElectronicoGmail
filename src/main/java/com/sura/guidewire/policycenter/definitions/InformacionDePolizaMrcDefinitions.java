@@ -51,11 +51,6 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegarPorLasOpcionesDeAcciones();
     }
 
-    @When("este expidiendo una poliza de propiedad comercial")
-    public void expidePolizaPropiedadComercial() {
-        informacionDePolizaMrcSteps.seleccionaCotizacionParaProducto();
-    }
-
     @When("cotice una poliza")
     public void cuandoCotizeUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();

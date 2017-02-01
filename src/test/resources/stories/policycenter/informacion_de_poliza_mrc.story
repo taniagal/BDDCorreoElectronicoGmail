@@ -13,7 +13,9 @@ Quiero ser capaz de ingresar y visualizar la informacion de la poliza incluyendo
 Scenario: Visualizar datos de la poliza
 GivenStories: stories/policycenter/login_policy.story
 Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial
+When seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 And seleccione el producto <nomProducto> a expedir
 Then se debe visualizar los datos del tomador <tomador>
 
@@ -23,7 +25,9 @@ Examples:
 
 Scenario: Validar campos especiales de reaseguros
 Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial
+When seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 And seleccione el producto <nomProducto> a expedir
 And seleccione la poliza como reaseguro especial
 Then la etiqueta del tomador debe cambiar a tomador cedente
@@ -36,7 +40,9 @@ Examples:
 
 Scenario: Cambiar inicio de vigencia propiedad comercial
 Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial
+When seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 And seleccione el producto <nomProducto> a expedir
 And modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>
 Then se debe mostrar un mensaje <mensaje> de error
@@ -48,7 +54,9 @@ Examples:
 
 Scenario: Ocultar descipcion de la direccion cuando el campo no tenga datos informativos
 Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial
+When seleccione el agente y la oficina de radicacion:
+| oficina | agente  |
+| 1105    | DIRECTO |
 And seleccione el producto <nomProducto> a expedir
 And requiera quitar la descripcion de la direccion del contacto
 Then debe desaparecer del formulario principal
