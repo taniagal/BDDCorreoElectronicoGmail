@@ -1,36 +1,19 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
-import com.sura.guidewire.policycenter.utils.model.AgenteModel;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.joda.time.LocalDate;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 
 // TODO: 15/06/2016 Pendiente refactor
 public class CotizacionPage extends GuidewirePage {
-    private static final int CONSTANTE_2 = 2;
-    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
-    private List<AgenteModel> listaAgentesModel = null;
-    private String nombreAgente;
-    private List<WebElementFacade> listaDeProductosElement;
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
     @FindBy (xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']")
-    WebElementFacade labelFecha;
 
     public static final String TITULO_PAGINA = "//span[@id='NewSubmission:NewSubmissionScreen:ttlBar']";
     public static final String TITULO_PAGINA_SIGUIENTE = "//span[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:ttlBar']";

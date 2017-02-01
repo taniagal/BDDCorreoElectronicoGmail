@@ -22,9 +22,6 @@ import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;
 
 public class PolizaPage extends PageUtil {
-    public PolizaPage(WebDriver driver) {
-        super(driver);
-    }
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
     private WebElementFacade headerEnvio;
@@ -50,12 +47,11 @@ public class PolizaPage extends PageUtil {
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
     protected static final int CONSTANTE_61 = 61;
-    protected static final int TIEMPO_20 = 20;
     protected static final int CONSTANTE_10 = 10;
-    protected static final int TIEMPO_5 = 5;
-    protected static final int TIEMPO_2 = 2;
-    protected static final int TIEMPO_1 = 1;
-    public static final String TRACE = "\nTRACE: \n";
+
+    public PolizaPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public enum Opcion {

@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.serenitybdd.core.annotations.findby.By;
@@ -27,8 +26,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']")
     WebElementFacade lblInformaPolizaEnRenovacion;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
-    WebElementFacade txtNomAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
     WebElementFacade txtFechaVigencia;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
@@ -37,12 +34,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade txtNumDocumentoCoaseguro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']")
     WebElementFacade lblInformaPoliza;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
-    WebElementFacade lblNuevaCotizacion;
     @FindBy(xpath = ".//a[contains(.,'Cotizar')]")
     WebElementFacade botonCotizar;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
-    WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
     WebElementFacade lblNombreCompleto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
