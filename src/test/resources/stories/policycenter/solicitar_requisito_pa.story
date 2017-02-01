@@ -26,7 +26,7 @@ And ingrese las coberturas:
 And llegue a la expedicion de la poliza
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                                       |
-|Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos.|
+|Existen requisitos opcionales pendientes, por favor diríjase a la pestaña Requisitos para tramitarlos.|
 
 Examples:
 |tipo_documento      |documento|
@@ -51,7 +51,7 @@ And intente expedir la poliza
 And existan requisitos pendientes
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                                                                               |
-|Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos.|
+|Existen requisitos opcionales pendientes, por favor diríjase a la pestaña Requisitos para tramitarlos.|
 
 Examples:
 |tipo_documento      |documento|
