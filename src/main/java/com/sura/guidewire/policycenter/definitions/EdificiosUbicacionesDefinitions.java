@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
@@ -9,9 +8,7 @@ import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
-import gherkin.formatter.model.Examples;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.reports.html.ExampleTable;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
@@ -130,6 +127,14 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
+    }
+
+    @When("ingrese las entradas en cambio de poliza de las diferentes coberturas $entradatable")
+    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeL(ExamplesTable entradatable) {
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+
     }
 
     @When("ingrese las entradas en cambio de poliza y verificar las reglas de oneroso")
