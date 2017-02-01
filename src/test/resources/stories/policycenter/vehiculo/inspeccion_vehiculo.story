@@ -10,9 +10,10 @@ Quiero ser capaz consultar de forma automatica si un vehiculo requiere o no insp
 
 Scenario: Consulta de inspeccion no valida y busqueda en el modelo de seguros
 GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar la cuenta <numCuenta>
-When estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
+Given estoy cotizando una poliza:
+|cuenta    |producto               |tipoPoliza |
+|C001888888|Multiriesgo corporativo|Individual |
+When valla a la indormacion de la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
@@ -28,10 +29,11 @@ Examples:
 
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
-Given que voy a buscar la cuenta <numCuenta>
-When estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
-When ingrese los datos del asegurado <tipo_documento> <documento>
+Given estoy cotizando una poliza:
+|cuenta    |producto               |tipoPoliza |
+|C001888888|Multiriesgo corporativo|Individual |
+When valla a la indormacion de la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:
