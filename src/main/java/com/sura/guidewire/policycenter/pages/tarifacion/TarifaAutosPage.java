@@ -237,12 +237,10 @@ public class TarifaAutosPage extends PageUtil {
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
         comboBoxLimite.clear();
         esperarHasta(TIEMPO_500);
         comboBoxLimite.sendKeys(dato.get("limite"));
         comboBoxLimite.sendKeys(Keys.ENTER);
-        esperarHasta(TIEMPO_800);
         seleccionarItem(comboBoxDeducible, dato.get("deducible"));
     }
 
