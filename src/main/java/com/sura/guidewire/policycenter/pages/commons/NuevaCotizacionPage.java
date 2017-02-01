@@ -165,7 +165,7 @@ public class NuevaCotizacionPage extends PageUtil {
         Map<String, String> dato = datosCotizacion.getRow(0);
         if (dato.get("oficina") != null) {
             oficina = dato.get("oficina");
-            agente = dato.get("agente");
+            agente = dato.get("agente_oficina");
         }
         seleccionarOficinaDeRadicacionYAgente(oficina, agente);
         seleccionDeProducto(dato.get("producto"));

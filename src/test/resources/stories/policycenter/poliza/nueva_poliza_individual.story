@@ -16,7 +16,7 @@ GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 Then se debe visualizar la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones para elegir producto habilitados
 

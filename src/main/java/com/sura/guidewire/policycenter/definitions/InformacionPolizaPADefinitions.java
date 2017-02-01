@@ -65,9 +65,8 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.seleccionarAgenteCotizacion();
     }
 
-    @When("seleccione el producto para expedir la poliza")
+    @When("valla a la indormacion de la poliza")
     public void elegirElProductoParaLaPoliza() {
-        informacionPolizaPASteps.seleccionarProducto();
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
 

@@ -16,7 +16,7 @@ GivenStories: stories/policycenter/login_policy.story
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
@@ -34,7 +34,7 @@ Scenario: Opciones para agregar asegurado
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
@@ -54,7 +54,7 @@ Scenario: Agregar varios asegurados: Agregar asegurado de los contactos de la cu
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
@@ -78,7 +78,7 @@ Scenario: Agregar asegurado y Editar campos en creacion tipo persona natural
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
@@ -105,7 +105,7 @@ Scenario: Agregar y Editar campos en creacion tipo persona juridica
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
@@ -132,7 +132,7 @@ Scenario: Mostrar errores al validar las reglas de MDM al dar siguiente
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
@@ -152,7 +152,7 @@ Scenario: Quitar asegurado
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado
@@ -172,7 +172,7 @@ Scenario: Validar asegurado que es riesgo consultable
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
 And quiera agregar un asegurado

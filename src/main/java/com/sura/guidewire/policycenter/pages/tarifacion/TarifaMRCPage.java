@@ -286,7 +286,7 @@ public class TarifaMRCPage extends PageUtil {
                     break;
                 }
             }
-            esperarHasta(TIEMPO_2000);
+            esperarHasta(TIEMPO_1000);
         }
     }
 
