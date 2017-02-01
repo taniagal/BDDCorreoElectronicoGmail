@@ -30,7 +30,7 @@ When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And debo ver un mensaje opcional
 | mensaje                                                        |
-| Existen requisitos opcionales pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos. |
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
 And seleccione la opcion importado por terceros
@@ -90,7 +90,7 @@ When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And debo ver un mensaje opcional
 | mensaje                                                        |
-| Existen requisitos opcionales pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos. |
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
 And seleccione la opcion importado por terceros
