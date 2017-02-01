@@ -1,8 +1,6 @@
-Meta: @lote1
-
-@issue #SUGWUSC-14460
+Meta:
+@lote1
 @tag equipo: 3
-@local
 @Sprint 3
 
 Narrative:
