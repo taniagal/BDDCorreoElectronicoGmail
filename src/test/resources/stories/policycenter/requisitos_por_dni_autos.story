@@ -23,12 +23,12 @@ And agrege un beneficiario <tipoDocumento> <numeroDocumento><tipoBeneficiario>
 And cotice una poliza
 And voy a expedir una poliza
 And acepto la expedicion de poliza
-Then debe salir el nombre de los usuarios que requieren requisitos
-|mensajes         |
-|LUCIANA LONDOÑO  |
-|CAROLINA OCHOA   |
 
-Examples:
+Examples:Then debe salir el nombre de los usuarios que requieren requisitos
+         |mensajes         |
+         |LUCIANA LONDOÑO  |
+         |CAROLINA OCHOA   |
+
 |tipoDocumento       |tipo_documento       |documento  |numeroDocumento|tipoBeneficiario|
 |CEDULA DE CIUDADANIA|CEDULA DE CIUDADANIA |71318883   |71123456       |Oneroso Leasing |
 
