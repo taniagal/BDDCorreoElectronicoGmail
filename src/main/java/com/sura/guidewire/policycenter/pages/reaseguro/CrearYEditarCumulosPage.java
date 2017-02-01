@@ -31,15 +31,15 @@ public class CrearYEditarCumulosPage extends PageUtil {
     WebElementFacade listNombreReaseugurador;
     @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:Update']")
     WebElementFacade btnAceptarReasegurador;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]/div")
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[5]/div")
     WebElementFacade listFormaCotizacionModalidad;
     @FindBy(xpath = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]")
     WebElementFacade txtFormaCotizacionModalidad;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[3]")
     WebElementFacade listPorcParticipacion;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[8]")
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[7]")
     WebElementFacade listcomisionReaseguroCedido;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[9]")
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[8]")
     WebElementFacade listcomisionIntermediario;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[10]")
     WebElementFacade listcomisionPromotora;
@@ -105,7 +105,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
         listcomisionReaseguroCedido.click();
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionReasegurador"));
         actions.sendKeys(Keys.TAB).build().perform();
-        esperarYClickearBoton($(VALOR));
+        esperarYClickearBoton(listcomisionIntermediario);
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("valorReaseguro"));
         actions.sendKeys(Keys.TAB).build().perform();
     }
