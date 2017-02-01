@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 
 public class CotizacionDefinitions {
     protected static final int CONSTANTE_5 = 5;
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     @Steps
     IngresoAPolicyCenterDefinitions guidewire;

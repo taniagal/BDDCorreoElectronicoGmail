@@ -47,7 +47,7 @@ public class TransaccionesDePolizaPage extends PageUtil {
 
     public boolean validarDetalleTransaccion() {
         withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoFechaVigencia).shouldBeCurrentlyVisible();
-        return ("null".equals(campoFechaVigencia.getText()) && "null".equals(campoFechaExpedicion.getText()));
+        return "null".equals(campoFechaVigencia.getText()) && "null".equals(campoFechaExpedicion.getText());
     }
 
     public void seleccionarTransacciones() {
