@@ -11,8 +11,8 @@ Quiero ser capaz consultar de forma automatica si un vehiculo requiere o no insp
 Scenario: Consulta de inspeccion no valida y busqueda en el modelo de seguros
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |producto               |tipoPoliza |
-|C001888888|Multiriesgo corporativo|Individual |
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual |
 When valla a la indormacion de la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion no valida
@@ -23,15 +23,15 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-| numCuenta   | placa  | valorAsegurado | tipo_documento       | documento  |
-| C1060447895 | HZR123 | 165900000,00   | CEDULA DE CIUDADANIA | 1060447895 |
+| placa  | valorAsegurado | tipo_documento       | documento  |
+| HZR123 | 165900000,00   | CEDULA DE CIUDADANIA | 1060447895 |
 
 
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given estoy cotizando una poliza:
-|cuenta    |producto               |tipoPoliza |
-|C001888888|Multiriesgo corporativo|Individual |
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual |
 When valla a la indormacion de la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion
@@ -42,8 +42,8 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-| numCuenta   | placa  | valorAsegurado | tipo_documento       | documento  |
-| C1060447895 | MJK289 | 21800000,00    | CEDULA DE CIUDADANIA | 1060447895 |
+| placa  | valorAsegurado | tipo_documento       | documento  |
+| MJK289 | 21800000,00    | CEDULA DE CIUDADANIA | 1060447895 |
 
 
 
