@@ -17,7 +17,7 @@ Meta:
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
@@ -39,7 +39,7 @@ Meta:
 Given  que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And  seleccione la opcion informacion de poliza
@@ -66,7 +66,7 @@ Meta:
 Given  que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
@@ -94,7 +94,7 @@ Meta:
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
