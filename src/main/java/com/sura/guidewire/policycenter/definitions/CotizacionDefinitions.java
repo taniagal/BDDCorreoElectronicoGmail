@@ -2,21 +2,14 @@ package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CotizacionSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
-import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.steps.StepInterceptor;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-import org.slf4j.LoggerFactory;
 
 
 public class CotizacionDefinitions {
-    protected static final int CONSTANTE_5 = 5;
-
-    @Steps
-    IngresoAPolicyCenterDefinitions guidewire;
 
     @Steps
     CotizacionSteps cotizador;
