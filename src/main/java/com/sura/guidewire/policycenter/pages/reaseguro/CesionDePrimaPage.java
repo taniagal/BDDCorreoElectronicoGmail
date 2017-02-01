@@ -31,7 +31,7 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade linkVerExpedicion;
     @FindBy(xpath = ".//*[@id='RICededPremiums_AllPopup:__crumb__']")
     private WebElementFacade linkVolverAPrimasCedidas;
-    @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:1']")
+    @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:0']")
     private WebElementFacade linkInformacionDeDireccionYCobertura;
     @FindBy(xpath = ".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV:0:DetailReinsurer']")
     private WebElementFacade linkVerDetallePorReaseguradoraContratoExcedente;
@@ -76,25 +76,24 @@ public class CesionDePrimaPage extends PageUtil {
         esperarYClickearBoton(linkVerDetallePorReaseguradoraContratoExcedente);
     }
 
-    public void ingresaADetalleDeContratoCuotaParte() {
+    public void validaReaseguroYDistribucionEnTabla() {
         esperarYClickearBoton(linkVerDetallePorReaseguradoraContratoCuotaparte);
-        MatcherAssert.assertThat("Error: El valor total no es igual que la cesion del contrato", sumaPorcentajeParticipacionEnTablaDePrimas().equals(Double.parseDouble(lblPorcentajeDeCesion.getText())) );
+        MatcherAssert.assertThat("Error: El valor total no es igual que la cesion del contrato", sumaPorcentajeParticipacionEnTablaDePrimas().equals(Double.parseDouble(lblPorcentajeDeCesion.getText())));
     }
 
     public Double sumaPorcentajeParticipacionEnTablaDePrimas() {
         Double valorTotal = 0d;
         if (!getListaInformacionPorReasegurador().isEmpty()) {
             for (WebElementFacade nombreDeTarea : getListaInformacionPorReasegurador()) {
-                try{
-                    valorTotal += Double.parseDouble(nombreDeTarea.getText().replaceAll("," , "\\."));
-                }catch(NumberFormatException ex){
+                try {
+                    valorTotal += Double.parseDouble(nombreDeTarea.getText().replaceAll(",", "\\."));
+                } catch (NumberFormatException ex) {
                     LOGGER.info("NumberFormatException, se esperaba un numero" + ex);
                 }
             }
         }
         return (double) Math.round(valorTotal);
     }
-
 
     private List<WebElementFacade> getListaInformacionPorReasegurador() {
         List<WebElementFacade> porcentajeParticipacion;
@@ -158,6 +157,4 @@ public class CesionDePrimaPage extends PageUtil {
         resetImplicitTimeout();
         esperarYClickearBoton(lblVolverAPrimasCedidas);
     }
-
-
 }

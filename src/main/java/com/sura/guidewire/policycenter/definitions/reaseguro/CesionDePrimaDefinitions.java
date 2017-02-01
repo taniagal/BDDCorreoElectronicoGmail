@@ -61,12 +61,12 @@ public class CesionDePrimaDefinitions {
     @When("quiera validar que el reaseguro para el contrato cuotaparte o excedente")
     public void whenQuieraValidarQueElReaseguroParaElContratoCotaparteOExcedenteSeRealice() {
         cesionDePrimaSteps.ingresaADetalleDeContratoExcedente();
-        cesionDePrimaSteps.ingresaADetalleDeContratoCuotaparte();
+
     }
 
     @Then("se deben mostrar los valores correspondientes de primas de reasegurador")
     public void thenSeDebenMostrarLosValoresCorrespondientesDePrimasDeReasegurador() {
-        // PENDING
+        cesionDePrimaSteps.validaCondicionesYValoresContratos();
     }
 
 }

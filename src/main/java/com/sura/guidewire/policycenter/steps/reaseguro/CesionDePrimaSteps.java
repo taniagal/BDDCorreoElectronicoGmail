@@ -20,7 +20,6 @@ public class CesionDePrimaSteps extends ScenarioSteps {
 
     @Step
     public void ingresarPrimasCedidas() {
-        //cotizacionMRCPage.irABuscarCotizacion(numeroDeEnvio);
         cesionDePrimaPage.clicEnBotonPrimasCedidas();
     }
 
@@ -60,7 +59,7 @@ public class CesionDePrimaSteps extends ScenarioSteps {
         cesionDePrimaPage.validarCondicionesDeContratoExcedente();
     }
 
-    public void ingresaADetalleDeContratoCuotaparte() {
-        cesionDePrimaPage.ingresaADetalleDeContratoCuotaParte();
+    public void validaCondicionesYValoresContratos() {
+        cesionDePrimaPage.validaReaseguroYDistribucionEnTabla();
     }
 }
