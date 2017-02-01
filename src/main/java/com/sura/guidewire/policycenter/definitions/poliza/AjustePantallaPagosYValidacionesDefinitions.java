@@ -19,8 +19,8 @@ public class AjustePantallaPagosYValidacionesDefinitions {
 
     @When("en la pantalla \"Edificios y ubicaciones\" debe permitir seleccionar el tipo de flotante:$opciones")
     public void seleccionarArticuloFlotante(ExamplesTable opciones){
-        Parametros parametros = new Parametros(opciones);
-        ajustePantallaPagosYValidacionesSteps.seleccionarArticuloFlotante(parametros);
+
+        ajustePantallaPagosYValidacionesSteps.seleccionarArticuloFlotante(new Parametros(opciones));
         pagoPolizaSteps.ingresar_a_la_opcion_de_pago();
     }
     @Then("en la pantalla de payment en el item schedule debe asignar por default plan type \"Installment plan\" no editable.\n" +
@@ -28,7 +28,6 @@ public class AjustePantallaPagosYValidacionesDefinitions {
     @Aliases(values ={"en la pantalla de payment en el item schedule debe asignar por default plan type \"Reporting Plan\" no editable.\n" +
             " El item \"audits\" debe aparecer por default \"No\"  editable:$opciones"})
     public void validarDatosDePantallaPagoPoliza(ExamplesTable opciones) {
-        Parametros parametros = new Parametros(opciones);
-        ajustePantallaPagosYValidacionesSteps.validacionDatosDePantallaPago(parametros);
+        ajustePantallaPagosYValidacionesSteps.validacionDatosDePantallaPago(new Parametros(opciones));
     }
 }

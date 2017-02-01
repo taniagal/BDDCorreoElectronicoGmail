@@ -15,8 +15,8 @@ Asi ver los detalles de la cotizacion de una poliza MRC
 Scenario: Cotizar una poliza MRC
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal            |
-|C000112400|Sura        |Multiriesgo corporativo|Canal Tradicional|
+|cuenta    |producto               |
+|C000112400|Multiriesgo corporativo|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -36,8 +36,8 @@ Examples:
 
 Scenario: Cotizar una poliza MRC con un riesgo consultable bloqueante
 Given estoy cotizando una poliza:
-| cuenta     | organizacion | producto                | canal             |
-| C000222333 | Sura         | Multiriesgo corporativo | Canal Tradicional |
+| cuenta     |producto                |
+| C000222333 |Multiriesgo corporativo |
 When quiera agregar un tomador adicional que es riesgo consultable <tipo_documento> <documento>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable

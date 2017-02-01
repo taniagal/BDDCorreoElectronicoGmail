@@ -226,7 +226,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionarProducto(String nomProducto) {
         esperarHasta(TIEMPO_1000);
         String xpathBotonElegirProducto = BTNELEGIRPRODUCTO + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
-        NuevaCotizacionPage cotizacionPage = new NuevaCotizacionPage(getDriver());
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
         botonElegirProducto.click();
@@ -237,7 +236,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 botonAceptarPopup.waitUntilNotVisible();
             }
             resetImplicitTimeout();
-            cotizacionPage.llenarOrganizacion("Sura");
         }
     }
 

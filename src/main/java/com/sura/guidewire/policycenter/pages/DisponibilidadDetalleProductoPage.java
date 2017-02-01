@@ -2,15 +2,14 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 public class DisponibilidadDetalleProductoPage extends PageUtil {
 
@@ -34,6 +33,8 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     private WebElementFacade campoTxtOficinaDeRadicacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCode-inputEl']")
     private WebElementFacade comboBoxCodigoDeAgente;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:MainOffice-inputEl']")
+    private WebElementFacade comboBoxOficinaDeRadicacion;
 
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
         super(driver);
@@ -48,25 +49,10 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
     }
 
-
+//TODO CAMBIO POR BILLING
     public void seleccionarAgente(String agente) {
-        this.seleccionarAgentePorNombre(agente);
-        waitForTextToAppear("Productos ofrecidos", TIEMPO_30000);
-    }
-
-    public void seleccionarAgentePorNombre(String nombreAgente) {
-        waitFor(campoNombreAgente).waitUntilPresent();
-        esperarHasta(TIEMPO_3000);
-        campoNombreAgente.click();
-        List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
-        if (!listaNombresAgentesElement.isEmpty()) {
-            for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                if (agenteElemento.containsText(nombreAgente)) {
-                    agenteElemento.click();
-                    break;
-                }
-            }
-        }
+        seleccionarItem(comboBoxOficinaDeRadicacion, "3554");
+        seleccionarItem(campoNombreAgente, agente);
     }
 
     public void validarLaOrganizacion(String organizacion) {
@@ -82,13 +68,5 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     public void validarElProducto(String tipoPoliza) {
         waitFor(listaPATipoPoliza);
         MatcherAssert.assertThat(listaPATipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));
-    }
-
-    public void seleccionarAgenteDeRegistro(){
-        campoTxtOficinaDeRadicacion.waitUntilPresent().clear();
-        campoTxtOficinaDeRadicacion.sendKeys("SURA");
-        clickearElemento(comboBoxCodigoDeAgente);
-        esperarPorValor(campoTxtOficinaDeRadicacion,"SURA");
-        seleccionarItem(comboBoxCodigoDeAgente,"4999");
     }
 }
