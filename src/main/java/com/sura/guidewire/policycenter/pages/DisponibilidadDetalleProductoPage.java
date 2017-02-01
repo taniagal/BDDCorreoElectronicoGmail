@@ -6,9 +6,11 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class DisponibilidadDetalleProductoPage extends PageUtil {
@@ -47,12 +49,6 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
 
     public void verInformacionDePoliza() {
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
-    }
-
-//TODO CAMBIO POR BILLING
-    public void seleccionarAgente(String agente) {
-        seleccionarItem(comboBoxOficinaDeRadicacion, "3554");
-        seleccionarItem(campoNombreAgente, agente);
     }
 
     public void validarLaOrganizacion(String organizacion) {
