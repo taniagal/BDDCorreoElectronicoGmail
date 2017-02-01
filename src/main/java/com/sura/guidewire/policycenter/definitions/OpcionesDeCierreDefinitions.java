@@ -14,6 +14,8 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.Map;
+
 public class OpcionesDeCierreDefinitions {
 
     @Steps
@@ -34,19 +36,15 @@ public class OpcionesDeCierreDefinitions {
     @Steps
     OpcionesDeCierreSteps opcionesDeCierreSteps;
 
-    @Given("voy a cotizar una poliza de autos con la cuenta <cuenta>, agente <agente>, producto <producto>, \n" +
-            "asegurado con tipo de documento <tipo_documento> y documento <documento>")
-    public void cotizarPoliza(@Named("cuenta") String cuenta,
-                              @Named("agente") String agente,
-                              @Named("producto") String producto,
-                              @Named("tipo_documento") String tipoDocumento,
-                              @Named("documento") String documento){
+    @Given("voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto, asegurado con tipo de documento y documento $datosCotizacion")
+    public void cotizarPoliza(ExamplesTable datosCotizacion){
+        Map<String, String> datos = datosCotizacion.getRows().get(0);
         detalleDeAseguradoDeCotizacionSteps.irACrearNuevaCotizacion();
-        detalleDeAseguradoDeCotizacionSteps.ingresarCuenta(cuenta);
-        disponibilidadDetalleProductoSteps.seleccionarAgente(agente);
-        nuevaCotizacionSteps.seleccionDeProducto(producto);
+        detalleDeAseguradoDeCotizacionSteps.ingresarCuenta(datos.get("cuenta"));
+        disponibilidadDetalleProductoSteps.seleccionarAgente(datosCotizacion);
+        nuevaCotizacionSteps.seleccionDeProducto(datos.get("producto"));
         solicitarRequisitoPaSteps.llenarInfoPoliza();
-        tarifaAutosSteps.agregarAsegurados(tipoDocumento, documento);
+        tarifaAutosSteps.agregarAsegurados(datos.get("tipoDocumento"), datos.get("documento"));
     }
 
     @When("decline la transaccion")
