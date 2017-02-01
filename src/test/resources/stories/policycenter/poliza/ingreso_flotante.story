@@ -1,7 +1,6 @@
-ingreso_flotante
-Meta:@lote1
-@issue #SUGWUSC-1162
-@tag automator: danny_barrientos
+Meta:
+@lote1
+@tag equipo: billing
 @sprint 13
 
 Narrative:

@@ -18,11 +18,6 @@ public class InformacionDeVehiculoDefinitions {
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
-    @Given("ingrese el agente")
-    public void whenQuieraRegistrarLaInformacionDelVehiculo() {
-        informacionDePolizaMrcSteps.seleccionaCotizacionParaProducto();
-    }
-
     @When("ingrese una nueva cotizacion para vehiculo <nomProducto>")
     public void whenQuieraRegistrarLaInformacionDelVehiculo(@Named("nomProducto")String nomProducto) {
         informacionDePolizaMrcSteps.seleccionarProducto(nomProducto);

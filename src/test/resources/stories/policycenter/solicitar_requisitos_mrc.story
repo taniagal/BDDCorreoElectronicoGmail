@@ -47,7 +47,7 @@ And cotice para la opcion declinar MRC
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje bloqueante
-| mensajeB                                                                     |
+| mensajeB                                                                                                              |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
@@ -68,7 +68,7 @@ And cotice para la opcion declinar MRC
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje bloqueante
-| mensajeB                                                                     |
+| mensajeB                                                                                                              |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
@@ -80,7 +80,7 @@ Meta: @manual
 Given que tengo una poliza expedida con beneficiario oneroso
 When quiera realizar un cambio en la poliza y quiera expedirla
 Then se debe mostrar un mensaje bloqueante
-| mensajeB                                                                     |
+| mensajeB                                                                                                              |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
 
 Scenario: validar requisito de paz y salvo para beneficiario oneroso en cancelacion de poliza
@@ -88,5 +88,5 @@ Meta: @manual
 Given que tengo una poliza expedida con beneficiario oneroso
 When quiera cancelar la poliza
 Then se debe mostrar un mensaje bloqueante
-| mensajeB                                                                     |
+| mensajeB                                                                                                              |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |

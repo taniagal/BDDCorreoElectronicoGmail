@@ -51,18 +51,6 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegarPorLasOpcionesDeAcciones();
     }
 
-    @When("este expidiendo una poliza de propiedad comercial")
-    public void expidePolizaPropiedadComercial() {
-        informacionDePolizaMrcSteps.seleccionaCotizacionParaProducto();
-    }
-
-
-    @When("quiero expedir una poliza nueva con los siguientes datos: <agente> <producto>")
-    public void cuandoQuieroExpedirUnaPolizaNuevaConLosSiguientesDatos(@Named("agente") String agente,
-                                                                       @Named("producto") String producto) {
-        informacionDePolizaMrcSteps.ingresarNuevaCotizacion(agente, producto);
-    }
-
     @When("cotice una poliza")
     public void cuandoCotizeUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
