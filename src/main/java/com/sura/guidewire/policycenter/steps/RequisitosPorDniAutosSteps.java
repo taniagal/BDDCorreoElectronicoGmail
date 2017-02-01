@@ -46,8 +46,8 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarDniRequisitos(ExamplesTable mensaje) {
-        requisitosPorDniAutosPage.nombresDni(mensaje);
+    public void validarDniRequisitos(ExamplesTable mensajes) {
+        requisitosPorDniAutosPage.nombresDni(mensajes);
     }
 
     public void validarMensajeRequsiitosPendientes(ExamplesTable mensaje) {
@@ -57,6 +57,10 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
             MatcherAssert.assertThat("mensaje personalizado", requisitosPorDniAutosPage.validarMensajeRequisitosPendientes(), Matchers.containsString(String.valueOf(asuntosBloquantes)));
         }
 
+    }
+
+    public void clicBotonExpedicion() {
+        requisitosPorDniAutosPage.cotizarYExpedirPoliza();
     }
 }
 

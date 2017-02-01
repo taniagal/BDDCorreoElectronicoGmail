@@ -29,12 +29,16 @@ public class RequisitosPorDniAutosDefinitions {
     }
 
     @Then("debe salir el nombre de los usuarios que requieren requisitos $mensaje")
-    public void validarDniRequisitos(ExamplesTable mensaje) {
-        requisitosPorDniAutosSteps.validarDniRequisitos(mensaje);
+    public void validarDniRequisitos(ExamplesTable mensajes) {
+        requisitosPorDniAutosSteps.validarDniRequisitos(mensajes);
     }
     @Then("debo ver un mensaje indicando requisitos pendientes $mensaje")
     public void validarMensajeRequisitosPendientes(ExamplesTable mensaje) {
         requisitosPorDniAutosSteps.validarMensajeRequsiitosPendientes(mensaje);
+    }
+    @When("acepto la expedicion de poliza")
+    public void cotizarYExpedirPoliza() {
+        requisitosPorDniAutosSteps.clicBotonExpedicion();
     }
 
 

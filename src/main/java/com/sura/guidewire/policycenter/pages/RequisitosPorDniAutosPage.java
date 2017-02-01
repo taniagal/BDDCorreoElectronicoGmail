@@ -16,6 +16,12 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade botonAgregarInteresAdicionalSubmission;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']")
     private WebElementFacade botonAgregarDelDirectorio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
+    private WebElementFacade botonExpedir;
+    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarExpedicion;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
     private WebElementFacade campoTiposDocumento;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
@@ -44,7 +50,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade botonRequisitosExpedicion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div")
     private WebElementFacade botonRequisitosModificacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:RequirementsScreen:0']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Requirements']/div/span")
     private WebElementFacade tablaRequisitos;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade tablaRequisitosModificacion;
@@ -92,25 +98,27 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void nombresDni(ExamplesTable mensajes) {
-        verificarMensajes(tablaRequisitos, mensajes);
-       /* withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonRequisitosExpedicion).waitUntilPresent();
-        Map<String, String> mensajesRC;
-        boolean validacionMensajes = false;
-        for (int i = 0; i < botonRequisitosExpedicion.getRowCount(); i++) {
-            mensajesRC = botonRequisitosExpedicion.getRows().get(i);
-            if(botonRequisitosExpedicion.getText().contains(mensajesRC.get("mensaje"))){
-                validacionMensajes = true;
-            }else {
-                validacionMensajes = false;
+        esperarHasta(TIEMPO_2000);
+        if (tablaRequisitos.isPresent()) {
+            esperarYClickearBoton(tablaRequisitos);
+            esperarHasta(3000);
+            verificarMensajes(tablaRequisitos, mensajes);
+        } else {
+            if (tablaRequisitosModificacion.isPresent()) {
+                esperarYClickearBoton(tablaRequisitosModificacion);
+                esperarHasta(3000);
+                verificarMensajes(tablaRequisitosModificacion, mensajes);
             }
         }
-
-        return botonRequisitosExpedicion.getText();*/
     }
 
     public String validarMensajeRequisitosPendientes() {
         tablaRequisitosExpedicion.waitUntilPresent();
         return tablaRequisitosExpedicion.getText();
+    }
+
+    public void cotizarYExpedirPoliza() {
+        esperarYClickearBoton(botonAceptarExpedicion);
     }
 }
 
