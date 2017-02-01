@@ -87,7 +87,7 @@ public class TarifaMRCPage extends PageUtil {
     public static final int CONSTANTE_10 = 10;
     public static final int CONSTANTE_8 = 8;
     public static final int CONSTANTE_1000 = 1000;
-    public static final double CONSTANTE_016 = 0.16;
+    public static final double CONSTANTE_019 = 0.19;
     public static final double CONSTANTE_00003 = 0.00003;
     double valorAsegurado = 0;
     double primaTotal = 0;
@@ -221,7 +221,7 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarValorIva() {
         primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_8).replace(".", ""));
-        int iva = (int) (primaTotal * CONSTANTE_016);
+        int iva = (int) (primaTotal * CONSTANTE_019);
         MatcherAssert.assertThat("Error en el calculo del valor del IVA expected:" + iva + ", was: " + campoIva.getText(),
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
