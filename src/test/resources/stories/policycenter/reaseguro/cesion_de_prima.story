@@ -5,9 +5,9 @@ Meta:
 @local
 
 Narrative:
-As a user
-I want to perform an action
-So that I can achieve a business goal
+como usuario de policycenter en reaseguro
+Quiero ser capaz de visualizar y analizar la distribucion en los porcentajes de primas cedidas a los reaseguradores
+Para tener informacion acerca del comportamiento de los contratos de reaseguro y acuerdos facultativos
 
 Scenario: mostrar nombre de cobertura en el riesgo
 GivenStories: stories/policycenter/login_policy.story
