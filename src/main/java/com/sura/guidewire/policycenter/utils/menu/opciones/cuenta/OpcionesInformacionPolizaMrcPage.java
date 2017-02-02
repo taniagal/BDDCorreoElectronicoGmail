@@ -2,7 +2,6 @@ package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -16,7 +15,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -317,19 +315,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void validarMensajesCoaseguros(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(obtenerMensajesDeTrabajoCoaseguro());
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
-    }
-
-    public List<String> obtenerMensajesDeTrabajoCoaseguro() {
-        List<String> mensajesEspacioDeTrabajo = new ArrayList<>();
-        for (WebElementFacade mensaje : findAll(LBL_MENSAJE_ALERTA)) {
-            mensajesEspacioDeTrabajo.add(mensaje.getText());
-        }
-        return mensajesEspacioDeTrabajo;
+        verificarMensajes($(".message"), mensajesEsperados);
     }
 
     public void noHabilitarNumeroDocumentoCoaseguro() {
