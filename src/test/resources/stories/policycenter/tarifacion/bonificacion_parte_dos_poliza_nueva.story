@@ -19,8 +19,8 @@ And ingrese los datos de vehiculo:
 |CYU123|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And expido la poliza
 Then se debe generar un UW con el mensaje <mensaje>
 

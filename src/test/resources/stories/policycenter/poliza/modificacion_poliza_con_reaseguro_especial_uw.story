@@ -1,7 +1,6 @@
 Meta:
 @lote3
 @tag equipo: 3
-@local
 @Sprint 13
 
 
@@ -9,7 +8,7 @@ Narrative:
 Se tiene una poliza expedida, al momento de realizar una modificación a un articulo con benefeiciario oneroso, se generan alertas.
 Ademas se debe solicitar una autorización para expedir la modificación de una póliza con marca de RA especial.
 
-Scenario: UW-póliza en reaseguro especial-póliza nueva en el producto MRC
+Scenario: UW - poliza en reaseguro especial - poliza nueva en el producto MRC
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -28,7 +27,9 @@ Examples:
 |mensaje                                                                |
 |La póliza tiene reaseguro especial y la expedición debe ser autorizada |
 
-Scenario: UW-póliza en reaseguro especial-póliza nueva en el producto MRC
+
+
+Scenario: UW - poliza en reaseguro especial - poliza nueva en el producto MRC
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/10/1968      |CARLOS         |RUIZ   |DIRECCION DE RESIDENCIA|CALLE 2I #21-22|Antioquia    |Medellin|INT-3|
@@ -50,7 +51,9 @@ Examples:
 |mensaje                                                               |
 |La póliza tiene reaseguro especial y la expedición debe ser autorizada|
 
-Scenario: Agregar algún interés adicional a un articulo que tiene beneficiario oneroso en el producto MRC
+
+
+Scenario: Agregar algun interes adicional a un articulo que tiene beneficiario oneroso en el producto MRC
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/10/1968      |CAMILO         |LOPEZ   |DIRECCION DE RESIDENCIA|CALLE 2I #21-22|Antioquia    |Medellin|INT-3|

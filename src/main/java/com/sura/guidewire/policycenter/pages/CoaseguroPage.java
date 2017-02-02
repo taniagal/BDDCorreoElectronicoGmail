@@ -2,16 +2,16 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.utils.model.Aseguradora;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class CoaseguroPage extends PageUtil {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
@@ -52,41 +52,41 @@ public class CoaseguroPage extends PageUtil {
         radioBotonLider.shouldBePresent();
         esperarHasta(TIEMPO_1000);
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!botonAgregar.isPresent()) {
+        if (!botonAgregar.isPresent()) {
             right.append("boton_agregar, ");
         }
-        if(!campoTxtDastosAdministrativos.containsText("2%") || campoTxtDastosAdministrativos.getAttribute("class").contains("x-form-text")) {
+        if (!campoTxtDastosAdministrativos.containsText("2%") || campoTxtDastosAdministrativos.getAttribute("class").contains("x-form-text")) {
             right.append("Gastos_Administrativos, ");
         }
         String res = right.toString();
-        if(MSJVALIDARVALORES.equals(res)){
-            res = right.toString().substring(0,right.toString().length()-1);
+        if (MSJVALIDARVALORES.equals(res)) {
+            res = right.toString().substring(0, right.toString().length() - 1);
         }
-        MatcherAssert.assertThat(res+"verifique su codigo","No estan correctos los elementos".equals(res));
+        MatcherAssert.assertThat(res + "verifique su codigo", "No estan correctos los elementos".equals(res));
     }
 
 
-    public void agregarCoaseguro(List<Aseguradora> aseguradoras) {
+    public void agregarCoaseguro(ExamplesTable datos) {
         campoTxtPolizaDeReferencia.waitUntilPresent().sendKeys("poliza123");
         campoTxtNumeroDeDocumento.sendKeys("1234567891");
         Actions act = new Actions(getDriver());
         int i = 1;
-        for (Aseguradora aseguradora : aseguradoras) {
+        for (Map<String, String> dato : datos.getRows()) {
             WebElementFacade campoAseguradora = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[2]");
             campoAseguradora.click();
             if (i == 1) {
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
-                act.sendKeys(aseguradora.getParticipacion()).build().perform();
+                act.sendKeys(dato.get("participacion")).build().perform();
                 MatcherAssert.assertThat("Sura debe estar por defecto en las aseguradoras", campoAseguradora.containsText("Sura"));
             } else {
                 act.click().build().perform();
                 esperarHasta(TIEMPO_500);
-                act.sendKeys(aseguradora.getNombre()).build().perform();
+                act.sendKeys(dato.get("aseguradora")).build().perform();
                 esperarHasta(TIEMPO_500);
                 act.sendKeys(Keys.TAB).build().perform();
                 esperarHasta(TIEMPO_500);
-                act.sendKeys(aseguradora.getParticipacion()).build().perform();
+                act.sendKeys(dato.get("participacion")).build().perform();
             }
             i++;
         }
@@ -94,14 +94,14 @@ public class CoaseguroPage extends PageUtil {
     }
 
 
-    public void verificarPorcentajeParticipacion(){
+    public void verificarPorcentajeParticipacion() {
         esperarHasta(TIEMPO_2000);
         MatcherAssert.assertThat("El total asegurado no es del 100%", pieDeTabla.getText().contains("100"));
     }
 
 
-    public void guardarcosaeguro(){
-        botonAceptar.click();
+    public void guardarCosaeguro() {
+        clickearElemento(botonAceptar);
     }
 
 
@@ -112,7 +112,7 @@ public class CoaseguroPage extends PageUtil {
 
 
     public void verificarMensaje(String mensaje) {
-        verificarMensaje(divMensaje,mensaje);
+        verificarMensaje(divMensaje, mensaje);
     }
 
 }

@@ -13,8 +13,8 @@ GivenStories: stories/policycenter/login_policy.story
 Given inicio una nueva cotizacion
 When ingrese la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| agente  | oficina |
-| DIRECTO | 1105    |
+| agente_oficina | oficina |
+| DIRECTO        | 1105    |
 And seleccione el producto <producto> para expedir la poliza
 When quiera seleccionar una oferta
 Then no debe mostrar el menu vertical

@@ -26,7 +26,7 @@ When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje de advertencia
 | mensaje                                                        |
-| Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos opcionales pendientes, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 
 Examples:
@@ -54,6 +54,7 @@ Examples:
 | departamento | ciudad   | direccion         | descripcion       | actividad                     |
 | Antioquia    | Medellin | CR 45 A # 44 - 02 | Prueba requisitos | Acabado de productos textiles |
 
+
 Scenario: validar requisito de sarlaft para multiriesgo en expedicion de poliza
 Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion       | departamento | ciudad   | agente |
@@ -74,6 +75,7 @@ Then se debe mostrar un mensaje bloqueante
 Examples:
 | departamento | ciudad   | direccion         | descripcion       | actividad                     |
 | Antioquia    | Medellin | CR 45 A # 44 - 03 | Prueba requisitos | Acabado de productos textiles |
+
 
 Scenario: validar requisito de paz y salvo para beneficiario oneroso en cambio de poliza
 Meta: @manual

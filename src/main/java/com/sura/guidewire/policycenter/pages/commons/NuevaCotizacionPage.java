@@ -102,6 +102,7 @@ public class NuevaCotizacionPage extends PageUtil {
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
+                descripcion.waitUntilPresent();
                 esperarHasta(TIEMPO_1000);
                 if (nomProducto.equals(descripcion.getText())) {
                     botones.get(i).click();

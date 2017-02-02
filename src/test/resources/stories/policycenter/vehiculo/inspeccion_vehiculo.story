@@ -13,7 +13,7 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |producto|tipoPoliza |
 |C1060447895|Autos   |Individual |
-When valla a la indormacion de la poliza
+When valla a la informacion de la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
@@ -32,7 +32,7 @@ Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given estoy cotizando una poliza:
 |cuenta     |producto|tipoPoliza |
 |C1060447895|Autos   |Individual |
-When valla a la indormacion de la poliza
+When valla a la informacion de la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
@@ -69,8 +69,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |USU422|2011  |01601225        |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And expido la poliza
 Then se debe permitir expedir la poliza
 And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza

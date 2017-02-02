@@ -15,6 +15,10 @@ Given estoy cotizando una poliza:
 |C1060447895|Multiriesgo corporativo|
 When puedo ingresar los datos del coaseguro
 And agregue las aseguradoras y su porcentaje de participacion
+|aseguradora     |participacion|
+|Sura            |60           |
+|ACE SEGUROS S.A.|40           |
+And verifique el porcentaje de participacion
 Then el proceso debe ser exitoso
 
 Examples:
@@ -27,7 +31,10 @@ Given estoy cotizando una poliza:
 |cuenta     |producto               |
 |C1060447895|Multiriesgo corporativo|
 When puedo ingresar los datos del coaseguro
-And no agregue mas de una aseguradora y/o porcentaje de participacion
+And agregue las aseguradoras y su porcentaje de participacion
+|aseguradora     |participacion|
+|Sura            |60           |
+And acepte el coaseguro
 Then debe aparecer el mensaje <mensaje> y/o mensaje <mensaje2>
 
 Examples:
@@ -41,7 +48,11 @@ Given estoy cotizando una poliza:
 |cuenta     |producto               |
 |C1060447895|Multiriesgo corporativo|
 When puedo ingresar los datos del coaseguro
-And el porcentaje de paticipacion total no sea 100%
+And agregue las aseguradoras y el porcentaje de participacion total no sea 100%
+|aseguradora     |participacion|
+|Sura            |60           |
+|ACE SEGUROS S.A.|38           |
+And acepte el coaseguro
 Then debe aparecer el mensaje <mensaje>
 
 Examples:
