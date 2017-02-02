@@ -39,7 +39,7 @@ And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And debo ver un mensaje bloqueante
 | mensaje                                                                      |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
 And ingrese un valor maximo para los accesorios <accesorios>
@@ -48,7 +48,7 @@ And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then debo ver un mensaje bloqueante accesorios
 | mensaje                                                                      |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
 | accesorios | tipo_documento       | documento  |
@@ -69,7 +69,7 @@ When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then debo ver un mensaje bloqueante accesorios
 | mensaje                                                                      |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 Examples:
 | tipo_documento       | documento |
 | CEDULA DE CIUDADANIA | 71318883  |
@@ -99,7 +99,7 @@ And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then debo ver un mensaje bloqueante accesorios
 | mensaje                                                                      |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
 | tipo_documento       | documento  |
@@ -116,7 +116,7 @@ And intente cotizar el cambio de poliza
 And expida el cambio de la poliza
 Then debo ver un mensaje bloqueante en modificacion
 | mensaje                                                                      |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
 | numeroPoliza  | ciudad   | beneficiario    | deducible | perdidaLlaves |
