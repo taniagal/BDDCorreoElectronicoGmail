@@ -12,26 +12,12 @@ Como usuario de PolicyCenter
 Quiero ser capaz de ingresar y visualizar la informacion de la poliza incluyendo el nombre tomador,
 incluir un segundo tomador, vigencia de la poliza y la informacion de asesor
 
-Scenario: Visualizacion de los datos de la poliza
-GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar la cuenta <numCuenta>
-When estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
-Then se debe visalizar los datos del tomador, como son: tipo y numero de identificacion, nombre completo,
-telefono, direccion, vigencia de la poliza (valor por defecto), nombre del agente, fecha de suscripcion y
-nombre de la compania aseguradora
-
-Examples:
-|numCuenta     |
-|C000888888    |
-
 Scenario: Cambiar inicio de vigencia
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione el producto para expedir la poliza
-And seleccione la organizacion, el canal y el tipo de poliza:
-|tipoPoliza |
-|Individual |
+GivenStories: stories/policycenter/login_policy.story
+Given estoy cotizando una poliza:
+|cuenta    |producto|tipoPoliza |
+|C000888888|Autos   |Individual |
+When valla a la informacion de la poliza
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo
 
@@ -40,12 +26,10 @@ Examples:
 |C000888888    |30/11/2016         |30/11/2017      |Anual     |
 
 Scenario: Ingresar segundo tomador
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione el producto para expedir la poliza
-And seleccione la organizacion, el canal y el tipo de poliza:
-|tipoPoliza |
-|Individual    |
+Given estoy cotizando una poliza:
+|cuenta    |producto|tipoPoliza |
+|C000888888|Autos   |Individual |
+When valla a la informacion de la poliza
 And adicione un segundo tomador <tipoDocumento>, <primerNombre>, <primerApellido>
 Then debe quedar registrado en la informacion de la poliza
 
@@ -54,12 +38,10 @@ Examples:
 |C000888888 |CEDULA DE CIUDADANIA |JORGE        |PAISA          |
 
 Scenario: Validar porcentaje descuento de poliza
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione el producto para expedir la poliza
-And seleccione la organizacion, el canal y el tipo de poliza:
-|tipoPoliza |
-|Individual    |
+Given estoy cotizando una poliza:
+|cuenta    |producto|tipoPoliza |
+|C000888888|Autos   |Individual |
+When valla a la informacion de la poliza
 And ingrese un porcentaje <porcentaje> de poliza superior al 50.00
 Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder el 50
 
@@ -69,12 +51,10 @@ Examples:
 |C000888888     |abc        |Descuento póliza : debe ser un valor numérico.                                   |
 
 Scenario: Validar longitud decimales porcentaje descuento de poliza
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione el producto para expedir la poliza
-And seleccione la organizacion, el canal y el tipo de poliza:
-|tipoPoliza |
-|Individual    |
+Given estoy cotizando una poliza:
+|cuenta    |producto|tipoPoliza |
+|C000888888|Autos   |Individual |
+When valla a la informacion de la poliza
 And ingrese un porcentaje <porcentaje> de poliza con mas de dos enteros y dos decimales
 Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder la longitud de dos digitos a
 izquierda o derecha
@@ -84,12 +64,10 @@ Examples:
 |C000888888     |20,325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
 
 Scenario: No deseo de financiacion de poliza
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione el producto para expedir la poliza
-And seleccione la organizacion, el canal y el tipo de poliza:
-|tipoPoliza |
-|Individual |
+Given estoy cotizando una poliza:
+|cuenta    |producto|tipoPoliza |
+|C000888888|Autos   |Individual |
+When valla a la informacion de la poliza
 And no indique que deseo financiar la poliza
 Then no se debe habilitar la opcion de numero de cuotas
 
@@ -98,12 +76,10 @@ Examples:
 |C000888888   |
 
 Scenario: Validar retroactividad en la vigencia de la poliza
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione el producto para expedir la poliza
-And seleccione la organizacion, el canal y el tipo de poliza:
-|tipoPoliza |
-|Individual    |
+Given estoy cotizando una poliza:
+|cuenta    |producto|tipoPoliza |
+|C000888888|Autos   |Individual |
+When valla a la informacion de la poliza
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then se debe cumplir con la retroactividad permitida <mensaje>
 

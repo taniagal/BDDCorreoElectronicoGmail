@@ -2,5 +2,5 @@ package com.sura.guidewire.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class BonificacionParteDosPolizaNueva extends SerenityStory {
+public class RequisitosPorDniMrc extends SerenityStory {
 }
