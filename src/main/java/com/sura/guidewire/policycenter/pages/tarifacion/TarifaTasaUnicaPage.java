@@ -256,6 +256,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void renovarPoliza() {
         esperarHasta(TIEMPO_1000);
+        menuItemInformacionDePolizaRenovacion.waitUntilPresent().click();
         checkBoxTasaUnica.shouldBePresent();
         clickearElemento(botonCotizarRenovacion);
         descartarCambios();
