@@ -27,7 +27,7 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
     public void seleccionarAgente(ExamplesTable agente) {
         Map<String, String> datosAgente = agente.getRows().get(0);
         String oficina = datosAgente.get("oficina");
-        String codigoAgente = datosAgente.get("agente");
+        String codigoAgente = datosAgente.get("agente_oficina");
         nuevaCotizacionPage.seleccionarOficinaDeRadicacionYAgente(oficina, codigoAgente);
     }
 
