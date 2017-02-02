@@ -3,12 +3,12 @@ package com.sura.guidewire.policycenter.steps;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
-import java.util.Map;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
+
+import java.util.Map;
 
 
 public class InformacionPolizaPASteps extends ScenarioSteps {
@@ -34,11 +34,6 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     @Step
     public void seleccionarAgenteCotizacion() {
         opcionesInformacionPoliza.seleccionarAgenteCotizacion();
-    }
-
-    @Step
-    public void visualizarInformacionPoliza(Map<String, String> infoPoliza) {
-        opcionesInformacionPoliza.visualizarInformacionPoliza(infoPoliza);
     }
 
     @Step
