@@ -3,7 +3,6 @@ package com.sura.guidewire.policycenter.pages.colectivas;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.requirements.model.Example;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -46,15 +45,20 @@ public class BusquedaDeRiesgosPage extends PageUtil {
     private WebElementFacade tablaCampoNumeroPoliza;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[3]/div")
     private WebElementFacade tablaCampoPlaca;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[3]/div")
     private WebElementFacade tablaCampoDireccion;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[4]/div")
     private WebElementFacade tablaCampoAsegurado;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[6]/div")
     private WebElementFacade tablaCampoFechaVigencia;
-    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[7]/div")
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[5]/div")
+    private WebElementFacade tablaCampoFechaVigenciaMrc;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[6]/div")
     private WebElementFacade tablaCampoFechaVencimiento;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[5]/div")
     private WebElementFacade tablaCampoEstado;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[4]/div")
+    private WebElementFacade tablaCampoEstadoMrc;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:LicensePlate']")
     private WebElementFacade linkPlaca;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:PolicyNumber']")
@@ -131,7 +135,7 @@ public class BusquedaDeRiesgosPage extends PageUtil {
         waitForTextToDisappear("No hay datos para mostrar");
         tablaDeResultados.waitUntilPresent();
         MatcherAssert.assertThat(tablaCampoNumeroPoliza.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(tablaCampoFechaVigencia.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(tablaCampoFechaVigenciaMrc.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(tablaCampoFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
     }
 
@@ -147,7 +151,12 @@ public class BusquedaDeRiesgosPage extends PageUtil {
 
     public String obtenerEstado() {
         tablaCampoEstado.waitUntilPresent();
-        return tablaCampoAsegurado.getText();
+        return tablaCampoEstado.getText();
+    }
+
+    public String obtenerEstadoMrc() {
+        tablaCampoEstadoMrc.waitUntilPresent();
+        return tablaCampoEstadoMrc.getText();
     }
 
     public String obtenerDireccion(){

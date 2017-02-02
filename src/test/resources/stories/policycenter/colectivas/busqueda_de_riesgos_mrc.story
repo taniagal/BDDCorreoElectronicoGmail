@@ -7,7 +7,7 @@ Como usuario PolicyCenter
 quiero poder buscar riesgos de CP por pais,departamento,ciudad, producto y direccion
 para poder ubicar el riesgo de una poliza  principal o una individual  para la realizacion de las  operaciones actuales
 
-Scenario: Busqueda de poliza riesgo
+Scenario: Búsqueda de poliza riesgo
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
@@ -33,7 +33,16 @@ Examples:
 | numSubscripcion | documento  | tipodocumento        | tipoBeneficiario |
 | 33355482        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        |
 
+Scenario: Búsqueda sin resultados
+Given que voy a la busqueda de riesgos
+When este buscando un riesgo por los filtros pais departamento ciudad y direccion
+| producto                   | pais     | departamento | ciudad   | direccion                |
+| Multiriesgo corporativo    | Colombia | Antioquia    | Itagüi   | CR 45 30 30              |
+Then debe mostrar el mensaje <mensaje>
 
+Examples:
+| numSubscripcion | documento  | tipodocumento        | tipoBeneficiario |mensaje                                    |
+| 33355482        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        |La búsqueda no devolvió resultados.        |
 
 
 

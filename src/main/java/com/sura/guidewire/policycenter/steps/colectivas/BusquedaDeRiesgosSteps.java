@@ -52,9 +52,9 @@ public class BusquedaDeRiesgosSteps extends ScenarioSteps {
     @Step
     public void validarResultadosDeLaConsultaMrc(ExamplesTable riesgos) {
         Map<String, String> datosEsperados = riesgos.getRows().get(0);
-        MatcherAssert.assertThat(busquedaDeRiesgosPage.obtenerTipoDePoliza(), Is.is(Matchers.equalTo(datosEsperados.get("tipoPoliza"))));
-        MatcherAssert.assertThat(busquedaDeRiesgosPage.obtenerDireccion(), Is.is(Matchers.equalTo(datosEsperados.get("direccion"))));
-        MatcherAssert.assertThat(busquedaDeRiesgosPage.obtenerEstado(), Is.is(Matchers.equalTo(datosEsperados.get("estado"))));
+        MatcherAssert.assertThat("No se encontró el tipo de poliza",busquedaDeRiesgosPage.obtenerTipoDePoliza(), Is.is(Matchers.equalTo(datosEsperados.get("tipoPoliza"))));
+        MatcherAssert.assertThat("No se encontró la dirección",busquedaDeRiesgosPage.obtenerDireccion(), Is.is(Matchers.equalTo(datosEsperados.get("direccion"))));
+        MatcherAssert.assertThat("No se encontró el estado de la poliza",busquedaDeRiesgosPage.obtenerEstadoMrc(), Is.is(Matchers.equalTo(datosEsperados.get("estado"))));
         busquedaDeRiesgosPage.validarDatosDeTablaMrc();
     }
 
