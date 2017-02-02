@@ -1,7 +1,5 @@
-Ajuste Pantalla Pagos Y Validaciones
-
-Meta:@lote1
-@issue #SUGWUSC-1162
+Meta:
+@lote1
 @tag equipo: billing
 @sprint 12
 
