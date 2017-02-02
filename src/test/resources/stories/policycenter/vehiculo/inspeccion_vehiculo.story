@@ -10,9 +10,10 @@ Quiero ser capaz consultar de forma automatica si un vehiculo requiere o no insp
 
 Scenario: Consulta de inspeccion no valida y busqueda en el modelo de seguros
 GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar la cuenta <numCuenta>
-When estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
+Given estoy cotizando una poliza:
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual |
+When valla a la indormacion de la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
@@ -22,16 +23,17 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-| numCuenta   | placa  | valorAsegurado | tipo_documento       | documento  |
-| C1060447895 | HZR123 | 165900000,00   | CEDULA DE CIUDADANIA | 1060447895 |
+| placa  | valorAsegurado | tipo_documento       | documento  |
+| HZR123 | 165900000,00   | CEDULA DE CIUDADANIA | 1060447895 |
 
 
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
-Given que voy a buscar la cuenta <numCuenta>
-When estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
-When ingrese los datos del asegurado <tipo_documento> <documento>
+Given estoy cotizando una poliza:
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual |
+When valla a la indormacion de la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:
@@ -40,8 +42,8 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-| numCuenta   | placa  | valorAsegurado | tipo_documento       | documento  |
-| C1060447895 | MJK289 | 21800000,00    | CEDULA DE CIUDADANIA | 1060447895 |
+| placa  | valorAsegurado | tipo_documento       | documento  |
+| MJK289 | 21800000,00    | CEDULA DE CIUDADANIA | 1060447895 |
 
 
 
@@ -67,8 +69,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |USU422|2011  |01601225        |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And expido la poliza
 Then se debe permitir expedir la poliza
 And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza

@@ -22,8 +22,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|plan        |
 |T64497|2016  |00601182        |MEDELLIN          |Particular       |CH212121|AB3C2 |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And intente cotizar
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante

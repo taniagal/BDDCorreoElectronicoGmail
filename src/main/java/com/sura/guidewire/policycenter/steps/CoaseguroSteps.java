@@ -1,45 +1,46 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.utils.model.Aseguradora;
 import com.sura.guidewire.policycenter.pages.CoaseguroPage;
-import java.util.List;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
-public class CoaseguroSteps extends ScenarioSteps{
+public class CoaseguroSteps extends ScenarioSteps {
     CoaseguroPage coaseguroPage = new CoaseguroPage(getDriver());
 
-    public CoaseguroSteps(Pages pages){
+    public CoaseguroSteps(Pages pages) {
         super(pages);
     }
 
     @Step
-    public void validarCampos(){
+    public void validarCampos() {
         coaseguroPage.validarCampos();
     }
 
     @Step
-    public void agregarCoaseguro(List<Aseguradora> aseguradoras){
-        coaseguroPage.agregarCoaseguro(aseguradoras);
+    public void agregarCoaseguro(ExamplesTable datos) {
+        coaseguroPage.agregarCoaseguro(datos);
+    }
+
+    @Step
+    public void verificarPorcentajeDeParticipacion() {
         coaseguroPage.verificarPorcentajeParticipacion();
-        coaseguroPage.guardarcosaeguro();
+        coaseguroPage.guardarCosaeguro();
     }
 
     @Step
-    public void agregarCoaseguro2(List<Aseguradora> aseguradoras){
-        coaseguroPage.agregarCoaseguro(aseguradoras);
-        coaseguroPage.guardarcosaeguro();
+    public void guardarCoaseguro() {
+        coaseguroPage.guardarCosaeguro();
     }
 
     @Step
-    public void verificarCoaseguro(){
+    public void verificarCoaseguro() {
         coaseguroPage.verificarCoaseguro();
     }
 
     @Step
-    public void verificarMensaje(String mensaje){
+    public void verificarMensaje(String mensaje) {
         coaseguroPage.verificarMensaje(mensaje);
     }
 }

@@ -130,7 +130,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas $entradatable")
-    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeL(ExamplesTable entradatable) {
+    public void cuandoIntenteIngresarLasEntradasEnCambioPoliza(ExamplesTable entradatable) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
