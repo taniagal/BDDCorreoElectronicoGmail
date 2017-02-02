@@ -25,7 +25,7 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 |valor_asegurado|tipo_documento      |documento |prima  |iva   |costo  |
-|6900000        |CEDULA DE CIUDADANIA|1060447895|413.310|66.130|479.440|
+|6900000        |CEDULA DE CIUDADANIA|1060447895|413.310|78.529|491.839|
 
 
 
@@ -45,4 +45,4 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 |valor_asegurado|tipo_documento      |documento |prima    |iva    |costo    |
-|34500000       |CEDULA DE CIUDADANIA|1060447895|1.725.000|276.000|2.001.000|
+|34500000       |CEDULA DE CIUDADANIA|1060447895|1.725.000|327.750|2.052.750|
