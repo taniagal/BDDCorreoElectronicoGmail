@@ -135,11 +135,6 @@ public class PolizaPage extends PageUtil {
 
     public void seleccionarOpcionEdificiosyUbicaciones() {
         headerEnvio.waitUntilPresent();
-        setImplicitTimeout(0,TimeUnit.SECONDS);
-        if (comboBoxOrganizacionMrc.isPresent()) {
-            seleccionarItem(comboBoxOrganizacionMrc, "Sura");
-            esperarPorValor(comboBoxOrganizacionMrc, "Sura");
-        }
         seleccionarOpcion(Opcion.LINK_EDIFICIOS_Y_UBICACIONES.xpath(), "Edificios y ubicaciones");
         LOGGER.info("PolizaPage.seleccionarOpcionEdificiosyUbicaciones");
     }
