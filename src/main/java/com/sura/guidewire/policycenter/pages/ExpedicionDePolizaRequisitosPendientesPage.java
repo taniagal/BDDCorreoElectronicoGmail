@@ -300,7 +300,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         botonBorrar.waitUntilPresent();
         clickearElemento(botonBorrar);
         botonBorrar.waitUntilNotVisible();
-        seleccionarItem(txtLimiteCobertura, "1.440");
+        seleccionarItem(txtLimiteCobertura, "640.");
         seleccionarItem(comboBoxDeducible, deducible);
         seleccionarItem(txtPerdidaDeLLaves, perdidaLlaves);
     }
