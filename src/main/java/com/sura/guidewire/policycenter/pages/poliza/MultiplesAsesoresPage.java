@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 public class MultiplesAsesoresPage extends PageUtil {
     private static final int CONSTANTE_UNO = 1;
     private static final int CONSTANTE_DOS = 2;
-    private static final int CONSTANTE_TRES = 3;
     private static final int CONSTANTE_CUATRO = 4;
     private static final int CONSTANTE_CINCO= 5;
     protected static final int CONSTANTE_VEINTE = 20;
@@ -101,7 +100,6 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     //TODO Metodos que pueden agregar a utileria de comando
     public void clicObjeto(WebElementFacade objeto) {
-        //objeto.waitUntilClickable().click();
         clickearElemento(objeto);
     }
 

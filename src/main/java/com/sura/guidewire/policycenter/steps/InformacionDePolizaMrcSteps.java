@@ -151,9 +151,5 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     public void validarCamposNoEditablesEnInformacionDePoliza() {
         opcionesInformacionPolizaMrcPage.validarcamposNoEditablesEnInformacionDePoliza();
     }
-
-    @Step
-    public void agregarOrganizacion(String organizacion) {
-    }
 }
 

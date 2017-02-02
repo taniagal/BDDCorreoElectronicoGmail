@@ -13,7 +13,7 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |producto|tipoPoliza |
 |C1060447895|Autos   |Individual |
-When valla a la indormacion de la poliza
+When valla a la informacion de la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
@@ -32,7 +32,7 @@ Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given estoy cotizando una poliza:
 |cuenta     |producto|tipoPoliza |
 |C1060447895|Autos   |Individual |
-When valla a la indormacion de la poliza
+When valla a la informacion de la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
