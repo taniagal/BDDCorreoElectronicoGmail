@@ -1,10 +1,7 @@
-Condiciones particulares
-
 Meta:
 @lote4
-@issue #CDSEG-5505
 @sprint 12
-@tag team: 1
+@tag equipo: 1
 @local
 
 Scenario: 1 Validacion de expedicion: Liberar  Excepcion deducibles especiales

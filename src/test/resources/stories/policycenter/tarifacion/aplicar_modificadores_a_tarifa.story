@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @sprint 7
-@tag team: 4
+@tag equipo: 4
 @local
 
 Narrative:
@@ -11,8 +11,8 @@ Quiero ser capaz de aplicar a la tarifa los modificadores que se encuentran a ni
 Scenario: Realizar una cotizacion de autos con modificadores de tarifa
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |

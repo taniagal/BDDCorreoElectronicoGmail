@@ -1,6 +1,6 @@
 Meta:
 @lote2
-@tag team: 2
+@tag equipo: 2
 @Sprint 11
 
 Scenario: 1 Validacion de campos en menu lateral de poliza riesgo
@@ -223,7 +223,7 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And ingrese la entrada de las diferentes coberturas con interes <documento> <tipoBeneficiario> adicional
+And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
 | Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
@@ -233,8 +233,8 @@ Then deben estar en estado <estadouno> las siguientes opciones
 | Número de cotización    |
 
 Examples:
-| numSubscripcion | documento | tipoBeneficiario | estadouno |estadodos|
-| 33355336        | 123456 | Asegurado        | Visible   |No visible|
+| numSubscripcion | documento  | tipoBeneficiario | estadouno | estadodos  | tipodocumento        |
+| 33355336        | 1060447895 | Asegurado        | Visible   | No visible | CEDULA DE CIUDADANIA |
 
 
 Scenario: 14 Validacion datos asegurado en poliza riesgo

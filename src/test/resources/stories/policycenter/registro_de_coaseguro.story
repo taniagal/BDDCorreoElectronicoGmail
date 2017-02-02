@@ -1,6 +1,6 @@
 Meta:
 @sprint 2
-@tag team: 4
+@tag equipo: 4
 
 
 Narrative:
@@ -11,8 +11,8 @@ quiero poder agregar la información de coseguro aceptado o cedido en una póliz
 Scenario: Agregar el coaseguro a una poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto               |canal            |
-|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
+|cuenta     |producto               |
+|C1060447895|Multiriesgo corporativo|
 When puedo ingresar los datos del coaseguro
 And agregue las aseguradoras y su porcentaje de participacion
 Then el proceso debe ser exitoso
@@ -24,8 +24,8 @@ Examples:
 
 Scenario: Agregar el coaseguro a una poliza con una sola aseguradora
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto               |canal           |
-|C1060447895|Sura       |Multiriesgo corporativo|Canal Tradicional|
+|cuenta     |producto               |
+|C1060447895|Multiriesgo corporativo|
 When puedo ingresar los datos del coaseguro
 And no agregue mas de una aseguradora y/o porcentaje de participacion
 Then debe aparecer el mensaje <mensaje> y/o mensaje <mensaje2>
@@ -38,8 +38,8 @@ Examples:
 
 Scenario: Agregar el coaseguro a una poliza sin el porcentaje de participacion completo
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto               |canal           |
-|C1060447895|Sura       |Multiriesgo corporativo|Canal Tradicional|
+|cuenta     |producto               |
+|C1060447895|Multiriesgo corporativo|
 When puedo ingresar los datos del coaseguro
 And el porcentaje de paticipacion total no sea 100%
 Then debe aparecer el mensaje <mensaje>

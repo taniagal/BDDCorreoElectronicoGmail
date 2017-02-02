@@ -4,7 +4,6 @@ import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -46,11 +45,9 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade botonIniciarCancelacion;
     @FindBy(xpath = ".//*[@id='centerPanel']")
     private WebElementFacade panelCancelacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Requirements']/div")
+    @FindBy(xpath = "//td[@id='SubmissionWizard:Requirements']/div/span")
     private WebElementFacade botonRequisitosExpedicion;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div")
-    private WebElementFacade botonRequisitosModificacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Requirements']/div/span")
+    @FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr[3]/td")
     private WebElementFacade tablaRequisitos;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade tablaRequisitosModificacion;
@@ -60,6 +57,9 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade txtOficina;
     @FindBy(xpath = "//li[contains(.,'1059 > ASESORES EN DESARROLLO CALI')]")
     private WebElementFacade botonOficinaSeleccionada;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
+    private WebElementFacade txtTipoPoliza;
+
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
         super(driver);
@@ -93,41 +93,16 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void irARequisitos() {
-        if (botonRequisitosExpedicion.isPresent()) {
-            botonRequisitosExpedicion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
-        } else {
-            botonRequisitosModificacion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
-        }
-
-    }
-
-    public void nombresDni(ExamplesTable mensajes) {
-        esperarHasta(TIEMPO_2000);
-        if (tablaRequisitos.isPresent()) {
-            esperarYClickearBoton(tablaRequisitos);
-            esperarHasta(3000);
-            verificarMensajes(tablaRequisitos, mensajes);
-        } else {
-            if (tablaRequisitosModificacion.isPresent()) {
-                esperarYClickearBoton(tablaRequisitosModificacion);
-                esperarHasta(3000);
-                verificarMensajes(tablaRequisitosModificacion, mensajes);
-            }
-        }
-    }
-
-    public String validarMensajeRequisitosPendientes() {
-        tablaRequisitosExpedicion.waitUntilPresent();
-        return tablaRequisitosExpedicion.getText();
+        esperarHasta(4000);
+        esperarYClickearBoton(botonRequisitosExpedicion);
     }
 
     public void cotizarYExpedirPoliza() {
         esperarYClickearBoton(botonAceptarExpedicion);
     }
 
-    public void agregarOficina() {
-        txtOficina.click();
-        botonOficinaSeleccionada.click();
+    public String validarItems() {
+        return withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(tablaRequisitos).getText();
     }
 }
 

@@ -1,7 +1,7 @@
 Meta:
 @lote3
 @sprint 2
-@tag team: 4
+@tag equipo: 4
 @local
 
 Narrative:
@@ -14,8 +14,8 @@ Feature: Entrar y mantener detalles de la ubicación
 Scenario: Agregar una nueva ubicacion en una poliza de MRC
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal            |
-|C001888888|Sura        |Multiriesgo corporativo|Canal Tradicional|
+|cuenta    |producto               |
+|C001888888|Multiriesgo corporativo|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 Then espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaciones la nueva ubicaciOn ingresada
@@ -27,8 +27,8 @@ Examples:
 
 Scenario: Validar direccion al agregar una nueva ubicacion en una poliza de MRC
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal           |
-|C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|
+|cuenta    |producto               |
+|C001888888|Multiriesgo corporativo|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 Then que se muestre el mensaje <mensaje>

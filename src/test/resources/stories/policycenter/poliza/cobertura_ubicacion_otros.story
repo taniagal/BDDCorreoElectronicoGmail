@@ -1,13 +1,12 @@
 Cobertura Ubicacion Otros
 
-Meta: @lote2
-@Story CDSEG-767
-@URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag team: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
+Meta:
+@lote2
+@tag equipo: 2
 @Sprint 5
 
 Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
+GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                       | VALOR_ENTRADAS |
@@ -106,6 +105,6 @@ Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de tra
 |El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                  |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
-| 22222211      | Asesor     |             |
+| 22222211        | Asesor     |             |
 
 

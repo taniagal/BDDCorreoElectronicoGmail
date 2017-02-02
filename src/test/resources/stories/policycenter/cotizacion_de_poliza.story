@@ -3,7 +3,7 @@ Cotizacion De Poliza
 Meta: @lote3
 
 @issue #CDSEG-843
-@tag team: 5
+@tag equipo: 5
 @local
 @Sprint 3
 
@@ -15,8 +15,8 @@ para comenzar un proceso de expedicion con un cliente en caso de ser posible
 Scenario:  Realizar una cotizacion con deseo de financiacion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual    |
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual    |
 When indique que deseo financiar la poliza
 And indique el numero de cuotas
 And seleccione la opcion siguiente

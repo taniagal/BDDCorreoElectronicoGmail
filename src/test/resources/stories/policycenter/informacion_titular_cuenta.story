@@ -1,9 +1,6 @@
-Informacion Titular Cuenta
-
-Meta: @lote1
-
-@issue #CDSEG-657
-@tag team: 5
+Meta:
+@lote1
+@tag equipo: 5
 @Sprint 1
 
 Narrative:
@@ -25,7 +22,7 @@ And los campos que se muestren no deben permitir la edicion, es decir, todos los
 
 Examples:
 | tipoDoc              | nombre   | apellido | informacionBasica                    | metricas                      | transacciones                      | siniestros          | anioVigencia                         | canceladoPorCliente | canceladoPorCompania | otrasCancelaciones | primaVitalicia  | totalSiniestrosAbiertos | totalNetoIncurrido   | nombreCompleto                | fechaCreacion     | nroPoliza    | producto | nroTransaccion     | tipo | estado | numeroPoliza     | producto | asegurado | fechaPerdida        | numeroSiniestros     | estado | totalIncurrido  |
-| CEDULA DE CIUDADANIA | Yurledys | Gallego  | Información del titular de la cuenta | Métricas de valor del cliente | Transacciones de póliza pendientes | Siniestros abiertos | Año de vigencia de la primera póliza | 0                   | 0                    | 0                  | Prima vitalicia | 0                       | Total neto incurrido | YURLEDYS PAOLA GALLEGO TORRES | Fecha de creación | N° de póliza | Producto | N.º de transacción | Tipo | Estado | Número de póliza | Producto | Asegurado | Fecha de la pérdida | Número de siniestros | Estado | Total incurrido |
+| CEDULA DE CIUDADANIA | Yurledys | Gallego  | Información del titular de la cuenta | Métricas de valor del cliente | Transacciones de póliza pendientes | Siniestros abiertos | Año de vigencia de la primera póliza | 0                   | 0                    | 0                  | Prima vitalicia | 0                       | Total neto incurrido | YURLEDYS PAOLA GALLEGO TORRES | Fecha de creación | N° de póliza | Producto | N.º de transacción | Tipo | Estado | Número de póliza | Producto | Asegurado | Fecha de ocurrencia | Número de reclamación| Estado | Total incurrido |
 
 
 Scenario: Mostrar campos fecha de fallecimiento y causa de fallecimiento

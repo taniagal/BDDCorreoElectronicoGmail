@@ -8,6 +8,7 @@ import com.sura.guidewire.policycenter.utils.navegacion.util.widget.EspacioDeTra
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 
@@ -16,11 +17,11 @@ import java.util.List;
 
 public class PolizaSteps extends GuidewireSteps {
 
+    @Page
     private PolizaPage polizaPage;
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
     private static AccionesWidget accionesWidget;
     private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
-    private static final int CONSTANTE_5 = 5;
     private static final int CONSTANTE_3 = 3;
     private static final int CONSTANTE_2 = 2;
 
@@ -111,9 +112,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void seleccionarOpcionRetirarTransaccion() {
-        waitFor(1).second();
-        String xpathBttonRetirarTransaccion = "//a[contains(.,'Retirar transacción')]";
-        getDriver().findElement(By.xpath(xpathBttonRetirarTransaccion)).click();
+        polizaPage.seleccionarOpcionRetirarTransaccion();
     }
 
     @Step
@@ -132,9 +131,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void confirmarCancelacion() {
-        waitFor(CONSTANTE_5).seconds();
-        String xpathBttonConfirmarCancelacion = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]";
-        getDriver().findElement(By.xpath(xpathBttonConfirmarCancelacion)).click();
+        polizaPage.confirmarCancelacion();
     }
 
     @Step
@@ -146,21 +143,16 @@ public class PolizaSteps extends GuidewireSteps {
 
     public String obtenerTituloPagina() {
         return getDriver().findElement(By.xpath("//span[@id='JobComplete:JobCompleteScreen:ttlBar']")).getText();
-
     }
 
     @Step
     public void seMuestraBloqueoCancelacionDePoliza(String mensaje) {
-
         MatcherAssert.assertThat(obtenerPolizaPage().obtenerTituloBloqueoCancelacionPoliza().getText(), Matchers.containsString(mensaje));
-
     }
 
     @Step
     public void seMuestraMensajeDeBeneficiarioOneroso(String mensaje) {
-
         MatcherAssert.assertThat(obtenerPolizaPage().obtenerMensajeDeCancelacionPolizaConOneroso().getText(), Matchers.containsString(mensaje));
-
     }
 
     @Step
@@ -168,6 +160,10 @@ public class PolizaSteps extends GuidewireSteps {
         return getDriver().findElement(By.xpath(".//*[@id='StartCancellation:StartCancellationScreen:WarningMessageCancellation']")).getText();
     }
 
+    @Step
+    public void seleccionarReaseguroEspecialSi(){
+        polizaPage.seleccionarReaseguroEspecialSi();
+    }
 
     @Step
     public void desplegarListaMotivosCancelacion() {

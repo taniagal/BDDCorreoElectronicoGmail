@@ -16,10 +16,8 @@ import java.util.Map;
 public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     @Page
     TarifaAutosPage tarifaAutosPage;
-
     @Page
     RequisitosPorDniAutosPage requisitosPorDniAutosPage;
-
     @Page
     ValidacionesInformacionDeVehiculoPage vehiculoPage;
 
@@ -36,35 +34,24 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void cambiarFechaCancelacion(String fecha) {
-        requisitosPorDniAutosPage.cambiarFechaCancelacion(fecha);
-    }
-
-    @Step
     public void irARequisitos() {
         requisitosPorDniAutosPage.irARequisitos();
     }
 
     @Step
-    public void validarDniRequisitos(ExamplesTable mensajes) {
-        requisitosPorDniAutosPage.nombresDni(mensajes);
-    }
-
     public void validarMensajeRequsiitosPendientes(ExamplesTable mensaje) {
         Map<String, String> asuntosBloquantes;
+        String requisitosPorDni = requisitosPorDniAutosPage.validarItems();
         for (int i = 0; i < mensaje.getRowCount(); i++) {
             asuntosBloquantes = mensaje.getRows().get(i);
-            MatcherAssert.assertThat("mensaje personalizado", requisitosPorDniAutosPage.validarMensajeRequisitosPendientes(), Matchers.containsString(String.valueOf(asuntosBloquantes)));
+            MatcherAssert.assertThat("mensaje personalizado", requisitosPorDni, Matchers.containsString(asuntosBloquantes.get("mensaje")));
         }
 
     }
 
+    @Step
     public void clicBotonExpedicion() {
         requisitosPorDniAutosPage.cotizarYExpedirPoliza();
-    }
-
-    public void agregarOficina() {
-        requisitosPorDniAutosPage.agregarOficina();
     }
 }
 

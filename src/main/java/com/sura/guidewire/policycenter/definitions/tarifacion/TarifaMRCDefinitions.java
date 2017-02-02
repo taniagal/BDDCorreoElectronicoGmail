@@ -29,7 +29,16 @@ public class TarifaMRCDefinitions {
     @When("seleccione la cobertura: $datos")
     public void seleccionarCobertura(ExamplesTable datos){
         tarifaMRCSteps.seleccionarCobertura(datos);
+    }
 
+    @When("seleccione algunos articulos y sus cobertura: $datos")
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos){
+        tarifaMRCSteps.seleccionarArticulosYTodadsSusCoberturas(datos);
+    }
+
+    @When("agrego el valor comercial <valor> y el indice variable <valor_indice>")
+    public void seleccionarArticulosYTodadsSusCoberturas(@Named("valor") String valor, @Named("valor_indice") String valorIndice){
+        tarifaMRCSteps.ingresarValorcomercial(valor,valorIndice);
     }
 
     @When("seleccione la cobertura de daños materiales con valor <valor> e indice variable <valorIndice>")
@@ -70,5 +79,10 @@ public class TarifaMRCDefinitions {
     @Then("el valor de iva debe ser igual a 0 (cero)")
     public void verificarImpuestos(){
         tarifaMRCSteps.verificarImpuestos();
+    }
+
+    @Then("debo poder verificar el valor de la prima para las coberuras de la cotizacion $datos")
+    public void verificarTarifacion(ExamplesTable datos){
+        tarifaMRCSteps.verificarTarifacion(datos);
     }
 }

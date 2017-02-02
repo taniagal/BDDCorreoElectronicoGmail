@@ -5,7 +5,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -38,10 +41,20 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtIndiceVariable;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:checkCommercialValue-inputEl']")
+    private WebElementFacade checkBoxChecBoxAseguradoAValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCobertura;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxDaniosMateriales;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxDaniosMaterialesMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxRoturaMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:2:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxAmitMaquinaria;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxTeremotoMaquinaria;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
@@ -68,13 +81,12 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade tablaPrimas;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr";
+    public static final String ARTICULO = "articulo";
     public static final int CONSTANTE_0 = 0;
     public static final int CONSTANTE_7 = 7;
-    public static final int CONSTANTE_10 = 10;
     public static final int CONSTANTE_8 = 8;
-    public static final int CONSTANTE_1000 = 1000;
-    public static final double CONSTANTE_016 = 0.16;
-    public static final double CONSTANTE_00003 = 0.00003;
+    public static final double CONSTANTE_019 = 0.19;
     double valorAsegurado = 0;
     double primaTotal = 0;
     String cobertura = "";
@@ -90,19 +102,20 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void irAArticulo() {
+        botonAgregarArticulos.waitUntilPresent();
         clickearElemento(botonAgregarArticulos);
     }
 
     public void seleccionarCobertura(ExamplesTable datos) {
         cobertura = datos.getRow(0).get("cobertura");
         for (Map<String, String> dato : datos.getRows()) {
+            labelcobertura.waitUntilPresent();
             if (labelcobertura.containsText(dato.get("cobertura"))) {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
             } else {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
                 esperarHasta(TIEMPO_1000);
             }
-
             try {
                 clickearElemento(checkBoxCobertura);
             } catch (StaleElementReferenceException e) {
@@ -143,10 +156,17 @@ public class TarifaMRCPage extends PageUtil {
      */
 
     public void agregarArticulo() {
-        botonActualizar.click();
-        botonCotizar.waitUntilPresent().click();
+        try {
+            botonActualizar.waitUntilPresent();
+            clickearElemento(botonActualizar);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            clickearElemento(botonActualizar);
+        }
+        botonCotizar.waitUntilPresent();
+        clickearElemento(botonCotizar);
         descartarCambios();
-        waitForTextToAppear("Cotizado");
+        waitForAnyTextToAppear("Cotizado", "Cotización");
     }
 
     public void descartarCambios() {
@@ -199,17 +219,17 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarValorIva() {
         primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_8).replace(".", ""));
-        int iva = (int) (primaTotal * CONSTANTE_016);
-        MatcherAssert.assertThat("Error en el calculo del valor del IVA expected:" + iva +", was: " + campoIva.getText(),
+        int iva = (int) (primaTotal * CONSTANTE_019);
+        MatcherAssert.assertThat("Error en el calculo del valor del IVA expected:" + iva + ", was: " + campoIva.getText(),
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        campoTxtIndiceVariable.sendKeys(valorIndice);
+        ingresarDato(campoTxtIndiceVariable, valorIndice);
         clickearElemento(checkBoxDaniosMateriales);
     }
 
-    public void agregarContactoDelDirectorio(){
+    public void agregarContactoDelDirectorio() {
         botonAgregarContacto.waitUntilPresent().click();
         botonAgregarContactoDelDirectorio.click();
     }
@@ -219,7 +239,7 @@ public class TarifaMRCPage extends PageUtil {
         Integer fila;
         for (int i = 0; i < primasPoliza.getRowCount(); i++) {
             fila = encontrarCobertura(primasPoliza.getRows().get(i).get("cobertura"));
-            String xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[" + fila.toString() + "]/td[3]";
+            String xpath = XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + fila.toString() + "]/td[3]";
             MatcherAssert.assertThat(findBy(xpath).getText(), containsText(primasPoliza.getRows().get(i).get("prima")));
         }
     }
@@ -238,4 +258,77 @@ public class TarifaMRCPage extends PageUtil {
         return filaActividad;
     }
 
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos) {
+        for (Map<String, String> dato : datos.getRows()) {
+            WebElementFacade campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:AmountSubject_Input-inputEl']");
+            WebElementFacade checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:Has" + dato.get(ARTICULO) + "-inputEl']");
+            if ("Furniture".equals(dato.get(ARTICULO))) {
+                checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFixture-inputEl']");
+            } else if ("Building".equals(dato.get(ARTICULO))) {
+                campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']");
+                checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']");
+            }
+            clickearElemento(checkBoxArticulo);
+            campoTxtValorAsegurable.waitUntilPresent().sendKeys(dato.get("valor_asegurable"));
+            llenarCoberturas(dato);
+        }
+    }
+
+    public void llenarCoberturas(Map<String, String> dato) {
+        String[] coberturas = dato.get("coberturas").split(",");
+        for (String cobertura : coberturas) {
+            List<WebElementFacade> checkBoxesCoberturas = findAll(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
+            for (int j = 0; j < checkBoxesCoberturas.size(); j++) {
+                WebElementFacade labelNombreCobertura = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:" + j + ":CoverageInputSet:CovPatternInputGroup-legendTitle']");
+                if (labelNombreCobertura.containsText(cobertura)) {
+                    WebElementFacade checkBoxCobertura = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:" + j + ":CoverageInputSet:CovPatternInputGroup:_checkbox']");
+                    clickearElemento(checkBoxCobertura);
+                    break;
+                }
+            }
+            esperarHasta(TIEMPO_1000);
+        }
+    }
+
+    public void verificarTarifacion(ExamplesTable datos) {
+        int i = 1;
+        int k = 1;
+        String articulo = "";
+        for (Map<String, String> dato : datos.getRows()) {
+            List<WebElementFacade> tablaPrimaDePoliza = findAll(XPATH_TABLA_PRIMA_DE_POLIZA_TR);
+            if (!articulo.equals(dato.get(ARTICULO))) {
+                articulo = dato.get(ARTICULO);
+                for (int j = 1; j <= tablaPrimaDePoliza.size(); j++) {
+                    WebElementFacade descripcionCobertura = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + j + "]/td[1]");
+                    if (descripcionCobertura.containsText(dato.get(ARTICULO))) {
+                        k = j;
+                        break;
+                    }
+                }
+            }
+            i = k;
+            verificarValorDeCobertura(i, dato, tablaPrimaDePoliza);
+        }
+    }
+
+    public void verificarValorDeCobertura(int i, Map<String, String> dato, List<WebElementFacade> tablaPrimaDePoliza) {
+        while (i <= tablaPrimaDePoliza.size()) {
+            WebElementFacade descripcionCobertura = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[1]");
+            if (descripcionCobertura.containsText(dato.get("descripcion"))) {
+                WebElementFacade montoPrima = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[3]");
+                MatcherAssert.assertThat("Error en el valor de la tarifa, en la cobertura " + descripcionCobertura.getText() +
+                        " del articulo " + dato.get(ARTICULO) + " . Expected: " + dato.get("valor") +
+                        " but was: " + montoPrima.getText(), montoPrima.containsText(dato.get("valor")));
+                break;
+            }
+            i++;
+        }
+    }
+
+    public void ingrasarValorComercial(String valor, String valorIndice) {
+        clickearElemento(checkBoxChecBoxAseguradoAValorComercial);
+        esperarHasta(TIEMPO_1500);
+        campoTxtValorComercial.sendKeys(valor);
+        ingresarDato(campoTxtIndiceVariable, valorIndice);
+    }
 }

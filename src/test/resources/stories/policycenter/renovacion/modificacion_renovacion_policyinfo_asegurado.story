@@ -1,7 +1,6 @@
-Meta: @lote4
-
-@issue #CDSEG-914
-@tag team: 5
+Meta:
+@lote4
+@tag equipo: 5
 @Sprint 8
 
 Narrative:
@@ -63,14 +62,16 @@ Examples:
 |32112331   |
 
 Scenario: intencion de financiacion
-Meta: @lote4  @manual
+Meta:
+@manual
 Given estoy editando la renovacion de una poliza
 When estoy en la pantalla de Informacion de poliza
 Then debo poder modificar la opcion de financiacion en el campo "Poliza financiada",
 Numero de cuotas en el caso que indique que la poliza si es financiada y Tipo de plazo
 
 Scenario: mostrar mensaje de advertencia de intencion de financiacion
-Meta: @lote4  @manual
+Meta:
+@manual
 Given estoy editando la renovacion de una poliza
 When estoy en la pantalla de Informacion de poliza
 And indique que SI deseo financiar la poliza y seleccione la opcion siguiente

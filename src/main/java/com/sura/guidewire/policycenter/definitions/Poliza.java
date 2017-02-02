@@ -1,14 +1,14 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
+import com.sura.guidewire.policycenter.steps.AnalisisDeRiesgoSteps;
 import com.sura.guidewire.policycenter.steps.CotizacionSteps;
-import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
-import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
-import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import com.sura.guidewire.policycenter.steps.InstruccionesPreviasARenovacionSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
-import com.sura.guidewire.policycenter.steps.AnalisisDeRiesgoSteps;
+import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
@@ -55,6 +55,7 @@ public class Poliza {
 
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
+
 
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -127,6 +128,14 @@ public class Poliza {
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
     }
+    @When("cuando intente cambiar informacion de la poliza MRC con reaseguro especial")
+    public void cuandoIntenteCambiarInformacionPolizaMRCReaseguroEspecial(){
+        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+        polizaSteps.seleccionarBotonAcciones();
+        polizaSteps.seleccionarOpcionCambiarPoliza();
+        polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
+        polizaSteps.seleccionarReaseguroEspecialSi();
+    }
 
     @When("ingrese al resumen de la poliza expedida")
     public void cuandoIntenteIngresarAlResumenDeLaPolizaExpedida() {
@@ -174,13 +183,13 @@ public class Poliza {
         polizaSteps.ingresarFechaSuperior();
     }
     @When("realice la programacion de cancelacion")
-        public void cuandoRealiceLaProgramacionDeCancelacion(){
-            LOGGER.info("Poliza.cuandoRealiceLaProgramacionDeCancelacion");
-            polizaSteps.iniciarCancelacionDePoliza();
-            polizaSteps.seleccionarOpcionCompromiso();
-            polizaSteps.seleccionarOpcionProgramarCancelacion();
-            polizaSteps.confirmarCancelacion();
-        }
+    public void cuandoRealiceLaProgramacionDeCancelacion(){
+        LOGGER.info("Poliza.cuandoRealiceLaProgramacionDeCancelacion");
+        polizaSteps.iniciarCancelacionDePoliza();
+        polizaSteps.seleccionarOpcionCompromiso();
+        polizaSteps.seleccionarOpcionProgramarCancelacion();
+        polizaSteps.confirmarCancelacion();
+    }
 
     @When("rescinda la cancelacion de la poliza <numPoliza>")
     public void cuandoRescindaLaCancelacion(String numPoliza){
@@ -365,13 +374,11 @@ public class Poliza {
         polizaSteps.validarOpcionCancelarTransaccion();
     }
     @When("desee seleccionar motivos de cancelacion")
-        public void cuandoSeleccioneMotivosdeCancelacion(){
-            LOGGER.info("Poliza.cuandoSeleccioneMotivosdeCancelacion");
-            polizaSteps.desplegarListaMotivosCancelacion();
+    public void cuandoSeleccioneMotivosdeCancelacion(){
+        LOGGER.info("Poliza.cuandoSeleccioneMotivosdeCancelacion");
+        polizaSteps.desplegarListaMotivosCancelacion();
 
-
-
-        }
+    }
     @When("seleccione el <motivo> de cancelacion")
     public void cuandoSeleccioneelMotivodeCancelacion(@Named("motivo") String motivo,@Named("descripcion") String descripcion){
         LOGGER.info("Poliza.cuandoSeleccioneelMotivodeCancelacion");

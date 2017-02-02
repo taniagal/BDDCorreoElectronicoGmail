@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -20,6 +21,9 @@ public class InformacionDePolizaMrcDefinitions {
 
     @Steps
     IngresoAPolicyCenterDefinitions guidewireLogin;
+
+    @Steps
+    TarifaTasaUnicaSteps tasaUnicaSteps;
 
 
     @Given("se inicio una nueva suscripcion <numeroCuenta>")
@@ -47,23 +51,21 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegarPorLasOpcionesDeAcciones();
     }
 
-    @When("este expidiendo una poliza de propiedad comercial")
-    public void expidePolizaPropiedadComercial() {
-        informacionDePolizaMrcSteps.seleccionaCotizacionParaProducto();
-    }
-
-
-    @When("quiero expedir una poliza nueva con los siguientes datos: <agente> <producto>")
-    public void cuandoQuieroExpedirUnaPolizaNuevaConLosSiguientesDatos(@Named("agente") String agente,
-                                                                       @Named("producto") String producto) {
-
-        informacionDePolizaMrcSteps.ingresarNuevaCotizacion(agente, producto);
-
-    }
-
     @When("cotice una poliza")
     public void cuandoCotizeUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+    }
+
+    @When("agrege la organizacion <organizacion>")
+    public void agregarOrganizacion(@Named("organizacion") String organizacion) {
+        informacionDePolizaMrcSteps.agregarOrganizacion(organizacion);
+    }
+
+    @When("cotice y expida la sustitucion")
+    @Alias("cotice y expida la poliza")
+    public void cuandoCotizeYExpidaPoliza() {
+        informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+        tasaUnicaSteps.expedirPoliza();
     }
 
     @When("cotice una poliza principal")

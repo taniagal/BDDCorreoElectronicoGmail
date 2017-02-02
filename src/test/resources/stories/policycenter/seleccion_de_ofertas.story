@@ -1,9 +1,6 @@
-Seleccion De Ofertas
-
-Meta: @lote4
-
-@issue CDSEG-1023
-@tag team: 1, sprint:2
+Meta:
+@lote2
+@tag equipo: 1
 @Sprint 2
 
 Narrative:
@@ -15,11 +12,13 @@ Scenario: Opcion ofertas del menu ocultas
 GivenStories: stories/policycenter/login_policy.story
 Given inicio una nueva cotizacion
 When ingrese la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| agente  | oficina |
+| DIRECTO | 1105    |
 And seleccione el producto <producto> para expedir la poliza
 When quiera seleccionar una oferta
 Then no debe mostrar el menu vertical
 
 Examples:
-| cuenta     | agente  | producto |
-| C000888888 | DIRECTO | Autos    |
+| cuenta     | producto |
+| C000888888 | Autos    |

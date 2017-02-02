@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @sprint 12
-@tag team: 4
+@tag equipo: 4
 
 Narrative:
 Como usuario de policy center
@@ -11,8 +11,8 @@ Al cotizar una poliza de PA quiero ser capaz de utilizar la tarifa para el plan 
 Scenario:  Realizar una cotizacion donde la organización y canal son Corbeta
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |producto|organizacion|canal   |tipoPoliza |
-|C1060447895|Autos   |Corberta    |Corberta|Individual |
+|cuenta     |producto|oficina|agente_oficina |tipoPoliza |
+|C1060447895|Autos   |3300   |DIRECTO|Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan           |
@@ -25,14 +25,14 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 |valor_asegurado|tipo_documento      |documento |prima  |iva   |costo  |
-|6900000        |CEDULA DE CIUDADANIA|1060447895|413.310|66.130|479.440|
+|6900000        |CEDULA DE CIUDADANIA|1060447895|413.310|78.529|491.839|
 
 
 
 Scenario:  Realizar una cotizacion donde la organización y canal son Corbeta en Bogota
 Given estoy cotizando una poliza:
-|cuenta     |producto|organizacion|canal   |tipoPoliza |
-|C1060447895|Autos   |Corberta    |Corberta|Individual |
+|cuenta     |producto|oficina|agente_oficina |tipoPoliza |
+|C1060447895|Autos   |3550   |DIRECTO|Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan           |
@@ -45,4 +45,4 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 |valor_asegurado|tipo_documento      |documento |prima    |iva    |costo    |
-|34500000       |CEDULA DE CIUDADANIA|1060447895|1.725.000|276.000|2.001.000|
+|34500000       |CEDULA DE CIUDADANIA|1060447895|1.725.000|327.750|2.052.750|

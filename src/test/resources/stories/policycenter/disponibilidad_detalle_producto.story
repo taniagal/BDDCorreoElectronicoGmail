@@ -3,7 +3,7 @@ Disponibilidad Detalle Producto
 Meta: @lote3
 
 @issue #CDSEG-745
-@tag team: 1, sprint:1
+@tag equipo: 1, sprint:1
 @Sprint 1
 
 Narrative:
@@ -16,7 +16,9 @@ Meta:
 @manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
 Then  debo ver la organizacion la siguiente lista de organizaciones:
@@ -36,7 +38,9 @@ Meta:
 @manual
 Given  que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And  seleccione la opcion informacion de poliza
 And  seleccione la organizacion:
@@ -61,7 +65,9 @@ Meta:
 @manual
 Given  que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
 And  seleccione la organizacion:
@@ -87,7 +93,9 @@ Meta:
 @manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
 Then  debo ver la organizacion <infoOrganizacion> seleccionada

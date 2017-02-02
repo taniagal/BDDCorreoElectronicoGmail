@@ -1,7 +1,7 @@
 Meta:
 @lote4
 @sprint 8
-@tag team: 4
+@tag equipo: 4
 @local
 
 Narrative:
@@ -21,8 +21,8 @@ And vaya a agregar el vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
 |random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
 And seleccione algunas coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
+|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|PTD|PPD|PPDF|GT|PP|PT|GTR|GP|PLlaves|AS                |
+|640.  |0        |Si      |0  |750|1.50|40.|35|0  |750|1.50|40|20|20|Si |Si|Si     |Asistencia Clásica|
 And expido la poliza y voy a informacion de poliza expedida
 When realize una modificacion en los de datos del aseguradocon los datos nombre <primer_nombre> <segundo_nombre>, estado civil <estado_civil>
 Then se debe tarifar con el esquema de tasa unica, sin generar cobro o devolucion de prima
@@ -39,8 +39,8 @@ And vaya a agregar el vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
 |random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
 And seleccione algunas coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
+|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|PTD|PPD|PPDF|GT|PP|PT|GTR|GP|PLlaves|AS                |
+|640.  |0        |Si      |0  |750|1.50|40.|35|0  |750|1.50|40|20|20|Si |Si|Si     |Asistencia Clásica|
 And expido la poliza y voy a informacion de poliza expedida
 When realize una modificacion en el valor asegurado <valor_asegurado>
 Then se debe tarifar con el esquema de tasa unica, generando cobro o devolucion de prima
@@ -56,8 +56,8 @@ And vaya a agregar el vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
 |random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
 And seleccione algunas coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
+|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|PTD|PPD|PPDF|GT|PP|PT|GTR|GP|PLlaves|AS                |
+|640.  |0        |Si      |0  |750|1.50|40.|35|0  |750|1.50|40|20|20|Si |Si|Si     |Asistencia Clásica|
 And expido la poliza y voy a informacion de poliza expedida
 When realize la renovacion de una poliza
 Then se debe tarifar con el esquema de tasa unica, generando el valor de la prima

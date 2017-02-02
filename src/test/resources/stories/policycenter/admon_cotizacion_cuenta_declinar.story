@@ -1,7 +1,7 @@
 Meta:
 @lote1
 @issue #SUGWUSC-14966
-@tag team: 3
+@tag equipo: 3
 @local
 
 Narrative:
@@ -12,8 +12,8 @@ así poder crear, actualizar,copiar y retirar cotizaciones para una cuenta dada
 Scenario: Declinar una cotizacion sin razon
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-| cuenta      | organizacion | producto                |
-| C000902244  | Sura         | Multiriesgo corporativo |
+| cuenta     | organizacion | producto                |
+| C000902244 | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -26,13 +26,13 @@ And quiera declinar la cotizacion sin ingresar la razon
 Then el sistema debe mostrar un mesaje <mensaje>
 
 Examples:
-| envio    |departamento|ciudad  |direccion        |descripcion  |actividad                    | numCuenta  | mensaje                                     |
-| 22222211 |Antioquia   |Medellin|CR 44 A # 49 - 00|Edificio Core|Acabado de productos textiles| C000902244 | Falta el campo obligatorio "Código de razón |
+| envio    | departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta  | mensaje                                   |
+| 22222211 | Antioquia    | Medellin | CR 44 A # 49 - 00 | Edificio Core | Acabado de productos textiles | C000902244 | Causa : Falta el campo obligatorio "Causa |
 
 Scenario: Validar al seleccionar la opcion declinar y declinar una cotizacion desde una cuenta
 Given estoy cotizando una poliza:
-| cuenta      | organizacion | producto                |
-| C002888989  | Sura         | Multiriesgo corporativo |
+| cuenta     | organizacion | producto                |
+| C002888989 | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -53,5 +53,5 @@ Then el sistema debe mostrar el estado declinada <numCotizacion> <accion>
 And desahabilitar la opcion de acciones para no ser modificada
 
 Examples:
-| envio    | departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta   | razon   | numCotizacion | accion    |
-| 22222211 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C002888989  | Cartera |               | Declinada |
+| envio    | departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta  | razon   | numCotizacion | accion    |
+| 22222211 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C002888989 | Cartera |               | Declinada |

@@ -1,7 +1,7 @@
 Meta:
 @lote4
 @sprint 12
-@tag team: 4
+@tag equipo: 4
 
 
 Narrative:
@@ -17,10 +17,10 @@ Given estoy cotizando una poliza de mrc:
 | C1060447895 | Sura         | Multiriesgo corporativo | Canal Tradicional | CEDULA DE CIUDADANIA | 02/12/1990       | MIKASA        | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura:
-| valorReconstruccion | valorAsegurado | valorComercial | cobertura |
-| 120000000           | 120000000      | 120000000      | Terremoto |
-And seleccione la cobertura de daños materiales con valor <valor> e indice variable <valorIndice>
+And seleccione algunos articulos y sus cobertura:
+|articulo |valor_asegurable|coberturas     |
+|Building |120000000       |Danos,Terremoto|
+And agrego el valor comercial <valor> y el indice variable <valor_indice>
 And ingrese las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Sustraccion | Valor asegurado sustraccion con violencia | 120000000      |
@@ -32,5 +32,5 @@ Then debo poder ver el valor de la prima en la cobertura y el valor de cobertura
 | Cobertura de Danos materiales | 42.066  |
 
 Examples:
-| valor     | valorIndice | departamento | ciudad   | direccion         | descripcion   | actividad                         |
+| valor     | valor_indice | departamento | ciudad   | direccion         | descripcion   | actividad                         |
 | 120000000 | 5           | Antioquia    | Medellin | CR 44 A # 73 - 00 | Edificio Core | Actividades de agencias de empleo |

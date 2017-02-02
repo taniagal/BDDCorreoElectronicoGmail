@@ -26,8 +26,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']")
     WebElementFacade lblInformaPolizaEnRenovacion;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
-    WebElementFacade txtNomAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
     WebElementFacade txtFechaVigencia;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
@@ -36,18 +34,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade txtNumDocumentoCoaseguro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']")
     WebElementFacade lblInformaPoliza;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
-    WebElementFacade lblNuevaCotizacion;
     @FindBy(xpath = ".//a[contains(.,'Cotizar')]")
     WebElementFacade botonCotizar;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
-    WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
     WebElementFacade lblNombreCompleto;
-    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ttlBar']")
-    WebElementFacade lblBuscarDirectorio;
-    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
-    WebElementFacade lblPrimerNombre;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     WebElementFacade mensajePantalla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
@@ -145,14 +135,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         super(driver);
     }
 
-    public void ingresaAgente() {
-        waitInfoPoliza(lblNuevaCotizacion);
-        txtNomAgente.clear();
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ENTER).build().perform();
-        waitInfoPoliza(lblTabla);
-    }
-
     public void ingresarFechaVigencia(String fechaInicioVigencia) {
         waitInfoPoliza(lblInformaPoliza);
         txtFechaVigencia.clear();
@@ -243,7 +225,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarOpcionCotizar() {
-        botonCotizar.waitUntilPresent();
+        try {
+            botonCotizar.waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            esperarHasta(TIEMPO_2000);
+            botonCotizar.waitUntilPresent();
+        }
         clickearElemento(botonCotizar);
         waitForTextToAppear("Cotización");
     }
@@ -287,7 +275,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         seleccionarElTipoDeCoaseguro(tipoCo);
         agregoLasAseguradoras(tablaaseguradoras);
     }
-
 
     public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro) {
         esperarHasta(TIEMPO_1000);
@@ -495,7 +482,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
     }
-
 
     public void validarcamposNoEditablesEnInformacionDePoliza() {
         validarCamposNoEditables(LBL_INFORMACION_POLIZA);

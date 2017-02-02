@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -9,6 +10,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,9 +21,20 @@ import java.util.concurrent.TimeUnit;
 import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;
 
-public class PolizaPage extends GuidewirePage {
+public class PolizaPage extends PageUtil {
+
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
-    WebElementFacade headerEnvio;
+    private WebElementFacade headerEnvio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
+    private WebElementFacade comboBoxOrganizacionMrc;
+    @FindBy(xpath = ".//a[contains(.,'Retirar operación')]")
+    private WebElementFacade menuItemRetirarTransaccion;
+    @FindBy(xpath = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]")
+    private WebElementFacade botonRetirarCancelacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
+    private WebElementFacade optionReaseguroEspecialSi;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Accepted-inputEl']")
+    private WebElementFacade checkReaseguroEspecialSi;
 
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
@@ -34,12 +47,11 @@ public class PolizaPage extends GuidewirePage {
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
     protected static final int CONSTANTE_61 = 61;
-    protected static final int TIEMPO_20 = 20;
     protected static final int CONSTANTE_10 = 10;
-    protected static final int TIEMPO_5 = 5;
-    protected static final int TIEMPO_2 = 2;
-    protected static final int TIEMPO_1 = 1;
-    public static final String TRACE = "\nTRACE: \n";
+
+    public PolizaPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public enum Opcion {
@@ -122,6 +134,12 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void seleccionarOpcionEdificiosyUbicaciones() {
+        headerEnvio.waitUntilPresent();
+        setImplicitTimeout(0,TimeUnit.SECONDS);
+        if (comboBoxOrganizacionMrc.isPresent()) {
+            seleccionarItem(comboBoxOrganizacionMrc, "Sura");
+            esperarPorValor(comboBoxOrganizacionMrc, "Sura");
+        }
         seleccionarOpcion(Opcion.LINK_EDIFICIOS_Y_UBICACIONES.xpath(), "Edificios y ubicaciones");
         LOGGER.info("PolizaPage.seleccionarOpcionEdificiosyUbicaciones");
     }
@@ -132,13 +150,12 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void seleccionarOpcion(String xpath, String tituloPaginaEsperada) {
-
         try {
             WebElementFacade opcion = findBy(xpath).waitUntilVisible();
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
-            setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+            setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
             if (findBy(xpathimgMensajesWarnig).isVisible()) {
                 opcion.waitUntilClickable().click();
             }
@@ -148,9 +165,7 @@ public class PolizaPage extends GuidewirePage {
         } catch (Exception e) {
             LOGGER.info("SE SELECCIONÓ UN ELEMENTO NO CLICLEABLE (EJ. DIV) " + e);
         }
-
         LOGGER.info("PolizaPage.seleccionarOpcion");
-
     }
 
     public String obtenerEnvio(String numeroSubscripcion) {
@@ -333,4 +348,20 @@ public class PolizaPage extends GuidewirePage {
         botonAcciones.waitUntilPresent().click();
     }
 
+    public void seleccionarOpcionRetirarTransaccion() {
+        menuItemRetirarTransaccion.waitUntilPresent();
+        clickearElemento(menuItemRetirarTransaccion);
+    }
+
+    public void confirmarCancelacion(){
+        botonRetirarCancelacion.waitUntilPresent();
+        clickearElemento(botonRetirarCancelacion);
+    }
+
+    public void seleccionarReaseguroEspecialSi(){
+        optionReaseguroEspecialSi.waitUntilPresent();
+        clickearElemento(optionReaseguroEspecialSi);
+        checkReaseguroEspecialSi.waitUntilPresent();
+        clickearElemento(checkReaseguroEspecialSi);
+    }
 }
