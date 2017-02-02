@@ -18,7 +18,7 @@ Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
 | oficina | agente_oficina |
-| 1105    | DIRECTO       |
+| 1073    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
 And ingrese la organizacion, canal y tipo de poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
