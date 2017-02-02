@@ -24,10 +24,9 @@ And ingrese las coberturas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|
 And llegue a la expedicion de la poliza
-Then se debe habilitar la opcion de requisitos, con el fin de visualizar los requisitos requeridos
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                                       |
-|Existen requisitos opcionales pendientes, por favor verifique.|
+|Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos.|
 
 Examples:
 |tipo_documento      |documento|
@@ -51,8 +50,8 @@ And cotice el cambio de poliza
 And intente expedir la poliza
 And existan requisitos pendientes
 Then se debe mostrar un mensaje de advertencia
-|mensaje                                                       |
-|Existen requisitos opcionales pendientes, por favor verifique.|
+|mensaje                                                                                               |
+|Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos.|
 
 Examples:
 |tipo_documento      |documento|

@@ -11,7 +11,6 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -64,10 +63,11 @@ public class NuevaCotizacionPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade menuItemInformacionDePoliza;
 
-    private static final String ORGANIZACION = "organizacion";
     private static final String TIPO_POLIZA = "tipoPoliza";
     private static final String INDIVIDUAL = "Individual";
     private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
+    private String oficina = "1073";
+    private String agente = "DIRECTO";
 
 
     public NuevaCotizacionPage(WebDriver driver) {
@@ -95,8 +95,6 @@ public class NuevaCotizacionPage extends PageUtil {
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
             seleccionarItem(comboBoxCodigoDeAgente, "193");
-            seleccionarItem(comboBoxCodigoDeAgente, "1073");
-            esperarPorValor(comboBoxCodigoDeAgente, "1073");
         }
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
@@ -159,13 +157,16 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void seleccionarAgente(String cuenta, String agente) {
         ingresarCuenta(cuenta);
-        seleccionarOficinaDeRadicacionYAgente();
+        seleccionarOficinaDeRadicacionYAgente("1073", agente);
     }
 
     public void seleccionarProductoDesdeCuenta(ExamplesTable datosCotizacion) {
         Map<String, String> dato = datosCotizacion.getRow(0);
-        Actions actions = new Actions(getDriver());
-        seleccionarOficinaDeRadicacionYAgente();
+        if (dato.get("oficina") != null) {
+            oficina = dato.get("oficina");
+            agente = dato.get("agente_oficina");
+        }
+        seleccionarOficinaDeRadicacionYAgente(oficina, agente);
         seleccionDeProducto(dato.get("producto"));
         if ("Autos".equals(dato.get("producto"))) {
             withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilPresent().click();
@@ -182,9 +183,9 @@ public class NuevaCotizacionPage extends PageUtil {
         }
     }
 
-    public void seleccionarOficinaDeRadicacionYAgente() {
-        seleccionarItem(comboBoxOficinaDeRadicacion, "1073");
-        seleccionarItem(comboBoxNombreAgente, "DIRECTO");
+    public void seleccionarOficinaDeRadicacionYAgente(String oficina, String agente) {
+        seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
+        seleccionarItem(comboBoxNombreAgente, agente);
     }
 
     public void cotizarEnvioCopiada() {

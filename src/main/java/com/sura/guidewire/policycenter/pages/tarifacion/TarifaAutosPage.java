@@ -230,19 +230,17 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturasRC(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        comboBoxLimite.waitUntilPresent();
+        setImplicitTimeout(0, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
-            botonBorrar.waitUntilPresent().click();
+            clickearElemento(botonBorrar);
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
-        esperarHasta(TIEMPO_1500);
         comboBoxLimite.clear();
         esperarHasta(TIEMPO_500);
         comboBoxLimite.sendKeys(dato.get("limite"));
         comboBoxLimite.sendKeys(Keys.ENTER);
-        esperarHasta(TIEMPO_800);
         seleccionarItem(comboBoxDeducible, dato.get("deducible"));
     }
 

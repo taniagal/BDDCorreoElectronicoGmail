@@ -22,7 +22,6 @@ public class PolizaSteps extends GuidewireSteps {
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
     private static AccionesWidget accionesWidget;
     private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
-    private static final int CONSTANTE_5 = 5;
     private static final int CONSTANTE_3 = 3;
     private static final int CONSTANTE_2 = 2;
 

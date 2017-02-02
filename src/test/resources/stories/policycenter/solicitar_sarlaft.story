@@ -16,7 +16,9 @@ GivenStories: stories/policycenter/login_policy.story
 
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina |
+| 1105    | DIRECTO       |
 When seleccione el producto <producto> para expedir la poliza
 And ingrese la organizacion, canal y tipo de poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -37,8 +39,8 @@ Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 |Para el contacto CAROLINA OCHOA con número de documento 71318883 se requiere que diligencie el Sarlaft; ingrese aquí para diligenciarlo.|
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |
-|CEDULA DE CIUDADANIA|71318883  |C000888888 |Autos   |DIRECTO|
+|tipo_documento      |documento |cuenta     |producto|
+|CEDULA DE CIUDADANIA|71318883  |C000888888 |Autos   |
 
 Scenario: Habilitar opcion Sarlaft en modificacion
 Given existe una cotizacion <numeroCotizacion>

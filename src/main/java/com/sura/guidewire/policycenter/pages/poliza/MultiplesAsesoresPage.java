@@ -17,6 +17,7 @@ public class MultiplesAsesoresPage extends PageUtil {
     private static final int CONSTANTE_DOS = 2;
     private static final int CONSTANTE_TRES = 3;
     private static final int CONSTANTE_CUATRO = 4;
+    private static final int CONSTANTE_CINCO= 5;
     protected static final int CONSTANTE_VEINTE = 20;
     private static final String PATH_ENCABEZADO_INFORMACIONPOLIZA = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     private static final String PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
@@ -56,8 +57,8 @@ public class MultiplesAsesoresPage extends PageUtil {
         for (int i = 1; i <= parametros.getListaAgentes().size(); i++) {
             esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
             escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_DOS, parametros.getListaAgentes().get(i - CONSTANTE_UNO));
-            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_TRES, parametros.getListaPorcentaje().get(i - CONSTANTE_UNO));
-            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_CUATRO, parametros.getListaroles().get(i - CONSTANTE_UNO));
+            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_CUATRO, parametros.getListaPorcentaje().get(i - CONSTANTE_UNO));
+            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_CINCO, parametros.getListaroles().get(i - CONSTANTE_UNO));
 
             if (i < parametros.getListaAgentes().size()) {
                 clicObjeto(btnAgregar);
@@ -100,7 +101,8 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     //TODO Metodos que pueden agregar a utileria de comando
     public void clicObjeto(WebElementFacade objeto) {
-        objeto.waitUntilClickable().click();
+        //objeto.waitUntilClickable().click();
+        clickearElemento(objeto);
     }
 
     //TODO Metodos que pueden agregar a utileria de comando
@@ -154,7 +156,7 @@ public class MultiplesAsesoresPage extends PageUtil {
     public void validarRolAsesor(Parametros parametros) {
         int cantidaRol = consultarNumeroElementosTabla(PATH_TABLA_AGENTE);
         for (int i = 1; i <= cantidaRol; i++) {
-            if (!consultarTextoCeldaTabla(PATH_TABLA_AGENTE, CONSTANTE_UNO, CONSTANTE_CUATRO).equals(parametros.getRol())) {
+            if (!consultarTextoCeldaTabla(PATH_TABLA_AGENTE, CONSTANTE_UNO, CONSTANTE_CINCO).equals(parametros.getRol())) {
                 MatcherAssert.assertThat("No se encontro el rol", false);
             }
         }

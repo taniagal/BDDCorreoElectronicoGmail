@@ -6,18 +6,13 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-public class SolicitarRequisitoPaSteps extends ScenarioSteps{
+public class SolicitarRequisitoPaSteps extends ScenarioSteps {
 
     private SolicitarRequisitoPaPage solicitarRequisitoPa;
     private NuevaCotizacionPage nuevaCotizacionPage;
 
     @Step
-    public void validarQueSeHabiliteLaOpcionSolicitarRequisitos() {
-        solicitarRequisitoPa.validarOpcionHabilitada();
-    }
-
-    @Step
-    public void validarQueSeMuestreMensajeDeAdvertencia(ExamplesTable mensaje){
+    public void validarQueSeMuestreMensajeDeAdvertencia(ExamplesTable mensaje) {
         solicitarRequisitoPa.validarAdvertenciaRequisitos(mensaje);
     }
 
