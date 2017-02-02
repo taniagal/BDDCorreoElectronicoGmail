@@ -15,6 +15,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.server.handler.ClickElement;
 
 import java.util.List;
 import java.util.Map;
@@ -110,6 +111,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonQuitar;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[3]/td[4]")
     private WebElementFacade agregarTipoOnerosoEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:checkCommercialValue-inputEl']")
+    private WebElementFacade chekAseguradoValorComercial;
 
     private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
 
@@ -580,6 +583,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void desseleccionarArticulo(){
         chekInteresAdicionaledificios.waitUntilPresent().click();
+    }
+
+    public void verificarCheckAseguradoValorComercial(){
+        chekAseguradoValorComercial.waitUntilPresent().waitUntilVisible();
+        clickearElemento(chekAseguradoValorComercial);
     }
 
     public void retirarBeneficiarioOnerosoAlArticulo(){

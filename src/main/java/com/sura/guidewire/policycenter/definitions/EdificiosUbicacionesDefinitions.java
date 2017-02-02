@@ -81,6 +81,14 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresarCoberturas(ingresotable);
     }
 
+    @When("ingrese la entrada de las diferentes coberturas y validar el asegurado valor comercial $tablecoberturas")
+    public void validarAseguradoComercialCuandoIngreseLasEntradasDeLasDiferentesCoberturas(ExamplesTable tablecoberturas){
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
+        edificiosUbicacionesSteps.ingresarCoberturas(tablecoberturas);
+        edificiosUbicacionesSteps.verificarCheckAseguradoValorComercial();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+    }
+
     @When("ingrese a modificar articulo con beneficiario oneroso en cambio de poliza $modificararticulo")
     public void cuandoIntenteModificarArticuloConBeneficiarioOneroso(ExamplesTable modificararticulo){
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
@@ -253,6 +261,11 @@ public class EdificiosUbicacionesDefinitions {
     public void entoncesValidarQueAparezcanLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
         edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
+    }
+
+    @Then("se debe validar que se muestre el asegurado a valor comercial")
+    public void validarVisualizacionDelAseguradoValorComercial(){
+        edificiosUbicacionesSteps.verificarCheckAseguradoValorComercial();
     }
 
     @Then("se espera que el siguiente mensaje se muestre una sola vez: $mensajesEsperado")

@@ -129,6 +129,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void verificarCheckAseguradoValorComercial(){
+        edificiosyUbicacionesWidget.verificarCheckAseguradoValorComercial();
+    }
+
+    @Step
     public void retirarBeneficiarioOnerosoAlArticulo(){
         edificiosyUbicacionesWidget.retirarBeneficiarioOnerosoAlArticulo();
     }

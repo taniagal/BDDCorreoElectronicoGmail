@@ -14,14 +14,13 @@ Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/10/1968      |MARCELA      |TORRES   |DIRECCION DE RESIDENCIA|CALLE 2I #21-22|Antioquia    |Medellin|INT-3|
 When ingrese a edificios y ubicaciones
-And ingrese la entrada de las diferentes coberturas mrc
-| TAB                      | TIPO_ARTICULO          | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Información de Artículos | Edificios              |                     |                  | Valor Reconstrucción                                                                 | 100000000      |
-| Información de Artículos | Edificios              |                     | Danos materiales | Valor asegurado danos materiales                                                     | 100000000      |
-| Información de Artículos | Maquinaria y equipo    |                     |                  | Valor Asegurable                                                                     | 100000000      |
-| Información de Artículos | Maquinaria y equipo    |                     | Terremoto        |                                                                                      | 100000000      |
-//Then se debe visualizar el checkbox Asegurado a valor comercial
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And ingrese la entrada de las diferentes coberturas y validar el asegurado valor comercial
+|TAB                      | TIPO_ARTICULO          | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                | VALOR_ENTRADAS |
+|Información de Artículos | Edificios              |                     |                  | Valor Reconstrucción                    | 200000000      |
+|Información de Artículos | Edificios              |                     | Danos materiales | Valor asegurado danos materiales        | 100000000      |
+Then debe mostrarme un mensaje<mensaje> de error
 
 Examples:
-||
-||
+|mensaje|
+|Valor comercial : Falta el campo obligatorio|
