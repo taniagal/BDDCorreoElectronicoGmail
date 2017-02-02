@@ -23,7 +23,7 @@ public class ProrrogaDePolizaPage extends PageUtil{
     }
 
     public Boolean validarProrroga() {
-        return (withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(labelProrroga).isPresent());
+        return withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(labelProrroga).isPresent();
     }
 
     public void habilitarProrroga() {
@@ -32,6 +32,6 @@ public class ProrrogaDePolizaPage extends PageUtil{
     }
 
     public String validarFechaFinVigencia(){
-        return (withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoFechaFinVigencia).getTagName());
+        return withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoFechaFinVigencia).getTagName();
     }
 }
