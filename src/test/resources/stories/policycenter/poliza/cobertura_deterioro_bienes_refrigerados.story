@@ -11,7 +11,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
 | Información de Artículos | Existencias Flotantes |                     | Danos materiales | Valor asegurado danos materiales                                         | 2              |
 | Información de Artículos | Existencias Flotantes |                     |                  | Valor asegurado máximo                                                   | 11             |
-| Información de Artículos | Existencias Flotantes |                     |                  | Exposición promedio                                                      | 4             |
+| Información de Artículos | Existencias Flotantes |                     |                  | Exposición promedio                                                      | 4              |
 | Información de Artículos | Existencias fijas     |                     | Danos materiales | Valor asegurado danos materiales                                         | 2              |
 | Información de Artículos | Existencias fijas     |                     |                  | Valor Asegurable                                                         | 11             |
 When haga clic en el boton Aceptar
