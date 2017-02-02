@@ -45,5 +45,27 @@ Examples:
 | 33355482        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        |La búsqueda no devolvió resultados.        |
 
 
+Scenario: Búsqueda de poliza riesgo sin poliza principal asociada
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When copie la poliza
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |
+| Colombia| Antioquia   | Medellin | CR 20 20 20 | Acabado de productos textiles                |
+And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+| Interes Adicional        | Interes Adicional |                     |                  | NULL                             | 00000          |
+And expido la poliza
+And ingreso a la busqueda de riesgos
+And este buscando un riesgo por los filtros pais departamento ciudad y direccion
+| producto                   | pais     | departamento | ciudad   | direccion                |
+| Multiriesgo corporativo    | Colombia | Antioquia    | Medellin | CR 20 20 20              |
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+| numSubscripcion | documento  | tipodocumento        | tipoBeneficiario | mensaje                                    |
+| 33355336        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        | La búsqueda no devolvió resultados.
 
 
