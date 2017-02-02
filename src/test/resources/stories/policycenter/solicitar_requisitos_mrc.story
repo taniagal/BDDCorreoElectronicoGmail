@@ -14,7 +14,7 @@ Scenario: validar requisito de inspeccion para multiriesgo en expedicion de poli
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 1112223331      | 10/10/1974       | ANDREA        | GARABITO        | DIRECCION DE RESIDENCIA | CALLE 28F #60-68 | Antioquia    | Medellin | INT-3  |
+| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 1112223340      | 10/10/1974       | ANDREA        | GARABITO        | DIRECCION DE RESIDENCIA | CALLE 28F #60-68 | Antioquia    | Medellin | INT-3  |
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
