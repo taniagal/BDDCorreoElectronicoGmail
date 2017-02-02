@@ -32,7 +32,7 @@ And intente cotizar
 And intente expedir la poliza cuyas figuras requieran Sarlaft
 And debe aparecer un mensaje bloqueante en la ventana de requisitos
 |mensaje|
-|El contacto CAROLINA OCHOA con DNI C71318883 requiere sarlaft, diríjase a analisís de riesgo para diligenciarlo.|
+|El contacto CAROLINA OCHOA con DNI C71318883 requiere sarlaft, diríjase a análisis de riesgo para diligenciarlo.|
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 |mensaje|
@@ -47,7 +47,7 @@ Given existe una cotizacion <numeroCotizacion>
 When intente expedir la modificacion cuyas figuras requieran Sarlaft
 And debe aparecer un mensaje bloqueante en la ventana de requisitos
 |mensaje|
-|El contacto ANTONIO RESTREPO con DNI C71123456 requiere sarlaft, diríjase a analisís de riesgo para diligenciarlo.|
+|El contacto ANTONIO RESTREPO con DNI C71123456 requiere sarlaft, diríjase a análisis de riesgo para diligenciarlo.|
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 |mensaje|
