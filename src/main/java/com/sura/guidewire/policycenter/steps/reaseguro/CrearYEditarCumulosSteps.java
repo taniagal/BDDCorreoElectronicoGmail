@@ -36,7 +36,7 @@ public class CrearYEditarCumulosSteps extends ScenarioSteps {
         crearYEditarCumulosPage.ingresoInformacionDeReaseguroEnTabla();
         crearYEditarCumulosPage.ingresarComisionYValorReaseguro(datosReaseguradores);
         crearYEditarCumulosPage.seleccionaModalidadPrima(datosReaseguradores);
-        crearYEditarCumulosPage.ingresaComisionPromotoraEIntermediario(datosReaseguradores);
+      //  crearYEditarCumulosPage.ingresaComisionPromotoraEIntermediario(datosReaseguradores);
     }
 
     @Step
@@ -46,7 +46,6 @@ public class CrearYEditarCumulosSteps extends ScenarioSteps {
 
     @Step
     public void validaTasaNeta() {
-        crearYEditarCumulosPage.calculaTasaNetaDeCesionRegla();
         crearYEditarCumulosPage.validaTasaNetaDeCesion();
     }
 

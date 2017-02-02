@@ -41,9 +41,9 @@ public class CrearYEditarCumulosPage extends PageUtil {
     WebElementFacade listcomisionReaseguroCedido;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[8]")
     WebElementFacade listcomisionIntermediario;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[10]")
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[9]")
     WebElementFacade listcomisionPromotora;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]")
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[13]")
     WebElementFacade listTasaBrutaDeCesion;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:0-body']/div/table/tbody/tr/td[5]")
     WebElementFacade listValorExpuestoRiesgo;
@@ -52,14 +52,14 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     private static final String PAIS_ALEMANIA = "Alemania";
     private static final String ASEGURA_ALLIANZ = "ALLIANZ RE";
-    private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[7]";
+    private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
     private static final String CELDA_VALOR = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]";
     private static final double CONSTANTE_UNO = 1;
     private static final double CONSTANTE_CIEN = 100.0;
     private static final int CONSTANTE_MIL = 1000;
-    private static double valorTasa = 0;
-    private static double valorComisionReaseguroCedido = 0;
-    private static double valorExpuesto = 0;
+    private double valorTasa = 0;
+    private double valorComisionReaseguroCedido = 0;
+    private double valorExpuesto = 0;
 
 
     public CrearYEditarCumulosPage(WebDriver driver) {
@@ -102,55 +102,37 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresarComisionYValorReaseguro(ExamplesTable datosReaseguradores) {
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
-        listcomisionReaseguroCedido.click();
-        $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionReasegurador"));
-        actions.sendKeys(Keys.TAB).build().perform();
-        esperarYClickearBoton(listcomisionIntermediario);
-        $(CELDA_VALOR).sendKeys(datoReaseguradores.get("valorReaseguro"));
-        actions.sendKeys(Keys.TAB).build().perform();
+        ingresaValorEntabla(listcomisionReaseguroCedido, datoReaseguradores.get("comisionReasegurador"));
+        ingresaValorEntabla(listcomisionIntermediario, datoReaseguradores.get("comisionIntermediario"));
     }
 
     public void seleccionaModalidadPrima(ExamplesTable datosReaseguradores) {
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
-        try {
-            clickearElemento(listFormaCotizacionModalidad);
-        } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
-            esperarHasta(TIEMPO_2000);
-            clickearElemento(listFormaCotizacionModalidad);
-        } catch (ElementNotVisibleException e) {
-            LOGGER.info("ElementNotVisibleException " + e);
-            esperarHasta(TIEMPO_2000);
-            clickearElemento(listFormaCotizacionModalidad);
-        }
-        esperarHasta(TIEMPO_2000);
-        $(CELDA_VALOR).clear();
-        txtFormaCotizacionModalidad.sendKeys(datoReaseguradores.get("modalidad"));
-        esperarHasta(TIEMPO_2000);
-        actions.sendKeys(Keys.ENTER).build().perform();
+        ingresaValorEntabla(listFormaCotizacionModalidad, datoReaseguradores.get("modalidad"));
+        ingresaValorEntabla($(VALOR), datoReaseguradores.get("valorReaseguro"));
+        ingresaValorEntabla(listcomisionPromotora, datoReaseguradores.get("comisionPromotora"));
     }
 
-    public void ingresaComisionPromotoraEIntermediario(ExamplesTable datosReaseguradores) {
-        Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
-        esperarYClickearBoton(listcomisionIntermediario);
-        $(CELDA_VALOR).clear();
-        $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionIntermediario"));
-        actions.sendKeys(Keys.TAB).build().perform();
-        esperarYClickearBoton(listcomisionPromotora);
-        $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionPromotora"));
-        actions.sendKeys(Keys.TAB).build().perform();
+    public void ingresaValorEntabla(WebElementFacade xpathCampo, String textoAEscribir) {
+        boolean clickEnTabla = false;
+        int maximoEjecuciones = 2;
+        int ejecuciones = 0;
+        while (ejecuciones < maximoEjecuciones && !clickEnTabla) {
+            esperarYClickearBoton(xpathCampo);
+            if ($(CELDA_VALOR).isPresent()) {
+                $(CELDA_VALOR).clear();
+                $(CELDA_VALOR).sendKeys(textoAEscribir);
+                esperarHasta(TIEMPO_500);
+                actions.sendKeys(Keys.SHIFT, Keys.TAB).build().perform();
+                clickEnTabla = true;
+            }
+            ejecuciones = ejecuciones + 1;
+        }
     }
 
     public String calculaTasaNetaDeCesionRegla() {
-        try {
-            listcomisionReaseguroCedido.waitUntilPresent();
-            valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
-        } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
-            listcomisionReaseguroCedido.waitUntilPresent();
-            esperarHasta(TIEMPO_1000);
-            valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
-        }
+        listcomisionReaseguroCedido.waitUntilPresent();
+        valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
         valorTasa = Double.parseDouble($(VALOR).getText().replace(",", "."));
         double valorTasaBrutaDeCesion = valorTasa / (CONSTANTE_UNO - valorComisionReaseguroCedido);
         return Double.toString(valorTasaBrutaDeCesion).replace(".", ",");

@@ -9,7 +9,6 @@ como usuario de policycenter en reaseguro
 deseo crear y editar los cumulos correspondientes a cada una de las direcciones
 para poder asegurar los valores de edificios y primas en cada uno de los contrato
 
-
 Scenario: calculo de tasa bruta en acuerdo facultativo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
@@ -31,7 +30,6 @@ Then el valor de tasa bruta de cesion debe tomar el mismo valor de la columna en
 Examples:
 |descripcionDeAcuerdo  |
 |Descripcion de acuerdo|
-
 
 Scenario: calculo de tasa neta en acuerdo facultativo
 Given estoy cotizando una poliza de mrc:
