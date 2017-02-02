@@ -20,7 +20,9 @@ public class Parametros {
     private static final String PARAMETROS_TIPO_PLAN = "tipoPlan";
     private static final String PARAMETROS_PLAN_INFORMACION = "planDeInformacion";
 
+
     private String planDeInformacion;
+
     private String codigoAsesor;
     private String porcentaje;
     private String rol;
@@ -33,10 +35,11 @@ public class Parametros {
     List<String> listaroles;
     List<String> listaAgentes;
     List<String> listaPorcentaje;
-    public static final String CODIGOASESOR = "codigoAsesor";
-    public static final String ROL = "rol";
+    public static final String CODIGO_ASESOR = "codigoAsesor";
+    public static final String _ROL = "rol";
     public static final String AUTOMATICO = "Automatico";
     public static final String DECLARATIVO = "Declarativo";
+
 
     public Parametros(ExamplesTable opciones) {
         for (Map<String, String> opcion : opciones.getRows()) {
@@ -71,7 +74,7 @@ public class Parametros {
             }
         }
     }
-
+    
     public String getPlanDeInformacion() {
         return planDeInformacion;
     }
