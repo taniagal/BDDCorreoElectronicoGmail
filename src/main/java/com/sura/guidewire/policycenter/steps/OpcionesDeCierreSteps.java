@@ -6,7 +6,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 
 import java.util.Map;

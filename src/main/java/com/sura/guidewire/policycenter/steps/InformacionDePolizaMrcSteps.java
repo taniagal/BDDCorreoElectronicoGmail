@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.pages.DisponibilidadDetalleProductoPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
@@ -10,9 +9,6 @@ import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class InformacionDePolizaMrcSteps extends ScenarioSteps {
-
-    @Page
-    DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
 
     @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
@@ -33,11 +29,6 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void navegarPorLasOpcionesDeAcciones() {
         inicioPage().irACuentaNuevoEnvioCuenta();
-    }
-
-    @Step
-    public void seleccionaCotizacionParaProducto() {
-        opcionesInformacionPolizaMrcPage.ingresaAgente();
     }
 
     @Step

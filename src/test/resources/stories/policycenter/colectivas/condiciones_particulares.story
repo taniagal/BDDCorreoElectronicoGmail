@@ -115,8 +115,8 @@ Then deben aparecer los mensajes de validacion:
 | Vehículo 0 Km : El vehículo no es considerado como 0 km                     |
 When seleccione la opcion siguiente
 And ingrese las coberturas basicas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
@@ -144,8 +144,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |TZZ301|2011  |                |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
@@ -173,7 +173,7 @@ And ingrese los datos del vehiculo:
 When ingrese a la pantalla de coberturas
 And ingrese las coberturas a auto cero kilometros:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -219,7 +219,7 @@ Then deben aparecer los mensajes de validacion:
 When seleccione la opcion siguiente
 And ingrese las coberturas a vehiculo:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -246,7 +246,7 @@ And se ingrese el valor de los accesorios es superior al 20% del valor asegurado
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 And ingrese las coberturas a vehiculo:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -265,8 +265,8 @@ And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | vehiculo_blindado |
 | random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Si                |
 And ingrese las coberturas basicas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
@@ -293,7 +293,7 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |
 And ingrese las coberturas a vehiculo:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -313,7 +313,7 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                 |
 And ingrese las coberturas a vehiculo:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
@@ -340,7 +340,7 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si                    |
 And ingrese las coberturas a vehiculo:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -363,7 +363,7 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |No                    |
 And ingrese las coberturas a vehiculo:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -383,7 +383,7 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |
 And ingrese las coberturas a vehiculo:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -403,7 +403,7 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                      |
 And ingrese las coberturas a vehiculo:
 |limite|deducible|
-|1.440 |0        |
+|640.  |0        |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
