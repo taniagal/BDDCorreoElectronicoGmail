@@ -26,8 +26,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |TYU130|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And intente cotizar
 And intente expedir la poliza cuyas figuras requieran Sarlaft
 And debe aparecer un mensaje bloqueante en la ventana de requisitos

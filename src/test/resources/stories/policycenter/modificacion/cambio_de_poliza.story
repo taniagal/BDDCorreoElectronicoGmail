@@ -22,7 +22,7 @@ And ingrese los datos del vehiculo:
 |random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
 |limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|640.  |0        |Si      |Si      |
 And cambie la fecha de inicio de vigencia <dias> de pa poliza
 And cotice una poliza
 And expido la poliza y voy al archivo de poliza

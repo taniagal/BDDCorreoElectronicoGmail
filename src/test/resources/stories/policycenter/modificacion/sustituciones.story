@@ -20,8 +20,8 @@ And ingrese los valores de los modificadores de la tarifa:
 | GPS Sura   | 0             | 10        | 5       | 3           | 0             |
 And vaya a la pantalla de coberturas
 And ingrese las coberturas:
-| limite | deducible | abogado  | PLlaves  |
-| 1.440  | 0         | Opción 1 | Opción 1 |
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And expido la poliza y voy al archivo de poliza
 And y realizo una modificación de una póliza de automoviles
 Then verificar conservacion de informacion del vehiculo previamente eliminado
@@ -31,8 +31,8 @@ And conservar Informacion del vehículo sustituido:
 | placa  | modelo | codigo_fasecolda | chasis | motor | valor_asegurado | descuento | recargo |
 | random | 2016   | 00601182         | null   | null  | 165900000       | null      | null    |
 And conservar las coberturas del vehículo sustituido:
-| limite        | deducible | abogado  | PLlaves  |
-| 1.440.000.000 | 0         | Opción 1 | Opción 1 |
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 
 Examples:
 | tipo_documento       | documento  |
