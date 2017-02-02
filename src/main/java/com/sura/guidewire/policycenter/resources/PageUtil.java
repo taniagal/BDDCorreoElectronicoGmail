@@ -68,11 +68,11 @@ public class PageUtil extends PageObject {
 
     public void seleccionarItem(WebElementFacade element, String option) {
         try {
-            waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
+            withTimeoutOf(TIEMPO_1,TimeUnit.SECONDS).waitFor(element);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
             esperarHasta(TIEMPO_2000);
-            waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
+            withTimeoutOf(TIEMPO_1,TimeUnit.SECONDS).waitFor(element);
         } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
             esperarHasta(TIEMPO_2000);
