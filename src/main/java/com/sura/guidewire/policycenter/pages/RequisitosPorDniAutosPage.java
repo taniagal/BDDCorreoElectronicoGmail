@@ -56,6 +56,10 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade tablaRequisitosModificacion;
     @FindBy(xpath = "//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade tablaRequisitosExpedicion;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:MainOffice-inputEl']")
+    private WebElementFacade txtOficina;
+    @FindBy(xpath = "//li[contains(.,'1059 > ASESORES EN DESARROLLO CALI')]")
+    private WebElementFacade botonOficinaSeleccionada;
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
         super(driver);
@@ -119,6 +123,11 @@ public class RequisitosPorDniAutosPage extends PageUtil {
 
     public void cotizarYExpedirPoliza() {
         esperarYClickearBoton(botonAceptarExpedicion);
+    }
+
+    public void agregarOficina() {
+        txtOficina.click();
+        botonOficinaSeleccionada.click();
     }
 }
 

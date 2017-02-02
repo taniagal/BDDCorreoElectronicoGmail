@@ -62,6 +62,10 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     public void clicBotonExpedicion() {
         requisitosPorDniAutosPage.cotizarYExpedirPoliza();
     }
+
+    public void agregarOficina() {
+        requisitosPorDniAutosPage.agregarOficina();
+    }
 }
 
 
