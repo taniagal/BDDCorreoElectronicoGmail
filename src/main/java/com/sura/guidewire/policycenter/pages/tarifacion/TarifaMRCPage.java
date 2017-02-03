@@ -35,7 +35,7 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtDanioInterno;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:3:RateModifier-inputEl']")
     private WebElementFacade campoTxtSustraccion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-bodyEl']")
     private WebElementFacade campoTxtTasaGlobal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:VariableRate_Input-inputEl']")
     private WebElementFacade campoTxtIndiceVariable;
@@ -201,6 +201,7 @@ public class TarifaMRCPage extends PageUtil {
             res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat("Error, el campo tasa global no debe estar presente", campoTxtTasaGlobal.isPresent());
     }
 
     public void verificarTarifacionEnCobertura(String prima) {
