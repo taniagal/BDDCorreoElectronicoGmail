@@ -115,7 +115,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static final String LBL_MENSAJE_ALERTA = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
     private static final String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
     private static final String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
     private static final String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
