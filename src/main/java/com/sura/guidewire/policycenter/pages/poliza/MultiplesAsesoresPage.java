@@ -135,16 +135,14 @@ public class MultiplesAsesoresPage extends PageUtil {
     public void ingresaValorEntabla(String path, int indiceFila, int indiceColumna, String texto) {
         WebElementFacade elemento = consultarElementoFilaColumna(path, indiceFila, indiceColumna);
         boolean clickEnTabla = false;
-        int maximoEjecuciones = 2;
+        int maximoEjecuciones = CONSTANTE_DOS;
         int ejecuciones = 0;
         while (ejecuciones < maximoEjecuciones && !clickEnTabla) {
             esperarYClickearBoton(elemento);
             if ($(CELDA_VALOR).isPresent()) {
                 $(CELDA_VALOR).clear();
                 $(CELDA_VALOR).sendKeys(texto);
-               // esperarHasta(TIEMPO_300);
                 esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
-                //actions.sendKeys(Keys.TAB).build().perform();
                 clickEnTabla = true;
             }
             ejecuciones = ejecuciones + 1;
