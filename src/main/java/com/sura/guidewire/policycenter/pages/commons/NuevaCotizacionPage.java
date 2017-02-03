@@ -63,7 +63,6 @@ public class NuevaCotizacionPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade menuItemInformacionDePoliza;
 
-    private static final String ORGANIZACION = "organizacion";
     private static final String TIPO_POLIZA = "tipoPoliza";
     private static final String INDIVIDUAL = "Individual";
     private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
@@ -103,6 +102,7 @@ public class NuevaCotizacionPage extends PageUtil {
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
+                descripcion.waitUntilPresent();
                 esperarHasta(TIEMPO_1000);
                 if (nomProducto.equals(descripcion.getText())) {
                     botones.get(i).click();
@@ -165,7 +165,7 @@ public class NuevaCotizacionPage extends PageUtil {
         Map<String, String> dato = datosCotizacion.getRow(0);
         if (dato.get("oficina") != null) {
             oficina = dato.get("oficina");
-            agente = dato.get("agente");
+            agente = dato.get("agente_oficina");
         }
         seleccionarOficinaDeRadicacionYAgente(oficina, agente);
         seleccionDeProducto(dato.get("producto"));

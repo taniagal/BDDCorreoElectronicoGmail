@@ -11,6 +11,7 @@ Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con e
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                       | VALOR_ENTRADAS |
 | Información de Artículos | Existencias Flotantes |                     |                  | Valor asegurado máximo                         | 10             |
+| Información de Artículos | Existencias Flotantes |                     |                  | Exposición promedio                            | 5              |
 | Información de Artículos | Existencias fijas     |                     |                  | Valor Asegurable                               | 10             |
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublímite para perdida de contenido en tanques | 31             |
 | Otros Articulos          | Mercancías a granel   |                     |                  | Valor Asegurable                               | 10             |

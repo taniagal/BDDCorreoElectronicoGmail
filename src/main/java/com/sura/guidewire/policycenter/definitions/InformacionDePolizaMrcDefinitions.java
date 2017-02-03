@@ -56,11 +56,6 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
     }
 
-    @When("agrege la organizacion <organizacion>")
-    public void agregarOrganizacion(@Named("organizacion") String organizacion) {
-        informacionDePolizaMrcSteps.agregarOrganizacion(organizacion);
-    }
-
     @When("cotice y expida la sustitucion")
     @Alias("cotice y expida la poliza")
     public void cuandoCotizeYExpidaPoliza() {

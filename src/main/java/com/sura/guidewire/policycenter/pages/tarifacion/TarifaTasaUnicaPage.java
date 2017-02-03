@@ -24,7 +24,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade botonExportarAHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
     private WebElementFacade botonSiguienteCambioDePoliza;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    @FindBy(xpath = ".//span[contains(.,'ditar transacción de póliza')]")
     private WebElementFacade botonEditarTransaccionDePolizaInfo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:EditPolicy']")
     private WebElementFacade botonEditarTransaccionDePolizaAsegurado;
@@ -234,6 +234,11 @@ public class TarifaTasaUnicaPage extends PageUtil {
         clickearElemento(botonVolver);
         resetImplicitTimeout();
         editarTransaccion();
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        if (botonEditarTransaccionDePolizaInfo.isPresent()){
+            editarTransaccion();
+        }
+        resetImplicitTimeout();
     }
 
     public void irAInformacionDePolizaRenovacion() {
@@ -251,6 +256,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void renovarPoliza() {
         esperarHasta(TIEMPO_1000);
+        menuItemInformacionDePolizaRenovacion.waitUntilPresent().click();
         checkBoxTasaUnica.shouldBePresent();
         clickearElemento(botonCotizarRenovacion);
         descartarCambios();

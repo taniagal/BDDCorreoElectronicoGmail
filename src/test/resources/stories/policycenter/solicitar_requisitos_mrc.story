@@ -14,7 +14,7 @@ Scenario: validar requisito de inspeccion para multiriesgo en expedicion de poli
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 1112223331      | 10/10/1974       | ANDREA        | GARABITO        | DIRECCION DE RESIDENCIA | CALLE 28F #60-68 | Antioquia    | Medellin | INT-3  |
+| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 1112223340      | 10/10/1974       | ANDREA        | GARABITO        | DIRECCION DE RESIDENCIA | CALLE 28F #60-68 | Antioquia    | Medellin | INT-3  |
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -25,8 +25,8 @@ And cotice para la opcion declinar MRC
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje de advertencia
-| mensaje                                                                                                |
-| Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| mensaje                                                        |
+| Existen requisitos opcionales pendientes, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 
 Examples:
@@ -48,11 +48,12 @@ When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje bloqueante
 | mensajeB                                                                                                              |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
 | departamento | ciudad   | direccion         | descripcion       | actividad                     |
 | Antioquia    | Medellin | CR 45 A # 44 - 02 | Prueba requisitos | Acabado de productos textiles |
+
 
 Scenario: validar requisito de sarlaft para multiriesgo en expedicion de poliza
 Given estoy cotizando una poliza de mrc:
@@ -69,11 +70,12 @@ When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje bloqueante
 | mensajeB                                                                                                              |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
 | departamento | ciudad   | direccion         | descripcion       | actividad                     |
 | Antioquia    | Medellin | CR 45 A # 44 - 03 | Prueba requisitos | Acabado de productos textiles |
+
 
 Scenario: validar requisito de paz y salvo para beneficiario oneroso en cambio de poliza
 Meta: @manual
@@ -81,7 +83,7 @@ Given que tengo una poliza expedida con beneficiario oneroso
 When quiera realizar un cambio en la poliza y quiera expedirla
 Then se debe mostrar un mensaje bloqueante
 | mensajeB                                                                                                              |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Scenario: validar requisito de paz y salvo para beneficiario oneroso en cancelacion de poliza
 Meta: @manual
@@ -89,4 +91,4 @@ Given que tengo una poliza expedida con beneficiario oneroso
 When quiera cancelar la poliza
 Then se debe mostrar un mensaje bloqueante
 | mensajeB                                                                                                              |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |

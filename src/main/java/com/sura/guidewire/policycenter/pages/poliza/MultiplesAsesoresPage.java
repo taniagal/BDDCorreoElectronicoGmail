@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 public class MultiplesAsesoresPage extends PageUtil {
     private static final int CONSTANTE_UNO = 1;
     private static final int CONSTANTE_DOS = 2;
-    private static final int CONSTANTE_TRES = 3;
     private static final int CONSTANTE_CUATRO = 4;
+    private static final int CONSTANTE_CINCO= 5;
     protected static final int CONSTANTE_VEINTE = 20;
     private static final String PATH_ENCABEZADO_INFORMACIONPOLIZA = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     private static final String PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
@@ -56,8 +56,8 @@ public class MultiplesAsesoresPage extends PageUtil {
         for (int i = 1; i <= parametros.getListaAgentes().size(); i++) {
             esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
             escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_DOS, parametros.getListaAgentes().get(i - CONSTANTE_UNO));
-            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_TRES, parametros.getListaPorcentaje().get(i - CONSTANTE_UNO));
-            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_CUATRO, parametros.getListaroles().get(i - CONSTANTE_UNO));
+            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_CUATRO, parametros.getListaPorcentaje().get(i - CONSTANTE_UNO));
+            escribirTextoCeldaTabla(PATH_TABLA_AGENTE, i, CONSTANTE_CINCO, parametros.getListaroles().get(i - CONSTANTE_UNO));
 
             if (i < parametros.getListaAgentes().size()) {
                 clicObjeto(btnAgregar);
@@ -142,10 +142,10 @@ public class MultiplesAsesoresPage extends PageUtil {
     }
 
     public void validarDatosDelAsesor(Parametros parametros) {
-        if (parametros.getValidarDato().equals(Parametros.CODIGOASESOR)) {
+        if (parametros.getValidarDato().equals(Parametros.CODIGO_ASESOR)) {
             esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
             validarCodigoAsesor(parametros);
-        } else if (parametros.getValidarDato().equals(Parametros.ROL)) {
+        } else if (parametros.getValidarDato().equals(Parametros._ROL)) {
             esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
             validarRolAsesor(parametros);
         }
@@ -154,7 +154,7 @@ public class MultiplesAsesoresPage extends PageUtil {
     public void validarRolAsesor(Parametros parametros) {
         int cantidaRol = consultarNumeroElementosTabla(PATH_TABLA_AGENTE);
         for (int i = 1; i <= cantidaRol; i++) {
-            if (!consultarTextoCeldaTabla(PATH_TABLA_AGENTE, CONSTANTE_UNO, CONSTANTE_CUATRO).equals(parametros.getRol())) {
+            if (!consultarTextoCeldaTabla(PATH_TABLA_AGENTE, CONSTANTE_UNO, CONSTANTE_CINCO).equals(parametros.getRol())) {
                 MatcherAssert.assertThat("No se encontro el rol", false);
             }
         }

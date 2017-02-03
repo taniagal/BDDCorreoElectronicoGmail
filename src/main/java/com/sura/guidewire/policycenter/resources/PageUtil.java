@@ -55,8 +55,13 @@ public class PageUtil extends PageObject {
         super(driver);
     }
 
+    /**
+     * Este metodo despliega alguna de las opciones de la barra de navegacion superior del aplicativo
+     * Eg: desplegarMenu(menuPoliza);
+     * @param menu WebElementFacade
+     * @return actions un objeto tipo 'Actions' en caso de necesitar realizar acciones con el driver
+     */
     public Actions desplegarMenu(WebElementFacade menu) {
-        actions = new Actions(getDriver());
         withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(menu).waitUntilPresent();
         clickearElemento(menu);
         esperarHasta(TIEMPO_3000);
@@ -66,30 +71,44 @@ public class PageUtil extends PageObject {
         return actions;
     }
 
-    public void seleccionarItem(WebElementFacade element, String option) {
+
+    /**
+     * Este metodo selecciona un item que se encuentre dentro de un comboBox.
+     * Eg: seleccionarItem(comboBoxCiudad, "Medellin");
+     * @param  elemento WebElementFacade que es el comboBox
+     * @param opcion  String que es el elemento dentro de este
+     */
+    public void seleccionarItem(WebElementFacade elemento, String opcion) {
         try {
-            waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
+            withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(elemento);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
             esperarHasta(TIEMPO_2000);
-            waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
+            withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(elemento);
         } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
             esperarHasta(TIEMPO_2000);
         }
-        clickearElemento(element);
+        clickearElemento(elemento);
         esperarHasta(TIEMPO_300);
         try {
-            element.clear();
+            elemento.clear();
         } catch (StaleElementReferenceException g) {
             LOGGER.info("StaleElementReferenceException " + g);
             esperarHasta(TIEMPO_2000);
-            element.clear();
+            elemento.clear();
         }
-        element.sendKeys(option);
-        element.sendKeys(Keys.ENTER);
+        elemento.sendKeys(opcion);
+        elemento.sendKeys(Keys.ENTER);
     }
 
+
+    /**
+     * Este metodo realiza una espera de un tiempo fijo durante un tiempo determinado, es decir, pausa la ejecucion
+     * Eg: esperarHasta(TIEMPO_3000);   este realiza una espera de 3000 milisegundos que es igual a 3 segundos
+     * Hay que tener en cuenta que se deben usar las constantes de tiempo creadas al principio de esta clase
+     * @param millis int que es la cantidad de tiempo en milisegunto que va a esperar
+     */
     public static void esperarHasta(int millis) {
         Integer i = 0;
         Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
@@ -106,20 +125,42 @@ public class PageUtil extends PageObject {
         }
     }
 
-    public void verificarMensaje(WebElementFacade divMensaje, String mensaje) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+
+    /**
+     * Valida que un elemento contenga un elemento contenga un string, es usado principanmente para validar mensajes
+     * en pantalla.
+     * Eg: verificarMensaje(labelTitulo, "Hola mundo");
+     * @param elemento WebElementFacade que es el elemento que contiene el mensaje
+     * @param mensaje String que es el mensaje a validar
+     * */
+    public void verificarMensaje(WebElementFacade elemento, String mensaje) {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).shouldContainText(mensaje);
         MatcherAssert.assertThat("Falló el mensaje de validacion, expected: " + mensaje + " but was: "
-                + divMensaje.getText(), divMensaje.containsText(mensaje));
+                + elemento.getText(), elemento.containsText(mensaje));
     }
 
-    public void verificarMensajes(WebElementFacade divMensaje, ExamplesTable mensajes) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+
+    /**
+     * Valida que un elemento contenga un elemento contenga un o varios strings, es usado principanmente para validar
+     * varios mensajes en un mismo elemento del aplicativo como el panel inferior de workspace
+     * Eg: verificarMensaje(labelTitulo, mensajes);
+     * @param elemento WebElementFacade que es el elemento que contiene el mensaje
+     * @param mensajes ExamplesTable que es la estructura de datos que contiene todos los mensajes a validar
+     * */
+    public void verificarMensajes(WebElementFacade elemento, ExamplesTable mensajes) {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
             MatcherAssert.assertThat("Error: en la validacion del mensaje, expected: " + mensaje.get("mensaje")
-                    + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("mensaje")));
+                    + " but was: " + elemento.getText(), elemento.containsText(mensaje.get("mensaje")));
         }
     }
 
+
+    /**
+     * este metodo obtiene y devuelve un arreglo con todos los elementos de una lista
+     * @param locator String que es el identificador o locator del elemento en el DOM
+     * @return un List con todos los WebElements encontrados
+     */
     public List<WebElementFacade> getLista(String locator) {
         return withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).findAll(locator);
     }
@@ -215,7 +256,7 @@ public class PageUtil extends PageObject {
     public void clickearElemento(WebElementFacade element) {
         for (int i = 0; i < CONSTANTE_12; i++) {
             try {
-                withTimeoutOf(TIEMPO_2,TimeUnit.SECONDS).waitFor(element).click();
+                withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(element).click();
                 break;
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_500);

@@ -56,10 +56,9 @@ Scenario: validacion de exclusividad en la cotizacion
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente  |
+| oficina | agente_oficina  |
 | 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
-And agrege la organizacion <organizacion>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas

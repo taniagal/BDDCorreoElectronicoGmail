@@ -17,22 +17,17 @@ public class SolicitarRequisitoPaDefinitions {
     GuidewireLoginSteps guidewireLoginSteps;
 
     @When("existan requisitos pendientes")
-    public void validarRequisitos(){
+    public void validarRequisitos() {
         solicitarRequisitoPaSteps.validarQueExistanRequisitosPendientes();
     }
 
-    @Then("se debe habilitar la opcion de requisitos, con el fin de visualizar los requisitos requeridos")
-    public void validarOpcionHabilitada(){
-        solicitarRequisitoPaSteps.validarQueSeHabiliteLaOpcionSolicitarRequisitos();
-    }
-
     @Then("se debe mostrar un mensaje de advertencia $mensaje")
-    public void validarMensajeAdvertencia(ExamplesTable mensaje){
+    public void validarMensajeAdvertencia(ExamplesTable mensaje) {
         solicitarRequisitoPaSteps.validarQueSeMuestreMensajeDeAdvertencia(mensaje);
     }
 
     @Then("se debe mostrar un mensaje bloqueante $mensajeB")
-    public void validarMensajeBloqueante(ExamplesTable mensajeB){
+    public void validarMensajeBloqueante(ExamplesTable mensajeB) {
         solicitarRequisitoPaSteps.validarQueSeMuestreMensajeDeBloqueo(mensajeB);
     }
 }

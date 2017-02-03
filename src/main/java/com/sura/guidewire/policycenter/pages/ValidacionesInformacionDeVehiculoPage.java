@@ -240,7 +240,11 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo Page 131 " + e);
             seleccionarItem(comboBoxModelo, vehiculo.get("modelo"));
         }
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get("modelo")));
+        try {
+            waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get("modelo")));
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+        }
         esperarHasta(TIEMPO_2000);
     }
 
