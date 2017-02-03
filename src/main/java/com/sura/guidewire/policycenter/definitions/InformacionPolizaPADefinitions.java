@@ -1,10 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.cuenta.CuentasOrdenesDeTrabajoSteps;
 import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.sura.guidewire.policycenter.steps.cuenta.CuentasOrdenesDeTrabajoSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
@@ -13,6 +10,9 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class InformacionPolizaPADefinitions {
@@ -65,9 +65,8 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.seleccionarAgenteCotizacion();
     }
 
-    @When("seleccione el producto para expedir la poliza")
+    @When("valla a la informacion de la poliza")
     public void elegirElProductoParaLaPoliza() {
-        informacionPolizaPASteps.seleccionarProducto();
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
 
@@ -149,19 +148,12 @@ public class InformacionPolizaPADefinitions {
     }
 
     @When("indique el numero de cuotas")
-    public void indicarNumeroCuotas(){
+    public void indicarNumeroCuotas() {
         informacionPolizaPASteps.ingresarNumeroCuotas();
     }
 
-    @Then("se debe visalizar los datos del tomador, como son: tipo y numero de identificacion, nombre completo,\n" +
-            "telefono, direccion, vigencia de la poliza (valor por defecto), nombre del agente, fecha de suscripcion y\n" +
-            "nombre de la compania aseguradora")
-    public void visualizarInformacionPoliza() {
-        informacionPolizaPASteps.visualizarInformacionPoliza(infoPoliza);
-    }
-
     @When("seleccione la opcion siguiente")
-    public void seleccionarOpcionSiguiente(){
+    public void seleccionarOpcionSiguiente() {
         informacionPolizaPASteps.seleccionar_Opcion_Siguiente();
     }
 
@@ -220,12 +212,12 @@ public class InformacionPolizaPADefinitions {
     }
 
     @Then("no se debe habilitar la opcion de numero de cuotas")
-    public void noHabilitarNumeroCuotas(){
+    public void noHabilitarNumeroCuotas() {
         informacionPolizaPASteps.no_Habilitar_Numero_De_Cuotas();
     }
 
     @Then("se debe mostrar un mensaje <mensaje> de advertencia")
-    public void mostrarMensajeFinanciacion(@Named("mensaje") String mensaje){
+    public void mostrarMensajeFinanciacion(@Named("mensaje") String mensaje) {
         informacionPolizaPASteps.mostrar_Mensaje_Advertencia_Financiacion(mensaje);
     }
 }

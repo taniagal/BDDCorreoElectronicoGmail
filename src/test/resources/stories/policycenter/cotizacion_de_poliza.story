@@ -15,8 +15,8 @@ para comenzar un proceso de expedicion con un cliente en caso de ser posible
 Scenario:  Realizar una cotizacion con deseo de financiacion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual    |
+|cuenta     |producto|tipoPoliza |
+|C1060447895|Autos   |Individual    |
 When indique que deseo financiar la poliza
 And indique el numero de cuotas
 And seleccione la opcion siguiente
@@ -26,8 +26,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |TAU105|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 And intente cotizar
 Then se debe mostrar un mensaje <mensaje> como advertencia
 And realizar la cotizacion

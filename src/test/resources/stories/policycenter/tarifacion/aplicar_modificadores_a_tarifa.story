@@ -11,8 +11,8 @@ Quiero ser capaz de aplicar a la tarifa los modificadores que se encuentran a ni
 Scenario: Realizar una cotizacion de autos con modificadores de tarifa
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+|cuenta     |producto|tipoPoliza|
+|C1060447895|Autos   |Individual|
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
@@ -21,13 +21,13 @@ And ingrese los valores de los modificadores de la tarifa:
 |descientoD|bonificacionC|descuento|recargo|suavizacion|bonificacionT|
 |GPS Sura  | 45          |10       | 5     | 3         |5            |
 And seleccione algunas las coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |Taller|Grua        |TM      |CE|CS  |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus 1000 km|Taller 1|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
+|limite|deducible|abogado|PTH|PPH|PPHF|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|PPD|PPDF|GT|PP|PT|GTR|GP|PLlaves|
+|640.  |0        |Si     |0  |750|1.50|40.|35|Conces|Plus|Si|6 |Plus|0  |750|1.50|40|20|20|Si |Si|Si     |
 Then el valor del monto en cada cobertura debe ser:
 |fila|valor     |
-|1   |447.275   |
-|4   |2.901.532 |
-|8   |505.328   |
+|1   |383.997   |
+|4   |2.101.302 |
+|8   |564.279   |
 |12  |7.036     |
 |15  |8.021     |
 |17  |11.825    |

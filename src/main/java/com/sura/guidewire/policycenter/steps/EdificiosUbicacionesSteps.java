@@ -1,21 +1,15 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.definitions.Poliza;
 import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
-import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
@@ -128,6 +122,16 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.editartransacciondepoliza();
     }
 
+    @Step
+    public void desseleccionarArticulo(){
+        edificiosyUbicacionesWidget.desseleccionarArticulo();
+
+    }
+
+    @Step
+    public void retirarBeneficiarioOnerosoAlArticulo(){
+        edificiosyUbicacionesWidget.retirarBeneficiarioOnerosoAlArticulo();
+    }
 
     public void ingresarCoberturas(ExamplesTable entradas) {
         int index = 0;
@@ -145,6 +149,21 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
             String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
             ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
         }
+    }
+
+    @Step
+    public void ingresarInteresesAdicionalesACadaArticulo(ExamplesTable interesados) {
+        edificiosyUbicacionesWidget.ingresarInteresesAdicionalesACadaArticulo(interesados);
+    }
+
+    @Step
+    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
+        edificiosyUbicacionesWidget.ingresarInteresAdicionalAUnSoloArticulo(interesado);
+    }
+
+    @Step
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
+        edificiosyUbicacionesWidget.agregarInteresAdicionalCambioPoliza(agregaroneroso);
     }
 
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
@@ -176,7 +195,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgoPolizaColectiva(String cobertura, String entrada, String valorEntrada) {
         seleccionarCoberturaDelRiesgo(cobertura);
         edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
-    }
+ }
 
     private void seleccionarCoberturaDelRiesgo(String cobertura) {
         if (!edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {

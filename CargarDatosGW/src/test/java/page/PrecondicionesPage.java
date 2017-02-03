@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.LoggerFactory;
 
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.core.Is.is;
@@ -35,7 +36,7 @@ public class PrecondicionesPage {
     @FindBy(xpath = ".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
     private WebElement menuItemColombia;
 
-    //protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(PrecondicionesPage.class);
+    protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(PrecondicionesPage.class);
     private static final int WAIT_1000 = 1000;
     private static final int WAIT_10 = 10;
     private static final int WAIT_2000 = 2000;
@@ -50,7 +51,7 @@ public class PrecondicionesPage {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(labelCargaCorrecta)).isDisplayed();
         } catch (StaleElementReferenceException e) {
-            //LOGGER.info("StaleElementReferenceException" + e);
+            LOGGER.info("StaleElementReferenceException" + e);
             wait.until(ExpectedConditions.elementToBeClickable(labelCargaCorrecta)).isDisplayed();
         }
         assertThat(labelCargaCorrecta.getText(), anyOf(is("Conjunto cargado \"Sura\" correctamente."),

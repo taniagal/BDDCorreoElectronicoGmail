@@ -6,10 +6,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
@@ -175,9 +172,9 @@ public class TarifaAutosPage extends PageUtil {
         campoTxtNombre.waitUntilPresent();
     }
 
-    public void esCambioDePoliza(){
-        setImplicitTimeout(0,TimeUnit.SECONDS);
-        if (headerEnvio.isPresent()){
+    public void esCambioDePoliza() {
+        setImplicitTimeout(0, TimeUnit.SECONDS);
+        if (headerEnvio.isPresent()) {
             menuItemAsegurados = $(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PADrivers']");
             botonAgregarAsegurado = $(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver']");
             menuItemDelDireciotio = $(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddFromSearch']");
@@ -186,7 +183,7 @@ public class TarifaAutosPage extends PageUtil {
         resetImplicitTimeout();
     }
 
-    public void seleccionarAsegurado(String tipoDocumento, String documento){
+    public void seleccionarAsegurado(String tipoDocumento, String documento) {
         comboBoxTipoDocumento.waitUntilPresent().clear();
         esperarHasta(TIEMPO_300);
         comboBoxTipoDocumento.sendKeys(tipoDocumento);
@@ -199,7 +196,7 @@ public class TarifaAutosPage extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
             campoTxtNumeroDocumento.sendKeys(documento);
-        }catch (ElementNotVisibleException f){
+        } catch (ElementNotVisibleException f) {
             LOGGER.info("StaleElementReferenceException " + f);
             esperarHasta(TIEMPO_2000);
             campoTxtNumeroDocumento.sendKeys(documento);
@@ -233,19 +230,17 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturasRC(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        comboBoxLimite.waitUntilPresent();
+        setImplicitTimeout(0, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
-            botonBorrar.waitUntilPresent().click();
+            clickearElemento(botonBorrar);
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
-        esperarHasta(TIEMPO_1500);
         comboBoxLimite.clear();
         esperarHasta(TIEMPO_500);
         comboBoxLimite.sendKeys(dato.get("limite"));
         comboBoxLimite.sendKeys(Keys.ENTER);
-        esperarHasta(TIEMPO_800);
         seleccionarItem(comboBoxDeducible, dato.get("deducible"));
     }
 
@@ -271,10 +266,12 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         try {
-            labelGatosTransporte.waitUntilPresent();
+            withTimeoutOf(TIEMPO_3,TimeUnit.SECONDS).waitFor(labelGatosTransporte);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             labelGatosTransporte.waitUntilPresent();
+        } catch (TimeoutException f) {
+            LOGGER.info("TimeoutException " + f);
         }
         seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
         seleccionarItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));

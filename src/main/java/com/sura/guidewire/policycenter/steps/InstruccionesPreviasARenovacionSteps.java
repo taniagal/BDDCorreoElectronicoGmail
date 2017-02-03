@@ -9,13 +9,13 @@ public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
     private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
 
     @Step
-    public InstruccionesPreviasARenovacionSteps seleccionar_boton_editar() {
+    public InstruccionesPreviasARenovacionSteps seleccionarBotonEditar() {
         instruccionesPreviasARenovacionPage.seleccionarBotonEditar();
         return this;
     }
 
     @Step
-    public InstruccionesPreviasARenovacionSteps desplegar_lista_instruccion() {
+    public InstruccionesPreviasARenovacionSteps desplegarListaInstruccion() {
         String xpathListaInstruccion = "//input[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-inputEl']";
         instruccionesPreviasARenovacionPage.seleccionarListaDesplegable(xpathListaInstruccion);
         return this;

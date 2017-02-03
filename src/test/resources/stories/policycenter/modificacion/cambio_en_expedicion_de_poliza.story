@@ -14,15 +14,15 @@ quiero ser capaz de emitir cambios para las pólizas de auto en PolicyCenter.
 Scenario: Validacion de resumen de la poliza expedirla
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de autos:
-|organizacion|producto|canal            |tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Sura        |Autos   |Canal Tradicional|Individual|CEDULA DE CIUDADANIA|02/12/1990      |EREN         |JAEGER         |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+|producto|tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Autos   |Individual|CEDULA DE CIUDADANIA|02/12/1990      |EREN         |JAEGER         |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 When expido la poliza y voy al archivo de poliza
 And expida el cambio de una poliza
 Then debe mostrar el resumen de la poliza expedida con la informacion del cambio <infoCambio>, poliza <infoPoliza>,  escritorio <escritorio>

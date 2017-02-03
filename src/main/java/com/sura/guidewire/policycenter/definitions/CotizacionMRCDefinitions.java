@@ -2,17 +2,18 @@ package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CotizacionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.CotizacionMRCSteps;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.sura.guidewire.policycenter.steps.DetalleDeAseguradoDeCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
 import net.thucydides.core.annotations.Steps;
+import org.eclipse.jetty.util.annotation.Name;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class CotizacionMRCDefinitions {
@@ -131,5 +132,14 @@ public class CotizacionMRCDefinitions {
     @Then("no debe permitir cotizar; se debe mostrar el mensaje de error <mensaje>")
     public void validarBloqueoExclusividad(@Named("mensaje") String mensaje) {
         cotizacionMRCSteps.validarBloqueoExclusividad(mensaje);
+    }
+
+    @Then("se debe generar un UW issue para poder expedir la póliza nueva <mensaje>")
+    public void validarMensajeUWAlExpedir(@Name("mensaje") String mensaje){
+        cotizacionMRCSteps.validarMensajeUWAlExpedir(mensaje);
+    }
+    @Then("Se debe generar un UW issue para poder expedir la modificación <mensaje>")
+    public void validarMensajeUWAlExpedirCambio(@Name("mensaje") String mensaje) {
+        cotizacionMRCSteps.validarMensajeUWAlExpedir(mensaje);
     }
 }

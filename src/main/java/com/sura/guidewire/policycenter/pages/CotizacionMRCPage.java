@@ -157,6 +157,11 @@ public class CotizacionMRCPage extends PageUtil {
         MatcherAssert.assertThat(findBy(".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize-inputEl']").getText(), Matchers.containsString(mensaje));
     }
 
+    public void validarMensajeUWAlExpedir(String mensaje) {
+        waitForTextToAppear("Asuntos que bloquean la expedición");
+        MatcherAssert.assertThat(findBy(".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize-inputEl']").getText(), Matchers.containsString(mensaje));
+    }
+
     public void validarTipoRiesgo() {
         esperarHasta(TIEMPO_1500);
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");

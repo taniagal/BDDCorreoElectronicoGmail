@@ -1,9 +1,7 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -17,7 +15,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -27,8 +24,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']")
     WebElementFacade lblInformaPolizaEnRenovacion;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
-    WebElementFacade txtNomAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
     WebElementFacade txtFechaVigencia;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
@@ -37,12 +32,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade txtNumDocumentoCoaseguro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']")
     WebElementFacade lblInformaPoliza;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
-    WebElementFacade lblNuevaCotizacion;
     @FindBy(xpath = ".//a[contains(.,'Cotizar')]")
     WebElementFacade botonCotizar;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
-    WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
     WebElementFacade lblNombreCompleto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
@@ -124,7 +115,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static final String LBL_MENSAJE_ALERTA = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
     private static final String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
     private static final String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
     private static final String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
@@ -140,14 +130,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
         super(driver);
-    }
-
-    public void ingresaAgente() {
-        waitInfoPoliza(lblNuevaCotizacion);
-        txtNomAgente.clear();
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ENTER).build().perform();
-        waitInfoPoliza(lblTabla);
     }
 
     public void ingresarFechaVigencia(String fechaInicioVigencia) {
@@ -226,7 +208,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionarProducto(String nomProducto) {
         esperarHasta(TIEMPO_1000);
         String xpathBotonElegirProducto = BTNELEGIRPRODUCTO + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
-        NuevaCotizacionPage cotizacionPage = new NuevaCotizacionPage(getDriver());
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
         botonElegirProducto.click();
@@ -237,7 +218,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 botonAceptarPopup.waitUntilNotVisible();
             }
             resetImplicitTimeout();
-            cotizacionPage.llenarOrganizacion("Sura");
         }
     }
 
@@ -334,19 +314,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void validarMensajesCoaseguros(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(obtenerMensajesDeTrabajoCoaseguro());
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
-    }
-
-    public List<String> obtenerMensajesDeTrabajoCoaseguro() {
-        List<String> mensajesEspacioDeTrabajo = new ArrayList<>();
-        for (WebElementFacade mensaje : findAll(LBL_MENSAJE_ALERTA)) {
-            mensajesEspacioDeTrabajo.add(mensaje.getText());
-        }
-        return mensajesEspacioDeTrabajo;
+        verificarMensajes($(".message"), mensajesEsperados);
     }
 
     public void noHabilitarNumeroDocumentoCoaseguro() {

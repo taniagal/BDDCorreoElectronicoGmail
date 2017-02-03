@@ -43,9 +43,8 @@ public class AjustePantallaPagosYValidacionesPage extends PageUtil{
         validarSiEsEditableDato(labelNecesitaAuditoriaFinalInput,parametros.getAuditoria());
         }
         validarDatosDePantalla(parametros);
-
-
     }
+
     public void validarDatosDePantalla(Parametros parametros){
         boolean resultado = true;
         String txtmetodoFacturacion = labelMetodoFacturacion.getText();

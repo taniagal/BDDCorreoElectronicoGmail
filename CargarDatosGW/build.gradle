@@ -4,35 +4,35 @@ apply plugin: 'groovy'
 Properties properties = new Properties()
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	compile 'junit:junit:4.11'
-	compile 'org.seleniumhq.selenium:selenium-server:2.49.0'
-	compile 'org.hamcrest:hamcrest-all:1.3'
-	compile 'org.codehaus.groovy:groovy-all:2.4.4'
+    compile 'junit:junit:4.11'
+    compile 'org.seleniumhq.selenium:selenium-server:2.49.0'
+    compile 'org.hamcrest:hamcrest-all:1.3'
+    compile 'org.codehaus.groovy:groovy-all:2.4.4'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.22'
 }
 
 task escribirArchivo << {
-	def props = new Properties()
-	def writer = new FileWriter(file('src/main/resources/gradle.properties'))
-	try{
-		if(project.getProperties().get("env") == "dev" ){
-			props.setProperty("url","http://dllocoreseguros.suramericana.com:7003")
-		}
-		else if(project.getProperties().get("env") == "qa" ){
-			props.setProperty("url","https://qacoreseguros.suramericana.com")
-		}else if(project.getProperties().get("env") == "reaseguro" ){
-			props.setProperty("url","http://dllocoreseguros.suramericana.com:7033")
-		}else if(project.getProperties().get("env") == "uat" ){
-            props.setProperty("url","https://labcoreseguros.suramericana.com")
-        }else{
-			props.setProperty("url","http://local.sura.com:8180")
-		}
-		props.store(writer,"")
-		writer.flush()
-	} finally {
-		writer.close()
-	}
+    def props = new Properties()
+    def writer = new FileWriter(file('src/main/resources/gradle.properties'))
+    try {
+        if (project.getProperties().get("env") == "dev") {
+            props.setProperty("url", "http://dllocoreseguros.suramericana.com:7003")
+        } else if (project.getProperties().get("env") == "qa") {
+            props.setProperty("url", "https://qacoreseguros.suramericana.com")
+        } else if (project.getProperties().get("env") == "reaseguro") {
+            props.setProperty("url", "http://dllocoreseguros.suramericana.com:7033")
+        } else if (project.getProperties().get("env") == "uat") {
+            props.setProperty("url", "https://labcoreseguros.suramericana.com")
+        } else {
+            props.setProperty("url", "http://local.sura.com:8180")
+        }
+        props.store(writer, "")
+        writer.flush()
+    } finally {
+        writer.close()
+    }
 }

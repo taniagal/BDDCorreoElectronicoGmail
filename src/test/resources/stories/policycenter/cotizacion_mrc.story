@@ -15,8 +15,8 @@ Asi ver los detalles de la cotizacion de una poliza MRC
 Scenario: Cotizar una poliza MRC
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal            |
-|C000112400|Sura        |Multiriesgo corporativo|Canal Tradicional|
+| cuenta     | producto                |
+| C000112400 | Multiriesgo corporativo |
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -30,14 +30,14 @@ Then debo ver la informacion de la cotizacion
 And se muestre el detalle de la prima por riesgo
 
 Examples:
-||
-||
+|  |
+|  |
 
 
 Scenario: Cotizar una poliza MRC con un riesgo consultable bloqueante
 Given estoy cotizando una poliza:
-| cuenta     | organizacion | producto                | canal             |
-| C000222333 | Sura         | Multiriesgo corporativo | Canal Tradicional |
+| cuenta     | producto                |
+| C000222333 | Multiriesgo corporativo |
 When quiera agregar un tomador adicional que es riesgo consultable <tipo_documento> <documento>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
@@ -49,15 +49,16 @@ And cotice una poliza
 Then no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje> que envie riesgos consultables
 
 Examples:
-|tipo_documento      |documento| cedulaPEP | mensaje                                                                              |
-|CEDULA DE CIUDADANIA|9876543  | 98499112  | El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación |
+| tipo_documento       | documento | cedulaPEP | mensaje                                                                              |
+| CEDULA DE CIUDADANIA | 9876543   | 98499112  | El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación |
 
 Scenario: validacion de exclusividad en la cotizacion
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When seleccione el producto <producto> para expedir la poliza
-And agrege la organizacion <organizacion>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -68,5 +69,5 @@ And cotice una poliza
 Then no debe permitir cotizar; se debe mostrar el mensaje de error <mensaje>
 
 Examples:
-| cuenta     | producto                | organizacion | agente  | mensaje                                                                             |
-| C000112400 | Multiriesgo corporativo | Sura         | DIRECTO | ya tiene una cotización en curso para el producto seleccionado para la oficina SURA |
+| cuenta     | producto                | mensaje                                                                             |
+| C000112400 | Multiriesgo corporativo | ya tiene una cotización en curso para el producto seleccionado para la oficina SURA |
