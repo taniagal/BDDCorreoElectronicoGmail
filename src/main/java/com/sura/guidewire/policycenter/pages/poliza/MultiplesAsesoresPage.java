@@ -17,6 +17,7 @@ public class MultiplesAsesoresPage extends PageUtil {
     private static final int CONSTANTE_DOS = 2;
     private static final int CONSTANTE_CUATRO = 4;
     private static final int CONSTANTE_CINCO = 5;
+    private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
     protected static final int CONSTANTE_VEINTE = 20;
     private static final String PATH_ENCABEZADO_INFORMACIONPOLIZA = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     private static final String PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
@@ -130,7 +131,6 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     }
 
-    String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
 
     public void ingresaValorEntabla(String path, int indiceFila, int indiceColumna, String texto) {
         WebElementFacade elemento = consultarElementoFilaColumna(path, indiceFila, indiceColumna);
@@ -142,7 +142,7 @@ public class MultiplesAsesoresPage extends PageUtil {
             if ($(CELDA_VALOR).isPresent()) {
                 $(CELDA_VALOR).clear();
                 $(CELDA_VALOR).sendKeys(texto);
-                //esperarHasta(TIEMPO_300);
+               // esperarHasta(TIEMPO_300);
                 esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
                 //actions.sendKeys(Keys.TAB).build().perform();
                 clickEnTabla = true;
