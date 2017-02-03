@@ -36,7 +36,6 @@ public class CrearYEditarCumulosSteps extends ScenarioSteps {
         crearYEditarCumulosPage.ingresoInformacionDeReaseguroEnTabla();
         crearYEditarCumulosPage.ingresarComisionYValorReaseguro(datosReaseguradores);
         crearYEditarCumulosPage.seleccionaModalidadPrima(datosReaseguradores);
-      //  crearYEditarCumulosPage.ingresaComisionPromotoraEIntermediario(datosReaseguradores);
     }
 
     @Step

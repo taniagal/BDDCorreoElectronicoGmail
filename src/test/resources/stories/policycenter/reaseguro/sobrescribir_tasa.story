@@ -27,5 +27,5 @@ When Ingrese la información de un reasegurador en la tabla de reaseguradores
 |Gross rate|100                    |1,8           |30                  |7                    |3                |
 
 Examples:
-|descripcionDeAcuerdo  |
-|Descripcion de acuerdo|
+|descripcionDeAcuerdo            |
+|Descripcion de acuerdo para test|
