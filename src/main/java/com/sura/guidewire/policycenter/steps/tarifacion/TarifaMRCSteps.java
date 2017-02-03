@@ -74,8 +74,8 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarCoberturaDaños(String valor, String valorIndice) {
-        tarifaMRCPage.seleccionarCoberturaDanios(valor, valorIndice);
+    public void seleccionarCoberturaDaños(String valorIndice) {
+        tarifaMRCPage.seleccionarCoberturaDanios(valorIndice);
     }
 
     @Step

@@ -48,10 +48,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
+    private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
     private static final int TIEMPO_250 = 250;
-
-    TableWidgetPage tabla;
-    NuevaPolizaPage nuevaPolizaPage;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
@@ -113,8 +111,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade agregarTipoOnerosoEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:checkCommercialValue-inputEl']")
     private WebElementFacade chekAseguradoValorComercial;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
+    private WebElementFacade campoAseguradoValorComercial;
 
-    private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
+    TableWidgetPage tabla;
+    NuevaPolizaPage nuevaPolizaPage;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -581,11 +582,15 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     }
 
+    public void ingresarValorComercialAsegurado(String valorcomercial){
+        ingresarDato(campoAseguradoValorComercial,valorcomercial);
+    }
+
     public void desseleccionarArticulo(){
         chekInteresAdicionaledificios.waitUntilPresent().click();
     }
 
-    public void verificarCheckAseguradoValorComercial(){
+    public void seleccionarCheckAseguradoValorComercial(){
         chekAseguradoValorComercial.waitUntilPresent().waitUntilVisible();
         clickearElemento(chekAseguradoValorComercial);
     }

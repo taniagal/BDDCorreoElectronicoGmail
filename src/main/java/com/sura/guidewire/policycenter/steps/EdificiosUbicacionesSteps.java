@@ -36,6 +36,12 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresarValorComercialAsegurado(String valorcomercial){
+        edificiosyUbicacionesWidget.ingresarValorComercialAsegurado(valorcomercial);
+    }
+
+
+    @Step
     public void ingresarNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion) {
         edificiosyUbicacionesWidget.ingresarNuevaUbicacionSinRiesgoConsultable(datosUbicacion);
     }
@@ -129,8 +135,8 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarCheckAseguradoValorComercial(){
-        edificiosyUbicacionesWidget.verificarCheckAseguradoValorComercial();
+    public void seleccionarCheckAseguradoValorComercial(){
+        edificiosyUbicacionesWidget.seleccionarCheckAseguradoValorComercial();
     }
 
     @Step
@@ -223,10 +229,6 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     @Step
     public void verificarMensaje(ExamplesTable mensajes) {
         edificiosyUbicacionesWidget.verificarMensajes(mensajes);
-    }
-
-    public void validarNoVisibilidadDeObjeto() {
-        edificiosyUbicacionesWidget.validarNoVisibilidad();
     }
 
 
