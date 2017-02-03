@@ -13,7 +13,7 @@ public class AssertUtil {
     private AssertUtil(){
     }
 
-    public static Matcher<? super List<String>> hasItemContainsString(String expectedValue) {
+    public static Matcher<List<String>> hasItemContainsString(String expectedValue) {
         return new HasItemContainsString(expectedValue);
     }
 

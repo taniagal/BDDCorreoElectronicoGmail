@@ -16,7 +16,9 @@ Meta:
 @manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
 Then  debo ver la organizacion la siguiente lista de organizaciones:
@@ -28,7 +30,7 @@ Then  debo ver la organizacion la siguiente lista de organizaciones:
 
 
 Examples:
-| numCuenta  | agente  | producto |
+| numCuenta  |agente_oficina| producto |
 | C000888888 | DIRECTO | Autos    |
 
 Scenario: Validar la el canal cuando se selecciona una organizacion especifica cuando el producto es Autos
@@ -36,7 +38,9 @@ Meta:
 @manual
 Given  que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And  seleccione la opcion informacion de poliza
 And  seleccione la organizacion:
@@ -53,7 +57,7 @@ Then debo ver los canales:
 
 
 Examples:
-| numCuenta  | agente  | producto |
+| numCuenta  |agente_oficina| producto |
 | C000888888 | DIRECTO | Autos    |
 
 Scenario: Validar la el canal cuando se selecciona una organizacion especifica cuando el producto es Autos
@@ -61,7 +65,9 @@ Meta:
 @manual
 Given  que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
 And  seleccione la organizacion:
@@ -78,7 +84,7 @@ And seleccione el canal:
 Then debo ver el tipo de poliza <tipoPoliza>
 
 Examples:
-| numCuenta  | agente  | producto |tipoPoliza   |
+| numCuenta  |agente_oficina| producto |tipoPoliza   |
 | C000888888 | DIRECTO | Autos    |Individual      |
 
 
@@ -87,7 +93,9 @@ Meta:
 @manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
+And seleccione el agente y la oficina de radicacion:
+| oficina | agente_oficina  |
+| 1105    | DIRECTO |
 When  seleccione el producto <producto> para expedir la poliza
 And   seleccione la opcion informacion de poliza
 Then  debo ver la organizacion <infoOrganizacion> seleccionada
@@ -95,7 +103,7 @@ And   debor ver el canal <infoCanal> seleccionado
 And   debo ver el tipo de poliza <infoTipoPoliza> seleccionado
 
 Examples:
-| numCuenta  | agente  | organizacion | canal             | producto | infoTipoPoliza | infoOrganizacion | infoCanal         |
+| numCuenta  |agente_oficina| organizacion | canal             | producto | infoTipoPoliza | infoOrganizacion | infoCanal         |
 | C000888888 | DIRECTO | Exito        | Exito             | Autos    | Individual        | Exito            | Exito             |
 | C000888888 | DIRECTO | GMAC         | GMAC              | Autos    | Individual        | GMAC             | GMAC              |
 | C000888888 | DIRECTO | Sura         | Autos + Soat      | Autos    | Individual        | Sura             | Autos + Soat      |

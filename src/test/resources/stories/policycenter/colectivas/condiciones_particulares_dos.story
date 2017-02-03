@@ -13,15 +13,15 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Si                     |
 And ingrese las coberturas a vehiculo:
 | limite | deducible |
-| 1.440  | 0         |
+| 640.0  | 0         |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
-| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 39355347   |
+| tipo_documento       | documento  | cuenta      | producto |agente_oficina| cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO      | 39355347   |
 
 Scenario: 2 Validacion bloqueo en expedicion: no Liberar  Excepcion deducible especiales
 Given que tengo una cotizacion <cotizacion>
@@ -32,7 +32,7 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si                     |
 And ingrese las coberturas a auto cero kilometros:
 | limite | deducible |
-| 1.440  | 0         |
+| 640.   | 0         |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -42,5 +42,5 @@ Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 | Vehiculo de excepcion de deducibles, debe ser autorizado |
 
 Examples:
-| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
-| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355390   |
+| tipo_documento       | documento  | cuenta      | producto |agente_oficina| cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO      | 33355390   |

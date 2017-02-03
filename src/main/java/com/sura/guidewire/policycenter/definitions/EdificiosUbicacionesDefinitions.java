@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
@@ -9,9 +8,7 @@ import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
-import gherkin.formatter.model.Examples;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.reports.html.ExampleTable;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
@@ -79,13 +76,13 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingrese la entrada de las diferentes coberturas mrc $ingresotable")
-    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasMrc(ExamplesTable ingresotable){
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasMrc(ExamplesTable ingresotable) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(ingresotable);
     }
 
     @When("ingrese a modificar articulo con beneficiario oneroso en cambio de poliza $modificararticulo")
-    public void cuandoIntenteModificarArticuloConBeneficiarioOneroso(ExamplesTable modificararticulo){
+    public void cuandoIntenteModificarArticuloConBeneficiarioOneroso(ExamplesTable modificararticulo) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(modificararticulo);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
@@ -93,7 +90,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("intente retirar un beneficiario oneroso de algun articulo en cambio de poliza")
-    public void cuandoIntenteRetirarUnBeneficiarioOneroso(){
+    public void cuandoIntenteRetirarUnBeneficiarioOneroso() {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.retirarBeneficiarioOnerosoAlArticulo();
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
@@ -102,14 +99,14 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingresar interes adicional <tipoBeneficiario> a cada cobertura $interesados")
-    public void agregarInteresAdicional(ExamplesTable interesados){
+    public void agregarInteresAdicional(ExamplesTable interesados) {
         edificiosUbicacionesSteps.ingresarInteresesAdicionalesACadaArticulo(interesados);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
 
     }
 
     @When("agregar algun interés adicional <agregarTipoBeneficiario> a un artículo que tiene beneficiario oneroso en cambio de poliza $agregaroneroso")
-    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.agregarInteresAdicionalCambioPoliza(agregaroneroso);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
@@ -117,7 +114,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingresar interes adicional <tipoBeneficiarios> a una sola cobertura $interesado")
-    public void agregarInteresAdicionalUnacobertura(ExamplesTable interesado){
+    public void agregarInteresAdicionalUnacobertura(ExamplesTable interesado) {
         edificiosUbicacionesSteps.ingresarInteresAdicionalAUnSoloArticulo(interesado);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
@@ -132,8 +129,16 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
     }
 
+    @When("ingrese las entradas en cambio de poliza de las diferentes coberturas $entradatable")
+    public void cuandoIntenteIngresarLasEntradasEnCambioPoliza(ExamplesTable entradatable) {
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+
+    }
+
     @When("ingrese las entradas en cambio de poliza y verificar las reglas de oneroso")
-    public void cuandoIntenteIngresarLasEntradasVerificarReglasOneroso(){
+    public void cuandoIntenteIngresarLasEntradasVerificarReglasOneroso() {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.desseleccionarArticulo();
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
@@ -210,7 +215,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("seleccione el tipo de mercancia flotante <tipoMercancia>")
-    public void seleccionarElTipoDeMercanciaFlotante(@Named("tipoMercancia") String tipoMercancia){
+    public void seleccionarElTipoDeMercanciaFlotante(@Named("tipoMercancia") String tipoMercancia) {
         edificiosUbicacionesSteps.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
     }
 
@@ -220,12 +225,7 @@ public class EdificiosUbicacionesDefinitions {
             "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
     })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
+        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
@@ -264,5 +264,10 @@ public class EdificiosUbicacionesDefinitions {
     @Then("no debe dejar continuar y debe permanecer en la pagina $pagina")
     public void noDebeDejarContinuarYDebePermanecerEnLaPagina(String pagina) {
         //Metodo Vacio
+    }
+
+    @Then("no debe estar visible $variable")
+    public void entoncesNoDebeEstarVisibleNingunContactoPorDefecto() {
+        edificiosUbicacionesSteps.validarNoVisibilidadDeObjeto();
     }
 }

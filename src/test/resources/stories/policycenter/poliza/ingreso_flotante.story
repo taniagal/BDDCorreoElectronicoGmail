@@ -1,7 +1,6 @@
-ingreso_flotante
-Meta:@lote1
-@issue #SUGWUSC-1162
-@tag automator: danny_barrientos
+Meta:
+@lote1
+@tag equipo: billing
 @sprint 13
 
 Narrative:
@@ -35,6 +34,7 @@ And ingrese a edificios y ubicaciones en cambio de poliza
 And ingrese las entradas en cambio de poliza de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO             | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Existencias Flotantes     |                     |                  | Valor asegurado máximo           | 100000000      |
+| Información de Artículos | Existencias Flotantes     |                     |                  | Exposición promedio              | 10000          |
 | Información de Artículos | Existencias Flotantes     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
 Then validar tipo de mercancia flotante en cambio:
  |tipo|

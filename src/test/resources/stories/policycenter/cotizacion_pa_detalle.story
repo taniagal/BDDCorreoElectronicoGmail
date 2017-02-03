@@ -22,8 +22,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
-|limite|deducible|abogado |PLlaves |
-|1.440 |0        |Opción 1|Opción 1|
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
 Then se debe mostrar en la columna "Termino" el limite o deducible de la cobertura en el caso de que aplique
 And se debe mostrar en la columna "Termino" el limite de la cobertura en el caso de que aplique
 And se debe mostrar en la columna "Termino" el deducible de la cobertura en el caso de que aplique

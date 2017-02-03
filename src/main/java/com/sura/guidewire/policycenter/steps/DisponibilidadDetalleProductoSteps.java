@@ -1,12 +1,17 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.DisponibilidadDetalleProductoPage;
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
+
+import java.util.Map;
 
 public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
 
     DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
+    NuevaCotizacionPage nuevaCotizacionPage;
 
     @Step
     public void accionarNuevoEnvio() {
@@ -19,8 +24,11 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarAgente(String agente) {
-        disponibilidadDetalleProductoPage.seleccionarAgente(agente);
+    public void seleccionarAgente(ExamplesTable agente) {
+        Map<String, String> datosAgente = agente.getRows().get(0);
+        String oficina = datosAgente.get("oficina");
+        String codigoAgente = datosAgente.get("agente_oficina");
+        nuevaCotizacionPage.seleccionarOficinaDeRadicacionYAgente(oficina, codigoAgente);
     }
 
     @Step

@@ -17,82 +17,81 @@ Disponibilidad Detalle Producto
 
 Scenario: 1._Agregar mas de un asesor a una poliza MRC
 GivenStories: stories/policycenter/login_policy.story
-Given que existe una cuenta activa donde estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112400|Multiriesgo corporativo|
+Given estoy cotizando una poliza de mrc:
+|oficina|agente_oficina|organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|1073   |DIRECTO       |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MARIO        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion
  del 100% de los asesores que intervienen en la poliza:
- |codigoAsesor                   |porcentaje             |rol                                                                        |
- |as1,as2,as3,as4,as5,as6,as7,as8|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |codigoAsesor                                |porcentaje             |rol                                                                        |
+ |10995,11005,10697,10686,10671,9628,1916,5676|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then Debe quedar un asesor con rol:
- |rol|validarDato|
-  |Lider|rol|
+ |rol  |validarDato|
+ |Lider|rol        |
 Examples:
 ||
 ||
 
 Scenario: 1.1_Agregar mas de un asesor a una poliza AUTOS
-Given que existe una cuenta activa donde estoy cotizando una poliza:
-|cuenta    |producto   |tipoPoliza|
-|C000112400|Autos      |Individual|
+Given estoy cotizando una poliza de autos:
+|oficina|agente_oficina|organizacion|producto |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|1059   |DIRECTO       |Sura        |Autos    |CEDULA DE CIUDADANIA|02/12/1990      |AUTOMAN        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion
  del 100% de los asesores que intervienen en la poliza:
- |codigoAsesor                   |porcentaje             |rol                                                                        |
- |as1,as2,as3,as4,as5,as6,as7,as8|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |codigoAsesor                                |porcentaje             |rol                                                                        |
+ |10960,10962,10787,10714,10272,1681,5676,5947|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then Debe quedar un asesor con rol:
-  |rol|validarDato|
-  |Lider|rol|
+  |rol  |validarDato|
+  |Lider|rol        |
 Examples:
 ||
 ||
 
-
-Scenario:2._Validar numero de asesores AUTOS
-Given que existe una cuenta activa donde estoy cotizando una poliza:
-|cuenta    |producto |tipoPoliza|
-|C000112400|Autos    |Individual|
+Scenario:2._Validar numero de asesores MRC
+Given estoy cotizando una poliza de mrc:
+|oficina|agente_oficina|organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|1073   |DIRECTO       |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MARIO        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When se ingresa mas de 8 asesores:
- |codigoAsesor                   |porcentaje                    |rol                                                                                            |
- |as1,as2,as3,as4,as5,as6,as7,as8,as9|20,10,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |codigoAsesor                                     |porcentaje                |rol                                                                                            |
+ |10995,11005,10697,10686,10671,9628,1916,5676,5947|20,10,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then validar el mensajes:
   |mensaje|
   |La póliza debe tener máximo 8 intermediarios|
 Examples:
 ||
 ||
-Scenario: 2.1_validar numero de asesores MRC
-Given que existe una cuenta activa donde estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112400|Multiriesgo corporativo|
+Scenario: 2.1_validar numero de asesores AUTOS
+Given estoy cotizando una poliza de autos:
+|oficina|agente_oficina|organizacion|producto |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|1059   |DIRECTO       |Sura        |Autos    |CEDULA DE CIUDADANIA|02/12/1990      |AUTOMAN        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When se ingresa mas de 8 asesores:
- |codigoAsesor                   |porcentaje                    |rol                                                                                            |
- |as1,as2,as3,as4,as5,as6,as7,as8,as9|20,10,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |codigoAsesor                                    |porcentaje                |rol                                                                                            |
+ |10960,10962,10787,10714,10272,1681,5676,5947,193|20,10,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then validar el mensajes:
   |mensaje|
   |La póliza debe tener máximo 8 intermediarios|
 Examples:
 ||
 ||
-Scenario: 3._validar participacion de los asesores AUTOS
-Given que existe una cuenta activa donde estoy cotizando una poliza:
-|cuenta    |producto  |tipoPoliza|
-|C000112400|Autos     |Individual|
+Scenario: 3._Validar participacion de los asesores MRC
+Given estoy cotizando una poliza de mrc:
+|oficina|agente_oficina|organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|1073   |DIRECTO       |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MARIO        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When se ingresa mas del 100% a los asesores:
- |codigoAsesor                   |porcentaje             |rol                                                                                            |
- |as1,as2,as3,as4,as5,as6,as7,as8|40,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |codigoAsesor                                |porcentaje             |rol                                                                        |
+ |10995,11005,10697,10686,10671,9628,1916,5676|40,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then validar el mensajes:
   |mensaje|
   |El total de la participación de todos los asesores en la póliza debe ser del 100%.|
 Examples:
 ||
 ||
-Scenario: 3.1_Validar participacion de los asesores MRC
-Given que existe una cuenta activa donde estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112400|Multiriesgo corporativo|
+Scenario: 3.1_validar participacion de los asesores AUTOS
+Given estoy cotizando una poliza de autos:
+|oficina|agente_oficina|organizacion|producto |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|1059   |DIRECTO       |Sura        |Autos    |CEDULA DE CIUDADANIA|02/12/1990      |AUTOMAN        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When se ingresa mas del 100% a los asesores:
- |codigoAsesor                   |porcentaje             |rol                                                                                            |
- |as1,as2,as3,as4,as5,as6,as7,as8|40,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |codigoAsesor                               |porcentaje              |rol                                                                        |
+ |10960,10962,10787,10714,10272,1681,5676,5947|40,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then validar el mensajes:
   |mensaje|
   |El total de la participación de todos los asesores en la póliza debe ser del 100%.|
@@ -100,30 +99,30 @@ Examples:
 ||
 ||
 Scenario: 4._Validar existencia de un solo codigo asesor MRC
-Given que existe una cuenta activa donde estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112400|Multiriesgo corporativo|
+Given estoy cotizando una poliza de mrc:
+|oficina|agente_oficina|organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|1073   |DIRECTO       |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MARIO        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion
  del 100% de los asesores que intervienen en la poliza:
- |codigoAsesor                   |porcentaje             |rol                                                                                            |
- |as1,as1,as3,as4,as5,as6,as7,as8|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |codigoAsesor                                |porcentaje             |rol                                                                        |
+ |10995,11005,10697,10686,10671,9628,1916,5676|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then Debe quedar un codigo de asesor:
-  |mensaje                                                         |validarDato|
-  |La póliza ya cuenta con un asesor con código as1 , favor validar|codigoAsesor|
+  |mensaje                                                          |validarDato|
+  |La póliza ya cuenta con un asesor con código 4999 , favor validar|codigoAsesor|
 Examples:
 ||
 ||
 Scenario: 4.1_Validar existencia de un solo codigo asesor AUTOS
 Given que existe una cuenta activa donde estoy cotizando una poliza:
-|cuenta    |producto               |tipoPoliza|
-|C000112400|Autos                  |Individual|
+|cuenta    |producto|tipoPoliza|oficina|agente |
+|C000112400|Autos   |Individual|4059    |DIRECTO|
 When Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion
  del 100% de los asesores que intervienen en la poliza:
- |codigoAsesor                   |porcentaje             |rol                                                                                            |
- |as1,as1,as3,as4,as5,as6,as7,as8|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |codigoAsesor                                |porcentaje             |rol                                                                        |
+ |10960,10962,10787,10714,10272,1681,5676,5947|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then Debe quedar un codigo de asesor:
-  |mensaje                                                         |validarDato|
-  |La póliza ya cuenta con un asesor con código as1 , favor validar|codigoAsesor|
+  |mensaje                                                          |validarDato|
+  |La póliza ya cuenta con un asesor con código 4999 , favor validar|codigoAsesor|
 Examples:
 ||
 ||
