@@ -5,7 +5,6 @@ import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
-import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Steps;
@@ -19,7 +18,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class EdificiosUbicacionesDefinitions {
 

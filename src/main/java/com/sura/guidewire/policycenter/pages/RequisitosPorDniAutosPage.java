@@ -93,8 +93,8 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void irARequisitos() {
-        esperarHasta(4000);
-        esperarYClickearBoton(botonRequisitosExpedicion);
+        botonRequisitosExpedicion.waitUntilPresent();
+        clickearElemento(botonRequisitosExpedicion);
     }
 
     public void cotizarYExpedirPoliza() {
