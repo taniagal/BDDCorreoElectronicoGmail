@@ -145,7 +145,7 @@ public class MultiplesAsesoresPage extends PageUtil {
         if (parametros.getValidarDato().equals(Parametros.CODIGO_ASESOR)) {
             esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
             validarCodigoAsesor(parametros);
-        } else if (parametros.getValidarDato().equals(Parametros._ROL)) {
+        } else if (parametros.getValidarDato().equals(Parametros.ROL)) {
             esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
             validarRolAsesor(parametros);
         }
