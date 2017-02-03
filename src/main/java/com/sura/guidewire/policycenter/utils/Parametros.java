@@ -36,7 +36,7 @@ public class Parametros {
     List<String> listaAgentes;
     List<String> listaPorcentaje;
     public static final String CODIGO_ASESOR = "codigoAsesor";
-    public static final String _ROL = "rol";
+    public static final String ROL = "rol";
     public static final String AUTOMATICO = "Automatico";
     public static final String DECLARATIVO = "Declarativo";
 

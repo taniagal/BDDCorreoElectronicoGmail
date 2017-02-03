@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.steps.colectivas;
 
 import com.sura.guidewire.policycenter.pages.colectivas.BusquedaDeRiesgosPage;
-import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.hamcrest.MatcherAssert;
@@ -10,7 +9,6 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class BusquedaDeRiesgosSteps extends ScenarioSteps {
 
@@ -52,9 +50,9 @@ public class BusquedaDeRiesgosSteps extends ScenarioSteps {
     @Step
     public void validarResultadosDeLaConsultaMrc(ExamplesTable riesgos) {
         Map<String, String> datosEsperados = riesgos.getRows().get(0);
-        MatcherAssert.assertThat("No se encontró el tipo de poliza",busquedaDeRiesgosPage.obtenerTipoDePoliza(), Is.is(Matchers.equalTo(datosEsperados.get("tipoPoliza"))));
-        MatcherAssert.assertThat("No se encontró la dirección",busquedaDeRiesgosPage.obtenerDireccion(), Is.is(Matchers.equalTo(datosEsperados.get("direccion"))));
-        MatcherAssert.assertThat("No se encontró el estado de la poliza",busquedaDeRiesgosPage.obtenerEstadoMrc(), Is.is(Matchers.equalTo(datosEsperados.get("estado"))));
+        MatcherAssert.assertThat("No se encontró el tipo de poliza", busquedaDeRiesgosPage.obtenerTipoDePoliza(), Is.is(Matchers.equalTo(datosEsperados.get("tipoPoliza"))));
+        MatcherAssert.assertThat("No se encontró la dirección", busquedaDeRiesgosPage.obtenerDireccion(), Is.is(Matchers.equalTo(datosEsperados.get("direccion"))));
+        MatcherAssert.assertThat("No se encontró el estado de la poliza", busquedaDeRiesgosPage.obtenerEstadoMrc(), Is.is(Matchers.equalTo(datosEsperados.get("estado"))));
         busquedaDeRiesgosPage.validarDatosDeTablaMrc();
     }
 

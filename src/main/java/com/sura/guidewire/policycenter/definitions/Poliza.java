@@ -9,7 +9,6 @@ import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
@@ -21,7 +20,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
@@ -309,7 +307,7 @@ public class Poliza {
         LOGGER.info("Poliza.entoncesSeDebeVisualizarLosSiguientesMotivos");
         for (Map<String, String> fila : motivos.getRows()) {
             String motivo = fila.get("MOTIVOS");
-            MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMotivosDisponibles(),AssertUtil.hasItemContainsString(motivo));
+            MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMotivosDisponibles(), AssertUtil.hasItemContainsString(motivo));
         }
     }
 
