@@ -1,4 +1,3 @@
-multiples_asesores
 Meta:
 @lote4
 @tag equipo: billing
@@ -32,6 +31,7 @@ Examples:
 ||
 ||
 
+
 Scenario: 2_Agregar mas de un asesor a una poliza AUTOS
 Given estoy cotizando una poliza de autos:
 |oficina|agente_oficina|organizacion|tipoPoliza|producto |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -47,6 +47,7 @@ Examples:
 ||
 ||
 
+
 Scenario:3_Validar numero de asesores MRC
 Given estoy cotizando una poliza de mrc:
 |oficina|agente_oficina|organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -60,6 +61,8 @@ Then validar el mensajes:
 Examples:
 ||
 ||
+
+
 Scenario: 4_validar numero de asesores AUTOS
 Given estoy cotizando una poliza de autos:
 |oficina|agente_oficina|organizacion|producto |tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -73,6 +76,8 @@ Then validar el mensajes:
 Examples:
 ||
 ||
+
+
 Scenario: 5_Validar participacion de los asesores MRC
 Given estoy cotizando una poliza de mrc:
 |oficina|agente_oficina|organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -86,6 +91,8 @@ Then validar el mensajes:
 Examples:
 ||
 ||
+
+
 Scenario: 6_validar participacion de los asesores AUTOS
 Given estoy cotizando una poliza de autos:
 |oficina|agente_oficina|organizacion|producto |tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -99,6 +106,8 @@ Then validar el mensajes:
 Examples:
 ||
 ||
+
+
 Scenario: 7_Validar existencia de un solo codigo asesor MRC
 Given estoy cotizando una poliza de mrc:
 |oficina|agente_oficina|organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -113,6 +122,8 @@ Then Debe quedar un codigo de asesor:
 Examples:
 ||
 ||
+
+
 Scenario: 8_Validar existencia de un solo codigo asesor AUTOS
 Given estoy cotizando una poliza de autos:
 |oficina|agente_oficina|organizacion|producto |tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
