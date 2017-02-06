@@ -1,7 +1,6 @@
 Meta:
-@lote3
+@lote4
 @tag equipo: 3
-@local
 @Sprint 13
 
 
