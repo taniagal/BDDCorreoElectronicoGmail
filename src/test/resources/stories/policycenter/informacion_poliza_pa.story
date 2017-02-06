@@ -1,10 +1,7 @@
-Informacion Poliza Pa
-
-Meta: @lote3
-
+Meta:
+@lote3
 @issue #CDSEG-995
 @tag equipo: 5
-@local
 @Sprint 2
 
 Narrative:

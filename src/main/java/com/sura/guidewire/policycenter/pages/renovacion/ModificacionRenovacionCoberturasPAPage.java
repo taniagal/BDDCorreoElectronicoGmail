@@ -122,7 +122,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
 
     public void validarCoberturasObligatorias() {
         String xpathFieldsetRCSinCheckbox = ".//fieldset[(child::legend[contains(.,'Responsabilidad Civil')]) and not(descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaRC = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
+        WebElementFacade grupoCoberturaRC = withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
         MatcherAssert.assertThat(grupoCoberturaRC, Matchers.notNullValue());
     }
 
