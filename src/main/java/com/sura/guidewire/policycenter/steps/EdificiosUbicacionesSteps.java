@@ -231,6 +231,9 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.verificarMensajes(mensajes);
     }
 
+    public void validarNoVisibilidadDeObjeto() {
+        edificiosyUbicacionesWidget.validarNoVisibilidad();
+    }
 
     public void seleccionarElTipoDeMercanciaFlotante(String tipoMercancia) {
         edificiosyUbicacionesWidget.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
