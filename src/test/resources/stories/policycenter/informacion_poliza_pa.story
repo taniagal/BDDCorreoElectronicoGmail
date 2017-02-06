@@ -1,6 +1,5 @@
 Meta:
-@lote3
-@issue #CDSEG-995
+@lote4
 @tag equipo: 5
 @Sprint 2
 
