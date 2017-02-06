@@ -128,10 +128,9 @@ public class CambioDePolizaPage extends PageUtil {
         clickearElemento(botonSiguientePolyceChange);
 
     }
-
+    //TOOO VERIFICA
     public void validarMercanciaFlotante(Parametros parametros) {
-
-        WebElementFacade grupoMensajes = findBy(LABELCONSTANTE);
+             WebElementFacade grupoMensajes = findBy(LABELCONSTANTE);
         withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(parametros.getTipo()));
 

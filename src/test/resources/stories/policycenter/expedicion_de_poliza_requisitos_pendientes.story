@@ -1,10 +1,7 @@
-Expedicion De Poliza Requisitos Pendientes
-
 Meta:
-@lote3
+@lote4
 @issue #CDSEG-4316
 @tag equipo: 5
-@local
 @Sprint 12
 
 Narrative:
