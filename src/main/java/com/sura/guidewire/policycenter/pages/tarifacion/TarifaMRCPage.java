@@ -333,4 +333,15 @@ public class TarifaMRCPage extends PageUtil {
         campoTxtValorComercial.sendKeys(valor);
         ingresarDato(campoTxtIndiceVariable, valorIndice);
     }
+
+    public void validarDasaGlobal(String tasa) {
+        menuItemModificadores.waitUntilPresent();
+        clickearElemento(menuItemModificadores);
+        campoTxtTasaGlobal.waitUntilPresent();
+        MatcherAssert.assertThat("Error en el valor de la tasa global, expected: " + tasa + " but was: " +
+                campoTxtTasaGlobal.getText(), campoTxtTasaGlobal.containsText(tasa));
+    }
+
+    public void cambiarTasaGlobal(String tasaC) {
+    }
 }

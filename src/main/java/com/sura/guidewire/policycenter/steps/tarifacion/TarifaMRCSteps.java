@@ -98,4 +98,14 @@ public class TarifaMRCSteps extends ScenarioSteps {
     public void ingresarValorcomercial(String valor, String valorIndice) {
         tarifaMRCPage.ingrasarValorComercial(valor, valorIndice);
     }
+
+    @Step
+    public void validarTasaGlobal(String tasa) {
+        tarifaMRCPage.validarDasaGlobal(tasa);
+    }
+
+    @Step
+    public void cambiarTasaGlobal(String tasaC) {
+        tarifaMRCPage.cambiarTasaGlobal(tasaC);
+    }
 }

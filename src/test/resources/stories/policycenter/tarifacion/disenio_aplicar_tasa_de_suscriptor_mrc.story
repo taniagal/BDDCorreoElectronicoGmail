@@ -31,6 +31,14 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |Edificio  |Cobertura de Asonada             |8.821  |
 |Edificio  |Cobertura de Sustraccion         |4.560  |
 And debo poder ver el valor de la prima <prima> en la cotizacion
+When valide el valor de la tasa global <tasa> y la cambie <tasaC>
+Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
+|articulo  |descripcion                      |valor  |
+|Edificio  |Cobertura de Danos materiales    |41.040 |
+|Edificio  |Cobertura de Terremoto           |122.000|
+|Edificio  |Cobertura de Asonada             |8.821  |
+|Edificio  |Cobertura de Sustraccion         |4.560  |
+And debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
 |prima  |
