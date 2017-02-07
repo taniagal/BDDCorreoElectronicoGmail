@@ -135,14 +135,14 @@ public class NuevoContactoPage extends PageUtil {
         this.botonActualizar.click();
         esperarHasta(TIEMPO_2000);
         desRazonSocial.waitUntilPresent();
-        MatcherAssert.assertThat(this.desRazonSocial.getText().toString(), Matchers.containsString(razonSocial));
+        MatcherAssert.assertThat(this.desRazonSocial.getText(), Matchers.containsString(razonSocial));
 
     }
 
     public void verificarContactoExistente() {
         clickearElemento(botonActualizar);
         esperarHasta(TIEMPO_1000);
-        MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
+        MatcherAssert.assertThat(this.contactoExistente.getText(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {
