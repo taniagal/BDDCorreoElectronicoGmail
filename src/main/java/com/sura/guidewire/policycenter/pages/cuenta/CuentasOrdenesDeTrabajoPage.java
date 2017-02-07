@@ -66,7 +66,7 @@ public class CuentasOrdenesDeTrabajoPage extends LoginPage {
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
         waitFor(CONSTANTE_2).seconds();
-        this.filtroProducto.click();
+        clickearElemento(this.filtroProducto);
         this.filtroProducto.sendKeys(filtroProducto);
         this.filtroProducto.sendKeys(Keys.ENTER);
     }
