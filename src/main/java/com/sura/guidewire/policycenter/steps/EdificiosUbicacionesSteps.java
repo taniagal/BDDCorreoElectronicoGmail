@@ -213,7 +213,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
  }
 
-    private void seleccionarCoberturaDelRiesgo(String cobertura) {
+    public void seleccionarCoberturaDelRiesgo(String cobertura) {
         if (!edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
             edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
         }

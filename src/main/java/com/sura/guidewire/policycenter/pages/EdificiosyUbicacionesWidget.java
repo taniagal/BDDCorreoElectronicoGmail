@@ -8,6 +8,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import org.apache.bcel.generic.LNEG;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -622,8 +623,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void verificarMesnComercialA() {
-        campoAseguradoValorComercial.getText();
-        txtValorAsegurado.getText().replaceAll("\\.","");
-        MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getText().equals(txtValorAsegurado.getText()));
+        txtValorAsegurado.getValue().replaceAll("\\.","");
+        MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(txtValorAsegurado.getValue()));
     }
 }

@@ -10,6 +10,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -45,8 +46,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade checkBoxChecBoxAseguradoAValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCobertura;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
-    private WebElementFacade checkBoxDaniosMateriales;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxDaniosMaterialesMaquinaria;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -81,6 +80,9 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade tablaPrimas;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageFloatExixtences:ArticleTypeDetailDV:AverageExposure_Input-inputEl']")
     private WebElementFacade campoTxtExposicionPromedio;
+    @FindBy(id = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade chex;
+
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr";
@@ -227,7 +229,10 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void seleccionarCoberturaDanios() {
-        clickearElemento(checkBoxDaniosMateriales);
+        WebElementFacade checkBoxDaniosMateriale = $(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']");
+        esperarYClickearBoton(checkBoxDaniosMateriale);
+        esperarYClickearBoton(checkBoxDaniosMateriale);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void agregarContactoDelDirectorio() {

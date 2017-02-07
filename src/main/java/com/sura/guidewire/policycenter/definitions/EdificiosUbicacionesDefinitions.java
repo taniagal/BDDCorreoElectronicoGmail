@@ -266,7 +266,6 @@ public class EdificiosUbicacionesDefinitions {
 
     @Then("verificar el valor asegurado de las coberturas debe venir por defecto el valor comercial")
     public void verificarMensajeValorComercialA(){
-        tarifaMRCSteps.seleccionarCoberturaDanos();
         edificiosUbicacionesSteps.verificarMensajeValorComercialA();
     }
 
