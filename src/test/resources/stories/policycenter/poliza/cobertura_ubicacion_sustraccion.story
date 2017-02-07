@@ -31,13 +31,8 @@ Examples:
 
 
 Scenario: 2 Sublimite sustraccion con violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurado Equipos moviles y portatiles
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@manual true
-@Sprint 5
+Meta:
+@manual
 Given Estoy ingresando la informacion de coberturas a nivel de riesgo
 When Ingrese un valor en el sublimite de sustraccion con violencia de bienes fuera de predios Y haga clic en el boton aceptar
 Then Se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). Si no cumple lo anterior se debe mostrar el siguiente mensaje: "El -Nombre del sublimite de sustraccion con violencia de bienes fuera de predios- debe ser menor o igual a la sumatoria de los valores asegurables del equipo electronico movil y portatil." y no debe dejar continuar
@@ -47,12 +42,6 @@ Examples:
 
 
 Scenario: 3 Sublimite de sustraccion con violencia de bienes fuera de predios (cobertura de riesgos) - Sublimite menor a valor asegurable Equipos moviles y portatiles
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                       | VALOR_ENTRADAS |
@@ -68,13 +57,8 @@ Examples:
 
 
 Scenario: 4 Sublimite sustraccion sin violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurados Equipos moviles y portatiles
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
+Meta:
 @manual
-@Sprint 5
 Given Estoy ingresando la informacion de coberturas a nivel de riesgo
 When Ingrese un valor en el sublimite de sustraccion sin violencia de bienes fuera de predios Y haga clic en el boton aceptar
 Then Se debe validar que el articulo "Equipo electronico movil y portatil" debe estar asegurado (en la categoria otros o en la normal). Si no se cumple lo anterior entonces se debe mostrar el siguiente mensaje: "Para poder seleccionar el - Nombre del sublimite de sustraccion sin violencia de bienes fuera de predios- debe tener asegurado el equipo electronico movil y portatil." y no debe dejar continuar.
@@ -84,12 +68,6 @@ Examples:
 
 
 Scenario: 5 Sublimite de sustraccion sin violencia de bienes fuera de predios (Coberturas del riesgo) - Valor asegurado menor a valor asegurable de Equipos moviles y portatiles
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                       | VALOR_ENTRADAS |
@@ -105,13 +83,8 @@ Examples:
 
 
 Scenario: 6 Sublimite sustraccion con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Tener asegurado el dinero en efectivo
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
+Meta:
 @manual
-@Sprint 5
 Given Estoy ingresando la informacion de coberturas a nivel de riesgo
 When Ingrese un valor en el sublimite de sustraccion con violencia de dinero dentro de caja fuerte Y haga clic en el boton aceptar
 Then Se debe validar que el articulo "Dinero en efectivo" debe estar asegurado (en la categoria otros o normal). Si no se cumple lo anterior entonces se debe mostrar el siguiente mensaje: "Para poder seleccionar el -Nombre del sublimite de sustraccion con violencia de dinero dentro de caja fuerte- debe tener asegurado eldinero en efectivo." y no debe dejar continuar.
@@ -121,12 +94,6 @@ Examples:
 
 
 Scenario: 7 Sublimite de sustraccion con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Valor asegurado menor o igual a valor asegurable de dinero en efectivo
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
@@ -140,13 +107,8 @@ Examples:
 | 22222211        | Asesor     |             |
 
 Scenario: 8 Sustraccion con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - Dependencia de otro sublimite
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
+Meta:
 @manual
-@Sprint 5
 Given Estoy ingresando la informacion de coberturas a nivel de riesgo
 When Ingrese un valor en el sublimite de sustraccion con violencia de dinero fuera de caja fuerte Y haga clic en el boton aceptar
 Then Se debe validar que exista el sublimite de sustraccion con violencia de dinero dentro de caja fuerte. Si no cumple lo anterior debe mostrar un mensaje en una ventana emergente que diga: "Para ingresar el -Nombre del sublimite de sustraccion con violencia de dinero fuera de caja fuerte- debe tener ingresado el -Nombre del sublimite de sustraccion con violencia de dinero dentro de caja fuerte-" y no debe dejar continuar.
@@ -156,12 +118,6 @@ Examples:
 
 
 Scenario: 9 Sublimite de sustraccion con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - valor asegurado de este sublimite menor o igual al valor asegurado de otro sublimite
-Meta: @lote1
-@Story CDSEG-847
-@URL https://jira.suramericana.com.co/browse/CDSEG-847
-@tag equipo: 2, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
