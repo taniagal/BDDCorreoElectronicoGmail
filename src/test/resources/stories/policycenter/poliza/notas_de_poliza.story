@@ -1,14 +1,12 @@
 Meta:
-@tania
 @lote2
 @tag equipo: 5
 @sprint 14
-@diego
 
 Narrative:
 Como usuario del negocio
 Quiero ser capaz de mantener las notas correspondientes a una poliza
-Para poder crear notas asociadas a una transaccion de una poliza tania
+Para poder crear notas asociadas a una transaccion de una poliza
 
 Scenario: Buscar por rango de fechas
 GivenStories: stories/policycenter/login_policy.story
@@ -30,5 +28,5 @@ And seleccione la opcion de fecha
 Then debo poder visualizar las notas asociadas a la cuenta que se encuentran en este rango de fechas
 
 Examples:
-| tipo_documento       | documento |nombre|
-| CEDULA DE CIUDADANIA | 1088253   |tania |
+| tipo_documento       | documento |
+| CEDULA DE CIUDADANIA | 1088253   |
