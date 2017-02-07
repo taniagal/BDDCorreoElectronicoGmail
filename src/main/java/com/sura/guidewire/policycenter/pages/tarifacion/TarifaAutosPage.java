@@ -224,7 +224,9 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarCoberturasRC(datosCoberturas);
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
         if (!"".equals(dato.get("abogado"))) {
-            seleccionarItem(comboBoxAbogado, dato.get("abogado"));
+            if (comboBoxAbogado.isPresent()) {
+                seleccionarItem(comboBoxAbogado, dato.get("abogado"));
+            }
         }
     }
 
@@ -246,7 +248,9 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarPerdidaDeLlaves(String llaves) {
         if (!"".equals(llaves)) {
-            seleccionarItem(comboBoxPerdidaDeLlaves, llaves);
+            if (comboBoxPerdidaDeLlaves.isPresent()) {
+                seleccionarItem(comboBoxPerdidaDeLlaves, llaves);
+            }
         }
     }
 
