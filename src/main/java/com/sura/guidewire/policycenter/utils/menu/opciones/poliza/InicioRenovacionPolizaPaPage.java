@@ -27,9 +27,9 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     WebElementFacade datoCedeulaTomador;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:Producer-inputEl']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:SuraMainOffice-inputEl']")
     WebElementFacade datoOficinaDeRadicacion;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCode-inputEl']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCodeSura-inputEl']")
     WebElementFacade datoAgente;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
     WebElementFacade datoNombre;
@@ -101,8 +101,8 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
         if ("tomador".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("cedula del tomador no valida", datoCedeulaTomador.getText().equals(datos.get("cedulaTomador")));
             MatcherAssert.assertThat("el nombre del tomador no es valido", datoNombre.getText().equals(datos.get("nombre")));
-            MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getValue().equals(datos.get("oficinaRadicacion")));
-            MatcherAssert.assertThat("el nombre de agente", datoAgente.getValue().contains(datos.get("codAgente")));
+            MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getText().equals(datos.get("oficinaRadicacion")));
+            MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().contains(datos.get("codAgente")));
             clickearElemento(botonSiguiente);
         } else if ("asegurado".equals(datos.get("rol"))) {
             setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
