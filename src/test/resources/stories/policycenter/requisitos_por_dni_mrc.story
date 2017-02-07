@@ -1,4 +1,5 @@
-Meta: @lote4
+Meta:
+@lote2
 @issue #SUGWUSC-5927
 @tag team: 5
 

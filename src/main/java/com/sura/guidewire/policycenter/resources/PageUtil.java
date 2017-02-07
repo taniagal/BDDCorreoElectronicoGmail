@@ -80,7 +80,7 @@ public class PageUtil extends PageObject {
      */
     public void seleccionarItem(WebElementFacade elemento, String opcion) {
         try {
-            withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(elemento);
+            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(elemento);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
             esperarHasta(TIEMPO_2000);
