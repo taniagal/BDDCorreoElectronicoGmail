@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.hamcrest.CoreMatchers.anyOf;
@@ -43,7 +44,7 @@ public class PrecondicionesPage extends MetodosComunes {
         menuHerramientasInternas.click();
         menuItemDatosDeMuestraDePc.click();
         botonCarga.click();
-        waitUntilVisible(labelCargaCorrecta, driver);
+        wait.until(ExpectedConditions.visibilityOf(labelCargaCorrecta));
         assertThat(labelCargaCorrecta.getText(), anyOf(is("Conjunto cargado \"Sura\" correctamente."),
                 is("Loaded set \"Sura\" successfully.")));
     }

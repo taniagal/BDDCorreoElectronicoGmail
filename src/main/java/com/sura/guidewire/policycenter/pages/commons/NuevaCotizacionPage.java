@@ -102,7 +102,13 @@ public class NuevaCotizacionPage extends PageUtil {
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
-                descripcion.waitUntilPresent();
+                try {
+                    descripcion.waitUntilPresent();
+                } catch (StaleElementReferenceException e) {
+                    LOGGER.info("StaleElementReferenceException " + e);
+                    esperarHasta(TIEMPO_2000);
+                    descripcion.waitUntilPresent();
+                }
                 esperarHasta(TIEMPO_1000);
                 if (nomProducto.equals(descripcion.getText())) {
                     botones.get(i).click();
