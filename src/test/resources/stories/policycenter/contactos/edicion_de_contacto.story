@@ -8,7 +8,7 @@ Como usuario de Policy Center
 Quiero poder editar la informacion de un contacto
 Para poder mantener actualizada y consistente su informacion
 
-Scenario: scenario description
-Given a system state
+Scenario: validar la correcta edicion de un contacto que es persona natural
+Given que tengo
 When I do something
 Then system is in a different state
