@@ -79,6 +79,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade botonAgregarContactoDelDirectorio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']")
     private WebElementFacade tablaPrimas;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageFloatExixtences:ArticleTypeDetailDV:AverageExposure_Input-inputEl']")
+    private WebElementFacade campoTxtExposicionPromedio;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr";
@@ -259,13 +261,15 @@ public class TarifaMRCPage extends PageUtil {
 
     public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos) {
         for (Map<String, String> dato : datos.getRows()) {
-            WebElementFacade campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:AmountSubject_Input-inputEl']");
+            WebElementFacade campoTxtValorAsegurable = $(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:AmountSubject') and contains(@id,'_Input-inputEl')]");
             WebElementFacade checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:Has" + dato.get(ARTICULO) + "-inputEl']");
             if ("Furniture".equals(dato.get(ARTICULO))) {
                 checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFixture-inputEl']");
             } else if ("Building".equals(dato.get(ARTICULO))) {
                 campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']");
                 checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']");
+            } else if ("FloatExixtences".equals(dato.get(ARTICULO))) {
+                checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFloatExistences-inputEl']");
             }
             clickearElemento(checkBoxArticulo);
             campoTxtValorAsegurable.waitUntilPresent().sendKeys(dato.get("valor_asegurable"));
@@ -275,6 +279,9 @@ public class TarifaMRCPage extends PageUtil {
 
     public void llenarCoberturas(Map<String, String> dato) {
         String[] coberturas = dato.get("coberturas").split(",");
+        if (dato.get("exposicionpromedio") != null) {
+            campoTxtExposicionPromedio.waitUntilPresent().sendKeys(dato.get("exposicionpromedio"));
+        }
         for (String cobertura2 : coberturas) {
             List<WebElementFacade> checkBoxesCoberturas = findAll(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
             for (int j = 0; j < checkBoxesCoberturas.size(); j++) {

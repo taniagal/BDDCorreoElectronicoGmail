@@ -125,9 +125,6 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
         MatcherAssert.assertThat(labelFechaFinVigencia.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("fechaFinVigencia"))));
         MatcherAssert.assertThat(labelFechaExpedicion.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("fechaExpedicion"))));
         MatcherAssert.assertThat(labelPolizaFinanciada.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("polizaFinanciada"))));
-        MatcherAssert.assertThat(labelOficinaRadicacion.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("oficinaRadicacion"))));
-        MatcherAssert.assertThat(labelCodigoAgente.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("codigoAgente"))));
-        MatcherAssert.assertThat(labelDescuentoPoliza.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("descuentoPoliza"))));
 
         if (campoNumeroDocumento.getText().equals(informacionPoliza.getRows().get(0).get("numeroDocumento"))) {
             datosPoliza = informacionPoliza.getRows().get(0);
