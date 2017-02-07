@@ -111,6 +111,7 @@ public class CuentaPage extends PageUtil {
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
         esperarHasta(TIEMPO_500);
+        comboBoxCodigoAgente.waitUntilPresent();
         seleccionarItem(comboBoxCodigoAgente, agente);
     }
 

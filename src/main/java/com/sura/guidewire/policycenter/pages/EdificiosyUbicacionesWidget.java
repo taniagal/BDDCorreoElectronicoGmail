@@ -470,6 +470,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 clickearElemento(btnCotizar);
             }
         }
+        descartarCambios();
     }
 
     public void descartarCambios() {
