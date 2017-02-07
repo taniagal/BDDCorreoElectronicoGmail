@@ -620,7 +620,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         seleccionarItem(listaTipoDeMercancia, tipoMercancia);
     }
 
-
     public void verificarMesnComercialA() {
         campoAseguradoValorComercial.getValue();
         txtValorAsegurado.getValue();
