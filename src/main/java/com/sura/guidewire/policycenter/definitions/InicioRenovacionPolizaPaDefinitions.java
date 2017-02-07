@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.sura.guidewire.policycenter.steps.InicioRenovacionPolizaPaSteps;
+import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -15,6 +16,9 @@ public class InicioRenovacionPolizaPaDefinitions {
     @Steps
     InicioRenovacionPolizaPaSteps inicioRenovacionPolizaPaSteps;
 
+    @Steps
+    PolizaPrincipalPaSteps polizaPrincipalPaSteps;
+
     @Given("que es necesario renovar una <poliza> de autos")
     public void givenQueEsNecesarioRenovarUnapolizaDeAutos(@Named("poliza") String poliza) {
         inicioRenovacionPolizaPaSteps.navegarBarraSuperior(poliza);
@@ -22,6 +26,7 @@ public class InicioRenovacionPolizaPaDefinitions {
 
     @When("quiera realizar esta renovacion")
     public void whenQuieraRealizarEstaRenovacion() {
+        polizaPrincipalPaSteps.validarMenuOpcionFormulariosNoEsVisible();
         inicioRenovacionPolizaPaSteps.navegarPorRenovacion();
     }
 
