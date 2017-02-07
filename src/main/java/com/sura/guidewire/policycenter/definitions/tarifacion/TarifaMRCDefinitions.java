@@ -41,9 +41,9 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.ingresarValorcomercial(valor,valorIndice);
     }
 
-    @When("seleccione la cobertura de daños materiales con indice variable <valorIndice>")
-    public void seleccionarCobertura(@Named("valorIndice") String valorIndice){
-        tarifaMRCSteps.seleccionarCoberturaDaños(valorIndice);
+    @When("seleccione la cobertura de daños materiales")
+    public void seleccionarCobertura(){
+        tarifaMRCSteps.seleccionarCoberturaDaños();
     }
 
     @When("seleccione la opcion de deducible en si")

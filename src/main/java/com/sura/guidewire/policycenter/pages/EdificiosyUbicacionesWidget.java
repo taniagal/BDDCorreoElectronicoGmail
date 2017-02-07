@@ -113,6 +113,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade chekAseguradoValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoAseguradoValorComercial;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
+    private WebElementFacade txtValorAsegurado;
+
 
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
@@ -615,5 +618,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void seleccionarElTipoDeMercanciaFlotante(String tipoMercancia) {
         listaTipoDeMercancia.waitUntilPresent();
         seleccionarItem(listaTipoDeMercancia, tipoMercancia);
+    }
+
+
+    public void verificarMesnComercialA() {
+        campoAseguradoValorComercial.getValue();
+        txtValorAsegurado.getValue();
+        MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(txtValorAsegurado.getValue().replaceAll("\\.","")));
     }
 }

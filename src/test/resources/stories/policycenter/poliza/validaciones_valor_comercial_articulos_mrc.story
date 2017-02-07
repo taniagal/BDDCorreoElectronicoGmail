@@ -17,11 +17,12 @@ Given estoy cotizando una poliza de mrc:
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And ingrese la entrada de las diferentes coberturas mrc
-| TAB                      | TIPO_ARTICULO               | OTRO_ARTICULO_OTROS | COBERTURA                   | ENTRADAS             | VALOR_ENTRADAS |
-| Información de Artículos | Edificios                   |                     |                             | Valor Reconstrucción | 100000000      |
+| TAB                      | TIPO_ARTICULO               | OTRO_ARTICULO_OTROS | COBERTURA  | ENTRADAS             | VALOR_ENTRADAS |
+| Información de Artículos | Edificios                   |                     |            | Valor Reconstrucción | 100000000      |
 And ingresar valor comercial de cobertura <valorcomercial>
-And seleccione la cobertura de daños materiales con indice variable <valorIndice>
+And seleccione la cobertura de daños materiales
+Then verificar el valor asegurado de las coberturas debe venir por defecto el valor comercial
 
 Examples:
 |valorcomercial|valorIndice|
-|2000000       | 10        |
+|200000000     | 10        |

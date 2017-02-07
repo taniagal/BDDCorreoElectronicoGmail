@@ -261,6 +261,11 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarCheckAseguradoValorComercial();
     }
 
+    @Then("verificar el valor asegurado de las coberturas debe venir por defecto el valor comercial")
+    public void verificarMensajeValorComercialA(){
+        edificiosUbicacionesSteps.verificarMensajeValorComercialA();
+    }
+
     @Then("se espera que el siguiente mensaje se muestre una sola vez: $mensajesEsperado")
     public void entoncesSeEsperaQueElMensajeSeMuestreUnaSolaVez(String mensajesEsperado) {
         List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());

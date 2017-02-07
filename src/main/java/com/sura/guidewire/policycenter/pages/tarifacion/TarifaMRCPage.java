@@ -224,8 +224,7 @@ public class TarifaMRCPage extends PageUtil {
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
 
-    public void seleccionarCoberturaDanios(String valorIndice) {
-        ingresarDato(campoTxtIndiceVariable, valorIndice);
+    public void seleccionarCoberturaDanios() {
         clickearElemento(checkBoxDaniosMateriales);
     }
 

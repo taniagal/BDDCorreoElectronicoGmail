@@ -40,6 +40,10 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.ingresarValorComercialAsegurado(valorcomercial);
     }
 
+    @Step
+    public void verificarMensajeValorComercialA(){
+        edificiosyUbicacionesWidget.verificarMesnComercialA();
+    }
 
     @Step
     public void ingresarNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion) {
@@ -138,6 +142,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void seleccionarCheckAseguradoValorComercial(){
         edificiosyUbicacionesWidget.seleccionarCheckAseguradoValorComercial();
     }
+
 
     @Step
     public void retirarBeneficiarioOnerosoAlArticulo(){
