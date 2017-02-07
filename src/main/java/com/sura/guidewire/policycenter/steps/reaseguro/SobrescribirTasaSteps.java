@@ -27,14 +27,17 @@ public class SobrescribirTasaSteps extends ScenarioSteps{
         sobrescribirTasaPage.clicAceptarAcurdosFacultativos();
     }
 
+    @Step
     public void validaMensajeEnPantalla(String mensaje) {
         MatcherAssert.assertThat("No aparecio mensaje que valida las coberturas en los contratos", sobrescribirTasaPage.mensajeEnPantalla().contains(mensaje));
     }
 
+    @Step
     public void aceptaAcuerdoFacultativo() {
         sobrescribirTasaPage.clicAceptarAcurdosFacultativoVolverAtras();
     }
 
+    @Step
     public void validaObjetoReasegurableSinAsociacionDeAcuerdosFacultativos(String tipoContrato) {
         MatcherAssert.assertThat("El contrato no pertenece al ingresado", tipoContrato.equals(sobrescribirTasaPage.buscaObjetoReasegurado(tipoContrato)));
     }
