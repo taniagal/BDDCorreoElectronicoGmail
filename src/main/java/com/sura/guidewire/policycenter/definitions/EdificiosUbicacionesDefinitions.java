@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaMRCSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
@@ -35,6 +36,8 @@ public class EdificiosUbicacionesDefinitions {
     TarifaTasaUnicaSteps tasaUnicaSteps;
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
+    @Steps
+    TarifaMRCSteps tarifaMRCSteps;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -263,6 +266,7 @@ public class EdificiosUbicacionesDefinitions {
 
     @Then("verificar el valor asegurado de las coberturas debe venir por defecto el valor comercial")
     public void verificarMensajeValorComercialA(){
+        tarifaMRCSteps.seleccionarCoberturaDanos();
         edificiosUbicacionesSteps.verificarMensajeValorComercialA();
     }
 

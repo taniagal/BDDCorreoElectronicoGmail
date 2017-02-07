@@ -17,12 +17,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.server.handler.ClickElement;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-
 public class EdificiosyUbicacionesWidget extends PageUtil {
+
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
     private static final String XPATH_COTIZAR = "//a[contains(.,'Cotizar')]";
@@ -621,8 +622,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void verificarMesnComercialA() {
-        campoAseguradoValorComercial.getValue();
-        txtValorAsegurado.getValue();
-        MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(txtValorAsegurado.getValue().replaceAll("\\.","")));
+        campoAseguradoValorComercial.getText();
+        txtValorAsegurado.getText().replaceAll("\\.","");
+        MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getText().equals(txtValorAsegurado.getText()));
     }
 }
