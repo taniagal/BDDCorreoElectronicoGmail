@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.pages.colectivas;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
@@ -9,6 +10,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class PolizaPrincipalPaPages extends PageUtil {
+
+    @FindBy(xpath = ".//*[contains(@id, ':Forms') and contains(., 'Formularios')]/div/span")
+    WebElementFacade menuOpcionFormularios;
 
     public static final String TITULO_COTIZACION = "Cotización";
 
@@ -193,5 +197,9 @@ public class PolizaPrincipalPaPages extends PageUtil {
         }
         resetImplicitTimeout();
         return visible;
+    }
+
+    public boolean validarMenuOpcionFormulariosNoEsVisible(){
+        return this.esElElementoWebVisible(menuOpcionFormularios);
     }
 }

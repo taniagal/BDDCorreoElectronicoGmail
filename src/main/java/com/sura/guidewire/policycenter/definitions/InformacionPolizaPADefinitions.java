@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
+import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.CuentasOrdenesDeTrabajoSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
@@ -25,6 +26,9 @@ public class InformacionPolizaPADefinitions {
 
     @Steps
     private InformacionPolizaPASteps informacionPolizaPASteps;
+
+    @Steps
+    private PolizaPrincipalPaSteps polizaPrincipalPaSteps;
 
     private final Map<String, String> infoPoliza = new HashMap<>();
 
@@ -119,6 +123,7 @@ public class InformacionPolizaPADefinitions {
 
     @When("indique que deseo financiar la poliza")
     public void definirPolizaFinanciada() {
+        polizaPrincipalPaSteps.validarMenuOpcionFormulariosNoEsVisible();
         informacionPolizaPASteps.definirPolizaFinanciada();
     }
 
