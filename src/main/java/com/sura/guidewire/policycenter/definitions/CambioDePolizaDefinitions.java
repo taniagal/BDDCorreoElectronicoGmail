@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CambioDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -21,6 +22,9 @@ public class CambioDePolizaDefinitions {
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
 
+    @Steps
+    PolizaPrincipalPaSteps polizaPrincipalPaSteps;
+
     @Given("que voy a buscar una poliza  <buscarNumeroPoliza>")
     public void irABuscarPoliza(String buscarNumeroPoliza){
         cambioDePolizaSteps.irABuscarPoliza(buscarNumeroPoliza);
@@ -34,6 +38,7 @@ public class CambioDePolizaDefinitions {
 
     @When("quiero relizar el cambio de una poliza")
     public void cambiarPoliza() {
+        polizaPrincipalPaSteps.validarMenuOpcionFormulariosNoEsVisible();
         cambioDePolizaSteps.irAMenuAcciones();
         cambioDePolizaSteps.cambiarPoliza();
     }
