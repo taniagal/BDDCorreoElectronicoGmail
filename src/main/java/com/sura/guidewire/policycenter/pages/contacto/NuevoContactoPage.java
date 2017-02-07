@@ -18,33 +18,39 @@ public class NuevoContactoPage extends PageUtil {
     private WebElementFacade tipoDocumento;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     private WebElementFacade numeroDocumento;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl')]")
     private WebElementFacade primerNombre;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl')]")
+    private WebElementFacade segundoNombre;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:LastName-inputEl')]")
     private WebElementFacade primerApellido;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressType-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, ':ContactNameInputSet:GlobalPersonNameInputSet:Particle-inputEl')]")
+    private WebElementFacade segundoApellido;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressType-inputEl')]")
     private WebElementFacade tipoDireccion;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl')]")
     private WebElementFacade direccion;
-    @FindBy(xpath = ".//*[@id='NewContact:ForceDupCheckUpdate-btnInnerEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'Update-btnInnerEl')]")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade nombreContact;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl')]")
     private WebElementFacade razonSocial;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-inputEl')]")
+    private WebElementFacade nombreComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade desRazonSocial;
     @FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
     private WebElementFacade contactoExistente;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl')]")
     private WebElementFacade tipoTelefono;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl')]")
     private WebElementFacade telefonoTrabajo;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl')]")
     private WebElementFacade telefonoResidencia;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl')]")
     private WebElementFacade comboBoxDepartamento;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl')]")
     private WebElementFacade comboBoxCiudad;
 
     public NuevoContactoPage(WebDriver driver) {
@@ -85,7 +91,7 @@ public class NuevoContactoPage extends PageUtil {
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
-        actualizar();
+        this.actualizar();
         nombreContact.waitUntilPresent();
         MatcherAssert.assertThat(nombreContact.getText(), Matchers.containsString(primerNombre));
     }
