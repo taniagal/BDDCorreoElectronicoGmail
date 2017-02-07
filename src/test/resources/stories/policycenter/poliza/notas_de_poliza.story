@@ -2,6 +2,7 @@ Meta:
 @lote2
 @tag equipo: 5
 @sprint 14
+@diego
 
 Narrative:
 Como usuario del negocio
