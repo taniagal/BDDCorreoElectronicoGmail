@@ -282,4 +282,18 @@ public class PageUtil extends PageObject {
     public boolean esEditable(WebElementFacade element) {
         return element.getAttribute("class").contains("x-form-text");
     }
+
+    public boolean esCampoEditable(WebElementFacade campo) {
+        boolean editables = false;
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+            if ("textbox".equals(campo.getAttribute("role")) && campo.isVisible()) {
+                if (campo.getText() != null) {
+                    editables = true;
+                } else {
+                    editables = false;
+                }
+            }
+        resetImplicitTimeout();
+        return editables;
+    }
 }

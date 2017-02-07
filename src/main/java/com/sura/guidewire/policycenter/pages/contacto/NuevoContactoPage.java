@@ -5,6 +5,7 @@ import com.sura.guidewire.policycenter.utils.constantes.EnumContacto;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,9 +15,9 @@ import org.openqa.selenium.WebDriver;
 
 public class NuevoContactoPage extends PageUtil {
 
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
+    @FindBy(xpath = ".//*[@id, 'ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade tipoDocumento;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl')]")
     private WebElementFacade numeroDocumento;
     @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl')]")
     private WebElementFacade primerNombre;
@@ -52,6 +53,8 @@ public class NuevoContactoPage extends PageUtil {
     private WebElementFacade comboBoxDepartamento;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl')]")
     private WebElementFacade comboBoxCiudad;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DateOfBirth-inputEl')]")
+    private WebElementFacade fechaDeNacimiento;
 
     public NuevoContactoPage(WebDriver driver) {
         super(driver);
@@ -77,17 +80,17 @@ public class NuevoContactoPage extends PageUtil {
     }
 
     public void seleccionarTipoDireccion(String tipoDireccion) {
-        seleccionarItem(this.tipoDireccion,tipoDireccion);
+        seleccionarItem(this.tipoDireccion, tipoDireccion);
     }
 
 
     public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
-        seleccionarItem(comboBoxDepartamento,departamento);
-        esperarPorValor(comboBoxDepartamento,departamento);
+        seleccionarItem(comboBoxDepartamento, departamento);
+        esperarPorValor(comboBoxDepartamento, departamento);
         esperarHasta(TIEMPO_2000);
-        seleccionarItem(comboBoxCiudad,ciudad);
-        esperarPorValor(comboBoxCiudad,ciudad);
+        seleccionarItem(comboBoxCiudad, ciudad);
+        esperarPorValor(comboBoxCiudad, ciudad);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
@@ -124,6 +127,7 @@ public class NuevoContactoPage extends PageUtil {
 
     /**
      * Escenario nuevo contacto persona juridica
+     *
      * @param razonSocial
      */
     public void ingresarRazonSocial(String razonSocial) {
@@ -183,5 +187,19 @@ public class NuevoContactoPage extends PageUtil {
 
     public void btnActualizarPersonaNatural() {
         botonActualizar.click();
+    }
+
+    public boolean validarCamposEditablesDeEdicionDeContacto() {
+        boolean editables = false;
+        if ("NIT".equals(tipoDocumento.getText())) {
+            if (super.esCampoEditable(tipoDocumento) && super.esCampoEditable(numeroDocumento)) {
+                editables = true;
+            }
+        } else {
+            if (super.esCampoEditable(tipoDocumento) && super.esCampoEditable(numeroDocumento) && super.esCampoEditable(fechaDeNacimiento)) {
+                editables = true;
+            }
+        }
+        return editables;
     }
 }

@@ -10,6 +10,8 @@ public class EdicionDeContactoPage extends PageUtil{
 
     @FindBy(xpath = "//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit-btnInnerEl']")
     WebElementFacade botonEditarContacto;
+    @FindBy(id = "ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit-btnInnerEl")
+    WebElementFacade campoMonedaPreferida;
 
     public EdicionDeContactoPage(WebDriver driver){
         super(driver);
@@ -17,5 +19,6 @@ public class EdicionDeContactoPage extends PageUtil{
 
     public void clicEnElBotonEditarContacto(){
         botonEditarContacto.waitUntilPresent().click();
+        waitFor(ExpectedConditions.attributeContains(campoMonedaPreferida, "text", ""));
     }
 }
