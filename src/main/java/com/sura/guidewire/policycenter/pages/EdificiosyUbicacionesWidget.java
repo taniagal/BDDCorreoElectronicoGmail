@@ -11,10 +11,7 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.apache.bcel.generic.LNEG;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.server.handler.ClickElement;
 
@@ -482,6 +479,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 clickearElemento(btnCotizar);
             }
         }
+        descartarCambios();
     }
 
     public void descartarCambios() {
@@ -511,17 +509,26 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        for (Map<String, String> mensaje : mensajes.getRows()) {
+        for (Map<String, String> mensaje : mensajes.getRows())
             try {
                 waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
-            }catch (StaleElementReferenceException e){
-                LOGGER.info("StaleElementReferenceException " + e);
-                waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
-                esperarHasta(TIEMPO_2000);
-                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
+            } catch (StaleElementReferenceException e) {
+                intentarVerificarmensaje("StaleElementReferenceException " + e, mensaje.get(MENSAJES_WORKSPACE),
+                        "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
+                                " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
+            } catch (ElementNotVisibleException f) {
+                intentarVerificarmensaje("ElementNotVisibleException " + f, mensaje.get(MENSAJES_WORKSPACE),
+                        "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
+                                " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }
-        }
+    }
+
+    public void intentarVerificarmensaje(String s, String textValue, String reason, boolean assertion) {
+        LOGGER.info(s);
+        waitFor(divMensaje).shouldContainText(textValue);
+        esperarHasta(TIEMPO_2000);
+        MatcherAssert.assertThat(reason, assertion);
     }
 
     public void agregarInteresAdicional(String cedula, String tipodocumento) {
@@ -551,25 +558,25 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             String documento = interesadosadicionales.get("DOCUMENTO");
             String tipobeneficiario = interesadosadicionales.get("TIPOBENEFICIARIO");
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
-            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoEdificios);
+            ingresarBeneficiarioOneroso(tipobeneficiario, listaTipoOnerosoEdificios);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalMaquinariaYEquipo, documento, tipodocumento);
-            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoMaquinariaYEquipo);
+            ingresarBeneficiarioOneroso(tipobeneficiario, listaTipoOnerosoMaquinariaYEquipo);
         }
     }
 
-    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
-        for (Map<String, String> interesadosadicionalesuno: interesado.getRows()){
+    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado) {
+        for (Map<String, String> interesadosadicionalesuno : interesado.getRows()) {
             String tipodocumentos = interesadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
             String documentos = interesadosadicionalesuno.get("DOCUMENTO");
             String tipobeneficiarios = interesadosadicionalesuno.get("TIPOBENEFICIARIO");
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documentos, tipodocumentos);
-            ingresarBeneficiarioOneroso(tipobeneficiarios,listaTipoOnerosoEdificios);
+            ingresarBeneficiarioOneroso(tipobeneficiarios, listaTipoOnerosoEdificios);
 
         }
     }
 
-    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
-        for (Map<String, String> agregarinteresadosadicionalesuno: agregaroneroso.getRows()) {
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso) {
+        for (Map<String, String> agregarinteresadosadicionalesuno : agregaroneroso.getRows()) {
             String agretipodocumentos = agregarinteresadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
             String agredocumentos = agregarinteresadosadicionalesuno.get("DOCUMENTO");
             String agretipobeneficiarios = agregarinteresadosadicionalesuno.get("TIPOBENEFICIARIO");
@@ -578,7 +585,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void ingresarBeneficiarioOneroso(String tipoBeneficiario,WebElementFacade elemento){
+    public void ingresarBeneficiarioOneroso(String tipoBeneficiario, WebElementFacade elemento) {
         Actions act = new Actions(getDriver());
         waitFor(TIEMPO_2).second();
         desplegarElementoDeLista(elemento);
@@ -587,6 +594,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     }
 
+<<<<<<< HEAD
     public void ingresarValorComercialAsegurado(String valorcomercial){
         ingresarDato(campoAseguradoValorComercial,valorcomercial);
     }
@@ -601,6 +609,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void retirarBeneficiarioOnerosoAlArticulo(){
+=======
+    public void desseleccionarArticulo() {
+        chekInteresAdicionaledificios.waitUntilPresent().click();
+    }
+
+    public void retirarBeneficiarioOnerosoAlArticulo() {
+>>>>>>> develop
         chekTipoOnerosoEdificios.waitUntilPresent();
         clickearElemento(chekTipoOnerosoEdificios);
         botonQuitar.waitUntilPresent();

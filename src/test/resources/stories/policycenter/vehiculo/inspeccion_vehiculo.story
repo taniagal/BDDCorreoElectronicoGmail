@@ -10,44 +10,7 @@ Quiero ser capaz consultar de forma automatica si un vehiculo requiere o no insp
 
 Scenario: Consulta de inspeccion no valida y busqueda en el modelo de seguros
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta     |producto|tipoPoliza |
-|C1060447895|Autos   |Individual |
-When valla a la informacion de la poliza
-And ingrese los datos del asegurado <tipo_documento> <documento>
-And el vehiculo tenga inspeccion no valida
-And la placa <placa> estuvo vigente en la compañia
-Then se debe recuperar los siguientes datos:
-|modelo|codigoFasecolda|motor|chasis|valorAccesorios|valorAccesoriosEspeciales|
-|2016  |00601182       |     |      |0              |0                        |
-And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
-Examples:
-| placa  | valorAsegurado | tipo_documento       | documento  |
-| HZR123 | 165900000,00   | CEDULA DE CIUDADANIA | 1060447895 |
-
-
-
-Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
-Given estoy cotizando una poliza:
-|cuenta     |producto|tipoPoliza |
-|C1060447895|Autos   |Individual |
-When valla a la informacion de la poliza
-And ingrese los datos del asegurado <tipo_documento> <documento>
-And el vehiculo tenga inspeccion
-And la placa <placa> estuvo vigente pero ahora esta cancelada
-Then se debe recuperar los siguientes datos:
-|modelo|codigoFasecolda|motor         |chasis           |valorAccesorios|valorAccesoriosEspeciales|
-|2013  |01601240       |B12D1740274KC3|9GAMF48D1DB016615|0              |0                        |
-And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
-
-Examples:
-| placa  | valorAsegurado | tipo_documento       | documento  |
-| MJK289 | 21800000,00    | CEDULA DE CIUDADANIA | 1060447895 |
-
-
-
-Scenario: Vehiculo sin requisito inspeccion para poder expedir
 Given se ha realizado la cotizacion <cotizacion>
 When se identifique que el vehiculo <placa> no cumple con el requisito de inspeccion
 And llegue a la expedicion de la poliza

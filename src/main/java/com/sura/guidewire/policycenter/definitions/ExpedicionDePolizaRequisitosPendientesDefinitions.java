@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions;
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaRequisitosPendientesSteps;
 import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
+import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -10,11 +11,15 @@ import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ExpedicionDePolizaRequisitosPendientesDefinitions {
+
     @Steps
     ExpedicionDePolizaRequisitosPendientesSteps expedicionDePolizaRequisitosPendientesSteps;
 
     @Steps
     InformacionPolizaPASteps informacionPolizaPASteps;
+
+    @Steps
+    PolizaPrincipalPaSteps polizaPrincipalPaSteps;
 
     @When("ingrese un valor maximo para los accesorios <accesorios>")
     public void ingresarValorAccesorios(@Named("accesorios") String accesorios) {
@@ -29,6 +34,7 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     @When("debo ver un mensaje opcional $mensaje")
     public void mensajeOpcional(ExamplesTable mensaje) {
         expedicionDePolizaRequisitosPendientesSteps.verMensajeOpcional(mensaje);
+        polizaPrincipalPaSteps.validarMenuOpcionFormulariosNoEsVisible();
     }
 
     @When("seleccione la opcion importado por terceros")

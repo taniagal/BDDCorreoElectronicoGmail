@@ -28,6 +28,7 @@ public class PolizaPrincipalPaDefinitions {
     @Then("no debe estar visible la seccion de contrato de poliza: asegurados, vehiculos, coberturas")
     public void validarElementosNoVisiblesDelMenu(){
         polizaPrincipalPaSteps.validarElementosNoVisiblesDelMenu();
+        polizaPrincipalPaSteps.validarMenuOpcionFormulariosNoEsVisible();
     }
 
     @Then("la  ventana de revision de poliza solo debe mostrar la informacion general sin las tablas del detalle de riesgo")
