@@ -7,7 +7,10 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Map;
 
 @SuppressWarnings("WeakerAccess")
 public class CrearNuevoContactoDefinitions {
@@ -21,6 +24,21 @@ public class CrearNuevoContactoDefinitions {
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
         crearNuevoContactoSteps.nuevoContactoPersona();
+    }
+
+    @Given("que tengo un contacto creado de tipo persona natural con los siguientes datos $datosContacto")
+    public void crearContactoPersonaNatural(ExamplesTable datosContacto) {
+        Map<String, String> contacto = datosContacto.getRows().get(0);
+        crearNuevoContactoSteps.nuevoContactoPersona();
+        crearNuevoContactoSteps.seleccionarTipoDocumentoPersonaNatural(contacto.get("tipoDocumento"));
+        crearNuevoContactoSteps.ingresarNumeroDocumentoPersonaNatural(contacto.get("documento"));
+        crearNuevoContactoSteps.ingresarPrimerNombrePersonaNatural(contacto.get("primerNombre"));
+        crearNuevoContactoSteps.ingresarPrimerApellidoPersonaNatural(contacto.get("primerApellido"));
+        crearNuevoContactoSteps.seleccionarTipoDireccionPersonaNatural(contacto.get("tipoDireccion"));
+        crearNuevoContactoSteps.ingresarDireccionPersonaNatural(contacto.get("direccion"), contacto.get("dpto"), contacto.get("ciudad"));
+        crearNuevoContactoSteps.ingresarFechaDeNacimiento(contacto.get("fechaNacimiento"));
+        crearNuevoContactoSteps.ingresarSegundoNombreYSegundoApellido(contacto.get("segundoNombre"), contacto.get("segundoApellido"));
+        crearNuevoContactoSteps.actualizar(contacto.get("primerNombre"));
     }
 
     @When("ingreso la informacion del tipo de documento <tipoDocumento>")

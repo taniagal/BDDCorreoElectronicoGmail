@@ -115,4 +115,14 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         nuevoContactoPage.verificarContactoExistente();
     }
 
+    @Step
+    public void ingresarFechaDeNacimiento(String fecha) {
+        nuevoContactoPage.ingresarFechaDeNacimiento(fecha);
+    }
+
+    @Step
+    public void ingresarSegundoNombreYSegundoApellido(String segundoNombre, String segundoApellido) {
+        nuevoContactoPage.ingresarSegundoNombreYSegundoApellido(segundoNombre, segundoApellido);
+    }
+
 }

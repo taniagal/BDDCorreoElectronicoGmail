@@ -22,11 +22,11 @@ public class NuevoContactoPage extends PageUtil {
     @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl')]")
     private WebElementFacade primerNombre;
     @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl')]")
-    private WebElementFacade segundoNombre;
+    private WebElementFacade campoSegundoNombre;
     @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:LastName-inputEl')]")
     private WebElementFacade primerApellido;
     @FindBy(xpath = ".//*[contains(@id, ':ContactNameInputSet:GlobalPersonNameInputSet:Particle-inputEl')]")
-    private WebElementFacade segundoApellido;
+    private WebElementFacade campoSegundoApellido;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressType-inputEl')]")
     private WebElementFacade tipoDireccion;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl')]")
@@ -201,5 +201,14 @@ public class NuevoContactoPage extends PageUtil {
             }
         }
         return editables;
+    }
+
+    public void ingresarFechaDeNacimiento(String fecha) {
+        fechaDeNacimiento.sendKeys(fecha);
+    }
+
+    public void ingresarSegundoNombreYSegundoApellido(String segundoNombre, String segundoApellido) {
+        campoSegundoNombre.sendKeys(segundoNombre);
+        campoSegundoApellido.sendKeys(segundoApellido);
     }
 }
