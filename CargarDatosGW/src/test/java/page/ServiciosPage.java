@@ -24,16 +24,18 @@ public class ServiciosPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='AdminWservices:mocksButtonD']")
     private WebElement botonDesactivarMocks;
 
+    private static final int TIEMPO_1500 = 1500;
+
     public void activarMocks(WebDriver driver) {
         irAServicios(driver);
         botonActivarMocks.click();
-        waitUntil(1500);
+        waitUntil(TIEMPO_1500);
     }
 
     public void desactivarMocks(WebDriver driver) {
         irAServicios(driver);
         botonDesactivarMocks.click();
-        waitUntil(1500);
+        waitUntil(TIEMPO_1500);
     }
 
     public void irAServicios(WebDriver driver) {

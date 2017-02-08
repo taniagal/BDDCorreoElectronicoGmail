@@ -19,8 +19,8 @@ public class Servicios extends MetodosComunes {
     private WebDriver driver;
     private LoginPage loginPage;
     private ServiciosPage serviciosPage;
-    private static final String campoLocalizatinType = ".//*[@id='AdminWservices:WServiceDetailLV-body']/*/table/tbody/tr[1]/td[3]";
-    private static final int WAIT_30 = 30;
+    private static final String CAMPO_LOCALIZATIN_TYPE = ".//*[@id='AdminWservices:WServiceDetailLV-body']/*/table/tbody/tr[1]/td[3]";
+    private static final int TIEMPO_30 = 30;
 
     @Before
     public void setUp() throws Exception {
@@ -28,7 +28,7 @@ public class Servicios extends MetodosComunes {
         Properties prop = loadProperty();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(WAIT_30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(TIEMPO_30, TimeUnit.SECONDS);
         driver.get(prop.getProperty("url") + "/pc/PolicyCenter.do");
         initPages();
     }
@@ -43,7 +43,7 @@ public class Servicios extends MetodosComunes {
         loginPage.login("pedrvevi", "pedrvevi", driver);
         serviciosPage.activarMocks(driver);
         MatcherAssert.assertThat("Error en la activacion de los mocks", driver.findElement(
-                By.xpath(campoLocalizatinType)).getText().contains("EndPoint"));
+                By.xpath(CAMPO_LOCALIZATIN_TYPE)).getText().contains("EndPoint"));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class Servicios extends MetodosComunes {
         loginPage.login("pedrvevi", "pedrvevi", driver);
         serviciosPage.desactivarMocks(driver);
         MatcherAssert.assertThat("Error en la activacion de los servicios", driver.findElement(
-                By.xpath(campoLocalizatinType)).getText().contains("Registry"));
+                By.xpath(CAMPO_LOCALIZATIN_TYPE)).getText().contains("Registry"));
     }
 
     @After
