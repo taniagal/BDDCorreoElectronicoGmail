@@ -36,12 +36,12 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarValorComercialAsegurado(String valorcomercial){
+    public void ingresarValorComercialAsegurado(String valorcomercial) {
         edificiosyUbicacionesWidget.ingresarValorComercialAsegurado(valorcomercial);
     }
 
     @Step
-    public void verificarMensajeValorComercialA(){
+    public void verificarMensajeValorComercialA() {
         edificiosyUbicacionesWidget.verificarMesnComercialA();
     }
 
@@ -133,19 +133,19 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void desseleccionarArticulo(){
+    public void desseleccionarArticulo() {
         edificiosyUbicacionesWidget.desseleccionarArticulo();
 
     }
 
     @Step
-    public void seleccionarCheckAseguradoValorComercial(){
+    public void seleccionarCheckAseguradoValorComercial() {
         edificiosyUbicacionesWidget.seleccionarCheckAseguradoValorComercial();
     }
 
 
     @Step
-    public void retirarBeneficiarioOnerosoAlArticulo(){
+    public void retirarBeneficiarioOnerosoAlArticulo() {
         edificiosyUbicacionesWidget.retirarBeneficiarioOnerosoAlArticulo();
     }
 
@@ -173,12 +173,12 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
+    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado) {
         edificiosyUbicacionesWidget.ingresarInteresAdicionalAUnSoloArticulo(interesado);
     }
 
     @Step
-    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso) {
         edificiosyUbicacionesWidget.agregarInteresAdicionalCambioPoliza(agregaroneroso);
     }
 
@@ -211,7 +211,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgoPolizaColectiva(String cobertura, String entrada, String valorEntrada) {
         seleccionarCoberturaDelRiesgo(cobertura);
         edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
- }
+    }
 
     public void seleccionarCoberturaDelRiesgo(String cobertura) {
         if (!edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {

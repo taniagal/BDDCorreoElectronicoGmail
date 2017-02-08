@@ -27,17 +27,11 @@ public class EdificiosUbicacionesDefinitions {
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
     @Steps
-    ExpedicionDePolizaSteps expedicionDePolizaSteps;
-    @Steps
-    IngresoAPolicyCenterDefinitions guidewireLogin;
-    @Steps
     GuidewireSteps guidewire;
     @Steps
     TarifaTasaUnicaSteps tasaUnicaSteps;
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
-    @Steps
-    TarifaMRCSteps tarifaMRCSteps;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -83,7 +77,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingrese la entrada de las diferentes coberturas y validar el asegurado valor comercial $tablecoberturas")
-    public void validarAseguradoComercialCuandoIngreseLasEntradasDeLasDiferentesCoberturas(ExamplesTable tablecoberturas){
+    public void validarAseguradoComercialCuandoIngreseLasEntradasDeLasDiferentesCoberturas(ExamplesTable tablecoberturas) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(tablecoberturas);
         edificiosUbicacionesSteps.seleccionarCheckAseguradoValorComercial();
@@ -259,13 +253,8 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
-    @Then("se debe validar que se muestre el asegurado a valor comercial")
-    public void validarVisualizacionDelAseguradoValorComercial(){
-        edificiosUbicacionesSteps.seleccionarCheckAseguradoValorComercial();
-    }
-
     @Then("verificar el valor asegurado de las coberturas debe venir por defecto el valor comercial")
-    public void verificarMensajeValorComercialA(){
+    public void verificarMensajeValorComercialA() {
         edificiosUbicacionesSteps.verificarMensajeValorComercialA();
     }
 

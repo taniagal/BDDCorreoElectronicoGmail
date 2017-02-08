@@ -1,11 +1,9 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaMRCSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 public class ValidacionesValorComercialArticulosMrcDefinitions {
@@ -17,7 +15,7 @@ public class ValidacionesValorComercialArticulosMrcDefinitions {
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
 
     @When("ingresar valor comercial de cobertura <valorcomercial>")
-    public void ingresarValorComercial(String valorcomercial){
+    public void ingresarValorComercial(String valorcomercial) {
         edificiosUbicacionesSteps.seleccionarCheckAseguradoValorComercial();
         edificiosUbicacionesSteps.ingresarValorComercialAsegurado(valorcomercial);
         tarifaMRCSteps.seleccionarCoberturaDanos();

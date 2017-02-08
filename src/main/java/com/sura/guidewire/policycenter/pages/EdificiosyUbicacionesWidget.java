@@ -8,14 +8,11 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.apache.bcel.generic.LNEG;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.server.handler.ClickElement;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -595,15 +592,15 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     }
 
-    public void ingresarValorComercialAsegurado(String valorcomercial){
-        ingresarDato(campoAseguradoValorComercial,valorcomercial);
+    public void ingresarValorComercialAsegurado(String valorcomercial) {
+        ingresarDato(campoAseguradoValorComercial, valorcomercial);
     }
 
-    public void desseleccionarArticulo(){
+    public void desseleccionarArticulo() {
         chekInteresAdicionaledificios.waitUntilPresent().click();
     }
 
-    public void seleccionarCheckAseguradoValorComercial(){
+    public void seleccionarCheckAseguradoValorComercial() {
         chekAseguradoValorComercial.waitUntilPresent().waitUntilVisible();
         clickearElemento(chekAseguradoValorComercial);
     }
@@ -631,7 +628,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void verificarMesnComercialA() {
-        txtValorAsegurado.getValue().replaceAll("\\.","");
-        MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(txtValorAsegurado.getValue()));
+        waitFor(TIEMPO_2).second();
+        String valor = txtValorAsegurado.getValue().replaceAll("\\.", "");
+        MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(valor));
     }
 }
