@@ -103,12 +103,12 @@ public class CesionDePrimaPage extends PageUtil {
 
     public void buscaEnTablaTareaDeLote(String nombreTarea) {
         int i = 0;
-        String XPATH1 = ".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV:";
-        String XPATH2 = ":RunBatchWithoutNotify']";
+        String xpathTareaInicio = ".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV:";
+        String xpathTareaFinal = ":RunBatchWithoutNotify']";
         if (!getListaNombreProcesoPorLotes().isEmpty()) {
             for (WebElementFacade nombreDeTarea : getListaNombreProcesoPorLotes()) {
                 if (nombreTarea.equals(nombreDeTarea.getText())) {
-                    WebElementFacade ejecutarAccionTarea = $(XPATH1 + i + XPATH2);
+                    WebElementFacade ejecutarAccionTarea = $(xpathTareaInicio + i + xpathTareaFinal);
                     ejecutarAccionTarea.click();
                     break;
                 }
