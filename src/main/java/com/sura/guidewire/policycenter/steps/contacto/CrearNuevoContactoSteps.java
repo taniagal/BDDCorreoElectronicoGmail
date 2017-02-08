@@ -38,11 +38,6 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crear_persona() {
-        nuevoContactoPage.btnActualizarPersonaNatural();
-    }
-
-    @Step
     public void ingresarNumeroDocumentoPersonaNatural(String numeroDocumento) {
         if ("".equals(cedula) || "".equals(nit)) {
             initRandoms();
@@ -82,6 +77,11 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     @Step
     public void ingresarRazonSocial(String razonSocial) {
         nuevoContactoPage.ingresarRazonSocial(razonSocial);
+    }
+
+    @Step
+    public void ingresarNombreComercial(String nombreComercial) {
+        nuevoContactoPage.ingresarNombreComercial(nombreComercial);
     }
 
     @Step

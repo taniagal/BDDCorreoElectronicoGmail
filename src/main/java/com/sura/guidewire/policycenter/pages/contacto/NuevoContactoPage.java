@@ -3,7 +3,9 @@ package com.sura.guidewire.policycenter.pages.contacto;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.constantes.EnumContacto;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -15,7 +17,7 @@ import org.openqa.selenium.WebDriver;
 
 public class NuevoContactoPage extends PageUtil {
 
-    @FindBy(xpath = ".//*[@id, 'ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:OfficialIDInputSet:DocumentType-inputEl')]")
     private WebElementFacade tipoDocumento;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl')]")
     private WebElementFacade numeroDocumento;
@@ -29,7 +31,7 @@ public class NuevoContactoPage extends PageUtil {
     private WebElementFacade campoSegundoApellido;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressType-inputEl')]")
     private WebElementFacade tipoDireccion;
-    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl')]")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Address') and contains(@id, 'inputEl')]")
     private WebElementFacade direccion;
     @FindBy(xpath = ".//*[contains(@id, 'Update-btnInnerEl')]")
     private WebElementFacade botonActualizar;
@@ -47,7 +49,7 @@ public class NuevoContactoPage extends PageUtil {
     private WebElementFacade tipoTelefono;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl')]")
     private WebElementFacade telefonoTrabajo;
-    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl')]")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet') and contains(@id, 'inputEl')]")
     private WebElementFacade telefonoResidencia;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl')]")
     private WebElementFacade comboBoxDepartamento;
@@ -55,6 +57,8 @@ public class NuevoContactoPage extends PageUtil {
     private WebElementFacade comboBoxCiudad;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DateOfBirth-inputEl')]")
     private WebElementFacade fechaDeNacimiento;
+    @FindBy(xpath = "//*[contains(@id, 'ContactDV:ContactCurrency:ContactCurrencyInputSet:PreferredSettlementCurrency-inputEl')]")
+    private WebElementFacade campoMonedaFavorita;
 
     public NuevoContactoPage(WebDriver driver) {
         super(driver);
@@ -85,7 +89,7 @@ public class NuevoContactoPage extends PageUtil {
 
 
     public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
-        this.direccion.sendKeys(direccion);
+        this.direccion.type(direccion);
         seleccionarItem(comboBoxDepartamento, departamento);
         esperarPorValor(comboBoxDepartamento, departamento);
         esperarHasta(TIEMPO_2000);
@@ -132,6 +136,10 @@ public class NuevoContactoPage extends PageUtil {
      */
     public void ingresarRazonSocial(String razonSocial) {
         this.razonSocial.type(razonSocial);
+    }
+
+    public void ingresarNombreComercial(String nombreComercial) {
+        this.nombreComercial.type(nombreComercial);
     }
 
     public void actualizarJuridica(String razonSocial) {
@@ -206,9 +214,36 @@ public class NuevoContactoPage extends PageUtil {
     public void ingresarFechaDeNacimiento(String fecha) {
         fechaDeNacimiento.sendKeys(fecha);
     }
+    public void ingresarMonedaFavorita(String moneda) {
+        super.seleccionarItem(campoMonedaFavorita, moneda);
+    }
 
     public void ingresarSegundoNombreYSegundoApellido(String segundoNombre, String segundoApellido) {
-        campoSegundoNombre.sendKeys(segundoNombre);
-        campoSegundoApellido.sendKeys(segundoApellido);
+        campoSegundoNombre.type(segundoNombre);
+        campoSegundoApellido.type(segundoApellido);
+    }
+
+    public Map<String, String> obtenerDatosDeLaPantalla() {
+        Map<String, String> datosDePantalla = new HashMap<>();
+        datosDePantalla.put("primerNombre", primerNombre.getText());
+        datosDePantalla.put("segundoNombre", campoSegundoNombre.getText());
+        datosDePantalla.put("primerApellido", primerApellido.getText());
+        datosDePantalla.put("segundoApellido", campoSegundoApellido.getText());
+        datosDePantalla.put("direccion", direccion.getText());
+        datosDePantalla.put("tipoDireccion", tipoDireccion.getText());
+        datosDePantalla.put("tipoTelefono", tipoTelefono.getText());
+        datosDePantalla.put("telefono", telefonoResidencia.getText());
+        datosDePantalla.put("moneda", campoMonedaFavorita.getText());
+        return datosDePantalla;
+    }
+
+    public Map<String, String> obtenerDatosDeCompania() {
+        Map<String, String> datosDePantalla = new HashMap<>();
+        datosDePantalla.put("razonSocial", razonSocial.getText());
+        datosDePantalla.put("nombreComercial", nombreComercial.getText());
+        datosDePantalla.put("direccion", direccion.getText());
+        datosDePantalla.put("tipoDireccion", tipoDireccion.getText());
+        datosDePantalla.put("moneda", campoMonedaFavorita.getText());
+        return datosDePantalla;
     }
 }
