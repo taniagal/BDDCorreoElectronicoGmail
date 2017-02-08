@@ -594,6 +594,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     }
 
+<<<<<<< HEAD
     public void ingresarValorComercialAsegurado(String valorcomercial){
         ingresarDato(campoAseguradoValorComercial,valorcomercial);
     }
@@ -607,7 +608,14 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         clickearElemento(chekAseguradoValorComercial);
     }
 
+    public void retirarBeneficiarioOnerosoAlArticulo(){
+=======
+    public void desseleccionarArticulo() {
+        chekInteresAdicionaledificios.waitUntilPresent().click();
+    }
+
     public void retirarBeneficiarioOnerosoAlArticulo() {
+>>>>>>> develop
         chekTipoOnerosoEdificios.waitUntilPresent();
         clickearElemento(chekTipoOnerosoEdificios);
         botonQuitar.waitUntilPresent();
