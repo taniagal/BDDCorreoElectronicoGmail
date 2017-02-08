@@ -27,11 +27,6 @@ public class RequisitosPorDniAutosDefinitions {
         requisitosPorDniAutosSteps.agregarBeneficiarioAutos(tipoDocumento, numeroDocumento, tipoBeneficiario);
     }
 
-    @When("ingrese los datos del vehiculo en expedicion: $datosVehiculo")
-    public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        requisitosPorDniAutosSteps.agregarVehiculo(datosVehiculo);
-    }
-
     @When("vaya a la opcion requisitos")
     public void irARequisitos() {
         requisitosPorDniAutosSteps.irARequisitos();

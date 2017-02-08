@@ -500,7 +500,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        for (Map<String, String> mensaje : mensajes.getRows())
+        for (Map<String, String> mensaje : mensajes.getRows()) {
             try {
                 waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
@@ -513,6 +513,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                         "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
                                 " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }
+        }
     }
 
     public void intentarVerificarmensaje(String s, String textValue, String reason, boolean assertion) {

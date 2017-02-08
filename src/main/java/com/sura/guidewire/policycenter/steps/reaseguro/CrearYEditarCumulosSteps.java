@@ -9,7 +9,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class CrearYEditarCumulosSteps extends ScenarioSteps {
 
-    CrearYEditarCumulosPage crearYEditarCumulosPages = new CrearYEditarCumulosPage(getDriver());
+    CrearYEditarCumulosPage crearYEditarCumulosPage = new CrearYEditarCumulosPage(getDriver());
 
     public CrearYEditarCumulosSteps(Pages pages) {
         super(pages);
@@ -17,45 +17,45 @@ public class CrearYEditarCumulosSteps extends ScenarioSteps {
 
     @Step
     public void ingresar_a_opcion_reaseguro() {
-        crearYEditarCumulosPages.ingresarReaseguroOpciones();
+        crearYEditarCumulosPage.ingresarReaseguroOpciones();
     }
 
     @Step
     public void ingresar_a_opcion_crear_acuerdo_facultativo() {
-        crearYEditarCumulosPages.ingresarAcuerdosFacultativos();
+        crearYEditarCumulosPage.ingresarAcuerdosFacultativos();
     }
 
     @Step
     public void ingresarDescripcionDeAcuerdoyDireccion(String descripcionDeAcuerdo) {
-        crearYEditarCumulosPages.ingresarDescripcionDeAcuerdoYDireccion(descripcionDeAcuerdo);
+        crearYEditarCumulosPage.ingresarDescripcionDeAcuerdoYDireccion(descripcionDeAcuerdo);
     }
 
     @Step
     public void ingresarModalidadDeTasaEnTabla(ExamplesTable datosReaseguradores) {
-        crearYEditarCumulosPages.ingresaParticipacion(datosReaseguradores);
-        crearYEditarCumulosPages.ingresoInformacionDeReaseguroEnTabla();
-        crearYEditarCumulosPages.ingresarComisionYValorReaseguro(datosReaseguradores);
-        crearYEditarCumulosPages.seleccionaModalidadPrima(datosReaseguradores);
-        crearYEditarCumulosPages.ingresaComisionPromotoraEIntermediario(datosReaseguradores);
+        crearYEditarCumulosPage.ingresaParticipacion(datosReaseguradores);
+        crearYEditarCumulosPage.ingresoInformacionDeReaseguroEnTabla();
+        crearYEditarCumulosPage.ingresarComisionYValorReaseguro(datosReaseguradores);
+        crearYEditarCumulosPage.seleccionaModalidadPrima(datosReaseguradores);
+        crearYEditarCumulosPage.ingresaComisionPromotoraEIntermediario(datosReaseguradores);
     }
 
     @Step
     public void validaTasaBruta() {
-        crearYEditarCumulosPages.validaTasaBrutaDeCesion();
+        crearYEditarCumulosPage.validaTasaBrutaDeCesion();
     }
 
     @Step
     public void validaTasaNeta() {
-        crearYEditarCumulosPages.calculaTasaNetaDeCesionRegla();
-        crearYEditarCumulosPages.validaTasaNetaDeCesion();
+        crearYEditarCumulosPage.calculaTasaNetaDeCesionRegla();
+        crearYEditarCumulosPage.validaTasaNetaDeCesion();
     }
 
     @Step
     public void validacionUtilidadesNegativas(String mensaje) {
-        crearYEditarCumulosPages.validaUtilidadesNegativas(mensaje);
+        crearYEditarCumulosPage.validaUtilidadesNegativas(mensaje);
     }
 
     public void validaPrimaBruta() {
-        crearYEditarCumulosPages.validaPrimaBrutaDeCesion();
+        crearYEditarCumulosPage.validaPrimaBrutaDeCesion();
     }
 }
