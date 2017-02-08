@@ -26,14 +26,16 @@ public class LoginPage {
     private WebElement botonIniciarSeus;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElement menuPoliza;
-    private static final int WAIT_10 = 10;
-    private static final int WAIT_3 = 3;
-    private static final int WAIT_30 = 30;
+
+    private static final String CAMPO_TXT_USUARIO = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']";
+    private static final int TIEMPO_10 = 10;
+    private static final int TIEMPO_3 = 3;
+    private static final int TIEMPO_30 = 30;
 
     public void login(String usuario, String contrasenia, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, WAIT_10);
-        driver.manage().timeouts().implicitlyWait(WAIT_3, TimeUnit.SECONDS);
-        if (driver.findElements(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")).size() > 0) {
+        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_10);
+        driver.manage().timeouts().implicitlyWait(TIEMPO_3, TimeUnit.SECONDS);
+        if (driver.findElements(By.xpath(CAMPO_TXT_USUARIO)).size() > 0) {
             campoTxtUsuario.sendKeys("su");
             campoTxtContrasenia.sendKeys("gw");
             botonIniciar.click();
@@ -45,7 +47,7 @@ public class LoginPage {
             campoTxtContraseniaSeus.sendKeys(contrasenia);
             botonIniciarSeus.click();
         }
-        driver.manage().timeouts().implicitlyWait(WAIT_30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(TIEMPO_30, TimeUnit.SECONDS);
         wait.until(ExpectedConditions.elementToBeClickable(menuPoliza)).isDisplayed();
     }
 }

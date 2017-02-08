@@ -93,7 +93,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private WebElementFacade botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']");
 
 
-    private static final String SUBMITIONXPATH = ".//img[contains(@id,'SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final String SUBMITIONXPATH = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final String BOTON_ACCIONES_1 = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
@@ -135,8 +135,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     public void validarEstadosCotizacion(String estadoDeclinar, String estadoNoTomar) {
         if (band != 0) {
-            WebElementFacade itemDeclinar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline-itemEl']");
-            WebElementFacade itemNoTomar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-itemEl']");
+            WebElementFacade itemDeclinar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline']");
+            WebElementFacade itemNoTomar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']");
             MatcherAssert.assertThat(itemDeclinar.getText(), Is.is(Matchers.equalTo(estadoDeclinar)));
             MatcherAssert.assertThat(itemNoTomar.getText(), Is.is(Matchers.equalTo(estadoNoTomar)));
         } else {

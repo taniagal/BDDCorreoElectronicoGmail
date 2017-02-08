@@ -76,4 +76,9 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
     public void validarQueLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables() {
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarQueTodosLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables(), Is.is(Matchers.equalTo(true)));
     }
+
+    @Step
+    public void validarMenuOpcionFormulariosNoEsVisible() {
+        MatcherAssert.assertThat("El elemento del menú Formularios es visible y debería estar oculto ", polizaPrincipalPaPages.validarMenuOpcionFormulariosNoEsVisible(), Is.is(Matchers.equalTo(false)));
+    }
 }

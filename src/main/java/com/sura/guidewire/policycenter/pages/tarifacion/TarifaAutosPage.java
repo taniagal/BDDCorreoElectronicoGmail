@@ -223,7 +223,7 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = datosCoberturas.getRow(0);
         seleccionarCoberturasRC(datosCoberturas);
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
-        if (!"".equals(dato.get("abogado"))) {
+        if (!"".equals(dato.get("abogado")) && comboBoxAbogado.isPresent()) {
             seleccionarItem(comboBoxAbogado, dato.get("abogado"));
         }
     }
@@ -245,7 +245,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
     public void seleccionarPerdidaDeLlaves(String llaves) {
-        if (!"".equals(llaves)) {
+        if (!"".equals(llaves) && comboBoxPerdidaDeLlaves.isPresent()) {
             seleccionarItem(comboBoxPerdidaDeLlaves, llaves);
         }
     }
@@ -266,7 +266,7 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         try {
-            withTimeoutOf(TIEMPO_3,TimeUnit.SECONDS).waitFor(labelGatosTransporte);
+            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             labelGatosTransporte.waitUntilPresent();

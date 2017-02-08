@@ -9,6 +9,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -170,7 +171,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuItemCambiarPoliza.waitUntilPresent().click();
     }
 
-    public void cambiarFechaDeVigencia(){
+    public void cambiarFechaDeVigencia() {
         clickAccionesYCambiarPoliza();
         campoTxtFechaDeInicioDeVigencia.waitUntilPresent().clear();
         campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(TREINTA_Y_TRES));
@@ -235,7 +236,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         resetImplicitTimeout();
         editarTransaccion();
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (botonEditarTransaccionDePolizaInfo.isPresent()){
+        if (botonEditarTransaccionDePolizaInfo.isPresent()) {
             editarTransaccion();
         }
         resetImplicitTimeout();
@@ -247,7 +248,13 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
     public void editarTransaccion() {
-        botonEditarTransaccionDePolizaInfo.waitUntilPresent();
+        try {
+            botonEditarTransaccionDePolizaInfo.waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            esperarHasta(TIEMPO_2000);
+            botonEditarTransaccionDePolizaInfo.waitUntilPresent();
+        }
         clickearElemento(botonEditarTransaccionDePolizaInfo);
         botonAceptar.waitUntilPresent().click();
         botonEditarTransaccionDePolizaInfo.waitUntilNotVisible();
@@ -310,7 +317,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         Map<String, String> valoresPrimaRiesgo = primaRiesgo.getRow(0);
         WebElementFacade campoPrimaRiesgo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:5-body']/*/table/tbody/tr[1]/td[2]");
         WebElementFacade campoIvaPrimaRiesgo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:5-body']/*/table/tbody/tr[2]/td[2]");
-        MatcherAssert.assertThat("El valor de la prima no es correcto ",campoPrimaRiesgo.getText(), Matchers.containsString(valoresPrimaRiesgo.get("primaT")));
+        MatcherAssert.assertThat("El valor de la prima no es correcto ", campoPrimaRiesgo.getText(), Matchers.containsString(valoresPrimaRiesgo.get("primaT")));
         MatcherAssert.assertThat("El valor del iva no es correcto ", campoIvaPrimaRiesgo.getText(), Matchers.containsString(valoresPrimaRiesgo.get("iva")));
     }
 }

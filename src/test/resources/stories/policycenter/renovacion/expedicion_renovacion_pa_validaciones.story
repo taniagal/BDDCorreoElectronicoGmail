@@ -1,10 +1,7 @@
-Expedicion Renovacion Pa Validaciones
-
 Meta:
-@lote3
+@lote4
 @issue #CDSEG-2296
 @tag equipo: 5
-@local
 @Sprint 7
 
 Narrative:

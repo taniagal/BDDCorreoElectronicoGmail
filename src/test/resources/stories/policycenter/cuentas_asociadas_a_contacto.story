@@ -16,10 +16,10 @@ GivenStories: stories/policycenter/login_policy.story
 Given que voy a consultar un contacto
 When consulte  un contacto con cuentas asociadas como: <nombre> <apellido>
 Then se muestra la lista de cuentas asociadas con nombre: <nombreConsulta>, direccion: <direccion>, tel: <telefono>, email: <email> y rol: <rol>
-
 Examples:
-| nombre   | apellido | nombreConsulta                | direccion                            | telefono | email              | rol                                      |
-| Yurledys | Gallego  | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Colombia | 408-2211 | 0003@guidewire.com | Conductor, Titular de la cuenta, Tomador |
+| nombre   | apellido | nombreConsulta                | direccion                            | telefono | email              | rol                          |
+| Yurledys | Gallego  | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Colombia | 408-2211 | 0003@guidewire.com | Titular de la cuenta, Tomador|
+
 
 Scenario: Visualizar pantalla vacia para las cuentas asociadas a un contacto
 Given que voy a consultar un contacto

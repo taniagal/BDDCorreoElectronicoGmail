@@ -62,7 +62,7 @@ public class PageUtil extends PageObject {
      * @return actions un objeto tipo 'Actions' en caso de necesitar realizar acciones con el driver
      */
     public Actions desplegarMenu(WebElementFacade menu) {
-        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(menu).waitUntilPresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(menu);
         clickearElemento(menu);
         esperarHasta(TIEMPO_3000);
         clickearElemento(menu);
@@ -80,7 +80,7 @@ public class PageUtil extends PageObject {
      */
     public void seleccionarItem(WebElementFacade elemento, String opcion) {
         try {
-            withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(elemento);
+            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(elemento);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
             esperarHasta(TIEMPO_2000);

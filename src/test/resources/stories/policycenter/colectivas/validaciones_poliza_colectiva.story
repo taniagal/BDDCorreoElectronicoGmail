@@ -1,5 +1,5 @@
 Meta:
-@lote2
+@lote4
 @tag equipo: 2
 @Sprint 11
 
@@ -27,7 +27,7 @@ Then deben estar en estado <estadouno> las siguientes opciones
 
 Examples:
 | numSubscripcion | rolUsuario | estadodos  |
-| 33344336        | Asesor     | No visible |
+| 33344336        | Asesor     | Visible    |
 
 
 Scenario: 3 Validacion de campos en la opcion agregar cobertura global de poliza principal

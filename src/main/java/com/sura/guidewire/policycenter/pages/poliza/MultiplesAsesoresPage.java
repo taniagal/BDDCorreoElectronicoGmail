@@ -141,7 +141,8 @@ public class MultiplesAsesoresPage extends PageUtil {
             esperarYClickearBoton(elemento);
             if ($(CELDA_VALOR).isPresent()) {
                 $(CELDA_VALOR).clear();
-                $(CELDA_VALOR).sendKeys(texto);
+                actions.sendKeys(texto).build().perform();
+                esperarHasta(TIEMPO_300);
                 esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
                 clickEnTabla = true;
             }
