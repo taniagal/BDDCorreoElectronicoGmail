@@ -28,7 +28,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 2000000000      |
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 2000000000      |
 And cotice una poliza
-When quiera reasegurar la poliza expedida
+When quiera reasegurar la poliza cotizada
 Then debo ver el resultado del reaseguro aplicable por cada riesgo para un contrato cuota parte y excedente segun porcentajes de retencion y cesion
 
 Examples:
