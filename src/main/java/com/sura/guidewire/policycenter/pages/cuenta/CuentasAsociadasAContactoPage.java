@@ -14,15 +14,15 @@ public class CuentasAsociadasAContactoPage extends PageUtil {
 
     @FindBy(xpath = "//td[@id='ContactFile:MenuLinks:ContactFile_ContactFile_Accounts']/div")
     private WebElementFacade mnuLateralCuenta;
-    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr[2]/td[2]")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[2]")
     private WebElementFacade nombreContactoCuenta;
-    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr[2]/td[3]")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[3]")
     private WebElementFacade direccionContactoCuenta;
-    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr[2]/td[4]")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[4]")
     private WebElementFacade telContactoCuenta;
-    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr[2]/td[5]")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[5]")
     private WebElementFacade emailContactoCuenta;
-    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr[2]/td[6]")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[6]")
     private WebElementFacade rolesContactoCuenta;
     @FindBy(xpath = ".//*[@id='ContactFile_Accounts:panelRefInfoMessage:InfoMessage_ExtDV:message']")
     private WebElementFacade msjCuentaNoEncontrada;
