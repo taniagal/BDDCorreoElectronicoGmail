@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaMRCSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
@@ -25,10 +26,6 @@ public class EdificiosUbicacionesDefinitions {
     PolizaSteps polizaSteps;
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
-    @Steps
-    ExpedicionDePolizaSteps expedicionDePolizaSteps;
-    @Steps
-    IngresoAPolicyCenterDefinitions guidewireLogin;
     @Steps
     GuidewireSteps guidewire;
     @Steps
@@ -77,6 +74,14 @@ public class EdificiosUbicacionesDefinitions {
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasMrc(ExamplesTable ingresotable) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(ingresotable);
+    }
+
+    @When("ingrese la entrada de las diferentes coberturas y validar el asegurado valor comercial $tablecoberturas")
+    public void validarAseguradoComercialCuandoIngreseLasEntradasDeLasDiferentesCoberturas(ExamplesTable tablecoberturas) {
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
+        edificiosUbicacionesSteps.ingresarCoberturas(tablecoberturas);
+        edificiosUbicacionesSteps.seleccionarCheckAseguradoValorComercial();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
 
     @When("ingrese a modificar articulo con beneficiario oneroso en cambio de poliza $modificararticulo")
@@ -246,6 +251,11 @@ public class EdificiosUbicacionesDefinitions {
     public void entoncesValidarQueAparezcanLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
         edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
+    }
+
+    @Then("verificar el valor asegurado de las coberturas debe venir por defecto el valor comercial")
+    public void verificarMensajeValorComercialA() {
+        edificiosUbicacionesSteps.verificarMensajeValorComercialA();
     }
 
     @Then("se espera que el siguiente mensaje se muestre una sola vez: $mensajesEsperado")

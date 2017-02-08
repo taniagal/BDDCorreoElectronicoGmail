@@ -46,6 +46,8 @@ public class CoberturaGlobalPage extends PageUtil {
     private WebElementFacade campoTxtGenerico;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:_msgs']")
+    private WebElementFacade labelMensajeValorComercial;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:locationsBlanLV:0:locationBlanket']")
     private WebElementFacade labelDescripcion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr[1]/td[2]")
@@ -177,6 +179,10 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void verificarMensajeError(String mensaje) {
-        verificarMensaje(divMensaje, mensaje);
+        verificarMensaje(divMensaje,mensaje);
+    }
+
+    public void verificarMensajeErrorValorComercial(String mensaje) {
+        verificarMensaje(labelMensajeValorComercial,mensaje);
     }
 }
