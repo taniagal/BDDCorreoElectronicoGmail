@@ -73,6 +73,11 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     }
 
     @Step
+    public void verificarMensajeErrorValorComercial(String mensaje){
+        coberturaGlobalPage.verificarMensajeErrorValorComercial(mensaje);
+    }
+
+    @Step
     public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(ExamplesTable mensajes) {
         panelSurEspacioDeTrabajoPage.validarMensajes(this.obtenerMensajes(mensajes));
     }
