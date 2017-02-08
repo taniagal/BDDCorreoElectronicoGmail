@@ -45,6 +45,7 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade lblVolverAPrimasCedidas;
 
     String numeroDeEnvio = null;
+    private static final int CUATRO = 4;
 
     public CesionDePrimaPage(WebDriver driver) {
         super(driver);
@@ -127,7 +128,7 @@ public class CesionDePrimaPage extends PageUtil {
         WebElementFacade tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[1]/td[1]");
         esperarYClickearBoton(linkIngresaATodasTransacciones);
         int ejecuciones = 0;
-        int maxIntentos = 4;
+        int maxIntentos = CUATRO;
         boolean ejecuto = false;
         while (ejecuciones < maxIntentos && !ejecuto) {
             if (tabla.isVisible()) {
