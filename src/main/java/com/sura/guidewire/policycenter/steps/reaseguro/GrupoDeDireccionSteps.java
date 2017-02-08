@@ -7,17 +7,17 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class GrupoDeDireccionSteps extends ScenarioSteps {
 
-    GrupoDeDireccionPage grupoDeDireccionPages;
+    GrupoDeDireccionPage grupoDeDireccionPage;
 
     @Step
     public void validaInformacionDeCotaparte() {
-        grupoDeDireccionPages.obtienePorcentajeDeCesionYRetencionEnContratoCotaparte();
-        grupoDeDireccionPages.validaMontoRetenidoEnContratoEnCotaparte();
-        grupoDeDireccionPages.validaMontoCedidoEnContratoEnCotaparte();
+        grupoDeDireccionPage.obtienePorcentajeDeCesionYRetencionEnContratoCotaparte();
+        grupoDeDireccionPage.validaMontoRetenidoEnContratoEnCotaparte();
+        grupoDeDireccionPage.validaMontoCedidoEnContratoEnCotaparte();
     }
 
     @Step
     public void validainformaciondeExcedente() {
-        grupoDeDireccionPages.validaMontoCedidoEnContratoEnExcedido();
+        grupoDeDireccionPage.validaMontoCedidoEnContratoEnExcedido();
     }
 }

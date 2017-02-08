@@ -2,5 +2,5 @@ package com.sura.guidewire.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class GrupoDeDireccion extends SerenityStory{
+public class CesionDePrima extends SerenityStory {
 }
