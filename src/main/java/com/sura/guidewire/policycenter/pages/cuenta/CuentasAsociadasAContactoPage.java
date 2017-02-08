@@ -36,6 +36,7 @@ public class CuentasAsociadasAContactoPage extends PageUtil {
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(mnuLateralCuenta).waitUntilPresent();
         mnuLateralCuenta.click();
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(nombreContactoCuenta).waitUntilPresent();
+        esperarHasta(TIEMPO_2000);
         MatcherAssert.assertThat("Error, no se encontró el contacto " + nombre + " but was: " + nombreContactoCuenta.getText()
                 , nombreContactoCuenta.containsText(nombre));
         MatcherAssert.assertThat("Error, no se encontró la direccion " + direccion, direccionContactoCuenta.containsText(direccion));
