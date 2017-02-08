@@ -5,6 +5,7 @@ import com.sura.guidewire.policycenter.pages.poliza.MultiplesAsesoresPage;
 import com.sura.guidewire.policycenter.utils.Parametros;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class MultiplesAsesoresSteps extends ScenarioSteps {
     MultiplesAsesoresPage multiplesAsesoresPage;
@@ -14,7 +15,7 @@ public class MultiplesAsesoresSteps extends ScenarioSteps {
         multiplesAsesoresPage.adicionarAsesoresDeComision();
     }
     @Step
-    public void ingresarInformacionDelAsesor(Parametros parametros) {
+    public void ingresarInformacionDelAsesor(ExamplesTable parametros) {
        multiplesAsesoresPage.ingresarInformacionDelAsesor(parametros);
     }
     @Step
