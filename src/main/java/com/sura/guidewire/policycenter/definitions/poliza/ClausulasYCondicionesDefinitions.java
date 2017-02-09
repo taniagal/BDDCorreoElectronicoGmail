@@ -24,5 +24,11 @@ public class ClausulasYCondicionesDefinitions {
         String estadodos ="";
         clausulasYCondicionesSteps.validarOpciones(listaopciones,estadouno,estadodos);
     }
+
+    @Then("se deben mostrar en el menu lateral las siguientes opciones en <estado> $listamenulateral")
+    public void entoncesSeDebenMostrarEnMenuLateralLasSiguientesOpciones(ExamplesTable listamenulateral, @Named("estado") String estado) {
+        clausulasYCondicionesSteps.validarOpcionesMenuLateral(listamenulateral,estado);
+    }
+
 }
 

@@ -26,7 +26,7 @@ Then deben estar en estado <estadouno> las siguientes opciones
 
 
 Examples:
-| numSubscripcion | rolUsuario | estadodos  |
+| numSubscripcion | rolUsuario | estadouno  |
 | 33344336        | Asesor     | Visible    |
 
 

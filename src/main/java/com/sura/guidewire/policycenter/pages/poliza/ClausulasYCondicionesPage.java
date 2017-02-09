@@ -20,7 +20,8 @@ public class ClausulasYCondicionesPage extends PageUtil {
     WebElementFacade lblClausulasYExclusiones;
 
     private static final String pathInicialExclusionesYClausulas = ".//*[contains(@id,'SubmissionWizard') and contains(.,'";
-    private static final String pathFinalExclusionesYClausulas = "')]";
+    private static final String pathFinal = "')]";
+    private static final String pathMenuLateral = ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
 
 
 
@@ -33,6 +34,10 @@ public class ClausulasYCondicionesPage extends PageUtil {
     }
 
     public void validarOpciones(ExamplesTable listaopciones,String estadouno,String estadodos) {
-              opcionesInformacionPolizaMrcPage.validarCampos(estadouno,estadodos,listaopciones,pathInicialExclusionesYClausulas,pathFinalExclusionesYClausulas);
+              opcionesInformacionPolizaMrcPage.validarCampos(estadouno,estadodos,listaopciones,pathInicialExclusionesYClausulas, pathFinal);
+    }
+
+    public void validarOpcionesMenuLateral(ExamplesTable listaopciones,String estado) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estado,listaopciones,pathMenuLateral, pathFinal);
     }
 }

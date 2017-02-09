@@ -23,6 +23,9 @@ public class ClausulasYCondicionesSteps extends ScenarioSteps {
 
     public void validarOpciones(ExamplesTable listaopciones,String estadouno, String estadodos){
         clausulasYCondicionesPage.validarOpciones(listaopciones,estadouno,estadodos);
+    }
 
+    public void validarOpcionesMenuLateral(ExamplesTable listaopciones,String estado){
+        clausulasYCondicionesPage.validarOpcionesMenuLateral(listaopciones,estado);
     }
 }
