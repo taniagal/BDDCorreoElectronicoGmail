@@ -28,6 +28,7 @@ When agregue una nueva ubicacion:
 And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas|
 |Building |100000000       |Danos     |
+And haga clic en el boton Aceptar
 And cotice y expida la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
