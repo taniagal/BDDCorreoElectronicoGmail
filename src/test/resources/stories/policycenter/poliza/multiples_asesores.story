@@ -1,7 +1,7 @@
 Meta:
-@lote3
+@lote1
 @tag equipo: billing
-@sprint 12
+@sprint 13
 
 Narrative:
 1.Se requiere la creacion de una tabla relacionada al Policy Period que permita el almacenamiento de varios producer code para una poliza.
