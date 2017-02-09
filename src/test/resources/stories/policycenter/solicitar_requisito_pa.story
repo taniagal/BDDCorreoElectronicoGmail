@@ -1,10 +1,7 @@
-Solicitar Requisito Pa
-
 Meta:
-@lote3
+@lote4
 @issue #CDSEG-2881
 @tag equipo: 5
-@local
 @Sprint 9
 
 Narrative:

@@ -1,9 +1,7 @@
-Solicitar Sarlaft
-
-Meta:@lote3
+Meta:
+@lote4
 @issue #CDSEG-834
 @tag equipo: 5
-@local
 @Sprint 10
 
 Narrative:

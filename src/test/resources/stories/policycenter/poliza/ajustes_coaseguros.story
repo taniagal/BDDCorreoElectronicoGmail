@@ -1,5 +1,5 @@
 Meta:
-@lote2
+@lote4
 @tag equipo: 2
 @Sprint 9
 
@@ -17,9 +17,9 @@ And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ACE SEGUROS S.A.                    | 40            |
 And de clic en Aceptar de la ventana Coaseguro
 Then se debe validar que se muestren los mensajes de obligatoriedad siguientes
-| MENSAJES_WORKSPACE                                |
-| Póliza de referencia : Falta el campo obligatorio |
-| Número de documento : Falta el campo obligatorio  |
+| mensaje                                           |
+| Póliza de referencia : Falta el campo obligatorio "Póliza de referencia" |
+| Número de documento : Falta el campo obligatorio "Número de documento"   |
 
 Examples:
 | TipoCo   | numCuenta  | departamento | ciudad   | direccion         | descripcion   | actividad                     |

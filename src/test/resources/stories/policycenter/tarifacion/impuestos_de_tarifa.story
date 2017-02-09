@@ -1,5 +1,5 @@
 Meta:
-@lote4
+@lote3
 @sprint 10
 @tag equipo: 4
 

@@ -36,6 +36,16 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresarValorComercialAsegurado(String valorcomercial) {
+        edificiosyUbicacionesWidget.ingresarValorComercialAsegurado(valorcomercial);
+    }
+
+    @Step
+    public void verificarMensajeValorComercialA() {
+        edificiosyUbicacionesWidget.verificarMesnComercialA();
+    }
+
+    @Step
     public void ingresarNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion) {
         edificiosyUbicacionesWidget.ingresarNuevaUbicacionSinRiesgoConsultable(datosUbicacion);
     }
@@ -123,16 +133,23 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void desseleccionarArticulo(){
+    public void desseleccionarArticulo() {
         edificiosyUbicacionesWidget.desseleccionarArticulo();
 
     }
 
     @Step
-    public void retirarBeneficiarioOnerosoAlArticulo(){
+    public void seleccionarCheckAseguradoValorComercial() {
+        edificiosyUbicacionesWidget.seleccionarCheckAseguradoValorComercial();
+    }
+
+
+    @Step
+    public void retirarBeneficiarioOnerosoAlArticulo() {
         edificiosyUbicacionesWidget.retirarBeneficiarioOnerosoAlArticulo();
     }
 
+    @Step
     public void ingresarCoberturas(ExamplesTable entradas) {
         int index = 0;
         for (Map<String, String> entradaCobertura : entradas.getRows()) {
@@ -157,15 +174,16 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
+    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado) {
         edificiosyUbicacionesWidget.ingresarInteresAdicionalAUnSoloArticulo(interesado);
     }
 
     @Step
-    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso) {
         edificiosyUbicacionesWidget.agregarInteresAdicionalCambioPoliza(agregaroneroso);
     }
 
+    @Step
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
         if ("Coberturas del Riesgo".equals(tab)) {
             seleccionarTab(tab);
@@ -195,9 +213,9 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgoPolizaColectiva(String cobertura, String entrada, String valorEntrada) {
         seleccionarCoberturaDelRiesgo(cobertura);
         edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
- }
+    }
 
-    private void seleccionarCoberturaDelRiesgo(String cobertura) {
+    public void seleccionarCoberturaDelRiesgo(String cobertura) {
         if (!edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
             edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
         }
@@ -223,7 +241,6 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void validarNoVisibilidadDeObjeto() {
         edificiosyUbicacionesWidget.validarNoVisibilidad();
     }
-
 
     public void seleccionarElTipoDeMercanciaFlotante(String tipoMercancia) {
         edificiosyUbicacionesWidget.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);

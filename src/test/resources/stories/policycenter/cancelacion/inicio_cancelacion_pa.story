@@ -1,11 +1,8 @@
-Inicio Cancelacion Pa
-
-Meta: @lote2
-
+Meta:
+@lote4
 @issue #USC-14730
 @tag equipo: 3
-@local
-Sprint 8
+@sprint 8
 
 Narrative:
 Como usuario de PolicyCenter

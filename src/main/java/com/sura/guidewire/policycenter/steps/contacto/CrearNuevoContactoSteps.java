@@ -38,11 +38,6 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crear_persona() {
-        nuevoContactoPage.btnActualizarPersonaNatural();
-    }
-
-    @Step
     public void ingresarNumeroDocumentoPersonaNatural(String numeroDocumento) {
         if ("".equals(cedula) || "".equals(nit)) {
             initRandoms();
@@ -85,6 +80,11 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresarNombreComercial(String nombreComercial) {
+        nuevoContactoPage.ingresarNombreComercial(nombreComercial);
+    }
+
+    @Step
     public void nuevoContactoPersona() {
         inicioPage().irANuevaPersona();
     }
@@ -113,6 +113,16 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     @Step
     public void verificarContactoExistente() {
         nuevoContactoPage.verificarContactoExistente();
+    }
+
+    @Step
+    public void ingresarFechaDeNacimiento(String fecha) {
+        nuevoContactoPage.ingresarFechaDeNacimiento(fecha);
+    }
+
+    @Step
+    public void ingresarSegundoNombreYSegundoApellido(String segundoNombre, String segundoApellido) {
+        nuevoContactoPage.ingresarSegundoNombreYSegundoApellido(segundoNombre, segundoApellido);
     }
 
 }

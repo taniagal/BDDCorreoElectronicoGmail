@@ -1,7 +1,5 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import java.util.concurrent.TimeUnit;
-
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -9,20 +7,22 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class CuentasAsociadasAContactoPage extends PageUtil {
 
     @FindBy(xpath = "//td[@id='ContactFile:MenuLinks:ContactFile_ContactFile_Accounts']/div")
     private WebElementFacade mnuLateralCuenta;
-    @FindBy(xpath = "//div/table/tbody/tr/td[2]/div")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[2]")
     private WebElementFacade nombreContactoCuenta;
-    @FindBy(xpath = "//td[3]/div")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[3]")
     private WebElementFacade direccionContactoCuenta;
-    @FindBy(xpath = "//td[4]/div")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[4]")
     private WebElementFacade telContactoCuenta;
-    @FindBy(xpath = "//td[5]/div")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[5]")
     private WebElementFacade emailContactoCuenta;
-    @FindBy(xpath = "//td[6]/div")
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:AssociatedAccountsLV-body']/*/table/tbody/tr/td[6]")
     private WebElementFacade rolesContactoCuenta;
     @FindBy(xpath = ".//*[@id='ContactFile_Accounts:panelRefInfoMessage:InfoMessage_ExtDV:message']")
     private WebElementFacade msjCuentaNoEncontrada;
@@ -36,11 +36,14 @@ public class CuentasAsociadasAContactoPage extends PageUtil {
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(mnuLateralCuenta).waitUntilPresent();
         mnuLateralCuenta.click();
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(nombreContactoCuenta).waitUntilPresent();
-        MatcherAssert.assertThat(nombreContactoCuenta.getText(), Matchers.containsString(nombre));
-        MatcherAssert.assertThat(direccionContactoCuenta.getText(), Matchers.containsString(direccion));
-        MatcherAssert.assertThat(telContactoCuenta.getText(), Matchers.containsString(telefono));
-        MatcherAssert.assertThat(emailContactoCuenta.getText(), Matchers.containsString(email));
-        MatcherAssert.assertThat(rolesContactoCuenta.getText(), Matchers.containsString(rol));
+        esperarHasta(TIEMPO_2000);
+        MatcherAssert.assertThat("Error, no se encontró el contacto " + nombre + " but was: " + nombreContactoCuenta.getText()
+                , nombreContactoCuenta.containsText(nombre));
+        MatcherAssert.assertThat("Error, no se encontró la direccion " + direccion, direccionContactoCuenta.containsText(direccion));
+        MatcherAssert.assertThat("Error, no se encontró el telefono " + telefono, telContactoCuenta.containsText(telefono));
+        MatcherAssert.assertThat("Error, no se encontró el email " + email, emailContactoCuenta.containsText(email));
+        MatcherAssert.assertThat("Error, no se encontró el rol " + rol + " but was: " + rolesContactoCuenta.getText(),
+                rolesContactoCuenta.containsText(rol));
     }
 
     public void validarMensaje(String mensaje) {

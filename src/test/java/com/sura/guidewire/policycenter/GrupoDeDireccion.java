@@ -1,4 +1,6 @@
 package com.sura.guidewire.policycenter;
 
-public class GrupoDeDireccion{
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class GrupoDeDireccion extends SerenityStory{
 }
