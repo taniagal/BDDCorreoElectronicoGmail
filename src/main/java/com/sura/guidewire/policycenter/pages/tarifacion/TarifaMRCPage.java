@@ -10,11 +10,16 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class TarifaMRCPage extends PageUtil {
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
+    private WebElementFacade botonAgregarContacto;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']")
+    private WebElementFacade botonAgregarContactoDelDirectorio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -45,8 +50,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade checkBoxChecBoxAseguradoAValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCobertura;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
-    private WebElementFacade checkBoxDaniosMateriales;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxDaniosMaterialesMaquinaria;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -59,26 +62,27 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
     private WebElementFacade labelcobertura;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_true-inputEl']")
-    private WebElementFacade radioBotonDeducibleSi;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']")
-    private WebElementFacade radioBotonDeducibleNo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[3]/td[1]")
+    private WebElementFacade labelDescripcionCobertura;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:Modifiers']")
     private WebElementFacade menuItemModificadores;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[3]/td[3]")
     private WebElementFacade montoCobertura;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[5]/td[3]")
     private WebElementFacade montoCobertura2;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[3]/td[1]")
-    private WebElementFacade labelDescripcionCobertura;
-    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
-    private WebElementFacade linkDescartarCambios;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
-    private WebElementFacade botonAgregarContacto;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']")
-    private WebElementFacade botonAgregarContactoDelDirectorio;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_true-inputEl']")
+    private WebElementFacade radioBotonDeducibleSi;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']")
+    private WebElementFacade radioBotonDeducibleNo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']")
     private WebElementFacade tablaPrimas;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageFloatExixtences:ArticleTypeDetailDV:AverageExposure_Input-inputEl']")
+    private WebElementFacade campoTxtExposicionPromedio;
+    @FindBy(id = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade chex;
+
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr";
@@ -224,9 +228,11 @@ public class TarifaMRCPage extends PageUtil {
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
 
-    public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        ingresarDato(campoTxtIndiceVariable, valorIndice);
-        clickearElemento(checkBoxDaniosMateriales);
+    public void seleccionarCoberturaDanios() {
+        WebElementFacade checkBoxDaniosMateriale = $(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']");
+        esperarYClickearBoton(checkBoxDaniosMateriale);
+        esperarYClickearBoton(checkBoxDaniosMateriale);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void agregarContactoDelDirectorio() {
@@ -260,13 +266,15 @@ public class TarifaMRCPage extends PageUtil {
 
     public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos) {
         for (Map<String, String> dato : datos.getRows()) {
-            WebElementFacade campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:AmountSubject_Input-inputEl']");
+            WebElementFacade campoTxtValorAsegurable = $(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:AmountSubject') and contains(@id,'_Input-inputEl')]");
             WebElementFacade checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:Has" + dato.get(ARTICULO) + "-inputEl']");
             if ("Furniture".equals(dato.get(ARTICULO))) {
                 checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFixture-inputEl']");
             } else if ("Building".equals(dato.get(ARTICULO))) {
                 campoTxtValorAsegurable = $(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']");
                 checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']");
+            } else if ("FloatExixtences".equals(dato.get(ARTICULO))) {
+                checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFloatExistences-inputEl']");
             }
             clickearElemento(checkBoxArticulo);
             campoTxtValorAsegurable.waitUntilPresent().sendKeys(dato.get("valor_asegurable"));
@@ -276,6 +284,9 @@ public class TarifaMRCPage extends PageUtil {
 
     public void llenarCoberturas(Map<String, String> dato) {
         String[] coberturas = dato.get("coberturas").split(",");
+        if (dato.get("exposicionpromedio") != null) {
+            campoTxtExposicionPromedio.waitUntilPresent().sendKeys(dato.get("exposicionpromedio"));
+        }
         for (String cobertura2 : coberturas) {
             List<WebElementFacade> checkBoxesCoberturas = findAll(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
             for (int j = 0; j < checkBoxesCoberturas.size(); j++) {

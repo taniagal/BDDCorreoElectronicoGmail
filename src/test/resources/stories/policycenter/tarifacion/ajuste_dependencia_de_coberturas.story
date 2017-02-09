@@ -27,8 +27,8 @@ Examples:
 
 Scenario:  Verificar dependencia de cobertura de accidentes al conductor a las coberturas de daños o hurto con plan global
 Given estoy cotizando una poliza:
-|cuenta     |producto|tipoPoliza |
-|C1060447895|Autos   |Individual |
+|cuenta    |producto|tipoPoliza |
+|C002888993|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan             |

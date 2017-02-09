@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -13,6 +14,9 @@ public class ExpedicionDePolizaDefinitions {
 
     @Steps
     ExpedicionDePolizaSteps expedicionDePolizaSteps;
+
+    @Steps
+    PolizaPrincipalPaSteps polizaPrincipalPaSteps;
 
     @Given("Que tengo una cotizacion <cotizacion> y voy a crear una poliza")
     public void ingresaInformacionPoliza(@Named("cotizacion")String cotizacion) {
@@ -74,6 +78,7 @@ public class ExpedicionDePolizaDefinitions {
     public void validarMensajesDeRiesgos(@Named("mensaje") String mensaje, @Named("mensaje2") String mensaje2) {
         expedicionDePolizaSteps.validar_mensaje_direccion(mensaje);
         expedicionDePolizaSteps.validar_mensaje_direccion(mensaje2);
+        polizaPrincipalPaSteps.validarMenuOpcionFormulariosNoEsVisible();
     }
 
     @Then("El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>")

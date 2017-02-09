@@ -110,6 +110,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade menuItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']/div")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:_msgs']")
+    private WebElementFacade divMensaje2;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     WebElementFacade botonAceptarCoaseguro;
     @FindBy(xpath = "//span[contains(.,'Información de póliza')]")
@@ -324,7 +326,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void validarMensajesCoaseguros(ExamplesTable mensajesEsperados) {
-        verificarMensajes($(".message"), mensajesEsperados);
+        verificarMensajes(divMensaje2, mensajesEsperados);
     }
 
     public void noHabilitarNumeroDocumentoCoaseguro() {

@@ -3,8 +3,11 @@ package com.sura.guidewire.policycenter.pages.contacto;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.constantes.EnumContacto;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,38 +17,48 @@ import org.openqa.selenium.WebDriver;
 
 public class NuevoContactoPage extends PageUtil {
 
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:OfficialIDInputSet:DocumentType-inputEl')]")
     private WebElementFacade tipoDocumento;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl')]")
     private WebElementFacade numeroDocumento;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl')]")
     private WebElementFacade primerNombre;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl')]")
+    private WebElementFacade campoSegundoNombre;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:LastName-inputEl')]")
     private WebElementFacade primerApellido;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressType-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, ':ContactNameInputSet:GlobalPersonNameInputSet:Particle-inputEl')]")
+    private WebElementFacade campoSegundoApellido;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressType-inputEl')]")
     private WebElementFacade tipoDireccion;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Address') and contains(@id, 'inputEl')]")
     private WebElementFacade direccion;
-    @FindBy(xpath = ".//*[@id='NewContact:ForceDupCheckUpdate-btnInnerEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'Update-btnInnerEl')]")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade nombreContact;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl')]")
     private WebElementFacade razonSocial;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-inputEl')]")
+    private WebElementFacade nombreComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade desRazonSocial;
     @FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
     private WebElementFacade contactoExistente;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl')]")
     private WebElementFacade tipoTelefono;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl')]")
     private WebElementFacade telefonoTrabajo;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet') and contains(@id, 'inputEl')]")
     private WebElementFacade telefonoResidencia;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl')]")
     private WebElementFacade comboBoxDepartamento;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl')]")
     private WebElementFacade comboBoxCiudad;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DateOfBirth-inputEl')]")
+    private WebElementFacade fechaDeNacimiento;
+    @FindBy(xpath = "//*[contains(@id, 'ContactDV:ContactCurrency:ContactCurrencyInputSet:PreferredSettlementCurrency-inputEl')]")
+    private WebElementFacade campoMonedaFavorita;
 
     public NuevoContactoPage(WebDriver driver) {
         super(driver);
@@ -71,21 +84,21 @@ public class NuevoContactoPage extends PageUtil {
     }
 
     public void seleccionarTipoDireccion(String tipoDireccion) {
-        seleccionarItem(this.tipoDireccion,tipoDireccion);
+        seleccionarItem(this.tipoDireccion, tipoDireccion);
     }
 
 
     public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
-        this.direccion.sendKeys(direccion);
-        seleccionarItem(comboBoxDepartamento,departamento);
-        esperarPorValor(comboBoxDepartamento,departamento);
+        this.direccion.type(direccion);
+        seleccionarItem(comboBoxDepartamento, departamento);
+        esperarPorValor(comboBoxDepartamento, departamento);
         esperarHasta(TIEMPO_2000);
-        seleccionarItem(comboBoxCiudad,ciudad);
-        esperarPorValor(comboBoxCiudad,ciudad);
+        seleccionarItem(comboBoxCiudad, ciudad);
+        esperarPorValor(comboBoxCiudad, ciudad);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
-        actualizar();
+        this.actualizar();
         nombreContact.waitUntilPresent();
         MatcherAssert.assertThat(nombreContact.getText(), Matchers.containsString(primerNombre));
     }
@@ -118,10 +131,15 @@ public class NuevoContactoPage extends PageUtil {
 
     /**
      * Escenario nuevo contacto persona juridica
+     *
      * @param razonSocial
      */
     public void ingresarRazonSocial(String razonSocial) {
         this.razonSocial.type(razonSocial);
+    }
+
+    public void ingresarNombreComercial(String nombreComercial) {
+        this.nombreComercial.type(nombreComercial);
     }
 
     public void actualizarJuridica(String razonSocial) {
@@ -129,14 +147,14 @@ public class NuevoContactoPage extends PageUtil {
         this.botonActualizar.click();
         esperarHasta(TIEMPO_2000);
         desRazonSocial.waitUntilPresent();
-        MatcherAssert.assertThat(this.desRazonSocial.getText().toString(), Matchers.containsString(razonSocial));
+        MatcherAssert.assertThat(this.desRazonSocial.getText(), Matchers.containsString(razonSocial));
 
     }
 
     public void verificarContactoExistente() {
         clickearElemento(botonActualizar);
         esperarHasta(TIEMPO_1000);
-        MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
+        MatcherAssert.assertThat(this.contactoExistente.getText(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {
@@ -177,5 +195,55 @@ public class NuevoContactoPage extends PageUtil {
 
     public void btnActualizarPersonaNatural() {
         botonActualizar.click();
+    }
+
+    public boolean validarCamposEditablesDeEdicionDeContacto() {
+        boolean editables = false;
+        if ("NIT".equals(tipoDocumento.getText())) {
+            if (super.esCampoEditable(tipoDocumento) && super.esCampoEditable(numeroDocumento)) {
+                editables = true;
+            }
+        } else {
+            if (super.esCampoEditable(tipoDocumento) && super.esCampoEditable(numeroDocumento) && super.esCampoEditable(fechaDeNacimiento)) {
+                editables = true;
+            }
+        }
+        return editables;
+    }
+
+    public void ingresarFechaDeNacimiento(String fecha) {
+        fechaDeNacimiento.sendKeys(fecha);
+    }
+    public void ingresarMonedaFavorita(String moneda) {
+        super.seleccionarItem(campoMonedaFavorita, moneda);
+    }
+
+    public void ingresarSegundoNombreYSegundoApellido(String segundoNombre, String segundoApellido) {
+        campoSegundoNombre.type(segundoNombre);
+        campoSegundoApellido.type(segundoApellido);
+    }
+
+    public Map<String, String> obtenerDatosDeLaPantalla() {
+        Map<String, String> datosDePantalla = new HashMap<>();
+        datosDePantalla.put("primerNombre", primerNombre.getText());
+        datosDePantalla.put("segundoNombre", campoSegundoNombre.getText());
+        datosDePantalla.put("primerApellido", primerApellido.getText());
+        datosDePantalla.put("segundoApellido", campoSegundoApellido.getText());
+        datosDePantalla.put("direccion", direccion.getText());
+        datosDePantalla.put("tipoDireccion", tipoDireccion.getText());
+        datosDePantalla.put("tipoTelefono", tipoTelefono.getText());
+        datosDePantalla.put("telefono", telefonoResidencia.getText());
+        datosDePantalla.put("moneda", campoMonedaFavorita.getText());
+        return datosDePantalla;
+    }
+
+    public Map<String, String> obtenerDatosDeCompania() {
+        Map<String, String> datosDePantalla = new HashMap<>();
+        datosDePantalla.put("razonSocial", razonSocial.getText());
+        datosDePantalla.put("nombreComercial", nombreComercial.getText());
+        datosDePantalla.put("direccion", direccion.getText());
+        datosDePantalla.put("tipoDireccion", tipoDireccion.getText());
+        datosDePantalla.put("moneda", campoMonedaFavorita.getText());
+        return datosDePantalla;
     }
 }

@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -167,7 +168,11 @@ public class ModificadoresDeTarifaPage extends PageUtil {
         campoTxtPlaca.sendKeys(placa);
         clickearElemento(radioBotonCehiculo0KmNo);
         clickearElemento(radioBotonCehiculo0KmNo);
-        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtBonificacionComercialCambio, bonoC));
+        try {
+            waitFor(ExpectedConditions.textToBePresentInElement(campoTxtBonificacionComercialCambio, bonoC));
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+        }
         try {
             esperarHasta(TIEMPO_2000);
             MatcherAssert.assertThat("Error, la bonificacion comercial no se recalculó, espected: " + bonoC + " but was: " +

@@ -22,14 +22,13 @@ public class MultiplesAsesoresDefinitions {
         nuevaCotizacionSteps.seleccionarProducto(datosCotizacion);
     }
 
-    @When("Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion\n" +
+    @When("Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la participacion\n" +
             " del 100% de los asesores que intervienen en la poliza:$opciones")
     @Aliases(values = {"se ingresa mas de 8 asesores:$opciones", "no debe permitir ingresar codigo asesor repetidos:$opciones",
             "se ingresa mas del 100% a los asesores:$opciones"})
     public void ingresoDeAsesores(ExamplesTable opciones) {
-
         multiplesAsesoresSteps.adicionarAsesoresDeComision();
-        multiplesAsesoresSteps.ingresarInformacionDelAsesor(new Parametros(opciones));
+        multiplesAsesoresSteps.ingresarInformacionDelAsesor(opciones);
     }
 
     @Then("Debe quedar un asesor con rol:$opciones")

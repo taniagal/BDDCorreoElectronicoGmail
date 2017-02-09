@@ -1,13 +1,14 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class DetallesContactoPage extends PageUtil {
@@ -127,6 +128,7 @@ public class DetallesContactoPage extends PageUtil {
     public static final int CONSTANTE_2 = 2;
     public static final int CONSTANTE_1 = 1;
 
+
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
     }
@@ -139,7 +141,6 @@ public class DetallesContactoPage extends PageUtil {
         menuItemContactos.click();
     }
 
-
     public void editarContacto() {
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
@@ -148,18 +149,15 @@ public class DetallesContactoPage extends PageUtil {
         esperarHasta(TIEMPO_1000);
     }
 
-
     public void actualizaContacto() {
         botonActualizar.click();
         esperarHasta(TIEMPO_1500);
     }
 
-
     public void setDireccion() {
         botonAgregar.click();
         esperarHasta(TIEMPO_2000);
     }
-
 
     public void setNombre(String segundoNombre) {
         campoTxtSegundoNombre.waitUntilPresent();
@@ -169,14 +167,12 @@ public class DetallesContactoPage extends PageUtil {
         dtlContact[CONSTANTE_2] = segundoNombre;
     }
 
-
     public void setApellido(String segundoApellido) {
         campoTxtSegundoApellido.clear();
         esperarHasta(TIEMPO_1500);
         campoTxtSegundoApellido.sendKeys(segundoApellido);
         dtlContact[CONSTANTE_3] = segundoApellido;
     }
-
 
     public void setDatosComboBoxes(String profesion, String estadoCivil, String tipoFamilia) {
         seleccionarItem(comboBoxProfesion, profesion);
@@ -187,7 +183,6 @@ public class DetallesContactoPage extends PageUtil {
         dtlContact[CONSTANTE_8] = tipoFamilia;
     }
 
-
     public void setTelefonosResidencial(String telefonoResidencial) {
         campoTxtTelefonoResidencial.clear();
         esperarHasta(TIEMPO_500);
@@ -195,18 +190,15 @@ public class DetallesContactoPage extends PageUtil {
         dtlContact[CONSTANTE_11] = telefonoResidencial;
     }
 
-
     public void setTelefonoTrabajo(String telefonoTrabajo) {
         ingresarDato(campoTxtTelefonoTrabajo, telefonoTrabajo);
         dtlContact[CONSTANTE_12] = telefonoTrabajo;
     }
 
-
     public void setTelefonoCelular(String telefonoCelular) {
         ingresarDato(campoTxtTelefonoCelular, telefonoCelular);
         dtlContact[CONSTANTE_10] = telefonoCelular;
     }
-
 
     public void setCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario) {
         ingresarDato(campoTxtCorreoElectronicoPrimario, correoElectronicoPrimario);
@@ -215,10 +207,6 @@ public class DetallesContactoPage extends PageUtil {
         dtlContact[CONSTANTE_14] = correoElectronicoSecundario;
     }
 
-
-    /**
-     * DETALLE CONTACTO EDICION PERSONA JURIDICA
-     */
     public void setRazonSocial(String nombreComercial, String actividadComercial) {
         campoTxtNombreComercial.waitUntilPresent();
         campoTxtNombreComercial.clear();
@@ -227,7 +215,6 @@ public class DetallesContactoPage extends PageUtil {
         dtlCntJ[0] = nombreComercial;
         dtlCntJ[CONSTANTE_1] = actividadComercial;
     }
-
 
     public void setEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
         esperarHasta(TIEMPO_500);
@@ -242,7 +229,6 @@ public class DetallesContactoPage extends PageUtil {
         dtlCntJ[CONSTANTE_4] = ventasAnuales;
     }
 
-
     public void setCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario) {
         ingresarDato(campoTxtCorreoElectronicoPrimarioEmpresa, correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
@@ -253,20 +239,11 @@ public class DetallesContactoPage extends PageUtil {
         dtlCntJ[CONSTANTE_7] = correoElectronicoSecundario;
     }
 
-
-    /**
-     * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
-     */
     public void verificarEstadoDeDocumento() {
         MatcherAssert.assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
                 !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
     }
 
-
-    /**
-     * DETALLE CONTACTO EDICION
-     * Valida si los datos ingresados es igual al que se muestran en el detalle
-     */
     public void verificarActualizacion() {
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
         waitFor(campoTxtSegundoNombre).shouldBePresent();
@@ -290,7 +267,6 @@ public class DetallesContactoPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
 
-
     public void verificarActualizacionJuridico() {
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
         waitFor(comboBoxActividadComercial).shouldBePresent();
@@ -309,10 +285,6 @@ public class DetallesContactoPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
 
-    /**
-     * DETALLE CONTACTO
-     * Valida si estos elementos están presentes
-     */
     public void verificarCamposPersonaNatural() {
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
         labelPrimerNombre.waitUntilPresent();
@@ -336,7 +308,6 @@ public class DetallesContactoPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-
     public void verificarCamposPersonaJuridica() {
         labelRazonSocial.waitUntilPresent();
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
@@ -354,12 +325,10 @@ public class DetallesContactoPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-
     public void validarDireccion() {
         List<WebElementFacade> contactos = getLista(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
         MatcherAssert.assertThat("Error en la direccion agregada", contactos.get(1).getText().contains("CL 60 B # 10 - 157") || contactos.get(1).getText().contains("CALLE 60B #10-157"));
     }
-
 
     public void validarMensaje(String mensaje) {
         verificarMensaje(divMensaje, mensaje);

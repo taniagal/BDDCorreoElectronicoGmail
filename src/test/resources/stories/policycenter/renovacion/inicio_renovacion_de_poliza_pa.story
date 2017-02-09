@@ -18,8 +18,8 @@ GivenStories: stories/policycenter/login_policy.story
 Given que es necesario renovar una <poliza> de autos
 When quiera realizar esta renovacion
 Then se debe validar los datos del tomador:
-|cedulaTomador|nombre                         |oficinaRadicacion|codAgente|rol    |
-|1234567891   |DORIAN STIWAR EASTMOND PULGARIN|SURA             |4999     |tomador|
+|cedulaTomador|nombre                         |oficinaRadicacion|codAgente     |rol    |
+|1234567891   |DORIAN STIWAR EASTMOND PULGARIN|null > null      |4999 > DIRECTO|tomador|
 And validar campos informativos de asegurado:
 |cedulaAsegurado|pNombre|pApellido|rol      |
 |1294567891     |VRALLAN|ESTIGUAR |asegurado|

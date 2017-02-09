@@ -103,6 +103,7 @@ public class NuevaCotizacionPage extends PageUtil {
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
                 try {
+                    esperarHasta(TIEMPO_2000);
                     descripcion.waitUntilPresent();
                 } catch (StaleElementReferenceException e) {
                     LOGGER.info("StaleElementReferenceException " + e);
@@ -191,6 +192,7 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void seleccionarOficinaDeRadicacionYAgente(String oficina, String agente) {
+        comboBoxOficinaDeRadicacion.waitUntilPresent();
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
         seleccionarItem(comboBoxNombreAgente, agente);
     }

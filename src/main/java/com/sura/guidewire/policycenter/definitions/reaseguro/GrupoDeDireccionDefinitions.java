@@ -29,7 +29,7 @@ public class GrupoDeDireccionDefinitions {
         informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
     }
 
-    @When("quiera reasegurar la poliza expedida")
+    @When("quiera reasegurar la poliza cotizada")
     public void whenIngreseALaOpcionDeReaseguro() {
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
     }
