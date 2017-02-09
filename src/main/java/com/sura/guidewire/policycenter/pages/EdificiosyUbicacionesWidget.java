@@ -251,7 +251,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         Boolean esSeleccionado = false;
         setImplicitTimeout(0, TimeUnit.SECONDS);
         try {
-            waitForAnyTextToAppear(tab);
+            waitForAnyTextToAppear(tab,"Agregar Otro Articulo");
             shouldContainText(tab);
             String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
             String classProp = $(xpathTab).getAttribute("class");
@@ -406,54 +406,64 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
-        String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        WebElementFacade xLinkAgregarOtrosArticulos = $("//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]");
+        setImplicitTimeout(0, TimeUnit.SECONDS);
         if (esOtroArticulo) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
-            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
+            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().click();
         }
-        if (isElementVisible(By.xpath(xLinkAgregarOtrosArticulos))) {
+        resetImplicitTimeout();
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        if (xLinkAgregarOtrosArticulos.isVisible()) {
             cliclearBtnAgregarArticulo();
             ingresarInputTiposDeArticulos(tipoArticulo);
-            waitFor(TIEMPO_3).seconds();
             ingresarTextAreaDescripcion(tipoArticulo);
         }
         if (cobertura.length() > 0) {
             seleccionarCobertura(obtenerDivCobertura(cobertura), cobertura);
-            waitFor(TIEMPO_2).seconds();
             ingresarEntrada(entrada, valorEntrada);
         } else {
             ingresarEntrada(entrada, valorEntrada);
         }
         if (esUltimaFilaDeExampleTable) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
-            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
+            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().click();
         }
         resetImplicitTimeout();
     }
 
     public void ingresarEntrada(String entrada, String valorEntrada) {
         WebElementFacade divEntradasAgregarOtroArticulo;
+        setImplicitTimeout(TIEMPO_2,TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(XPATH_PARTE1 + entrada + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + entrada + XPATH_PARTE2);
             WebElementFacade entradaOtroArticulo = divEntradasAgregarOtroArticulo.findBy(XPATH2_PARTE1 + entrada + XPATH2_PARTE2);
             WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName(INPUT));
             enter(valorEntrada).into(inputValorEntrada);
         }
+        resetImplicitTimeout();
     }
 
     public WebElementFacade obtenerDivCobertura(String cobertura) {
         WebElementFacade divEntradasAgregarOtroArticulo = null;
+        setImplicitTimeout(TIEMPO_2,TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(XPATH_PARTE1 + cobertura + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + cobertura + XPATH_PARTE2);
         }
+        resetImplicitTimeout();
         return divEntradasAgregarOtroArticulo;
     }
 
     public void seleccionarCobertura(WebElementFacade divEntradasAgregarOtroArticulo, String cobertura) {
         WebElementFacade xpathTrCoberturaDeRiesgo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::div[contains(., '" + cobertura + "')])] ");
         WebElementFacade inputCoberturaDeRiesgo = xpathTrCoberturaDeRiesgo.find(By.tagName(INPUT));
-        withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        try {
+            inputCoberturaDeRiesgo.waitUntilPresent();
+            withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException " + e);
+            withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        }
         inputCoberturaDeRiesgo.click();
     }
 
@@ -493,7 +503,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitForTextToAppear("Tipos de Artículos");
         String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
-        waitFor(TIEMPO_4).second();
+        esperarHasta(TIEMPO_2000);
         $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
         esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
     }

@@ -75,7 +75,7 @@ Meta:
 Given estoy editando la renovacion de una poliza
 When estoy en la pantalla de Informacion de poliza
 And indique que SI deseo financiar la poliza y seleccione la opcion siguiente
-Then se debe  mostrar el siguiente mensaje "La financiacion de la poliza esta sujeta a aprobacion
+Then se debe mostrar el o los siguientes mensajes "La financiacion de la poliza esta sujeta a aprobacion
 por parte del area de financiacion" como advertencia
 
 
