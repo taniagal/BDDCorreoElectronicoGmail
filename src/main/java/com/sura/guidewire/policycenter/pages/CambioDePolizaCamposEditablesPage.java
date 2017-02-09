@@ -61,14 +61,14 @@ public class CambioDePolizaCamposEditablesPage extends PageUtil {
 
     }
 
-    public void cambiarAPlanBasico(String plan) {
-        ingresarDato(txtPlanVehicular, plan);
-        botonPlanAutosClasico.click();
+    public void cambiarAPlanBasico(String planBasico) {
+        ingresarDato(txtPlanVehicular, planBasico);
+        botonPlanAutosBasico.click();
     }
 
-    public void cambiarAPlanClasico(String planBasico) {
-        ingresarDato(txtPlanVehicular,planBasico);
-        botonPlanAutosBasico.click();
+    public void cambiarAPlanClasico(String plan) {
+        ingresarDato(txtPlanVehicular,plan);
+        botonPlanAutosClasico.click();
 
     }
 }

@@ -112,6 +112,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     WebElementFacade botonAceptarCoaseguro;
+    @FindBy(xpath = "//span[contains(.,'Información de póliza')]")
+    WebElementFacade menuItemInformacionDePolizaTransaccion;
 
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
@@ -254,8 +256,16 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarInformacionDePoliza() {
-        lblInformaPolizaEnRenovacion.click();
-        waitForTextToAppear("Información de póliza");
+        if(menuItemInformacionDePolizaTransaccion.isPresent()){
+            menuItemInformacionDePoliza.click();
+        }
+        else{
+            if(lblInformaPolizaEnRenovacion.isPresent()){
+                lblInformaPolizaEnRenovacion.click();
+                waitForTextToAppear("Información de póliza");
+            }
+        }
+
     }
 
     public void ingresarAInformacionDePoliza() {
