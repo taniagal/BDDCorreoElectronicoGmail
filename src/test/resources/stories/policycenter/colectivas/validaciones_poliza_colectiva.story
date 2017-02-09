@@ -91,10 +91,8 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When cotice una poliza principal
 Then deben estar en estado <estadouno> las siguientes opciones
 | OPCIONES_MENU   |
-| Formularios     |
 | Pago            |
 | Notas           |
-| Documento       |
 | Participantes   |
 | Plan de trabajo |
 | Historial       |
