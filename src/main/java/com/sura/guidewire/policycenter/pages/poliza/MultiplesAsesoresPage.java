@@ -80,7 +80,7 @@ public class MultiplesAsesoresPage extends PageUtil {
             actions.sendKeys(Keys.TAB).build().perform();
             i++;
         }
-        clickearElemento(botonAceptar);
+        clickearElemento(botonAceptar, CONSTANTE_DOS);
     }
     public void validacionMensaje(Parametros parametros) {
         esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);

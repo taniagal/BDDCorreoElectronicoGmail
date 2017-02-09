@@ -32,7 +32,7 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
     @Step
     public void validarLaVisibilidadDeLaSeccionHerramientasDelMenuLateral() {
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralNotasVisible(), Is.is(Matchers.equalTo(true)));
-        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralDocumentosVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralDocumentosVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralParticipantesVisible(), Is.is(Matchers.equalTo(true)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralPlanDeTrabajoVisible(), Is.is(Matchers.equalTo(true)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralHistorialVisible(), Is.is(Matchers.equalTo(true)));

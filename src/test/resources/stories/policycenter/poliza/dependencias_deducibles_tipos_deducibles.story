@@ -16,7 +16,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Edificios     | Danos materiales | Deducible porcentual danos materiales         |                  |
 | Información de Artículos | Edificios     | Danos materiales | Tipo de deducible porcentual danos materiales | Valor Asegurable |
 When haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                                                                                  |
 | El valor del "Sublimite para gastos asociados a la ocurrencia de una perdida" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                         |
 Examples:

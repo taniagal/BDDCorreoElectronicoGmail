@@ -27,7 +27,6 @@ public class MultiplesAsesoresDefinitions {
     @Aliases(values = {"se ingresa mas de 8 asesores:$opciones", "no debe permitir ingresar codigo asesor repetidos:$opciones",
             "se ingresa mas del 100% a los asesores:$opciones"})
     public void ingresoDeAsesores(ExamplesTable opciones) {
-
         multiplesAsesoresSteps.adicionarAsesoresDeComision();
         multiplesAsesoresSteps.ingresarInformacionDelAsesor(opciones);
     }
