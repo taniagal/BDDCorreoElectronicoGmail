@@ -345,7 +345,7 @@ public class TarifaMRCPage extends PageUtil {
         ingresarDato(campoTxtIndiceVariable, valorIndice);
     }
 
-    public void validarDasaGlobal(String tasa) {
+    public void validarTasaGlobal(String tasa) {
         menuItemModificadores.waitUntilPresent();
         clickearElemento(menuItemModificadores);
         campoTxtTasaGlobal.waitUntilPresent();

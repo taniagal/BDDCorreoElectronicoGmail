@@ -101,7 +101,7 @@ public class TarifaMRCSteps extends ScenarioSteps {
 
     @Step
     public void validarTasaGlobal(String tasa) {
-        tarifaMRCPage.validarDasaGlobal(tasa);
+        tarifaMRCPage.validarTasaGlobal(tasa);
     }
 
     @Step

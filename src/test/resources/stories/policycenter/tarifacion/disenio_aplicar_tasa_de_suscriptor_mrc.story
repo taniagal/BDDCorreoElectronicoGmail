@@ -18,7 +18,7 @@ When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                        |
 |Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Actividades de agencias de empleo|
 And seleccione algunos articulos y sus cobertura:
-|articulo |valor_asegurable|coberturas             		  |
+|articulo |valor_asegurable|coberturas             |
 |Building |120000000       |Danos,Asonada,Terremoto|
 And ingrese las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
@@ -28,7 +28,7 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |articulo  |descripcion                      |valor  |
 |Edificio  |Cobertura de Danos materiales    |41.040 |
 |Edificio  |Cobertura de Terremoto           |122.000|
-|Edificio  |Cobertura de Asonada             |8.821  |
+|Edificio  |Cobertura de Asonada             |8.581  |
 |Edificio  |Cobertura de Sustraccion         |4.560  |
 And debo poder ver el valor de la prima <prima> en la cotizacion
 When valide el valor de la tasa global <tasa> y la cambie <tasaC>
@@ -41,6 +41,6 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 And debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
-|prima  |
-|176.421|
+|prima  |tasa  |tasaC|
+|176.181|1,4682|2    |
 
