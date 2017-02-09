@@ -23,7 +23,7 @@ When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la pa
 |codigoAsesor|porcentaje|rol      |
 |10995       |30        |Lider    |
 |11005       |10        |Adicional|
-|10697       |10        |Adicional|
+|193         |10        |Adicional|
 |10686       |10        |Adicional|
 |10671       |10        |Adicional|
 |9628        |10        |Adicional|
@@ -67,7 +67,7 @@ When se ingresa mas de 8 asesores:
 |codigoAsesor|porcentaje|rol      |
 |10995       |20        |Lider    |
 |11005       |10        |Adicional|
-|10697       |10        |Adicional|
+|193         |10        |Adicional|
 |10686       |10        |Adicional|
 |10671       |10        |Adicional|
 |9628        |10        |Adicional|
@@ -113,7 +113,7 @@ When se ingresa mas del 100% a los asesores:
 |codigoAsesor|porcentaje|rol      |
 |10995       |40        |Lider    |
 |11005       |10        |Adicional|
-|10697       |10        |Adicional|
+|193         |10        |Adicional|
 |10686       |10        |Adicional|
 |10671       |10        |Adicional|
 |9628        |10        |Adicional|
@@ -158,7 +158,7 @@ When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la pa
 |codigoAsesor|porcentaje|rol      |
 |10995       |30        |Lider    |
 |11005       |10        |Adicional|
-|10697       |10        |Adicional|
+|193         |10        |Adicional|
 |10686       |10        |Adicional|
 |10671       |10        |Adicional|
 |9628        |10        |Adicional|
