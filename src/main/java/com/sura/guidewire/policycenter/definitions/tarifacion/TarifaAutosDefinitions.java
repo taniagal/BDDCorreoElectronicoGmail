@@ -66,6 +66,16 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.seleciconarCoberturasCorbeta(coberturas);
     }
 
+    @When("seleccione todas las coberturas de comision pactada: $coberturas")
+    public void agregarTodasLasCoberturasDeComisionPactada(ExamplesTable coberturas) {
+        tarifaAutosSteps.seleccionarCoberturasComisionPactada(coberturas);
+    }
+
+    @When("ingrese la comision pactada en <estado> y valor <valor>")
+    public void ingresarComisionPactada(@Named("estado") String estado, @Named("valor") String valor){
+        tarifaAutosSteps.ingresarComisionPactada(estado, valor);
+    }
+
     @Then("el resultado de la cotizacion debe ser <valor>")
     public void verificarResultado(@Named("valor") String valor) {
         tarifaAutosSteps.verificarTarifacion(valor);

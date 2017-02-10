@@ -35,8 +35,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String CIERRE_XPATH1 = "')])]";
     private static final String XPATH2_PARTE2 = "')]) and @class='x-form-item-input-row' ]";
     private static final String XPATH_PARTE2 = "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]";
-    private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
-    private static final String XPATH_BTON_REMOVER_RIESGOS = ".//a[contains(.,'Remover Riesgo')]";
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
     private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
@@ -49,6 +47,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
+    @FindBy(xpath = ".//a[contains(.,'Remover Riesgo')]")
+    private WebElementFacade botonRemoverRiesgo;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton']")
     private WebElementFacade botonAgregarAsegurado;
     @FindBy(xpath = ".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -107,6 +107,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade agregarTipoOnerosoEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:checkCommercialValue-inputEl']")
     private WebElementFacade chekAseguradoValorComercial;
+    @FindBy(xpath = ".//div[contains(@style,'margin-left: auto; margin-right: auto;')]")
+    private WebElementFacade checkBoxRiesgo;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoAseguradoValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
@@ -210,15 +212,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void removerRiesgos() {
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
-            resetImplicitTimeout();
-            waitFor(TIEMPO_3).second();
-            findBy(XPATH_SELECCIONAR_RIESGOS).click();
-            waitFor(TIEMPO_3).second();
-            findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
-            findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
-            findBy(XPATH_BTON_REMOVER_RIESGOS).click();
-            waitFor(TIEMPO_3).second();
+        if (checkBoxRiesgo.isVisible()) {
+            checkBoxRiesgo.click();
+            waitFor(TIEMPO_1).second();
+            botonRemoverRiesgo.click();
         }
         resetImplicitTimeout();
     }

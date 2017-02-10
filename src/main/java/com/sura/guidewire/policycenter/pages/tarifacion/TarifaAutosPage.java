@@ -30,6 +30,8 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade botonSeleccionar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade campoTxtNombre;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:AgreedCommission-inputEl']")
+    private WebElementFacade campoTxtComisionPactada;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade campoPrimaTotal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl']")
@@ -118,6 +120,8 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade menuItemDelDireciotio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver']")
     private WebElementFacade menuItemAseguradoR;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:StandardCommissionCB_true-inputEl']")
+    private WebElementFacade radioBotonComisionPactadaSi;
 
     private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
 
@@ -231,6 +235,12 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturasRC(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
+        esperarPorPantallaCoberturas();
+        seleccionarItem(comboBoxLimite, dato.get("limite"));
+        seleccionarItem(comboBoxDeducible, dato.get("deducible"));
+    }
+
+    public void esperarPorPantallaCoberturas() {
         comboBoxLimite.waitUntilPresent();
         setImplicitTimeout(0, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
@@ -238,12 +248,6 @@ public class TarifaAutosPage extends PageUtil {
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        seleccionarItem(comboBoxLimite, dato.get("limite"));
-        /*comboBoxLimite.clear();
-        esperarHasta(TIEMPO_500);
-        comboBoxLimite.sendKeys(dato.get("limite"));
-        comboBoxLimite.sendKeys(Keys.ENTER);*/
-        seleccionarItem(comboBoxDeducible, dato.get("deducible"));
     }
 
     public void seleccionarPerdidaDeLlaves(String llaves) {
@@ -374,5 +378,19 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCobertura(WebElementFacade checkBox, WebElementFacade comboBox, String dato) {
         clickearElemento(checkBox);
         seleccionarItem(comboBox, dato);
+    }
+
+    public void ingresarComisionPactada(String estado, String valor) {
+        radioBotonComisionPactadaSi.click();
+        campoTxtComisionPactada.waitUntilPresent().sendKeys(valor);
+    }
+
+    public void seleccionarPerdidasParcialesHurtoDanios(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
+        seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+        seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, dato.get("AS"));
     }
 }
