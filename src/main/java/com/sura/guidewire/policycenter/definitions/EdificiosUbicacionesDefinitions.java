@@ -120,15 +120,15 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
 
-    @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional")
+    @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario, String tipodocumento) {
         edificiosUbicacionesSteps.eliminarPrimeraUbicacionMrc();
-       /* edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula, tipodocumento);
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
-        edificiosUbicacionesSteps.seleccionarBotonCotizar();*/
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
     }
 
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas $entradatable")
