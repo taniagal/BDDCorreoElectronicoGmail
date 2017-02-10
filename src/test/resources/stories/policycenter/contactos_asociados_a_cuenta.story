@@ -1,7 +1,7 @@
 Contactos Asociados A Cuenta
 
 Meta:
-@lote1
+@lote3
 @Story CDSEG-845
 @tag equipo: 2
 @Sprint 1

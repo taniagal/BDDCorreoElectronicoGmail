@@ -1,7 +1,7 @@
 Excepciones Sarlaft Autos
 
 Meta:
-@lote1
+@lote2
 @issue #CDSEG-5577
 @tag equipo: 5
 @Sprint 12

@@ -1,6 +1,6 @@
 Historial Cuenta
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-925
 @tag equipo: 5
