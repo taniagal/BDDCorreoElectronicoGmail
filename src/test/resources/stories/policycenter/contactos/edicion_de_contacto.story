@@ -17,8 +17,8 @@ When edito los datos contacto ingresado y los guardo
 | primerNombre | segundoNombre | primerApellido | segundoApellido | direccion      | tipoDireccion        | tipoTelefono | numeroTelefono | monedaFavorita |
 | PAULINA      | MARIA         | CORREA         | RUIZ            | CALLE 11 10 10 | DIRECCION DE TRABAJO | Vivienda     | 3334455        | COP            |
 Then debo ver los datos actualizados del contacto persona natural
-| primerNombre | segundoNombre | primerApellido | segundoApellido | direccion                          | tipoDireccion        | tipoTelefono | numeroTelefono | monedaFavorita |
-| PAULINA      | MARIA         | CORREA         | RUIZ            | CALLE 11 10 10, Medellin, Colombia | DIRECCION DE TRABAJO | Vivienda     | 333-4455       | COP            |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | direccion                           | tipoDireccion        | tipoTelefono | numeroTelefono | monedaFavorita |
+| PAULINA      | MARIA         | CORREA         | RUIZ            | CL 11 # 10 - 10, Medellin, Colombia | DIRECCION DE TRABAJO | Vivienda     | 333-4455       | COP            |
 
 Examples:
 |  |
@@ -32,5 +32,5 @@ When edito los datos contacto tipo compania ingresado y los guardo
 | razonSocial        | nombreComercial  | tipoDireccion        | direccion    | monedaFavorita |
 | LOS PAJARITOS S.A. | TORITO ASOCIADOS | DIRECCION DE TRABAJO | CRA 51 10 20 | COP            |
 Then debo ver los datos actualizados del contacto compania
-| razonSocial        | nombreComercial  | tipoDireccion        | direccion                        | monedaFavorita |
-| LOS PAJARITOS S.A. | TORITO ASOCIADOS | DIRECCION DE TRABAJO | CRA 51 10 20, Medellin, Colombia | COP            |
+| razonSocial        | nombreComercial  | tipoDireccion        | direccion                           | monedaFavorita |
+| LOS PAJARITOS S.A. | TORITO ASOCIADOS | DIRECCION DE TRABAJO | CR 51 # 10 - 20, Medellin, Colombia | COP            |

@@ -1,6 +1,6 @@
 informacion de pago
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-2305
 @tag equipo: 3

@@ -1,6 +1,7 @@
 Busqueda Actividades
 
-Meta: @lote2
+Meta:
+@lote2
 @issue #CDSEG-730
 @tag equipo: 1, sprint:1
 @Sprint 1

@@ -1,6 +1,7 @@
 Cuentas Asociadas A Contacto
 
-Meta: @lote1
+Meta:
+@lote3
 
 @issue #CDSEG-976
 @tag equipo: 1, sprint:1

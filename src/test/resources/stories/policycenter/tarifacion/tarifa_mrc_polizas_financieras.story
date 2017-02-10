@@ -1,5 +1,5 @@
 Meta:
-@lote3
+@lote1
 @sprint 13
 @tag equipo: 4
 
@@ -9,7 +9,7 @@ Como usuario de policy center
 Al cotizar una poliza de MRC quiero ser capaz de registrar toda la información del riesgo.
 
 
-Scenario:  Tarifa MRC polizas financieras con los ariticulos Maquinaria y equipo, y Muebles y enseres
+Scenario:  Tarifa MRC pólizas financieras con los aritículos Maquinaria y equipo, y Muebles y enseres
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |cuenta     |oficina|agente_oficina |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -44,7 +44,7 @@ Examples:
 
 
 
-Scenario:  Tarifa MRC polizas financieras con los ariticulos Edificio, y Muebles y enseres
+Scenario:  Tarifa MRC pólizas financieras con los aritículos Edificio, y Muebles y enseres
 Given estoy cotizando una poliza de mrc:
 |cuenta     |oficina|agente_oficina |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |C1060447895|2734   |DIRECTO        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
