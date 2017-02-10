@@ -66,15 +66,10 @@ public class NuevaPolizaPage extends PageUtil {
         }
     }
 
-    public void seleccionarOrganizacion(ExamplesTable datosAutos) {
+    public void seleccionarElTipoDePoliza(ExamplesTable datosAutos) {
         Map<String, String> dato = datosAutos.getRow(0);
         waitForTextToAppear("Información de póliza");
-        listaOrganizacion.waitUntilPresent();
-        seleccionarItem(listaOrganizacion, dato.get("organizacion"));
-        esperarPorValor(listaOrganizacionW, dato.get("organizacion"));
-        esperarHasta(TIEMPO_1000);
-        seleccionarItem(listaCanal, dato.get("canal"));
-        esperarPorValor(listaCanal, dato.get("canal"));
+        listaTipoPoliza.waitUntilPresent();
         seleccionarItem(listaTipoPoliza, dato.get("tipoPoliza"));
         esperarPorValor(listaTipoPoliza, dato.get("tipoPoliza"));
     }
