@@ -51,7 +51,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     private static final String PAIS_ALEMANIA = "Alemania";
     private static final String ASEGURA_ALLIANZ = "ALLIANZ RE";
     private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
-    private static final String CELDA_VALOR = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]";
+    private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
     private static final double CONSTANTE_UNO = 1;
     private static final double CONSTANTE_CIEN = 100.0;
     private static final int CONSTANTE_MIL = 1000;
@@ -92,8 +92,9 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public void ingresaParticipacion(ExamplesTable datosReaseguradores) {
-        esperarYClickearBoton(btnAgregaInformacionReaseguro);
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
+        datoReaseguradores.get("porcentajeParticipacion");
+        esperarYClickearBoton(btnAgregaInformacionReaseguro);
         esperarYClickearBoton(listPorcParticipacion);
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("porcentajeParticipacion"));
     }
