@@ -9,8 +9,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaAutosSteps extends ScenarioSteps {
-    TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
-    ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
+    TarifaAutosPage tarifaAutosPage;
+    ValidacionesInformacionDeVehiculoPage vehiculoPage;
     PanelSurEspacioDeTrabajoPage panelSur;
 
     public TarifaAutosSteps(Pages page) {
