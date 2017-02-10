@@ -111,7 +111,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade campoAseguradoValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
     private WebElementFacade txtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]/div/img")
+    private WebElementFacade chekEliminarPrimeraUbicacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:removeLocation-btnInnerEl']")
+    private WebElementFacade botonRemoverRiesgo;
 
+    private static final int TRES = 3;
 
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
@@ -631,5 +636,28 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(TIEMPO_2).second();
         String valor = txtValorAsegurado.getValue().replaceAll("\\.", "");
         MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(valor));
+    }
+
+    public void eliminarPrimeraUbicacion(){
+        botonRemoverRiesgo.waitUntilVisible().waitUntilClickable();
+        esperarYClickearBoton(chekEliminarPrimeraUbicacion);
+        esperarYClickearBoton(chekEliminarPrimeraUbicacion);
+        clickearElemento(botonRemoverRiesgo);
+        esperarHasta(TIEMPO_2000);
+    }
+
+    public void seleccionarCheckDeUbicacion() {
+        Actions actions = new Actions(getDriver());
+        int intentos = 0;
+        while (intentos < TRES) {
+            esperarHasta(TIEMPO_2000);
+            if (!"0px -15px".equals(chekEliminarPrimeraUbicacion.getCssValue("background-position")) || !"-15px -15px".equals(chekEliminarPrimeraUbicacion.getCssValue("background-position"))) {
+                actions.click(chekEliminarPrimeraUbicacion).build().perform();
+            } else {
+                break;
+            }
+            intentos++;
+        }
+        esperarHasta(TIEMPO_2000);
     }
 }

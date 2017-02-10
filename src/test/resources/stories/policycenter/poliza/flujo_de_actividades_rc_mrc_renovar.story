@@ -9,7 +9,6 @@ quiero poder solicitar autorización a los comites de Riesgos consultables
 para poder cotizar o expedir una poliza
 
 
-
 Scenario: Validar que se genere actividad de riesgo consultable al renovar una poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:

@@ -18,7 +18,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
     private WebElementFacade botonBorrar;
     private int numeroDeRiesgos;
     private static String xPathSolicitarAprobacion = ".//*[contains(@id,'Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
-    private static final String LABRL_ANALISIS_DE_RIESGO = "Análisis de riesgo";
+    private static final String LABRL_ANALISIS_DE_RIESGO = "Observaciones";
     public AnalisisDeRiesgosPage(WebDriver driver) {
         super(driver);
     }
@@ -77,7 +77,6 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
         $(xpathAnalisisRiesgos).waitUntilPresent();
         clickearElemento($(xpathAnalisisRiesgos));
-        waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         waitFor(TIEMPO_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();

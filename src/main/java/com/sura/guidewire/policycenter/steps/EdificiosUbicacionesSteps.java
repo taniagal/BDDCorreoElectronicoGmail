@@ -61,6 +61,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void eliminarPrimeraUbicacionMrc(){
+        edificiosyUbicacionesWidget.eliminarPrimeraUbicacion();
+    }
+
+    @Step
     public void seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
     }
