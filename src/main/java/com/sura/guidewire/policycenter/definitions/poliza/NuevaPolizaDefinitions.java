@@ -43,9 +43,9 @@ public class NuevaPolizaDefinitions {
         tasaUnicaSteps.irAArchivoDePolizaExpedida();
     }
 
-    @When("seleccione la organizacion, el canal y el tipo de poliza: $datosAutos")
-    public void seleccionarLaOrganizacion(ExamplesTable datosAutos) {
-        nuevaPolizaSteps.seleccionarOrganizacion(datosAutos);
+    @When("seleccione el tipo de poliza: $datosAutos")
+    public void seleccionarElTipoDePoliza(ExamplesTable datosAutos) {
+        nuevaPolizaSteps.seleccionarElTipoDePoliza(datosAutos);
     }
 
     @Then("se debe visualizar la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones para elegir producto habilitados")
