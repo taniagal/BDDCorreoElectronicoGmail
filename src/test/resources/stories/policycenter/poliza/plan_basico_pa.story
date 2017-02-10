@@ -16,7 +16,7 @@ Given voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto
 | CEDULA DE CIUDADANIA | 1234567890| C000888888 | Autos    | DIRECTO      | 1073    |
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |
-| RZX754 | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Básico |
+| RZX768 | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Básico |
 And ingrese las coberturas a vehiculo:
 | limite | deducible |
 | 640.0  | 0         |
@@ -25,6 +25,7 @@ Then cotice y expida la poliza
 Examples:
 ||
 ||
+
 
 Scenario:
 Given estoy cotizando una poliza de mrc con documento:
