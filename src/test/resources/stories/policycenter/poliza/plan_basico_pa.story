@@ -35,11 +35,6 @@ And ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |
 | ASDF9 | 2011   | 01601225         | MEDELLIN           | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Autos Clásico |
 
-
-//When ingrese las coberturas basicas:
-//|limite|deducible|
-//|640.  |0        |
-
 When ingrese las coberturas a vehiculo:
 | limite | deducible |
 | 640.0  | 0         |
