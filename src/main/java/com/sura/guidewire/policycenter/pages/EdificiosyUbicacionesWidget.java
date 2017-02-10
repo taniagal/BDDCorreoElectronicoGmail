@@ -45,6 +45,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
+    private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
     private static final int TIEMPO_250 = 250;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -115,6 +116,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade chekEliminarPrimeraUbicacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:removeLocation-btnInnerEl']")
     private WebElementFacade botonRemoverRiesgo;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade lblMensajeValidaRiesgosRepetidos;
 
     private static final int TRES = 3;
 
@@ -669,5 +672,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             intentos++;
         }
         esperarHasta(TIEMPO_2000);
+    }
+
+    public void validaMensajeDeSoloUnRiesgo() {
+      //  JOptionPane.showMessageDialog(null, lblMensajeValidaRiesgosRepetidos.getText().contains(VALIDACION_MENSAJE_RIESGOS));
+        MatcherAssert.assertThat("No aparecio mensaje de validacion en ingresar riesgo", lblMensajeValidaRiesgosRepetidos.getText().contains(VALIDACION_MENSAJE_RIESGOS));
+        chekEliminarPrimeraUbicacion.click();
+        botonRemoverRiesgo.click();
     }
 }

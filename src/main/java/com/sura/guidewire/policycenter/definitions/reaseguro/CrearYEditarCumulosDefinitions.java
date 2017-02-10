@@ -63,7 +63,7 @@ public class CrearYEditarCumulosDefinitions {
         crearYEditarCumulosSteps.ingresarModalidadDeTasaEnTabla(datosReaseguradores);
     }
 
-    @When("intente ingresar una nueva ubicacion sin riesgo consultable $datosUbicacion")
+    @When("intente ingresar una nueva ubicacion en edificios $datosUbicacion")
     public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo(datosUbicacion);
