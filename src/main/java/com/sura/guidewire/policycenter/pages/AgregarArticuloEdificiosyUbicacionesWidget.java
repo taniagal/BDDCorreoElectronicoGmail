@@ -66,12 +66,12 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
         try {
-            waitFor(botonActualizar).waitUntilPresent();
+            botonActualizar.waitUntilPresent();
             clickearElemento(botonActualizar);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
-            waitFor(botonActualizar).waitUntilPresent();
+            botonActualizar.waitUntilPresent();
             clickearElemento(botonActualizar);
         }
     }

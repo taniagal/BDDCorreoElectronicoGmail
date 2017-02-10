@@ -16,7 +16,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublímite para perdida de contenido en tanques | 31             |
 | Otros Articulos          | Mercancías a granel   |                     |                  | Valor Asegurable                               | 10             |
 And haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
 | El valor de "Sublímite para perdida de contenido en tanques" deber ser menor o igual a la sumatoria de los valores asegurables de " - Mercancías a granel - Existencias fijas - Existencias flotantes - ". |
 Examples:
@@ -30,7 +30,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                    | ENTRADAS                                     | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Portadores externos de datos | Valor asegurado portadores externos de datos | 11             |
 When haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                      |
 | Para poder seleccionar el "Valor asegurado portadores externos de datos " debe tener asegurado "Equipo electrónico fijo |
 Examples:
@@ -44,7 +44,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Gastos por arrendamiento de sistema electrónico de procesamiento de datos | Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos | 11             |
 And haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                  |
 | Para poder seleccionar el "Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos" debe tener asegurado "Equipo electrónico fijo |
 Examples:
@@ -62,7 +62,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | Coberturas del Riesgo    |                     |                     | Todo riesgo construcción y todo riesgo montaje | Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados | 11             |
 | Otros Articulos          | Animales vivos      |                     |                                                | Valor Asegurable                                                                                  | 4              |
 | Otros Articulos          | Animales vivos      |                     |                                                | Índice variable                                                                                   | 1              |
-Then se debe mostrar el siguiente mensaje
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                                      |
 | El valor de "Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados" deber ser menor o igual al "10,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Examples:
@@ -89,7 +89,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublímite para perdida de contenido en tanques                                                                                                         | 52             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para derrame de materiales en fusion                                                                                                         | 52             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria                                                                               | 52             |
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                                                                                  |
 |El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura "Danos materiales" de los articulos "-Existencias flotantes - Existencias fijas - ".                                                           |
 |El valor del "Sublimite para gastos asociados a la ocurrencia de una pérdida" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                             |

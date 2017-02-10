@@ -91,10 +91,8 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When cotice una poliza principal
 Then deben estar en estado <estadouno> las siguientes opciones
 | OPCIONES_MENU   |
-| Formularios     |
 | Pago            |
 | Notas           |
-| Documento       |
 | Participantes   |
 | Plan de trabajo |
 | Historial       |
@@ -160,7 +158,7 @@ Scenario:  9 Validacion de cotizacion sin riesgos en poliza riesgo
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
 And cotice una poliza
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
 |No se puede cotizar una póliza CP sin artículos y coberturas|
 
@@ -187,7 +185,7 @@ And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And cotice una poliza
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
 |Solo se permite ingresar un riesgo en la póliza.|
 
@@ -208,7 +206,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
 | Interes Adicional        | Interes Adicional |                     |                  |                                  |                |
 Then no debe estar visible nigun contacto por defecto
-And se debe mostrar el siguiente mensaje
+And se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
 |debe tener mínimo un asegurado|
 

@@ -154,6 +154,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.retirarBeneficiarioOnerosoAlArticulo();
     }
 
+    @Step
     public void ingresarCoberturas(ExamplesTable entradas) {
         int index = 0;
         for (Map<String, String> entradaCobertura : entradas.getRows()) {
@@ -187,6 +188,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.agregarInteresAdicionalCambioPoliza(agregaroneroso);
     }
 
+    @Step
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
         if ("Coberturas del Riesgo".equals(tab)) {
             seleccionarTab(tab);

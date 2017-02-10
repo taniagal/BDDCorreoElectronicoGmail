@@ -14,10 +14,9 @@ And ingrese las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 25             |
 And haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                            |
 | El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura "Danos materiales" de los articulos "-Existencias flotantes - Existencias fijas - ". |
-Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
@@ -36,10 +35,9 @@ And ingrese las entradas de las diferentes coberturas
 | Otros Articulos          | Animales vivos      |                     |                  | Valor Asegurable                                                         | 4              |
 | Otros Articulos          | Animales vivos      |                     |                  | Índice variable                                                          | 1              |
 When haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                              |
 | El valor de "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " deber ser menor o igual al "40,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
-Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
@@ -58,7 +56,7 @@ And ingrese las entradas de las diferentes coberturas
 | Otros Articulos          | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
 | Otros Articulos          | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                            |
 | El valor de "Terremoto - Artículo: Suelos y Terrenos" deber ser menor o igual al "20,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Examples:
@@ -78,7 +76,7 @@ And ingrese las entradas de las diferentes coberturas
 | Otros Articulos          | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
 | Otros Articulos          | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                              |
 | El valor asegurado de la cobertura "Terremoto - Artículo: Suelos y Terrenos" debe ser menor o igual a "1000000000.00" de pesos |
 Examples:
@@ -96,7 +94,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |
 | Otros Articulos | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
 | Otros Articulos | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                             |
 | Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio". |
 Examples:
