@@ -2,5 +2,5 @@ package com.sura.guidewire.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class ClausulasYCondiciones extends SerenityStory {
+public class ExclusionesYCondiciones extends SerenityStory {
 }

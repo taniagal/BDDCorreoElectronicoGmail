@@ -421,19 +421,19 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 String mensaje = menus.get("OPCIONES_MENU");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                MatcherAssert.assertThat("El elemento: "+mensaje+", no es visible", elementoMenu.isVisible());
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementoMenu.isVisible());
             } else if (estadodos.contains("No visible")) {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-                MatcherAssert.assertThat("El elemento: "+mensaje+", no es visible", !elementoMenu.isVisible());
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", !elementoMenu.isVisible());
                 resetImplicitTimeout();
             }
         }
     }
 
-    public void validarCampos(String estado,ExamplesTable menusesperados, String pathinicial, String pathfinal) {
+    public void validarCampos(String estado, ExamplesTable menusesperados, String pathinicial, String pathfinal) {
         WebElementFacade elementoMenu;
         Map<String, String> menus;
         String xpathMenu;
@@ -443,7 +443,16 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 String mensaje = menus.get("OPCIONES_MENU");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                MatcherAssert.assertThat("El elemento: "+mensaje+", no es visible", elementoMenu.isVisible());
+                setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementoMenu.isVisible());
+                resetImplicitTimeout();
+            } else if (estado.contains("No visible")) {
+                String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
+                xpathMenu = pathinicial + mensaje + pathfinal;
+                elementoMenu = findBy(xpathMenu);
+                setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", !elementoMenu.isVisible());
+                resetImplicitTimeout();
             }
         }
     }
@@ -456,8 +465,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         }
     }
 
-    public void validarCamposMenuLateral(String estadouno, String estadodos, ExamplesTable menusesperados) {
-        validarCampos(estadouno, estadodos, menusesperados, LBL_MENU_LATERAL_INICIAL, LBL_MENU_LATERAL_FINAL);
+    public void validarCamposMenuLateral(String estadouno, ExamplesTable menusesperados) {
+        validarCampos(estadouno, menusesperados, LBL_MENU_LATERAL_INICIAL, LBL_MENU_LATERAL_FINAL);
     }
 
     public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {
