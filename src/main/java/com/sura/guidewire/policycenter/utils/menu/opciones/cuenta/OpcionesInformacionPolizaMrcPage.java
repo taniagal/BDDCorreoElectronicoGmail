@@ -39,13 +39,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     WebElementFacade mensajePantalla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguiente;
+    WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguienteCambioDePoliza;
+    WebElementFacade botonSiguienteCambioDePoliza;
     @FindBy(xpath = ".//input[contains(@id,'false-inputEl')]")
     WebElementFacade btnNoReaseguroEspecial;
     @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguienteRenovacionDePoliza;
+    WebElementFacade botonSiguienteRenovacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton-btnInnerEl']")
     WebElementFacade btnAgregar;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -155,29 +155,30 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSelecciona.waitUntilPresent();
         clickearElemento(btnSelecciona);
         waitInfoPoliza(lblInformaPoliza);
-        clickearElemento(btnSiguiente);
+        clickearElemento(botonSiguiente);
     }
 
     public void seleccionBotonSiguiente() {
-        btnSiguiente.waitUntilPresent();
         try {
-            clickearElemento(btnSiguiente);
+            botonSiguiente.waitUntilPresent();
+            clickearElemento(botonSiguiente);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            clickearElemento(btnSiguiente);
+            esperarHasta(TIEMPO_2000);
+            botonSiguiente.waitUntilPresent();
+            clickearElemento(botonSiguiente);
         }
     }
 
     public void seleccionBotonSiguienteenCambioDePoliza() {
-        esperarHasta(TIEMPO_5000);
-        btnSiguienteCambioDePoliza.click();
-        esperarHasta(TIEMPO_5000);
+        botonSiguienteCambioDePoliza.waitUntilPresent();
+        clickearElemento(botonSiguienteCambioDePoliza);
         waitForTextToAppear("Edificios y ubicaciones");
     }
 
     public void seleccionBotonSiguienteenRenovacionDePoliza() {
-        waitFor(TIEMPO_7).second();
-        btnSiguienteRenovacionDePoliza.click();
+        botonSiguienteRenovacionDePoliza.waitUntilPresent();
+        clickearElemento(botonSiguienteRenovacionDePoliza);
     }
 
     public void seleccionaRiesgoAceptado() {
