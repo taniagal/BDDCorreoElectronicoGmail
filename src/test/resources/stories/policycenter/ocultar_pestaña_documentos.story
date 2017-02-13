@@ -10,6 +10,8 @@ Quiero poder ver elementos asociados con una cuenta o una poliza
 Para estar enterado acerca de su estado
 
 Scenario: No visualizar pestaña documentos
+Meta:
+@manual
 Given estoy en la transaccion de una poliza o cuenta
 When ingreso a la informacion de esta
 Then no se debe mostrar la pestaña de documentos
