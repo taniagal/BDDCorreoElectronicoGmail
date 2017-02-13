@@ -44,8 +44,9 @@ And cotice una poliza
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then debo ver un mensaje bloqueante accesorios
-| mensaje                                                                                                               |
-| Existen requisitos opcionales pendientes, por favor dirijase a la pestaña Requisitos para tramitarlos. |
+| mensaje                                                                                                             |
+| Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
+
 Examples:
 | tipo_documento       | documento   |
 | CEDULA DE CIUDADANIA | 1090658723  |
