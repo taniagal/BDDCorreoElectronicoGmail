@@ -51,14 +51,12 @@ public class CambioDePolizaCamposEditablesPage extends PageUtil {
     public String validarMensajeValorAsegurado() {
         if (labelMensajeValorAsegurado.isPresent()) {
             return labelMensajeValorAsegurado.getText();
-
         }
         return labelMensajeValorAsegurado.getText();
     }
 
     public void seleccionarOpcionSiguiente() {
         esperarYClickearBoton(botonSiguienteModificacion);
-
     }
 
     public void cambiarAPlanBasico(String planBasico) {
@@ -67,8 +65,7 @@ public class CambioDePolizaCamposEditablesPage extends PageUtil {
     }
 
     public void cambiarAPlanClasico(String plan) {
-        ingresarDato(txtPlanVehicular,plan);
+        ingresarDato(txtPlanVehicular, plan);
         botonPlanAutosClasico.click();
-
     }
 }

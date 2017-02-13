@@ -42,9 +42,8 @@ public class LeyendaAdicionalMrcPage extends PageUtil {
 
     public void agregarLeyendaModificacion(String leyendaAdicional) {
         botonLeyendaAdicionalModificacion.click();
-            txtLeyendaAdicionalModificacion.clear();
-            ingresarDato(txtLeyendaAdicionalModificacion, leyendaAdicional);
-            esperarYClickearBoton(botonAceptarModificacion);
-
+        txtLeyendaAdicionalModificacion.clear();
+        ingresarDato(txtLeyendaAdicionalModificacion, leyendaAdicional);
+        esperarYClickearBoton(botonAceptarModificacion);
     }
 }

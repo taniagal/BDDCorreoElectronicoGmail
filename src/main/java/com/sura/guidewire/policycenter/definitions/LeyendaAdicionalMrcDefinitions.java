@@ -27,8 +27,9 @@ public class LeyendaAdicionalMrcDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
         tasaUnicaSteps.expedirPoliza();
     }
+
     @When("intente ingresar una nueva ubicacion con <leyendaAdicional>")
-    public void cuandoIntenteIngresarUnaNuevaUbicacion(@Named("leyendaAdicional")String leyendaAdicional) {
+    public void cuandoIntenteIngresarUnaNuevaUbicacion(@Named("leyendaAdicional") String leyendaAdicional) {
         edificiosUbicacionesSteps.removerRiesgos();
         leyendaAdicionalMrcSteps.ingresarNuevaLeyenda(leyendaAdicional);
     }

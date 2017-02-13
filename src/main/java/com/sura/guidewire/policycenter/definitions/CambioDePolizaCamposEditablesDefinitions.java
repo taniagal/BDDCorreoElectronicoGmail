@@ -17,7 +17,6 @@ public class CambioDePolizaCamposEditablesDefinitions {
     @When("cambie el plan del vehiculo <plan>")
     public void cambiarPlanVehiculo(@Named("plan") String plan) {
         cambioDePolizaCamposEditablesSteps.cambiarPlanVehicular(plan);
-
     }
 
     @When("seleccione la opcion transporte de combustible")
@@ -55,9 +54,9 @@ public class CambioDePolizaCamposEditablesDefinitions {
         cambioDePolizaCamposEditablesSteps.cambiarPlanABasico(planBasico);
 
     }
+
     @When("cambie el plan del vehiculo <plan> clasico")
     public void cambiarPlanAClasico(@Named("plan") String plan) {
         cambioDePolizaCamposEditablesSteps.cambiarPlanAClasico(plan);
-
     }
 }

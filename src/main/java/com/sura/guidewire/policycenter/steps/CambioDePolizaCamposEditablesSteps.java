@@ -15,7 +15,6 @@ public class CambioDePolizaCamposEditablesSteps extends ScenarioSteps {
     @Step
     public void cambiarPlanVehicular(String plan) {
         cambioDePolizaCamposEditablesPage.cambiarPlanVehicular(plan);
-
     }
 
     @Step
