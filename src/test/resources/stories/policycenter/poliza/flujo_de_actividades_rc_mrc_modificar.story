@@ -17,7 +17,7 @@ Given estoy cotizando una poliza de mrc:
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion en edificios
 | pais     | departamento | ciudad   | direccion   | actividadEconomica            |
-| Colombia | Antioquia    | Medellin | CR 66 89 12 | Acabado de productos textiles |
+| Colombia | Antioquia    | Medellin | CR 100 89 12 | Acabado de productos textiles |
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -28,8 +28,8 @@ And cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
 And intente ingresar una nueva ubicacion en edificios
 | pais     | departamento | ciudad   | direccion    | actividadEconomica                    |
-| Colombia | Antioquia    | Medellin | CR 89 89 65 | Actividades de apoyo a la agricultura |
-And ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional
+| Colombia | Antioquia    | Medellin | CR 53 89 65 | Actividades de apoyo a la agricultura |
+And tenga las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario>
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
