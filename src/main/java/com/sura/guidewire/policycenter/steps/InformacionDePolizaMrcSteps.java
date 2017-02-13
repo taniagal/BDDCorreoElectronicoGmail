@@ -105,8 +105,8 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.noHabilitarNumeroDocumentoCoaseguro();
     }
 
-    public void validarCampos(String estadouno, String estadodos, ExamplesTable menusesperados) {
-        opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno, estadodos, menusesperados);
+    public void validarCampos(String estadouno,ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno, menusesperados);
     }
 
     public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {

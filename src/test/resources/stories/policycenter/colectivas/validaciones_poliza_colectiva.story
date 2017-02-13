@@ -19,15 +19,23 @@ Examples:
 
 Scenario: 2 Validacion de campos en menu lateral de poliza principal
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When ingrese a la opcion informacion de poliza
+When copie la poliza
+And ingrese a la opcion informacion de poliza
 Then deben estar en estado <estadouno> las siguientes opciones
-| OPCIONES_MENU          |
-| Coberturas globales    |
+| OPCIONES_MENU             |
+| Coberturas globales       |
+| Exclusiones y Condiciones |
+When ingrese a exclusiones y condiciones
+And ingrese a agregar exclusion o condicion
+And busque la exclusion o condicion <palabraabuscar>
+Then se debe mostrar en la busqueda
+|busqueda|
+|Condiciones aplicables a la cobertura de suelos y terrenos|
 
 
 Examples:
-| numSubscripcion | rolUsuario | estadodos  |
-| 33344336        | Asesor     | Visible    |
+| numSubscripcion | rolUsuario | estadouno | palabraabuscar                                             |
+| 33344336        | Asesor     | Visible   | Condiciones aplicables a la cobertura de suelos y terrenos |
 
 
 Scenario: 3 Validacion de campos en la opcion agregar cobertura global de poliza principal
@@ -82,7 +90,7 @@ Then en coberturas globales deben estar en estado <estadouno> las siguientes opc
 
 Examples:
 | numSubscripcion | rolUsuario | estadouno |
-| 33344336       | Asesor     | Visible   |
+| 33344336        | Asesor     | Visible   |
 
 
 
@@ -154,19 +162,7 @@ Examples:
 | numSubscripcion | rolUsuario | estadodos  |
 | 33344336       | Asesor     | No visible |
 
-Scenario:  9 Validacion de cotizacion sin riesgos en poliza riesgo
-Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When copie la poliza
-And cotice una poliza
-Then se debe mostrar el o los siguientes mensajes
-| MENSAJES_WORKSPACE                                                                                                                                                                                         |
-|No se puede cotizar una póliza CP sin artículos y coberturas|
-
-Examples:
-| numSubscripcion | rolUsuario|
-| 33355336       | Asesor     |
-
-Scenario: 10 Validacion de ubicaciones en poliza riesgo
+Scenario: 9 Validacion de ubicaciones en poliza riesgo
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
@@ -178,7 +174,7 @@ Examples:
 | numSubscripcion | rolUsuario |estadodos  |
 | 33355336        | Asesor     |No visible |
 
-Scenario: 11 Validacion de ubicacion unica en poliza riesgo
+Scenario: 10 Validacion de unica ubicacion y  poliza riesgo sin riesgos
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
@@ -188,6 +184,7 @@ And cotice una poliza
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
 |Solo se permite ingresar un riesgo en la póliza.|
+|No se puede cotizar una póliza CP sin artículos y coberturas|
 
 
 Examples:
@@ -195,7 +192,7 @@ Examples:
 | 33355336        | Asesor     |No visible |
 
 
-Scenario: 12 Validacion asegurado por defecto en poliza riesgo
+Scenario: 11 Validacion asegurado por defecto en poliza riesgo
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
@@ -216,7 +213,7 @@ Examples:
 | 33355336        |
 
 
-Scenario: 13 Validacion ingreso de asegurado en poliza riesgo
+Scenario: 12 Validacion ingreso de asegurado en poliza riesgo
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
@@ -235,7 +232,7 @@ Examples:
 | 33355336        | 1060447895 | Asegurado        | Visible   | No visible | CEDULA DE CIUDADANIA |
 
 
-Scenario: 14 Validacion datos asegurado en poliza riesgo
+Scenario: 13 Validacion datos asegurado en poliza riesgo
 Meta:
 @manual
 Given que estoy en la poliza con numero de subscripcion <numSubscripcion>
@@ -250,7 +247,7 @@ Examples:
 ||
 ||
 
-Scenario: 15 Validacion datos asegurado en poliza riesgo autos
+Scenario: 14 Validacion datos asegurado en poliza riesgo autos
 Meta:
 @manual
 Given que estoy en la poliza con numero de subscripcion <numSubscripcion>

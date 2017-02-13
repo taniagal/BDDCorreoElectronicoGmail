@@ -15,8 +15,8 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void seleccionarOrganizacion(ExamplesTable datosAutos) {
-        nuevaPolizaPage.seleccionarOrganizacion(datosAutos);
+    public void seleccionarElTipoDePoliza(ExamplesTable datosAutos) {
+        nuevaPolizaPage.seleccionarElTipoDePoliza(datosAutos);
     }
 
 
