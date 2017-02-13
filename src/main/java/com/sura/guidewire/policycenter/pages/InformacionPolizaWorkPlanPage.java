@@ -29,7 +29,8 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     private WebElementFacade clickMenuActividades;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade menuActividades;
-
+    @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/a/span/span/span[1]")
+    private WebElementFacade botonAcciones;
 
     public InformacionPolizaWorkPlanPage(WebDriver driver) {
         super(driver);
@@ -37,7 +38,6 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
 
     public void clickPlanTrabajo() {
         esperarYClickearBoton(menuItemPlanDeTrabajo);
-
     }
 
     public void validarDatosPlanDeTrabajo() {
@@ -48,6 +48,7 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     }
 
     public void buscarActividades() {
+        esperarYClickearBoton(botonAcciones);
         esperarYClickearBoton(botonActividadNueva);
         esperarYClickearBoton(botonRevision);
         esperarYClickearBoton(botonRevisarYAprobar);

@@ -13,7 +13,7 @@ Scenario: Plan de trabajo en poliza nueva
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765446 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
+| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765449 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |
@@ -32,21 +32,21 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: Plan de trabajo en modificacion de poliza
-GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 |tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB195|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB196|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And ingese al plan del trabajo
-Then me debe mostrar los siguientes campos: numeroPoliza, tomador, tipoDocumento, numeroDocumento
+And me debe mostrar los siguientes campos: numeroPoliza, tomador, tipoDocumento, numeroDocumento
+And cuando vea las actividades asociadas a ese tomador
+Then debe mostrar el menu de actividad
 
 Examples:
 |tipo_documento      |documento |
 |CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: Plan de trabajo en renovacion de poliza
-GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
 And vaya a agregar el vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
@@ -61,7 +61,9 @@ And adicione un segundo tomador en la renovacion el cual es riesgo consultable
 |tipoDocumento        |numeroDocumento|
 |CEDULA DE CIUDADANIA |1128391691     |
 And ingese al plan del trabajo
-Then me debe mostrar los siguientes campos: numeroPoliza, tomador, tipoDocumento, numeroDocumento
+And me debe mostrar los siguientes campos: numeroPoliza, tomador, tipoDocumento, numeroDocumento
+And cuando vea las actividades asociadas a ese tomador
+Then debe mostrar el menu de actividad
 
 Examples:
 |envio   |

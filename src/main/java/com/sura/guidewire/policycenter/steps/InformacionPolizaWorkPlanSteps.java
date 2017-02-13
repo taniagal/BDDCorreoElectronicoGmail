@@ -13,7 +13,6 @@ public class InformacionPolizaWorkPlanSteps extends ScenarioSteps {
     @Step
     public void clickPlanTrabajo() {
         informacionPolizaWorkPlanPage.clickPlanTrabajo();
-
     }
 
     @Step

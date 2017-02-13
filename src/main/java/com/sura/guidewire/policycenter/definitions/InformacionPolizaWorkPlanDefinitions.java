@@ -23,8 +23,9 @@ public class InformacionPolizaWorkPlanDefinitions {
     public void buscarActividades() {
         informacionPolizaWorkPlanSteps.buscarActividades();
     }
+
     @Then("debe mostrar el menu de actividad")
-    public void mostrarMenuDeActividades(){
+    public void mostrarMenuDeActividades() {
         informacionPolizaWorkPlanSteps.menuActividades();
     }
 
