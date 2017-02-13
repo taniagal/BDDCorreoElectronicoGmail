@@ -1,7 +1,5 @@
-Bugs Coberturas Ubicacion
-
 Meta:
-@lote3
+@lote2
 @Story CDSEG-2887
 @tag equipo: 2
 @Sprint 6
@@ -12,18 +10,19 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|11/02/1971      |YAIR         |CARMELO        |DIRECCION DE RESIDENCIA|CALLE 45Q #15-28|Antioquia   |Medellin|INT-3 |
-And ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion sin riesgo consultable
-When intente ingresar las entradas de las diferentes coberturas
+When agregue una nueva ubicacion:
+|departamento|ciudad  |direccion        |descripcion  |actividad                    |
+|Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Acabado de productos textiles|
+And seleccione algunos articulos y sus cobertura:
+|articulo |valor_asegurable|coberturas|
+|Building |10000           |Terremoto |
+And ingrese las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
-| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 10000          |
-| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 9998           |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la remocion de escombros | 10001          |
-When haga clic en el boton Aceptar
-Then se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal)
+And haga clic en el boton Aceptar
+Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                                |
 | El valor del "Sublimite para gastos para la remocion de escombros " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
-Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
@@ -39,7 +38,10 @@ When intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
 | Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
 | Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
+Then se debe mostrar el o los siguientes mensajes
+| MENSAJES_WORKSPACE                                                                                                                                                                                                |
+| Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio". |
+
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |

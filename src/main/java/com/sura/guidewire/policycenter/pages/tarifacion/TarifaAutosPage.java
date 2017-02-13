@@ -126,13 +126,16 @@ public class TarifaAutosPage extends PageUtil {
     }
 
 
+    public void marcharCoberturaAccidentes() {
+        clickearElemento(checkBoxAccidentes);
+    }
+
     public void desMarcarCoberturas() {
         clickearElemento(checkBoxHurto);
         comboBoxPerdidaTotalHurto.waitUntilNotVisible();
         checkBoxDaniosCarro.click();
         comboBoxPerdidaTotalDaniosDeducible.waitUntilNotVisible();
     }
-
 
     public void cotizar() {
         intentarCotizar();
@@ -148,7 +151,6 @@ public class TarifaAutosPage extends PageUtil {
             clickearElemento(botonCotizar);
         }
     }
-
 
     public void relacionarAsegurado() {
         botonRelacionarAsegurado.waitUntilPresent();
@@ -218,12 +220,11 @@ public class TarifaAutosPage extends PageUtil {
         resetImplicitTimeout();
     }
 
-
     public void seleccionarCoberturasBasica(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         seleccionarCoberturasRC(datosCoberturas);
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
-        if (!"".equals(dato.get("abogado"))) {
+        if (!dato.get("abogado").isEmpty() && comboBoxAbogado.isPresent()) {
             seleccionarItem(comboBoxAbogado, dato.get("abogado"));
         }
     }
@@ -237,15 +238,16 @@ public class TarifaAutosPage extends PageUtil {
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        comboBoxLimite.clear();
+        seleccionarItem(comboBoxLimite, dato.get("limite"));
+        /*comboBoxLimite.clear();
         esperarHasta(TIEMPO_500);
         comboBoxLimite.sendKeys(dato.get("limite"));
-        comboBoxLimite.sendKeys(Keys.ENTER);
+        comboBoxLimite.sendKeys(Keys.ENTER);*/
         seleccionarItem(comboBoxDeducible, dato.get("deducible"));
     }
 
     public void seleccionarPerdidaDeLlaves(String llaves) {
-        if (!"".equals(llaves)) {
+        if (!llaves.isEmpty() && comboBoxPerdidaDeLlaves.isPresent()) {
             seleccionarItem(comboBoxPerdidaDeLlaves, llaves);
         }
     }
@@ -254,19 +256,16 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturas1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCoberturasHurto(coberturas);
-        clickearElemento(checkBoxAccidentes);
-        seleccionarItem(comboBoxAccidentes, dato.get("AC"));
-        checkBoxGastosTaspaso.click();
-        seleccionarItem(comboBoxGastosTraspaso, dato.get("GTR"));
-        checkBoxGAstosDeParqueadero.click();
-        seleccionarItem(comboBoxgastosDeParqueadero, dato.get("GP"));
+        seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
+        seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
+        seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
     }
 
     public void seleccionarCoberturasHurto(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         try {
-            withTimeoutOf(TIEMPO_3,TimeUnit.SECONDS).waitFor(labelGatosTransporte);
+            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             labelGatosTransporte.waitUntilPresent();
@@ -301,23 +300,17 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturas2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        clickearElemento(checkBoxTaller);
-        seleccionarItem(comboBoxTaller, dato.get("Taller"));
-        checkBoxGrua.click();
-        seleccionarItem(comboBoxGrua, dato.get("Grua"));
-        checkBoxTallerMovil.click();
-        seleccionarItem(comboBoxTallerMovil, dato.get("TM"));
-        checkBoxCentroDeServicios.click();
-        seleccionarItem(comboBoxCentroDeServicios, dato.get("CS"));
-        checkBoxCarroDeReemplazo.click();
-        seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("PT"));
+        seleccionarCobertura(checkBoxTaller, comboBoxTaller, dato.get("Taller"));
+        seleccionarCobertura(checkBoxGrua, comboBoxGrua, dato.get("Grua"));
+        seleccionarCobertura(checkBoxTallerMovil, comboBoxTallerMovil, dato.get("TM"));
+        seleccionarCobertura(checkBoxCentroDeServicios, comboBoxCentroDeServicios, dato.get("CS"));
+        seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, dato.get("PT"));
     }
 
 
     public void seleccionarCoberturas3(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        checkBoxConductorElegido.click();
-        seleccionarItem(comboBoxConductorElegido, dato.get("CE"));
+        seleccionarCobertura(checkBoxConductorElegido, comboBoxConductorElegido, dato.get("CE"));
     }
 
 
@@ -348,10 +341,8 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         if (!"null".equals(dato.get("AC"))) {
-            clickearElemento(checkBoxAccidentes);
-            seleccionarItem(comboBoxAccidentes, dato.get("AC"));
-            clickearElemento(checkBoxAsistencia);
-            seleccionarItem(comboBoxAsistencia, dato.get("AS"));
+            seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
+            seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, dato.get("AS"));
         }
     }
 
@@ -376,11 +367,12 @@ public class TarifaAutosPage extends PageUtil {
         MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor no se encuentra presente.", comboBoxAccidentes.isPresent());
     }
 
-    public void marcharCoberturaAccidentes() {
-        clickearElemento(checkBoxAccidentes);
-    }
-
     public void verificarCoberturaAccidentes() {
         MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor se presente.", !comboBoxAccidentes.isPresent());
+    }
+
+    public void seleccionarCobertura(WebElementFacade checkBox, WebElementFacade comboBox, String dato) {
+        clickearElemento(checkBox);
+        seleccionarItem(comboBox, dato);
     }
 }

@@ -1,5 +1,5 @@
 Meta:
-@lote3
+@lote4
 @sprint 8
 @tag equipo: reaseguro
 @local
@@ -30,7 +30,7 @@ Examples:
 |informacionGeneralCobertura                                 |
 |Ubicación CR 45 30 30, Medellin, Colombia (Daños materiales)|
 
-Scenario: mostrar nombre de cobertura en el riesgo
+Scenario: validacion de primas correspondientes para cada reasegurador
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion        |departamento|ciudad  |agente|
 |Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|10/10/1973      |LALO         |TOBON          |DIRECCION DE RESIDENCIA|CALLE 12a #63Q-95|Antioquia   |Medellin|INT-3 |

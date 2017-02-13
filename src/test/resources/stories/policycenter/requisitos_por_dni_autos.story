@@ -1,6 +1,6 @@
-Meta: @lote4
-@issue #SUGWUSC-5944
-@tag team: 5
+Meta:
+@lote4
+@tag equipo: 5
 
 Narrative:
 Como usuario de negocio
@@ -13,12 +13,12 @@ Given estoy cotizando una poliza de autos:
 | organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |tipoPoliza|
 | Sura         | Autos                   | CEDULA DE CIUDADANIA | 1036543787      | 10/10/1974       | ANDREA        | GARABITO        | DIRECCION DE RESIDENCIA | CALLE 28F #60-68 | Antioquia    | Medellin | INT-3  |Individual|
 When ingrese los datos del asegurado <tipo_documento> <documento>
-And ingrese los datos del vehiculo en expedicion:
+And ingrese los datos del vehiculo:
 |placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
 |ABB182 |2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
-And seleccione algunas coberturas:
-| limite | deducible | abogado  | PTH | PPH | PPHF | GTH | AC | AS                 | PTD | PPD | PPDF | GT | PP | PT | GTR      | GP       | PLlaves  |
-| 1.440  | 0         | Opción 1 | 10  | 910 | 1.50 | 40. | 35 | Asistencia Clásica | 10  | 0   | 1.50 | 40 | 16 | 20 | Opción 1 | Opción 1 | Opción 1 |
+And ingrese las coberturas:
+|limite|deducible|abogado |PLlaves |
+|640.  |0        |Si      |Si      |
 And agrege un beneficiario <tipoDocumento> <numeroDocumento><tipoBeneficiario>
 And cotice una poliza
 And voy a expedir una poliza

@@ -3,8 +3,12 @@ package core.sura.resources;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,6 +18,14 @@ import java.util.concurrent.TimeUnit;
 
 
 public class MetodosComunes {
+    protected static final int TIEMPO_30 = 30;
+
+
+    protected void waitUntilVisible(WebElement element, WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_30);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
     public Properties loadProperty() throws Exception {
         Properties prop = new Properties();
         InputStream input = null;

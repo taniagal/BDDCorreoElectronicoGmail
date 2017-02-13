@@ -32,7 +32,7 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
     @Step
     public void validarLaVisibilidadDeLaSeccionHerramientasDelMenuLateral() {
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralNotasVisible(), Is.is(Matchers.equalTo(true)));
-        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralDocumentosVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralDocumentosVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralParticipantesVisible(), Is.is(Matchers.equalTo(true)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralPlanDeTrabajoVisible(), Is.is(Matchers.equalTo(true)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralHistorialVisible(), Is.is(Matchers.equalTo(true)));
@@ -75,5 +75,10 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
     @Step
     public void validarQueLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables() {
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarQueTodosLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables(), Is.is(Matchers.equalTo(true)));
+    }
+
+    @Step
+    public void validarMenuOpcionFormulariosNoEsVisible() {
+        MatcherAssert.assertThat("El elemento del menú Formularios es visible y debería estar oculto ", polizaPrincipalPaPages.validarMenuOpcionFormulariosNoEsVisible(), Is.is(Matchers.equalTo(false)));
     }
 }

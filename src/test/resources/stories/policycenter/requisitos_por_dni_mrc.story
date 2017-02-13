@@ -1,7 +1,7 @@
 Meta:
 @lote2
 @issue #SUGWUSC-5927
-@tag team: 5
+@tag equipo: 5
 
 Narrative:
 Como usuario de negocio

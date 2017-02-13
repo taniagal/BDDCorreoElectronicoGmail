@@ -6,36 +6,35 @@ import com.sura.guidewire.policycenter.utils.Parametros;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class MultiplesAsesoresPage extends PageUtil {
     private static final int CONSTANTE_UNO = 1;
     private static final int CONSTANTE_DOS = 2;
-    private static final int CONSTANTE_CUATRO = 4;
     private static final int CONSTANTE_CINCO = 5;
-    private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
-    protected static final int CONSTANTE_VEINTE = 20;
     private static final String PATH_ENCABEZADO_INFORMACIONPOLIZA = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     private static final String PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
-    private static final String PATH_TABLA_ENCABEZADO_AGENTE = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']";
     private static final String PATH_TABLA_AGENTE = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']/*/table/tbody/tr";
+    private static final String PATH_CELDA = ".//*[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducersLink']")
-    private WebElementFacade btnAdicionarAsesores;
+    private WebElementFacade botonAdicionarAsesores;
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Edit']")
-    private WebElementFacade btnEditar;
+    private WebElementFacade botonEditar;
     @FindBy(xpath = " .//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Add']")
-    private WebElementFacade btnAgregar;
+    private WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Update']")
-    private WebElementFacade btnAceptar;
+    private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Remove']")
-    private WebElementFacade btnQuitar;
+    private WebElementFacade botonQuitar;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
-    private WebElementFacade labelmensajeDeValidacion;
+    private WebElementFacade labelMensajeDeValidacion;
 
     public MultiplesAsesoresPage(WebDriver driver) {
         super(driver);
@@ -43,33 +42,49 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     public void adicionarAsesoresDeComision() {
         esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACIONPOLIZA);
-        clicObjeto(btnAdicionarAsesores);
+        clickearElemento(botonAdicionarAsesores);
         esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
     }
 
-    public void ingresarInformacionDelAsesor(Parametros parametros) {
-        clicObjeto(btnEditar);
+    public void ingresarInformacionDelAsesor(ExamplesTable parametros) {
+        botonEditar.waitUntilPresent();
+        clickearElemento(botonEditar);
         esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
         ingresarCodigoAsesor(parametros);
     }
 
-    public void ingresarCodigoAsesor(Parametros parametros) {
-        for (int i = 1; i <= parametros.getListaAgentes().size(); i++) {
-            esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
-            ingresaValorEntabla(PATH_TABLA_AGENTE, i, CONSTANTE_DOS, parametros.getListaAgentes().get(i - CONSTANTE_UNO));
-            ingresaValorEntabla(PATH_TABLA_AGENTE, i, CONSTANTE_CUATRO, parametros.getListaPorcentaje().get(i - CONSTANTE_UNO));
-            ingresaValorEntabla(PATH_TABLA_AGENTE, i, CONSTANTE_CINCO, parametros.getListaroles().get(i - CONSTANTE_UNO));
-
-            if (i < parametros.getListaAgentes().size()) {
-                clicObjeto(btnAgregar);
-            }
+    public void ingresarCodigoAsesor(ExamplesTable parametros) {
+        WebElementFacade checkBoxIntermediarioUno = $(PATH_TABLA_AGENTE + "[1]/td[1]");
+        clickearElemento(checkBoxIntermediarioUno);
+        clickearElemento(botonQuitar);
+        int i = 1;
+        for (Map<String, String> dato : parametros.getRows()) {
+            clickearElemento(botonAgregar);
+            WebElementFacade checkBoxIntermediario = $(PATH_TABLA_AGENTE + "[" + i + "]/td[1]");
+            WebElementFacade celdaRol = $(PATH_CELDA);
+            checkBoxIntermediario.click();
+            actions.sendKeys(Keys.TAB).build().perform();
+            actions.sendKeys(Keys.ENTER).build().perform();
+            esperarHasta(TIEMPO_300);
+            actions.sendKeys(dato.get("codigoAsesor")).build().perform();
+            esperarHasta(TIEMPO_200);
+            actions.sendKeys(Keys.ENTER).build().perform();
+            actions.sendKeys(Keys.TAB).build().perform();
+            esperarHasta(TIEMPO_300);
+            actions.sendKeys(dato.get("porcentaje")).build().perform();
+            actions.sendKeys(Keys.TAB).build().perform();
+            esperarHasta(TIEMPO_300);
+            celdaRol.clear();
+            actions.sendKeys(dato.get("rol")).build().perform();
+            esperarHasta(TIEMPO_500);
+            actions.sendKeys(Keys.TAB).build().perform();
+            i++;
         }
-        clicObjeto(btnAceptar);
+        clickearElemento(botonAceptar, CONSTANTE_DOS);
     }
-
     public void validacionMensaje(Parametros parametros) {
         esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
-        verificarMensaje(labelmensajeDeValidacion, parametros.getMensaje());
+        verificarMensaje(labelMensajeDeValidacion, parametros.getMensaje());
     }
 
     //TODO Metodos que pueden agregar a utileria de comando
@@ -82,7 +97,7 @@ public class MultiplesAsesoresPage extends PageUtil {
             esperarHasta(TIEMPO_500);
             try {
                 elemento = this.getElemento(pathElemento);
-                this.clicObjeto(elemento);
+                this.clickearElemento(elemento);
                 ejecuto = true;
             } catch (Exception ex) {
                 LOGGER.info("Exception " + ex);
@@ -94,73 +109,23 @@ public class MultiplesAsesoresPage extends PageUtil {
         }
     }
 
-    //TODO Metodos que pueden agregar a utileria de comando
     public WebElementFacade getElemento(String locator) {
         return withTimeoutOf(1, TimeUnit.SECONDS).find(locator);
     }
 
-    //TODO Metodos que pueden agregar a utileria de comando
-    public void clicObjeto(WebElementFacade objeto) {
-        clickearElemento(objeto);
-    }
-
-    //TODO Metodos que pueden agregar a utileria de comando
     public int consultarNumeroElementosTabla(String pathTabla) {
         List<WebElementFacade> listaFacturas = this.getList(pathTabla);
         return listaFacturas.size();
     }
 
-    //TODO Metodos que pueden agregar a utileria de comando
     public List<WebElementFacade> getList(String locator) {
         return withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).findAll(locator);
     }
 
-    //TODO Metodos que pueden agregar a utileria de comando
     public String consultarTextoCeldaTabla(String path, int indiceFila, int indiceColumna) {
         WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
         return elemento.getText();
     }
-
-    //TODO Metodos que pueden agregar a utileria de comando
-    public void escribirTextoCeldaTabla(String path, int indiceFila, int indiceColumna, String texto) {
-        WebElementFacade elemento = consultarElementoFilaColumna(path, indiceFila, indiceColumna);
-        clicObjeto(elemento);
-        borrarRegistroDatos(CONSTANTE_VEINTE);
-        actions.sendKeys(texto).build().perform();
-        esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
-
-    }
-
-
-    public void ingresaValorEntabla(String path, int indiceFila, int indiceColumna, String texto) {
-        WebElementFacade elemento = consultarElementoFilaColumna(path, indiceFila, indiceColumna);
-        boolean clickEnTabla = false;
-        int maximoEjecuciones = CONSTANTE_DOS;
-        int ejecuciones = 0;
-        while (ejecuciones < maximoEjecuciones && !clickEnTabla) {
-            esperarYClickearBoton(elemento);
-            if ($(CELDA_VALOR).isPresent()) {
-                $(CELDA_VALOR).clear();
-                actions.sendKeys(texto).build().perform();
-                esperarHasta(TIEMPO_300);
-                esperarObjetoClikeableServidor(PATH_TABLA_ENCABEZADO_AGENTE);
-                clickEnTabla = true;
-            }
-            ejecuciones = ejecuciones + 1;
-        }
-    }
-
-    //TODO Metodos que pueden agregar a utileria de comando
-    public WebElementFacade consultarElementoFilaColumna(String path, int indiceFila, int indiceColumna) {
-        return getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
-    }
-
-    public void borrarRegistroDatos(int cantidad) {
-        for (int i = 0; i < cantidad; i++) {
-            actions.sendKeys(Keys.BACK_SPACE).build().perform();
-        }
-    }
-
     public void validarDatosDelAsesor(Parametros parametros) {
         if (parametros.getValidarDato().equals(Parametros.CODIGO_ASESOR)) {
             esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);

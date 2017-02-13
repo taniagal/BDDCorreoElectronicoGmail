@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class PrecondicionesPage {
+public class PrecondicionesPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElement campoTxtBuscar;
     @FindBy(xpath = ".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']")
@@ -35,31 +35,29 @@ public class PrecondicionesPage {
     private WebElement menuItemColombia;
 
     private static final int TIEMPO_1000 = 1000;
-    private static final int TIEMPO_10 = 10;
     private static final int TIEMPO_2000 = 2000;
 
     public void cargarDatos(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
         campoTxtBuscar.sendKeys(Keys.ALT, Keys.SHIFT, "t");
-        wait.until(ExpectedConditions.elementToBeClickable(menuHerramientasInternas)).isDisplayed();
+        waitUntilVisible(menuHerramientasInternas, driver);
         menuHerramientasInternas.click();
         menuItemDatosDeMuestraDePc.click();
         botonCarga.click();
-        wait.until(ExpectedConditions.elementToBeClickable(labelCargaCorrecta));
+        wait.until(ExpectedConditions.visibilityOf(labelCargaCorrecta));
         assertThat(labelCargaCorrecta.getText(), anyOf(is("Conjunto cargado \"Sura\" correctamente."),
                 is("Loaded set \"Sura\" successfully.")));
     }
 
     public void elegirLenguaje(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_10);
         Actions actions = new Actions(driver);
         botonPreferencias.click();
-        wait.until(ExpectedConditions.elementToBeClickable(menuItemInternacional)).isDisplayed();
+        waitUntilVisible(menuItemInternacional, driver);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        wait.until(ExpectedConditions.elementToBeClickable(menuItemIdioma)).isDisplayed();
+        waitUntilVisible(menuItemIdioma, driver);
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        wait.until(ExpectedConditions.elementToBeClickable(menuItemColombia)).isDisplayed();
+        waitUntilVisible(menuItemColombia, driver);
         menuItemColombia.click();
         MetodosComunes.waitUntil(TIEMPO_2000);
     }

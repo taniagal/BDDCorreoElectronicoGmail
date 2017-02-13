@@ -24,11 +24,6 @@ public class CesionDePrimaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void irAResumenDePoliza() {
-        cesionDePrimaPage.irAResumenDePoliza();
-    }
-
-    @Step
     public void ingresarATodasLasTransacciones() {
         cesionDePrimaPage.ingresaATodasTransacciones();
     }

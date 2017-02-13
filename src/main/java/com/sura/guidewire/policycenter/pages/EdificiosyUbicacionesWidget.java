@@ -10,18 +10,15 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-
 public class EdificiosyUbicacionesWidget extends PageUtil {
+
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
     private static final String XPATH_COTIZAR = "//a[contains(.,'Cotizar')]";
@@ -47,10 +44,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
+    private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
     private static final int TIEMPO_250 = 250;
-
-    TableWidgetPage tabla;
-    NuevaPolizaPage nuevaPolizaPage;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
@@ -110,8 +105,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonQuitar;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[3]/td[4]")
     private WebElementFacade agregarTipoOnerosoEdificios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:checkCommercialValue-inputEl']")
+    private WebElementFacade chekAseguradoValorComercial;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
+    private WebElementFacade campoAseguradoValorComercial;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
+    private WebElementFacade txtValorAsegurado;
 
-    private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
+
+    TableWidgetPage tabla;
+    NuevaPolizaPage nuevaPolizaPage;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -248,7 +251,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         Boolean esSeleccionado = false;
         setImplicitTimeout(0, TimeUnit.SECONDS);
         try {
-            waitForAnyTextToAppear(tab);
+            waitForAnyTextToAppear(tab,"Agregar Otro Articulo");
             shouldContainText(tab);
             String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
             String classProp = $(xpathTab).getAttribute("class");
@@ -403,54 +406,64 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
-        String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        WebElementFacade xLinkAgregarOtrosArticulos = $("//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]");
+        setImplicitTimeout(0, TimeUnit.SECONDS);
         if (esOtroArticulo) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
-            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
+            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().click();
         }
-        if (isElementVisible(By.xpath(xLinkAgregarOtrosArticulos))) {
+        resetImplicitTimeout();
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        if (xLinkAgregarOtrosArticulos.isVisible()) {
             cliclearBtnAgregarArticulo();
             ingresarInputTiposDeArticulos(tipoArticulo);
-            waitFor(TIEMPO_3).seconds();
             ingresarTextAreaDescripcion(tipoArticulo);
         }
         if (cobertura.length() > 0) {
             seleccionarCobertura(obtenerDivCobertura(cobertura), cobertura);
-            waitFor(TIEMPO_2).seconds();
             ingresarEntrada(entrada, valorEntrada);
         } else {
             ingresarEntrada(entrada, valorEntrada);
         }
         if (esUltimaFilaDeExampleTable) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
-            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
+            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().click();
         }
         resetImplicitTimeout();
     }
 
     public void ingresarEntrada(String entrada, String valorEntrada) {
         WebElementFacade divEntradasAgregarOtroArticulo;
+        setImplicitTimeout(TIEMPO_2,TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(XPATH_PARTE1 + entrada + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + entrada + XPATH_PARTE2);
             WebElementFacade entradaOtroArticulo = divEntradasAgregarOtroArticulo.findBy(XPATH2_PARTE1 + entrada + XPATH2_PARTE2);
             WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName(INPUT));
             enter(valorEntrada).into(inputValorEntrada);
         }
+        resetImplicitTimeout();
     }
 
     public WebElementFacade obtenerDivCobertura(String cobertura) {
         WebElementFacade divEntradasAgregarOtroArticulo = null;
+        setImplicitTimeout(TIEMPO_2,TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(XPATH_PARTE1 + cobertura + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + cobertura + XPATH_PARTE2);
         }
+        resetImplicitTimeout();
         return divEntradasAgregarOtroArticulo;
     }
 
     public void seleccionarCobertura(WebElementFacade divEntradasAgregarOtroArticulo, String cobertura) {
         WebElementFacade xpathTrCoberturaDeRiesgo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::div[contains(., '" + cobertura + "')])] ");
         WebElementFacade inputCoberturaDeRiesgo = xpathTrCoberturaDeRiesgo.find(By.tagName(INPUT));
-        withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        try {
+            inputCoberturaDeRiesgo.waitUntilPresent();
+            withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException " + e);
+            withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        }
         inputCoberturaDeRiesgo.click();
     }
 
@@ -473,6 +486,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 clickearElemento(btnCotizar);
             }
         }
+        descartarCambios();
     }
 
     public void descartarCambios() {
@@ -489,7 +503,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitForTextToAppear("Tipos de Artículos");
         String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
-        waitFor(TIEMPO_4).second();
+        esperarHasta(TIEMPO_2000);
         $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
         esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
     }
@@ -503,16 +517,28 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void verificarMensajes(ExamplesTable mensajes) {
         for (Map<String, String> mensaje : mensajes.getRows()) {
+            setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
             try {
                 waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
-            }catch (StaleElementReferenceException e){
-                LOGGER.info("StaleElementReferenceException " + e);
-                waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
-                esperarHasta(TIEMPO_2000);
-                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
+            } catch (StaleElementReferenceException e) {
+                intentarVerificarmensaje("StaleElementReferenceException " + e, mensaje.get(MENSAJES_WORKSPACE),
+                        "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
+                                " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
+            } catch (ElementNotVisibleException f) {
+                intentarVerificarmensaje("ElementNotVisibleException " + f, mensaje.get(MENSAJES_WORKSPACE),
+                        "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
+                                " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }
         }
+        resetImplicitTimeout();
+    }
+
+    public void intentarVerificarmensaje(String s, String textValue, String reason, boolean assertion) {
+        LOGGER.info(s);
+        waitFor(divMensaje).shouldContainText(textValue);
+        esperarHasta(TIEMPO_2000);
+        MatcherAssert.assertThat(reason, assertion);
     }
 
     public void agregarInteresAdicional(String cedula, String tipodocumento) {
@@ -542,25 +568,25 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             String documento = interesadosadicionales.get("DOCUMENTO");
             String tipobeneficiario = interesadosadicionales.get("TIPOBENEFICIARIO");
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
-            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoEdificios);
+            ingresarBeneficiarioOneroso(tipobeneficiario, listaTipoOnerosoEdificios);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalMaquinariaYEquipo, documento, tipodocumento);
-            ingresarBeneficiarioOneroso(tipobeneficiario,listaTipoOnerosoMaquinariaYEquipo);
+            ingresarBeneficiarioOneroso(tipobeneficiario, listaTipoOnerosoMaquinariaYEquipo);
         }
     }
 
-    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado){
-        for (Map<String, String> interesadosadicionalesuno: interesado.getRows()){
+    public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado) {
+        for (Map<String, String> interesadosadicionalesuno : interesado.getRows()) {
             String tipodocumentos = interesadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
             String documentos = interesadosadicionalesuno.get("DOCUMENTO");
             String tipobeneficiarios = interesadosadicionalesuno.get("TIPOBENEFICIARIO");
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documentos, tipodocumentos);
-            ingresarBeneficiarioOneroso(tipobeneficiarios,listaTipoOnerosoEdificios);
+            ingresarBeneficiarioOneroso(tipobeneficiarios, listaTipoOnerosoEdificios);
 
         }
     }
 
-    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso){
-        for (Map<String, String> agregarinteresadosadicionalesuno: agregaroneroso.getRows()) {
+    public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso) {
+        for (Map<String, String> agregarinteresadosadicionalesuno : agregaroneroso.getRows()) {
             String agretipodocumentos = agregarinteresadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
             String agredocumentos = agregarinteresadosadicionalesuno.get("DOCUMENTO");
             String agretipobeneficiarios = agregarinteresadosadicionalesuno.get("TIPOBENEFICIARIO");
@@ -569,7 +595,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void ingresarBeneficiarioOneroso(String tipoBeneficiario,WebElementFacade elemento){
+    public void ingresarBeneficiarioOneroso(String tipoBeneficiario, WebElementFacade elemento) {
         Actions act = new Actions(getDriver());
         waitFor(TIEMPO_2).second();
         desplegarElementoDeLista(elemento);
@@ -578,11 +604,20 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     }
 
-    public void desseleccionarArticulo(){
+    public void ingresarValorComercialAsegurado(String valorcomercial) {
+        ingresarDato(campoAseguradoValorComercial, valorcomercial);
+    }
+
+    public void desseleccionarArticulo() {
         chekInteresAdicionaledificios.waitUntilPresent().click();
     }
 
-    public void retirarBeneficiarioOnerosoAlArticulo(){
+    public void seleccionarCheckAseguradoValorComercial() {
+        chekAseguradoValorComercial.waitUntilPresent().waitUntilVisible();
+        clickearElemento(chekAseguradoValorComercial);
+    }
+
+    public void retirarBeneficiarioOnerosoAlArticulo() {
         chekTipoOnerosoEdificios.waitUntilPresent();
         clickearElemento(chekTipoOnerosoEdificios);
         botonQuitar.waitUntilPresent();
@@ -602,5 +637,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void seleccionarElTipoDeMercanciaFlotante(String tipoMercancia) {
         listaTipoDeMercancia.waitUntilPresent();
         seleccionarItem(listaTipoDeMercancia, tipoMercancia);
+    }
+
+    public void verificarMesnComercialA() {
+        waitFor(TIEMPO_2).second();
+        String valor = txtValorAsegurado.getValue().replaceAll("\\.", "");
+        MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(valor));
     }
 }

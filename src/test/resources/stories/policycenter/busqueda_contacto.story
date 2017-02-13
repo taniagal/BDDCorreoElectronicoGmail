@@ -1,8 +1,7 @@
 Busqueda Contacto
 
-Meta: @lote1
-
-@issue #CDSEG-894
+Meta:
+@lote2
 @tag equipo: 5
 @Sprint 1
 

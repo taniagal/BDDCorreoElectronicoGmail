@@ -1,7 +1,7 @@
 Analisis De Riesgo Mrc
 
 Meta:
-@lote1
+@lote3
 @issue #CDSEG-993
 @tag equipo: 1
 @Sprint 9

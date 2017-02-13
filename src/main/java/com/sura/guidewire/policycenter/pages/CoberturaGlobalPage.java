@@ -46,6 +46,8 @@ public class CoberturaGlobalPage extends PageUtil {
     private WebElementFacade campoTxtGenerico;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:_msgs']")
+    private WebElementFacade labelMensajeValorComercial;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:locationsBlanLV:0:locationBlanket']")
     private WebElementFacade labelDescripcion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr[1]/td[2]")
@@ -102,8 +104,8 @@ public class CoberturaGlobalPage extends PageUtil {
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_PESTAÑA_COBERTURAS_INICIAL, LBL_PESTAÑA_COBERTURAS_FINAL);
     }
 
-    public void validarCamposCoberturasGlobales(String estadouno, String estadodos, ExamplesTable menusesperados) {
-        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
+    public void validarCamposCoberturasGlobales(String estadouno,ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno,menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
     }
 
     public void agregarCoberturasGlobales(ExamplesTable datosCobertura) {
@@ -177,6 +179,10 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void verificarMensajeError(String mensaje) {
-        verificarMensaje(divMensaje, mensaje);
+        verificarMensaje(divMensaje,mensaje);
+    }
+
+    public void verificarMensajeErrorValorComercial(String mensaje) {
+        verificarMensaje(labelMensajeValorComercial,mensaje);
     }
 }

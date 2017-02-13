@@ -1,15 +1,13 @@
 Meta:
-@lote2
+@lote1
 @sprint 1
 @tag equipo: 4
 
 
 Narrative:
-As a user
-I want to perform an action
-So that I can achieve a business goal
-
-Feature: Detalles de un contacto
+Como usuario de policy center
+Deseo poder editar la informacion de un contacto
+Para poder mantener su informacion actualizada
 
 Antecedents: HU Search Contact y HU Metodos de Entrada de Direcciones
 Pendiente por definir en la historia la validacion de direcciones con la historia New address input modes

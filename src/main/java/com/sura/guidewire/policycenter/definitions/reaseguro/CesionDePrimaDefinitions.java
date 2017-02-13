@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.reaseguro;
 
 
-import com.sura.guidewire.policycenter.steps.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CesionDePrimaSteps;
@@ -25,10 +24,6 @@ public class CesionDePrimaDefinitions {
 
     @Steps
     CesionDePrimaSteps cesionDePrimaSteps;
-
-    @Steps
-    CotizacionMRCSteps cotizacionMRCSteps;
-
 
     @Given("cotice y expida una poliza")
     public void givenCoticeYExpidaUnaPoliza() {
@@ -61,7 +56,6 @@ public class CesionDePrimaDefinitions {
     @When("quiera validar que el reaseguro para el contrato cuotaparte o excedente")
     public void whenQuieraValidarQueElReaseguroParaElContratoCotaparteOExcedenteSeRealice() {
         cesionDePrimaSteps.ingresaADetalleDeContratoExcedente();
-
     }
 
     @Then("se deben mostrar los valores correspondientes de primas de reasegurador")

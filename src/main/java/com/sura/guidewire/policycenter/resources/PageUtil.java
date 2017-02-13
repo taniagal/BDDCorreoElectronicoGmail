@@ -58,11 +58,12 @@ public class PageUtil extends PageObject {
     /**
      * Este metodo despliega alguna de las opciones de la barra de navegacion superior del aplicativo
      * Eg: desplegarMenu(menuPoliza);
+     *
      * @param menu WebElementFacade
      * @return actions un objeto tipo 'Actions' en caso de necesitar realizar acciones con el driver
      */
     public Actions desplegarMenu(WebElementFacade menu) {
-        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(menu).waitUntilPresent();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(menu);
         clickearElemento(menu);
         esperarHasta(TIEMPO_3000);
         clickearElemento(menu);
@@ -75,8 +76,9 @@ public class PageUtil extends PageObject {
     /**
      * Este metodo selecciona un item que se encuentre dentro de un comboBox.
      * Eg: seleccionarItem(comboBoxCiudad, "Medellin");
-     * @param  elemento WebElementFacade que es el comboBox
-     * @param opcion  String que es el elemento dentro de este
+     *
+     * @param elemento WebElementFacade que es el comboBox
+     * @param opcion   String que es el elemento dentro de este
      */
     public void seleccionarItem(WebElementFacade elemento, String opcion) {
         try {
@@ -107,6 +109,7 @@ public class PageUtil extends PageObject {
      * Este metodo realiza una espera de un tiempo fijo durante un tiempo determinado, es decir, pausa la ejecucion
      * Eg: esperarHasta(TIEMPO_3000);   este realiza una espera de 3000 milisegundos que es igual a 3 segundos
      * Hay que tener en cuenta que se deben usar las constantes de tiempo creadas al principio de esta clase
+     *
      * @param millis int que es la cantidad de tiempo en milisegunto que va a esperar
      */
     public static void esperarHasta(int millis) {
@@ -130,9 +133,10 @@ public class PageUtil extends PageObject {
      * Valida que un elemento contenga un elemento contenga un string, es usado principanmente para validar mensajes
      * en pantalla.
      * Eg: verificarMensaje(labelTitulo, "Hola mundo");
+     *
      * @param elemento WebElementFacade que es el elemento que contiene el mensaje
-     * @param mensaje String que es el mensaje a validar
-     * */
+     * @param mensaje  String que es el mensaje a validar
+     */
     public void verificarMensaje(WebElementFacade elemento, String mensaje) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).shouldContainText(mensaje);
         MatcherAssert.assertThat("Falló el mensaje de validacion, expected: " + mensaje + " but was: "
@@ -144,9 +148,10 @@ public class PageUtil extends PageObject {
      * Valida que un elemento contenga un elemento contenga un o varios strings, es usado principanmente para validar
      * varios mensajes en un mismo elemento del aplicativo como el panel inferior de workspace
      * Eg: verificarMensaje(labelTitulo, mensajes);
+     *
      * @param elemento WebElementFacade que es el elemento que contiene el mensaje
      * @param mensajes ExamplesTable que es la estructura de datos que contiene todos los mensajes a validar
-     * */
+     */
     public void verificarMensajes(WebElementFacade elemento, ExamplesTable mensajes) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
@@ -158,6 +163,7 @@ public class PageUtil extends PageObject {
 
     /**
      * este metodo obtiene y devuelve un arreglo con todos los elementos de una lista
+     *
      * @param locator String que es el identificador o locator del elemento en el DOM
      * @return un List con todos los WebElements encontrados
      */
@@ -201,6 +207,12 @@ public class PageUtil extends PageObject {
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
         } while (!elemento.getValue().equals(dato));
+    }
+
+    public void validarBusqueda(WebElementFacade tabla, ExamplesTable listaBusqueda) {
+        Map<String, String> tablaBusqueda = listaBusqueda.getRows().get(0);
+        MatcherAssert.assertThat("Falló el mensaje de validacion, expected: " + tablaBusqueda.get("busqueda") + " but was: "
+                + tabla.getText(), tabla.containsText(tablaBusqueda.get("busqueda")));
     }
 
     public void esperarPorValor(WebElementFacade element, String value) {
@@ -281,5 +293,19 @@ public class PageUtil extends PageObject {
 
     public boolean esEditable(WebElementFacade element) {
         return element.getAttribute("class").contains("x-form-text");
+    }
+
+    public boolean esCampoEditable(WebElementFacade campo) {
+        boolean editables = false;
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        if ("textbox".equals(campo.getAttribute("role")) && campo.isVisible()) {
+            if (campo.getText() != null) {
+                editables = true;
+            } else {
+                editables = false;
+            }
+        }
+        resetImplicitTimeout();
+        return editables;
     }
 }

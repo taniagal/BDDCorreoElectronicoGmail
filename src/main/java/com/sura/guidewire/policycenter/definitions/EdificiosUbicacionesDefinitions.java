@@ -1,18 +1,19 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
-import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
-import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
@@ -20,15 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EdificiosUbicacionesDefinitions {
-
     @Steps
     PolizaSteps polizaSteps;
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
-    @Steps
-    ExpedicionDePolizaSteps expedicionDePolizaSteps;
-    @Steps
-    IngresoAPolicyCenterDefinitions guidewireLogin;
     @Steps
     GuidewireSteps guidewire;
     @Steps
@@ -79,6 +75,14 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresarCoberturas(ingresotable);
     }
 
+    @When("ingrese la entrada de las diferentes coberturas y validar el asegurado valor comercial $tablecoberturas")
+    public void validarAseguradoComercialCuandoIngreseLasEntradasDeLasDiferentesCoberturas(ExamplesTable tablecoberturas) {
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
+        edificiosUbicacionesSteps.ingresarCoberturas(tablecoberturas);
+        edificiosUbicacionesSteps.seleccionarCheckAseguradoValorComercial();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+    }
+
     @When("ingrese a modificar articulo con beneficiario oneroso en cambio de poliza $modificararticulo")
     public void cuandoIntenteModificarArticuloConBeneficiarioOneroso(ExamplesTable modificararticulo) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
@@ -93,7 +97,6 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.retirarBeneficiarioOnerosoAlArticulo();
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
-
     }
 
     @When("ingresar interes adicional <tipoBeneficiario> a cada cobertura $interesados")
@@ -132,7 +135,6 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
-
     }
 
     @When("ingrese las entradas en cambio de poliza y verificar las reglas de oneroso")
@@ -152,7 +154,6 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
     }
-
 
     @When("intente ingresar una nueva ubicacion")
     public void cuandoIntenteIngresarUnaNuevaUbicacion() {
@@ -200,11 +201,6 @@ public class EdificiosUbicacionesDefinitions {
     public void cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo() {
         edificiosUbicacionesSteps.seleccionarCheckDelArticuloAAgregar();
         edificiosUbicacionesSteps.seleccionarCheckDeCoberturaQueDeseaAplicar();
-        /*
-        Se ingresa valor asegurado superior al valor del articulo a asegurar y se ingresa valores a sublimites
-        que superen el valor asegurado con el fin de validar en el paso de comprobaciones que se verifiquen los limites
-        de valores para valor asegurado y sublimites.
-         */
         edificiosUbicacionesSteps.ingresarValorReconstruccionDelArticulo("10000");
         edificiosUbicacionesSteps.ingresarValorAseguradoDanosMateriales("10001");
         edificiosUbicacionesSteps.ingresarValorSublimiteTranslados("10002");
@@ -217,22 +213,11 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
     }
 
-
-    @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
-    @Aliases(values = {
-            "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
-    })
-    public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
+    @Then("se debe mostrar el o los siguientes mensajes $mensajesEsperados")
+    public void validarMensajes(ExamplesTable mensajesEsperados) {
         edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
-
-    @Then("se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados")
-    public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacio(ExamplesTable mensajesEsperados) {
-        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
-        edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
-    }
-
 
     @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
     public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
@@ -242,10 +227,9 @@ public class EdificiosUbicacionesDefinitions {
         polizaSteps.confirmarCancelacion();
     }
 
-    @Then("se debe mostrar el siguiente mensaje $mensajesEsperados")
-    public void entoncesValidarQueAparezcanLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
-        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
-        edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
+    @Then("verificar el valor asegurado de las coberturas debe venir por defecto el valor comercial")
+    public void verificarMensajeValorComercialA() {
+        edificiosUbicacionesSteps.verificarMensajeValorComercialA();
     }
 
     @Then("se espera que el siguiente mensaje se muestre una sola vez: $mensajesEsperado")
@@ -257,11 +241,6 @@ public class EdificiosUbicacionesDefinitions {
         }
         MatcherAssert.assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, Is.is(CoreMatchers.equalTo(1)));
         edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
-    }
-
-    @Then("no debe dejar continuar y debe permanecer en la pagina $pagina")
-    public void noDebeDejarContinuarYDebePermanecerEnLaPagina(String pagina) {
-        //Metodo Vacio
     }
 
     @Then("no debe estar visible $variable")

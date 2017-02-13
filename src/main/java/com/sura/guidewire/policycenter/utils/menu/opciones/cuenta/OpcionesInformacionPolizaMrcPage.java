@@ -39,13 +39,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     WebElementFacade mensajePantalla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguiente;
+    WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguienteCambioDePoliza;
+    WebElementFacade botonSiguienteCambioDePoliza;
     @FindBy(xpath = ".//input[contains(@id,'false-inputEl')]")
     WebElementFacade btnNoReaseguroEspecial;
     @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguienteRenovacionDePoliza;
+    WebElementFacade botonSiguienteRenovacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton-btnInnerEl']")
     WebElementFacade btnAgregar;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -110,6 +110,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade menuItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']/div")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:_msgs']")
+    private WebElementFacade divMensaje2;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     WebElementFacade botonAceptarCoaseguro;
 
@@ -153,29 +155,30 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSelecciona.waitUntilPresent();
         clickearElemento(btnSelecciona);
         waitInfoPoliza(lblInformaPoliza);
-        clickearElemento(btnSiguiente);
+        clickearElemento(botonSiguiente);
     }
 
     public void seleccionBotonSiguiente() {
-        btnSiguiente.waitUntilPresent();
         try {
-            clickearElemento(btnSiguiente);
+            botonSiguiente.waitUntilPresent();
+            clickearElemento(botonSiguiente);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            clickearElemento(btnSiguiente);
+            esperarHasta(TIEMPO_2000);
+            botonSiguiente.waitUntilPresent();
+            clickearElemento(botonSiguiente);
         }
     }
 
     public void seleccionBotonSiguienteenCambioDePoliza() {
-        esperarHasta(TIEMPO_5000);
-        btnSiguienteCambioDePoliza.click();
-        esperarHasta(TIEMPO_5000);
+        botonSiguienteCambioDePoliza.waitUntilPresent();
+        clickearElemento(botonSiguienteCambioDePoliza);
         waitForTextToAppear("Edificios y ubicaciones");
     }
 
     public void seleccionBotonSiguienteenRenovacionDePoliza() {
-        waitFor(TIEMPO_7).second();
-        btnSiguienteRenovacionDePoliza.click();
+        botonSiguienteRenovacionDePoliza.waitUntilPresent();
+        clickearElemento(botonSiguienteRenovacionDePoliza);
     }
 
     public void seleccionaRiesgoAceptado() {
@@ -314,7 +317,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void validarMensajesCoaseguros(ExamplesTable mensajesEsperados) {
-        verificarMensajes($(".message"), mensajesEsperados);
+        verificarMensajes(divMensaje2, mensajesEsperados);
     }
 
     public void noHabilitarNumeroDocumentoCoaseguro() {
@@ -419,13 +422,37 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 String mensaje = menus.get("OPCIONES_MENU");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                MatcherAssert.assertThat("Alguno de los campos no es visible", elementoMenu.isVisible());
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementoMenu.isVisible());
             } else if (estadodos.contains("No visible")) {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-                MatcherAssert.assertThat("Alguno de los campos es visible", !elementoMenu.isVisible());
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", !elementoMenu.isVisible());
+                resetImplicitTimeout();
+            }
+        }
+    }
+
+    public void validarCampos(String estado, ExamplesTable menusesperados, String pathinicial, String pathfinal) {
+        WebElementFacade elementoMenu;
+        Map<String, String> menus;
+        String xpathMenu;
+        for (int i = 0; i < menusesperados.getRowCount(); i++) {
+            menus = menusesperados.getRows().get(i);
+            if (estado.contains("Visible") && menus.get("OPCIONES_MENU") != null) {
+                String mensaje = menus.get("OPCIONES_MENU");
+                xpathMenu = pathinicial + mensaje + pathfinal;
+                elementoMenu = findBy(xpathMenu);
+                setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementoMenu.isVisible());
+                resetImplicitTimeout();
+            } else if (estado.contains("No visible")) {
+                String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
+                xpathMenu = pathinicial + mensaje + pathfinal;
+                elementoMenu = findBy(xpathMenu);
+                setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", !elementoMenu.isVisible());
                 resetImplicitTimeout();
             }
         }
@@ -439,8 +466,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         }
     }
 
-    public void validarCamposMenuLateral(String estadouno, String estadodos, ExamplesTable menusesperados) {
-        validarCampos(estadouno, estadodos, menusesperados, LBL_MENU_LATERAL_INICIAL, LBL_MENU_LATERAL_FINAL);
+    public void validarCamposMenuLateral(String estadouno, ExamplesTable menusesperados) {
+        validarCampos(estadouno, menusesperados, LBL_MENU_LATERAL_INICIAL, LBL_MENU_LATERAL_FINAL);
     }
 
     public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {

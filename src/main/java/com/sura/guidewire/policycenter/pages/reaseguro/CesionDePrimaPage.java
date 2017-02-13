@@ -45,6 +45,7 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade lblVolverAPrimasCedidas;
 
     String numeroDeEnvio = null;
+    private static final int CUATRO = 4;
 
     public CesionDePrimaPage(WebDriver driver) {
         super(driver);
@@ -103,12 +104,12 @@ public class CesionDePrimaPage extends PageUtil {
 
     public void buscaEnTablaTareaDeLote(String nombreTarea) {
         int i = 0;
-        String XPATH1 = ".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV:";
-        String XPATH2 = ":RunBatchWithoutNotify']";
+        String xpathTareaInicio = ".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV:";
+        String xpathTareaFinal = ":RunBatchWithoutNotify']";
         if (!getListaNombreProcesoPorLotes().isEmpty()) {
             for (WebElementFacade nombreDeTarea : getListaNombreProcesoPorLotes()) {
                 if (nombreTarea.equals(nombreDeTarea.getText())) {
-                    WebElementFacade ejecutarAccionTarea = $(XPATH1 + i + XPATH2);
+                    WebElementFacade ejecutarAccionTarea = $(xpathTareaInicio + i + xpathTareaFinal);
                     ejecutarAccionTarea.click();
                     break;
                 }
@@ -127,7 +128,7 @@ public class CesionDePrimaPage extends PageUtil {
         WebElementFacade tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[1]/td[1]");
         esperarYClickearBoton(linkIngresaATodasTransacciones);
         int ejecuciones = 0;
-        int maxIntentos = 4;
+        int maxIntentos = CUATRO;
         boolean ejecuto = false;
         while (ejecuciones < maxIntentos && !ejecuto) {
             if (tabla.isVisible()) {
