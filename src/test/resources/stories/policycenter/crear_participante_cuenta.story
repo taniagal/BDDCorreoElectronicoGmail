@@ -1,4 +1,5 @@
-Meta: @lote3
+Meta:
+@lote3
 
 Narrative:
 Quiero ser capaz de crear un participante de una cuenta y obtener toda su informacion

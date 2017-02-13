@@ -1,7 +1,7 @@
 Cotizacion PA Detalle
 
-Meta: @lote3
-
+Meta:
+@lote3
 @issue #CDSEG-807
 @tag equipo: 5
 @local
