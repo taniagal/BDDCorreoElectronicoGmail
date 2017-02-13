@@ -104,8 +104,8 @@ public class CoberturaGlobalPage extends PageUtil {
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_PESTAÑA_COBERTURAS_INICIAL, LBL_PESTAÑA_COBERTURAS_FINAL);
     }
 
-    public void validarCamposCoberturasGlobales(String estadouno, String estadodos, ExamplesTable menusesperados) {
-        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
+    public void validarCamposCoberturasGlobales(String estadouno,ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno,menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
     }
 
     public void agregarCoberturasGlobales(ExamplesTable datosCobertura) {
