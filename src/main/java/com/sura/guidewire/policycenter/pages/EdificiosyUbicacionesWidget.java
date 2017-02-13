@@ -345,7 +345,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
                 .withTimeout(TIEMPO_1, TimeUnit.SECONDS)
-                .pollingEvery(TIEMPO_250, TimeUnit.MILLISECONDS)
+                .pollingEvery(TIEMPO_100, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
 
@@ -525,6 +525,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void verificarMensajes(ExamplesTable mensajes) {
         for (Map<String, String> mensaje : mensajes.getRows()) {
+            setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
             try {
                 waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
@@ -538,6 +539,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                                 " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }
         }
+        resetImplicitTimeout();
     }
 
     public void intentarVerificarmensaje(String s, String textValue, String reason, boolean assertion) {

@@ -114,6 +114,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade divMensaje2;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     WebElementFacade botonAceptarCoaseguro;
+    @FindBy(xpath = "//span[contains(.,'Información de póliza')]")
+    WebElementFacade menuItemInformacionDePolizaTransaccion;
 
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
@@ -257,8 +259,16 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarInformacionDePoliza() {
-        lblInformaPolizaEnRenovacion.click();
-        waitForTextToAppear("Información de póliza");
+        if(menuItemInformacionDePolizaTransaccion.isPresent()){
+            menuItemInformacionDePoliza.click();
+        }
+        else{
+            if(lblInformaPolizaEnRenovacion.isPresent()){
+                lblInformaPolizaEnRenovacion.click();
+                waitForTextToAppear("Información de póliza");
+            }
+        }
+
     }
 
     public void ingresarAInformacionDePoliza() {
@@ -422,13 +432,37 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 String mensaje = menus.get("OPCIONES_MENU");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                MatcherAssert.assertThat("Alguno de los campos no es visible", elementoMenu.isVisible());
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementoMenu.isVisible());
             } else if (estadodos.contains("No visible")) {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-                MatcherAssert.assertThat("Alguno de los campos es visible", !elementoMenu.isVisible());
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", !elementoMenu.isVisible());
+                resetImplicitTimeout();
+            }
+        }
+    }
+
+    public void validarCampos(String estado, ExamplesTable menusesperados, String pathinicial, String pathfinal) {
+        WebElementFacade elementoMenu;
+        Map<String, String> menus;
+        String xpathMenu;
+        for (int i = 0; i < menusesperados.getRowCount(); i++) {
+            menus = menusesperados.getRows().get(i);
+            if (estado.contains("Visible") && menus.get("OPCIONES_MENU") != null) {
+                String mensaje = menus.get("OPCIONES_MENU");
+                xpathMenu = pathinicial + mensaje + pathfinal;
+                elementoMenu = findBy(xpathMenu);
+                setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementoMenu.isVisible());
+                resetImplicitTimeout();
+            } else if (estado.contains("No visible")) {
+                String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
+                xpathMenu = pathinicial + mensaje + pathfinal;
+                elementoMenu = findBy(xpathMenu);
+                setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", !elementoMenu.isVisible());
                 resetImplicitTimeout();
             }
         }
@@ -442,8 +476,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         }
     }
 
-    public void validarCamposMenuLateral(String estadouno, String estadodos, ExamplesTable menusesperados) {
-        validarCampos(estadouno, estadodos, menusesperados, LBL_MENU_LATERAL_INICIAL, LBL_MENU_LATERAL_FINAL);
+    public void validarCamposMenuLateral(String estadouno, ExamplesTable menusesperados) {
+        validarCampos(estadouno, menusesperados, LBL_MENU_LATERAL_INICIAL, LBL_MENU_LATERAL_FINAL);
     }
 
     public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {
