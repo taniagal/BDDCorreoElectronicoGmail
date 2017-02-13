@@ -444,7 +444,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 String mensaje = menus.get("OPCIONES_MENU");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+                setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
                 MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementoMenu.isVisible());
                 resetImplicitTimeout();
             } else if (estado.contains("No visible")) {
