@@ -10,11 +10,13 @@ Para las polizas de mrc en policy center
 
 Scenario: Comparacion de polizas al cambiar un dato por otro
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112402|Multiriesgo corporativo|
+Given estoy cotizando una poliza de mrc:
+| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Multiriesgo corporativo | CEDULA DE CIUDADANIA | 08/12/1973       | MARIA         | OSPINA          | DIRECCION DE RESIDENCIA | CALLE 48F #25-83 | Antioquia    | Medellin | INT-3  |
 When ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion sin riesgo consultable
+And intente ingresar una nueva ubicacion en edificios
+| pais     | departamento | ciudad   | direccion   | actividadEconomica            |
+| Colombia | Antioquia    | Medellin | CR 45 45 12 | Acabado de productos textiles |
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -23,52 +25,11 @@ And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
-And intente ingresar una nueva ubicacion
+And intente ingresar una nueva ubicacion en edificios
+| pais     | departamento | ciudad   | direccion   | actividadEconomica                    |
+| Colombia | Antioquia    | Medellin | CR 63 77 65 | Actividades de apoyo a la agricultura |}
+And validar mensaje de solo un riesgo por ubicacion
 Then debe existir la comparacion entre datos de poliza existente y poliza nueva
 Examples:
-|rolUsuario|
-|          |
-
-Scenario: Comparacion de polizas al cambiar el valor de la reconstruccion
-Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112402|Multiriesgo corporativo|
-When ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion sin riesgo consultable
-And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
-| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-And intente cotizar y expedir la poliza
-And ingrese al resumen de la poliza expedida
-And cuando intente cambiar informacion de la poliza MRC
-And ingrese a edificios y ubicaciones en cambio de poliza
-And cambie el valor de la reconstruccion <valorReconstruccion>
-Then debe existir la comparacion entre datos de poliza existente y poliza nueva
-Examples:
-|valorReconstruccion|
-|50000000           |
-
-Scenario: Comparacion de polizas al agregar asegurado
-Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112402|Multiriesgo corporativo|
-When ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion sin riesgo consultable
-And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
-| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-And intente cotizar y expedir la poliza
-And ingrese al resumen de la poliza expedida
-And cuando intente cambiar informacion de la poliza MRC
-And ingrese a edificios y ubicaciones en cambio de poliza
-And intente ingresar una nueva ubicacion
-And ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional
-| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                              | VALOR_ENTRADAS |
-| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción | 100000000      |
-| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-Then debe existir la comparacion entre datos de poliza existente y poliza nueva
-Examples:
-|valorReconstruccion|cedula  |tipodocumento       |tipoBeneficiario|
-|50000000           |71318883|CEDULA DE CIUDADANIA|Asegurado       |
+| rolUsuario |
+|            |

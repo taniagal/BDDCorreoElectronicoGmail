@@ -675,7 +675,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void validaMensajeDeSoloUnRiesgo() {
-      //  JOptionPane.showMessageDialog(null, lblMensajeValidaRiesgosRepetidos.getText().contains(VALIDACION_MENSAJE_RIESGOS));
         MatcherAssert.assertThat("No aparecio mensaje de validacion en ingresar riesgo", lblMensajeValidaRiesgosRepetidos.getText().contains(VALIDACION_MENSAJE_RIESGOS));
         chekEliminarPrimeraUbicacion.click();
         botonRemoverRiesgo.click();
