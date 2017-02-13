@@ -337,7 +337,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
                 .withTimeout(TIEMPO_1, TimeUnit.SECONDS)
-                .pollingEvery(TIEMPO_250, TimeUnit.MILLISECONDS)
+                .pollingEvery(TIEMPO_100, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
 
