@@ -224,8 +224,10 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = datosCoberturas.getRow(0);
         seleccionarCoberturasRC(datosCoberturas);
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
-        if (!dato.get("abogado").isEmpty() && comboBoxAbogado.isPresent()) {
-            seleccionarItem(comboBoxAbogado, dato.get("abogado"));
+        if(comboBoxAbogado.isPresent()) {
+            if (!dato.get("abogado").isEmpty()) {
+                seleccionarItem(comboBoxAbogado, dato.get("abogado"));
+            }
         }
     }
 
@@ -239,15 +241,11 @@ public class TarifaAutosPage extends PageUtil {
         }
         resetImplicitTimeout();
         seleccionarItem(comboBoxLimite, dato.get("limite"));
-        /*comboBoxLimite.clear();
-        esperarHasta(TIEMPO_500);
-        comboBoxLimite.sendKeys(dato.get("limite"));
-        comboBoxLimite.sendKeys(Keys.ENTER);*/
         seleccionarItem(comboBoxDeducible, dato.get("deducible"));
     }
 
     public void seleccionarPerdidaDeLlaves(String llaves) {
-        if (!llaves.isEmpty() && comboBoxPerdidaDeLlaves.isPresent()) {
+        if (!llaves.isEmpty()) {
             seleccionarItem(comboBoxPerdidaDeLlaves, llaves);
         }
     }
