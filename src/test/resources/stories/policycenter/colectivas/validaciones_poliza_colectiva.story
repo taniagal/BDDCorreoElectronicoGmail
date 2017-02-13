@@ -250,10 +250,10 @@ Examples:
 Scenario: 14 Validacion datos asegurado en poliza riesgo autos
 Meta:
 @manual
-Given que estoy en la poliza con numero de subscripcion <numSubscripcion>
-When ingrese a asegurados
-And seleccione agregar contacto
-Then se debe mostrar las opciones de persona natural, juridica y directorio
+Given  que estoy en la poliza con numero de subscripcion <numSubscripcion>
+When  ingrese a asegurados
+And  seleccione agregar contacto
+Then  se debe mostrar las opciones de persona natural, juridica y directorio
 
 Examples:
 ||
