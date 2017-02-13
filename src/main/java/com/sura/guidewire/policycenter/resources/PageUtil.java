@@ -84,11 +84,11 @@ public class PageUtil extends PageObject {
         try {
             withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(elemento);
         } catch (ElementNotVisibleException e) {
-            LOGGER.info("ElementNotVisibleException " + e);
+            LOGGER.info("ElementNotVisibleException ", e);
             esperarHasta(TIEMPO_2000);
             withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(elemento);
         } catch (StaleElementReferenceException f) {
-            LOGGER.info("StaleElementReferenceException " + f);
+            LOGGER.info("StaleElementReferenceException ", f);
             esperarHasta(TIEMPO_2000);
         }
         clickearElemento(elemento);
@@ -124,7 +124,7 @@ public class PageUtil extends PageObject {
                 }
             });
         } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException in " + e);
+            LOGGER.info("TimeoutException in ", e);
         }
     }
 
@@ -188,18 +188,18 @@ public class PageUtil extends PageObject {
             try {
                 waitFor(elemento).waitUntilPresent();
             } catch (StaleElementReferenceException e) {
-                LOGGER.info("StaleElementReferenceException " + e);
+                LOGGER.info("StaleElementReferenceException ", e);
                 esperarHasta(TIEMPO_2000);
                 waitFor(elemento).waitUntilPresent();
             }
             try {
                 elemento.clear();
             } catch (ElementNotVisibleException e) {
-                LOGGER.info("ElementNotVisibleException " + e);
+                LOGGER.info("ElementNotVisibleException ", e);
                 esperarHasta(TIEMPO_2000);
                 elemento.clear();
             } catch (StaleElementReferenceException f) {
-                LOGGER.info("StaleElementReferenceException " + f);
+                LOGGER.info("StaleElementReferenceException ", f);
                 esperarHasta(TIEMPO_2000);
                 elemento.clear();
             }
@@ -219,7 +219,7 @@ public class PageUtil extends PageObject {
         try {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
         } catch (ElementNotVisibleException e) {
-            LOGGER.info("ElementNotVisible at PageUtil 129 " + e);
+            LOGGER.info("ElementNotVisible at PageUtil 129 ", e);
         }
         esperarHasta(TIEMPO_1000);
     }
@@ -272,7 +272,7 @@ public class PageUtil extends PageObject {
                 break;
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_500);
-                LOGGER.info("WebDriverException " + e);
+                LOGGER.info("WebDriverException ", e);
                 LOGGER.info("--- click " + i);
             }
         }
@@ -285,7 +285,7 @@ public class PageUtil extends PageObject {
                 break;
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_1000);
-                LOGGER.info("WebDriverException " + e);
+                LOGGER.info("WebDriverException ", e);
                 LOGGER.info("--- click " + i);
             }
         }

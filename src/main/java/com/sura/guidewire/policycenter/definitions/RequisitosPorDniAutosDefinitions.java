@@ -41,12 +41,4 @@ public class RequisitosPorDniAutosDefinitions {
     public void cotizarYExpedirPoliza() {
         requisitosPorDniAutosSteps.clicBotonExpedicion();
     }
-
-    @Given("estoy cotizando una poliza de mrc: $datosCotizacion")
-    @Alias("estoy cotizando una poliza de autos: $datosCotizacion")
-    public void nuevaPolizaMrcConCuenta(ExamplesTable datosCotizacion) {
-        cuentaNuevaSteps.crearCuentaNueva(datosCotizacion);
-        nuevaCotizacionSteps.nuevaCotizacionenCuenta();
-        nuevaCotizacionSteps.seleccionarProductoDesdeCuenta(datosCotizacion);
-    }
 }

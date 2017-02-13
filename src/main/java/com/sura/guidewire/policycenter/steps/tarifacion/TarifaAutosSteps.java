@@ -94,10 +94,11 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarCoberturasComisionPactada(ExamplesTable coberturas){
-        vehiculoPage.clickSiguiente();
+    public void seleccionarCoberturasComisionPactada(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
-        tarifaAutosPage.seleccionarPerdidasParcialesHurtoDanios(coberturas);
+        tarifaAutosPage.seleccionarCoberturasHurto(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
+        tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
         tarifaAutosPage.cotizar();
     }
 
@@ -120,7 +121,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarComisionPactada(String estado, String valor) {
-        tarifaAutosPage.ingresarComisionPactada(estado, valor);
+    public void ingresarComisionPactada(String valor) {
+        tarifaAutosPage.ingresarComisionPactada(valor);
     }
 }
