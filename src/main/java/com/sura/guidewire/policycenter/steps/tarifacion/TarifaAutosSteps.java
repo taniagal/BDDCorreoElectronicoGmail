@@ -95,6 +95,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarCoberturasComisionPactada(ExamplesTable coberturas){
+        vehiculoPage.clickSiguiente();
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
         tarifaAutosPage.seleccionarPerdidasParcialesHurtoDanios(coberturas);
         tarifaAutosPage.cotizar();

@@ -107,8 +107,7 @@ public class NuevaCotizacionPage extends PageUtil {
                     descripcion.waitUntilPresent();
                 } catch (StaleElementReferenceException e) {
                     LOGGER.info("StaleElementReferenceException " + e);
-                    esperarHasta(TIEMPO_2000);
-                    descripcion.waitUntilPresent();
+                    esperarHasta(TIEMPO_3000);
                 }
                 esperarHasta(TIEMPO_1000);
                 if (nomProducto.equals(descripcion.getText())) {

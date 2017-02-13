@@ -25,5 +25,5 @@ And seleccione todas las coberturas de comision pactada:
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:
-|valor_asegurado|tipo_documento      |documento |prima  |iva   |costo  |estado|valor|
-|32000000       |CEDULA DE CIUDADANIA|1060447895|413.310|78.529|491.839|si    |10   |
+|valor_asegurado|tipo_documento      |documento |prima    |iva    |costo    |estado|valor|
+|32000000       |CEDULA DE CIUDADANIA|1060447895|2.374.961|451.243|2.826.204|si    |10   |
