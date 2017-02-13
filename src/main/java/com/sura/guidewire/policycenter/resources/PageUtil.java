@@ -32,6 +32,7 @@ public class PageUtil extends PageObject {
     protected static final int TIEMPO_500 = 500;
     protected static final int TIEMPO_300 = 300;
     protected static final int TIEMPO_200 = 200;
+    protected static final int TIEMPO_100 = 100;
     protected static final int TIEMPO_28 = 28;
     protected static final int TIEMPO_30 = 30;
     protected static final int TIEMPO_20 = 20;
