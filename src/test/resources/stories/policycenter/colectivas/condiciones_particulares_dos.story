@@ -44,3 +44,21 @@ Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 Examples:
 | tipo_documento       | documento  | cuenta      | producto |agente_oficina| cotizacion |
 | CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO      | 33355390   |
+
+
+Scenario: 3 Generacion de UW al ingresar bonificacion commercial y tecnica mayor a la pactada
+
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si               |
+And ingrese las coberturas a auto cero kilometros:
+| limite | deducible |
+| 640.   | 0         |
+
+Examples:
+| tipo_documento       | documento  | producto |agente_oficina| cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | Autos    | DIRECTO      | 39355347   |
+
