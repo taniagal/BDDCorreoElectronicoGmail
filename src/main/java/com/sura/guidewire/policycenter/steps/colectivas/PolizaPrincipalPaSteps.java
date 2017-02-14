@@ -16,7 +16,6 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarBotonMenuAseguradosNoVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarBotonMenuVehiculosNoVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarBotonMenuCoberturasNoVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(polizaPrincipalPaPages.validarElementosDeshabilitadosDelMenu(), Is.is(Matchers.equalTo(true)));
     }
 
     @Step
