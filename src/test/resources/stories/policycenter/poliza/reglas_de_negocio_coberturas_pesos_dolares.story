@@ -1,6 +1,6 @@
 
 Meta:
-@lote1
+@lote4
 @tag equipo: 3
 @issue #CDSEG-764
 @sprint 13

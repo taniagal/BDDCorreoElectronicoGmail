@@ -1,7 +1,7 @@
 inicio renovacion de poliza pa
 
 Meta:
-@lote4
+@lote3
 @issue #CDSEG-821
 @tag equipo: 3
 @local
