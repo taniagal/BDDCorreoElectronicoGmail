@@ -331,7 +331,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         withAction().moveToElement(inputValorEntrada).perform();
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
-      //  esperarAQueElementoTengaValor(findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
     }
 
     public void ingresarValorAEntradaInformacionArticulo(String tipoArticulo, String entrada, String valorEntrada) {
@@ -342,7 +341,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         withAction().moveToElement(inputValorEntrada).perform();
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
-       // esperarAQueElementoTengaValor(trWE.findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
     }
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
@@ -516,7 +514,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
         esperarHasta(TIEMPO_2000);
         $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
-       // esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
     }
 
     public void ingresarTextAreaDescripcion(String tipoArticulo) {
@@ -524,7 +521,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         textAreaDescripcion.waitUntilPresent();
         enter(tipoArticulo).into(textAreaDescripcion);
         clickearElemento(textAreaDescripcion);
-       // esperarAQueElementoTengaValor(textAreaDescripcion, tipoArticulo);
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
