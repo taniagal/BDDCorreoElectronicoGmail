@@ -73,7 +73,7 @@ public class Utils {
         String signoPesos = "$";
         String caracteresCompletarTexto = ",00 (COP)";
         String valorConFormatoNumero = nuevoFormato.format(numeroParaConvertirEnCadena);
-        return signoPesos + valorConFormatoNumero + caracteresCompletarTexto;
+        return signoPesos + valorConFormatoNumero.replace(",", ".") + caracteresCompletarTexto;
     }
 
     public static String quitaCaracteresACadena(WebElementFacade texto) {
