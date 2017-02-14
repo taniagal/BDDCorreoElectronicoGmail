@@ -163,7 +163,7 @@ public class PageUtil extends PageObject {
 
 
     /**
-     * este metodo obtiene y devuelve un arreglo con todos los elementos de una lista
+     * Este metodo obtiene y devuelve un arreglo con todos los elementos de una lista
      *
      * @param locator String que es el identificador o locator del elemento en el DOM
      * @return un List con todos los WebElements encontrados
@@ -273,7 +273,7 @@ public class PageUtil extends PageObject {
                 break;
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_500);
-                LOGGER.info("WebDriverException ", e);
+                LOGGER.info("WebDriverException " + e);
                 LOGGER.info("--- click " + i);
             }
         }

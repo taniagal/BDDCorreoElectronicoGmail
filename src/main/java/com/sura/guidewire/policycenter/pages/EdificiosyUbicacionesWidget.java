@@ -116,8 +116,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade txtValorAsegurado;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]/div/img")
     private WebElementFacade chekEliminarPrimeraUbicacion;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:removeLocation-btnInnerEl']")
-    private WebElementFacade botonRemoverRiesgo;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade lblMensajeValidaRiesgosRepetidos;
 
