@@ -132,7 +132,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("tenga las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> $tabla")
-    public void TengaLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInterescedulatipodocumentotipoBeneficiario(ExamplesTable tabla , String cedula, String tipodocumento, String tipoBeneficiario) {
+    public void TengaLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInterescedulatipodocumentotipoBeneficiario(ExamplesTable tabla, String cedula, String tipodocumento, String tipoBeneficiario) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(tabla);
         edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula, tipodocumento);
@@ -165,6 +165,7 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
+        edificiosUbicacionesSteps.validarMensajeRiesgoEnPolizaRenovacion();
     }
 
     @When("intente ingresar una nueva ubicacion")

@@ -30,7 +30,7 @@ public class TarifaAutosDefinitions {
     public void agregarValorasegurado(@Named("valor_asegurado") String valorAsegurado) {
         tarifaAutosSteps.agregarValorAsegurado(valorAsegurado);
     }
-    
+
     @When("ingrese la informacion del vehiculo: $datosVehiculo")
     public void agregarVehiculoConAcessorios(ExamplesTable datosVehiculo) {
         tarifaAutosSteps.agregarVehiculoDos(datosVehiculo);
@@ -42,7 +42,7 @@ public class TarifaAutosDefinitions {
     }
 
     @When("ingrese las coberturas a $texto: $coberturas")
-    public void agregarcoberturasCeroKilometros(ExamplesTable coberturas){
+    public void agregarcoberturasCeroKilometros(ExamplesTable coberturas) {
         tarifaAutosSteps.agregarCoberturasRC(coberturas);
     }
 
@@ -52,7 +52,7 @@ public class TarifaAutosDefinitions {
     }
 
     @When("vaya a la pantalla de coberturas")
-    public void seleccionarBotonSiguiente(){
+    public void seleccionarBotonSiguiente() {
         tarifaAutosSteps.seleccionarBotonSiguiente();
     }
 
@@ -66,6 +66,16 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.seleciconarCoberturasCorbeta(coberturas);
     }
 
+    @When("seleccione todas las coberturas de comision pactada: $coberturas")
+    public void agregarTodasLasCoberturasDeComisionPactada(ExamplesTable coberturas) {
+        tarifaAutosSteps.seleccionarCoberturasComisionPactada(coberturas);
+    }
+
+    @When("ingrese la comision pactada en valor <valor>")
+    public void ingresarComisionPactada(@Named("valor") String valor) {
+        tarifaAutosSteps.ingresarComisionPactada(valor);
+    }
+
     @Then("el resultado de la cotizacion debe ser <valor>")
     public void verificarResultado(@Named("valor") String valor) {
         tarifaAutosSteps.verificarTarifacion(valor);
@@ -73,7 +83,7 @@ public class TarifaAutosDefinitions {
 
     @Then("el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>")
     public void verificarResultadoTarifacionTotal(@Named("prima") String primaTotal, @Named("iva") String iva, @Named("costo") String costoTotal) {
-        tarifaAutosSteps.verificarTarifacionTotal(primaTotal,iva,costoTotal);
+        tarifaAutosSteps.verificarTarifacionTotal(primaTotal, iva, costoTotal);
     }
 
     @Then("el resultado de la cotizacion en cada cobertura debe ser: $valor")
@@ -82,12 +92,12 @@ public class TarifaAutosDefinitions {
     }
 
     @Then("debo poder ver la cobertura de accidentes al conductor sin dependencia de daños o hurto")
-    public void verificarNoDependenciaDeCobertura(){
+    public void verificarNoDependenciaDeCobertura() {
         tarifaAutosSteps.verificarNoDependenciaDeCobertura();
     }
 
     @Then("debo poder ver la cobertura de accidentes al conductor con dependencia de daños o hurto")
-    public void verificarDependenciaDeCobertura(){
+    public void verificarDependenciaDeCobertura() {
         tarifaAutosSteps.verificarDependenciaDeCobertura();
     }
 }

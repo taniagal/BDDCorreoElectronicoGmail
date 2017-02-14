@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
-import com.sura.guidewire.policycenter.pages.PanelSurEspacioDeTrabajoPage;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
@@ -9,9 +8,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaAutosSteps extends ScenarioSteps {
-    TarifaAutosPage tarifaAutosPage;
-    ValidacionesInformacionDeVehiculoPage vehiculoPage;
-    PanelSurEspacioDeTrabajoPage panelSur;
+    TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+    ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
 
     public TarifaAutosSteps(Pages page) {
         super(page);
@@ -19,7 +17,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
 
     @Step
     public void agregarAseguradosDelDirectorio(String tipoDocumento, String documento) {
-        tarifaAutosPage.agregarAsegurado(tipoDocumento,documento);
+        tarifaAutosPage.agregarAsegurado(tipoDocumento, documento);
         vehiculoPage.clickSiguiente();
     }
 
@@ -35,7 +33,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datosPoliza);
         vehiculoPage.clickSiguiente();
-        panelSur.borrarEspacioDeTrabajo();
+        tarifaAutosPage.esperarPorPantallaCoberturas();
     }
 
     @Step
@@ -96,6 +94,15 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void seleccionarCoberturasComisionPactada(ExamplesTable coberturas) {
+        tarifaAutosPage.seleccionarCoberturasRC(coberturas);
+        tarifaAutosPage.seleccionarCoberturasHurto(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
+        tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
+        tarifaAutosPage.cotizar();
+    }
+
+    @Step
     public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
         tarifaAutosPage.verificarTarifacionTotal(primaTotal, iva, costoTotal);
     }
@@ -111,5 +118,10 @@ public class TarifaAutosSteps extends ScenarioSteps {
         tarifaAutosPage.verificarDependenciaDeCobertura();
         tarifaAutosPage.desMarcarCoberturas();
         tarifaAutosPage.verificarCoberturaAccidentes();
+    }
+
+    @Step
+    public void ingresarComisionPactada(String valor) {
+        tarifaAutosPage.ingresarComisionPactada(valor);
     }
 }
