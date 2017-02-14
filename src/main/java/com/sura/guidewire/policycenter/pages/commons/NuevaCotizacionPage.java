@@ -7,10 +7,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -93,7 +90,7 @@ public class NuevaCotizacionPage extends PageUtil {
         try {
             waitForTextToAppear(nomProducto, TIEMPO_1000);
         } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException " + e);
+            LOGGER.info("TimeoutException ", e);
             seleccionarItem(comboBoxCodigoDeAgente, "193");
         }
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
@@ -103,16 +100,15 @@ public class NuevaCotizacionPage extends PageUtil {
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
                 try {
-                    esperarHasta(TIEMPO_2000);
                     descripcion.waitUntilPresent();
                 } catch (StaleElementReferenceException e) {
-                    LOGGER.info("StaleElementReferenceException " + e);
+                    LOGGER.info("StaleElementReferenceException ", e);
                     esperarHasta(TIEMPO_2000);
                     descripcion.waitUntilPresent();
                 }
-                esperarHasta(TIEMPO_1000);
                 if (nomProducto.equals(descripcion.getText())) {
-                    botones.get(i).click();
+                    botones.get(i).waitUntilPresent();
+                    clickearElemento(botones.get(i));
                     if ("Multiriesgo corporativo".equals(nomProducto)) {
                         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
                         if (botonAceptarPopup.isVisible()) {
@@ -194,7 +190,11 @@ public class NuevaCotizacionPage extends PageUtil {
     public void seleccionarOficinaDeRadicacionYAgente(String oficina, String agente) {
         comboBoxOficinaDeRadicacion.waitUntilPresent();
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
-        seleccionarItem(comboBoxNombreAgente, agente);
+        clickearElemento(comboBoxNombreAgente);
+        esperarHasta(TIEMPO_300);
+        comboBoxNombreAgente.clear();
+        comboBoxNombreAgente.sendKeys(agente);
+        comboBoxNombreAgente.sendKeys(Keys.ENTER);
     }
 
     public void cotizarEnvioCopiada() {
