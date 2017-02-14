@@ -273,7 +273,7 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         try {
-            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
+            withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             labelGatosTransporte.waitUntilPresent();

@@ -1,5 +1,5 @@
 Meta:
-@lote1
+@lote3
 @sprint 14
 @tag equipo: 4
 
@@ -11,9 +11,9 @@ Quiero ser capaz de utilizar la comision pactada para beneficiar al cliente o al
 
 Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 10
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza de autos:
-|producto|oficina|agente_oficina |tipoPoliza |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Autos   |1059   |RANGEL         |Individual |CEDULA DE CIUDADANIA|10/10/1973      |EREN         |SNEIDER        |DIRECCION DE RESIDENCIA|CALLE 27F #60-69|Antioquia   |Medellin|INT-3 |
+Given estoy cotizando una poliza:
+|cuenta     |producto|oficina|agente_oficina |tipoPoliza |
+|C1060447895|Autos   |1059   |RANGEL         |Individual |
 When ingrese la comision pactada en valor <valor>
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
@@ -32,9 +32,9 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 15 y bonificacion comercial 5 y tecnica en 15
-Given estoy cotizando una poliza de autos:
-|producto|oficina|agente_oficina |tipoPoliza |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Autos   |1059   |RANGEL         |Individual |CEDULA DE CIUDADANIA|10/10/1973      |EREN         |SNEIDER        |DIRECCION DE RESIDENCIA|CALLE 27F #60-69|Antioquia   |Medellin|INT-3 |
+Given estoy cotizando una poliza:
+|cuenta     |producto|oficina|agente_oficina |tipoPoliza |
+|C1060447895|Autos   |1059   |RANGEL         |Individual |
 When ingrese la comision pactada en valor <valor>
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
@@ -53,14 +53,14 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 15 y validar UW
-Given estoy cotizando una poliza de autos:
-|producto|oficina|agente_oficina |tipoPoliza |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Autos   |1059   |RANGEL         |Individual |CEDULA DE CIUDADANIA|10/10/1973      |EREN         |SNEIDER        |DIRECCION DE RESIDENCIA|CALLE 27F #60-69|Antioquia   |Medellin|INT-3 |
+Given estoy cotizando una poliza:
+|cuenta     |producto|oficina|agente_oficina |tipoPoliza |
+|C1060447895|Autos   |1059   |RANGEL         |Individual |
 When ingrese la comision pactada en valor <valor>
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |
-|NEL505|2011  |01601225        |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Autos Clásico|
+|random|2011  |01601225        |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Autos Clásico|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
 |limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
@@ -75,9 +75,9 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc con comosion pactada en si y valor 10
-Given estoy cotizando una poliza de mrc:
-|producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+Given estoy cotizando una poliza:
+|cuenta     |producto               |oficina|agente_oficina |
+|C1060447895|Multiriesgo corporativo|1059   |RANGEL         |
 When ingrese la comision pactada en valor <valor>
 And agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion    |actividad                        |
@@ -99,9 +99,9 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc con comosion pactada en si y valor 16 y validar UW
-Given estoy cotizando una poliza de mrc:
-|producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+Given estoy cotizando una poliza:
+|cuenta     |producto               |oficina|agente_oficina |
+|C1060447895|Multiriesgo corporativo|1059   |RANGEL         |
 When ingrese la comision pactada en valor <valor>
 And agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion    |actividad                        |

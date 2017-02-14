@@ -46,7 +46,7 @@ public class PageUtil extends PageObject {
     protected static final int TIEMPO_1 = 1;
     protected static final int CONSTANTE_MAXIMO_EJECUCIONES = 120;
     protected static final int CONSTANTE_CUENTA_EJECUCIONES = 0;
-    protected static final int CONSTANTE_12 = 12;
+    protected static final int CONSTANTE_15 = 15;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
     protected Actions actions = new Actions(getDriver());
@@ -82,16 +82,6 @@ public class PageUtil extends PageObject {
      * @param opcion   String que es el elemento dentro de este
      */
     public void seleccionarItem(WebElementFacade elemento, String opcion) {
-        try {
-            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(elemento);
-        } catch (ElementNotVisibleException e) {
-            LOGGER.info("ElementNotVisibleException ", e);
-            esperarHasta(TIEMPO_2000);
-            withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(elemento);
-        } catch (StaleElementReferenceException f) {
-            LOGGER.info("StaleElementReferenceException ", f);
-            esperarHasta(TIEMPO_2000);
-        }
         clickearElemento(elemento);
         esperarHasta(TIEMPO_300);
         try {
@@ -125,7 +115,7 @@ public class PageUtil extends PageObject {
                 }
             });
         } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException in ", e);
+            LOGGER.info("TimeoutException in " + e);
         }
     }
 
@@ -267,7 +257,7 @@ public class PageUtil extends PageObject {
     }
 
     public void clickearElemento(WebElementFacade element) {
-        for (int i = 0; i < CONSTANTE_12; i++) {
+        for (int i = 0; i < CONSTANTE_15; i++) {
             try {
                 withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(element).click();
                 break;
