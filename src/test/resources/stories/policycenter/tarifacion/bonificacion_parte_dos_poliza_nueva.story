@@ -26,4 +26,4 @@ Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
 |bonoT|bonoC|tipo_documento      |documento |mensaje|
-|10   |10   |CEDULA DE CIUDADANIA|1060447895|La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
+|10   |10   |CEDULA DE CIUDADANIA|1397450166|La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
