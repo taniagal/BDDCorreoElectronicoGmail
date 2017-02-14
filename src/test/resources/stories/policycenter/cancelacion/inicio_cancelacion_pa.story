@@ -37,7 +37,7 @@ Then Se debe validar la emision anticipada con <mensaje>
 
 Examples:
 |poliza       |mensaje|
-|TEST_22222222|La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)|
+|TEST_22222222|La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días)|
 
 Scenario: motivos de cancelacion para polizas diferentes a Bancolombia
 Given que existe una <poliza> y esta dentro de la vigencia
@@ -60,7 +60,7 @@ Examples:
 
 Scenario: validar metodo de reembolso
 Meta:
- @manual
+@manual
 Given que existe la <poliza> y esta dentro de la vigencia
 When necesito iniciar una cancelacion
 And ingrese uno de los motivos:
