@@ -115,6 +115,11 @@ public class TarifaTasaUnicaDefinitions {
         tasaUnicaSteps.expedirPoliza();
     }
 
+    @Then("expido la poliza")
+    public void expedirPoliza2() {
+        tasaUnicaSteps.expedirPoliza();
+    }
+
     @Given("seleccione algunas coberturas: $coberturas")
     public void agregarCoberturas(ExamplesTable coberturas) {
         tasaUnicaSteps.seleciconarCoberturas(coberturas);
