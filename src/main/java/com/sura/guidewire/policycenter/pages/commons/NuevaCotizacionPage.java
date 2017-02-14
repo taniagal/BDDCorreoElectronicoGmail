@@ -62,6 +62,7 @@ public class NuevaCotizacionPage extends PageUtil {
 
     private static final String TIPO_POLIZA = "tipoPoliza";
     private static final String INDIVIDUAL = "Individual";
+    private static final String TABLA_SELECCION_DE_PRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/*/table/tbody";
     private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
     private String oficina = "1073";
     private String agente = "DIRECTO";
@@ -85,46 +86,6 @@ public class NuevaCotizacionPage extends PageUtil {
         }
         esperarHasta(TIEMPO_2000);
     }
-
-    public void seleccionDeProducto(String nomProducto) {
-        try {
-            waitForTextToAppear(nomProducto, TIEMPO_1000);
-        } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException ", e);
-            seleccionarItem(comboBoxCodigoDeAgente, "193");
-        }
-        List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
-        List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-        esperarHasta(TIEMPO_1000);
-        int i = 0;
-        if (!descripcionProductos.isEmpty()) {
-            for (WebElementFacade descripcion : descripcionProductos) {
-                try {
-                    descripcion.waitUntilPresent();
-                } catch (StaleElementReferenceException e) {
-                    LOGGER.info("StaleElementReferenceException ", e);
-                    esperarHasta(TIEMPO_2000);
-                    descripcion.waitUntilPresent();
-                }
-                if (nomProducto.equals(descripcion.getText())) {
-                    botones.get(i).waitUntilPresent();
-                    clickearElemento(botones.get(i));
-                    if ("Multiriesgo corporativo".equals(nomProducto)) {
-                        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-                        if (botonAceptarPopup.isVisible()) {
-                            esperarHasta(TIEMPO_1000);
-                            botonAceptarPopup.click();
-                            botonAceptarPopup.waitUntilNotVisible();
-                        }
-                        resetImplicitTimeout();
-                    }
-                    break;
-                }
-                i++;
-            }
-        }
-    }
-
 
     public void irANuevaCotizacion() {
         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
@@ -187,10 +148,46 @@ public class NuevaCotizacionPage extends PageUtil {
         }
     }
 
+    public void seleccionDeProducto(String nomProducto) {
+        try {
+            waitForTextToAppear(nomProducto, TIEMPO_1000);
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException ", e);
+            String codigoAgente = "";
+            esperarHasta(TIEMPO_1000);
+            codigoAgente = comboBoxCodigoDeAgente.getValue();
+            clickearElemento(comboBoxCodigoDeAgente);
+            esperarHasta(TIEMPO_300);
+            comboBoxCodigoDeAgente.clear();
+            comboBoxCodigoDeAgente.sendKeys("193");
+            comboBoxCodigoDeAgente.sendKeys(Keys.ENTER);
+            seleccionarItem(comboBoxCodigoDeAgente, codigoAgente);
+        }
+        esperarHasta(TIEMPO_1000);
+        List<WebElementFacade> descripcionProductos = getLista(TABLA_SELECCION_DE_PRODUCTO + "/tr/td[2]");
+        for (int i = 1; i <= descripcionProductos.size(); i++) {
+            WebElementFacade nombreProducto = $(TABLA_SELECCION_DE_PRODUCTO + "/tr[" + i + "]/td[2]");
+            if (nomProducto.equals(nombreProducto.getText())) {
+                WebElementFacade botonProducto = $(TABLA_SELECCION_DE_PRODUCTO + "/tr[" + i + "]/td[1]");
+                clickearElemento(botonProducto);
+                if ("Multiriesgo corporativo".equals(nomProducto)) {
+                    setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+                    if (botonAceptarPopup.isVisible()) {
+                        esperarHasta(TIEMPO_1000);
+                        botonAceptarPopup.click();
+                        botonAceptarPopup.waitUntilNotVisible();
+                    }
+                    resetImplicitTimeout();
+                }
+                break;
+            }
+        }
+    }
+
     public void seleccionarOficinaDeRadicacionYAgente(String oficina, String agente) {
         comboBoxOficinaDeRadicacion.waitUntilPresent();
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
-        clickearElemento(comboBoxNombreAgente);
+        clickearElemento(comboBoxNombreAgente, TIEMPO_4);
         esperarHasta(TIEMPO_300);
         comboBoxNombreAgente.clear();
         comboBoxNombreAgente.sendKeys(agente);
