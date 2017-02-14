@@ -47,19 +47,19 @@ public class CrearYEditarCumulosDefinitions {
     }
 
     @Given("cotice una poliza")
-    public void cuandoCotizeUnaPoliza(){
+    public void cuandoCotizeUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
     }
 
     @Given("ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>")
-    public void ingreseAcuerdoFacultativo(@Named("descripcionDeAcuerdo")String descripcionDeAcuerdo){
+    public void ingreseAcuerdoFacultativo(@Named("descripcionDeAcuerdo") String descripcionDeAcuerdo) {
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
         crearYEditarCumulosSteps.ingresar_a_opcion_crear_acuerdo_facultativo();
         crearYEditarCumulosSteps.ingresarDescripcionDeAcuerdoyDireccion(descripcionDeAcuerdo);
     }
 
     @When("ingrese la informacion de un reasegurador en la tabla de reaseguradores $datosReaseguradores")
-    public void ingresaInformacionEnTablaParaReasegurado(ExamplesTable datosReaseguradores){
+    public void ingresaInformacionEnTablaParaReasegurado(ExamplesTable datosReaseguradores) {
         crearYEditarCumulosSteps.ingresarModalidadDeTasaEnTabla(datosReaseguradores);
     }
 
@@ -68,10 +68,6 @@ public class CrearYEditarCumulosDefinitions {
         edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo(datosUbicacion);
 
-    }
-    @When("validar mensaje de solo un riesgo por ubicacion")
-    public void validarMensajeDeSoloUnRiesgo(){
-        edificiosUbicacionesSteps.validarMensajeRiesgoEnPoliza();
     }
 
     @Then("el valor de tasa bruta de cesion debe tomar el mismo valor de la columna en la tabla")
@@ -85,7 +81,7 @@ public class CrearYEditarCumulosDefinitions {
     }
 
     @Then("se debe mostrar un mensaje <mensaje> validando utilidades negativas")
-    public void seDebeMostarUnmensajeValidandoUtilidadesNegatibas(@Named("mensaje")String mensaje) {
+    public void seDebeMostarUnmensajeValidandoUtilidadesNegatibas(@Named("mensaje") String mensaje) {
         crearYEditarCumulosSteps.validacionUtilidadesNegativas(mensaje);
     }
 

@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.pages;
 import com.google.common.base.Function;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -116,13 +117,18 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade txtValorAsegurado;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]/div/img")
     private WebElementFacade chekEliminarPrimeraUbicacion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]/div/img")
+    private WebElementFacade chekEliminarPrimeraUbicacionRenovacion;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade lblMensajeValidaRiesgosRepetidos;
+    @FindBy(xpath = "//span[@id='RenewalWizard:Prev-btnInnerEl']")
+    private WebElementFacade botonVolverEnRenovacion;
 
     private static final int TRES = 3;
 
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -227,7 +233,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void editartransacciondepoliza() {
-        esperarHasta(TIEMPO_5000);
+        waitFor(botonVolverEnRenovacion).click();
+        esperarHasta(TIEMPO_2000);
+        opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
         findBy(XPATH_EDITAR_TRANSACCION_POLIZA).waitUntilVisible().click();
         esperarHasta(TIEMPO_2000);
         findBy(XPATH_ACEPTAR).click();
@@ -649,32 +657,17 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(valor));
     }
 
-    public void eliminarPrimeraUbicacion(){
-        botonRemoverRiesgo.waitUntilVisible().waitUntilClickable();
-        esperarYClickearBoton(chekEliminarPrimeraUbicacion);
-        esperarYClickearBoton(chekEliminarPrimeraUbicacion);
-        clickearElemento(botonRemoverRiesgo);
-        esperarHasta(TIEMPO_2000);
+    public void validarMensajeSoloUnRiesgoEnRenovacion(){
+        validaMensajeDeSoloUnRiesgo(chekEliminarPrimeraUbicacionRenovacion);
     }
 
-    public void seleccionarCheckDeUbicacion() {
-        Actions actions = new Actions(getDriver());
-        int intentos = 0;
-        while (intentos < TRES) {
-            esperarHasta(TIEMPO_2000);
-            if (!"0px -15px".equals(chekEliminarPrimeraUbicacion.getCssValue("background-position")) || !"-15px -15px".equals(chekEliminarPrimeraUbicacion.getCssValue("background-position"))) {
-                actions.click(chekEliminarPrimeraUbicacion).build().perform();
-            } else {
-                break;
-            }
-            intentos++;
-        }
-        esperarHasta(TIEMPO_2000);
+    public void validarMensajeSoloUnRiesgoEnCambio(){
+        validaMensajeDeSoloUnRiesgo(chekEliminarPrimeraUbicacion);
     }
 
-    public void validaMensajeDeSoloUnRiesgo() {
+    public void validaMensajeDeSoloUnRiesgo(WebElementFacade elemento) {
         MatcherAssert.assertThat("No aparecio mensaje de validacion en ingresar riesgo", lblMensajeValidaRiesgosRepetidos.getText().contains(VALIDACION_MENSAJE_RIESGOS));
-        chekEliminarPrimeraUbicacion.click();
+        elemento.click();
         botonRemoverRiesgo.click();
     }
 }
