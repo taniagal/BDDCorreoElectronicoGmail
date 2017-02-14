@@ -512,10 +512,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void ingresarTextAreaDescripcion(String tipoArticulo) {
-        String xTextAreaDescripcion = ".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']";
-        enter(tipoArticulo).into($(xTextAreaDescripcion));
-        clickearElemento($(xTextAreaDescripcion));
-        esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
+        WebElementFacade textAreaDescripcion = $(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']");
+        textAreaDescripcion.waitUntilPresent();
+        enter(tipoArticulo).into(textAreaDescripcion);
+        clickearElemento(textAreaDescripcion);
+        esperarAQueElementoTengaValor(textAreaDescripcion, tipoArticulo);
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
