@@ -20,23 +20,6 @@ public class PolizaPrincipalPaPages extends PageUtil {
         super(driver);
     }
 
-    public boolean validarElementosDeshabilitadosDelMenu() {
-        final String contratoDePoliza = "Contrato de póliza";
-        List<WebElementFacade> elementosDelMenuDeshabilitados = findAll(By.xpath(".//td[contains(@class, 'x-grid-cell-treecolumn x-grid-cell-first x-grid-cell-last x-grid-cell-treecolumn g-accordion-item g-accordion-depth-1 x-tree-node-depth-1 g-disabled')]/div/span"));
-        setImplicitTimeout(TIEMPO_3000, TimeUnit.MILLISECONDS);
-        boolean deshabilitado = false;
-        if (!elementosDelMenuDeshabilitados.isEmpty()) {
-            for (int i = 0; i < elementosDelMenuDeshabilitados.size(); i++) {
-                if (contratoDePoliza.equals(elementosDelMenuDeshabilitados.get(0).getText())) {
-                    deshabilitado = true;
-                    break;
-                }
-            }
-        }
-        resetImplicitTimeout();
-        return deshabilitado;
-    }
-
     public boolean validarBotonMenuAseguradosNoVisible() {
         WebElementFacade botonMenuAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']");
         return esElElementoWebVisible(botonMenuAsegurados);
@@ -83,7 +66,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
     }
 
     public void clicEnElBotonCotizar() {
-        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
+        WebElementFacade botonCotizar = findBy(".//*[contains(@id, 'JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl')]");
         botonCotizar.waitUntilPresent();
         botonCotizar.click();
         waitForTextToAppear(TITULO_COTIZACION);
