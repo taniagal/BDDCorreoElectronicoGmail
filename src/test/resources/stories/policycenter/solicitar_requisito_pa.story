@@ -22,13 +22,12 @@ And ingrese las coberturas:
 |640.  |0        |Si     |Si     |
 And llegue a la expedicion de la poliza
 Then se debe mostrar un mensaje de advertencia
-|mensaje                                                       |
-|Existen requisitos opcionales pendientes, por favor diríjase a la pestaña Requisitos para tramitarlos.|
+|mensaje                                                                                                            |
+|Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos.|
 
 Examples:
 |tipo_documento      |documento|
 |CEDULA DE CIUDADANIA|11111111 |
-
 
 
 Scenario: Validar opcion Solicitar requisitos - modificacion
@@ -47,8 +46,8 @@ And cotice el cambio de poliza
 And intente expedir la poliza
 And existan requisitos pendientes
 Then se debe mostrar un mensaje de advertencia
-|mensaje                                                                                               |
-|Existen requisitos opcionales pendientes, por favor diríjase a la pestaña Requisitos para tramitarlos.|
+|mensaje                                                                                                            |
+|Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos.|
 
 Examples:
 |tipo_documento      |documento|

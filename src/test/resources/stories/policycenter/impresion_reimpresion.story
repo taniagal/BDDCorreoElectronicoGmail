@@ -56,6 +56,7 @@ And adicione un segundo tomador en la renovacion el cual es riesgo consultable
 |tipoDocumento        |numeroDocumento|
 |CEDULA DE CIUDADANIA |1234567890     |
 And cotice la renovacion
+And expida la renovacion
 And expido la poliza y voy al archivo de poliza
 And vaya a la opcion transacciones de poliza
 Then debe aparecer el boton reimprimir

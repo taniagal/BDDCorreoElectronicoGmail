@@ -23,4 +23,7 @@ public class ImpresionReimpresionSteps extends ScenarioSteps {
     public void seleccionarTransaccionesDeCuenta() {
 
     }
+
+    public void expedirRenovacionPoliza() {
+    }
 }

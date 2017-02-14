@@ -20,10 +20,17 @@ public class ImpresionReimpresionDefinitions {
     }
 
     @When("seleccione las transacciones de esa poliza")
-        public void seleccionarTransaccionesDeCuenta () {
-            impresionReimpresionSteps.seleccionarTransaccionesDeCuenta();
+    public void seleccionarTransaccionesDeCuenta() {
+        impresionReimpresionSteps.seleccionarTransaccionesDeCuenta();
 
-
-        }
 
     }
+    @When("expida la renovacion")
+    public void expedirRenovacionPoliza() {
+        impresionReimpresionSteps.expedirRenovacionPoliza();
+
+
+    }
+
+
+}
