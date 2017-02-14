@@ -121,6 +121,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade menuItemContacto1;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV-body']/div/table/tbody/tr/td[5]")
     private WebElementFacade comboBoxTipoBeneficiario;
+    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/a[2]/span/span/span[1]")
+    private WebElementFacade botonSiguiente;
 
     public ExpedicionDePolizaRequisitosPendientesPage(WebDriver driver) {
         super(driver);
@@ -190,6 +192,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
 
     public void seleccionarOpcionCeroKilometros() {
         radioBotonVehiculoCeroKilometros.click();
+        esperarYClickearBoton(botonSiguiente);
     }
 
     public void irAVehiculos() {
