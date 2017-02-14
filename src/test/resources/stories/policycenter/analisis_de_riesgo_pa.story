@@ -1,10 +1,6 @@
-Analisis De Riesgo Pa
-
 Meta:
-@lote4
-@issue #CDSEG-993
+@lote2
 @tag equipo: 5
-@local
 @Sprint 9
 
 Narrative:

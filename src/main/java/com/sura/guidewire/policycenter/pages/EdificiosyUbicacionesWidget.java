@@ -43,6 +43,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
+    private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
     private static final int TIEMPO_250 = 250;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -113,7 +114,14 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade campoAseguradoValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
     private WebElementFacade txtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]/div/img")
+    private WebElementFacade chekEliminarPrimeraUbicacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:removeLocation-btnInnerEl']")
+    private WebElementFacade botonRemoverRiesgo;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade lblMensajeValidaRiesgosRepetidos;
 
+    private static final int TRES = 3;
 
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
@@ -334,7 +342,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
                 .withTimeout(TIEMPO_1, TimeUnit.SECONDS)
-                .pollingEvery(TIEMPO_250, TimeUnit.MILLISECONDS)
+                .pollingEvery(TIEMPO_100, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
 
@@ -640,5 +648,34 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(TIEMPO_2).second();
         String valor = txtValorAsegurado.getValue().replaceAll("\\.", "");
         MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(valor));
+    }
+
+    public void eliminarPrimeraUbicacion(){
+        botonRemoverRiesgo.waitUntilVisible().waitUntilClickable();
+        esperarYClickearBoton(chekEliminarPrimeraUbicacion);
+        esperarYClickearBoton(chekEliminarPrimeraUbicacion);
+        clickearElemento(botonRemoverRiesgo);
+        esperarHasta(TIEMPO_2000);
+    }
+
+    public void seleccionarCheckDeUbicacion() {
+        Actions actions = new Actions(getDriver());
+        int intentos = 0;
+        while (intentos < TRES) {
+            esperarHasta(TIEMPO_2000);
+            if (!"0px -15px".equals(chekEliminarPrimeraUbicacion.getCssValue("background-position")) || !"-15px -15px".equals(chekEliminarPrimeraUbicacion.getCssValue("background-position"))) {
+                actions.click(chekEliminarPrimeraUbicacion).build().perform();
+            } else {
+                break;
+            }
+            intentos++;
+        }
+        esperarHasta(TIEMPO_2000);
+    }
+
+    public void validaMensajeDeSoloUnRiesgo() {
+        MatcherAssert.assertThat("No aparecio mensaje de validacion en ingresar riesgo", lblMensajeValidaRiesgosRepetidos.getText().contains(VALIDACION_MENSAJE_RIESGOS));
+        chekEliminarPrimeraUbicacion.click();
+        botonRemoverRiesgo.click();
     }
 }

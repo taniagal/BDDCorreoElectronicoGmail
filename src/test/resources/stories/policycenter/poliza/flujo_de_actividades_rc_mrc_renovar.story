@@ -1,5 +1,5 @@
 Meta:
-@lote2
+@lote4
 @tag equipo: 2
 @Sprint 9
 
@@ -7,7 +7,6 @@ Narrative:
 Como usuario de policy center quiero poder solicitar autorización a los comites de Riesgos consultables
 quiero poder solicitar autorización a los comites de Riesgos consultables
 para poder cotizar o expedir una poliza
-
 
 
 Scenario: Validar que se genere actividad de riesgo consultable al renovar una poliza

@@ -1,6 +1,6 @@
 Meta:
 @tag equipo: 2
-@lote2
+@lote4
 @Sprint 14
 
 Narrative:

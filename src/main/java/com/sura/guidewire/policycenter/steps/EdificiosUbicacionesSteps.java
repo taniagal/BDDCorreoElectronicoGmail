@@ -61,6 +61,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void eliminarPrimeraUbicacionMrc(){
+        edificiosyUbicacionesWidget.eliminarPrimeraUbicacion();
+    }
+
+    @Step
     public void seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
     }
@@ -238,11 +243,18 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.verificarMensajes(mensajes);
     }
 
+    @Step
     public void validarNoVisibilidadDeObjeto() {
         edificiosyUbicacionesWidget.validarNoVisibilidad();
     }
 
+    @Step
     public void seleccionarElTipoDeMercanciaFlotante(String tipoMercancia) {
         edificiosyUbicacionesWidget.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
+    }
+
+    @Step
+    public void validarMensajeRiesgoEnPoliza() {
+        edificiosyUbicacionesWidget.validaMensajeDeSoloUnRiesgo();
     }
 }

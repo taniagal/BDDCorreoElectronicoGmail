@@ -63,10 +63,15 @@ public class CrearYEditarCumulosDefinitions {
         crearYEditarCumulosSteps.ingresarModalidadDeTasaEnTabla(datosReaseguradores);
     }
 
-    @When("intente ingresar una nueva ubicacion sin riesgo consultable $datosUbicacion")
+    @When("intente ingresar una nueva ubicacion en edificios $datosUbicacion")
     public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo(datosUbicacion);
+
+    }
+    @When("validar mensaje de solo un riesgo por ubicacion")
+    public void validarMensajeDeSoloUnRiesgo(){
+        edificiosUbicacionesSteps.validarMensajeRiesgoEnPoliza();
     }
 
     @Then("el valor de tasa bruta de cesion debe tomar el mismo valor de la columna en la tabla")
