@@ -1,6 +1,5 @@
-ingreso_flotante
 Meta:
-@lote1
+@lote3
 @tag equipo: billing
 @sprint 13
 
