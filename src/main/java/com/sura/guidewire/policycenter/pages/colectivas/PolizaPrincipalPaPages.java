@@ -83,7 +83,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
     }
 
     public void clicEnElBotonCotizar() {
-        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
+        WebElementFacade botonCotizar = findBy(".//*[contains(@id, 'JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl')]");
         botonCotizar.waitUntilPresent();
         botonCotizar.click();
         waitForTextToAppear(TITULO_COTIZACION);

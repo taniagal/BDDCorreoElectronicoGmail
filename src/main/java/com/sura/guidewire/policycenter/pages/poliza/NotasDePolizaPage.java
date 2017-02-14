@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class NotasDePolizaPage extends PageUtil{
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Notes']/div/span")
+    @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/div[4]/div[3]/div/table/tbody/tr[1]/td/div/span")
     private WebElementFacade menuNotas;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:Policy_NotesScreen:NoteSearchDV:DateFrom-inputEl']")
     private WebElementFacade campoFechaDesde;
@@ -26,6 +26,7 @@ public class NotasDePolizaPage extends PageUtil{
     }
 
     public void irANotasDePoliza() {
+        esperarHasta(3000);
         clickearElemento(menuNotas);
     }
 
