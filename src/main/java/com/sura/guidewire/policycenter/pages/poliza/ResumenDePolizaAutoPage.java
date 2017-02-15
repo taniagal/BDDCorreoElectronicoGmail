@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
 
-public class ResumenDePolizaPage extends PageUtil {
+public class ResumenDePolizaAutoPage extends PageUtil {
 
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td/div/table/tbody/tr[5]/td/table/tbody/tr/td[1]/label")
     private WebElementFacade labelTipoDePlazo;
@@ -26,7 +26,7 @@ public class ResumenDePolizaPage extends PageUtil {
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td[1]/div/table/tbody/tr[3]/td/div/div[1]/div/div/div[4]/div/span")
     private WebElementFacade labelLider;
 
-    public ResumenDePolizaPage(WebDriver driver) {
+    public ResumenDePolizaAutoPage(WebDriver driver) {
         super(driver);
     }
 

@@ -2,5 +2,5 @@ package com.sura.guidewire.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class ResumenDePoliza extends SerenityStory {
+public class ResumenDePolizaAuto extends SerenityStory {
 }

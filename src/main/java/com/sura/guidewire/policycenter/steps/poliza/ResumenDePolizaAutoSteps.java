@@ -1,28 +1,28 @@
 package com.sura.guidewire.policycenter.steps.poliza;
 
-import com.sura.guidewire.policycenter.pages.poliza.ResumenDePolizaPage;
+import com.sura.guidewire.policycenter.pages.poliza.ResumenDePolizaAutoPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
-public class ResumenDePolizaSteps {
+public class ResumenDePolizaAutoSteps {
 
     @Page
-    private ResumenDePolizaPage resumenDePolizaPage;
+    private ResumenDePolizaAutoPage resumenDePolizaAutoPage;
 
     @Step
     public void visualizacionPoliza() {
-        resumenDePolizaPage.visualizarPoliza();
+        resumenDePolizaAutoPage.visualizarPoliza();
     }
     
     @Step
     public void verificacionDeCamposResumen(ExamplesTable datosAverificar) {
-        resumenDePolizaPage.verificacionDeCampos(datosAverificar);
+        resumenDePolizaAutoPage.verificacionDeCampos(datosAverificar);
     }
 
     @Step
     public void verificarCamposCoaseguro(ExamplesTable datos) {
-        resumenDePolizaPage.verificoCamposCoaseguro(datos);
+        resumenDePolizaAutoPage.verificoCamposCoaseguro(datos);
     }
 
 
