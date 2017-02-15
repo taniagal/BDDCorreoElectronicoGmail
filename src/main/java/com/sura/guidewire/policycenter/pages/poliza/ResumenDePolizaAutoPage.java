@@ -29,7 +29,6 @@ public class ResumenDePolizaAutoPage extends PageUtil {
     private WebElementFacade labelTieneCoaseguroMrc;
     @FindBy(xpath = "//tr[16]/td/table/tbody/tr/td/label")
     private WebElementFacade labelTipoCoaseguroMrc;
-
     private static final int AUTO = 1;
     private static final int MRC = 2;
 

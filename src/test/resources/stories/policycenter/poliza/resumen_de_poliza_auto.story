@@ -30,7 +30,7 @@ And acepte el coaseguro
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |
-| ASD951 | 2011   | 01601225         | MEDELLIN           | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |
+| ASD357 | 2011   | 01601225         | MEDELLIN           | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |
 When ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |

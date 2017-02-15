@@ -3,7 +3,7 @@ Meta:
 Narrative:
 Como usuario del negocio con el perfil de  Agente, CSR, Asegurador, o Gerente
 Deseo poder visualizar el resumen de una informacion de la poliza de mrc
-Para Verificar la informacion de la poliza visualizada de auto
+Para Verificar la informacion de la poliza visualizada de mrc
 
 Scenario: verificacion de nuevos campos en resumen de poliza mrc con coaseguro
 GivenStories: stories/policycenter/login_policy.story

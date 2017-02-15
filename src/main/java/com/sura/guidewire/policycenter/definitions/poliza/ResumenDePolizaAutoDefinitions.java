@@ -12,7 +12,6 @@ public class ResumenDePolizaAutoDefinitions {
     @Steps
     private ResumenDePolizaAutoSteps resumenDePolizaAutoSteps;
 
-
     @When("visualizo el resumen de la poliza")
     public void visualizarPoliza() {
         resumenDePolizaAutoSteps.visualizacionPoliza();
