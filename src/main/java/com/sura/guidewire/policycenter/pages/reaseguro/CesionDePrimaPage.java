@@ -43,6 +43,10 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade lblPorcentajeDeRetencion;
     @FindBy(xpath = ".//*[@id='RICededPremiumReinsurersPopup:__crumb__']")
     private WebElementFacade lblVolverAPrimasCedidas;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtBuscar;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
+    private WebElementFacade linkCotizacionExpedida;
 
     String numeroDeEnvio = null;
     private static final int CUATRO = 4;
@@ -65,6 +69,7 @@ public class CesionDePrimaPage extends PageUtil {
         buscaEnTablaTareaDeLote(nombreTarea);
         esperarYClickearBoton(btnAcciones);
         esperarYClickearBoton(linkVolverAPolicy);
+        esperarHasta(TIEMPO_500);
     }
 
     public String tomaNumeroDeEnvio() {
@@ -147,7 +152,7 @@ public class CesionDePrimaPage extends PageUtil {
     }
 
     public void validarInformacionGeneralDeCobertura(String informacionGeneralCobertura) {
-        MatcherAssert.assertThat("No aparece la informacion general de la coberturta", linkInformacionDeDireccionYCobertura.getText().equals(informacionGeneralCobertura));
+        MatcherAssert.assertThat("No aparece la informacion general de la coberturta", linkInformacionDeDireccionYCobertura.getText().contains(informacionGeneralCobertura));
     }
 
     public void validarCondicionesDeContratoExcedente() {
@@ -157,5 +162,9 @@ public class CesionDePrimaPage extends PageUtil {
         MatcherAssert.assertThat("Error: en los contratos excedentes no debe haber % de cesion", !lblPorcentajeDeRetencion.isVisible());
         resetImplicitTimeout();
         esperarYClickearBoton(lblVolverAPrimasCedidas);
+    }
+
+    public void ingresaAPolizaExpedida() {
+        esperarYClickearBoton(linkCotizacionExpedida);
     }
 }

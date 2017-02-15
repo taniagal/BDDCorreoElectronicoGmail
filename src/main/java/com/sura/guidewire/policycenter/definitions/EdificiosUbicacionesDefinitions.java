@@ -182,7 +182,6 @@ public class EdificiosUbicacionesDefinitions {
 
     @When("intente ingresar una nueva ubicacion en renovacion de poliza")
     public void cuandoIntenteIngresarUnaNuevaUbicacionEnRenovacionDePoliza() {
-        edificiosUbicacionesSteps.seleccionarBotonEditarTransaccionDePoliza();
         edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacion();
     }

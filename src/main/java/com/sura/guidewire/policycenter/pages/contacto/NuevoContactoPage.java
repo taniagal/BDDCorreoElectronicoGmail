@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
@@ -65,7 +66,13 @@ public class NuevoContactoPage extends PageUtil {
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
         this.tipoDocumento.waitUntilPresent();
-        this.tipoDocumento.clear();
+        try {
+            this.tipoDocumento.clear();
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException", e);
+            esperarHasta(TIEMPO_2000);
+            this.tipoDocumento.clear();
+        }
         this.tipoDocumento.sendKeys(tipoDocumento);
         this.tipoDocumento.sendKeys(Keys.ENTER);
     }
