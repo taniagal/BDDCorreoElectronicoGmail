@@ -66,6 +66,12 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.irAModificadores();
     }
 
+    @When("valide el valor de la tasa global <tasa> y la cambie <tasaC>")
+    public void verificarYCambiaTasaGlobal(@Named("tasa") String tasa, @Named("tasaC") String tasaC){
+        tarifaMRCSteps.validarTasaGlobal(tasa);
+        tarifaMRCSteps.cambiarTasaGlobal(tasaC);
+    }
+
     @Then("debo poder ver los modificadores definidos")
     public void verificarModificadores(){
         tarifaMRCSteps.verificarModificadores();
