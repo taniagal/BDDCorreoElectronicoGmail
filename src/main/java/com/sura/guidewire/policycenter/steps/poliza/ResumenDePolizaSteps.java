@@ -10,22 +10,19 @@ public class ResumenDePolizaSteps {
     @Page
     private ResumenDePolizaPage resumenDePolizaPage;
 
-
-    @Step
-    public void ingresarAResumen() {
-        resumenDePolizaPage.ingresoAResumen();
-    }
-
-
     @Step
     public void visualizacionPoliza() {
         resumenDePolizaPage.visualizarPoliza();
     }
-
-
+    
     @Step
     public void verificacionDeCamposResumen(ExamplesTable datosAverificar) {
         resumenDePolizaPage.verificacionDeCampos(datosAverificar);
+    }
+
+    @Step
+    public void verificarCamposCoaseguro(ExamplesTable datos) {
+        resumenDePolizaPage.verificoCamposCoaseguro(datos);
     }
 
 
