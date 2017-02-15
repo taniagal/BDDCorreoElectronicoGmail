@@ -9,7 +9,7 @@ como usuario de policycenter en reaseguro
 deseo que cambien las tasas al momento de recotizar
 para poder asegurar los valores al momento de tener una actividad economica de alto riesgo para SURAMERICANA.
 
-Scenario: Validacion de cambio de taza al recotizar poliza automaticamente
+Scenario: Validacion de cambio de tasa al recotizar poliza automaticamente
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
