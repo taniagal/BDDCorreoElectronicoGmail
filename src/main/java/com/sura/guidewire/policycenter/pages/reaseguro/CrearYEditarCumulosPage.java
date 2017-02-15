@@ -81,7 +81,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
         esperarYClickearBoton(btnAgregarDireccionRiesgoAplicable);
-        listDireccionRiesgoAplicable.waitUntilPresent();
+       // listDireccionRiesgoAplicable.waitUntilPresent();
         esperarYClickearBoton(listDireccionRiesgoAplicable);
     }
 
