@@ -1,4 +1,7 @@
 Meta:
+@lote2
+@sprint 14
+@tag equipo: 5
 
 Narrative:
 Como usuario del negocio con el perfil de  Agente, CSR, Asegurador, o Gerente
