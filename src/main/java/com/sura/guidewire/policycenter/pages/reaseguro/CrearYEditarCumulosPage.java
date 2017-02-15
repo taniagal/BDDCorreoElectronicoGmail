@@ -66,7 +66,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresarReaseguroOpciones() {
         btnReaseguro.waitUntilPresent();
-        btnReaseguro.click();
+        esperarYClickearBoton(btnReaseguro);
     }
 
     public void ingresarAcuerdosFacultativos() {
@@ -79,6 +79,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
         btnAgregarDireccionRiesgoAplicable.click();
         listDireccionRiesgoAplicable.waitUntilPresent();
+        esperarYClickearBoton(listDireccionRiesgoAplicable);
         listDireccionRiesgoAplicable.click();
     }
 

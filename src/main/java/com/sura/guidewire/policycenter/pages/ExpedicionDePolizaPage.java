@@ -88,8 +88,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCotizacion) {
-        waitForTextToAppear("Cotización Expedida", TIEMPO_30000);
-        waitFor(campoNumeroCotizacion);
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(campoNumeroCotizacion);
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacion)));
     }
 

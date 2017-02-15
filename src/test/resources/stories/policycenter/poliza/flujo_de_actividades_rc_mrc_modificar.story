@@ -28,7 +28,7 @@ And cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
 And intente ingresar una nueva ubicacion en edificios
 | pais     | departamento | ciudad   | direccion    | actividadEconomica                    |
-| Colombia | Antioquia    | Medellin | CR 53 89 65 | Actividades de apoyo a la agricultura |
+| Colombia | Antioquia    | Medellin | CR 65 45 45  | Actividades de apoyo a la agricultura |
 And tenga las entradas en cambio de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario>
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |

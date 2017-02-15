@@ -71,6 +71,5 @@ public class GrupoDeDireccionPage extends PageUtil {
     public void validaMontoCedidoEnContratoEnExcedido() {
         MatcherAssert.assertThat("Error en el valor en contrato excedido, expected: " + calculaMontoCedidoEnContratoCotaparte() +
                 " but was: " + tblRiesgoCedidoContratoExcedenteBasico.getText(), tblRiesgoCedidoContratoExcedenteBasico.getText().equals(calculaMontoCedidoEnContratoExdente()));
-
     }
 }
