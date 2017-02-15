@@ -11,17 +11,23 @@ Scenario: Mostrar opcion de reimpresion en una transacion vigente
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765453 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
+| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765459 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |
-| ASDF3 | 2011   | 01601225         | MEDELLIN           | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Autos Clásico |
+| ASDF7 | 2011   | 01601225         | MEDELLIN           | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |
 When ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
 And expido la poliza y voy al archivo de poliza
 And vaya a la opcion transacciones de poliza
-Then debe aparecer el boton reimprimir
+And cuando de click al boton reimprimir
+Then me deben aparecer las opciones por las cuales puedo imprimir
+|opciones|
+|Caratula|
+|Carta de relación con el cliente|
+|Endoso|
+
 Examples:
 |tipo_documento      |documento |
 |CEDULA DE CIUDADANIA|1060447895|
@@ -29,7 +35,7 @@ Examples:
 Scenario: Mostrar opcion reimpresion en cambio de poliza
 Given tengo una poliza de PA con los siguientes datos:
 |tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB198|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB199|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
@@ -57,7 +63,6 @@ And adicione un segundo tomador en la renovacion el cual es riesgo consultable
 |CEDULA DE CIUDADANIA |1234567890     |
 And cotice la renovacion
 And expida la renovacion
-And expido la poliza y voy al archivo de poliza
 And vaya a la opcion transacciones de poliza
 Then debe aparecer el boton reimprimir
 
