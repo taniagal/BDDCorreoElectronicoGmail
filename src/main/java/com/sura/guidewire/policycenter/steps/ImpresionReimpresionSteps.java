@@ -41,5 +41,11 @@ public class ImpresionReimpresionSteps extends ScenarioSteps {
         for (int i = 0; i < opciones.getRowCount(); i++) {
             itemsReimprimir = opciones.getRows().get(i);
             MatcherAssert.assertThat("La lista no contiene el item esperado", listaOpcionesDeclinacion, Matchers.containsString(itemsReimprimir.get("opciones")));
-        }    }
+        }
+    }
+
+    @Step
+    public void validarNoPresenciaDeReimpresion() {
+        impresionReimpresionPage.validarNoPresenciaDeReimpresion();
+    }
 }

@@ -22,13 +22,19 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade linkArchivoDePoliza;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div")
     private WebElementFacade tablaOpcionesReimprimir;
+    @FindBy(xpath = "//tr[7]/td/div/span")
+    private WebElementFacade menuItemTransaccionesDePolizaMrc;
 
     public ImpresionReimpresionPage(WebDriver driver) {
         super(driver);
     }
 
     public void irATransaccionesDePoliza() {
-        esperarYClickearBoton(menuItemTransaccionesDePoliza);
+        if (menuItemTransaccionesDePolizaMrc.isPresent()) {
+            esperarYClickearBoton(menuItemTransaccionesDePolizaMrc);
+        } else if (menuItemTransaccionesDePoliza.isPresent()) {
+            esperarYClickearBoton(menuItemTransaccionesDePoliza);
+        }
     }
 
     public void validarBotonReimpresion() {
@@ -49,6 +55,12 @@ public class ImpresionReimpresionPage extends PageUtil {
             listaObtenida = tablaOpcionesReimprimir.getText();
         }
         return listaObtenida;
+    }
 
+    public void validarNoPresenciaDeReimpresion() {
+        String resultado = null;
+        if (botonReimpresion.isCurrentlyVisible()) {
+            resultado = "el boton se encuentra presente";
+        }
     }
 }
