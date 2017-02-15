@@ -2,18 +2,18 @@ package com.sura.guidewire.policycenter.pages.contacto;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.constantes.EnumContacto;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class NuevoContactoPage extends PageUtil {
 
@@ -22,7 +22,7 @@ public class NuevoContactoPage extends PageUtil {
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl')]")
     private WebElementFacade numeroDocumento;
     @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl')]")
-    private WebElementFacade primerNombre;
+    private WebElementFacade campoPrimerNombre;
     @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl')]")
     private WebElementFacade campoSegundoNombre;
     @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:LastName-inputEl')]")
@@ -35,7 +35,7 @@ public class NuevoContactoPage extends PageUtil {
     private WebElementFacade direccion;
     @FindBy(xpath = ".//*[contains(@id, 'Update-btnInnerEl')]")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl')]")
     private WebElementFacade nombreContact;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl')]")
     private WebElementFacade razonSocial;
@@ -66,7 +66,13 @@ public class NuevoContactoPage extends PageUtil {
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
         this.tipoDocumento.waitUntilPresent();
-        this.tipoDocumento.clear();
+        try {
+            this.tipoDocumento.clear();
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException", e);
+            esperarHasta(TIEMPO_2000);
+            this.tipoDocumento.clear();
+        }
         this.tipoDocumento.sendKeys(tipoDocumento);
         this.tipoDocumento.sendKeys(Keys.ENTER);
     }
@@ -76,7 +82,7 @@ public class NuevoContactoPage extends PageUtil {
     }
 
     public void ingresarPrimerNombre(String primerNombre) {
-        this.primerNombre.type(primerNombre);
+        this.campoPrimerNombre.type(primerNombre);
     }
 
     public void ingresarPrimerApellido(String primerApellido) {
@@ -99,8 +105,9 @@ public class NuevoContactoPage extends PageUtil {
 
     public void actualizarPersonaNatural(String primerNombre) {
         this.actualizar();
-        nombreContact.waitUntilPresent();
-        MatcherAssert.assertThat(nombreContact.getText(), Matchers.containsString(primerNombre));
+        waitForTextToAppear("contenido");
+        campoPrimerNombre.waitUntilPresent();
+        MatcherAssert.assertThat(campoPrimerNombre.getText(), Matchers.containsString(primerNombre));
     }
 
     private void actualizar() {
@@ -145,7 +152,7 @@ public class NuevoContactoPage extends PageUtil {
     public void actualizarJuridica(String razonSocial) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        esperarHasta(TIEMPO_2000);
+        waitForTextToAppear("contenido");
         desRazonSocial.waitUntilPresent();
         MatcherAssert.assertThat(this.desRazonSocial.getText(), Matchers.containsString(razonSocial));
 
@@ -193,10 +200,6 @@ public class NuevoContactoPage extends PageUtil {
 
     }
 
-    public void btnActualizarPersonaNatural() {
-        botonActualizar.click();
-    }
-
     public boolean validarCamposEditablesDeEdicionDeContacto() {
         boolean editables = false;
         if ("NIT".equals(tipoDocumento.getText())) {
@@ -225,7 +228,7 @@ public class NuevoContactoPage extends PageUtil {
 
     public Map<String, String> obtenerDatosDeLaPantalla() {
         Map<String, String> datosDePantalla = new HashMap<>();
-        datosDePantalla.put("primerNombre", primerNombre.getText());
+        datosDePantalla.put("primerNombre", campoPrimerNombre.getText());
         datosDePantalla.put("segundoNombre", campoSegundoNombre.getText());
         datosDePantalla.put("primerApellido", primerApellido.getText());
         datosDePantalla.put("segundoApellido", campoSegundoApellido.getText());

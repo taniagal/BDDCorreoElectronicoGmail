@@ -206,11 +206,13 @@ public class InformacionDePolizaMrcDefinitions {
 
 
     @Then("deben estar en estado <estadouno> las siguientes opciones $menusesperados")
-    @Aliases(values = {
-            "deben estar en estado <estadodos> las siguientes opciones $menusesperados",
-    })
-    public void entoncesSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno, @Named("estadodos") String estadodos, ExamplesTable menusesperados) {
-        informacionDePolizaMrcSteps.validarCampos(estadouno, estadodos, menusesperados);
+    public void entoncesSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno, ExamplesTable menusesperados) {
+        informacionDePolizaMrcSteps.validarCampos(estadouno, menusesperados);
+    }
+
+    @Then ("deben estar en estado <estadodos> las siguientes opciones $menusesperados")
+    public void entoncesSeDebenValidarLasSiguientesOpcionesDos(@Named("estadouno") String estadouno, @Named("estadodos") String estadodos, ExamplesTable menusesperados) {
+        informacionDePolizaMrcSteps.validarCampos(estadodos, menusesperados);
     }
 
     @Then("ningun campo puede ser editable en informacion")

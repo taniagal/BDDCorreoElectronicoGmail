@@ -1,5 +1,5 @@
 Meta:
-@lote4
+@lote2
 @issue #CDSEG-774
 @tag equipo: 5
 @Sprint 3
@@ -54,7 +54,7 @@ Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
 | oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| 1059    | ASESOR MARIA    |
 When seleccione el producto <producto> para expedir la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable

@@ -16,9 +16,12 @@ GivenStories: stories/policycenter/login_policy.story
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| oficina | agente_oficina |
+| 1105    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
+And seleccione el tipo de poliza:
+| tipoPoliza |
+| Individual |
 And quiera agregar un asegurado
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
@@ -35,8 +38,11 @@ Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
 | oficina | agente_oficina |
-| 1060    | DIRECTO	   |
+| 1060    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
+And seleccione el tipo de poliza:
+| tipoPoliza |
+| Individual |
 And quiera agregar un asegurado
 And vaya a la opcion agregar
 Then el boton recuperar mvr no es visible
@@ -54,9 +60,12 @@ Scenario: Agregar varios asegurados: Agregar asegurado de los contactos de la cu
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| oficina | agente_oficina |
+| 1105    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
+And seleccione el tipo de poliza:
+| tipoPoliza |
+| Individual |
 And quiera agregar un asegurado
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
@@ -78,9 +87,12 @@ Scenario: Agregar asegurado y Editar campos en creacion tipo persona natural
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1060    | DIRECTO |
+| oficina | agente_oficina |
+| 1060    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
+And seleccione el tipo de poliza:
+| tipoPoliza |
+| Individual |
 And quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
@@ -105,9 +117,12 @@ Scenario: Agregar y Editar campos en creacion tipo persona juridica
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| oficina | agente_oficina |
+| 1105    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
+And seleccione el tipo de poliza:
+| tipoPoliza |
+| Individual |
 And quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona juridica
@@ -132,9 +147,12 @@ Scenario: Mostrar errores al validar las reglas de MDM al dar siguiente
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1060    | DIRECTO |
+| oficina | agente_oficina |
+| 1060    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
+And seleccione el tipo de poliza:
+| tipoPoliza |
+| Individual |
 And quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
@@ -152,9 +170,12 @@ Scenario: Quitar asegurado
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1105    | DIRECTO |
+| oficina | agente_oficina |
+| 1105    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
+And seleccione el tipo de poliza:
+| tipoPoliza |
+| Individual |
 And quiera agregar un asegurado
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
@@ -172,9 +193,12 @@ Scenario: Validar asegurado que es riesgo consultable
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1060    | DIRECTO |
+| oficina | agente_oficina |
+| 1060    | DIRECTO        |
 When seleccione el producto <producto> para expedir la poliza
+And seleccione el tipo de poliza:
+| tipoPoliza |
+| Individual |
 And quiera agregar un asegurado
 And vaya a la opcion agregar
 And consulte un asegurado del directorio

@@ -1,6 +1,7 @@
 Cuentas Ordenes De Trabajo
 
-Meta: @lote2
+Meta:
+@lote2
 
 @issue #CDSEG-967
 @tag equipo: 2, informer:pablo_armando_gonzales_restrepo, sprint:1

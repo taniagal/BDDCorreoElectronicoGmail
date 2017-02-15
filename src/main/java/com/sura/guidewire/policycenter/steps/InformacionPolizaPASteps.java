@@ -15,8 +15,8 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
 
     @Page
     NuevaCotizacionPage nuevaCotizacionPage;
-
-    OpcionesInformacionPolizaPage opcionesInformacionPoliza = new OpcionesInformacionPolizaPage(getDriver());
+    @Page
+    OpcionesInformacionPolizaPage opcionesInformacionPoliza;
 
     public InformacionPolizaPASteps(Pages pages) {
         super(pages);
@@ -38,7 +38,6 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
 
     @Step
     public void accionarInformacionPoliza() {
-        inicioPage().irAInformacionDePoliza();
         nuevaCotizacionPage.llenarInfoPoliza();
     }
 

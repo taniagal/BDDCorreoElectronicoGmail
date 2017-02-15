@@ -1,7 +1,7 @@
 Cotizacion De Poliza
 
-Meta: @lote3
-
+Meta:
+@lote3
 @issue #CDSEG-843
 @tag equipo: 5
 @local

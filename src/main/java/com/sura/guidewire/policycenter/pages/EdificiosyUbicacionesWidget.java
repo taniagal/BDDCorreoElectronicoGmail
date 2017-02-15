@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.pages;
 import com.google.common.base.Function;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -35,8 +36,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String CIERRE_XPATH1 = "')])]";
     private static final String XPATH2_PARTE2 = "')]) and @class='x-form-item-input-row' ]";
     private static final String XPATH_PARTE2 = "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]";
-    private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
-    private static final String XPATH_BTON_REMOVER_RIESGOS = ".//a[contains(.,'Remover Riesgo')]";
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
     private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
@@ -45,10 +44,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
+    private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
     private static final int TIEMPO_250 = 250;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
+    @FindBy(xpath = ".//a[contains(.,'Remover Riesgo')]")
+    private WebElementFacade botonRemoverRiesgo;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton']")
     private WebElementFacade botonAgregarAsegurado;
     @FindBy(xpath = ".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -107,14 +109,26 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade agregarTipoOnerosoEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:checkCommercialValue-inputEl']")
     private WebElementFacade chekAseguradoValorComercial;
+    @FindBy(xpath = ".//div[contains(@style,'margin-left: auto; margin-right: auto;')]")
+    private WebElementFacade checkBoxRiesgo;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoAseguradoValorComercial;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
     private WebElementFacade txtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]/div/img")
+    private WebElementFacade chekEliminarPrimeraUbicacion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]/div/img")
+    private WebElementFacade chekEliminarPrimeraUbicacionRenovacion;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade lblMensajeValidaRiesgosRepetidos;
+    @FindBy(xpath = "//span[@id='RenewalWizard:Prev-btnInnerEl']")
+    private WebElementFacade botonVolverEnRenovacion;
 
+    private static final int TRES = 3;
 
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -210,21 +224,18 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void removerRiesgos() {
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
-            resetImplicitTimeout();
-            waitFor(TIEMPO_3).second();
-            findBy(XPATH_SELECCIONAR_RIESGOS).click();
-            waitFor(TIEMPO_3).second();
-            findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
-            findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
-            findBy(XPATH_BTON_REMOVER_RIESGOS).click();
-            waitFor(TIEMPO_3).second();
+        if (checkBoxRiesgo.isVisible()) {
+            checkBoxRiesgo.click();
+            waitFor(TIEMPO_1).second();
+            botonRemoverRiesgo.click();
         }
         resetImplicitTimeout();
     }
 
     public void editartransacciondepoliza() {
-        esperarHasta(TIEMPO_5000);
+        waitFor(botonVolverEnRenovacion).click();
+        esperarHasta(TIEMPO_2000);
+        opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
         findBy(XPATH_EDITAR_TRANSACCION_POLIZA).waitUntilVisible().click();
         esperarHasta(TIEMPO_2000);
         findBy(XPATH_ACEPTAR).click();
@@ -320,7 +331,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         withAction().moveToElement(inputValorEntrada).perform();
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
-        esperarAQueElementoTengaValor(findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
     }
 
     public void ingresarValorAEntradaInformacionArticulo(String tipoArticulo, String entrada, String valorEntrada) {
@@ -331,13 +341,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         withAction().moveToElement(inputValorEntrada).perform();
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
-        esperarAQueElementoTengaValor(trWE.findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);
     }
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
                 .withTimeout(TIEMPO_1, TimeUnit.SECONDS)
-                .pollingEvery(TIEMPO_250, TimeUnit.MILLISECONDS)
+                .pollingEvery(TIEMPO_100, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
 
@@ -505,18 +514,18 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
         esperarHasta(TIEMPO_2000);
         $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
-        esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
     }
 
     public void ingresarTextAreaDescripcion(String tipoArticulo) {
-        String xTextAreaDescripcion = ".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']";
-        enter(tipoArticulo).into($(xTextAreaDescripcion));
-        clickearElemento($(xTextAreaDescripcion));
-        esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
+        WebElementFacade textAreaDescripcion = $(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']");
+        textAreaDescripcion.waitUntilPresent();
+        enter(tipoArticulo).into(textAreaDescripcion);
+        clickearElemento(textAreaDescripcion);
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
         for (Map<String, String> mensaje : mensajes.getRows()) {
+            setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
             try {
                 waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
@@ -530,6 +539,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                                 " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }
         }
+        resetImplicitTimeout();
     }
 
     public void intentarVerificarmensaje(String s, String textValue, String reason, boolean assertion) {
@@ -641,5 +651,19 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(TIEMPO_2).second();
         String valor = txtValorAsegurado.getValue().replaceAll("\\.", "");
         MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(valor));
+    }
+
+    public void validarMensajeSoloUnRiesgoEnRenovacion(){
+        validaMensajeDeSoloUnRiesgo(chekEliminarPrimeraUbicacionRenovacion);
+    }
+
+    public void validarMensajeSoloUnRiesgoEnCambio(){
+        validaMensajeDeSoloUnRiesgo(chekEliminarPrimeraUbicacion);
+    }
+
+    public void validaMensajeDeSoloUnRiesgo(WebElementFacade elemento) {
+        MatcherAssert.assertThat("No aparecio mensaje de validacion en ingresar riesgo", lblMensajeValidaRiesgosRepetidos.getText().contains(VALIDACION_MENSAJE_RIESGOS));
+        elemento.click();
+        botonRemoverRiesgo.click();
     }
 }

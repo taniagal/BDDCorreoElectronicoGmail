@@ -65,8 +65,8 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarTarifacionPorCoberturas(ExamplesTable valor) {
-        modificadoresDeTarifaPage.verificarTarifacionPorCoberturas(valor);
+    public void verificarTarifacionPorCoberturas(ExamplesTable datos) {
+        modificadoresDeTarifaPage.verificarTarifacionPorCoberturas(datos);
     }
 
     @Step

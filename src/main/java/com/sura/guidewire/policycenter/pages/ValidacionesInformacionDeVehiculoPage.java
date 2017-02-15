@@ -61,7 +61,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
-    private WebElementFacade comboBoxSiCeroKilometros;
+    private WebElementFacade radioBotonSiCeroKilometros;
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:0:BooleanModifier_true-inputEl']")
     private WebElementFacade comboBoxSiVehiculoBLindado;
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_true-inputEl']")
@@ -171,7 +171,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void seleccionarVehiculoCeroKilometros() {
-        comboBoxSiCeroKilometros.waitUntilVisible().click();
+        clickearElemento(radioBotonSiCeroKilometros);
     }
 
     public void seleccionarVehiculoBlindado() {

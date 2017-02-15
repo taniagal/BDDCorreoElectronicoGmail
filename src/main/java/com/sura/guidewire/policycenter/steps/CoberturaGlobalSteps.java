@@ -63,8 +63,8 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_campos_coberturas_globales(String estadouno, String estadodos, ExamplesTable menusesperados){
-        coberturaGlobalPage.validarCamposCoberturasGlobales(estadouno,estadodos,menusesperados);
+    public void validar_campos_coberturas_globales(String estadouno, ExamplesTable menusesperados){
+        coberturaGlobalPage.validarCamposCoberturasGlobales(estadouno,menusesperados);
     }
 
     @Step

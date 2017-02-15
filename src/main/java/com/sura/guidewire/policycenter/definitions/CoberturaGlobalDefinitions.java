@@ -56,8 +56,7 @@ public class CoberturaGlobalDefinitions {
 
     public void entoncesEnCoberturasGlobalesSeDebeValidarLasSiguienteOpcione(@Named("estadouno") String estadouno,
                                                                              ExamplesTable menusesperados){
-        String estadodos = "";
-        coberturaGlobalSteps.validar_campos_coberturas_globales(estadouno,estadodos,menusesperados);
+        coberturaGlobalSteps.validar_campos_coberturas_globales(estadouno,menusesperados);
     }
 
     @Then("debe mostrarme las coberturas incluidas y las ubicaciones cubiertas")
