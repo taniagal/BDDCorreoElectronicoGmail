@@ -8,7 +8,6 @@ Como usuario de Policy Center con rol de agente, CSR, autorizador o gerente,
 Quiero poder reviar el borrador de un cambio de poliza y comparar el cambio contra los valores previos
 Para las polizas de mrc en policy center
 
-
 Scenario: Comparacion de polizas al cambiar un dato por otro
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:

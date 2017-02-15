@@ -34,7 +34,7 @@ public class CesionDePrimaDefinitions {
 
     @When("El usuario quiera visualizar las primas cedidas")
     public void whenElUsuarioQuieraVisualizarLasPrimasCedidas() {
-        cesionDePrimaSteps.tomaYbuscaConNumeroDeEnvio();
+        cesionDePrimaSteps.ingresaAPolizaExpedida();
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
         cesionDePrimaSteps.ingresarPrimasCedidas();
     }
@@ -62,5 +62,4 @@ public class CesionDePrimaDefinitions {
     public void thenSeDebenMostrarLosValoresCorrespondientesDePrimasDeReasegurador() {
         cesionDePrimaSteps.validaCondicionesYValoresContratos();
     }
-
 }

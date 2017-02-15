@@ -37,9 +37,9 @@ public class ModificadoresDeTarifaDefinitions {
         modificadoresDeTarifaSteps.verificarBonificacion(bonoComercial, bonoTecnico);
     }
 
-    @Then("el valor del monto en cada cobertura debe ser: $valor")
-    public void verificarResultado(ExamplesTable valor) {
-        modificadoresDeTarifaSteps.verificarTarifacionPorCoberturas(valor);
+    @Then("el valor del monto en cada cobertura debe ser: $datos")
+    public void verificarResultado(ExamplesTable datos) {
+        modificadoresDeTarifaSteps.verificarTarifacionPorCoberturas(datos);
     }
 
     @When("ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>")

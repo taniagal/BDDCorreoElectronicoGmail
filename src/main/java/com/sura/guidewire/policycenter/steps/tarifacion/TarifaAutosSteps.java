@@ -71,11 +71,6 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarTarifacionPorCoberturas(ExamplesTable valor) {
-        tarifaAutosPage.verificarTarifacionPorCoberturas(valor);
-    }
-
-    @Step
     public void seleccionarBotonSiguiente() {
         vehiculoPage.clickSiguiente();
     }
