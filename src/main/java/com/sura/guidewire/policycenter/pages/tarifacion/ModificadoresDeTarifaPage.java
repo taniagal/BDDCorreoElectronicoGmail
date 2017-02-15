@@ -10,6 +10,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -64,6 +65,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade radioBotonCehiculo0KmNo;
 
+    public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr";
     int bonoComercial = 0;
     int bonoTecnico = 0;
 
@@ -93,23 +95,6 @@ public class ModificadoresDeTarifaPage extends PageUtil {
         campoTxtBonificacionTecnica.sendKeys(valor.get("bonificacionT"));
         bonoComercial = Integer.parseInt(valor.get("bonificacionC"));
         bonoTecnico = Integer.parseInt(valor.get("bonificacionT"));
-    }
-
-    public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
-        String tablaxpth = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:" +
-                "0:0:costLV-body']/*/table/tbody/tr[";
-        for (Map<String, String> valor : valores.getRows()) {
-            WebElementFacade tablaDescripcion = findBy(tablaxpth + valor.get("fila") + "]/td[3]");
-            LOGGER.info(valor.get("valor") + " | " + tablaDescripcion.getText());
-        }
-
-        for (Map<String, String> valor : valores.getRows()) {
-            WebElementFacade tablaDescripcion = findBy(tablaxpth + valor.get("fila") + "]/td[3]");
-            WebElementFacade cobertura = findBy(tablaxpth + valor.get("fila") + "]/td[1]");
-            MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " +
-                    cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " +
-                    tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
-        }
     }
 
     public void cambiarBonificacion(String bonoC, String bonoT) {
@@ -199,5 +184,23 @@ public class ModificadoresDeTarifaPage extends PageUtil {
         MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was " +
                 campoTxtBonificacionTecnicaCambio.getValue(), campoTxtBonificacionTecnicaCambio.getValue()
                 .contains(dato.get("bonoT")));
+    }
+
+    public void verificarTarifacionPorCoberturas(ExamplesTable datos) {
+        String articulo = "";
+        for (Map<String, String> dato : datos.getRows()) {
+            int i = 1;
+            List<WebElementFacade> tablaPrimaDePoliza = findAll(XPATH_TABLA_PRIMA_DE_POLIZA_TR);
+            while (i <= tablaPrimaDePoliza.size()) {
+                WebElementFacade descripcionCobertura = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[1]");
+                if (descripcionCobertura.equals(dato.get("descripcion"))) {
+                    WebElementFacade montoPrima = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[3]");
+                    MatcherAssert.assertThat("Error en el valor de la tarifa, en la cobertura " + descripcionCobertura.getText()+ ". Esperaba: " + dato.get("valor") +
+                            " pero fue: " + montoPrima.getText(), montoPrima.containsText(dato.get("valor")));
+                    break;
+                }
+                i++;
+            }
+        }
     }
 }

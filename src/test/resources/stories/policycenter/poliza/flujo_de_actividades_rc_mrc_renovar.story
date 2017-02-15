@@ -11,18 +11,18 @@ para poder cotizar o expedir una poliza
 
 Scenario: Validar que se genere actividad de riesgo consultable al renovar una poliza
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza de mrc:
-|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/10/1973      |OZIL         |SNEIDER        |DIRECCION DE RESIDENCIA|CALLE 27F #60-69|Antioquia   |Medellin|INT-3 |
-When ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion sin riesgo consultable
-And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
-| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-And intente cotizar y expedir la poliza
-And ingrese al resumen de la poliza expedida
-And intente renovar la poliza
+Given estoy cotizando una poliza:
+|cuenta    |producto               |
+|C002888992|Multiriesgo corporativo|
+When agregue una nueva ubicacion:
+|departamento|ciudad  |direccion        |descripcion    |actividad                                 |
+|Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo temporal|
+And seleccione algunos articulos y sus cobertura:
+|articulo |valor_asegurable|coberturas|
+|Building |100000000       |Danos     |
+And cotice el articulo
+And expido la poliza y voy al archivo de poliza
+And quiera realizar esta renovacion
 And ingrese a edificios y ubicaciones en renovacion de poliza
 And intente ingresar una nueva ubicacion en renovacion de poliza
 And ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula><tipodocumento> <tipoBeneficiario> adicional

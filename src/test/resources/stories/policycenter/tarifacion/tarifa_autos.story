@@ -39,22 +39,21 @@ And ingrese los datos del vehiculo:
 And seleccione todas las coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|PPD|PPDF|GT|PP|CRPT|GTR|GP|PLlaves|
 |640.  |0        |Si      |0  |750|1.50|40.|35|Conces|Plus|Si|6 |Plus|0  |750|1.50|40|20|20  |Si |Si|Si     |
-Then el resultado de la cotizacion en cada cobertura debe ser:
-|fila|valor     |
-|1   |837.825   |
-|4   |4.584.739 |
-|8   |1.793.873 |
-|12  |15.352    |
-|15  |17.500    |
-|17  |25.799    |
-|19  |57.007    |
-|21  |25.799    |
-|23  |25.799    |
-|25  |25.799    |
-|27  |25.799    |
-|29  |25.799    |
-|31  |25.799    |
-|33  |25.799    |
+Then el valor del monto en cada cobertura debe ser:
+|descripcion                          |valor    |
+|Cobertura de Responsabilidad Civil   |837.825  |
+|Cobertura de Daños                   |4.584.739|
+|Cobertura de Hurto                   |1.793.873|
+|Cobertura de Vehículo de Reemplazo   |15.352   |
+|Cobertura de Accidentes al Conductor |17.500   |
+|Cobertura de Pérdida de Llaves       |25.799   |
+|Cobertura de Taller                  |57.007   |
+|Cobertura de Taller móvil y cerrajero|25.799   |
+|Cobertura de Conductor Elegido       |25.799   |
+|Cobertura de Gastos de Traspaso      |25.799   |
+|Cobertura de Gasto de Parqueadero    |25.799   |
+|Cobertura de Centro de Servicio      |25.799   |
+|Cobertura de Abogado                 |25.799   |
 
 Examples:
 |tipo_documento      |documento |

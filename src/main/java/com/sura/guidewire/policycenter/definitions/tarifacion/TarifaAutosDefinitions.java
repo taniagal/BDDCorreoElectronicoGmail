@@ -86,11 +86,6 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.verificarTarifacionTotal(primaTotal, iva, costoTotal);
     }
 
-    @Then("el resultado de la cotizacion en cada cobertura debe ser: $valor")
-    public void verificarResultado(ExamplesTable valor) {
-        tarifaAutosSteps.verificarTarifacionPorCoberturas(valor);
-    }
-
     @Then("debo poder ver la cobertura de accidentes al conductor sin dependencia de daños o hurto")
     public void verificarNoDependenciaDeCobertura() {
         tarifaAutosSteps.verificarNoDependenciaDeCobertura();
