@@ -80,6 +80,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade tablaPrimas;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageFloatExixtences:ArticleTypeDetailDV:AverageExposure_Input-inputEl']")
     private WebElementFacade campoTxtExposicionPromedio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
+    private WebElementFacade campoTxtTasaGlobalEditable;
     @FindBy(id = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade chex;
 
@@ -354,5 +356,8 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void cambiarTasaGlobal(String tasaC) {
+        esperarHasta(TIEMPO_2000);
+        campoTxtTasaGlobalEditable.clear();
+        campoTxtTasaGlobalEditable.sendKeys(tasaC);
     }
 }
