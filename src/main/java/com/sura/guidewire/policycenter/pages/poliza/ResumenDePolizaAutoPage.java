@@ -25,6 +25,13 @@ public class ResumenDePolizaAutoPage extends PageUtil {
     private WebElementFacade labelParticipacion;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td[1]/div/table/tbody/tr[3]/td/div/div[1]/div/div/div[4]/div/span")
     private WebElementFacade labelLider;
+    @FindBy(xpath = "//tr[15]/td/table/tbody/tr/td/label")
+    private WebElementFacade labelTieneCoaseguroMrc;
+    @FindBy(xpath = "//tr[16]/td/table/tbody/tr/td/label")
+    private WebElementFacade labelTipoCoaseguroMrc;
+
+    private static final int AUTO = 1;
+    private static final int MRC = 2;
 
     public ResumenDePolizaAutoPage(WebDriver driver) {
         super(driver);
@@ -49,6 +56,18 @@ public class ResumenDePolizaAutoPage extends PageUtil {
 
         boolean verificacionCampos = false;
         Map<String, String> aVerificar = datos.getRow(0);
+        int opcion = 0;
+        String tipoPoliza = aVerificar.get("tipoPoliza");
+
+        if (tipoPoliza != null && !tipoPoliza.isEmpty()) {
+            if (tipoPoliza.equals("auto")) {
+                opcion = AUTO;
+            }
+
+            if (tipoPoliza.equals("mrc")) {
+                opcion = MRC;
+            }
+        }
 
         if (this.labelAseguradora.isVisible()) {
             verificacionCampos = this.labelAseguradora.getText().equals(aVerificar.get("lblAseguradora"));
@@ -64,18 +83,41 @@ public class ResumenDePolizaAutoPage extends PageUtil {
                     && this.labelLider.getText().equals(aVerificar.get("lblLider"));
         }
 
-        if (this.labelTieneCoaseguro.isVisible()) {
-            verificacionCampos = verificacionCampos
-                    && this.labelTieneCoaseguro.getText().equals(aVerificar.get("lblTCoaseguro"));
-        }
+        switch (opcion) {
 
-        if (this.labelTipoCoaseguro.isVisible()) {
-            verificacionCampos = verificacionCampos
-                    && this.labelTipoCoaseguro.getText().equals(aVerificar.get("lblTpCoaseguro"));
+            case AUTO: {
+
+                if (this.labelTieneCoaseguro.isVisible()) {
+                    verificacionCampos = verificacionCampos
+                            && this.labelTieneCoaseguro.getText().equals(aVerificar.get("lblTCoaseguro"));
+                }
+
+                if (this.labelTipoCoaseguro.isVisible()) {
+                    verificacionCampos = verificacionCampos
+                            && this.labelTipoCoaseguro.getText().equals(aVerificar.get("lblTpCoaseguro"));
+                }
+
+            }
+            break;
+
+            case MRC: {
+
+                if (this.labelTieneCoaseguroMrc.isVisible()) {
+                    verificacionCampos = verificacionCampos
+                            && this.labelTieneCoaseguroMrc.getText().equals(aVerificar.get("lblTCoaseguro"));
+                }
+
+                if (this.labelTipoCoaseguroMrc.isVisible()) {
+                    verificacionCampos = verificacionCampos
+                            && this.labelTipoCoaseguroMrc.getText().equals(aVerificar.get("lblTpCoaseguro"));
+                }
+
+            }
+            break;
+
         }
 
         MatcherAssert.assertThat("No se encuntran los campos necesarios para la informacion de coaseguro", verificacionCampos);
-
     }
 
 
