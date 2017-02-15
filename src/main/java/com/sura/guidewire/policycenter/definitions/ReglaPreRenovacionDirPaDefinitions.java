@@ -20,6 +20,7 @@ public class ReglaPreRenovacionDirPaDefinitions {
     ReglaPreRenovacionDirPaSteps reglaPreRenovacionDirPaSteps;
 
     @Given("que existe una <poliza> y esta dentro de la vigencia")
+    @When("que existe una <poliza> y esta dentro de la vigencia")
     public void givenQueExisteUnaPolizaYEstaDentroDeLaVigencia(@Named("poliza")String poliza) {
         cambioDePolizaSteps.irABuscarPoliza(poliza);
     }
@@ -34,5 +35,6 @@ public class ReglaPreRenovacionDirPaDefinitions {
     public void thenhabilitarInstrucciones(ExamplesTable opcionesDir){
         reglaPreRenovacionDirPaSteps.valida_opciones_intruccion_detalles(opcionesDir);
     }
+
 
 }

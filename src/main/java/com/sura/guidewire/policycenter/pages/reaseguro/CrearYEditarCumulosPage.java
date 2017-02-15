@@ -6,7 +6,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
@@ -66,7 +69,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresarReaseguroOpciones() {
         btnReaseguro.waitUntilPresent();
-        btnReaseguro.click();
+        esperarYClickearBoton(btnReaseguro);
     }
 
     public void ingresarAcuerdosFacultativos() {
@@ -77,9 +80,9 @@ public class CrearYEditarCumulosPage extends PageUtil {
     public void ingresarDescripcionDeAcuerdoYDireccion(String descripcionDeAcuerdo) {
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
-        btnAgregarDireccionRiesgoAplicable.click();
-        listDireccionRiesgoAplicable.waitUntilPresent();
-        listDireccionRiesgoAplicable.click();
+        esperarYClickearBoton(btnAgregarDireccionRiesgoAplicable);
+       // listDireccionRiesgoAplicable.waitUntilPresent();
+        esperarYClickearBoton(listDireccionRiesgoAplicable);
     }
 
     public void ingresoInformacionDeReaseguroEnTabla() {

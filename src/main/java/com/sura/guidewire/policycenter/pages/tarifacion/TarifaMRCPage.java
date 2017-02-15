@@ -40,7 +40,7 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtDanioInterno;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:3:RateModifier-inputEl']")
     private WebElementFacade campoTxtSustraccion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-bodyEl']")
     private WebElementFacade campoTxtTasaGlobal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:VariableRate_Input-inputEl']")
     private WebElementFacade campoTxtIndiceVariable;
@@ -80,6 +80,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade tablaPrimas;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageFloatExixtences:ArticleTypeDetailDV:AverageExposure_Input-inputEl']")
     private WebElementFacade campoTxtExposicionPromedio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
+    private WebElementFacade campoTxtTasaGlobalEditable;
     @FindBy(id = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade chex;
 
@@ -205,6 +207,7 @@ public class TarifaMRCPage extends PageUtil {
             res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat("Error, el campo tasa global no debe estar presente", campoTxtTasaGlobal.isPresent());
     }
 
     public void verificarTarifacionEnCobertura(String prima) {
@@ -343,5 +346,19 @@ public class TarifaMRCPage extends PageUtil {
         esperarHasta(TIEMPO_1500);
         campoTxtValorComercial.sendKeys(valor);
         ingresarDato(campoTxtIndiceVariable, valorIndice);
+    }
+
+    public void validarTasaGlobal(String tasa) {
+        menuItemModificadores.waitUntilPresent();
+        clickearElemento(menuItemModificadores);
+        campoTxtTasaGlobal.waitUntilPresent();
+        MatcherAssert.assertThat("Error en el valor de la tasa global, expected: " + tasa + " but was: " +
+                campoTxtTasaGlobal.getText(), campoTxtTasaGlobal.containsText(tasa));
+    }
+
+    public void cambiarTasaGlobal(String tasaC) {
+        esperarHasta(TIEMPO_2000);
+        campoTxtTasaGlobalEditable.clear();
+        campoTxtTasaGlobalEditable.sendKeys(tasaC);
     }
 }

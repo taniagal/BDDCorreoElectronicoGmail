@@ -2,15 +2,20 @@ package com.sura.guidewire.policycenter.steps.tarifacion;
 
 import com.sura.guidewire.policycenter.pages.PolizasDePrimeraPerdidaPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaMRCPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaMRCSteps extends ScenarioSteps {
-    TarifaMRCPage tarifaMRCPage = new TarifaMRCPage(getDriver());
-    PolizasDePrimeraPerdidaPage polizasDePrimeraPerdidaPage = new PolizasDePrimeraPerdidaPage(getDriver());
-
+    @Page
+    TarifaMRCPage tarifaMRCPage;
+    @Page
+    PolizasDePrimeraPerdidaPage polizasDePrimeraPerdidaPage;
+    @Page
+    TarifaTasaUnicaPage tasaUnicaPage;
 
     public TarifaMRCSteps(Pages page) {
         super(page);
@@ -97,5 +102,16 @@ public class TarifaMRCSteps extends ScenarioSteps {
     @Step
     public void ingresarValorcomercial(String valor, String valorIndice) {
         tarifaMRCPage.ingrasarValorComercial(valor, valorIndice);
+    }
+
+    @Step
+    public void validarTasaGlobal(String tasa) {
+        tarifaMRCPage.validarTasaGlobal(tasa);
+    }
+
+    @Step
+    public void cambiarTasaGlobal(String tasaC) {
+        tasaUnicaPage.editarTransaccion();
+        tarifaMRCPage.cambiarTasaGlobal(tasaC);
     }
 }

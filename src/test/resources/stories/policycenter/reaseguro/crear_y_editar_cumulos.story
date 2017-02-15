@@ -40,7 +40,7 @@ Given estoy cotizando una poliza de mrc:
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion    | actividadEconomica                           |
-| Colombia| Antioquia   | Medellin | CR 105 16A 85 | Acabado de productos textiles                |
+| Colombia| Antioquia   | Medellin | CR 15 16A 85 | Acabado de productos textiles                |
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
