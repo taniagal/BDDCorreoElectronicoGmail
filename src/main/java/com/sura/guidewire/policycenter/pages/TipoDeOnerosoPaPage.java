@@ -21,6 +21,12 @@ public class TipoDeOnerosoPaPage extends PageUtil {
     private WebElementFacade comboBoxTipoBeneficiario;
     @FindBy(xpath = ".//input[@inputvalue='true']")
     private WebElementFacade radioBotonSeNecesitaCertificadoSi;
+    @FindBy(xpath = ".//*[@id='EditPolicyContactRolePopup:ContactDetailScreen:PolicyContactRoleDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    private WebElementFacade campoPrimerNombreEdicionInteresAdicional;
+    @FindBy(xpath = ".//*[@id='EditPolicyContactRolePopup:ContactDetailScreen:Update-btnInnerEl']")
+    private WebElementFacade botonAceptarEdicionInteresAdicional;
+    @FindBy(xpath = ".//*[contains(@id, 'AdditionalInterestLV:0:Name')]")
+    private WebElementFacade linkNombreInteresAdicional;
 
     public TipoDeOnerosoPaPage(WebDriver driver) {
         super(driver);
@@ -35,5 +41,12 @@ public class TipoDeOnerosoPaPage extends PageUtil {
     public void verificarMarca(){
         waitFor(ExpectedConditions.attributeContains(radioBotonSeNecesitaCertificadoSi, "background-position", "0px -15px"));
         MatcherAssert.assertThat("Error no se encuentra marcado el campo Requiere certificado en Si","0px -15px".equals(radioBotonSeNecesitaCertificadoSi.getCssValue("background-position")));
+    }
+
+    public void editarInteresAdicional(String nombre) {
+        linkNombreInteresAdicional.waitUntilPresent().click();
+        waitForTextToAppear("Interés adicional");
+        campoPrimerNombreEdicionInteresAdicional.type(nombre);
+        botonAceptarEdicionInteresAdicional.click();
     }
 }
