@@ -18,17 +18,14 @@ And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion   | actividadEconomica                           |
 | Colombia| Antioquia   | Medellin | CR 45 70 30 | Fabricación de otros artículos textiles n.c.p|
-And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 2000000000     |
-| Información de Artículos | Edificios           |                     | Danos materiales | Valor asegurado danos materiales | 2000000000     |
-| Información de Artículos | Edificios           |                     | Terremoto        | Valor asegurado danos materiales | 2000000000     |
-| Información de Artículos | Edificios           |                     | Asonada, motin, conmocion civil o popular, huelga, y actos mal intencionados de terceros y terrorismo | Valor asegurado danos materiales | 2000000000     |
-And cotice una poliza
+And seleccione algunos articulos y sus cobertura:
+|articulo |valor_asegurable|coberturas             |
+|Building |100000000       |Danos,Asonada,Terremoto|
+And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>
 And Ingrese la información de un reasegurador
 |modalidad |porcentajeParticipacion|valorReaseguro|comisionReasegurador|comisionIntermediario|comisionPromotora|
-|Gross rate|50                     |1,8           |30                  |7                    |3                |
+|Gross rate|100                    |1,8           |30                  |7                    |3                |
 When ingrese los riesgos aplicables al acuerdo para cada una de las coberturas
 Then se debe validar que algun objeto reasegurable tenga asociados los acuerdos facultativos <tipoContrato>
 

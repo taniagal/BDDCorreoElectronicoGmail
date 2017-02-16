@@ -341,15 +341,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         inputValorEntrada.click();
     }
 
-    private Function<? super WebDriver, Boolean> inputEsActualizadoA(final WebElementFacade elemento, final String valorEntrada) {
-        return new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver webDriver) {
-                return elemento.getValue().equalsIgnoreCase(valorEntrada);
-            }
-        };
-    }
-
     public boolean estaSeleccionadaCoberturaDeRiesgo(String cobertura, String tipoArticulo) {
         Boolean estaSeleccionado = false;
         try {
