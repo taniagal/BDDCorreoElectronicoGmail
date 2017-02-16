@@ -30,7 +30,6 @@ public class SobrescribirTasaDefinitions {
 
     @When("quiera crear los acuerdos facultativos")
     public void whenQuieraCrearLosAcuerdosFacultativos() {
-
         sobrescribirTasaSteps.crearAcuerdoFacultativo();
     }
 
