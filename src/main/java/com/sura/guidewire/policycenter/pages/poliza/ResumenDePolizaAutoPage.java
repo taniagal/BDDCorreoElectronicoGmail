@@ -58,14 +58,15 @@ public class ResumenDePolizaAutoPage extends PageUtil {
         int opcion = 0;
         String tipoPoliza = "";
 
-        if (aVerificar.get("tipoPoliza") != null)
+        if (aVerificar.get("tipoPoliza") != null) {
             tipoPoliza = aVerificar.get("tipoPoliza");
+        }
 
-        if (tipoPoliza.equals("auto")) {
+        if ("auto".equals(tipoPoliza)) {
             opcion = AUTO;
         }
 
-        if (tipoPoliza.equals("mrc")) {
+        if ("mcr".equals(tipoPoliza)) {
             opcion = MRC;
         }
         
