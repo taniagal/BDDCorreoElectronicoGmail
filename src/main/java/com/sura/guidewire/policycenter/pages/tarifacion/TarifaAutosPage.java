@@ -230,10 +230,8 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = datosCoberturas.getRow(0);
         seleccionarCoberturasRC(datosCoberturas);
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
-        if (comboBoxAbogado.isPresent()) {
-            if (!dato.get("abogado").isEmpty()) {
-                seleccionarItem(comboBoxAbogado, dato.get("abogado"));
-            }
+        if (!dato.get("abogado").isEmpty()) {
+            seleccionarItem(comboBoxAbogado, dato.get("abogado"));
         }
     }
 

@@ -31,7 +31,6 @@ And Ingrese la información de un reasegurador
 |Gross rate|50                     |1,8           |30                  |7                    |3                |
 When ingrese los riesgos aplicables al acuerdo para cada una de las coberturas
 Then se debe validar que algun objeto reasegurable tenga asociados los acuerdos facultativos <tipoContrato>
-And la poliza debe recotizarce automaticamente y la tasa bruta comercial debe sobreescribirce
 
 Examples:
 |descripcionDeAcuerdo            |tipoContrato                    |
