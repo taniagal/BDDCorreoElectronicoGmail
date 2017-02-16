@@ -53,64 +53,51 @@ public class ResumenDePolizaAutoPage extends PageUtil {
 
     public void verificoCamposCoaseguro(ExamplesTable datos) {
 
-        boolean verificacionCampos = false;
+        boolean verificacionCampos = true;
         Map<String, String> aVerificar = datos.getRow(0);
         int opcion = 0;
-        String tipoPoliza = aVerificar.get("tipoPoliza");
+        String tipoPoliza = "";
 
-        if (tipoPoliza != null && !tipoPoliza.isEmpty()) {
-            if (tipoPoliza.equals("auto")) {
-                opcion = AUTO;
-            }
+        if (aVerificar.get("tipoPoliza") != null)
+            tipoPoliza = aVerificar.get("tipoPoliza");
 
-            if (tipoPoliza.equals("mrc")) {
-                opcion = MRC;
-            }
+        if (tipoPoliza.equals("auto")) {
+            opcion = AUTO;
         }
 
-        if (this.labelAseguradora.isVisible()) {
-            verificacionCampos = this.labelAseguradora.getText().equals(aVerificar.get("lblAseguradora"));
+        if (tipoPoliza.equals("mrc")) {
+            opcion = MRC;
         }
+        
+        verificacionCampos = verificacionCampos
+                && this.labelAseguradora.getText().equals(aVerificar.get("lblAseguradora"));
 
-        if (this.labelParticipacion.isVisible()) {
-            verificacionCampos = verificacionCampos
-                    && this.labelParticipacion.getText().equals(aVerificar.get("lblParticipacion"));
-        }
+        verificacionCampos = verificacionCampos
+                && this.labelParticipacion.getText().equals(aVerificar.get("lblParticipacion"));
 
-        if (this.labelLider.isVisible()) {
-            verificacionCampos = verificacionCampos
-                    && this.labelLider.getText().equals(aVerificar.get("lblLider"));
-        }
+        verificacionCampos = verificacionCampos
+                && this.labelLider.getText().equals(aVerificar.get("lblLider"));
 
         switch (opcion) {
 
-            case AUTO: {
+            case AUTO:
+            default: {
 
-                if (this.labelTieneCoaseguro.isVisible()) {
-                    verificacionCampos = verificacionCampos
-                            && this.labelTieneCoaseguro.getText().equals(aVerificar.get("lblTCoaseguro"));
-                }
+                verificacionCampos = verificacionCampos
+                        && this.labelTieneCoaseguro.getText().equals(aVerificar.get("lblTCoaseguro"));
 
-                if (this.labelTipoCoaseguro.isVisible()) {
-                    verificacionCampos = verificacionCampos
-                            && this.labelTipoCoaseguro.getText().equals(aVerificar.get("lblTpCoaseguro"));
-                }
-
+                verificacionCampos = verificacionCampos
+                        && this.labelTipoCoaseguro.getText().equals(aVerificar.get("lblTpCoaseguro"));
             }
             break;
 
             case MRC: {
 
-                if (this.labelTieneCoaseguroMrc.isVisible()) {
-                    verificacionCampos = verificacionCampos
-                            && this.labelTieneCoaseguroMrc.getText().equals(aVerificar.get("lblTCoaseguro"));
-                }
+                verificacionCampos = verificacionCampos
+                        && this.labelTieneCoaseguroMrc.getText().equals(aVerificar.get("lblTCoaseguro"));
 
-                if (this.labelTipoCoaseguroMrc.isVisible()) {
-                    verificacionCampos = verificacionCampos
-                            && this.labelTipoCoaseguroMrc.getText().equals(aVerificar.get("lblTpCoaseguro"));
-                }
-
+                verificacionCampos = verificacionCampos
+                        && this.labelTipoCoaseguroMrc.getText().equals(aVerificar.get("lblTpCoaseguro"));
             }
             break;
 
