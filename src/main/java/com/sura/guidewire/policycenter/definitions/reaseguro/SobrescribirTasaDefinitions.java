@@ -30,7 +30,6 @@ public class SobrescribirTasaDefinitions {
 
     @When("quiera crear los acuerdos facultativos")
     public void whenQuieraCrearLosAcuerdosFacultativos() {
-
         sobrescribirTasaSteps.crearAcuerdoFacultativo();
     }
 
@@ -44,11 +43,6 @@ public class SobrescribirTasaDefinitions {
         sobrescribirTasaSteps.crearAcuerdoFacultativo();
         sobrescribirTasaSteps.aceptaAcuerdoFacultativo();
         sobrescribirTasaSteps.validaObjetoReasegurableSinAsociacionDeAcuerdosFacultativos(tipoContrato);
-    }
-
-    @Then("la poliza debe recotizarce automaticamente y la tasa bruta comercial debe sobreescribirce")
-    public void thenLaPolizaDebeRecotizarceAutomaticamenteYLaTasaBrutaComercialDebeSobreescribirce() {
-
     }
 
 }
