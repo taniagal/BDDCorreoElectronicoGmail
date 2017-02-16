@@ -5,7 +5,10 @@ Meta:
 @tag equipo: 2
 @local
 
-
+Narrative:
+Como usuario PolicyCenter
+quiero poder aplicar condiciones particulares a las polizas colectivas
+para expedirlas con diferentes reglas
 
 Scenario: 1 Antiguedad
 Meta: @manual
@@ -101,7 +104,6 @@ Examples:
 ||
 ||
 
-
 Scenario: 9 Liberar  Excepcion deducibles especiales
 Meta: @manual
 Given  que tengo una cotizacion <cotizacion>
@@ -145,8 +147,7 @@ Examples:
 | tipo_documento       | documento  | cuenta      | producto |agente_oficina| cotizacion |
 | CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO      | 33355390   |
 
-
-Scenario: 15  Bloqueo de expedicion de vehiculo por maximo valor accesorios
+Scenario: 11  Bloqueo de expedicion de vehiculo por maximo valor accesorios
 GivenStories: stories/policycenter/login_policy.story
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
@@ -178,8 +179,7 @@ Examples:
 |tipo_documento      |documento |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|33355439  |
 
-
-Scenario: 16 Expedicion de poliza de vehiculo por maximo valor accesorios
+Scenario: 12 Expedicion de poliza de vehiculo por maximo valor accesorios
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -200,15 +200,14 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
-
-Scenario: 17  Bloqueo de expedicion de vehiculo blindado
+Scenario: 13  Bloqueo de expedicion de vehiculo blindado
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | vehiculo_blindado |
 | JZA458 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Si                |
-And ingrese las coberturas a vehiculo:
+And ingrese las coberturas basicas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
 And intente cotizar
@@ -227,8 +226,7 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
-
-Scenario: 18  Expedicion de vehiculo NO blindado
+Scenario: 14  Expedicion de vehiculo NO blindado
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -247,8 +245,7 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
-
-Scenario: 19  Bloqueo de expedicion de vehiculo blindado para poliza sin condicion particular(CP)
+Scenario: 15  Bloqueo de expedicion de vehiculo blindado para poliza sin condicion particular(CP)
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -274,8 +271,7 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
-
-Scenario: 20  Bloqueo de expedicion para vehiculo que transporte combustible
+Scenario: 16  Bloqueo de expedicion para vehiculo que transporte combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -297,8 +293,7 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
-
-Scenario: 21 Expedicion de poliza para vehiculo que NO transporta combustible
+Scenario: 17 Expedicion de poliza para vehiculo que NO transporta combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -317,8 +312,7 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
-
-Scenario: 22 Expedicion de poliza sin seleccionar opcion de transporte de combustible
+Scenario: 18 Expedicion de poliza sin seleccionar opcion de transporte de combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -337,8 +331,7 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
 
-
-Scenario: 23 Expedicion de vehiculo de transporte de combustible para poliza sin condicion particular(CP)
+Scenario: 19 Expedicion de vehiculo de transporte de combustible para poliza sin condicion particular(CP)
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -357,9 +350,7 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
-
-
-Scenario: 24 Deducibles especiales
+Scenario: 20 Deducibles especiales
 Meta:@manual
 Given  Que tengo una póliza riesgo donde en CP se libera la regla de excepcion a deducibles especiales
 When  ingrese la informacion del vehiculo y este es de excepcion de deducibles especiales}

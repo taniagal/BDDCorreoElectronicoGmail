@@ -4,8 +4,12 @@ Meta:
 @tag equipo: 2
 @local
 
-Scenario: 1 Generacion de UW al ingresar bonificacion comercial y tecnica mayor a la pactada
+Narrative:
+Como usuario PolicyCenter
+quiero poder aplicar condiciones particulares a las polizas colectivas
+para expedirlas con diferentes reglas
 
+Scenario: 1 Generacion de UW al ingresar bonificacion comercial y tecnica mayor a la pactada
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
@@ -99,8 +103,7 @@ Examples:
 
 
 
-Scenario: 11 Bloqueo de expedicion de vehiculo cero kilometros
-GivenStories: stories/policycenter/login_policy.story
+Scenario: 5 Bloqueo de expedicion de vehiculo cero kilometros
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -134,7 +137,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 12 Bloqueo de expedicion de vehiculo NO cero kilometros
+Scenario: 6 Bloqueo de expedicion de vehiculo NO cero kilometros
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -142,7 +145,7 @@ And ingrese la informacion del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |TZZ301|2011  |                |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Modular|
 And seleccione la opcion siguiente
-And ingrese las coberturas a vehiculo:
+And ingrese las coberturas basicas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
 And intente cotizar
@@ -162,7 +165,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 13 Expedicion de poliza riesgo con riesgo consultable aceptado en poliza principal, para vehiculo cero kilometros
+Scenario: 7 Expedicion de poliza riesgo con riesgo consultable aceptado en poliza principal, para vehiculo cero kilometros
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -183,7 +186,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|33355366  |
 |CEDULA DE CIUDADANIA|1060447895|33355338  |
 
-Scenario: 14 Expedicion de poliza riesgo en CP con riesgo consultable aceptado en poliza principal
+Scenario: 8 Expedicion de poliza riesgo en CP con riesgo consultable aceptado en poliza principal
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
