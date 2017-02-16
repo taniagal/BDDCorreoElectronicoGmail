@@ -36,7 +36,6 @@ public class CesionDePrimaSteps extends ScenarioSteps {
     @Step
     public void tomaYbuscaConNumeroDeEnvio() {
         numeroDeEnvio = cesionDePrimaPage.tomaNumeroDeEnvio();
-       // cotizacionMRCPage.irABuscarCotizacion(numeroDeEnvio);
     }
 
     public void mostrarInformacionGeneralDeCobertura(String informacionGeneralCobertura) {

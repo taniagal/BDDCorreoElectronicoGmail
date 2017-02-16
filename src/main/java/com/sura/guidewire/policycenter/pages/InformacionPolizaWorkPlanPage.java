@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
+
+
 public class InformacionPolizaWorkPlanPage extends PageUtil {
     @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/div[4]/div[3]/div/table/tbody/tr[3]/td/div/span")
     private WebElementFacade menuItemPlanDeTrabajo;
@@ -41,10 +43,10 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     }
 
     public void validarDatosPlanDeTrabajo() {
-        withTimeoutOf(5, TimeUnit.SECONDS).waitFor(campotomador);
-        withTimeoutOf(5, TimeUnit.SECONDS).waitFor(campoNumeroPoliza);
-        withTimeoutOf(5, TimeUnit.SECONDS).waitFor(campoTipoDocumento);
-        withTimeoutOf(5, TimeUnit.SECONDS).waitFor(campoNumeroDocumento);
+        waitFor(campotomador);
+        waitFor(campoNumeroPoliza);
+        waitFor(campoTipoDocumento);
+        waitFor(campoNumeroDocumento);
     }
 
     public void buscarActividades() {
@@ -56,6 +58,6 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
 
     public void validarMenuActividades() {
         esperarYClickearBoton(clickMenuActividades);
-        withTimeoutOf(5, TimeUnit.SECONDS).waitFor(menuActividades);
+        waitFor(menuActividades);
     }
 }
