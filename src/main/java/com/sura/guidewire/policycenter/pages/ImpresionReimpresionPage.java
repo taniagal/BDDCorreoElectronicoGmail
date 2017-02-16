@@ -38,7 +38,7 @@ public class ImpresionReimpresionPage extends PageUtil {
     }
 
     public void validarBotonReimpresion() {
-        withTimeoutOf(5, TimeUnit.SECONDS).waitFor(botonReimpresion);
+        withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(botonReimpresion);
         esperarYClickearBoton(botonReimpresion);
     }
 

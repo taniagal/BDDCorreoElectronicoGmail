@@ -190,7 +190,7 @@ public class NuevaCotizacionPage extends PageUtil {
         try {
             clickearElemento(comboBoxNombreAgente, TIEMPO_4);
         }catch (StaleElementReferenceException e){
-            LOGGER.info("StaleElementReferenceException");
+            LOGGER.info("StaleElementReferenceException", e);
             clickearElemento(comboBoxNombreAgente, TIEMPO_4);
         }
         esperarHasta(TIEMPO_300);

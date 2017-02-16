@@ -44,5 +44,4 @@ public class SobrescribirTasaDefinitions {
         sobrescribirTasaSteps.aceptaAcuerdoFacultativo();
         sobrescribirTasaSteps.validaObjetoReasegurableSinAsociacionDeAcuerdosFacultativos(tipoContrato);
     }
-
 }
