@@ -56,6 +56,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
     private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
     private static final double CONSTANTE_UNO = 1;
+    private static final int CONSTANTE_2 = 2;
     private static final double CONSTANTE_CIEN = 100.0;
     private static final int CONSTANTE_MIL = 1000;
     private double valorTasa = 0;
@@ -81,7 +82,6 @@ public class CrearYEditarCumulosPage extends PageUtil {
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
         esperarYClickearBoton(btnAgregarDireccionRiesgoAplicable);
-       // listDireccionRiesgoAplicable.waitUntilPresent();
         esperarYClickearBoton(listDireccionRiesgoAplicable);
     }
 
@@ -117,7 +117,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresaValorEntabla(WebElementFacade xpathCampo, String textoAEscribir) {
         boolean clickEnTabla = false;
-        int maximoEjecuciones = 2;
+        int maximoEjecuciones = CONSTANTE_2;
         int ejecuciones = 0;
         while (ejecuciones < maximoEjecuciones && !clickEnTabla) {
             esperarYClickearBoton(xpathCampo);

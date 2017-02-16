@@ -26,7 +26,7 @@ public class NotasDePolizaPage extends PageUtil{
     }
 
     public void irANotasDePoliza() {
-        esperarHasta(3000);
+        esperarHasta(TIEMPO_3000);
         clickearElemento(menuNotas);
     }
 

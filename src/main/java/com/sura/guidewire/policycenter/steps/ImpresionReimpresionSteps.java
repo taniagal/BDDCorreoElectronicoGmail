@@ -26,10 +26,6 @@ public class ImpresionReimpresionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarTransaccionesDeCuenta() {
-    }
-
-    @Step
     public void expedirRenovacionPoliza() {
         impresionReimpresionPage.expedirRenovacionPoliza();
     }
