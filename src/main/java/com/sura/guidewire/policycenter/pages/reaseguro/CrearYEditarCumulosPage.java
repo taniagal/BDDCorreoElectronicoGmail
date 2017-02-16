@@ -80,8 +80,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
     public void ingresarDescripcionDeAcuerdoYDireccion(String descripcionDeAcuerdo) {
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
-        btnAgregarDireccionRiesgoAplicable.click();
-        listDireccionRiesgoAplicable.waitUntilPresent();
+        esperarYClickearBoton(btnAgregarDireccionRiesgoAplicable);
+       // listDireccionRiesgoAplicable.waitUntilPresent();
         esperarYClickearBoton(listDireccionRiesgoAplicable);
     }
 

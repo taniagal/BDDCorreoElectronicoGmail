@@ -13,7 +13,7 @@ Scenario:  Validar los modificadores de tarifa MRC
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |producto               |
-|C1060447895|Multiriesgo corporativo|C
+|C1060447895|Multiriesgo corporativo|
 When quiera ingresar modificadores de tarifa
 Then debo poder ver los modificadores definidos
 
