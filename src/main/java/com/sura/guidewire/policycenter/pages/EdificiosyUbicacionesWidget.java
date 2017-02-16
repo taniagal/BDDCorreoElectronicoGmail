@@ -45,7 +45,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
     private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
-    private static final int TIEMPO_250 = 250;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
@@ -124,7 +123,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     @FindBy(xpath = "//span[@id='RenewalWizard:Prev-btnInnerEl']")
     private WebElementFacade botonVolverEnRenovacion;
 
-    private static final int TRES = 3;
 
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
@@ -262,7 +260,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         Boolean esSeleccionado = false;
         setImplicitTimeout(0, TimeUnit.SECONDS);
         try {
-            waitForAnyTextToAppear(tab,"Agregar Otro Articulo");
+            waitForAnyTextToAppear(tab, "Agregar Otro Articulo");
             shouldContainText(tab);
             String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
             String classProp = $(xpathTab).getAttribute("class");
@@ -341,13 +339,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         withAction().moveToElement(inputValorEntrada).perform();
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
-    }
-
-    private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
-        waitForCondition()
-                .withTimeout(TIEMPO_1, TimeUnit.SECONDS)
-                .pollingEvery(TIEMPO_100, TimeUnit.MILLISECONDS)
-                .until(inputEsActualizadoA(elemento, valorEntrada));
     }
 
     private Function<? super WebDriver, Boolean> inputEsActualizadoA(final WebElementFacade elemento, final String valorEntrada) {
@@ -443,7 +434,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarEntrada(String entrada, String valorEntrada) {
         WebElementFacade divEntradasAgregarOtroArticulo;
-        setImplicitTimeout(TIEMPO_2,TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(XPATH_PARTE1 + entrada + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + entrada + XPATH_PARTE2);
             WebElementFacade entradaOtroArticulo = divEntradasAgregarOtroArticulo.findBy(XPATH2_PARTE1 + entrada + XPATH2_PARTE2);
@@ -455,7 +446,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public WebElementFacade obtenerDivCobertura(String cobertura) {
         WebElementFacade divEntradasAgregarOtroArticulo = null;
-        setImplicitTimeout(TIEMPO_2,TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(XPATH_PARTE1 + cobertura + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + cobertura + XPATH_PARTE2);
         }
@@ -469,7 +460,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         try {
             inputCoberturaDeRiesgo.waitUntilPresent();
             withAction().moveToElement(inputCoberturaDeRiesgo).perform();
-        }catch (StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             withAction().moveToElement(inputCoberturaDeRiesgo).perform();
         }
@@ -653,11 +644,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(valor));
     }
 
-    public void validarMensajeSoloUnRiesgoEnRenovacion(){
+    public void validarMensajeSoloUnRiesgoEnRenovacion() {
         validaMensajeDeSoloUnRiesgo(chekEliminarPrimeraUbicacionRenovacion);
     }
 
-    public void validarMensajeSoloUnRiesgoEnCambio(){
+    public void validarMensajeSoloUnRiesgoEnCambio() {
         validaMensajeDeSoloUnRiesgo(chekEliminarPrimeraUbicacion);
     }
 
