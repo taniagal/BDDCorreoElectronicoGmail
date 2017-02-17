@@ -294,7 +294,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void seleccionarCoberturaDelRiesgo(String cobertura) {
         waitForAnyTextToAppear(cobertura);
         shouldContainText(cobertura);
-
         String xpathLegendCoberturaDeRiesgo = XPATH_LEGEND_COBERTURA_DE_RIESGO + cobertura + CIERRE_XPATH1;
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName(INPUT));
         withAction().moveToElement(inputCoberturaDeRiesgo).perform();
@@ -398,7 +397,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
         WebElementFacade xLinkAgregarOtrosArticulos = $("//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]");
-        setImplicitTimeout(0, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (esOtroArticulo) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
             findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().click();
@@ -500,7 +499,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarTextAreaDescripcion(String tipoArticulo) {
         WebElementFacade textAreaDescripcion = $(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']");
-        textAreaDescripcion.waitUntilPresent();
+        textAreaDescripcion.waitUntilVisible();
         enter(tipoArticulo).into(textAreaDescripcion);
         clickearElemento(textAreaDescripcion);
     }
