@@ -66,7 +66,7 @@ public class ResumenDePolizaAutoPage extends PageUtil {
             opcion = AUTO;
         }
 
-        if ("mcr".equals(tipoPoliza)) {
+        if ("mrc".equals(tipoPoliza)) {
             opcion = MRC;
         }
         
