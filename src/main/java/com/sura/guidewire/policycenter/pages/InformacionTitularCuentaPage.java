@@ -49,9 +49,9 @@ public class InformacionTitularCuentaPage extends PageUtil {
     WebElementFacade lblAnioVigencia;
     @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:ActivePoliciesInput-inputEl']")
     WebElementFacade txtPolizasActivas;
-    @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCustomerInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByClient-inputEl']")
     WebElementFacade txtCanceladoPorCliente;
-    @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCarrierInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCarrierOrder-inputEl']")
     WebElementFacade txtCanceladoPorCompania;
     @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:OtherCancellationsInput-inputEl']")
     WebElementFacade txtOtrasCancelaciones;
