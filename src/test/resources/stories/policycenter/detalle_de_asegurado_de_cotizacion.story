@@ -97,8 +97,8 @@ And quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
 And ingrese los datos de persona natural:
-| tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
-| CEDULA DE CIUDADANIA | 1234568999 | LUCIANA      | LONDOÑO        | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
+| tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  | moneda |
+| CEDULA DE CIUDADANIA | 1234568999 | LUCIANA      | LONDOÑO        | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL | COP    |
 And quiera editar los datos del nuevo contacto persona natural:
 | tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
 | CEDULA DE CIUDADANIA | 1234569999 | LUCIANA      | CALLE          | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
@@ -157,10 +157,9 @@ And quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
 And ingrese los datos de persona natural:
-| tipoId               | numeroId    | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
-| CEDULA DE CIUDADANIA | 10000000010 | ELIANA       | QUINTERO       | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
-And vaya al siguiente paso de la cotizacion
-Then muestre el mensaje de validacion del asegurado <mensaje>
+| tipoId               | numeroId    | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  | moneda |
+| CEDULA DE CIUDADANIA | 10000000010 | ELIANA       | QUINTERO       | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL | NA     |
+Then no debe permitir crear un nuevo contacto y debe mostrar el mensaje <mensaje>
 
 Examples:
 | cuenta     | producto | mensaje                                                                                             |

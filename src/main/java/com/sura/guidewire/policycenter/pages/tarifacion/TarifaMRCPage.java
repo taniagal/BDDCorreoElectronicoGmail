@@ -16,10 +16,10 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class TarifaMRCPage extends PageUtil {
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
+    @FindBy(xpath = ".//*[contains(@id, 'AddContactsButton-btnWrap')]")
     private WebElementFacade botonAgregarContacto;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']")
-    private WebElementFacade botonAgregarContactoDelDirectorio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton:1:ContactType-textEl']")
+    private WebElementFacade botonAgregarContactoNuevaPersona;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -238,9 +238,10 @@ public class TarifaMRCPage extends PageUtil {
         esperarHasta(TIEMPO_2000);
     }
 
-    public void agregarContactoDelDirectorio() {
+    public void agregarContactoNuevaPersona() {
         botonAgregarContacto.waitUntilPresent().click();
-        botonAgregarContactoDelDirectorio.click();
+        botonAgregarContactoNuevaPersona.click();
+        waitForTextToAppear("Nuevo Asegurado");
     }
 
     public void verificarTarifacionEnCoberturasTerremotoYSustraccion(ExamplesTable primasPoliza) {
