@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.google.common.base.Function;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
@@ -215,9 +214,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
-        agregarNuevaUbicacion(valoresUbicaion.get("departamento"),
-                valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"),
-                valoresUbicaion.get("actividadEconomica"));
+        agregarNuevaUbicacion(valoresUbicaion.get("departamento"), valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"), valoresUbicaion.get("actividadEconomica"));
     }
 
     public void removerRiesgos() {
@@ -511,13 +508,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             } catch (StaleElementReferenceException e) {
-                intentarVerificarmensaje("StaleElementReferenceException " + e, mensaje.get(MENSAJES_WORKSPACE),
-                        "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
-                                " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
+                intentarVerificarmensaje("StaleElementReferenceException " + e, mensaje.get(MENSAJES_WORKSPACE), "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             } catch (ElementNotVisibleException f) {
-                intentarVerificarmensaje("ElementNotVisibleException " + f, mensaje.get(MENSAJES_WORKSPACE),
-                        "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
-                                " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
+                intentarVerificarmensaje("ElementNotVisibleException " + f, mensaje.get(MENSAJES_WORKSPACE), "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }
         }
         resetImplicitTimeout();

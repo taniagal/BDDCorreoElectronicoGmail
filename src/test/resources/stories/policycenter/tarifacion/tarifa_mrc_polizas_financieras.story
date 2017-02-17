@@ -8,7 +8,6 @@ Narrative:
 Como usuario de policy center
 Al cotizar una poliza de MRC quiero ser capaz de registrar toda la información del riesgo.
 
-
 Scenario:  Tarifa MRC pólizas financieras con los aritículos Maquinaria y equipo, y Muebles y enseres
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
