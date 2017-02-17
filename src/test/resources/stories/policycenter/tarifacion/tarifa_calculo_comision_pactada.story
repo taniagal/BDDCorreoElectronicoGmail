@@ -6,7 +6,7 @@ Meta:
 Narrative:
 Como usuario de policy center
 Al cotizar una poliza de PA
-Quiero ser capaz de utilizar la comision pactada para beneficiar al cliente o al acesor dependiendo de la comision estandar
+Quiero ser capaz de aplicarla para los automoviles, camperos y pickup, y bicicletas una tasa diferente a la tasa dada por la tarifa tecnica en las coberturas de PT Daños y Hurto.
 
 
 Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 10
