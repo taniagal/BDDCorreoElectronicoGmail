@@ -88,10 +88,5 @@ public class CotizacionPage extends GuidewirePage {
       if(buscarInputHabilitadoEnElementoResumen.isPresent()){
           MatcherAssert.assertThat(buscarInputHabilitadoEnElemento("//div[@id='PolicyFile_Summary:Policy_SummaryScreen:insuranceLV-body']/div"), Is.is(false));
       }
-      else if(buscarInputHabilitadoEnElementoInformacionPoliza.isPresent()){
-          MatcherAssert.assertThat(buscarInputHabilitadoEnElemento("html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[5]/td/div/div[3]/div"), Is.is(false));
-
-
-      }
     }
 }
