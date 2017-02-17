@@ -288,7 +288,6 @@ public class Poliza {
     public void entoncesDeboVerEnElResumenDeLaPolizaYEnInformacionDePolizaLosCoasegurosNoEditables() {
         LOGGER.info("Poliza.entoncesDeboVerEnElResumenDeLaPolizaLosCoasegurosNoEditables");
         polizaSteps.verResumenDeLaPolizaExpedida();
-        polizaSteps.ingresarAVerCoaseguros();
         cotizacionSteps.validar_campos_aseguradora_poliza();
         polizaSteps.seleccionarOpcionInformacionDePoliza();
         polizaSteps.ingresarAVerCoaseguros();
