@@ -37,7 +37,6 @@ Examples:
 | TipoCo | numCuenta  | departamento | ciudad   | direccion         | descripcion   | actividad                     |
 | Cedido | C000777777 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles |
 
-
 Scenario:  3 Validacion de coaseguro no editable en resumen e informacion de poliza
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
