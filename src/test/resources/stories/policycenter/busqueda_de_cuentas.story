@@ -187,32 +187,32 @@ When ingrese la informacion de tipo de documento <tipoDocumento> y numero de doc
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| tipoDocumento | numeroDocumento | numeroCuenta | nombre              | direccion                      |
-| NIT           | 9202086744      | C010478975   | VARIEDADES YURLEDYS | CRA 65 ST, MEDELLIN, Antioquia |
+| tipoDocumento | numeroDocumento | numeroCuenta | nombre              | direccion                           |
+| NIT           | 9202086744      | C010478975   | VARIEDADES YURLEDYS | CRA 72 # 81-17, MEDELLIN, Antioquia |
 
 Scenario: Busqueda cuenta por persona juridica por razon social
 When ingrese la informacion de tipo de razon social <razonSocial> del titular de la cuenta
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| razonSocial             | numeroCuenta | nombre              | direccion                      |
-| Variedades Yurledys S.A | C010478975   | VARIEDADES YURLEDYS | CRA 65 ST, MEDELLIN, Antioquia |
+| razonSocial             | numeroCuenta | nombre              | direccion                           |
+| Variedades Yurledys S.A | C010478975   | VARIEDADES YURLEDYS | CRA 72 # 81-17, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial
 When ingrese la informacion de nombre comercial <nombreComercial> del titular de la cuenta
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| nombreComercial     | numeroCuenta | nombre              | direccion                      |
-| Variedades Yurledys | C010478975   | VARIEDADES YURLEDYS | CRA 65 ST, MEDELLIN, Antioquia |
+| nombreComercial     | numeroCuenta | nombre              | direccion                           |
+| Variedades Yurledys | C010478975   | VARIEDADES YURLEDYS | CRA 72 # 81-17, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial y razon social
 When ingrese la informacion de nombre comercial <nombreComercial> del titular de la cuenta e ingrese razon social <razonSocial>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| nombreComercial     | razonSocial         | numeroCuenta | nombre              | direccion                      |
-| Variedades Yurledys | Variedades Yurledys | C010478975   | VARIEDADES YURLEDYS | CRA 65 ST, MEDELLIN, Antioquia |
+| nombreComercial     | razonSocial         | numeroCuenta | nombre              | direccion                           |
+| Variedades Yurledys | Variedades Yurledys | C010478975   | VARIEDADES YURLEDYS | CRA 72 # 81-17, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona juridica por razon social sin datos existentes
 Given que me encuentro en la busqueda de cuentas

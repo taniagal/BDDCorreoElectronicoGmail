@@ -33,8 +33,9 @@ public class SobrescribirTasaPage extends PageUtil {
         String riesgosConDireccion = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add:0:riskbutton']";
         setImplicitTimeout(0, TimeUnit.SECONDS);
         while (btnAgreagarRiesgos.isVisible()) {
-            esperarYClickearBoton(btnAgreagarRiesgos);
-            esperarYClickearBoton($(riesgosConDireccion));
+            clickearElemento(btnAgreagarRiesgos, TIEMPO_4);
+            clickearElemento($(riesgosConDireccion), TIEMPO_4);
+
         }
         resetImplicitTimeout();
     }

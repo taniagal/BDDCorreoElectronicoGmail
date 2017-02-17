@@ -95,5 +95,11 @@ public class TarifaAutosDefinitions {
     public void verificarDependenciaDeCobertura() {
         tarifaAutosSteps.verificarDependenciaDeCobertura();
     }
+
+
+    @When("seleccione todas las coberturas de comision: $coberturas")
+    public void agregarTodasLasCoberturasDeComision(ExamplesTable coberturas) {
+        tarifaAutosSteps.seleccionarCoberturasComision(coberturas);
+    }
 }
 

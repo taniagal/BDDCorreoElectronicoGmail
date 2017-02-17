@@ -29,6 +29,19 @@ public class TipoDeOnerosoPaDefinitions {
         onerosoPaSteps.agregarInteresAdicional();
     }
 
+    @When("ingrese un interes adicional con tipo de beneficiario <tipoBeneficiario>" )
+    public void agregarInteresAdicionalYTipoDeBeneficiario(@Named("tipoBeneficiario") String tipoBeneficiario) {
+        vehiculoSteps.ir_a_vehiculos();
+        onerosoPaSteps.agregarInteresAdicional();
+        edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
+
+    }
+
+    @When("edite los datos del interes adicional <nombre>" )
+    public void editarInteresAdicional(@Named("nombre") String nombre) {
+        onerosoPaSteps.editarInteresAdicional(nombre);
+    }
+
     @Then("debo poder ver y seleccionar los tipos de beneficiarios <tipoBeneficiario>")
     public void verificarTipoDeBeneficiarios(@Named("tipoBeneficiario") String tipoBeneficiario){
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);

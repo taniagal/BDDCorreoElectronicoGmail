@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions.reaseguro;
 
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.SobrescribirTasaSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaMRCSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -18,9 +19,23 @@ public class SobrescribirTasaDefinitions {
     @Steps
     CrearYEditarCumulosSteps crearYEditarCumulosSteps;
 
+    @Steps
+    TarifaMRCSteps tarifaMRCSteps;
+
+
     @Given("Ingrese la información de un reasegurador $datosReaseguradores")
     public void ingresaInformacionEnTablaParaReasegurad(ExamplesTable datosReaseguradores) {
         crearYEditarCumulosSteps.ingresarModalidadDeTasaEnTabla(datosReaseguradores);
+    }
+
+    @Given("seleccione algunos articulos y sus cobertura: $datos")
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos){
+        tarifaMRCSteps.seleccionarArticulosYTodadsSusCoberturas(datos);
+    }
+
+    @Given("cotice el articulo")
+    public void agregarArticulo(){
+        tarifaMRCSteps.agregarArticulo();
     }
 
     @When("ingrese los riesgos aplicables al acuerdo para cada una de las coberturas")
