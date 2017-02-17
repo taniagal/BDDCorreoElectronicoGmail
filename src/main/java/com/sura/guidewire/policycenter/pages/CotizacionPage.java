@@ -13,7 +13,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 // TODO: 15/06/2016 Pendiente refactor
 public class CotizacionPage extends GuidewirePage {
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
-    @FindBy (xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']")
 
     public static final String TITULO_PAGINA = "//span[@id='NewSubmission:NewSubmissionScreen:ttlBar']";
     public static final String TITULO_PAGINA_SIGUIENTE = "//span[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:ttlBar']";
@@ -28,8 +28,12 @@ public class CotizacionPage extends GuidewirePage {
     public static final String MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'displayfield') and contains(@id,'inputEl')]";
     public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
-    public static final String LBL_OPCIONES_MENU_INICIAL =  ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
-    public static final  String LBL_OPCIONES_MENU_FINAL =  "')]";
+    public static final String LBL_OPCIONES_MENU_INICIAL = ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
+    public static final String LBL_OPCIONES_MENU_FINAL = "')]";
+    @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_PolicyDV:HaveCoinsurance-inputEl']")
+    WebElementFacade buscarInputHabilitadoEnElementoResumen;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion-labelEl']")
+    WebElementFacade buscarInputHabilitadoEnElementoInformacionPoliza;
     public static final String TRACE = "\nTRACE: \n";
     protected static final int TIEMPO_15 = 15;
     protected static final int TIEMPO_2000 = 2000;
@@ -57,7 +61,6 @@ public class CotizacionPage extends GuidewirePage {
         return elementoEncontrado;
     }
 
-    // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
     public WebElementFacade elemento(String xpath) {
         WebElementFacade elemento = null;
 
@@ -77,12 +80,18 @@ public class CotizacionPage extends GuidewirePage {
     }
 
 
-    public void validarCamposOpcionCotizacionDePoliza(String estadouno,String estadodos,ExamplesTable menusesperados){
-        opcionesInformacionPolizaMrcPage.validarCampos(estadouno,estadodos,menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
+    public void validarCamposOpcionCotizacionDePoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
     }
 
     public void esCamposAseguradorasCoasegurosEditables() {
-        MatcherAssert.assertThat(buscarInputHabilitadoEnElemento(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table"), Is.is(false));
+      if(buscarInputHabilitadoEnElementoResumen.isPresent()){
+          MatcherAssert.assertThat(buscarInputHabilitadoEnElemento("//div[@id='PolicyFile_Summary:Policy_SummaryScreen:insuranceLV-body']/div"), Is.is(false));
+      }
+      else if(buscarInputHabilitadoEnElementoInformacionPoliza.isPresent()){
+          MatcherAssert.assertThat(buscarInputHabilitadoEnElemento("html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[5]/td/div/div[3]/div"), Is.is(false));
 
+
+      }
     }
 }
