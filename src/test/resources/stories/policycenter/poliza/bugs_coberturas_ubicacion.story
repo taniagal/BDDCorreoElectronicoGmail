@@ -17,12 +17,12 @@ And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas|
 |Building |10000           |Terremoto |
 And ingrese las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
-| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la remocion de escombros | 10001          |
+| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida | 10001          |
 And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
-| MENSAJES_WORKSPACE                                                                                                                                                                                                |
-| El valor del "Sublimite para gastos para la remocion de escombros " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| MENSAJES_WORKSPACE                                                                                                                                                                                                          |
+| El valor del "Sublimite para gastos asociados a la ocurrencia de una pérdida" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
