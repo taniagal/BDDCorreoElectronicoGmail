@@ -23,12 +23,12 @@ And seleccione algunos articulos y sus cobertura:
 And agrego el valor comercial <valor> y el indice variable <valor_indice>
 And ingrese las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               |                     | Sustraccion | Valor asegurado sustraccion con violencia | 120000000      |
+| Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia | 120000000      |
 And cotice el articulo
 Then debo poder ver el valor de la prima en la cobertura y el valor de cobertura de sustraccion
 | cobertura                     | prima   |
 | Cobertura de Terremoto        | 125.050 |
-| Cobertura de Sustraccion      | 4.674   |
+| Cobertura de Sustracción      | 4.674   |
 | Cobertura de Danos materiales | 42.066  |
 
 Examples:
