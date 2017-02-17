@@ -81,7 +81,6 @@ public class BusquedaActividadesPage extends PageUtil {
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[9]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("titularCuenta"))));
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[10]/div").getText(), Matchers.containsString(exampleTable.get("producto")));
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[11]/div").getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
-        MatcherAssert.assertThat(findBy(xpathTabla + "/td[12]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
     }
 
     public Integer encontrarActividad(String idActividad) {

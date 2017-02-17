@@ -8,7 +8,6 @@ Narrative:
 Como usuario de policy center
 Al cotizar una poliza de MRC quiero ser capaz de registrar toda la información del riesgo.
 
-
 Scenario:  Tarifa MRC pólizas financieras con los aritículos Maquinaria y equipo, y Muebles y enseres
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
@@ -23,7 +22,7 @@ And seleccione algunos articulos y sus cobertura:
 |Furniture|300000000       |Danos,Asonada,Rotura,Terremoto|
 And ingrese las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               |                     | Sustraccion | Valor asegurado sustraccion con violencia | 300000000      |
+| Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia | 300000000      |
 And cotice el articulo
 Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo  |descripcion                      |valor  |
@@ -31,7 +30,7 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |Maquinaria|Cobertura de Terremoto           |306.600|
 |Maquinaria|Cobertura de Asonada             |32.850 |
 |Maquinaria|Cobertura de Rotura de maquinaria|0,00   |
-|Edificio  |Cobertura de Sustraccion         |0,00   |
+|Edificio  |Cobertura de Sustracción         |0,00   |
 |Muebles   |Cobertura de Danos materiales    |985.320|
 |Muebles   |Cobertura de Terremoto           |434.700|
 |Muebles   |Cobertura de Asonada             |28.980 |
@@ -57,7 +56,7 @@ And seleccione algunos articulos y sus cobertura:
 |Furniture|140000000       |Danos,Asonada,Terremoto|
 And ingrese las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               |                     | Sustraccion | Valor asegurado sustraccion con violencia | 300000000      |
+| Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia | 300000000      |
 And cotice el articulo
 Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo  |descripcion                      |valor  |
