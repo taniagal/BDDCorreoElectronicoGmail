@@ -10,6 +10,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
@@ -162,6 +163,16 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.seleccionar_Opcion_Siguiente();
     }
 
+    @When("ingrese segundo tomador creando nuevo contacto $contacto")
+    public void ingresarSegundoTomadorCreandoNuevoContacto(ExamplesTable contacto) {
+        informacionPolizaPASteps.ingresarSegundoTomadorCreandoNuevoContacto(contacto);
+    }
+
+    @When("ingrese nuevo asegurado a poliza MRC con los datos $contacto")
+    public void ingresarAseguradoNombradoCreandoNuevoContacto(ExamplesTable contacto) {
+        informacionPolizaPASteps.ingresarAseguradoNombradoCreandoNuevoContacto(contacto);
+    }
+
     @Then("la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo")
     public void calcularFechaFinVigencia(@Named("fechaFinVigencia") String fechaFinVigencia) {
         informacionPolizaPASteps.calcularFechaFinVigencia(fechaFinVigencia);
@@ -224,5 +235,10 @@ public class InformacionPolizaPADefinitions {
     @Then("se debe mostrar un mensaje <mensaje> de advertencia")
     public void mostrarMensajeFinanciacion(@Named("mensaje") String mensaje) {
         informacionPolizaPASteps.mostrar_Mensaje_Advertencia_Financiacion(mensaje);
+    }
+
+    @Then("no debe permitir crear un nuevo contacto y debe mostrar el mensaje <mensaje>")
+    public void validarMensajeDeMDM(@Named("mensaje") String mensaje) {
+        informacionPolizaPASteps.validarMensajeDeMDM(mensaje);
     }
 }

@@ -79,6 +79,5 @@ public class RenovacionDeseoFinanciacionPaSteps extends ScenarioSteps {
     public void comenzarRenovacion() {
         tasaUnicaPage.nuevaRenovacion();
         tasaUnicaPage.irAInformacionDePolizaRenovacion();
-        tasaUnicaPage.editarTransaccion();
     }
 }

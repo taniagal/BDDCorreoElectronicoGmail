@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.VisualizarCambiosEnPolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;

@@ -6,7 +6,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
@@ -53,6 +56,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
     private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
     private static final double CONSTANTE_UNO = 1;
+    private static final int CONSTANTE_2 = 2;
     private static final double CONSTANTE_CIEN = 100.0;
     private static final int CONSTANTE_MIL = 1000;
     private double valorTasa = 0;
@@ -66,7 +70,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresarReaseguroOpciones() {
         btnReaseguro.waitUntilPresent();
-        btnReaseguro.click();
+        esperarYClickearBoton(btnReaseguro);
     }
 
     public void ingresarAcuerdosFacultativos() {
@@ -77,9 +81,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
     public void ingresarDescripcionDeAcuerdoYDireccion(String descripcionDeAcuerdo) {
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
-        btnAgregarDireccionRiesgoAplicable.click();
-        listDireccionRiesgoAplicable.waitUntilPresent();
-        listDireccionRiesgoAplicable.click();
+        esperarYClickearBoton(btnAgregarDireccionRiesgoAplicable);
+        esperarYClickearBoton(listDireccionRiesgoAplicable);
     }
 
     public void ingresoInformacionDeReaseguroEnTabla() {
@@ -114,7 +117,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresaValorEntabla(WebElementFacade xpathCampo, String textoAEscribir) {
         boolean clickEnTabla = false;
-        int maximoEjecuciones = 2;
+        int maximoEjecuciones = CONSTANTE_2;
         int ejecuciones = 0;
         while (ejecuciones < maximoEjecuciones && !clickEnTabla) {
             esperarYClickearBoton(xpathCampo);

@@ -1,12 +1,15 @@
 package com.sura.guidewire.policycenter.steps;
 
+import com.sura.guidewire.policycenter.pages.PanelSurEspacioDeTrabajoPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaMRCPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
+import org.jbehave.core.model.ExamplesTable;
 
 import java.util.Map;
 
@@ -17,6 +20,10 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     NuevaCotizacionPage nuevaCotizacionPage;
     @Page
     OpcionesInformacionPolizaPage opcionesInformacionPoliza;
+    @Page
+    PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
+    @Page
+    TarifaMRCPage tarifaMRCPage;
 
     public InformacionPolizaPASteps(Pages pages) {
         super(pages);
@@ -138,5 +145,21 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     @Step
     public void mostrar_Mensaje_Advertencia_Financiacion(String mensaje) {
         opcionesInformacionPoliza.validarMensajeFinanciacion(mensaje);
+    }
+
+    @Step
+    public void ingresarSegundoTomadorCreandoNuevoContacto(ExamplesTable contacto) {
+        opcionesInformacionPoliza.adicionarSegundoTomadorOpcionNuevaPersona(contacto);
+    }
+
+    @Step
+    public void validarMensajeDeMDM(String mensaje) {
+        panelSurEspacioDeTrabajoPage.validarMensajeDireccion(mensaje);
+    }
+
+    @Step
+    public void ingresarAseguradoNombradoCreandoNuevoContacto(ExamplesTable contacto) {
+        tarifaMRCPage.agregarContactoNuevaPersona();
+        opcionesInformacionPoliza.ingresarDatosDeContacto(contacto);
     }
 }

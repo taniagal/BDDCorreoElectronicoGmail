@@ -71,11 +71,6 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarTarifacionPorCoberturas(ExamplesTable valor) {
-        tarifaAutosPage.verificarTarifacionPorCoberturas(valor);
-    }
-
-    @Step
     public void seleccionarBotonSiguiente() {
         vehiculoPage.clickSiguiente();
     }
@@ -124,4 +119,13 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void ingresarComisionPactada(String valor) {
         tarifaAutosPage.ingresarComisionPactada(valor);
     }
+
+    @Step
+    public void seleccionarCoberturasComision(ExamplesTable coberturas) {
+        tarifaAutosPage.seleccionarCoberturasRC(coberturas);
+        tarifaAutosPage.seleccionarCoberturasHurto(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
+        tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
+    }
+
 }

@@ -24,22 +24,21 @@ And seleccione algunas las coberturas:
 |limite|deducible|abogado|PTH|PPH|PPHF|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|PPD|PPDF|GT|CRPP|CRPT|GTR|GP|PLlaves|
 |640.  |0        |Si     |0  |750|1.50|40.|35|Conces|Plus|Si|6 |Plus|0  |750|1.50|40|20  |20  |Si |Si|Si     |
 Then el valor del monto en cada cobertura debe ser:
-|fila|valor     |
-|1   |383.997   |
-|4   |2.101.302 |
-|8   |564.279   |
-|12  |7.036     |
-|15  |8.021     |
-|17  |11.825    |
-|19  |26.128    |
-|21  |11.825    |
-|23  |11.825    |
-|25  |11.825    |
-|27  |11.825    |
-|29  |11.825    |
-|31  |11.825    |
-|33  |11.825    |
+|descripcion                          |valor    |
+|Cobertura de Responsabilidad Civil   |383.997  |
+|Cobertura de Daños                   |2.101.302|
+|Cobertura de Hurto                   |564.279  |
+|Cobertura de Vehículo de Reemplazo   |7.036    |
+|Cobertura de Accidentes al Conductor |8.021    |
+|Cobertura de Pérdida de Llaves       |11.825   |
+|Cobertura de Taller                  |26.128   |
+|Cobertura de Taller móvil y cerrajero|11.825   |
+|Cobertura de Conductor Elegido       |11.825   |
+|Cobertura de Gastos de Traspaso      |11.825   |
+|Cobertura de Gasto de Parqueadero    |11.825   |
+|Cobertura de Centro de Servicio      |11.825   |
+|Cobertura de Abogado                 |11.825   |
 
 Examples:
-|tipo_documento      |documento|
-|CEDULA DE CIUDADANIA|11111111 |
+|tipo_documento      |documento  |
+|CEDULA DE CIUDADANIA|1234567896 |

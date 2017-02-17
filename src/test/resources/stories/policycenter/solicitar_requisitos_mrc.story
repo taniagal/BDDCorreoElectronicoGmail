@@ -25,13 +25,14 @@ And cotice para la opcion declinar MRC
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje de advertencia
-| mensaje                                                        |
-| Existen requisitos opcionales pendientes, por favor diríjase a la pestaña Requisitos para tramitarlos. |
-
+| mensaje                                                                                                             |
+| Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
 | departamento | ciudad   | direccion         | descripcion       | actividad                     |
 | Antioquia    | Medellin | CR 45 A # 44 - 01 | Prueba requisitos | Acabado de productos textiles |
+
+
 
 Scenario: validar requisito de firma cliente para multiriesgo en expedicion de poliza
 Given estoy cotizando una poliza de mrc:
@@ -47,12 +48,13 @@ And cotice para la opcion declinar MRC
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje bloqueante
-| mensajeB                                                                                                              |
+| mensaje                                                                                                               |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
 | departamento | ciudad   | direccion         | descripcion       | actividad                     |
 | Antioquia    | Medellin | CR 45 A # 44 - 02 | Prueba requisitos | Acabado de productos textiles |
+
 
 
 Scenario: validar requisito de sarlaft para multiriesgo en expedicion de poliza
@@ -69,7 +71,7 @@ And cotice para la opcion declinar MRC
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje bloqueante
-| mensajeB                                                                                                              |
+| mensaje                                                                                                               |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
@@ -82,7 +84,7 @@ Meta: @manual
 Given que tengo una poliza expedida con beneficiario oneroso
 When quiera realizar un cambio en la poliza y quiera expedirla
 Then se debe mostrar un mensaje bloqueante
-| mensajeB                                                                                                              |
+| mensaje                                                                                                               |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Scenario: validar requisito de paz y salvo para beneficiario oneroso en cancelacion de poliza
@@ -90,5 +92,5 @@ Meta: @manual
 Given que tengo una poliza expedida con beneficiario oneroso
 When quiera cancelar la poliza
 Then se debe mostrar un mensaje bloqueante
-| mensajeB                                                                                                              |
+| mensaje                                                                                                               |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
