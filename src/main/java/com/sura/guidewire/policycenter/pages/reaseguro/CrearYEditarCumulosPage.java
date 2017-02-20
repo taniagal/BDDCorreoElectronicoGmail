@@ -12,7 +12,6 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class CrearYEditarCumulosPage extends PageUtil {
     @FindBy(xpath = ".//td[@id='SubmissionWizard:Reinsurance']/div/span")
@@ -142,7 +141,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public String calculaPrimaBrutaDeCesionRegla() {
-        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(listValorExpuestoRiesgo).shouldBePresent();
+        esperarYClickearBoton(listValorExpuestoRiesgo);
         String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
         valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
         valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.", ""));
