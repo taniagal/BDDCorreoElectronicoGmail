@@ -425,8 +425,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         if (isElementVisible(By.xpath(XPATH_PARTE1 + entrada + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + entrada + XPATH_PARTE2);
             WebElementFacade entradaOtroArticulo = divEntradasAgregarOtroArticulo.findBy(XPATH2_PARTE1 + entrada + XPATH2_PARTE2);
-            WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName(INPUT));
-            enter(valorEntrada).into(inputValorEntrada);
+            WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName(INPUT)).waitUntilVisible();
+            enter(valorEntrada).into(waitFor(inputValorEntrada));
         }
         resetImplicitTimeout();
     }
