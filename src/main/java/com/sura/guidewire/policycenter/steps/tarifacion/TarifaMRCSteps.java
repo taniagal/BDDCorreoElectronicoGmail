@@ -114,4 +114,9 @@ public class TarifaMRCSteps extends ScenarioSteps {
         tasaUnicaPage.editarTransaccion();
         tarifaMRCPage.cambiarTasaGlobal(tasaC);
     }
+
+    @Step
+    public void ingrasarIndiceVariableMaquinaria(String valor){
+        tarifaMRCPage.ingrasarIndiceVariableMaquinaria(valor);
+    }
 }

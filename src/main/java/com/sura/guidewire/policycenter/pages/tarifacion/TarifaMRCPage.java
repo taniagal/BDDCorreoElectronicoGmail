@@ -44,6 +44,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtTasaGlobal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:VariableRate_Input-inputEl']")
     private WebElementFacade campoTxtIndiceVariable;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageMachine:ArticleTypeDetailDV:VariableRate_Input-inputEl']")
+    private WebElementFacade campoTxtIndiceVariableMaquinaria;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:checkCommercialValue-inputEl']")
@@ -360,5 +362,9 @@ public class TarifaMRCPage extends PageUtil {
         esperarHasta(TIEMPO_2000);
         campoTxtTasaGlobalEditable.clear();
         campoTxtTasaGlobalEditable.sendKeys(tasaC);
+    }
+
+    public void ingrasarIndiceVariableMaquinaria(String valorIndice) {
+        campoTxtIndiceVariableMaquinaria.sendKeys(valorIndice);
     }
 }
