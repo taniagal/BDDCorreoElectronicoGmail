@@ -536,6 +536,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         if (tipodocumento.contains(TIPO_DOCUMENTO)) {
             waitForTextToAppear("Primer nombre");
+        } else {
+            waitForTextToAppear("Razón social");
         }
         esperarHasta(TIEMPO_300);
         campoTxtNumeroDocumento.sendKeys(cedula);
