@@ -163,6 +163,7 @@ public class NuevaCotizacionPage extends PageUtil {
             comboBoxCodigoDeAgente.sendKeys(Keys.ENTER);
             seleccionarItem(comboBoxCodigoDeAgente, codigoAgente);
         }
+        waitForTextToAppear(nomProducto);
         esperarHasta(TIEMPO_1000);
         List<WebElementFacade> descripcionProductos = getLista(TABLA_SELECCION_DE_PRODUCTO + "/tr/td[2]");
         for (int i = 1; i <= descripcionProductos.size(); i++) {
