@@ -141,6 +141,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public String calculaPrimaBrutaDeCesionRegla() {
+        esperarYClickearBoton(listValorExpuestoRiesgo);
         String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
         valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
         valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.", ""));
