@@ -52,7 +52,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     WebElementFacade lblMensajeAdvertencia;
 
     private static final String PAIS_ALEMANIA = "Alemania";
-    private static final String ASEGURA_ALLIANZ = "ALLIANZ RE";
+    private static final String ASEGURADORA_ALLIANZ = "ALLIANZ RE";
     private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
     private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
     private static final double CONSTANTE_UNO = 1;
@@ -90,7 +90,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
         linkNombreReasegurador.click();
         listPaisSeleccionar.waitUntilClickable();
         seleccionarItem(listPaisSeleccionar, PAIS_ALEMANIA);
-        seleccionarItem(listNombreReaseugurador, ASEGURA_ALLIANZ);
+        seleccionarItem(listNombreReaseugurador, ASEGURADORA_ALLIANZ);
         clickearElemento(btnAceptarReasegurador);
     }
 
@@ -141,7 +141,11 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public String calculaPrimaBrutaDeCesionRegla() {
-        esperarYClickearBoton(listValorExpuestoRiesgo);
+        try {
+            listValorExpuestoRiesgo.click();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+        }
         String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
         valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
         valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.", ""));
