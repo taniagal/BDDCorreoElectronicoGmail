@@ -111,6 +111,8 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade campoDireccion;
     @FindBy(xpath = ".//*[contains(@id, 'ContactDetailScreen:ForceDupCheckUpdate-btnInnerEl')]")
     private WebElementFacade botonAceptar;
+    @FindBy(xpath = ".//input[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee_true-inputEl']")
+    private WebElementFacade botonEmpleadoSuraSi;
 
     private static final int CONSTANTE_50 = 50;
 
@@ -373,7 +375,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         this.ingresarDatosDeContacto(informacionContacto);
     }
 
-    public void ingresarDatosDeContacto(ExamplesTable informacionContacto){
+    public void ingresarDatosDeContacto(ExamplesTable informacionContacto) {
         Map<String, String> contacto = informacionContacto.getRows().get(0);
         super.seleccionarItem(textoTipoDocumento, contacto.get("tipoDocumento"));
         textoNumeroDocumentoSegundoTomador.type(contacto.get("numeroDocumento"));
@@ -386,5 +388,9 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         super.seleccionarItem(campoCiudad, contacto.get("ciudad"));
         super.esperarPorValor(campoCiudad, contacto.get("ciudad"));
         super.clickearElemento(botonAceptar);
+    }
+
+    public void seleccionarOpcionEmpleadoSura() {
+        botonEmpleadoSuraSi.waitUntilPresent().click();
     }
 }
