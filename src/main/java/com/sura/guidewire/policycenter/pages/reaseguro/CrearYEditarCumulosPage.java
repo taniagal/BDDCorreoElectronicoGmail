@@ -142,7 +142,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public String calculaPrimaBrutaDeCesionRegla() {
-        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(listValorExpuestoRiesgo).shouldBeVisible();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(listValorExpuestoRiesgo).shouldBePresent();
         String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
         valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
         valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.", ""));
