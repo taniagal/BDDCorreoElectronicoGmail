@@ -13,6 +13,7 @@ When seleccione algunos articulos y sus cobertura:
 And ingrese las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 25             |
+| Coberturas del Riesgo    |                       |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida           | 25             |
 And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                            |
@@ -32,6 +33,7 @@ And seleccione algunos articulos y sus cobertura:
 And ingrese las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
 | Coberturas del Riesgo    |                     |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 9              |
+| Coberturas del Riesgo    |                     |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida           | 25             |
 | Otros Articulos          | Animales vivos      |                     |                  | Valor Asegurable                                                         | 4              |
 | Otros Articulos          | Animales vivos      |                     |                  | Índice variable                                                          | 1              |
 When haga clic en el boton Aceptar
@@ -51,10 +53,11 @@ And seleccione algunos articulos y sus cobertura:
 | articulo        | valor_asegurable | coberturas|
 | Building        | 50               |           |
 And ingrese las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos          | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 25             |
-| Otros Articulos          | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
-| Otros Articulos          | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |                   |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida                       | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     | Terremoto        | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     |                  | Valor Asegurable                                                                     | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     |                  | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                            |
@@ -71,10 +74,11 @@ And seleccione algunos articulos y sus cobertura:
 | articulo        | valor_asegurable | coberturas|
 | Building        | 1000000001       |           |
 And ingrese las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos          | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000001     |
-| Otros Articulos          | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
-| Otros Articulos          | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |                   |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida                       | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     | Terremoto        | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000001     |
+| Otros Articulos          | Suelos y Terrenos |                     |                  | Valor Asegurable                                                                     | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     |                  | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                              |
@@ -90,10 +94,11 @@ When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
-| TAB             | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |
-| Otros Articulos | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
-| Otros Articulos | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA         | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |                   |                     | Danos materiales  | Sublimite para gastos asociados a la ocurrencia de una pérdida                       | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     | Terremoto         | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |
+| Otros Articulos          | Suelos y Terrenos |                     |                   | Valor Asegurable                                                                     | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     |                   | Índice variable                                                                      | 1              |
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                             |
 | Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio". |
