@@ -16,11 +16,6 @@ public class SobrescribirTasaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void ingresarRiesgosAplicablesEnTabla() {
-        sobrescribirTasaPage.ingresaCantidadDeCoberturas();
-    }
-
-    @Step
     public void crearAcuerdoFacultativo() {
         sobrescribirTasaPage.clicEnBotonCrearAcuerdosFacultativos();
         MatcherAssert.assertThat("No aparecio ventana de confirmacion para el acuerdo" , sobrescribirTasaPage.validaVentanaDeConfirmacion().equals(true) );

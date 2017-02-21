@@ -7,7 +7,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class SobrescribirTasaPage extends PageUtil {
 
@@ -26,18 +25,6 @@ public class SobrescribirTasaPage extends PageUtil {
 
     public SobrescribirTasaPage(WebDriver driver) {
         super(driver);
-    }
-
-
-    public void ingresaCantidadDeCoberturas() {
-        String riesgosConDireccion = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add:0:riskbutton']";
-        setImplicitTimeout(0, TimeUnit.SECONDS);
-        while (btnAgreagarRiesgos.isVisible()) {
-            clickearElemento(btnAgreagarRiesgos, TIEMPO_4);
-            clickearElemento($(riesgosConDireccion), TIEMPO_4);
-
-        }
-        resetImplicitTimeout();
     }
 
     public void clicEnBotonCrearAcuerdosFacultativos() {

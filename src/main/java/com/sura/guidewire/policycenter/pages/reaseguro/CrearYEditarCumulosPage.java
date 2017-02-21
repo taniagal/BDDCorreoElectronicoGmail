@@ -12,6 +12,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class CrearYEditarCumulosPage extends PageUtil {
     @FindBy(xpath = ".//td[@id='SubmissionWizard:Reinsurance']/div/span")
@@ -50,6 +51,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
     WebElementFacade listValorExpuestoRiesgo;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:_msgs']")
     WebElementFacade lblMensajeAdvertencia;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add-btnWrap']")
+    WebElementFacade btnAgreagarRiesgos;
 
     private static final String PAIS_ALEMANIA = "Alemania";
     private static final String ASEGURADORA_ALLIANZ = "ALLIANZ RE";
@@ -81,8 +84,18 @@ public class CrearYEditarCumulosPage extends PageUtil {
     public void ingresarDescripcionDeAcuerdoYDireccion(String descripcionDeAcuerdo) {
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
-        esperarYClickearBoton(btnAgregarDireccionRiesgoAplicable);
-        esperarYClickearBoton(listDireccionRiesgoAplicable);
+        ingresaCantidadDeCoberturas();
+    }
+
+    public void ingresaCantidadDeCoberturas() {
+        String riesgosConDireccion = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add:0:riskbutton']";
+        setImplicitTimeout(0, TimeUnit.SECONDS);
+        while (btnAgreagarRiesgos.isVisible()) {
+            clickearElemento(btnAgreagarRiesgos, TIEMPO_4);
+            clickearElemento($(riesgosConDireccion), TIEMPO_4);
+
+        }
+        resetImplicitTimeout();
     }
 
     public void ingresoInformacionDeReaseguroEnTabla() {
