@@ -1,9 +1,8 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionFacturacionSteps;
-import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 public class validacionesInformacionFacturacionDefinitions {
@@ -13,7 +12,12 @@ public class validacionesInformacionFacturacionDefinitions {
 
 
     @When("intente ingresar al modulo de facturacion")
-    public void verificarInformacionVisualFacturacion(){
-        validacionesInformacionFacturacionSteps.verificarInformacionVisual();
+    public void ingresarMenuFacturacion(){
+        validacionesInformacionFacturacionSteps.ingresarMenuFacturacion();
+    }
+
+    @Then("se debe visualizar la informacion de facturacion de polizas")
+    public void verificarInformacionDeFacturacion(){
+        validacionesInformacionFacturacionSteps.verificarInformacionDeFacturacion();
     }
 }
