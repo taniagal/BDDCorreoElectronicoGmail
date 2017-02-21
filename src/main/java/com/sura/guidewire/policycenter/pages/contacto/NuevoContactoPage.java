@@ -217,9 +217,6 @@ public class NuevoContactoPage extends PageUtil {
     public void ingresarFechaDeNacimiento(String fecha) {
         fechaDeNacimiento.sendKeys(fecha);
     }
-    public void ingresarMonedaFavorita(String moneda) {
-        super.seleccionarItem(campoMonedaFavorita, moneda);
-    }
 
     public void ingresarSegundoNombreYSegundoApellido(String segundoNombre, String segundoApellido) {
         campoSegundoNombre.type(segundoNombre);
@@ -236,7 +233,6 @@ public class NuevoContactoPage extends PageUtil {
         datosDePantalla.put("tipoDireccion", tipoDireccion.getText());
         datosDePantalla.put("tipoTelefono", tipoTelefono.getText());
         datosDePantalla.put("telefono", telefonoResidencia.getText());
-        datosDePantalla.put("moneda", campoMonedaFavorita.getText());
         return datosDePantalla;
     }
 
@@ -246,7 +242,6 @@ public class NuevoContactoPage extends PageUtil {
         datosDePantalla.put("nombreComercial", nombreComercial.getText());
         datosDePantalla.put("direccion", direccion.getText());
         datosDePantalla.put("tipoDireccion", tipoDireccion.getText());
-        datosDePantalla.put("moneda", campoMonedaFavorita.getText());
         return datosDePantalla;
     }
 }
