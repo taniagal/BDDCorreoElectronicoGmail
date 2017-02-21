@@ -33,8 +33,8 @@ Then verifico que se encuentren los siguientes datos
 |txtTipoPlazo |txtPolizaFinaciada|
 |Tipo de plazo|Póliza financiada |
 And verifico los datos de coseguro
-|lblAseguradora|lblParticipacion  |lblLider|lblTCoaseguro  |lblTpCoaseguro   |tipoPoliza|
-|Aseguradora   |% de participación|Líder   |Tiene Coaseguro|Tipo de coaseguro|mrc       |
+|lblAseguradora|lblParticipacion  |lblLider|lblTCoaseguro  |lblTpCoaseguro   |
+|Aseguradora   |% de participación|Líder   |Tiene Coaseguro|Tipo de coaseguro|
 
 Examples:
 ||

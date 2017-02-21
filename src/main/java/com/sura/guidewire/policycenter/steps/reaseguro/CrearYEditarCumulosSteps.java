@@ -28,6 +28,7 @@ public class CrearYEditarCumulosSteps extends ScenarioSteps {
     @Step
     public void ingresarDescripcionDeAcuerdoyDireccion(String descripcionDeAcuerdo) {
         crearYEditarCumulosPage.ingresarDescripcionDeAcuerdoYDireccion(descripcionDeAcuerdo);
+        crearYEditarCumulosPage.ingresaCantidadDeCoberturas();
     }
 
     @Step
