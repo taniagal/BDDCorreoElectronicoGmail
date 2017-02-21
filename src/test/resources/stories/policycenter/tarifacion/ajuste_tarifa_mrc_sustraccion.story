@@ -32,11 +32,9 @@ And debo poder verificar el valor de la prima para las coberuras de la cotizacio
 |Edificio                |Cobertura de Terremoto           |1.050.000|
 |Edificio                |Cobertura de Danos materiales    |945.000  |
 |Edificio                |Cobertura de Asonada             |105.000  |
-|Edificio                |Subtotal                         |2.100.000|
 |Maquinaria              |Cobertura de Rotura de maquinaria|0,00     |
 |Maquinaria              |Cobertura de Danos materiales    |74.482   |
 |Maquinaria              |Cobertura de Asonada             |3.238    |
-|Maquinaria              |Subtotal                         |77.720   |
 
 Examples:
 |valor_indice|prima    |iva    |costo    |
@@ -63,10 +61,12 @@ And debo poder verificar el valor de la prima para las coberuras de la cotizacio
 |Maquinaria              |Cobertura de Asonada             |32.850   |
 |Maquinaria              |Cobertura de Sustracción         |0,00     |
 |Maquinaria              |Cobertura de Terremoto           |306.600  |
+|Maquinaria              |Subtotal                         |1.095.000|
 |Muebles                 |Cobertura de Danos materiales    |985.320  |
 |Muebles                 |Cobertura de Asonada             |28.980   |
 |Muebles                 |Cobertura de Sustracción         |0,00     |
 |Muebles                 |Cobertura de Terremoto           |434.700  |
+|Muebles                 |Subtotal                         |1.449.000|
 
 Examples:
 |prima    |iva    |costo    |
