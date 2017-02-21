@@ -38,11 +38,6 @@ public class SobrescribirTasaDefinitions {
         tarifaMRCSteps.agregarArticulo();
     }
 
-    @When("ingrese los riesgos aplicables al acuerdo para cada una de las coberturas")
-    public void whenIngreseLosRiesgosAplicablesAlAcuerdoParaCadaUnaDeLasCoberturas() {
-        sobrescribirTasaSteps.ingresarRiesgosAplicablesEnTabla();
-    }
-
     @When("quiera crear los acuerdos facultativos")
     public void whenQuieraCrearLosAcuerdosFacultativos() {
         sobrescribirTasaSteps.crearAcuerdoFacultativo();
