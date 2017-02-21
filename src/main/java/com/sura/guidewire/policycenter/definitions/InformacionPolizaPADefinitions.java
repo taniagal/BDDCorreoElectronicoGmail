@@ -173,6 +173,11 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.ingresarAseguradoNombradoCreandoNuevoContacto(contacto);
     }
 
+    @When("seleccione la opcion SI de empleado sura")
+    public void cuandoSeleccionoLaOpcionSiDeEmpleadoSura() {
+        informacionPolizaPASteps.seleccionarOpcionEmpleadoSura();
+    }
+
     @Then("la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo")
     public void calcularFechaFinVigencia(@Named("fechaFinVigencia") String fechaFinVigencia) {
         informacionPolizaPASteps.calcularFechaFinVigencia(fechaFinVigencia);
