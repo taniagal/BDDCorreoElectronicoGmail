@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class LeyendaAdicionalMrcPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:LocationName']")
     private WebElementFacade botonLeyendaAdicionalSubmission;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:LocationName']")
+    @FindBy(xpath = "//a[contains(@id,'PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:LocationName')]")
     private WebElementFacade botonLeyendaAdicionalModificacion;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:AdditionalLegend-inputEl']")
     private WebElementFacade txtLeyendaAdicional;
@@ -41,7 +41,7 @@ public class LeyendaAdicionalMrcPage extends PageUtil {
     }
 
     public void agregarLeyendaModificacion(String leyendaAdicional) {
-        botonLeyendaAdicionalModificacion.click();
+        esperarYClickearBoton(botonLeyendaAdicionalModificacion);
         txtLeyendaAdicionalModificacion.clear();
         ingresarDato(txtLeyendaAdicionalModificacion, leyendaAdicional);
         esperarYClickearBoton(botonAceptarModificacion);
