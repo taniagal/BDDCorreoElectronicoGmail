@@ -29,7 +29,6 @@ public class EdicionDeContactoSteps extends ScenarioSteps{
         nuevoContactoPage.ingresarPrimerApellido(datosEdicion.get("primerApellido"));
         nuevoContactoPage.seleccionarTipoDireccion(datosEdicion.get(TIPO_DIRECCION));
         nuevoContactoPage.ingresarDireccionDepartamenteYCiudad(datosEdicion.get(DIRECCION), "Antioquia", "Medellin");
-        nuevoContactoPage.ingresarMonedaFavorita(datosEdicion.get("monedaFavorita"));
         nuevoContactoPage.ingresarTelefonoFijo(datosEdicion.get("tipoTelefono"), datosEdicion.get("numeroTelefono"));
         nuevoContactoPage.actualizarPersonaNatural(datosEdicion.get("primerNombre"));
     }
@@ -42,7 +41,6 @@ public class EdicionDeContactoSteps extends ScenarioSteps{
         nuevoContactoPage.ingresarRazonSocial(datosEdicion.get("razonSocial"));
         nuevoContactoPage.ingresarNombreComercial(datosEdicion.get("nombreComercial"));
         nuevoContactoPage.ingresarDireccionDepartamenteYCiudad(datosEdicion.get(DIRECCION), "Antioquia", "Medellin");
-        nuevoContactoPage.ingresarMonedaFavorita(datosEdicion.get("monedaFavorita"));
         nuevoContactoPage.actualizarJuridica(datosEdicion.get("razonSocial"));
     }
 
@@ -58,7 +56,6 @@ public class EdicionDeContactoSteps extends ScenarioSteps{
         MatcherAssert.assertThat(datosPaginaEdicion.get(TIPO_DIRECCION), Is.is(Matchers.equalTo(datosEdicionEsperados.get(TIPO_DIRECCION))));
         MatcherAssert.assertThat(datosPaginaEdicion.get("tipoTelefono"), Is.is(Matchers.equalTo(datosEdicionEsperados.get("tipoTelefono"))));
         MatcherAssert.assertThat(datosPaginaEdicion.get("telefono"), Is.is(Matchers.equalTo(datosEdicionEsperados.get("numeroTelefono"))));
-        MatcherAssert.assertThat(datosPaginaEdicion.get("moneda"), Is.is(Matchers.equalTo(datosEdicionEsperados.get("monedaFavorita"))));
     }
 
     @Step
@@ -69,6 +66,5 @@ public class EdicionDeContactoSteps extends ScenarioSteps{
         MatcherAssert.assertThat(datosPaginaEdicion.get("nombreComercial"), Is.is(Matchers.equalTo(datosEdicionEsperados.get("nombreComercial")  )));
         MatcherAssert.assertThat(datosPaginaEdicion.get(DIRECCION), Is.is(Matchers.equalTo(datosEdicionEsperados.get(DIRECCION))));
         MatcherAssert.assertThat(datosPaginaEdicion.get(TIPO_DIRECCION), Is.is(Matchers.equalTo(datosEdicionEsperados.get(TIPO_DIRECCION))));
-        MatcherAssert.assertThat(datosPaginaEdicion.get("moneda"), Is.is(Matchers.equalTo(datosEdicionEsperados.get("monedaFavorita")         )));
     }
 }
