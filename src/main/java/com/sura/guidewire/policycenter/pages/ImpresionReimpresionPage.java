@@ -36,6 +36,12 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade botonSiguienteRenovacion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarRenovacion;
+    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions']")
+    private WebElementFacade menuAccionesPoliza;
+    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_RenewPolicy']")
+    private WebElementFacade menuItemRenovarPoliza;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptar;
 
     public ImpresionReimpresionPage(WebDriver driver) {
         super(driver);
@@ -84,6 +90,10 @@ public class ImpresionReimpresionPage extends PageUtil {
     }
 
     public void editarRenovacionPoliza() {
+        menuAccionesPoliza.waitUntilPresent().click();
+        menuItemRenovarPoliza.waitUntilPresent().click();
+        botonAceptar.waitUntilPresent().click();
+        botonSiguienteRenovacion.click();
         botonSiguienteRenovacion.click();
         esperarYClickearBoton(botonEditarRenovacion);
     }
