@@ -1,7 +1,7 @@
 Traspaso Cartera Individual
 
 Meta:
-@lote4
+@lote5
 @Story SUGWUSC-1183
 @tag equipo: 2
 @Sprint 14
