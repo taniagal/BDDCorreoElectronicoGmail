@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.xpath.XPath;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -298,5 +299,38 @@ public class PageUtil extends PageObject {
         }
         resetImplicitTimeout();
         return editables;
+    }
+
+    /*
+    * Nuevos métodos para billing getElemento, clicObjeto, esperarObjetoClikeableServidor
+    */
+    public WebElementFacade getElemento(String locator) {
+        return withTimeoutOf(1, TimeUnit.SECONDS).find(locator);
+    }
+
+    public void clicObjeto(WebElementFacade objeto) {
+        objeto.waitUntilClickable().click();
+    }
+
+    public void esperarObjetoClikeableServidor(String pathElemento) {
+        WebElementFacade elemento;
+        boolean ejecuto = false;
+        int maximoEjecuciones = 120;
+        int ejecuciones = 0;
+        while(ejecuciones < maximoEjecuciones && !ejecuto) {
+            esperarHasta(500);
+            try {
+                elemento = this.getElemento(pathElemento);
+                this.clicObjeto(elemento);
+                ejecuto = true;
+            } catch (Exception ex) {
+            }
+
+            ejecuciones = ejecuciones + 1;
+        }
+
+        if(!ejecuto) {
+            MatcherAssert.assertThat("No se pudo dar click a el objeto", false);
+        }
     }
 }
