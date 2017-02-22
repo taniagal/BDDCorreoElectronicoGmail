@@ -80,8 +80,8 @@ When seleccione la opcion SI de honorario pactada e ingrese el valor
 | 0     |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | transporte_combustible |
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si                     |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion             | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |
+| random | 2016   | 52525252         | MEDELLIN (Antioquia)           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Global |
 And ingrese las coberturas a auto cero kilometros:
 | limite | deducible |
 | 640.   | 0         |              | 100000000      |
@@ -93,3 +93,6 @@ Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 Examples:
 | mensajeerror                                    | documento | tipo_documento        |
 | Honorario Pactado : debe ser un valor numérico. | 94537281  | CEDULA DE CIUDADANIA  |
+
+
+Scenario: 2 Alertas al ingresar honorario pactado invalido en PA
