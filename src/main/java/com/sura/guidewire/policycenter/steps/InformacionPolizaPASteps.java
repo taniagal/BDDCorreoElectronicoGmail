@@ -167,4 +167,9 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     public void seleccionarOpcionEmpleadoSura() {
         opcionesInformacionPoliza.seleccionarOpcionEmpleadoSura();
     }
+
+    @Step
+    public void ingresarValorHonorarioPactado(ExamplesTable valor) {
+        opcionesInformacionPoliza.ingresarValorHonorarioPactado(valor);
+    }
 }
