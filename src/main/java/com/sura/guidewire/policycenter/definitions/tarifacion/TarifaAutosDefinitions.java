@@ -101,5 +101,7 @@ public class TarifaAutosDefinitions {
     public void agregarTodasLasCoberturasDeComision(ExamplesTable coberturas) {
         tarifaAutosSteps.seleccionarCoberturasComision(coberturas);
     }
+
+
 }
 
