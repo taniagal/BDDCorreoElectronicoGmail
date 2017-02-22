@@ -91,4 +91,10 @@ public class TarifaMRCDefinitions {
     public void ingrasarIndiceVariableMaquinaria(@Named("valor_indice") String valorIndice){
         tarifaMRCSteps.ingrasarIndiceVariableMaquinaria(valorIndice);
     }
+
+    @When("agrego el valor comercial <valor>")
+    public void seleccionarArticulosYTodadsSusCoberturas(@Named("valor") String valor){
+        tarifaMRCSteps.ingresarValorcomercial(valor);
+    }
+
 }

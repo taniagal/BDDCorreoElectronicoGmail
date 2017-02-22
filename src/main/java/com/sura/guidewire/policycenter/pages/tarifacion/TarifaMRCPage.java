@@ -367,4 +367,10 @@ public class TarifaMRCPage extends PageUtil {
     public void ingrasarIndiceVariableMaquinaria(String valorIndice) {
         campoTxtIndiceVariableMaquinaria.sendKeys(valorIndice);
     }
+
+    public void ingrasarValorComercial(String valor) {
+        clickearElemento(checkBoxChecBoxAseguradoAValorComercial);
+        esperarHasta(TIEMPO_1500);
+        campoTxtValorComercial.sendKeys(valor);
+    }
 }

@@ -119,4 +119,9 @@ public class TarifaMRCSteps extends ScenarioSteps {
     public void ingrasarIndiceVariableMaquinaria(String valor){
         tarifaMRCPage.ingrasarIndiceVariableMaquinaria(valor);
     }
+
+    @Step
+    public void ingresarValorcomercial(String valor) {
+        tarifaMRCPage.ingrasarValorComercial(valor);
+    }
 }

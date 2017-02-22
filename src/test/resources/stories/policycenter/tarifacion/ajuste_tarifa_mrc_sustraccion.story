@@ -11,8 +11,8 @@ Al cotizar una poliza de MRC quiero mirar el valor de la prima para las cobertur
 Scenario:  Tarifa MRC poliza con los ariticulos edificio y maquinaria
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
-|cuenta     |oficina|agente_oficina |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|C1060447895|2659   |DIRECTO        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+|cuenta     |oficina|agente_oficina            |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|C1060447895|1059   |Internal Producer Code - 3|Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                        |
 |Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Actividades de agencias de empleo|
@@ -28,23 +28,23 @@ And cotice el articulo
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 And debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo                |descripcion                      |valor    |
-|Cobertura de Sustracción|Cobertura de Sustracción         |0,00     |
-|Edificio                |Cobertura de Terremoto           |1.050.000|
-|Edificio                |Cobertura de Danos materiales    |945.000  |
-|Edificio                |Cobertura de Asonada             |105.000  |
-|Maquinaria              |Cobertura de Rotura de maquinaria|0,00     |
-|Maquinaria              |Cobertura de Danos materiales    |74.482   |
-|Maquinaria              |Cobertura de Asonada             |3.238    |
+|Cobertura de Sustracción|Cobertura de Sustracción         |38.428   |
+|Edificio                |Cobertura de Terremoto           |1.016.667|
+|Edificio                |Cobertura de Danos materiales    |380.000  |
+|Edificio                |Cobertura de Asonada             |74.509   |
+|Maquinaria              |Cobertura de Rotura de maquinaria|15.636   |
+|Maquinaria              |Cobertura de Danos materiales    |562.912  |
+|Maquinaria              |Cobertura de Asonada             |31.973   |
 
 Examples:
 |valor_indice|prima    |iva    |costo    |
-|3           |2.177.720|413.767|2.591.487|
+|3           |2.120.125|410.125|2.530.250|
 
 
 Scenario:  Tarifa MRC poliza Bancolombia con los ariticulos muebles y maquinaria
 Given estoy cotizando una poliza de mrc:
-|cuenta     |oficina|agente_oficina |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|C1060447895|2765   |DIRECTO        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+|cuenta     |oficina|agente_oficina            |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|C1060447895|2765   |ASESOR 4 - PRUEBA TRASPASO|Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                        |
 |Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Actividades de agencias de empleo|
@@ -70,26 +70,41 @@ And debo poder verificar el valor de la prima para las coberuras de la cotizacio
 
 Examples:
 |prima    |iva    |costo    |
-|2.544.000|407.040|2.951.040|
+|2.544.000|483.360|3.027.360|
 
 
-Scenario:  Tarifa MRC poliza con direccion Antioquia y ariticulo edificio
+Scenario:  Tarifa MRC poliza con direccion en Antioquia y ariticulo edificio
 Given estoy cotizando una poliza de mrc:
-|cuenta     |oficina|agente_oficina |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|C1060447895|2659   |DIRECTO        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+|cuenta     |oficina|agente_oficina            |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|C1060447895|1059   |Internal Producer Code - 3|Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                        |
 |Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Actividades de agencias de empleo|
 And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas|
 |Building |100000000       |Terremoto |
-And ingreso el indice variable <valor_indice> de la maquinaria
-And ingrese las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia | 500000000      |
 And cotice el articulo
-Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
+Then el valor de la prima es <prima>
 
 Examples:
 |prima  |
 |101.667|
+
+
+Scenario:  Tarifa MRC poliza con direccion en Caldas y ariticulo edificio
+Given estoy cotizando una poliza de mrc:
+|cuenta     |oficina|agente_oficina            |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|C1060447895|1059   |Internal Producer Code - 3|Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+When agregue una nueva ubicacion:
+|departamento|ciudad  |direccion        |descripcion  |actividad                        |
+|Caldas      |Aguadas |CR 44 A # 43 - 00|Edificio Core|Actividades de agencias de empleo|
+And seleccione algunos articulos y sus cobertura:
+|articulo |valor_asegurable|coberturas|
+|Building |100000000       |Terremoto |
+And agrego el valor comercial <valor>
+And cotice el articulo
+Then el valor de la prima es <prima>
+
+Examples:
+|prima  |valor    |valor_indice|
+|154.000|120000000|            |
