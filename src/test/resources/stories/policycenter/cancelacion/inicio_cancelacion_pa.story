@@ -1,5 +1,5 @@
 Meta:
-@lote4
+@lote3
 @issue #USC-14730
 @tag equipo: 3
 @sprint 8

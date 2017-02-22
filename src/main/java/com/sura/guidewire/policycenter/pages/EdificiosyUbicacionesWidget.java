@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.google.common.base.Function;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
@@ -45,7 +44,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
     private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
-    private static final int TIEMPO_250 = 250;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
@@ -124,7 +122,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     @FindBy(xpath = "//span[@id='RenewalWizard:Prev-btnInnerEl']")
     private WebElementFacade botonVolverEnRenovacion;
 
-    private static final int TRES = 3;
 
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
@@ -217,9 +214,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
-        agregarNuevaUbicacion(valoresUbicaion.get("departamento"),
-                valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"),
-                valoresUbicaion.get("actividadEconomica"));
+        agregarNuevaUbicacion(valoresUbicaion.get("departamento"), valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"), valoresUbicaion.get("actividadEconomica"));
     }
 
     public void removerRiesgos() {
@@ -262,7 +257,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         Boolean esSeleccionado = false;
         setImplicitTimeout(0, TimeUnit.SECONDS);
         try {
-            waitForAnyTextToAppear(tab,"Agregar Otro Articulo");
+            waitForAnyTextToAppear(tab, "Agregar Otro Articulo");
             shouldContainText(tab);
             String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
             String classProp = $(xpathTab).getAttribute("class");
@@ -296,7 +291,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void seleccionarCoberturaDelRiesgo(String cobertura) {
         waitForAnyTextToAppear(cobertura);
         shouldContainText(cobertura);
-
         String xpathLegendCoberturaDeRiesgo = XPATH_LEGEND_COBERTURA_DE_RIESGO + cobertura + CIERRE_XPATH1;
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName(INPUT));
         withAction().moveToElement(inputCoberturaDeRiesgo).perform();
@@ -341,22 +335,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         withAction().moveToElement(inputValorEntrada).perform();
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
-    }
-
-    private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
-        waitForCondition()
-                .withTimeout(TIEMPO_1, TimeUnit.SECONDS)
-                .pollingEvery(TIEMPO_100, TimeUnit.MILLISECONDS)
-                .until(inputEsActualizadoA(elemento, valorEntrada));
-    }
-
-    private Function<? super WebDriver, Boolean> inputEsActualizadoA(final WebElementFacade elemento, final String valorEntrada) {
-        return new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver webDriver) {
-                return elemento.getValue().equalsIgnoreCase(valorEntrada);
-            }
-        };
     }
 
     public boolean estaSeleccionadaCoberturaDeRiesgo(String cobertura, String tipoArticulo) {
@@ -416,7 +394,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
         WebElementFacade xLinkAgregarOtrosArticulos = $("//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]");
-        setImplicitTimeout(0, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (esOtroArticulo) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
             findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().click();
@@ -443,19 +421,19 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarEntrada(String entrada, String valorEntrada) {
         WebElementFacade divEntradasAgregarOtroArticulo;
-        setImplicitTimeout(TIEMPO_2,TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(XPATH_PARTE1 + entrada + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + entrada + XPATH_PARTE2);
             WebElementFacade entradaOtroArticulo = divEntradasAgregarOtroArticulo.findBy(XPATH2_PARTE1 + entrada + XPATH2_PARTE2);
-            WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName(INPUT));
-            enter(valorEntrada).into(inputValorEntrada);
+            WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName(INPUT)).waitUntilVisible();
+            enter(valorEntrada).into(waitFor(inputValorEntrada));
         }
         resetImplicitTimeout();
     }
 
     public WebElementFacade obtenerDivCobertura(String cobertura) {
         WebElementFacade divEntradasAgregarOtroArticulo = null;
-        setImplicitTimeout(TIEMPO_2,TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(XPATH_PARTE1 + cobertura + XPATH_PARTE2))) {
             divEntradasAgregarOtroArticulo = findBy(XPATH_PARTE1 + cobertura + XPATH_PARTE2);
         }
@@ -469,7 +447,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         try {
             inputCoberturaDeRiesgo.waitUntilPresent();
             withAction().moveToElement(inputCoberturaDeRiesgo).perform();
-        }catch (StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             withAction().moveToElement(inputCoberturaDeRiesgo).perform();
         }
@@ -518,7 +496,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarTextAreaDescripcion(String tipoArticulo) {
         WebElementFacade textAreaDescripcion = $(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']");
-        textAreaDescripcion.waitUntilPresent();
+        textAreaDescripcion.waitUntilVisible();
         enter(tipoArticulo).into(textAreaDescripcion);
         clickearElemento(textAreaDescripcion);
     }
@@ -530,13 +508,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             } catch (StaleElementReferenceException e) {
-                intentarVerificarmensaje("StaleElementReferenceException " + e, mensaje.get(MENSAJES_WORKSPACE),
-                        "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
-                                " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
+                intentarVerificarmensaje("StaleElementReferenceException " + e, mensaje.get(MENSAJES_WORKSPACE), "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             } catch (ElementNotVisibleException f) {
-                intentarVerificarmensaje("ElementNotVisibleException " + f, mensaje.get(MENSAJES_WORKSPACE),
-                        "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) +
-                                " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
+                intentarVerificarmensaje("ElementNotVisibleException " + f, mensaje.get(MENSAJES_WORKSPACE), "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
             }
         }
         resetImplicitTimeout();
@@ -562,6 +536,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         if (tipodocumento.contains(TIPO_DOCUMENTO)) {
             waitForTextToAppear("Primer nombre");
+        } else {
+            waitForTextToAppear("Razón social");
         }
         esperarHasta(TIEMPO_300);
         campoTxtNumeroDocumento.sendKeys(cedula);
@@ -653,11 +629,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         MatcherAssert.assertThat("El valor comercial no es igual al valor de daños materiales", campoAseguradoValorComercial.getValue().equals(valor));
     }
 
-    public void validarMensajeSoloUnRiesgoEnRenovacion(){
+    public void validarMensajeSoloUnRiesgoEnRenovacion() {
         validaMensajeDeSoloUnRiesgo(chekEliminarPrimeraUbicacionRenovacion);
     }
 
-    public void validarMensajeSoloUnRiesgoEnCambio(){
+    public void validarMensajeSoloUnRiesgoEnCambio() {
         validaMensajeDeSoloUnRiesgo(chekEliminarPrimeraUbicacion);
     }
 

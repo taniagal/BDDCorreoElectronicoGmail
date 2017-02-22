@@ -40,5 +40,5 @@ Then el valor del monto en cada cobertura debe ser:
 |Cobertura de Abogado                 |11.825   |
 
 Examples:
-|tipo_documento      |documento|
-|CEDULA DE CIUDADANIA|11111111 |
+|tipo_documento      |documento  |
+|CEDULA DE CIUDADANIA|1234567896 |

@@ -6,7 +6,7 @@ Meta:
 Narrative:
 Como usuario de policy center
 Al cotizar una poliza de PA
-Quiero ser capaz de utilizar la comision pactada para beneficiar al cliente o al acesor dependiendo de la comision estandar
+Quiero ser capaz de aplicarla para los automoviles, camperos y pickup, y bicicletas una tasa diferente a la tasa dada por la tarifa tecnica en las coberturas de PT Daños y Hurto.
 
 
 Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 10
@@ -75,9 +75,9 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc con comosion pactada en si y valor 10
-Given estoy cotizando una poliza:
-|cuenta     |producto               |oficina|agente_oficina |
-|C1060447895|Multiriesgo corporativo|1059   |RANGEL         |
+Given estoy cotizando una poliza de mrc:
+|producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When ingrese la comision pactada en valor <valor>
 And agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion    |actividad                        |
@@ -99,9 +99,9 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc con comosion pactada en si y valor 16 y validar UW
-Given estoy cotizando una poliza:
-|cuenta     |producto               |oficina|agente_oficina |
-|C1060447895|Multiriesgo corporativo|1059   |RANGEL         |
+Given estoy cotizando una poliza de mrc:
+|producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When ingrese la comision pactada en valor <valor>
 And agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion    |actividad                        |

@@ -84,8 +84,10 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil{
         campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
         esperarHasta(TIEMPO_3000);
         botonAceptar.click();
-        campoMonedaPreferida.waitUntilPresent();
-        seleccionarItem(campoMonedaPreferida,"COP");
+        if("COP".equals(datosNuevaPersona.get("moneda"))){
+            campoMonedaPreferida.waitUntilPresent();
+            seleccionarItem(campoMonedaPreferida, datosNuevaPersona.get("moneda"));
+        }
     }
 
     public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica) {

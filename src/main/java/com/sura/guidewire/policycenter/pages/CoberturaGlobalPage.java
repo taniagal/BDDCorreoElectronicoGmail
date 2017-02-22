@@ -75,12 +75,14 @@ public class CoberturaGlobalPage extends PageUtil {
     public void irACoberturasGlobales() {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent();
         clickearElemento(menuItemCoberturaGlobal);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor($(".message")).waitUntilPresent();
         clickearElemento(menuItemCoberturaGlobal);
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura) {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarCoberturaGeneral).waitUntilPresent();
+        botonAgregarCoberturaGeneral.click();
         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-        botonAgregarCoberturaGeneral.waitUntilPresent().click();
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
             esperarHasta(TIEMPO_1000);

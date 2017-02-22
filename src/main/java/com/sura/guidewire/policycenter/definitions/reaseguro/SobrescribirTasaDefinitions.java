@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions.reaseguro;
 
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.SobrescribirTasaSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaMRCSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -18,19 +19,27 @@ public class SobrescribirTasaDefinitions {
     @Steps
     CrearYEditarCumulosSteps crearYEditarCumulosSteps;
 
+    @Steps
+    TarifaMRCSteps tarifaMRCSteps;
+
+
     @Given("Ingrese la información de un reasegurador $datosReaseguradores")
     public void ingresaInformacionEnTablaParaReasegurad(ExamplesTable datosReaseguradores) {
         crearYEditarCumulosSteps.ingresarModalidadDeTasaEnTabla(datosReaseguradores);
     }
 
-    @When("ingrese los riesgos aplicables al acuerdo para cada una de las coberturas")
-    public void whenIngreseLosRiesgosAplicablesAlAcuerdoParaCadaUnaDeLasCoberturas() {
-        sobrescribirTasaSteps.ingresarRiesgosAplicablesEnTabla();
+    @Given("seleccione algunos articulos y sus cobertura: $datos")
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos){
+        tarifaMRCSteps.seleccionarArticulosYTodadsSusCoberturas(datos);
+    }
+
+    @Given("cotice el articulo")
+    public void agregarArticulo(){
+        tarifaMRCSteps.agregarArticulo();
     }
 
     @When("quiera crear los acuerdos facultativos")
     public void whenQuieraCrearLosAcuerdosFacultativos() {
-
         sobrescribirTasaSteps.crearAcuerdoFacultativo();
     }
 
@@ -45,10 +54,4 @@ public class SobrescribirTasaDefinitions {
         sobrescribirTasaSteps.aceptaAcuerdoFacultativo();
         sobrescribirTasaSteps.validaObjetoReasegurableSinAsociacionDeAcuerdosFacultativos(tipoContrato);
     }
-
-    @Then("la poliza debe recotizarce automaticamente y la tasa bruta comercial debe sobreescribirce")
-    public void thenLaPolizaDebeRecotizarceAutomaticamenteYLaTasaBrutaComercialDebeSobreescribirce() {
-
-    }
-
 }

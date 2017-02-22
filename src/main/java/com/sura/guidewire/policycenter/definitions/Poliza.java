@@ -86,6 +86,12 @@ public class Poliza {
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
     }
 
+    @Given("copie la poliza")
+    public void entoncesCopieLaPoliza() {
+        LOGGER.info("Poliza.cuandoCopie la poliza");
+        nuevaCotizacionSteps.copiarEnvio();
+    }
+
     @When("copie la poliza")
     public void cuandoCopieLaPoliza() {
         LOGGER.info("Poliza.cuandoCopie la poliza");
@@ -213,6 +219,16 @@ public class Poliza {
         analisisDeRiesgoSteps.solicitar_aprobacion();
     }
 
+    @When("ingrese a informacion de poliza $variable")
+    public void cuandoingreseAInformacionDePoliza() {
+        polizaSteps.seleccionarOpcionInformacionDePoliza();
+    }
+
+    @Then("se debe mostrar en el campo $texto la <opcion> no editable")
+    public void entoncesSeDebeMostrarEnElCampoLaOpcion(@Named("opcion") String opcion) {
+        polizaSteps.validarQueSeMuestreValorEnCampoYNoSeaEditable(opcion);
+    }
+
     @When("se solicite aprobacion para los riesgos en renovacion de poliza")
     public void cuandoSeSoliciteAprobacionParaLosriesgosEnRenovacionDePoliza() {
         LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
@@ -288,7 +304,6 @@ public class Poliza {
     public void entoncesDeboVerEnElResumenDeLaPolizaYEnInformacionDePolizaLosCoasegurosNoEditables() {
         LOGGER.info("Poliza.entoncesDeboVerEnElResumenDeLaPolizaLosCoasegurosNoEditables");
         polizaSteps.verResumenDeLaPolizaExpedida();
-        polizaSteps.ingresarAVerCoaseguros();
         cotizacionSteps.validar_campos_aseguradora_poliza();
         polizaSteps.seleccionarOpcionInformacionDePoliza();
         polizaSteps.ingresarAVerCoaseguros();

@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,13 +39,13 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade itemPersonaDelDirectorio;
     @FindBy(xpath = ".//td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonTipoDocumento;
-    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'DocumentType-inputEl')]")
     private WebElementFacade textoTipoDocumento;
     @FindBy(xpath = ".//li")
     private WebElementFacade itemTipoDocumento;
-    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'GlobalPersonNameInputSet:FirstName-inputEl')]")
     private WebElementFacade textoPrimerNombre;
-    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'GlobalPersonNameInputSet:LastName-inputEl')]")
     private WebElementFacade textoPrimerApellido;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade botonBuscarContacto;
@@ -64,7 +65,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade labelDescripcionDireccionSegundoTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade textoTipoDocumentoSegundoTomador;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'OfficialIDInputSet:OfficialIDDV_Input-inputEl')]")
     private WebElementFacade textoNumeroDocumentoSegundoTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
     private WebElementFacade textoTelefonoSegundoTomador;
@@ -100,6 +101,18 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade menuInformacionPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
     private WebElementFacade mensajeFinanciacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:AdditionalNamedPersonAdder-textEl']")
+    private WebElementFacade opcionNuevaPersona;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDetailScreen:NewPolicyContactRoleDetailsCV:PolicyContactDetailsDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl')]")
+    private WebElementFacade campoDepartamento;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDetailScreen:NewPolicyContactRoleDetailsCV:PolicyContactDetailsDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl')]")
+    private WebElementFacade campoCiudad;
+    @FindBy(xpath = "//*[contains(@id, 'ContactDetailScreen:NewPolicyContactRoleDetailsCV:PolicyContactDetailsDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl')]")
+    private WebElementFacade campoDireccion;
+    @FindBy(xpath = ".//*[contains(@id, 'ContactDetailScreen:ForceDupCheckUpdate-btnInnerEl')]")
+    private WebElementFacade botonAceptar;
+    @FindBy(xpath = ".//input[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee_true-inputEl']")
+    private WebElementFacade botonEmpleadoSuraSi;
 
     private static final int CONSTANTE_50 = 50;
 
@@ -350,5 +363,34 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void validarMensajeFinanciacion(String mensaje) {
         MatcherAssert.assertThat(mensajeFinanciacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+    }
+
+    public void adicionarSegundoTomadorOpcionNuevaPersona(ExamplesTable informacionContacto) {
+        waitForTextToAppear("Tomador secundario");
+        waitFor(botonAseguradoSecundario).shouldBeVisible();
+        botonAseguradoSecundario.click();
+        waitFor(opcionNuevaPersona).shouldBeVisible();
+        opcionNuevaPersona.click();
+        waitForTextToAppear("Segundo tomador");
+        this.ingresarDatosDeContacto(informacionContacto);
+    }
+
+    public void ingresarDatosDeContacto(ExamplesTable informacionContacto) {
+        Map<String, String> contacto = informacionContacto.getRows().get(0);
+        super.seleccionarItem(textoTipoDocumento, contacto.get("tipoDocumento"));
+        textoNumeroDocumentoSegundoTomador.type(contacto.get("numeroDocumento"));
+        textoPrimerNombre.type(contacto.get("primerNombre"));
+        textoPrimerApellido.type(contacto.get("primerApellido"));
+        campoDireccion.type(contacto.get("direccion"));
+        super.seleccionarItem(campoDepartamento, contacto.get("departamento"));
+        super.esperarPorValor(campoDepartamento, contacto.get("departamento"));
+        esperarHasta(TIEMPO_2000);
+        super.seleccionarItem(campoCiudad, contacto.get("ciudad"));
+        super.esperarPorValor(campoCiudad, contacto.get("ciudad"));
+        super.clickearElemento(botonAceptar);
+    }
+
+    public void seleccionarOpcionEmpleadoSura() {
+        botonEmpleadoSuraSi.waitUntilPresent().click();
     }
 }

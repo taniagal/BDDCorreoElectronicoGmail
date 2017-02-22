@@ -98,7 +98,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Accepted-inputEl']")
     WebElementFacade checkiReaseguroAceptado;
-    @FindBy(xpath = "//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade agregarCoaseguro;
     @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_true-inputEl']")
     private WebElementFacade radioButtonAceptado;
@@ -108,8 +108,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade botonAceptarPopup;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade menuItemInformacionDePoliza;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']/div")
-    private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:_msgs']")
     private WebElementFacade divMensaje2;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
@@ -268,8 +266,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras) {
         waitFor(TIEMPO_3).second();
         clickearElemento(menuItemInformacionDePoliza);
-        divMensaje.waitUntilPresent();
-        menuItemInformacionDePoliza.click();
         agregarCoaseguro.waitUntilPresent().click();
         seleccionarElTipoDeCoaseguro(tipoCo);
         agregoLasAseguradoras(tablaaseguradoras);

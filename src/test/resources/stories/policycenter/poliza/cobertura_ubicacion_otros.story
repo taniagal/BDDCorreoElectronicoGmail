@@ -9,12 +9,13 @@ Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesg
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                       | VALOR_ENTRADAS |
-| Información de Artículos | Existencias Flotantes |                     |                  | Valor asegurado máximo                         | 10             |
-| Información de Artículos | Existencias Flotantes |                     |                  | Exposición promedio                            | 5              |
-| Información de Artículos | Existencias fijas     |                     |                  | Valor Asegurable                               | 10             |
-| Coberturas del Riesgo    |                       |                     | Danos materiales | Sublímite para perdida de contenido en tanques | 31             |
-| Otros Articulos          | Mercancías a granel   |                     |                  | Valor Asegurable                               | 10             |
+| TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                       | VALOR_ENTRADAS |
+| Información de Artículos | Existencias Flotantes |                     |                  | Valor asegurado máximo                                         | 10             |
+| Información de Artículos | Existencias Flotantes |                     |                  | Exposición promedio                                            | 5              |
+| Información de Artículos | Existencias fijas     |                     |                  | Valor Asegurable                                               | 10             |
+| Coberturas del Riesgo    |                       |                     | Danos materiales | Sublímite para perdida de contenido en tanques                 | 31             |
+| Coberturas del Riesgo    |                       |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida | 5              |
+| Otros Articulos          | Mercancías a granel   |                     |                  | Valor Asegurable                                               | 10             |
 And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
@@ -27,8 +28,9 @@ Examples:
 Scenario: 2 Portadores externos de datos (Coberturas del riesgo)
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                    | ENTRADAS                                     | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               |                     | Portadores externos de datos | Valor asegurado portadores externos de datos | 11             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                    | ENTRADAS                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Portadores externos de datos | Valor asegurado portadores externos de datos                   | 11             |
+| Coberturas del Riesgo |               |                     | Danos materiales             | Sublimite para gastos asociados a la ocurrencia de una pérdida | 5              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                      |
@@ -43,6 +45,7 @@ Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con e
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Gastos por arrendamiento de sistema electrónico de procesamiento de datos | Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos | 11             |
+| Coberturas del Riesgo |               |                     | Danos materiales                                                          | Sublimite para gastos asociados a la ocurrencia de una pérdida                            | 5              |
 And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                  |
@@ -59,6 +62,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA                                      | ENTRADAS                                                                                          | VALOR_ENTRADAS |
 | Información de Artículos | Edificios           |                     |                                                | Valor Reconstrucción                                                                              | 50             |
 | Información de Artículos | Maquinaria y equipo |                     |                                                | Valor Asegurable                                                                                  | 46             |
+| Coberturas del Riesgo    |                     |                     | Danos materiales                               | Sublimite para gastos asociados a la ocurrencia de una pérdida                                    | 5              |
 | Coberturas del Riesgo    |                     |                     | Todo riesgo construcción y todo riesgo montaje | Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados | 11             |
 | Otros Articulos          | Animales vivos      |                     |                                                | Valor Asegurable                                                                                  | 4              |
 | Otros Articulos          | Animales vivos      |                     |                                                | Índice variable                                                                                   | 1              |

@@ -13,6 +13,7 @@ public class BusquedaDePolizaDefinitions {
     BusquedaDePolizaSteps busquedaDePolizaSteps;
 
     @Given("que voy a buscar una poliza")
+    @When("que voy a buscar una poliza")
     public void irABuscarPoliza() {
         busquedaDePolizaSteps.irABuscarPoliza();
     }

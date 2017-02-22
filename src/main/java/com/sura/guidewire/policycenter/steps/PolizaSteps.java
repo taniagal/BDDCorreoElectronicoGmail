@@ -171,7 +171,7 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
-    public void seleccionarReaseguroEspecialSi(){
+    public void seleccionarReaseguroEspecialSi() {
         polizaPage.seleccionarReaseguroEspecialSi();
     }
 
@@ -231,5 +231,11 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void ingresarAVerCoaseguros() {
         obtenerPolizaPage().ingresarOpcionMostrarCoaseguros();
+    }
+
+    @Step
+    public void validarQueSeMuestreValorEnCampoYNoSeaEditable(String valor) {
+        obtenerPolizaPage().validarQueSeMuestreValorEnCampoYNoSeaEditable(valor);
+
     }
 }
