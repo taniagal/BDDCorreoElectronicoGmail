@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.Step;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -108,6 +109,19 @@ public class PolizaPage extends PageUtil {
         waitForTextToAppear("Iniciar cambios en póliza");
         String btnSiguienteCambioPoliza = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
         findBy(btnSiguienteCambioPoliza).waitUntilVisible().waitUntilClickable().click();
+    }
+
+    public void seleccionaBotonVerAsesoresDeLaPoliza() {
+        waitFor(TIEMPO_5).seconds();
+        String verAsesoresDeLaPoliza = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducersLink']";
+        findBy(verAsesoresDeLaPoliza).waitUntilVisible().waitUntilClickable().click();
+    }
+
+    @Step
+    public String consultarOficinaDeRadicacion() {
+        String oficionaDeRadicacion = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_ProducerDV:PolicyInfoProducerInfoInputSet:SuraMainOffice-inputEl']";
+        WebElementFacade labelOficionaDeRadicacion = getElemento(oficionaDeRadicacion);
+        return labelOficionaDeRadicacion.getText();
     }
 
 

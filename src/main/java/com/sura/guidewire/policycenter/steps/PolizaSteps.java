@@ -78,6 +78,16 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void seleccionaBotonVerAsesoresDeLaPoliza() {
+        polizaPage.seleccionaBotonVerAsesoresDeLaPoliza();
+    }
+
+    @Step
+    public String consultarOficinaDeRadicacion() {
+        return  polizaPage.consultarOficinaDeRadicacion();
+    }
+
+    @Step
     public void ingresarMotivosCancelacion(String motivo, String descripcion) {
         polizaPage.ingresarMotivosCancelacion(motivo, descripcion);
     }
