@@ -113,7 +113,10 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//input[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee_true-inputEl']")
     private WebElementFacade botonEmpleadoSuraSi;
-
+    @FindBy(xpath = ".//input[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:HasAgreedFranchiseCommission_true-inputEl']")
+    private WebElementFacade botonHonorarioPactadoSi;
+    @FindBy(xpath = ".//input[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:AgreedFranchiseCommission-inputEl']")
+    private WebElementFacade campoHonorarioPactado;
     private static final int CONSTANTE_50 = 50;
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
@@ -392,5 +395,13 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void seleccionarOpcionEmpleadoSura() {
         botonEmpleadoSuraSi.waitUntilPresent().click();
+    }
+
+    public void ingresarValorHonorarioPactado(ExamplesTable valor){
+        botonHonorarioPactadoSi.waitUntilVisible().click();
+        campoHonorarioPactado.waitUntilVisible().click();
+        campoHonorarioPactado.clear();
+        Map<String, String> valorHonorarioPactado = valor.getRows().get(0);
+        campoHonorarioPactado.waitUntilVisible().sendKeys(valorHonorarioPactado.get("VALOR"));
     }
 }
