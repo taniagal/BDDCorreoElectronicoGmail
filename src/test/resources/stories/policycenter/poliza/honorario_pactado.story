@@ -43,7 +43,8 @@ And ingrese la entrada de las diferentes coberturas con interes <documento><tipo
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100000000      |
 And intente cotizar y expedir la poliza
-Then  debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
+And ingrese a analisis de riesgo
+Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 | mensaje                                                  |
 | El honorario registrado, requiere autorización.          |
 
@@ -86,6 +87,7 @@ And ingrese las coberturas a auto cero kilometros:
 | limite | deducible |
 | 640.   | 0         |              | 100000000      |
 And intente cotizar y expedir la poliza
+And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 | mensaje                                                  |
 | El honorario registrado, requiere autorización.          |
@@ -95,4 +97,22 @@ Examples:
 | Honorario Pactado : debe ser un valor numérico. | 94537281  | CEDULA DE CIUDADANIA  |
 
 
-Scenario: 2 Alertas al ingresar honorario pactado invalido en PA
+Scenario: 3 Alertas al intentar modificar honorario en cambio de poliza
+Meta:@manual
+Given  cotizo una poliza
+When  intente modificar el honorario pactado en cambio de poliza
+Then se debe bloquear la modificacion
+
+Examples:
+| |
+| |
+
+Scenario: 4 Expedicion de poliza con valor decimal en el honorario
+Meta:@manual
+Given  cotizo una poliza
+When  intente mcotizar una poliza con valores decimales
+Then se permite expedir la poliza
+
+Examples:
+| |
+| |
