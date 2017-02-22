@@ -187,10 +187,11 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void seleccionarOficinaDeRadicacionYAgente(String oficina, String agente) {
         comboBoxOficinaDeRadicacion.waitUntilPresent();
+        seleccionarItem(comboBoxOficinaDeRadicacion, "1059");
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
         try {
             clickearElemento(comboBoxNombreAgente, TIEMPO_4);
-        }catch (StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException", e);
             clickearElemento(comboBoxNombreAgente, TIEMPO_4);
         }

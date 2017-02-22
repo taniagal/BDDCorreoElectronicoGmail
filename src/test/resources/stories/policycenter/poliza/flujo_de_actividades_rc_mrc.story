@@ -20,7 +20,6 @@ And ingrese la entrada de las diferentes coberturas con interes <documento><tipo
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100000000      |
-
 And se solicite aprobacion para los riesgos
 Then se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable
 
