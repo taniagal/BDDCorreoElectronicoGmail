@@ -65,7 +65,7 @@ public class NuevaCotizacionPage extends PageUtil {
     private static final String TABLA_SELECCION_DE_PRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/*/table/tbody";
     private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
     private String oficina = "1073";
-    private String agente = "DIRECTO";
+    private String agente = "ASESOR 4 - PRUEBA TRASPASO";
 
 
     public NuevaCotizacionPage(WebDriver driver) {
