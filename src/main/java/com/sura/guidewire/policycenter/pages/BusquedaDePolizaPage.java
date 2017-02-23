@@ -116,7 +116,7 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void limpiarCampos() {
         esperarHasta(TIEMPO_3500);
-        waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
+        waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.click();
         esperarHasta(TIEMPO_3500);
     }
@@ -212,10 +212,14 @@ public class BusquedaDePolizaPage extends PageUtil {
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
     }
-    public void capturarNumeroDePoliza(){
+    public void buscarNumeroDePoliza(){
         String poliza = Utils.quitaCaracteresACadena(numPoliza);
         irABuscarPoliza();
         buscarPolizaPorNumeroDePoliza(poliza);
 
+    }
+
+    public String capturarNumeroPoliza () {
+        return Utils.quitaCaracteresACadena(numPoliza);
     }
 }
