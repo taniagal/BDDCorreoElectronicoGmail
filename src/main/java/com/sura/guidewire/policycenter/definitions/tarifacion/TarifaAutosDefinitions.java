@@ -101,5 +101,11 @@ public class TarifaAutosDefinitions {
     public void agregarTodasLasCoberturasDeComision(ExamplesTable coberturas) {
         tarifaAutosSteps.seleccionarCoberturasComision(coberturas);
     }
+
+    @Then("el valor de la prima es <prima>")
+    public void verificarResultadoPrima(@Named("prima") String primaTotal) {
+        tarifaAutosSteps.verificarTarifacionPrima(primaTotal);
+    }
+
 }
 

@@ -3,6 +3,8 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.Step;
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -35,6 +37,7 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade optionReaseguroEspecialSi;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Accepted-inputEl']")
     private WebElementFacade checkReaseguroEspecialSi;
+    private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
@@ -47,6 +50,9 @@ public class PolizaPage extends PageUtil {
     private List<WebElementFacade> listaMotivosWE;
     protected static final int CONSTANTE_61 = 61;
     protected static final int CONSTANTE_10 = 10;
+    @Page
+    CotizacionPage cotizacionPage;
+
 
     public PolizaPage(WebDriver driver) {
         super(driver);
@@ -109,6 +115,18 @@ public class PolizaPage extends PageUtil {
         findBy(btnSiguienteCambioPoliza).waitUntilVisible().waitUntilClickable().click();
     }
 
+    public void seleccionaBotonVerAsesoresDeLaPoliza() {
+        waitFor(TIEMPO_5).seconds();
+        String verAsesoresDeLaPoliza = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducersLink']";
+        findBy(verAsesoresDeLaPoliza).waitUntilVisible().waitUntilClickable().click();
+    }
+
+    @Step
+    public String consultarOficinaDeRadicacion() {
+        String oficionaDeRadicacion = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_ProducerDV:PolicyInfoProducerInfoInputSet:SuraMainOffice-inputEl']";
+        WebElementFacade labelOficionaDeRadicacion = getElemento(oficionaDeRadicacion);
+        return labelOficionaDeRadicacion.getText();
+    }
 
     public void editarTransaccion() {
         LOGGER.info("PolizaPage.editarTransaccion");
@@ -323,7 +341,6 @@ public class PolizaPage extends PageUtil {
     public boolean esVisibleMensaje(String xpath) {
         boolean visible;
         visible = findBy(xpath).isVisible();
-
         return visible;
     }
 
@@ -357,5 +374,12 @@ public class PolizaPage extends PageUtil {
         clickearElemento(optionReaseguroEspecialSi);
         checkReaseguroEspecialSi.waitUntilPresent();
         clickearElemento(checkReaseguroEspecialSi);
+    }
+
+    public void validarQueSeMuestreValorEnCampoYNoSeaEditable(String valor) {
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        MatcherAssert.assertThat("El campo no es igual al valor recibido", findBy(campoEmpleadoSura).getText().equals(valor));
+        MatcherAssert.assertThat(cotizacionPage.buscarInputHabilitadoEnElemento(campoEmpleadoSura), Is.is(false));
+        resetImplicitTimeout();
     }
 }

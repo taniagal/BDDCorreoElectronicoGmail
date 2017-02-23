@@ -22,6 +22,7 @@ And intente ingresar las entradas de las diferentes coberturas
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And intente ingresar al modulo de facturacion
+Then se debe visualizar la informacion de facturacion de polizas
 
 Examples:
 | |

@@ -162,4 +162,14 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
         tarifaMRCPage.agregarContactoNuevaPersona();
         opcionesInformacionPoliza.ingresarDatosDeContacto(contacto);
     }
+
+    @Step
+    public void seleccionarOpcionEmpleadoSura() {
+        opcionesInformacionPoliza.seleccionarOpcionEmpleadoSura();
+    }
+
+    @Step
+    public void ingresarValorHonorarioPactado(ExamplesTable valor) {
+        opcionesInformacionPoliza.ingresarValorHonorarioPactado(valor);
+    }
 }
