@@ -224,22 +224,23 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
         botonHojaDeCalculoRenovacion.waitUntilPresent();
-        esperarHasta(TIEMPO_7000);
         clickearElemento(botonSiguiente);
-        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (!botonEditarTransaccionDePolizaAsegurado.isPresent()) {
-            clickearElemento(botonVolver);
-            esperarHasta(TIEMPO_5000);
-            clickearElemento(botonSiguiente);
+        validarBotonEditarTransaccion();
+    }
+
+    public void validarBotonEditarTransaccion(){
+        int cantDeIntentosParaMostrarBotonEditarTransaccion = 0;
+        String btnSiguinete = ".//*[@id='RenewalWizard:Next-btnInnerEl']";
+        String btnVolver = ".//*[@id='RenewalWizard:Prev-btnInnerEl']";
+        setImplicitTimeout(0, TimeUnit.SECONDS);
+        while (cantDeIntentosParaMostrarBotonEditarTransaccion < 1 && !botonEditarTransaccionDePolizaAsegurado.isVisible()) {
+            clickearElemento($(btnVolver), TIEMPO_4);
+            esperarHasta(TIEMPO_7000);
+            clickearElemento($(btnSiguinete), TIEMPO_4);
+            cantDeIntentosParaMostrarBotonEditarTransaccion++;
         }
-        clickearElemento(botonVolver);
         resetImplicitTimeout();
         editarTransaccion();
-        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (botonEditarTransaccionDePolizaInfo.isPresent()) {
-            editarTransaccion();
-        }
-        resetImplicitTimeout();
     }
 
     public void irAInformacionDePolizaRenovacion() {
