@@ -300,6 +300,14 @@ public class PageUtil extends PageObject {
         resetImplicitTimeout();
         return editables;
     }
+    public int consultarNumeroElementosTabla(String pathTabla) {
+        List<WebElementFacade> listaFacturas = this.getLista(pathTabla);
+        return listaFacturas.size();
+    }
+    public String consultarTextoCeldaTabla(String path, int indiceFila, int indiceColumna) {
+        WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
+        return elemento.getText();
+    }
 
     /*
     * Nuevos métodos para billing getElemento, clicObjeto, esperarObjetoClikeableServidor
