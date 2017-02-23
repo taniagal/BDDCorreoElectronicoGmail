@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ImpresionReimpresionPage extends PageUtil {
-    @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/div[3]/div[3]/div/table/tbody/tr[6]/td/div/span")
+    @FindBy(xpath = "//td[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Jobs']/div/span")
     private WebElementFacade menuItemTransaccionesDePoliza;
     @FindBy(xpath = "//a[contains(.,'Reimprimir')]")
     private WebElementFacade botonReimpresion;
@@ -22,19 +22,33 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade linkArchivoDePoliza;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div")
     private WebElementFacade tablaOpcionesReimprimir;
-    @FindBy(xpath = "//tr[7]/td/div/span")
-    private WebElementFacade menuItemTransaccionesDePolizaMrc;
+    @FindBy(xpath = "//div[2]/div/div/div/div/span/div")
+    private WebElementFacade checkBoxDocumentos;
+    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[2]/td[1]/div/img")
+    private WebElementFacade checkBoxRelacionConCliente;
+    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[1]/td[1]/div/img")
+    private WebElementFacade checkBoxCaratula;
+    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[4]/td[1]/div/img")
+    private WebElementFacade checkBoxEndoso;
+    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[3]/td[1]/div/img")
+    private WebElementFacade checkBoxCotizacion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
+    private WebElementFacade botonSiguienteRenovacion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    private WebElementFacade botonEditarRenovacion;
+    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions']")
+    private WebElementFacade menuAccionesPoliza;
+    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_RenewPolicy']")
+    private WebElementFacade menuItemRenovarPoliza;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptar;
 
     public ImpresionReimpresionPage(WebDriver driver) {
         super(driver);
     }
 
     public void irATransaccionesDePoliza() {
-        if (menuItemTransaccionesDePolizaMrc.isPresent()) {
-            esperarYClickearBoton(menuItemTransaccionesDePolizaMrc);
-        } else if (menuItemTransaccionesDePoliza.isPresent()) {
-            esperarYClickearBoton(menuItemTransaccionesDePoliza);
-        }
+        menuItemTransaccionesDePoliza.click();
     }
 
     public void validarBotonReimpresion() {
@@ -62,5 +76,25 @@ public class ImpresionReimpresionPage extends PageUtil {
         if (botonReimpresion.isCurrentlyVisible()) {
             resultado = "el boton se encuentra presente";
         }
+    }
+
+    public void irADocumentos() {
+        checkBoxDocumentos.click();
+    }
+
+    public void validarOpcionesReimpresionHabilitadas() {
+        checkBoxCaratula.isSelected();
+        checkBoxCotizacion.isSelected();
+        checkBoxEndoso.isSelected();
+        checkBoxRelacionConCliente.isSelected();
+    }
+
+    public void editarRenovacionPoliza() {
+        menuAccionesPoliza.waitUntilPresent().click();
+        menuItemRenovarPoliza.waitUntilPresent().click();
+        botonAceptar.waitUntilPresent().click();
+        botonSiguienteRenovacion.click();
+        botonSiguienteRenovacion.click();
+        esperarYClickearBoton(botonEditarRenovacion);
     }
 }

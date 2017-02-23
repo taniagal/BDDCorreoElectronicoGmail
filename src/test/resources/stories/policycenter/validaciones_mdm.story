@@ -76,8 +76,8 @@ Given estoy cotizando una poliza:
 | cuenta     | producto | tipoPoliza |
 | C000888888 | Autos    | Individual |
 When ingrese segundo tomador creando nuevo contacto
-| tipoDocumento        | numeroDocumento | primerNombre | primerApellido | departamento | ciudad   | direccion       |
-| CEDULA DE CIUDADANIA | 1024852369      | BASURA       | LOPEZ          | Antioquia    | Medellin | CR 54 # 90 - 30 |
+| tipoDocumento        | numeroDocumento | primerNombre | primerApellido | departamento | ciudad   | direccion       | tipoDireccion           |
+| CEDULA DE CIUDADANIA | 1024852369      | BASURA       | LOPEZ          | Antioquia    | Medellin | CR 54 # 90 - 30 | DIRECCION DE RESIDENCIA |
 Then no debe permitir crear un nuevo contacto y debe mostrar el mensaje <mensaje>
 
 Examples:
@@ -102,8 +102,8 @@ Given estoy cotizando una poliza:
 | cuenta     | producto                | tipoPoliza |
 | C000888888 | Multiriesgo corporativo | Individual |
 When ingrese nuevo asegurado a poliza MRC con los datos
-| tipoDocumento        | numeroDocumento | primerNombre | primerApellido | departamento | ciudad   | direccion       |
-| CEDULA DE CIUDADANIA | 1024852368      | BASURA       | LOPEZ          | Antioquia    | Medellin | CR 54 # 90 - 30 |
+| tipoDocumento        | numeroDocumento | primerNombre | primerApellido | departamento | ciudad   | direccion       | tipoDireccion           |
+| CEDULA DE CIUDADANIA | 1024852368      | BASURA       | LOPEZ          | Antioquia    | Medellin | CR 54 # 90 - 30 | DIRECCION DE RESIDENCIA |
 Then no debe permitir crear un nuevo contacto y debe mostrar el mensaje <mensaje>
 
 Examples:
