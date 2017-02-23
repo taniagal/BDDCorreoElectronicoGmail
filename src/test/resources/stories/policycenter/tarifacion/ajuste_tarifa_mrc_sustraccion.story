@@ -28,17 +28,17 @@ And cotice el articulo
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 And debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo                |descripcion                      |valor    |
-|Cobertura de Sustracción|Cobertura de Sustracción         |38.428   |
+|Cobertura de Sustracción|Cobertura de Sustracción         |38.855   |
 |Edificio                |Cobertura de Terremoto           |1.016.667|
 |Edificio                |Cobertura de Danos materiales    |380.000  |
-|Edificio                |Cobertura de Asonada             |74.509   |
+|Edificio                |Cobertura de Asonada             |75.509   |
 |Maquinaria              |Cobertura de Rotura de maquinaria|15.636   |
 |Maquinaria              |Cobertura de Danos materiales    |562.912  |
-|Maquinaria              |Cobertura de Asonada             |31.973   |
+|Maquinaria              |Cobertura de Asonada             |114.962  |
 
 Examples:
 |valor_indice|prima    |iva    |costo    |
-|3           |2.120.125|410.125|2.530.250|
+|3           |2.123.074|410.767|2.533.841|
 
 
 Scenario:  Tarifa MRC poliza Bancolombia con los ariticulos muebles y maquinaria
