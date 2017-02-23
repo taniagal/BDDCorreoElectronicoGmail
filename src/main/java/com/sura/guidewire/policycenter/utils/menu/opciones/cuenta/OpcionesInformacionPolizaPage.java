@@ -71,7 +71,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade textoTelefonoSegundoTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:SecondaryAddress-inputEl']")
     private WebElementFacade textoDireccionSegundoTomador;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressType-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'AddressType-inputEl')]")
     private WebElementFacade textoTipoDireccionSegundoTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressDescription-inputEl']")
     private WebElementFacade textoDescripcionDireccionSegundoTomador;
@@ -390,6 +390,8 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         esperarHasta(TIEMPO_2000);
         super.seleccionarItem(campoCiudad, contacto.get("ciudad"));
         super.esperarPorValor(campoCiudad, contacto.get("ciudad"));
+        super.seleccionarItem(textoTipoDireccionSegundoTomador, contacto.get("tipoDireccion"));
+        super.esperarPorValor(textoTipoDireccionSegundoTomador, contacto.get("tipoDireccion"));
         super.clickearElemento(botonAceptar);
     }
 
