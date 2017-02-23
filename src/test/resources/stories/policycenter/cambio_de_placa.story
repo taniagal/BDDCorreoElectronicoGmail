@@ -14,13 +14,13 @@ Scenario: Primer cambio de placa
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 |tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB195|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABW196|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cuando cambie la placa <placa>
 And se deben recargar los datos de la placa anterior:
-| modelo | codigoFasecolda | ciudadCirculacion | tipoServicio | chasis  | motor | valorAsegurado | claseVehiculo | marca | zona |
-| 2011   | 01601225        | MEDELLIN          | Particular   | kljh456 | yui10 | 17900000       | Automóviles   | AUDI  | 2    |
+| modelo | codigoFasecolda | ciudadCirculacion             | tipoServicio | chasis  | motor | valorAsegurado | claseVehiculo | marca | zona |
+| 2011   | 01601225        | MEDELLIN (Antioquia)          | Particular   | kljh456 | yui10 | 17900000       | Automóviles   | AUDI  | 2    |
 And quiera volver a cambiar la placa
 And se debe cargar la placa inicial <placaInicial>
 And vuelva a cambiar la placa
@@ -50,5 +50,5 @@ Then debe mostrar un mensaje de autorizacion para expedir
 
 Examples:
 |placa  |placaInicial |placaVenezolana|ciudad|placaExistente|placaRiesgoConsultable|venezolana|                                                                     |
-|rando21|ABB195       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
+|rando21|ABW196       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
 
