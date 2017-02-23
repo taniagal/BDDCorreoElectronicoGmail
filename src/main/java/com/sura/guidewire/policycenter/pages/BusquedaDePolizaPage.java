@@ -21,7 +21,7 @@ import java.util.Map;
 public class BusquedaDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyNumberCriterion-inputEl']")
     WebElementFacade txtNumeroPoliza;
-    @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:AccountNumber-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:AccountNumber-inputEl')]")
     WebElementFacade txtNumeroCuenta;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProductName-inputEl']")
     WebElementFacade txtProducto;
@@ -29,7 +29,7 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade txtAgente;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProducerCode-inputEl']")
     WebElementFacade txtCodigoAgente;
-    @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    @FindBy(xpath = ".//*[contains(@id,'PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search')]")
     WebElementFacade btnBuscar;
     @FindBy(xpath = ".//div[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']/div/table")
     WebElementFacade tablaResultados;
@@ -41,10 +41,13 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade menuBuscarPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:ttlBar']")
     WebElementFacade tituloBuscarPoliza;
-    @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
+    @FindBy(xpath = ".//*[contains(@id,'PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset')]")
     WebElementFacade botonRestablecer;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     WebElementFacade numPoliza;
+    @FindBy(xpath = ".//*[@id='PolicySearchPopup:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV:0:_Select']")
+    WebElementFacade linkBotonNumeroPolizaEncontrada;
+
 
     protected static final int TIEMPO_3500 = 3500;
     protected static final int CONSTANTE_10 = 10;
@@ -112,6 +115,7 @@ public class BusquedaDePolizaPage extends PageUtil {
     }
 
     public void limpiarCampos() {
+        esperarHasta(TIEMPO_3500);
         waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
         botonRestablecer.click();
         esperarHasta(TIEMPO_3500);
@@ -122,6 +126,20 @@ public class BusquedaDePolizaPage extends PageUtil {
         waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         this.clicEnBotonBuscar();
+    }
+
+    public void buscarPolizaPorNumeroDeCuentaSeleccionar(String numeroCuenta) {
+        this.limpiarCampos();
+        waitFor(txtNumeroCuenta).waitUntilPresent();
+        txtNumeroCuenta.sendKeys(numeroCuenta);
+        this.clicEnBotonBuscar();
+        WebElementFacade linkNumeroPoliza = getElemento(".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV:0:PolicyNumber']");
+        clicObjeto(linkNumeroPoliza);
+        esperarObjetoClikeableServidor(".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:0']");
+    }
+
+    public void seleccionarNumeroPolizaEcontrada() {
+        clicObjeto(linkBotonNumeroPolizaEncontrada);
     }
 
     public void clicEnBotonBuscar(){
@@ -194,10 +212,14 @@ public class BusquedaDePolizaPage extends PageUtil {
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
     }
-    public void capturarNumeroDePoliza(){
+    public void buscarNumeroDePoliza(){
         String poliza = Utils.quitaCaracteresACadena(numPoliza);
         irABuscarPoliza();
         buscarPolizaPorNumeroDePoliza(poliza);
 
+    }
+
+    public String capturarNumeroPoliza () {
+        return Utils.quitaCaracteresACadena(numPoliza);
     }
 }

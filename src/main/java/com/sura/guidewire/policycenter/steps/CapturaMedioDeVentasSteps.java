@@ -25,7 +25,6 @@ public class CapturaMedioDeVentasSteps extends ScenarioSteps {
     @Step
     public void irARedComercial() {
         capturaMedioDeVentasPage.irARedComercial();
-
     }
 
     public void validarOpcionesRedComercial(ExamplesTable opciones) {
@@ -79,5 +78,38 @@ public class CapturaMedioDeVentasSteps extends ScenarioSteps {
             opcionesCanal = opciones.getRows().get(i);
             MatcherAssert.assertThat("La lista no contiene el item esperado", listaOpcionesCanal, Matchers.containsString(opcionesCanal.get("opciones")));
         }
+    }
+
+    public void crearNuevoCanal() {
+        capturaMedioDeVentasPage.crearNuevoCanal();
+    }
+
+    public void irAMediosDeVentaPorCanal() {
+        capturaMedioDeVentasPage.irAMediosDeVentaPorCanal();
+    }
+
+    public void buscarCanalComercial(String canalComercial) {
+        capturaMedioDeVentasPage.buscarCanalComercial(canalComercial);
+    }
+
+    public void buscarMedioDeVentaAsociado(ExamplesTable mediosDeVentaAsociados) {
+        Map<String, String> mediosDeVentaPorCanal;
+        String listaOpcionesCanal= capturaMedioDeVentasPage.validarMediosDeVentaAsociados();
+        for (int i = 0; i < mediosDeVentaAsociados.getRowCount(); i++) {
+            mediosDeVentaPorCanal = mediosDeVentaAsociados.getRows().get(i);
+            MatcherAssert.assertThat("La lista no contiene el item esperado", listaOpcionesCanal, Matchers.containsString(mediosDeVentaPorCanal.get("mediosDeVentaAsociados")));
+        }
+    }
+
+    public void irMenuMedioDeVentaPorCanalNuevo() {
+        capturaMedioDeVentasPage.irMenuMedioDeVentaPorCanalNuevo();
+    }
+
+    public void asociarMedioDeVentaACanal(String canalComercial, String medioDeVenta) {
+        capturaMedioDeVentasPage.asociarMedioDeVentaAlCanal(canalComercial,medioDeVenta);
+    }
+
+    public void verificarAdiccionMedioDeVentaACanal() {
+        capturaMedioDeVentasPage.verificarAdiccionMedioDeVentaACanal();
     }
 }

@@ -178,6 +178,16 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.seleccionarOpcionEmpleadoSura();
     }
 
+    @When("seleccione la opcion SI de honorario pactada e ingrese el valor $valor")
+    public void cuandoSeleccionoLaOpcionSiDeHonorarioPactaEIngreseValor(ExamplesTable valor) {
+        informacionPolizaPASteps.ingresarValorHonorarioPactado(valor);
+    }
+
+    @Then("seleccione la opcion SI de honorario pactada e ingrese el valor $valor")
+    public void entoncesSeleccionoLaOpcionSiDeHonorarioPactaEIngreseValor(ExamplesTable valor) {
+        informacionPolizaPASteps.ingresarValorHonorarioPactado(valor);
+    }
+
     @Then("la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo")
     public void calcularFechaFinVigencia(@Named("fechaFinVigencia") String fechaFinVigencia) {
         informacionPolizaPASteps.calcularFechaFinVigencia(fechaFinVigencia);
