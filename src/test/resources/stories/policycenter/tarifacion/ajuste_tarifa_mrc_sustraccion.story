@@ -106,5 +106,5 @@ And cotice el articulo
 Then el valor de la prima es <prima>
 
 Examples:
-|prima  |valor    |valor_indice|
-|154.000|120000000|            |
+|prima  |valor    |
+|154.000|120000000|
