@@ -212,10 +212,14 @@ public class BusquedaDePolizaPage extends PageUtil {
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
     }
-    public void capturarNumeroDePoliza(){
+    public void buscarNumeroDePoliza(){
         String poliza = Utils.quitaCaracteresACadena(numPoliza);
         irABuscarPoliza();
         buscarPolizaPorNumeroDePoliza(poliza);
 
+    }
+
+    public String capturarNumeroPoliza () {
+        return Utils.quitaCaracteresACadena(numPoliza);
     }
 }

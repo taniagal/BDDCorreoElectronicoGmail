@@ -117,6 +117,7 @@ public class Poliza {
     }
 
     @When("ingrese al resumen de la poliza expedida")
+    @Then("ingresar al resumen de la poliza cancelada")
     public void cuandoIntenteIngresarAlResumenDeLaPolizaExpedida() {
         polizaSteps.verResumenDeLaPolizaExpedida();
     }

@@ -382,4 +382,10 @@ public class PolizaPage extends PageUtil {
         MatcherAssert.assertThat(cotizacionPage.buscarInputHabilitadoEnElemento(campoEmpleadoSura), Is.is(false));
         resetImplicitTimeout();
     }
+    public void ingresarFechaDeCancelacion(WebElementFacade fecha, int mes) {
+        LocalDate fechaSuperior = formatter.parseDateTime(fecha.getValue()).toLocalDate().plusMonths(mes);
+        obtenerFechacancelacionElemento().clear();
+        obtenerFechacancelacionElemento().sendKeys(formatter.print(fechaSuperior));
+        obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
+    }
 }
