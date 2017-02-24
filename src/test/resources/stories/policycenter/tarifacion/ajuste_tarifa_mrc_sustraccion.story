@@ -34,7 +34,7 @@ And debo poder verificar el valor de la prima para las coberuras de la cotizacio
 |Edificio                |Cobertura de Asonada             |75.509   |
 |Maquinaria              |Cobertura de Rotura de maquinaria|15.636   |
 |Maquinaria              |Cobertura de Danos materiales    |562.912  |
-|Maquinaria              |Cobertura de Asonada             |114.962  |
+|Maquinaria              |Cobertura de Asonada             |33.495   |
 
 Examples:
 |valor_indice|prima    |iva    |costo    |
@@ -107,4 +107,4 @@ Then el valor de la prima es <prima>
 
 Examples:
 |prima  |valor    |
-|122.000|120000000|
+|154.000|120000000|
