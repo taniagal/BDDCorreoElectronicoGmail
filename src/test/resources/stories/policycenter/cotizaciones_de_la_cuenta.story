@@ -4,7 +4,7 @@ Meta:
 @lote2
 @tag equipo: 5
 @local
-@Sprint 2
+@Sprint 14
 
 Narrative:
 Como usuario PolicyCenter
@@ -23,7 +23,7 @@ Examples:
 | numCuenta  |
 | C001888888 |
 
-Scenario: Ocultar opcion de retirar
+Scenario: Ocultar opcion de retirar en poliza cotizada
 Given estoy en una cuenta <numCuenta>
 When ingrese a cotizaciones de la cuenta
 And muestre el listado de las acciones que se le pueden hacer a una cotizacion <declinar> <noTomar>
@@ -32,6 +32,28 @@ Then no debe aparece la opcion de retirar <retirar>.
 Examples:
 | numCuenta  | declinar | noTomar  | retirar |
 | C001888888 | Declinar | No tomar | Retirar |
+
+Scenario: Mostrar opcion de retirar en poliza borrador
+Given estoy en una cuenta <numCuenta>
+When ingrese a cotizaciones de la cuenta
+Then muestre el listado de las acciones a realizar a una cotizacion en estado borrador <retirar>
+
+Examples:
+| numCuenta  |  retirar |
+| C001888888 |  Retirar |
+
+Scenario: Retirar poliza en estado borrador
+Given estoy cotizando una poliza:
+| cuenta     | organizacion | producto                |
+| C001888888 | Sura         | Multiriesgo corporativo |
+When estoy visualizando las cotizaciones de la cuenta <numCuenta>
+Then muestre el listado de las acciones a realizar a una cotizacion en estado borrador <retirar>
+And quiero retirar la transaccion
+Then no debe aparecer la opcion de acciones para cambiar el estado
+
+Examples:
+| numCuenta  |  retirar |
+| C001888888 |  Retirar |
 
 Scenario: Mostrar resultado segun el filtro
 Given estoy en una cuenta <numCuenta>

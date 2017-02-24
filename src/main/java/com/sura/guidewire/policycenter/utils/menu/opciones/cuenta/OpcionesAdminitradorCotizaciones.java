@@ -89,7 +89,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
-
+    @FindBy(xpath = ".//span[contains(.,'Retirar')]")
+    private WebElementFacade botonRetirar;
     private WebElementFacade botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']");
 
 
@@ -109,7 +110,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         super(driver);
     }
 
-    public void seleccionarAcciones() {
+    public void seleccionarAcciones(String estado) {
         band = 0;
         int i = 0;
         withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
@@ -117,10 +118,10 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if (!("".equals(cells.get(CONSTANTE_2).getText()) || " ".equals(cells.get(CONSTANTE_2).getText()))) {
-                if ("Cotizado".equals(cells.get(CONSTANTE_7).getText()) || "Borrador".equals(cells.get(CONSTANTE_7).getText())) {
+                if (estado.equals(cells.get(CONSTANTE_7).getText())) {
                     try {
-                        WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
-                        botonAccciones.click();
+                        WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon']");
+                        botonAccciones.waitUntilClickable().click();
                         waitFor(CONSTANTE_2).seconds();
                         band = i;
                     } catch (Exception e) {
@@ -133,12 +134,32 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         }
     }
 
+    public void seleccionarAccionesPolizaEstadoCotizado() {
+        String estadoPoliza = "Cotizado";
+        seleccionarAcciones(estadoPoliza);
+    }
+
+    public void seleccionarAccionesPolizaEstadoBorrador() {
+        String estadoPoliza = "Borrador";
+        seleccionarAcciones(estadoPoliza);
+    }
+
+
     public void validarEstadosCotizacion(String estadoDeclinar, String estadoNoTomar) {
         if (band != 0) {
             WebElementFacade itemDeclinar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline']");
             WebElementFacade itemNoTomar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']");
             MatcherAssert.assertThat(itemDeclinar.getText(), Is.is(Matchers.equalTo(estadoDeclinar)));
             MatcherAssert.assertThat(itemNoTomar.getText(), Is.is(Matchers.equalTo(estadoNoTomar)));
+        } else {
+            MatcherAssert.assertThat(null, Is.is(Matchers.nullValue()));
+        }
+    }
+
+    public void validarEstadosCotizacion(String estadoRetirar) {
+        if (band != 0) {
+            WebElementFacade itemRetirar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:Withdraw-textEl']");
+            MatcherAssert.assertThat(itemRetirar.getText(), Is.is(Matchers.equalTo(estadoRetirar)));
         } else {
             MatcherAssert.assertThat(null, Is.is(Matchers.nullValue()));
         }
@@ -162,6 +183,20 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         Boolean validacion = false;
         validacion = containsText(retirar);
         MatcherAssert.assertThat(validacion, Is.is(false));
+    }
+
+    public void retirarTransaccionDePoliza() {
+        String botonAceptar = "//a[contains(.,'Aceptar')]";
+        WebElementFacade btonAceptar = findBy(botonAceptar);
+        botonRetirar.waitUntilClickable().click();
+        btonAceptar.waitUntilClickable().click();
+    }
+
+    public void validarRetiroTransaccionDePoliza() {
+        if (band != 0) {
+            WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuIcon']");
+            MatcherAssert.assertThat("El elemento es visible", !botonAccciones.isVisible());
+        }
     }
 
     public void seleccionarFiltros(String cotizacion, String producto) {
