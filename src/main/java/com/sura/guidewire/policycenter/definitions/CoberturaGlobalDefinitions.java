@@ -17,11 +17,7 @@ public class CoberturaGlobalDefinitions {
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
 
-    @When("agregue coberturas globales con datos: $datosCobertura")
-    public void agregarCoberturas(ExamplesTable datosCobertura){
-        coberturaGlobalSteps.ir_a_coberturas_globales();
-        coberturaGlobalSteps.agregar_coberturas_globales(datosCobertura);
-    }
+
     @When("seleccione la opcion coberturas globales")
     public void cuandoSeleccioneLaOpcionAgregarCobertura(){
         coberturaGlobalSteps.ir_a_coberturas_globales();
@@ -57,22 +53,6 @@ public class CoberturaGlobalDefinitions {
     public void entoncesEnCoberturasGlobalesSeDebeValidarLasSiguienteOpcione(@Named("estadouno") String estadouno,
                                                                              ExamplesTable menusesperados){
         coberturaGlobalSteps.validar_campos_coberturas_globales(estadouno,menusesperados);
-    }
-
-    @Then("debe mostrarme las coberturas incluidas y las ubicaciones cubiertas")
-    public void verificarCoberturasyUbicaciones(){
-        coberturaGlobalSteps.verificar_coberturas_y_ubicaciones();
-    }
-
-    @When("agregue una cobertura global con datos: $datosCobertura")
-    public void agregarCobertura(ExamplesTable datosCobertura){
-        coberturaGlobalSteps.ir_a_coberturas_globales();
-        coberturaGlobalSteps.seleccionar_cobertura_unica(datosCobertura);
-    }
-
-    @Then("debe mostrarme un mensaje<mensaje> de error")
-    public void verificarMensajeError(@Named("mensaje")String mensaje){
-        coberturaGlobalSteps.verificar_mensaje_error(mensaje);
     }
 
     @Then("se debe validar el siguiente mensaje<mensaje> de error")
