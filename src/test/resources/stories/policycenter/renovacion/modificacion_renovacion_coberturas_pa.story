@@ -11,8 +11,8 @@ Given estoy cotizando una poliza:
 |C1060447895|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|random|2016  |00601182        |MEDELLIN (Antioquia) |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion    |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|random|2016  |00601182        |MEDELLIN (ANTIOQUIA)  |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And seleccione algunas coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|PPD|PPDF|GT|PP|PT|GTR|GP|PLlaves|
 |640.  |0        |Si      |0  |750|1.50|40.|35|Conces|Plus|Si|6 |Plus|0  |750|1.50|40|20|20|Si |Si|Si     |

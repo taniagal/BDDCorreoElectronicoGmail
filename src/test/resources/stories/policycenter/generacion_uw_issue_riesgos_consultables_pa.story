@@ -19,8 +19,8 @@ Given estoy cotizando una poliza:
 When seleccione la opcion siguiente
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|plan        |
-|T64497|2016  |00601182        |MEDELLIN          |Particular       |CH212121|AB3C2 |165900000      |null     |null   |2   |Plan Modular|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|plan        |
+|T64497|2016  |00601182        |MEDELLIN (ANTIOQUIA)|Particular       |CH212121|AB3C2 |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |

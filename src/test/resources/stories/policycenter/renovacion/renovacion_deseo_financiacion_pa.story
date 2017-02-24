@@ -14,8 +14,8 @@ Scenario: Validar numero de cuotas - informacion de poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
 When ingrese los datos de la cotizacion con intencion de financiacion:
-|ciudad_circulacion|limite|deducible|abogado|PLlaves|modelo|
-|MEDELLIN          |640.  |0        |Si     |Si     |2016  |
+|ciudad_circulacion   |limite|deducible|abogado|PLlaves|modelo|
+|MEDELLIN (ANTIOQUIA) |640.  |0        |Si     |Si     |2016  |
 And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 And comienzo una nueva renovacion
