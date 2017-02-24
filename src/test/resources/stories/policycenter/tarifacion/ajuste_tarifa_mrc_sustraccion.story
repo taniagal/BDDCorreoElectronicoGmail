@@ -28,7 +28,7 @@ And cotice el articulo
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 And debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo                |descripcion                      |valor    |
-|Cobertura de Sustracción|Cobertura de Sustracción         |57.000   |
+|Cobertura de Sustracción|Cobertura de Sustracción         |57.855   |
 |Edificio                |Cobertura de Terremoto           |1.016.667|
 |Edificio                |Cobertura de Danos materiales    |380.000  |
 |Edificio                |Cobertura de Asonada             |75.509   |
@@ -38,7 +38,7 @@ And debo poder verificar el valor de la prima para las coberuras de la cotizacio
 
 Examples:
 |valor_indice|prima    |iva    |costo    |
-|3           |2.222.686|433.140|2.655.826|
+|3           |2.142.074|417.987|2.560.061|
 
 
 Scenario:  Tarifa MRC poliza Bancolombia con los ariticulos muebles y maquinaria
@@ -107,4 +107,4 @@ Then el valor de la prima es <prima>
 
 Examples:
 |prima  |valor    |
-|154.000|120000000|
+|122.000|120000000|
