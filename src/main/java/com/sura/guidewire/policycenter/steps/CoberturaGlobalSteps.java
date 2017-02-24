@@ -37,22 +37,6 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_coberturas_globales(ExamplesTable datosCobertura){
-        coberturaGlobalPage.agregarCoberturasGlobales(datosCobertura);
-    }
-
-    @Step
-    public void verificar_coberturas_y_ubicaciones() {
-        coberturaGlobalPage.verificarCoberturasIncluidas();
-        coberturaGlobalPage.verificarUbicacionesCubiertas();
-    }
-
-    @Step
-    public void seleccionar_cobertura_unica(ExamplesTable datosCobertura) {
-        coberturaGlobalPage.seleccionarCoberturaUnica(datosCobertura);
-    }
-
-    @Step
     public void seleccionar_boton_aceptar_de_la_parte_superior_izquierda(){
         coberturaGlobalPage.seleccionarBotonAceptar();
     }
@@ -65,11 +49,6 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     @Step
     public void validar_campos_coberturas_globales(String estadouno, ExamplesTable menusesperados){
         coberturaGlobalPage.validarCamposCoberturasGlobales(estadouno,menusesperados);
-    }
-
-    @Step
-    public void verificar_mensaje_error(String mensaje) {
-        coberturaGlobalPage.verificarMensajeError(mensaje);
     }
 
     @Step

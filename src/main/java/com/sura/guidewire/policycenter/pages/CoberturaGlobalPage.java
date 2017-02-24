@@ -110,17 +110,6 @@ public class CoberturaGlobalPage extends PageUtil {
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno,menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
     }
 
-    public void agregarCoberturasGlobales(ExamplesTable datosCobertura) {
-        Map<String, String> dato = datosCobertura.getRow(0);
-        navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
-        if ("Multiples ubicaciones".equals(dato.get("tipo_cobertura"))) {
-            cargarMultiplesUbicaciones(dato.get("valor"));
-        } else if ("Una cobertura".equals(dato.get("tipo_cobertura"))) {
-            cargarCoberturaUnica(dato.get("nombre_cobertura"), dato.get("valor"));
-        }
-        botonAceptar.click();
-    }
-
     public void cargarCoberturaUnica(String nombreCobertura, String valor) {
         comboBoxCoberturas.waitUntilPresent();
         seleccionarItem(comboBoxCoberturas, nombreCobertura);
@@ -141,26 +130,6 @@ public class CoberturaGlobalPage extends PageUtil {
         waitFor(labelDescripcion).shouldContainText("CR 44 A # 45 - 00");
     }
 
-    public void verificarCoberturasIncluidas() {
-        linkCobertura1.waitUntilPresent();
-        MatcherAssert.assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
-    }
-
-    public void verificarUbicacionesCubiertas() {
-        waitFor(ExpectedConditions.textToBePresentInElement(tablaUbicaciones, "CR 44 A # 45 - 00"));
-        MatcherAssert.assertThat("Error al Agregar la ubicacion, la tabla de ubicaciones agregadas está vacía", tablaUbicaciones.containsText("CR 44 A # 45 - 00"));
-    }
-
-    public void seleccionarCoberturaUnica(ExamplesTable datosCobertura) {
-        Map<String, String> dato = datosCobertura.getRow(0);
-        navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
-        comboBoxCoberturas.waitUntilPresent();
-        seleccionarItem(comboBoxCoberturas, dato.get("nombre_cobertura"));
-        esperarHasta(TIEMPO_2500);
-        botonAceptar.click();
-        esperarHasta(TIEMPO_1000);
-    }
-
     public void seleccionarBotonAceptar() {
         bttonAceptar.waitUntilClickable().click();
     }
@@ -178,10 +147,6 @@ public class CoberturaGlobalPage extends PageUtil {
             esperarHasta(TIEMPO_2000);
             labelDescripcionCoberturaGlobal.sendKeys(descripcion);
         }
-    }
-
-    public void verificarMensajeError(String mensaje) {
-        verificarMensaje(divMensaje,mensaje);
     }
 
     public void verificarMensajeErrorValorComercial(String mensaje) {
