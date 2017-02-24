@@ -68,6 +68,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade comboBoxSiTransporteCombustible;
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_false-inputEl']")
     private WebElementFacade comboBoxNoTransporteCombustible;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl']")
+    private WebElementFacade comboMedioDeVenta;
+
 
     protected static final int TIEMPO_28000 = 28000;
     private String opcion = "Si";
@@ -123,7 +126,14 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         resetImplicitTimeout();
     }
 
+
+    public void seleccionarMedioDeVenta(){
+        waitFor(comboMedioDeVenta);
+        seleccionarItem(comboMedioDeVenta,"Televentas");
+    }
+
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
+        seleccionarMedioDeVenta();
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         esperarHasta(TIEMPO_3000);

@@ -13,8 +13,8 @@ Se requiere poder corregir la placa, en el caso de que la poliza fuera expedida 
 Scenario: Primer cambio de placa
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABW196|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |
+|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB195|2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cuando cambie la placa <placa>

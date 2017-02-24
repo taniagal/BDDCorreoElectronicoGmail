@@ -116,7 +116,7 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void limpiarCampos() {
         esperarHasta(TIEMPO_3500);
-        waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
+        waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.click();
         esperarHasta(TIEMPO_3500);
     }
