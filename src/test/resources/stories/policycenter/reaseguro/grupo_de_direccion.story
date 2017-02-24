@@ -34,7 +34,7 @@ Then debo ver el resultado del reaseguro aplicable por cada riesgo para un contr
 
 Examples:
 |fechaInicioVigencia|
-|01/01/2016         |
+|01/01/2017         |
 
 Scenario: Validacion en calculos de porcentaje cuando la actividad economica se cubre al 50% para contratos NO FACULTATIVOS
 Given estoy cotizando una poliza de mrc:
@@ -57,6 +57,6 @@ Then debo ver el resultado del reaseguro aplicable por cada riesgo para un contr
 
 Examples:
 |fechaInicioVigencia|
-|01/01/2016         |
+|01/01/2017         |
 
 
