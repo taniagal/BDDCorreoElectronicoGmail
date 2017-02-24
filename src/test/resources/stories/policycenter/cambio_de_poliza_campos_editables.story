@@ -12,8 +12,8 @@ Para ver informacion relacionada con esta
 Scenario: Modificar plan de vehiculos
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan              |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB180|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular      |640.  |0        |Si     |Si     |
+|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan              |limite|deducible|abogado|PLlaves|
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB180|2011  |01601225        |MEDELLIN (ANTIOQUIA) |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular      |640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
@@ -26,8 +26,8 @@ Examples:
 
 Scenario: Transporte de combustible
 Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan               |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB181|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular       |640.  |0        |Si     |Si     |
+|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion     |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan               |limite|deducible|abogado|PLlaves|
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB181|2011  |01601225        |MEDELLIN (ANTIOQUIA)   |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular       |640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And seleccione la opcion transporte de combustible
@@ -39,8 +39,8 @@ Then debe mostrar un mensaje de autorizacion cuando voy a expedir
 
 Scenario: No transporte de combustible
 Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan               |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB182|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular       |640.  |0        |Si     |Si     |
+|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan               |limite|deducible|abogado|PLlaves|
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB182|2011  |01601225        |MEDELLIN (ANTIOQUIA) |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular       |640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And intente cotizar el cambio de poliza
@@ -48,8 +48,8 @@ Then expida el cambio de la poliza
 
 Scenario: Cambio de plan basico a otro plan
 Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan              |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB183|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular      |640.  |0        |Si     |Si     |
+|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan              |limite|deducible|abogado|PLlaves|
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB183|2011  |01601225        |MEDELLIN (ANTIOQUIA) |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular      |640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <planBasico>
@@ -69,8 +69,8 @@ Examples:
 
 Scenario: Cambio de plan de autos modular a plan basico
 Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan               |limite|deducible|abogado|PLlaves|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB184|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular       |640.  |0        |Si     |Si     |
+|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan               |limite|deducible|abogado|PLlaves|
+|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB184|2011  |01601225        |MEDELLIN (ANTIOQUIA) |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular       |640.  |0        |Si     |Si     |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <planBasico>
