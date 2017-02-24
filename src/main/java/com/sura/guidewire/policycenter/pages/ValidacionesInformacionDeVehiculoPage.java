@@ -11,6 +11,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -127,15 +128,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
 
-    public void seleccionarMedioDeVenta(){
-        waitFor(comboMedioDeVenta);
-        seleccionarItem(comboMedioDeVenta,"Televentas");
-    }
-
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        seleccionarMedioDeVenta();
-        campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
+        seleccionarItem(comboMedioDeVenta, vehiculo.get("medioVenta"));
+        campoVehiculoCeroKm.click();
         esperarHasta(TIEMPO_3000);
         seleccionarItem(comboBoxPlan, vehiculo.get("plan"));
         ingresarPlaca(vehiculo);
