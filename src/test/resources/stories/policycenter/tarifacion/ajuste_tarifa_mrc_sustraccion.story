@@ -20,7 +20,6 @@ And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas             |
 |Building |1000000000      |Danos,Asonada,Terremoto|
 |Machine  |1500000000      |Danos,Asonada,Rotura   |
-And ingreso el indice variable <valor_indice> de la maquinaria
 And ingrese las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia | 500000000      |
@@ -28,17 +27,17 @@ And cotice el articulo
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 And debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo                |descripcion                      |valor    |
-|Cobertura de Sustracción|Cobertura de Sustracción         |57.855   |
+|Cobertura de Sustracción|Cobertura de Sustracción         |57.000   |
 |Edificio                |Cobertura de Terremoto           |1.016.667|
 |Edificio                |Cobertura de Danos materiales    |380.000  |
 |Edificio                |Cobertura de Asonada             |75.509   |
-|Maquinaria              |Cobertura de Rotura de maquinaria|15.636   |
-|Maquinaria              |Cobertura de Danos materiales    |562.912  |
-|Maquinaria              |Cobertura de Asonada             |33.495   |
+|Maquinaria              |Cobertura de Rotura de maquinaria|15.405   |
+|Maquinaria              |Cobertura de Danos materiales    |554.594  |
+|Maquinaria              |Cobertura de Asonada             |33.000   |
 
 Examples:
-|valor_indice|prima    |iva    |costo    |
-|3           |2.142.074|417.987|2.560.061|
+|prima    |iva    |costo    |
+|2.132.175|415.943|2.548.118|
 
 
 Scenario:  Tarifa MRC poliza Bancolombia con los ariticulos muebles y maquinaria
