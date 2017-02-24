@@ -97,7 +97,7 @@ Given estoy cotizando una poliza de mrc:
 |C1060447895|1059   |Internal Producer Code - 3|Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                        |
-|Caldas      |Aguadas |CR 44 A # 43 - 00|Edificio Core|Actividades de agencias de empleo|
+|Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Actividades de agencias de empleo|
 And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas|
 |Building |100000000       |Terremoto |
@@ -107,4 +107,4 @@ Then el valor de la prima es <prima>
 
 Examples:
 |prima  |valor    |
-|154.000|120000000|
+|122.000|120000000|
