@@ -25,13 +25,28 @@ public class ImpresionReimpresionDefinitions {
         impresionReimpresionSteps.expedirRenovacionPoliza();
     }
 
-    @Then("me deben aparecer las opciones por las cuales puedo imprimir $opciones")
+    @When("me deben aparecer las opciones por las cuales puedo imprimir $opciones")
     public void validarOpcionesReimpresion(ExamplesTable opciones) {
         impresionReimpresionSteps.validarOpcionesReimprimir(opciones);
+    }
+
+    @When("cuando vaya a la opcion documentos")
+    public void irAOpcionDocumentos() {
+        impresionReimpresionSteps.irAOpcionDocumentos();
+    }
+
+    @Then("se deben seleccionar todas las opciones por las cuales quiero reimprimir")
+    public void validarOpcionesReimpresionHabilitadas() {
+        impresionReimpresionSteps.validarOpcionesReimpresionHabilitadas();
     }
 
     @Then("no se debe mostrar el boton reimpresion")
     public void validarNoPresenciaDeReimpresion() {
         impresionReimpresionSteps.validarNoPresenciaDeReimpresion();
     }
+    @When("cuando edite la renovacion de poliza")
+    public void editarRenovacionPoliza(){
+        impresionReimpresionSteps.editarRenovacionPoliza();
+    }
+
 }

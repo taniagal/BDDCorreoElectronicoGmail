@@ -174,15 +174,15 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 
+    @Then("realizar la cotizacion")
+    public void realizarCotizacion() {
+        nuevaCotizacionSteps.intentarCotizar();
+    }
+
     @Then("se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <valorCuota> y\n" +
             "el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza")
     public void mostrarValorYNumeroDeCuotas(@Named("valorCuota") String valorCuota,
                                             @Named("numeroCuotas") String numeroCuotas) {
         cotizacionDePolizaSteps.mostrar_Valor_A_Pagar_Por_Cuota_Y_Numero_De_Cuotas(valorCuota, numeroCuotas);
-    }
-
-    @Then("realizar la cotizacion")
-    public void realizarCotizacion() {
-        nuevaCotizacionSteps.intentarCotizar();
     }
 }

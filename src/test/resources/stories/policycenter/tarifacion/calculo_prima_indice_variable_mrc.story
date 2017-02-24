@@ -28,9 +28,9 @@ And cotice el articulo
 Then debo poder ver el valor de la prima en la cobertura y el valor de cobertura de sustraccion
 | cobertura                     | prima   |
 | Cobertura de Terremoto        | 125.050 |
-| Cobertura de Sustracción      | 4.674   |
-| Cobertura de Danos materiales | 42.066  |
+| Cobertura de Sustracción      | 114,00  |
+| Cobertura de Danos materiales | 46.740  |
 
 Examples:
-| valor     | valor_indice | departamento | ciudad   | direccion         | descripcion   | actividad                         |
+| valor     | valor_indice | departamento | ciudad   | direccion         | descripcion   | actividad                        |
 | 120000000 | 5           | Antioquia    | Medellin | CR 44 A # 73 - 00 | Edificio Core | Actividades de agencias de empleo |

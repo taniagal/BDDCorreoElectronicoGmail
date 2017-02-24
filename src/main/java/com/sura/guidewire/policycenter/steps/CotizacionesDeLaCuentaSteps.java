@@ -2,11 +2,11 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
-import java.util.Map;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
+import java.util.Map;
 
 public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     private final OpcionesAdminitradorCotizaciones opcionesAdministradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
@@ -26,12 +26,22 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarAccionesCotizacion() {
-        opcionesAdministradorCotizaciones.seleccionarAcciones();
+        opcionesAdministradorCotizaciones.seleccionarAccionesPolizaEstadoCotizado();
+    }
+
+    @Step
+    public void seleccionarAccionesCotizacionEnEstadoBorrador() {
+        opcionesAdministradorCotizaciones.seleccionarAccionesPolizaEstadoBorrador();
     }
 
     @Step
     public void validarEstadosCotizacion(String declinar, String noTomar) {
         opcionesAdministradorCotizaciones.validarEstadosCotizacion(declinar, noTomar);
+    }
+
+    @Step
+    public void validarEstadoDeCotizacionEnBorrador(String retirar) {
+        opcionesAdministradorCotizaciones.validarEstadosCotizacion(retirar);
     }
 
     @Step
@@ -47,6 +57,16 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     @Step
     public void validarOpcionRetirar(String retirar) {
         opcionesAdministradorCotizaciones.validarOpcionRetirar(retirar);
+    }
+
+    @Step
+    public void retirarTransaccionDePoliza() {
+        opcionesAdministradorCotizaciones.retirarTransaccionDePoliza();
+    }
+
+    @Step
+    public void validarRetiroTransaccionDePoliza() {
+        opcionesAdministradorCotizaciones.validarRetiroTransaccionDePoliza();
     }
 
     @Step

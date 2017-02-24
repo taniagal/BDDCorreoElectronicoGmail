@@ -16,4 +16,8 @@ public class AjustePantallaPagosYValidacionesSteps extends ScenarioSteps {
     public void validacionDatosDePantallaPago(Parametros parametros) {
         ajustePantallaPagosYValidacionesPage.validacionDatosDePantalla(parametros);
     }
+    @Step
+    public void seleccionarPlanInformacionPrimas(Parametros parametros) {
+        ajustePantallaPagosYValidacionesPage.seleccionarPlanInformacionPrimas(parametros);
+    }
 }

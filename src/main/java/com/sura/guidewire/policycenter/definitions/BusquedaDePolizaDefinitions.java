@@ -13,13 +13,14 @@ public class BusquedaDePolizaDefinitions {
     BusquedaDePolizaSteps busquedaDePolizaSteps;
 
     @Given("que voy a buscar una poliza")
+    @When("que voy a buscar una poliza")
     public void irABuscarPoliza() {
         busquedaDePolizaSteps.irABuscarPoliza();
     }
 
     @When("voy a buscar la poliza")
     public void buscarPoliza() {
-        busquedaDePolizaSteps.capturarNumeroDePoliza();
+        busquedaDePolizaSteps.buscarNumeroDePoliza();
 
     }
 
@@ -82,5 +83,10 @@ public class BusquedaDePolizaDefinitions {
                                                           @Named("producto") String producto,
                                                           @Named("numeroCuenta") String codigoAgente) {
         busquedaDePolizaSteps.buscarPolizaPorNumeroCuentaYDosOpcionales(numeroCuenta, producto, codigoAgente);
+    }
+
+    @When("la busco por numero de cuenta <numeroCuenta> y la selecciono")
+    public void buscarPolizaPorNumeroDeCuentaSeleccionar(@Named("numeroCuenta") String numeroCuenta) {
+        busquedaDePolizaSteps.buscarPolizaPorNumeroDeCuentaSeleccionar(numeroCuenta);
     }
 }

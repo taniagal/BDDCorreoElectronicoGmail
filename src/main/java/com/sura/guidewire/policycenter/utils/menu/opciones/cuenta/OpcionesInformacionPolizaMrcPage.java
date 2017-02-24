@@ -123,6 +123,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private static final String LINK_MENU_LATERAL_INICIAL = ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
     private static final String LINK_MENU_LATERAL_FINAL = "')]";
     private static final String ASEGURADORA = "ASEGURADORA";
+    private static final String OPCIONES_MENU ="OPCIONES_MENU";
     private boolean esVisible;
     public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
 
@@ -413,8 +414,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         String xpathMenu;
         for (int i = 0; i < menusesperados.getRowCount(); i++) {
             menus = menusesperados.getRows().get(i);
-            if (estadouno.contains("Visible") && menus.get("OPCIONES_MENU") != null) {
-                String mensaje = menus.get("OPCIONES_MENU");
+            if (estadouno.contains("Visible") && menus.get(OPCIONES_MENU) != null) {
+                String mensaje = menus.get(OPCIONES_MENU);
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementoMenu.isVisible());
@@ -435,8 +436,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         String xpathMenu;
         for (int i = 0; i < menusesperados.getRowCount(); i++) {
             menus = menusesperados.getRows().get(i);
-            if (estado.contains("Visible") && menus.get("OPCIONES_MENU") != null) {
-                String mensaje = menus.get("OPCIONES_MENU");
+            if (estado.contains("Visible") && menus.get(OPCIONES_MENU) != null) {
+                String mensaje = menus.get(OPCIONES_MENU);
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
@@ -447,7 +448,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-                MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", !elementoMenu.isVisible());
+                MatcherAssert.assertThat("El elemento: " + mensaje + ", es visible", !elementoMenu.isVisible());
                 resetImplicitTimeout();
             }
         }

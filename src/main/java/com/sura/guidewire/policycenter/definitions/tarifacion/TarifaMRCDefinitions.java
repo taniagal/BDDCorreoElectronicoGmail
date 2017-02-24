@@ -86,4 +86,15 @@ public class TarifaMRCDefinitions {
     public void verificarTarifacion(ExamplesTable datos){
         tarifaMRCSteps.verificarTarifacion(datos);
     }
+
+    @When("ingreso el indice variable <valor_indice> de la maquinaria")
+    public void ingrasarIndiceVariableMaquinaria(@Named("valor_indice") String valorIndice){
+        tarifaMRCSteps.ingrasarIndiceVariableMaquinaria(valorIndice);
+    }
+
+    @When("agrego el valor comercial <valor>")
+    public void seleccionarArticulosYTodadsSusCoberturas(@Named("valor") String valor){
+        tarifaMRCSteps.ingresarValorcomercial(valor);
+    }
+
 }

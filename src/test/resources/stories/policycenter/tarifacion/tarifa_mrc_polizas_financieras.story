@@ -20,9 +20,6 @@ And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas             		  |
 |Machine  |300000000       |Danos,Asonada,Rotura,Terremoto|
 |Furniture|300000000       |Danos,Asonada,Rotura,Terremoto|
-And ingrese las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia | 300000000      |
 And cotice el articulo
 Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo  |descripcion                      |valor  |
@@ -35,6 +32,7 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |Muebles   |Cobertura de Terremoto           |434.700|
 |Muebles   |Cobertura de Asonada             |28.980 |
 |Muebles   |Cobertura de Rotura de maquinaria|0,00   |
+|Muebles   |Cobertura de Sustracción         |0,00   |
 And debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
@@ -54,17 +52,16 @@ And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas             |
 |Building |100000000       |Danos,Asonada,Terremoto|
 |Furniture|140000000       |Danos,Asonada,Terremoto|
-And ingrese las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia | 300000000      |
 And cotice el articulo
 Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo  |descripcion                      |valor  |
+|Edificio  |Cobertura de Sustracción         |0,00   |
 |Edificio  |Cobertura de Danos materiales    |94.500 |
 |Edificio  |Cobertura de Terremoto           |105.000|
 |Edificio  |Cobertura de Asonada             |10.500 |
 |Edificio  |Subtotal                         |210.000|
 |Muebles   |Cobertura de Danos materiales    |459.816|
+|Muebles   |Cobertura de Sustracción         |0,00   |
 |Muebles   |Cobertura de Terremoto           |202.860|
 |Muebles   |Cobertura de Asonada             |13.524 |
 |Muebles   |Subtotal                         |676.200|

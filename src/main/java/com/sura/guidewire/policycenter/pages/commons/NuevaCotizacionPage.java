@@ -65,7 +65,7 @@ public class NuevaCotizacionPage extends PageUtil {
     private static final String TABLA_SELECCION_DE_PRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/*/table/tbody";
     private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
     private String oficina = "1073";
-    private String agente = "DIRECTO";
+    private String agente = "ASESOR 4 - PRUEBA TRASPASO";
 
 
     public NuevaCotizacionPage(WebDriver driver) {
@@ -163,6 +163,7 @@ public class NuevaCotizacionPage extends PageUtil {
             comboBoxCodigoDeAgente.sendKeys(Keys.ENTER);
             seleccionarItem(comboBoxCodigoDeAgente, codigoAgente);
         }
+        waitForTextToAppear(nomProducto);
         esperarHasta(TIEMPO_1000);
         List<WebElementFacade> descripcionProductos = getLista(TABLA_SELECCION_DE_PRODUCTO + "/tr/td[2]");
         for (int i = 1; i <= descripcionProductos.size(); i++) {
@@ -186,10 +187,11 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void seleccionarOficinaDeRadicacionYAgente(String oficina, String agente) {
         comboBoxOficinaDeRadicacion.waitUntilPresent();
+        seleccionarItem(comboBoxOficinaDeRadicacion, "1059");
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
         try {
             clickearElemento(comboBoxNombreAgente, TIEMPO_4);
-        }catch (StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException", e);
             clickearElemento(comboBoxNombreAgente, TIEMPO_4);
         }

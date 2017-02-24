@@ -128,4 +128,9 @@ public class TarifaAutosSteps extends ScenarioSteps {
         tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
     }
 
+    @Step
+    public void verificarTarifacionPrima(String primaTotal) {
+        tarifaAutosPage.verificarTarifacionPrima(primaTotal);
+    }
+
 }

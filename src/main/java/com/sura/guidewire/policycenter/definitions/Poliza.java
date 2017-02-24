@@ -86,6 +86,12 @@ public class Poliza {
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
     }
 
+    @Given("copie la poliza")
+    public void entoncesCopieLaPoliza() {
+        LOGGER.info("Poliza.cuandoCopie la poliza");
+        nuevaCotizacionSteps.copiarEnvio();
+    }
+
     @When("copie la poliza")
     public void cuandoCopieLaPoliza() {
         LOGGER.info("Poliza.cuandoCopie la poliza");
@@ -111,6 +117,7 @@ public class Poliza {
     }
 
     @When("ingrese al resumen de la poliza expedida")
+    @Then("ingresar al resumen de la poliza cancelada")
     public void cuandoIntenteIngresarAlResumenDeLaPolizaExpedida() {
         polizaSteps.verResumenDeLaPolizaExpedida();
     }
@@ -211,6 +218,16 @@ public class Poliza {
         LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
         analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza();
         analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
+    @When("ingrese a informacion de poliza $variable")
+    public void cuandoingreseAInformacionDePoliza() {
+        polizaSteps.seleccionarOpcionInformacionDePoliza();
+    }
+
+    @Then("se debe mostrar en el campo $texto la opcion <opcion> no editable")
+    public void entoncesSeDebeMostrarEnElCampoLaOpcion(@Named("opcion") String opcion) {
+        polizaSteps.validarQueSeMuestreValorEnCampoYNoSeaEditable(opcion);
     }
 
     @When("se solicite aprobacion para los riesgos en renovacion de poliza")

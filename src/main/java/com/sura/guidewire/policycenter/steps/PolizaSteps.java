@@ -78,6 +78,16 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void seleccionaBotonVerAsesoresDeLaPoliza() {
+        polizaPage.seleccionaBotonVerAsesoresDeLaPoliza();
+    }
+
+    @Step
+    public String consultarOficinaDeRadicacion() {
+        return  polizaPage.consultarOficinaDeRadicacion();
+    }
+
+    @Step
     public void ingresarMotivosCancelacion(String motivo, String descripcion) {
         polizaPage.ingresarMotivosCancelacion(motivo, descripcion);
     }
@@ -161,7 +171,7 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
-    public void seleccionarReaseguroEspecialSi(){
+    public void seleccionarReaseguroEspecialSi() {
         polizaPage.seleccionarReaseguroEspecialSi();
     }
 
@@ -221,5 +231,15 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void ingresarAVerCoaseguros() {
         obtenerPolizaPage().ingresarOpcionMostrarCoaseguros();
+    }
+
+    @Step
+    public void validarQueSeMuestreValorEnCampoYNoSeaEditable(String valor) {
+        obtenerPolizaPage().validarQueSeMuestreValorEnCampoYNoSeaEditable(valor);
+
+    }
+    @Step
+    public void ingresarFechaDeCancelacion(int dato) {
+        obtenerPolizaPage().ingresarFechaDeCancelacion(obtenerPolizaPage().obtenerFechacancelacionElemento(),dato);
     }
 }

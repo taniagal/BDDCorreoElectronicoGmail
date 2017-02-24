@@ -121,6 +121,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade lblMensajeValidaRiesgosRepetidos;
     @FindBy(xpath = "//span[@id='RenewalWizard:Prev-btnInnerEl']")
     private WebElementFacade botonVolverEnRenovacion;
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:SaleMethod_DV-inputEl']")
+    private WebElementFacade comboMedioVenta;
 
 
     TableWidgetPage tabla;
@@ -177,6 +179,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
     }
 
+    public void ingresarMedioDeVenta() {
+        waitFor(comboMedioVenta);
+        seleccionarItem(comboMedioVenta,"Televentas");
+    }
+
     public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad) {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
@@ -190,6 +197,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         esperarPorValor(comboBoxCiudad, ciudad);
         seleccionarItem(comboBoxActividadEconomica, actividad);
         esperarPorValor(comboBoxActividadEconomica, actividad);
+        ingresarMedioDeVenta();
         clickearElemento(botonAceptar);
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (botonBorrar.isVisible()) {
@@ -536,6 +544,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         if (tipodocumento.contains(TIPO_DOCUMENTO)) {
             waitForTextToAppear("Primer nombre");
+        } else {
+            waitForTextToAppear("Razón social");
         }
         esperarHasta(TIEMPO_300);
         campoTxtNumeroDocumento.sendKeys(cedula);

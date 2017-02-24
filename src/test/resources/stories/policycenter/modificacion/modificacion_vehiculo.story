@@ -21,7 +21,7 @@ And se debe mostrar un mensaje <mensaje> indicando la restriccion
 
 Examples:
 |numeroPoliza |numeroFasecolda|modelo|claseVehiculo |marca|linea                            |ciudadCirculacion|mensaje
-|TEST_22222222|52525252       |2016  |Automóviles   |AUDI |TT  8S 2.0 TFSI CO - TP 2000CC T |ACANDI           |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
+|TEST_22222222|52525252       |2016  |Automóviles   |AUDI |TT  8S 2.0 TFSI CO - TP 2000CC T |ACANDI (Choco)   |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
 
 Scenario: Consultar bonificaciones
 Meta:
