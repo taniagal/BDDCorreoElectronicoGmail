@@ -27,8 +27,6 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
     private WebElementFacade comboCriteriosBusqueda;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:CPSearch-inputEl']")
     private WebElementFacade campoCriterioDeBusqueda;
-    @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']")
-    private WebElementFacade filaResultados;
     public static final int TIEMPO_7 = 7000;
 
     public BusquedaDePolizaPorCriteriosPage(WebDriver driver) {
@@ -48,9 +46,7 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
 
     public void buscarPorResultados(ExamplesTable aVerificar) {
         Map<String, String> datosVerificar = aVerificar.getRow(0);
-
         esperarHasta(TIEMPO_7);
-
         Set<String> llaves = datosVerificar.keySet();
         String contenidoTabla = tablaResultados.getText();
 
