@@ -9,6 +9,8 @@ public class IngresoTransaccionesPolizaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Jobs']/div")
     private WebElementFacade menuTransacciones;
+    @FindBy(xpath = ".//*[@id='PolicyFile_Jobs:Policy_JobsScreen:jobNumberToFilter-inputEl']")
+    private WebElementFacade numeroTransaccionPoliza;
 
 
     public IngresoTransaccionesPolizaPage (WebDriver driver){
@@ -20,7 +22,9 @@ public class IngresoTransaccionesPolizaPage extends PageUtil {
         clickearElemento(menuTransacciones);
     }
 
-    public void busquedaTransaccion(){
-
+    public void busquedaTransaccion(String numeroTransaccion){
+        numeroTransaccionPoliza.waitUntilVisible();
+        clickearElemento(numeroTransaccionPoliza);
+        numeroTransaccionPoliza.sendKeys(numeroTransaccion);
     }
 }

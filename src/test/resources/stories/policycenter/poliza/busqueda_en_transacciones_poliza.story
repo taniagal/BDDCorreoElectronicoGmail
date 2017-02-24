@@ -26,5 +26,5 @@ Then se debe realizar busqueda por transaccion de poliza <numeroTransaccion>
 
 
 Examples:
-| |
-| |
+| numeroTransaccion|
+| 0005367162       |

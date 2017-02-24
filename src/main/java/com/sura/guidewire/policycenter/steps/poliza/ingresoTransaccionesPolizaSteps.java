@@ -24,7 +24,7 @@ public class ingresoTransaccionesPolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void busquedaTransaccionPoliza(){
-        ingresoTransaccionesPolizaPage.busquedaTransaccion();
+    public void busquedaTransaccionPoliza(String numeroTransaccion){
+        ingresoTransaccionesPolizaPage.busquedaTransaccion(numeroTransaccion);
     }
 }
