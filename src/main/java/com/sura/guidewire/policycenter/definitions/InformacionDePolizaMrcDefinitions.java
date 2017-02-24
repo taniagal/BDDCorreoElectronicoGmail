@@ -134,8 +134,8 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresarFechaDeVigencia(fechaInicioVigencia);
     }
 
-    @Then("se debe mostrar un mensaje <mensaje> de error")
-    public void mostarMensaError(@Named("mensaje") String mensaje) {
+    @Then("se debe mostrar un mensaje <mensajeerror> de error")
+    public void mostarMensaError(@Named("mensajeerror") String mensaje) {
         informacionDePolizaMrcSteps.validaMensajeEnPantalla(mensaje);
     }
 

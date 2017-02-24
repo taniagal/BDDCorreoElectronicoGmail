@@ -17,7 +17,7 @@ When seleccione la opcion SI de empleado sura
 And cotice y expida la poliza
 And ingrese al resumen de la poliza expedida
 And ingrese a informacion de poliza en resumen de poliza
-Then se debe mostrar en el campo empleado sura la <opcion> no editable
+Then se debe mostrar en el campo empleado sura la opcion <opcion> no editable
 
 Examples:
 | cotizacion |opcion |
@@ -30,7 +30,7 @@ And copie la poliza
 When cotice y expida la poliza
 And ingrese al resumen de la poliza expedida
 And ingrese a informacion de poliza en resumen de poliza
-Then se debe mostrar en el campo empleado sura la <opcion> no editable
+Then se debe mostrar en el campo empleado sura la opcion <opcion> no editable
 Examples:
 | cotizacion |opcion |
 | 33335550   |No     |

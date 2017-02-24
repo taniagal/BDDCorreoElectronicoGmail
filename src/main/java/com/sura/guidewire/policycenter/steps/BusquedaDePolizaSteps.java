@@ -69,8 +69,17 @@ public class BusquedaDePolizaSteps extends ScenarioSteps{
         busquedaDePolizaPage.buscarPolizaPorNumeroCuentaYDosOpcionales(numeroCuenta, producto, codigoAgente);
     }
 
-    public void capturarNumeroDePoliza(){
-        busquedaDePolizaPage.capturarNumeroDePoliza();
+    @Step
+    public void buscarPolizaPorNumeroDeCuentaSeleccionar(String numeroCuenta) {
+        busquedaDePolizaPage.buscarPolizaPorNumeroDeCuentaSeleccionar(numeroCuenta);
+    }
 
+    public void buscarNumeroDePoliza(){
+        busquedaDePolizaPage.buscarNumeroDePoliza();
+
+    }
+    @Step
+    public String capturarNumeroPoliza() {
+        return busquedaDePolizaPage.capturarNumeroPoliza();
     }
 }

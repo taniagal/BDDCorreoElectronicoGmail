@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -114,6 +115,18 @@ public class PolizaPage extends PageUtil {
         findBy(btnSiguienteCambioPoliza).waitUntilVisible().waitUntilClickable().click();
     }
 
+    public void seleccionaBotonVerAsesoresDeLaPoliza() {
+        waitFor(TIEMPO_5).seconds();
+        String verAsesoresDeLaPoliza = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducersLink']";
+        findBy(verAsesoresDeLaPoliza).waitUntilVisible().waitUntilClickable().click();
+    }
+
+    @Step
+    public String consultarOficinaDeRadicacion() {
+        String oficionaDeRadicacion = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_ProducerDV:PolicyInfoProducerInfoInputSet:SuraMainOffice-inputEl']";
+        WebElementFacade labelOficionaDeRadicacion = getElemento(oficionaDeRadicacion);
+        return labelOficionaDeRadicacion.getText();
+    }
 
     public void editarTransaccion() {
         LOGGER.info("PolizaPage.editarTransaccion");
@@ -351,12 +364,12 @@ public class PolizaPage extends PageUtil {
         clickearElemento(menuItemRetirarTransaccion);
     }
 
-    public void confirmarCancelacion() {
+    public void confirmarCancelacion(){
         botonRetirarCancelacion.waitUntilPresent();
         clickearElemento(botonRetirarCancelacion);
     }
 
-    public void seleccionarReaseguroEspecialSi() {
+    public void seleccionarReaseguroEspecialSi(){
         optionReaseguroEspecialSi.waitUntilPresent();
         clickearElemento(optionReaseguroEspecialSi);
         checkReaseguroEspecialSi.waitUntilPresent();
@@ -368,5 +381,11 @@ public class PolizaPage extends PageUtil {
         MatcherAssert.assertThat("El campo no es igual al valor recibido", findBy(campoEmpleadoSura).getText().equals(valor));
         MatcherAssert.assertThat(cotizacionPage.buscarInputHabilitadoEnElemento(campoEmpleadoSura), Is.is(false));
         resetImplicitTimeout();
+    }
+    public void ingresarFechaDeCancelacion(WebElementFacade fecha, int mes) {
+        LocalDate fechaSuperior = formatter.parseDateTime(fecha.getValue()).toLocalDate().plusMonths(mes);
+        obtenerFechacancelacionElemento().clear();
+        obtenerFechacancelacionElemento().sendKeys(formatter.print(fechaSuperior));
+        obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
     }
 }

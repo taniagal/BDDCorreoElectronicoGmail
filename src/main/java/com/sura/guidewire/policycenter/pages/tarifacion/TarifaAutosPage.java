@@ -377,4 +377,10 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
         seleccionarItem(comboBoxCarroDeReemplazoPerdidaParcial, dato.get("CRPP"));
     }
+
+    public void verificarTarifacionPrima(String primaTotal) {
+        campoPrimaTotal.waitUntilPresent();
+        MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
+                campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
+    }
 }

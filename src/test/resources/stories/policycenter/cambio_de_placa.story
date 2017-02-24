@@ -19,8 +19,8 @@ When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cuando cambie la placa <placa>
 And se deben recargar los datos de la placa anterior:
-| modelo | codigoFasecolda | ciudadCirculacion | tipoServicio | chasis  | motor | valorAsegurado | claseVehiculo | marca | zona |
-| 2011   | 01601225        | MEDELLIN          | Particular   | kljh456 | yui10 | 17900000       | Automóviles   | AUDI  | 2    |
+| modelo | codigoFasecolda | ciudadCirculacion             | tipoServicio | chasis  | motor | valorAsegurado | claseVehiculo | marca | zona |
+| 2011   | 01601225        | MEDELLIN (Antioquia)          | Particular   | kljh456 | yui10 | 17900000       | Automóviles   | AUDI  | 2    |
 And quiera volver a cambiar la placa
 And se debe cargar la placa inicial <placaInicial>
 And vuelva a cambiar la placa
@@ -50,5 +50,5 @@ Then debe mostrar un mensaje de autorizacion para expedir
 
 Examples:
 |placa  |placaInicial |placaVenezolana|ciudad|placaExistente|placaRiesgoConsultable|venezolana|                                                                     |
-|rando21|ABB195       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
+|rando21|ABW196       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
 

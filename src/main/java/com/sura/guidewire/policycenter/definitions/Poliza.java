@@ -117,6 +117,7 @@ public class Poliza {
     }
 
     @When("ingrese al resumen de la poliza expedida")
+    @Then("ingresar al resumen de la poliza cancelada")
     public void cuandoIntenteIngresarAlResumenDeLaPolizaExpedida() {
         polizaSteps.verResumenDeLaPolizaExpedida();
     }
@@ -224,7 +225,7 @@ public class Poliza {
         polizaSteps.seleccionarOpcionInformacionDePoliza();
     }
 
-    @Then("se debe mostrar en el campo $texto la <opcion> no editable")
+    @Then("se debe mostrar en el campo $texto la opcion <opcion> no editable")
     public void entoncesSeDebeMostrarEnElCampoLaOpcion(@Named("opcion") String opcion) {
         polizaSteps.validarQueSeMuestreValorEnCampoYNoSeaEditable(opcion);
     }

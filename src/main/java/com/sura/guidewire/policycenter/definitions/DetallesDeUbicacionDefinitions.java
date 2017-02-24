@@ -23,6 +23,7 @@ public class DetallesDeUbicacionDefinitions {
     public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad){
         detallesDeUbicacionSteps.validarCamposNuevos();
         detallesDeUbicacionSteps.agregarDireccion(direccion, departamento, ciudad);
+        detallesDeUbicacionSteps.agregarMedioDeVenta();
     }
 
     @When("descripcion <descripcion>, actividad economica <actividad>")
@@ -34,8 +35,10 @@ public class DetallesDeUbicacionDefinitions {
     public void agregaNuevaUbicacion(ExamplesTable datos){
         Map<String, String> dato = datos.getRow(0);
         detallesDeUbicacionSteps.validarCamposNuevos();
+        detallesDeUbicacionSteps.agregarMedioDeVenta();
         detallesDeUbicacionSteps.agregarDireccion(dato.get("direccion"), dato.get("departamento"), dato.get("ciudad"));
         detallesDeUbicacionSteps.agregarUbicacion(dato.get("descripcion"), dato.get("actividad"));
+
     }
 
     @Then("espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaciones la nueva ubicaciOn ingresada")

@@ -28,7 +28,7 @@ Given estoy cotizando una poliza:
 |cuenta    |producto               |tipoPoliza |
 |C001888888|Multiriesgo corporativo|Individual |
 When modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>
-Then se debe mostrar un mensaje <mensaje> de error
+Then se debe mostrar un mensaje <mensajeerror> de error
 
 Examples:
 |numeroCuenta  |nomProducto            |fechaInicioVigencia|organizacion|mensaje                                                                                    |
