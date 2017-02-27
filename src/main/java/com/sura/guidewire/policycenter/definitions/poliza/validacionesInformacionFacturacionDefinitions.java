@@ -13,6 +13,7 @@ public class validacionesInformacionFacturacionDefinitions {
 
     @When("intente ingresar al modulo de facturacion")
     public void ingresarMenuFacturacion(){
+
         validacionesInformacionFacturacionSteps.ingresarMenuFacturacion();
     }
 
