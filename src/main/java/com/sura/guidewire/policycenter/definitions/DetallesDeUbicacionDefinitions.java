@@ -20,10 +20,10 @@ public class DetallesDeUbicacionDefinitions {
     private NuevaCotizacionSteps nuevaCotizacionSteps;
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
-    public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad){
+    public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad, @Named("medioVenta") String medioVenta){
         detallesDeUbicacionSteps.validarCamposNuevos();
         detallesDeUbicacionSteps.agregarDireccion(direccion, departamento, ciudad);
-        detallesDeUbicacionSteps.agregarMedioDeVenta();
+        detallesDeUbicacionSteps.agregarMedioDeVenta(medioVenta);
     }
 
     @When("descripcion <descripcion>, actividad economica <actividad>")
@@ -35,7 +35,7 @@ public class DetallesDeUbicacionDefinitions {
     public void agregaNuevaUbicacion(ExamplesTable datos){
         Map<String, String> dato = datos.getRow(0);
         detallesDeUbicacionSteps.validarCamposNuevos();
-        detallesDeUbicacionSteps.agregarMedioDeVenta();
+        detallesDeUbicacionSteps.agregarMedioDeVenta(dato.get("medioVenta"));
         detallesDeUbicacionSteps.agregarDireccion(dato.get("direccion"), dato.get("departamento"), dato.get("ciudad"));
         detallesDeUbicacionSteps.agregarUbicacion(dato.get("descripcion"), dato.get("actividad"));
 
