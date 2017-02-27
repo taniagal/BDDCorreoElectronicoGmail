@@ -1,16 +1,14 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
-import com.sura.guidewire.policycenter.steps.poliza.ingresoTransaccionesPolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.IngresoTransaccionesPolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import javax.swing.*;
-
-public class busquedaEnTransaccionesPolizaDefinitions {
+public class BusquedaEnTransaccionesPolizaDefinitions {
 
     @Steps
-    ingresoTransaccionesPolizaSteps ingresoTransaccionesPolizaSteps;
+    IngresoTransaccionesPolizaSteps ingresoTransaccionesPolizaSteps;
 
 
     @When("intente ingresar al modulo de transacciones de poliza")

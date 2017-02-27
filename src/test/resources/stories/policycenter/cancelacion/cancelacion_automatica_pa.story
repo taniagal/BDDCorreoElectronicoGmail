@@ -1,11 +1,13 @@
-Cancelacion automatica pa
-
 Meta:
 @lote1
 @issue #CDSEG-3437
 @sprint 12
 @tag equipo: 3
 @local
+
+Narrative:
+Como usuario del policy center
+quiero poder procesar la cancelación de una póliza de autos de manera automatica
 
 Scenario: Boton cancelar poliza
 Meta: @manual
