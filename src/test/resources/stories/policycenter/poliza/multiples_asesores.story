@@ -4,15 +4,15 @@ Meta:
 @sprint 13
 
 Narrative:
-1.Se requiere la creacion de una tabla relacionada al Policy Period que permita el almacenamiento de varios producer code para una poliza.
-2.Se requiere cuando se esté en los datos de la póliza agregar  botones de insertar o borrar asesores (productores).
-3.Para el ingreso de los datos del asesor se debe tener los siguientes campos :
-- Código de asesor (productor): Este campo es obligatorio.
-- Porcentaje: cada uno de los asesores debe tener un porcentaje de participación la suma de estos  siempre debe de ser del 100%.
-- Rol de asesor: Siempre debe haber un asesor líder.  El producer of record será considerado como el asesor líder de la póliza.
-4 - El cambio de los asesores se hace como un traspaso de cartera y se implementará en otras HU.
+Como usuario de policy center se requiere la creacion de una tabla relacionada al Policy Period que permita el almacenamiento
+de varios producer code para una poliza.
+Se requiere cuando se esté en los datos de la póliza agregar  botones de insertar o borrar asesores (productores).
+Para el ingreso de los datos del asesor se debe tener los siguientes campos
+Código de asesor (productor): Este campo es obligatorio.
+Porcentaje: cada uno de los asesores debe tener un porcentaje de participación la suma de estos  siempre debe de ser del 100.
+Rol de asesor Siempre debe haber un asesor líder.  El producer of record será considerado como el asesor líder de la póliza.
+El cambio de los asesores se hace como un traspaso de cartera y se implementará en otras HU.
 
-Disponibilidad Detalle Producto
 
 Scenario: 1_Agregar mas de un asesor a una poliza MRC
 GivenStories: stories/policycenter/login_policy.story
