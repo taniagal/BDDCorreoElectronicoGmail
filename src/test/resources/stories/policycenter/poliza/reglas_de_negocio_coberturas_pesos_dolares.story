@@ -17,11 +17,11 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Maquinaria y equipo                 |                                                | Valor Asegurable                                                                                  | 100000000      |
 | Información de Artículos | Maquinaria y equipo                 | Terremoto                                      |                                                                                                   | 100000000      |
 | Información de Artículos | Maquinaria y equipo                 | Rotura de maquinaria                           |                                                                                                   | 100000000      |
-| Información de Artículos | Existencias Flotantes               |                                                | Valor asegurado máximo                                                                            | 4432350000     |
+| Información de Artículos | Existencias Flotantes               |                                                | Valor asegurado máximo                                                                            | 9432350000     |
 | Información de Artículos | Existencias Flotantes               |                                                | Exposición promedio                                                                               | 100000         |
-| Información de Artículos | Existencias Flotantes               | Danos materiales                               | Valor asegurado danos materiales                                                                  | 4432350000     |
-| Información de Artículos | Existencias fijas                   |                                                | Valor Asegurable                                                                                  | 4432350001     |
-| Información de Artículos | Existencias fijas                   | Danos materiales                               | Valor asegurado danos materiales                                                                  | 4432350001     |
+| Información de Artículos | Existencias Flotantes               | Danos materiales                               | Valor asegurado danos materiales                                                                  | 9432350000     |
+| Información de Artículos | Existencias fijas                   |                                                | Valor Asegurable                                                                                  | 9432350001     |
+| Información de Artículos | Existencias fijas                   | Danos materiales                               | Valor asegurado danos materiales                                                                  | 9432350001     |
 | Coberturas del Riesgo    |                                     | Danos materiales                               | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria                          | 8864700001     |
 | Coberturas del Riesgo    |                                     | Danos materiales                               | Sublimite para gastos asociados a la ocurrencia de una pérdida                                    | 8898452300     |
 | Coberturas del Riesgo    |                                     | Todo riesgo construcción y todo riesgo montaje | Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados | 5915800000     |
@@ -58,8 +58,8 @@ When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | COBERTURA | ENTRADAS                                                                                  | VALOR_ENTRADAS |
-| Información de Artículos | Maquinaria y equipo |           | Valor Asegurable                                                                          | 11819500000    |
-| Información de Artículos | Maquinaria y equipo | Terremoto |                                                                                           | 11819500000    |
+| Información de Artículos | Maquinaria y equipo |           | Valor Asegurable                                                                          | 10819500000    |
+| Información de Artículos | Maquinaria y equipo | Terremoto |                                                                                           | 10819500000    |
 | Información de Artículos | Maquinaria y equipo | Terremoto | Deducible porcentual terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 2              |
 And muestre los mensajes de advertencia para las reglas de coberturas
 | mensaje1          |
@@ -88,11 +88,11 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Maquinaria y equipo                 |                                                | Valor Asegurable                                                                                  | 100000000      |
 | Información de Artículos | Maquinaria y equipo                 | Terremoto                                      |                                                                                                   | 100000000      |
 | Información de Artículos | Maquinaria y equipo                 | Rotura de maquinaria                           |                                                                                                   | 100000000      |
-| Información de Artículos | Existencias Flotantes               |                                                | Valor asegurado máximo                                                                            | 4432350000     |
+| Información de Artículos | Existencias Flotantes               |                                                | Valor asegurado máximo                                                                            | 9432350000     |
 | Información de Artículos | Existencias Flotantes               |                                                | Exposición promedio                                                                               | 100000         |
-| Información de Artículos | Existencias Flotantes               | Danos materiales                               | Valor asegurado danos materiales                                                                  | 4432350000     |
-| Información de Artículos | Existencias fijas                   |                                                | Valor Asegurable                                                                                  | 4432350001     |
-| Información de Artículos | Existencias fijas                   | Danos materiales                               | Valor asegurado danos materiales                                                                  | 4432350001     |
+| Información de Artículos | Existencias Flotantes               | Danos materiales                               | Valor asegurado danos materiales                                                                  | 9432350000     |
+| Información de Artículos | Existencias fijas                   |                                                | Valor Asegurable                                                                                  | 9432350001     |
+| Información de Artículos | Existencias fijas                   | Danos materiales                               | Valor asegurado danos materiales                                                                  | 9432350001     |
 | Coberturas del Riesgo    |                                     | Danos materiales                               | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria                          | 8864700001     |
 | Coberturas del Riesgo    |                                     | Danos materiales                               | Sublimite para gastos asociados a la ocurrencia de una pérdida                                    | 8864700001     |
 | Coberturas del Riesgo    |                                     | Todo riesgo construcción y todo riesgo montaje | Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados | 5915800000     |
