@@ -17,8 +17,8 @@ Given estoy cotizando una poliza:
 When ingrese la comision pactada en valor <valor>
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |
-|NEL501|2017  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|NEL501|2017  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|
 And seleccione que el vehiculo es cero kilometros
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
@@ -38,8 +38,8 @@ Given estoy cotizando una poliza:
 When ingrese la comision pactada en valor <valor>
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |
-|NEL501|2017  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|NEL501|2017  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|
 And seleccione que el vehiculo es cero kilometros
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
@@ -59,8 +59,8 @@ Given estoy cotizando una poliza:
 When ingrese la comision pactada en valor <valor>
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |
-|random|2011  |01601225        |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Autos Clásico|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|random|2011  |01601225        |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Autos Clásico|Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
 |limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|

@@ -15,8 +15,8 @@ Given estoy cotizando una poliza de autos:
 | Sura         | Autos    | CEDULA DE CIUDADANIA | 89651011        | 04/02/1980       | DIEGO         | CARDONA         | DIRECCION DE RESIDENCIA | CALLE 50 #50-50 | Antioquia    | Medellin | INT-3  |Individual|
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |
-| DAC276 | 2011   | 01601225         | MEDELLIN           | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
+| DAC276 | 2011   | 01601225         | MEDELLIN           | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
 When ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |

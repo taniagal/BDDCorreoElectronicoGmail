@@ -76,7 +76,5 @@ public class AjustePantallaPagosYValidacionesPage extends PageUtil{
 
     public void seleccionarPlanInformacionPrimas(Parametros parametros) {
         seleccionarItem(listplanInformacionPrima,parametros.getPlanDeInformacion());
-        multiplesAsesoresPage.esperarObjetoClikeableServidor(ENCABEZADO_PAGO);
-
     }
 }
