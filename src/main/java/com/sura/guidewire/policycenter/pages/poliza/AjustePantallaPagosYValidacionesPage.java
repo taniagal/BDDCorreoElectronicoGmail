@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 public class AjustePantallaPagosYValidacionesPage extends PageUtil{
     private MultiplesAsesoresPage multiplesAsesoresPage;
     private  static final String CONSTANTE_NO ="NO";
-    private static final String ENCABEZADO_PAGO = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:ttlBar']";
     private static final String ENCABEZADO_EDIFICIO_Y_UBICACIONES = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']";
     private static final String ENCABEZADO_COTIZACION = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']")
