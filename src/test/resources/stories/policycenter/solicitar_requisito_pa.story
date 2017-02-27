@@ -15,8 +15,8 @@ Given estoy cotizando una poliza:
 |C002888993|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion    |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|RAND590|2016  |00601182        |MEDELLIN (ANTIOQUIA) |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion    |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
+|RAND590|2016  |00601182        |MEDELLIN (ANTIOQUIA) |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
@@ -36,8 +36,8 @@ Given estoy cotizando una poliza:
 |C002888993|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|RAND591|2016  |00601182        |MEDELLIN (ANTIOQUIA)|Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
+|RAND591|2016  |00601182        |MEDELLIN (ANTIOQUIA)|Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |

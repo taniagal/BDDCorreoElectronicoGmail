@@ -15,8 +15,8 @@ Given voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto
 | tipoDocumento        | documento | cuenta     | producto |agente_oficina| oficina |
 | CEDULA DE CIUDADANIA | 1234567890| C000888888 | Autos    | DIRECTO      | 1073    |
 When ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |
-| RZX768 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA)| Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Básico |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |medioVenta|
+| RZX768 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA)| Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Básico |Televentas|
 And ingrese las coberturas a vehiculo:
 | limite | deducible |
 | 640.0  | 0         |
@@ -33,8 +33,8 @@ Given estoy cotizando una poliza de mrc con documento:
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1090658723 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |
-| ASDF9 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)| Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Autos Clásico |
+| placa | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
+| ASDF9 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)| Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Autos Clásico |Televentas|
 
 When ingrese las coberturas a vehiculo:
 | limite | deducible |
