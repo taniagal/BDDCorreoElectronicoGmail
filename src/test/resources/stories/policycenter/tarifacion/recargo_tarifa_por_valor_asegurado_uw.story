@@ -16,8 +16,8 @@ Given estoy cotizando una poliza:
 |C1060447895|Autos   |1059   |RANGEL         |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|descuento|recargo|zona|plan              |valor_asegurado|
-|NEL509|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null     |null   |2   |Plan Autos Clásico|17900000       |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|descuento|recargo|zona|plan              |valor_asegurado|medioVenta|
+|NEL509|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null     |null   |2   |Plan Autos Clásico|17900000       |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision:
 |limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
@@ -36,8 +36,8 @@ Given estoy cotizando una poliza:
 |C1060447895|Autos   |1059   |RANGEL         |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|descuento|recargo|zona|plan              |valor_asegurado|
-|NEL507|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null     |null   |2   |Plan Autos Clásico|17900000       |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|descuento|recargo|zona|plan              |valor_asegurado|medioVenta|
+|NEL507|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null     |null   |2   |Plan Autos Clásico|17900000       |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision:
 |limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|

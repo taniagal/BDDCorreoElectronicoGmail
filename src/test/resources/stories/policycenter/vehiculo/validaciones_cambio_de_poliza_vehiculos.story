@@ -5,6 +5,10 @@ Meta:
 @local
 @Sprint 4
 
+Narrative:
+Como usuario del policy center
+quiero poder ver las validaciones de cambio de poliza de vehiculo
+
 Scenario: Validar existencia de numero de chasis
 GivenStories: stories/policycenter/login_policy.story
 Given se ha realizado la cotizacion de la modificacion <cotizacion>

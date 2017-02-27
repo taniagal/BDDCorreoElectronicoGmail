@@ -12,11 +12,13 @@ public class ValidacionesInformacionFacturacionSteps extends ScenarioSteps {
     ValidacionesInformacionFacturacionPage validacionesInformacionFacturacionPage;
 
     public ValidacionesInformacionFacturacionSteps (Pages pages){
+
         super (pages);
     }
 
     @Step
     public void ingresarMenuFacturacion(){
+
         validacionesInformacionFacturacionPage.ingresarMenuAccionesFacturacion();
     }
 

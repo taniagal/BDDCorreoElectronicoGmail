@@ -5,7 +5,6 @@ import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.fluentlenium.core.annotation.Page;
 
 
 public class DetallesDeUbicacionSteps extends ScenarioSteps {
@@ -46,7 +45,7 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarMedioDeVenta() {
-        edificiosyUbicacionesWidget.ingresarMedioDeVenta();
+    public void agregarMedioDeVenta(String medioVenta) {
+        edificiosyUbicacionesWidget.ingresarMedioDeVenta(medioVenta);
     }
 }

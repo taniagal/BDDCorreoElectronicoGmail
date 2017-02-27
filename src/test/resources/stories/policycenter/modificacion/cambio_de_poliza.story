@@ -18,8 +18,8 @@ Given estoy cotizando una poliza de autos:
 Autos   |Individual|CEDULA DE CIUDADANIA|02/12/1990      |EREN         |JAEGER         |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And ingrese las coberturas:
 |limite|deducible|abogado |PLlaves |
 |640.  |0        |Si      |Si      |
@@ -77,7 +77,7 @@ Meta:
 @manual
 Given estoy cotizando la poliza basado en otro envio <envio>
 And le ingreso el reaseguro especial
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>
 And descripcion <descripcion>, actividad economica <actividad>
 When seleccione la cobertura:
 |valorReconstruccion|valorAsegurado|valorComercial|cobertura|
@@ -89,5 +89,5 @@ And quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|envio   |reaseguro|departamento|ciudad  |direccion        |descripcion  |actividad                    |mensaje
-|22222211|Sí       |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|Esta poliza tiene reaseguro especial. Debe validar que las condiciones otorgadas no amparadas por el contrato automático tengan respaldo facultativo o aceptación especial.
+|envio   |reaseguro|departamento|ciudad  |direccion        |descripcion  |actividad                    |mensaje                                                                                                                                                                    |medioVenta|
+|22222211|Sí       |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|Esta poliza tiene reaseguro especial. Debe validar que las condiciones otorgadas no amparadas por el contrato automático tengan respaldo facultativo o aceptación especial.|Televentas|

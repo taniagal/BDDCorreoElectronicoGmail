@@ -33,8 +33,7 @@ public class AjusteCalendarioAuditoriaRetiroFlotanteDefinitions {
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
 
     @When("en la pantalla de payment en el item schedule debe asignar por default plan type \"Reporting Plan\" no editable. El item \"audits\" debe aparecer por default \"No\" editable y se debe seleccionar el plan de informacion:$opciones")
-    public void seleccionarPlanDeInformacionYValidar(ExamplesTable opciones)
-    {
+    public void seleccionarPlanDeInformacionYValidar(ExamplesTable opciones) {
         ajustePantallaPagosYValidacionesSteps.validacionDatosDePantallaPago(new Parametros(opciones));
         ajustePantallaPagosYValidacionesSteps.seleccionarPlanInformacionPrimas(new Parametros(opciones));
     }
@@ -44,11 +43,13 @@ public class AjusteCalendarioAuditoriaRetiroFlotanteDefinitions {
         herramientasPolizaSteps.ingresarProgramaAuditoria();
         herramientasPolizaSteps.validarProgramaAuditoria(opciones);
     }
+
     @Then("ingreso a programa auditoria y verifico que no tenga los meses de la cancelacion:$opciones")
     public void verificarProgamaAuditoriaQueNotengaPeriodo(ExamplesTable opcion) {
         herramientasPolizaSteps.ingresarProgramaAuditoria();
         herramientasPolizaSteps.validarProgramaSinAuditoria(opcion);
     }
+
     @When("ingrese meses de cancelacion:$tiempo")
     public void ingresarMesesdeCancelacion(int tiempo) {
         polizaSteps.ingresarFechaDeCancelacion(tiempo);
@@ -59,10 +60,12 @@ public class AjusteCalendarioAuditoriaRetiroFlotanteDefinitions {
         escritorioSteps.irAmenuActividad();
         escritorioSteps.verificarAuditoriaFinal(numeroPoliza);
     }
+
     @When("remover articulo a utilizar")
     public void agregarNuevoArticulo() {
         edificiosUbicacionesSteps.removerRiesgos();
     }
+
     @When("expido la poliza y capturo el numero")
     public void expedirPoliza() {
         tasaUnicaSteps.expedirPoliza();

@@ -20,8 +20,8 @@ Given estoy cotizando una poliza de mrc:
 And ingrese la <fechaInicioVigencia> para un anio
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |
-| Colombia| Antioquia   | Medellin | CR 75 30 30 | Fabricación de otros artículos textiles n.c.p|
+| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |medioVenta|
+| Colombia| Antioquia   | Medellin | CR 75 30 30 | Fabricación de otros artículos textiles n.c.p|Televentas|
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 2000000000      |
@@ -43,8 +43,8 @@ Given estoy cotizando una poliza de mrc:
 And ingrese la <fechaInicioVigencia> para un anio
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |
-| Colombia| Antioquia   | Medellin | CR 46 12 71 | Cría de otros animales n.c.p.|
+| pais    | departamento| ciudad   | direccion   | actividadEconomica           |medioVenta|
+| Colombia| Antioquia   | Medellin | CR 46 12 71 | Cría de otros animales n.c.p.|Televentas|
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 2000000000      |

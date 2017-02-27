@@ -16,8 +16,8 @@ Given estoy cotizando una poliza de mrc:
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/10/1973      |EUGENIO      |BUSTAMANTE     |DIRECCION DE RESIDENCIA|CALLE 27a #60-68|Antioquia   |Medellin|INT-3 |
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |
-| Colombia| Antioquia   | Medellin | CR 45 70 30 | Fabricación de otros artículos textiles n.c.p|
+| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |medioVenta|
+| Colombia| Antioquia   | Medellin | CR 45 70 30 | Fabricación de otros artículos textiles n.c.p|Televentas|
 And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas             |
 |Building |100000000       |Danos,Asonada,Terremoto|

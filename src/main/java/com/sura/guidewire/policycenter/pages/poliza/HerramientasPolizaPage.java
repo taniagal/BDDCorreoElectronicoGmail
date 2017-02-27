@@ -11,8 +11,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.Map;
 
 public class HerramientasPolizaPage extends PageUtil {
-    private String TABLA_PROGRAMA_AUDITORIA = ".//*[@id='PolicyFile_Audits:AuditInformationScreen:AuditsLV-body']/*/table/tbody/tr";
-    private String PATH_PROGRAMA_AUDITORIA = ".//*[@id='PolicyFile_Audits:AuditInformationScreen:0']";
+    private static final String TABLA_PROGRAMA_AUDITORIA = ".//*[@id='PolicyFile_Audits:AuditInformationScreen:AuditsLV-body']/*/table/tbody/tr";
+    private static final String PATH_PROGRAMA_AUDITORIA = ".//*[@id='PolicyFile_Audits:AuditInformationScreen:0']";
     @FindBy(xpath = ".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Audits']/div")
     private WebElementFacade menuProgramaAuditoria;
 

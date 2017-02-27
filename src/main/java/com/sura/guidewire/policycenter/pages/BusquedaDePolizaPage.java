@@ -73,6 +73,7 @@ public class BusquedaDePolizaPage extends PageUtil {
             menuBuscarPoliza.click();
             waitForTextToAppear("Buscar pólizas");
         }
+        this.limpiarCampos();
     }
 
     public void buscarPolizaPorNumeroDePoliza(String buscarNumeroPoliza) {

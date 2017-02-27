@@ -81,8 +81,8 @@ When seleccione la opcion SI de honorario pactada e ingrese el valor
 | 0     |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion             | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |
-| random | 2016   | 52525252         | MEDELLIN (Antioquia)           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Global |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion             | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |medioVenta|
+| random | 2016   | 52525252         | MEDELLIN (Antioquia)           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Global |Televentas|
 And ingrese las coberturas a auto cero kilometros:
 | limite | deducible |
 | 640.   | 0         |              | 100000000      |

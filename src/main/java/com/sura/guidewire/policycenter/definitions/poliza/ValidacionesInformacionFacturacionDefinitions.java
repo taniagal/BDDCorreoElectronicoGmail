@@ -5,7 +5,7 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-public class validacionesInformacionFacturacionDefinitions {
+public class ValidacionesInformacionFacturacionDefinitions {
 
     @Steps
     ValidacionesInformacionFacturacionSteps validacionesInformacionFacturacionSteps;
@@ -13,6 +13,7 @@ public class validacionesInformacionFacturacionDefinitions {
 
     @When("intente ingresar al modulo de facturacion")
     public void ingresarMenuFacturacion(){
+
         validacionesInformacionFacturacionSteps.ingresarMenuFacturacion();
     }
 

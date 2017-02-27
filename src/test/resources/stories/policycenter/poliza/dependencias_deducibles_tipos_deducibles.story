@@ -4,6 +4,9 @@ Meta:
 @tag equipo: 2
 @Sprint 6
 
+Narrative:
+Como usuario del policy center
+quiero poder procesar los tipos de deducibles
 
 Scenario: 1 Tener deducible (porcentual o minimo) sin tipo de deducible (porcentual o minimo) en articulo
 GivenStories: stories/policycenter/login_policy.story

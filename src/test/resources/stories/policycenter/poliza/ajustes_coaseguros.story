@@ -46,7 +46,7 @@ When quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | Seguros Generales Suramericana S.A. | 60            |
 | ACE SEGUROS S.A                     | 40            |
 And de clic en Aceptar de la ventana Coaseguro
-And agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+And agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>
 And descripcion <descripcion>, actividad economica <actividad>
 And ingrese a edificios y ubicaciones
 And intente ingresar las entradas de las diferentes coberturas
@@ -57,5 +57,5 @@ And intente cotizar y expedir la poliza
 Then debo ver en el resumen de la poliza y en informacion de poliza los coaseguros no editables
 
 Examples:
-| numCuenta  | TipoCo | departamento | ciudad   | direccion         | descripcion   | actividad                     |
-| C000777777 | Cedido | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles |
+| numCuenta  | TipoCo | departamento | ciudad   | direccion         | descripcion   | actividad                     |medioVenta|
+| C000777777 | Cedido | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles |Televentas|
