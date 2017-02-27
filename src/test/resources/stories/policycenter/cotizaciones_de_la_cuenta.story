@@ -93,7 +93,7 @@ Given estoy cotizando una poliza:
 | cuenta     | organizacion | producto                |
 | C001888888 | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>
 And descripcion <descripcion>, actividad economica <actividad>
 And seleccione la cobertura:
 | valorReconstruccion | valorAsegurado | valorComercial | cobertura |
@@ -105,8 +105,8 @@ And una cotizacion este en estado 'Declinado' <declinado> y no se haya generado 
 Then me debe permitir crear una carta de declinacion por medio de un boton. El label del boton debe ser 'Crear carta de declinacion' <crearCarta>.
 
 Examples:
-| envio    | numCuenta  | declinado | propiedadComercial      | crearCarta                 | departamento | ciudad   | direccion         | descripcion   | actividad                     | razon   |
-| 22222211 | C001888888 | Declinada | Multiriesgo corporativo | Crear carta de declinación | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | Cartera |
+| envio    | numCuenta  | declinado | propiedadComercial      | crearCarta                 | departamento | ciudad   | direccion         | descripcion   | actividad                     | razon   |medioVenta|
+| 22222211 | C001888888 | Declinada | Multiriesgo corporativo | Crear carta de declinación | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | Cartera |Televentas|
 
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>
