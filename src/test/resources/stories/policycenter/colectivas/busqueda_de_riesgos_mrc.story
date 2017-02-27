@@ -13,8 +13,8 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |
-| Colombia| Antioquia   | Medellin | CR 45 30 30 | Acabado de productos textiles                |
+| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |medioVenta|
+| Colombia| Antioquia   | Medellin | CR 45 30 30 | Acabado de productos textiles                |Televentas|
 And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -50,8 +50,8 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |
-| Colombia| Antioquia   | Medellin | CR 20 20 20 | Acabado de productos textiles                |
+| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |medioVenta|
+| Colombia| Antioquia   | Medellin | CR 20 20 20 | Acabado de productos textiles                |Televentas|
 And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |

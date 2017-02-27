@@ -46,7 +46,7 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarMedioDeVenta() {
-        edificiosyUbicacionesWidget.ingresarMedioDeVenta();
+    public void agregarMedioDeVenta(String medioVenta) {
+        edificiosyUbicacionesWidget.ingresarMedioDeVenta(medioVenta);
     }
 }
