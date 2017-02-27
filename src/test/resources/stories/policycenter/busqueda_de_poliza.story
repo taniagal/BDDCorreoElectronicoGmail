@@ -72,24 +72,8 @@ When la busco por producto <producto>
 Then debe mostrar el mensaje <mensaje>
 
 Examples:
-| producto | mensaje                                                          |
-| Autos    | Se debe especificar al menos número de póliza o número de cuenta |
-
-Scenario: Consultar polizas solo por agente
-When la busco por agente <agente>
-Then debe mostrar el mensaje <mensaje>
-
-Examples:
-| agente | mensaje                                                          |
-| SURA   | Se debe especificar al menos número de póliza o número de cuenta |
-
-Scenario: Consultar polizas solo por codigo agente
-When la busco por codigo de agente <codigoAgente>
-Then debe mostrar el mensaje <mensaje>
-
-Examples:
-| codigoAgente | mensaje                                                          |
-| 4999         | Se debe especificar al menos número de póliza o número de cuenta |
+| producto | mensaje                                  |
+| Autos    |Debe seleccionar un criterio de búsqueda  |
 
 Scenario: Consultar polizas por numero de cuenta y producto
 When la busco por numero de cuenta <numeroCuenta> y producto <producto>
@@ -101,45 +85,6 @@ Examples:
 | numeroCuenta | producto |
 | C001888888   | Autos    |
 
-Scenario: Consultar polizas por numero de cuenta y agente
-When la busco por numero de cuenta <numeroCuenta> y agente <agente>
-Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza       |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual|
-
-Examples:
-| numeroCuenta | agente |
-| C001888888   | SURA   |
-
-Scenario: Consultar polizas por numero de cuenta  y codigo de agente
-When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
-Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza       |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual|
-
-Examples:
-| numeroCuenta | codigoAgente |
-| C001888888   | 4999         |
-
-Scenario: Consultar polizas por numero de cuenta, producto y codigo de agente
-When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
-Then se debe visualizar la siguiente información:
-| numeroPoliza  | nombreAsegurado                 | numeroCuenta | producto | estado     | fechaVigencia | fechaExpiracion | agente | tipoPoliza       |
-| TEST_22222222 | DORIAN STIWAR EASTMOND PULGARIN | C001888888   | Autos    | Programado | 04/18/2016    | 10/18/2016      | SURA   | Póliza individual|
-
-Examples:
-| numeroCuenta | producto | codigoAgente |
-| C001888888   | Autos    | 4999         |
-
-Scenario: Consultar polizas por numero de cuenta que no existe, producto y codigo de agente
-When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
-Then debe mostrar el mensaje <mensaje>
-
-Examples:
-| numeroCuenta | producto | codigoAgente | mensaje                             |
-| C001887545   | Autos    | 4999         | La búsqueda no devolvió resultados. |
-
-
 Scenario: Consultar polizas por numero de cuenta que no existe y producto
 When la busco por numero de cuenta <numeroCuenta> y producto <producto>
 Then debe mostrar el mensaje <mensaje>
@@ -148,18 +93,43 @@ Examples:
 | numeroCuenta | producto | mensaje                             |
 | C001887456   | Autos    | La búsqueda no devolvió resultados. |
 
-Scenario: Consultar polizas por numero de cuenta que no existe y agente
-When la busco por numero de cuenta <numeroCuenta> y agente <agente>
-Then debe mostrar el mensaje <mensaje>
-
+Scenario: Busqueda polizas Autos
+Given que voy a buscar una poliza
+When seleccione el producto en criterio opcional <criterio>
+And ingreso la placa del auto <placa>
+And busco poliza mediante el criterio seleccionado anteriormente
+Then se visualiza la informacion de la poliza relacionada
+|poliza       |
+|TEST_22222222|
 Examples:
-| numeroCuenta | agente | mensaje                             |
-| C001887456   | SURA   | La búsqueda no devolvió resultados. |
+|placa |criterio|
+|BLE860|Autos   |
 
-Scenario: Consultar polizas por numero de cuenta  y codigo de agente no relacionado a la poliza
-When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
-Then debe mostrar el mensaje <mensaje>
 
+Scenario: Busqueda por el Numero de identificacion
+Given que voy a buscar una poliza
+And limpioCampos
+When selecione la opcion tipo de documento <tipoDocumento>
+And ingreso la identificacion  <identificacion>
+And busco poliza mediante el criterio seleccionado anteriormente
+Then se visualiza la informacion de la poliza relacionada
+|poliza       |
+|TEST_22222222|
 Examples:
-| numeroCuenta | codigoAgente      | mensaje                             |
-| C001888888   | QA1PRODUCERCODE01 | La búsqueda no devolvió resultados. |
+|tipoDocumento          |identificacion|
+|CEDULA DE CIUDADANIA   |1234567891    |
+
+
+Scenario: Busqueda polizas Comercial Property
+Given que voy a buscar una poliza
+And limpioCampos
+When seleccione el producto en criterio opcional <criterio>
+And seleccione el criterio de busqueda <criterioBusqueda>
+And diligencio el campo de criterio de busqueda <contenidoCampoCriterio>
+And busco poliza mediante el criterio seleccionado anteriormente
+Then se visualiza la informacion de la poliza relacionada
+|poliza        |labelFechaInicial       |labelFechaFinal      |labeltomador|
+|TEST_22222236 |Fecha inicio de vigencia|Fecha fin de vigencia|Tomador     |
+Examples:
+|criterio               |criterioBusqueda       |contenidoCampoCriterio|
+|Multiriesgo corporativo|Dirección              |CR 65 # 48 - 162      |
