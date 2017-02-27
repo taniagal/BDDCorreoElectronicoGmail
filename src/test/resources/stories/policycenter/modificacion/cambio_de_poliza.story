@@ -77,7 +77,7 @@ Meta:
 @manual
 Given estoy cotizando la poliza basado en otro envio <envio>
 And le ingreso el reaseguro especial
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>
 And descripcion <descripcion>, actividad economica <actividad>
 When seleccione la cobertura:
 |valorReconstruccion|valorAsegurado|valorComercial|cobertura|
@@ -89,5 +89,5 @@ And quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|envio   |reaseguro|departamento|ciudad  |direccion        |descripcion  |actividad                    |mensaje
-|22222211|Sí       |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|Esta poliza tiene reaseguro especial. Debe validar que las condiciones otorgadas no amparadas por el contrato automático tengan respaldo facultativo o aceptación especial.
+|envio   |reaseguro|departamento|ciudad  |direccion        |descripcion  |actividad                    |mensaje                                                                                                                                                                    |medioVenta|
+|22222211|Sí       |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|Esta poliza tiene reaseguro especial. Debe validar que las condiciones otorgadas no amparadas por el contrato automático tengan respaldo facultativo o aceptación especial.|Televentas|

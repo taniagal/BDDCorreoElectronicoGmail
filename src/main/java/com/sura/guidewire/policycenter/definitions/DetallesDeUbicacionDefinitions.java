@@ -19,7 +19,7 @@ public class DetallesDeUbicacionDefinitions {
     @Steps
     private NuevaCotizacionSteps nuevaCotizacionSteps;
 
-    @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
+    @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>")
     public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad, @Named("medioVenta") String medioVenta){
         detallesDeUbicacionSteps.validarCamposNuevos();
         detallesDeUbicacionSteps.agregarDireccion(direccion, departamento, ciudad);
