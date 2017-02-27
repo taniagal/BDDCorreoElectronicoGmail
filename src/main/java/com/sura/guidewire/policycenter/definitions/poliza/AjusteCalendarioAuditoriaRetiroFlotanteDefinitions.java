@@ -43,11 +43,13 @@ public class AjusteCalendarioAuditoriaRetiroFlotanteDefinitions {
         herramientasPolizaSteps.ingresarProgramaAuditoria();
         herramientasPolizaSteps.validarProgramaAuditoria(opciones);
     }
+
     @Then("ingreso a programa auditoria y verifico que no tenga los meses de la cancelacion:$opciones")
     public void verificarProgamaAuditoriaQueNotengaPeriodo(ExamplesTable opcion) {
         herramientasPolizaSteps.ingresarProgramaAuditoria();
         herramientasPolizaSteps.validarProgramaSinAuditoria(opcion);
     }
+
     @When("ingrese meses de cancelacion:$tiempo")
     public void ingresarMesesdeCancelacion(int tiempo) {
         polizaSteps.ingresarFechaDeCancelacion(tiempo);
@@ -58,10 +60,12 @@ public class AjusteCalendarioAuditoriaRetiroFlotanteDefinitions {
         escritorioSteps.irAmenuActividad();
         escritorioSteps.verificarAuditoriaFinal(numeroPoliza);
     }
+
     @When("remover articulo a utilizar")
     public void agregarNuevoArticulo() {
         edificiosUbicacionesSteps.removerRiesgos();
     }
+
     @When("expido la poliza y capturo el numero")
     public void expedirPoliza() {
         tasaUnicaSteps.expedirPoliza();
