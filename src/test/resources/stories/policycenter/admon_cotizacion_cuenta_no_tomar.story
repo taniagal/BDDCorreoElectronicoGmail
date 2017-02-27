@@ -17,7 +17,7 @@ Given estoy cotizando una poliza:
 | cuenta      | organizacion | producto                |
 | C1060447895 | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>
 And descripcion <descripcion>, actividad economica <actividad>
 And seleccione la cobertura:
 | valorReconstruccion | valorAsegurado | valorComercial | cobertura |
@@ -28,15 +28,15 @@ When no quiera tomar la cotizacion sin ingresar una razon
 Then el sistema debe mostrar un mesaje <mensaje> y bloquear la accion
 
 Examples:
-| departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta   | mensaje                                   |
-| Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C1060447895 | Causa : Falta el campo obligatorio "Causa |
+| departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta   | mensaje                                   |medioVenta|
+| Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C1060447895 | Causa : Falta el campo obligatorio "Causa |Televentas|
 
 Scenario: No tomar una cotizacion desde una cuenta
 Given estoy cotizando una poliza:
 | cuenta     | organizacion | producto                |
 | C000484848 | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>
 And descripcion <descripcion>, actividad economica <actividad>
 And seleccione la cobertura:
 | valorReconstruccion | valorAsegurado | valorComercial | cobertura |
@@ -48,8 +48,8 @@ Then el sistema debe mostrar el estado no tomada <numCotizacion> <accion>
 And desahabilitar la opcion de acciones
 
 Examples:
-| departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta  | razon              | numCotizacion | accion    |
-| Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C000484848 | No acuerdo de pago |               | No tomada |
+| departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta  | razon              | numCotizacion | accion    |medioVenta|
+| Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C000484848 | No acuerdo de pago |               | No tomada |Televentas|
 
 Scenario: Validar campos obligatorios de lista despleglable razon de no tomar
 Meta: @manual

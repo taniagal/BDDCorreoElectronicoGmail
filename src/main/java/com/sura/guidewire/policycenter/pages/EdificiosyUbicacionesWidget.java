@@ -179,12 +179,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
     }
 
-    public void ingresarMedioDeVenta() {
+    public void ingresarMedioDeVenta(String medioVenta) {
         waitFor(comboMedioVenta);
-        seleccionarItem(comboMedioVenta,"Televentas");
+        seleccionarItem(comboMedioVenta,medioVenta);
     }
 
-    public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad) {
+    public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad , String medioVenta) {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
         clickearElemento(findBy(LINK_AGREGAR_UBICACION));
@@ -197,7 +197,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         esperarPorValor(comboBoxCiudad, ciudad);
         seleccionarItem(comboBoxActividadEconomica, actividad);
         esperarPorValor(comboBoxActividadEconomica, actividad);
-        ingresarMedioDeVenta();
+        ingresarMedioDeVenta(medioVenta);
         clickearElemento(botonAceptar);
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (botonBorrar.isVisible()) {
@@ -212,17 +212,17 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
-        agregarNuevaUbicacion("Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles", "Televentas");
     }
 
     // TODO: 11/01/2017 : Se debe borrar este metodo, dado que esta sobrecargado, dado que se requiere variabilidad en datos
     public void ingresarNuevaUbicacionSinRiesgoConsultable() {
-        agregarNuevaUbicacion("Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles", "Televentas");
     }
 
     public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
-        agregarNuevaUbicacion(valoresUbicaion.get("departamento"), valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"), valoresUbicaion.get("actividadEconomica"));
+        agregarNuevaUbicacion(valoresUbicaion.get("departamento"), valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"), valoresUbicaion.get("actividadEconomica"),valoresUbicaion.get("medioVenta"));
     }
 
     public void removerRiesgos() {
