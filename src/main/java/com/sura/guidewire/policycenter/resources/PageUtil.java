@@ -12,9 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
-
-import javax.xml.xpath.XPath;
 import java.util.List;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -323,15 +322,16 @@ public class PageUtil extends PageObject {
     public void esperarObjetoClikeableServidor(String pathElemento) {
         WebElementFacade elemento;
         boolean ejecuto = false;
-        int maximoEjecuciones = 120;
+        int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
         int ejecuciones = 0;
         while(ejecuciones < maximoEjecuciones && !ejecuto) {
-            esperarHasta(500);
+            esperarHasta(TIEMPO_500);
             try {
                 elemento = this.getElemento(pathElemento);
                 this.clicObjeto(elemento);
                 ejecuto = true;
             } catch (Exception ex) {
+                LOGGER.info("Exception " + ex);
             }
 
             ejecuciones = ejecuciones + 1;
