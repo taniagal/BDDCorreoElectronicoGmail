@@ -33,8 +33,7 @@ public class AjusteCalendarioAuditoriaRetiroFlotanteDefinitions {
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
 
     @When("en la pantalla de payment en el item schedule debe asignar por default plan type \"Reporting Plan\" no editable. El item \"audits\" debe aparecer por default \"No\" editable y se debe seleccionar el plan de informacion:$opciones")
-    public void seleccionarPlanDeInformacionYValidar(ExamplesTable opciones)
-    {
+    public void seleccionarPlanDeInformacionYValidar(ExamplesTable opciones) {
         ajustePantallaPagosYValidacionesSteps.validacionDatosDePantallaPago(new Parametros(opciones));
         ajustePantallaPagosYValidacionesSteps.seleccionarPlanInformacionPrimas(new Parametros(opciones));
     }

@@ -6,13 +6,13 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
 
-public class ingresoTransaccionesPolizaSteps extends ScenarioSteps {
+public class IngresoTransaccionesPolizaSteps extends ScenarioSteps {
 
     @Page
     IngresoTransaccionesPolizaPage ingresoTransaccionesPolizaPage;
 
 
-    public ingresoTransaccionesPolizaSteps (Pages pages){
+    public IngresoTransaccionesPolizaSteps(Pages pages){
 
         super(pages);
     }

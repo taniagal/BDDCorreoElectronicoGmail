@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
-import javax.xml.xpath.XPath;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -326,7 +325,7 @@ public class PageUtil extends PageObject {
         int maximoEjecuciones = 120;
         int ejecuciones = 0;
         while(ejecuciones < maximoEjecuciones && !ejecuto) {
-            esperarHasta(500);
+            esperarHasta(TIEMPO_500);
             try {
                 elemento = this.getElemento(pathElemento);
                 this.clicObjeto(elemento);
