@@ -15,8 +15,8 @@ Given estoy cotizando una poliza:
 |cuenta    |producto               |
 |C002888992|Multiriesgo corporativo|
 When agregue una nueva ubicacion:
-|departamento|ciudad  |direccion        |descripcion    |actividad                                 |
-|Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo temporal|
+|departamento|ciudad  |direccion        |descripcion    |actividad                                 |medioVenta|
+|Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo temporal|Televentas|
 And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas|
 |Building |100000000       |Danos     |

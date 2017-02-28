@@ -16,7 +16,7 @@ Given estoy cotizando una poliza de mrc:
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1973       | CARLOS        | TORRES          | DIRECCION DE RESIDENCIA | CALLE 58F #25-83 | Antioquia    | Medellin | INT-3  |
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion en edificios
-| pais     | departamento | ciudad   | direccion   | actividadEconomica            |medioventa|
+| pais     | departamento | ciudad   | direccion   | actividadEconomica            |medioVenta|
 | Colombia | Antioquia    | Medellin | CR 100 89 12 | Acabado de productos textiles|Televentas|
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
