@@ -118,7 +118,7 @@
                     </excludes>
                     <reuseForks>false</reuseForks>
                     <forkCount>1C</forkCount>
-                    <forkedProcessTimeoutInSeconds>1500</forkedProcessTimeoutInSeconds>
+                    <forkedProcessTimeoutInSeconds>0</forkedProcessTimeoutInSeconds>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
@@ -149,13 +149,6 @@
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.maven.plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.serenity-bdd</groupId>
-                        <artifactId>serenity-core</artifactId>
-                        <version>${serenity.version}</version>
-                    </dependency>
-                </dependencies>
                 <executions>
                     <execution>
                         <id>serenity-reports</id>
