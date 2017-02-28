@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.definitions;
+package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.sura.guidewire.policycenter.steps.AdmonCotizacionCuentaDeclinaSteps;
 import net.thucydides.core.annotations.Managed;

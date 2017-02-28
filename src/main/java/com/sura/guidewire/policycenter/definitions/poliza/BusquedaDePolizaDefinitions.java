@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.definitions;
+package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.steps.BusquedaDePolizaSteps;

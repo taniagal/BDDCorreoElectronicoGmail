@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.definitions;
+package com.sura.guidewire.policycenter.definitions.modificaciones;
 
 import com.sura.guidewire.policycenter.steps.CambioDePlacaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
