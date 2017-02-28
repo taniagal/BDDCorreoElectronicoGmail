@@ -36,8 +36,8 @@ Examples:
 Scenario: Realizar una modificacion de valor asegurado a una poliza con tarifa tasa unica
 Given estoy cotizando una poliza basado en otro envio <envio>
 And vaya a agregar el vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
+|random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|Televentas|
 And seleccione algunas coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|PTD|PPD|PPDF|GT|PP|PT|GTR|GP|PLlaves|AS                |
 |640.  |0        |Si      |0  |750|1.50|40.|35|0  |750|1.50|40|20|20|Si |Si|Si     |Asistencia Clásica|
@@ -53,8 +53,8 @@ Examples:
 Scenario: Realizar la renovacion de una poliza con tarifa tasa unica
 Given estoy cotizando una poliza basado en otro envio <envio>
 And vaya a agregar el vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
+|random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|Televentas|
 And seleccione algunas coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|PTD|PPD|PPDF|GT|PP|PT|GTR|GP|PLlaves|AS                |
 |640.  |0        |Si      |0  |750|1.50|40.|35|0  |750|1.50|40|20|20|Si |Si|Si     |Asistencia Clásica|
