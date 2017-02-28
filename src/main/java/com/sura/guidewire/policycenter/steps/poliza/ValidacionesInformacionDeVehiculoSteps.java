@@ -70,6 +70,7 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps {
         vehiculo.put("placa", "random");
         vehiculo.put("modelo", "2010");
         vehiculo.put("ciudad_circulacion", "MEDELLIN");
+        vehiculo.put("medioVenta","Televentas");
         vehiculoPage.irAVehiculos();
         vehiculoPage.ingresarPlacaConModelo2011(vehiculo);
         vehiculoPage.seleccionarComboBoxModelo(vehiculo);

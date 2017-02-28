@@ -201,6 +201,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void ingresarPlacaConModelo2011(Map<String, String> vehiculo) {
+        seleccionarItem(comboMedioDeVenta, vehiculo.get("medioVenta"));
         campoVehiculoCeroKm.click();
         esperarHasta(TIEMPO_3000);
         ingresarPlaca(vehiculo);
