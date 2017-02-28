@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.DetalleDeAseguradoDeCotizacionSteps;
-import com.sura.guidewire.policycenter.steps.DisponibilidadDetalleProductoSteps;
+import com.sura.guidewire.policycenter.steps.poliza.DetalleDeAseguradoDeCotizacionSteps;
+import com.sura.guidewire.policycenter.steps.poliza.DisponibilidadDetalleProductoSteps;
 import com.sura.guidewire.policycenter.steps.OpcionesDeCierreSteps;
-import com.sura.guidewire.policycenter.steps.SolicitarRequisitoPaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.SolicitarRequisitoPaSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import net.thucydides.core.annotations.Steps;

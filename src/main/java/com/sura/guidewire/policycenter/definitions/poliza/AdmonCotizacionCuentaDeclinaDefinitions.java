@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
-import com.sura.guidewire.policycenter.steps.AdmonCotizacionCuentaDeclinaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.AdmonCotizacionCuentaDeclinaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;

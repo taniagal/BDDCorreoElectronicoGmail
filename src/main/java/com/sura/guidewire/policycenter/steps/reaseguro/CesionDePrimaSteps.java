@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps.reaseguro;
 
 
-import com.sura.guidewire.policycenter.pages.CotizacionMRCPage;
+import com.sura.guidewire.policycenter.pages.poliza.CotizacionMRCPage;
 import com.sura.guidewire.policycenter.pages.reaseguro.CesionDePrimaPage;
 import com.sura.guidewire.policycenter.pages.reaseguro.CrearYEditarCumulosPage;
 import net.thucydides.core.annotations.Step;

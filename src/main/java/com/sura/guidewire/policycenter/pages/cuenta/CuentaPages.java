@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.pages.TransaccionesDePolizaWidgetObject;
+import com.sura.guidewire.policycenter.pages.poliza.TransaccionesDePolizaWidgetObject;
 import net.serenitybdd.core.pages.PageObject;
 
 
