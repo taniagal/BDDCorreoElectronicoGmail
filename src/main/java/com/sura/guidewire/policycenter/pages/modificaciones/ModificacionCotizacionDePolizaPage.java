@@ -1,5 +1,5 @@
 
-package com.sura.guidewire.policycenter.pages;
+package com.sura.guidewire.policycenter.pages.modificaciones;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.actividades;
 
-import com.sura.guidewire.policycenter.pages.IngresoDeActividadAPolizaPage;
+import com.sura.guidewire.policycenter.pages.actividades.IngresoDeActividadAPolizaPage;
 import com.sura.guidewire.policycenter.pages.actividades.BusquedaActividadesPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;

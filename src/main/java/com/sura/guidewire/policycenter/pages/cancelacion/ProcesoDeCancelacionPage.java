@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.pages;
+package com.sura.guidewire.policycenter.pages.cancelacion;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;

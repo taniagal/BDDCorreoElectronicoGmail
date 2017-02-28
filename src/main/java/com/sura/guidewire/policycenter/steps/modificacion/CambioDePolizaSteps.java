@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
 
-import com.sura.guidewire.policycenter.pages.CambioDePolizaPage;
+import com.sura.guidewire.policycenter.pages.modificaciones.CambioDePolizaPage;
 import com.sura.guidewire.policycenter.pages.poliza.PolizaPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;

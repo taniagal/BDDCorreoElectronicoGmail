@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps.cancelacion;
 
-import com.sura.guidewire.policycenter.pages.CotizacionDeCancelacionPage;
-import com.sura.guidewire.policycenter.pages.ProcesoDeCancelacionPage;
+import com.sura.guidewire.policycenter.pages.cancelacion.CotizacionDeCancelacionPage;
+import com.sura.guidewire.policycenter.pages.cancelacion.ProcesoDeCancelacionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 

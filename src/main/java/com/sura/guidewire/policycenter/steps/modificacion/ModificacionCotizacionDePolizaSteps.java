@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
 import com.sura.guidewire.policycenter.pages.poliza.CotizacionPADetallePage;
-import com.sura.guidewire.policycenter.pages.ModificacionCotizacionDePolizaPage;
+import com.sura.guidewire.policycenter.pages.modificaciones.ModificacionCotizacionDePolizaPage;
 import java.util.Map;
 
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
-import com.sura.guidewire.policycenter.pages.ModificacionCotizacionDePolizaPage;
-import com.sura.guidewire.policycenter.pages.ValidacionesCambioDePolizaVehiculosPage;
+import com.sura.guidewire.policycenter.pages.modificaciones.ModificacionCotizacionDePolizaPage;
+import com.sura.guidewire.policycenter.pages.modificaciones.ValidacionesCambioDePolizaVehiculosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;

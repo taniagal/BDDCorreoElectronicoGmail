@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.renovacion;
 
-import com.sura.guidewire.policycenter.pages.InstruccionesPreviasARenovacionPage;
+import com.sura.guidewire.policycenter.pages.renovacion.InstruccionesPreviasARenovacionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 

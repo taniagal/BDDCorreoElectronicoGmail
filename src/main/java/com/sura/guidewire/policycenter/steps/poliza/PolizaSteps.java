@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps.poliza;
 
 import com.sura.guidewire.policycenter.pages.AccionesWidget;
-import com.sura.guidewire.policycenter.pages.InstruccionesPreviasARenovacionPage;
+import com.sura.guidewire.policycenter.pages.renovacion.InstruccionesPreviasARenovacionPage;
 import com.sura.guidewire.policycenter.pages.poliza.PolizaPage;
 import com.sura.guidewire.policycenter.steps.BotonAccionesSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;

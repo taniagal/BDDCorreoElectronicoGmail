@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
 
-import com.sura.guidewire.policycenter.pages.ModificacionInformacionPolizaPAPage;
+import com.sura.guidewire.policycenter.pages.modificaciones.ModificacionInformacionPolizaPAPage;
 import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;

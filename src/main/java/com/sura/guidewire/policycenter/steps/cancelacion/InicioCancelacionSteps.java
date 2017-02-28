@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps.cancelacion;
 
 
-import com.sura.guidewire.policycenter.pages.InicioCancelacionPage;
+import com.sura.guidewire.policycenter.pages.cancelacion.InicioCancelacionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
