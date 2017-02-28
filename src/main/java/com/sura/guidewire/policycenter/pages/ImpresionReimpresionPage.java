@@ -76,7 +76,6 @@ public class ImpresionReimpresionPage extends PageUtil {
 
     }
 
-
     public void validarNoPresenciaDeReimpresion() {
         String resultado = null;
         if (botonReimpresion.isCurrentlyVisible()) {
