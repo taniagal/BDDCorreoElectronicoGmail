@@ -74,14 +74,14 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|2.346.898|445.911|2.792.809|15   |0    |0    |La comisión pactada debe ser autorizada|
 
 
-Scenario:  Realizar una cotizacion de mrc con comosion pactada en si y valor 10
+Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 10
 Given estoy cotizando una poliza de mrc:
 |producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When ingrese la comision pactada en valor <valor>
 And agregue una nueva ubicacion:
-|departamento|ciudad  |direccion        |descripcion    |actividad                        |
-|Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo temporal|
+|departamento|ciudad  |direccion        |descripcion    |actividad                                 |medioVenta|
+|Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo temporal|Televentas|
 And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas             |
 |Building |150000000       |Danos,Asonada,Terremoto|
@@ -98,14 +98,14 @@ Examples:
 |10   |
 
 
-Scenario:  Realizar una cotizacion de mrc con comosion pactada en si y valor 16 y validar UW
+Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 16 y validar UW
 Given estoy cotizando una poliza de mrc:
 |producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When ingrese la comision pactada en valor <valor>
 And agregue una nueva ubicacion:
-|departamento|ciudad  |direccion        |descripcion    |actividad                        |
-|Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo temporal|
+|departamento|ciudad  |direccion        |descripcion    |actividad                                 |medioVenta|
+|Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo temporal|Televentas|
 And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas             |
 |Building |150000000       |Danos,Asonada,Terremoto|

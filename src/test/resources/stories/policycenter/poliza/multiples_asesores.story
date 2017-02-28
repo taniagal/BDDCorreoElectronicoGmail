@@ -1,5 +1,5 @@
 Meta:
-@lote1
+@lote4
 @tag equipo: billing
 @sprint 13
 

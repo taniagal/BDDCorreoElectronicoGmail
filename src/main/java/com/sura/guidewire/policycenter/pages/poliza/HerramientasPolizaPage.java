@@ -27,8 +27,8 @@ public class HerramientasPolizaPage extends PageUtil {
 
     public void validarProgramaAuditoria(ExamplesTable opciones) {
         int cantidaProgramaAuditoria = consultarNumeroElementosTabla(TABLA_PROGRAMA_AUDITORIA);
-        String tipo = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,1,3);
-        String estado = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,1,7);
+        String tipo = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,CONSTANTE_1,CONSTANTE_3);
+        String estado = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,CONSTANTE_1,CONSTANTE_7);
         if (cantidaProgramaAuditoria>0){
             for (Map<String, String> dato : opciones.getRows()) {
                 MatcherAssert.assertThat("El valor no es equivalente, esperado: "+tipo+", "+estado+"; Elementos recibidos: "+dato.get("tipo")+"; "+dato.get("estado"),(dato.get("tipo").equals(tipo) && dato.get("estado").equals(estado)));
@@ -38,9 +38,9 @@ public class HerramientasPolizaPage extends PageUtil {
     }
     public void validarProgramaSinAuditoria(ExamplesTable opciones) {
         int cantidaProgramaAuditoria = consultarNumeroElementosTabla(TABLA_PROGRAMA_AUDITORIA);
-        String tipo = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,1,3);
-        String estado = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,1,7);
-        if (cantidaProgramaAuditoria<2){
+        String tipo = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,CONSTANTE_1,CONSTANTE_3);
+        String estado = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,CONSTANTE_1,CONSTANTE_7);
+        if (cantidaProgramaAuditoria < CONSTANTE_2){
             for (Map<String, String> dato : opciones.getRows()) {
                 MatcherAssert.assertThat("El valor no es equivalente, esperado: "+tipo+", "+estado+"; Elementos recibidos: "+dato.get("tipo")+"; "+dato.get("estado"),(dato.get("tipo").equals(tipo) && dato.get("estado").equals(estado)));
             }

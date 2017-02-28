@@ -21,8 +21,8 @@ And agregue las aseguradoras y su porcentaje de participacion
 And acepte el coaseguro
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion en edificios
-| pais     | departamento | ciudad   | direccion   | actividadEconomica            |
-| Colombia | Antioquia    | Medellin | CR 52 22a 12 | Acabado de productos textiles |
+| pais     | departamento | ciudad   | direccion   | actividadEconomica            |medioVenta|
+| Colombia | Antioquia    | Medellin | CR 52 22a 12 | Acabado de productos textiles|Televentas|
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |

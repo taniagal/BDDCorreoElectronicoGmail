@@ -40,7 +40,7 @@ Given voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto
 | tipoDocumento        | documento | cuenta     | producto |agente_oficina| oficina |
 | CEDULA DE CIUDADANIA | 71318883  | C000888888 | Autos    | DIRECTO      | 1060    |
 When ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         |medioventa|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         |medioVenta|
 | TYU131 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular |Televentas|
 And ingrese las coberturas basicas:
 |limite|deducible|abogado|PLlaves|
