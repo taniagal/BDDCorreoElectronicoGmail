@@ -12,11 +12,11 @@ Scenario:  Verificar independencia de cobertura de accidentes al conductor a las
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |producto|tipoPoliza |oficina|agente_oficina|
-|C1060447895|Autos   |Individual |1059   |DIRECTO       |
+|C1060447895|Autos   |Individual |2796   |DIRECTO       |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
-|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Conducir Sura|Televentas|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Conducir Sura|Asesor    |
 Then debo poder ver la cobertura de accidentes al conductor sin dependencia de daños o hurto
 
 Examples:
