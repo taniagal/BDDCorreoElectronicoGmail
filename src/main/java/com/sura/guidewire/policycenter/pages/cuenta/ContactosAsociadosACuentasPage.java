@@ -62,6 +62,8 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     private WebElementFacade btnEliminar;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton']")
     private WebElementFacade btnCrearNuevoContacto;
+    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:RolesCardTab']")
+    private WebElementFacade linkFunciones;
 
     int combos = 0;
     public ContactosAsociadosACuentasPage(WebDriver driver) {
@@ -176,6 +178,12 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
 
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) {
         MatcherAssert.assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
+    }
+
+    public void opcionesPorSubMenuContactos(ExamplesTable contactosPorRoles,  Boolean oprimirClick){
+        MatcherAssert.assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", contactosPorRoles, oprimirClick));
+        linkFunciones.waitUntilPresent();
+        clickearElemento(linkFunciones);
     }
 
     public Boolean esContactoAsociado(String nombreContacto) {

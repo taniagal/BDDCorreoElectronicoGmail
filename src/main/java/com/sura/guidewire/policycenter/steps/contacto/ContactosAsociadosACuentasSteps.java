@@ -76,6 +76,11 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
+    public void verOpcionesDeContactoPorRoles(ExamplesTable contactosPorRoles,  Boolean oprimirClick){
+        contactosAsociadosACuentasPage.opcionesPorSubMenuContactos(contactosPorRoles, oprimirClick);
+    }
+
+    @Step
     public void clicCrearNuevoContacto() {
         contactosAsociadosACuentasPage.clicCrearNuevoContacto();
     }
