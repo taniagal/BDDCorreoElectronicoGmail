@@ -20,8 +20,8 @@ Then debe mostrar el resumen de la poliza expedida con la informacion de cotizac
 And vaya a la poliza riesgo <riesgo>
 And valide la carga del archivo de tasa unica en la poliza riesgo
 And cotice la poliza riesgo con el asegurado, el auto y las coberturas necesarias
-| tipoDocumento        | documento  | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | limite | deducible | abogado | PLlaves | PTH | PPH | GTH | PTD | PPD | GT |
-| CEDULA DE CIUDADANIA | 1234567890 | TUU225 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | 1.440. | 0         |         | Si      | 0   | 730 | 40  | 0   | 730 | 40 |
+| tipoDocumento        | documento  | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | limite | deducible | abogado | PLlaves | PTH | PPH | GTH | PTD | PPD | GT | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | TUU225 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | 1.440. | 0         |         | Si      | 0   | 730 | 40  | 0   | 730 | 40 | Televentas |
 And el valor de la prima total y el iva deben ser:
 | primaT  | iva    |
 | 357.999 | 68.020 |
