@@ -44,8 +44,12 @@ public class PageUtil extends PageObject {
     protected static final int TIEMPO_3 = 3;
     protected static final int TIEMPO_2 = 2;
     protected static final int TIEMPO_1 = 1;
-    protected static final int CONSTANTE_MAXIMO_EJECUCIONES = 120;
+    protected static final int CONSTANTE_MAXIMO_EJECUCIONES = 15;
     protected static final int CONSTANTE_CUENTA_EJECUCIONES = 0;
+    protected static final int CONSTANTE_1 = 1;
+    protected static final int CONSTANTE_2 = 2;
+    protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_7 = 7;
     protected static final int CONSTANTE_15 = 15;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;

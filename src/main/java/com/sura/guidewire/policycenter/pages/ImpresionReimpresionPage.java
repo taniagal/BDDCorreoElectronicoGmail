@@ -22,6 +22,8 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade linkArchivoDePoliza;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div")
     private WebElementFacade tablaOpcionesReimprimir;
+    @FindBy(xpath = "//div[@id='DocumentsToReprint_ExtPopup:DocumentsScreen:DocumentsToReprintLV-body']/div")
+    private WebElementFacade tablaOpcionesReimprimirMrc;
     @FindBy(xpath = "//div[2]/div/div/div/div/span/div")
     private WebElementFacade checkBoxDocumentos;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[2]/td[1]/div/img")
@@ -30,6 +32,8 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade checkBoxCaratula;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[4]/td[1]/div/img")
     private WebElementFacade checkBoxEndoso;
+    @FindBy(xpath = "//td/div/div[3]/div/table/tbody/tr[3]/td/div/img")
+    private WebElementFacade checkBoxEndosomrc;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[3]/td[1]/div/img")
     private WebElementFacade checkBoxCotizacion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
@@ -69,6 +73,7 @@ public class ImpresionReimpresionPage extends PageUtil {
             listaObtenida = tablaOpcionesReimprimir.getText();
         }
         return listaObtenida;
+
     }
 
     public void validarNoPresenciaDeReimpresion() {
@@ -85,8 +90,15 @@ public class ImpresionReimpresionPage extends PageUtil {
     public void validarOpcionesReimpresionHabilitadas() {
         checkBoxCaratula.isSelected();
         checkBoxCotizacion.isSelected();
-        checkBoxEndoso.isSelected();
-        checkBoxRelacionConCliente.isSelected();
+        if(checkBoxRelacionConCliente.isCurrentlyVisible()){
+            checkBoxRelacionConCliente.isSelected();
+        }
+        if(checkBoxEndoso.isCurrentlyVisible()){
+            checkBoxEndoso.isSelected();
+        }
+        if(checkBoxEndosomrc.isCurrentlyVisible()){
+            checkBoxEndosomrc.isSelected();
+        }
     }
 
     public void editarRenovacionPoliza() {

@@ -45,14 +45,17 @@ public class ImpresionReimpresionSteps extends ScenarioSteps {
         impresionReimpresionPage.validarNoPresenciaDeReimpresion();
     }
 
+    @Step
     public void irAOpcionDocumentos() {
         impresionReimpresionPage.irADocumentos();
     }
 
+    @Step
     public void validarOpcionesReimpresionHabilitadas() {
         impresionReimpresionPage.validarOpcionesReimpresionHabilitadas();
     }
 
+    @Step
     public void editarRenovacionPoliza() {
         impresionReimpresionPage.editarRenovacionPoliza();
     }
