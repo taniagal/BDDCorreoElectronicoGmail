@@ -19,10 +19,14 @@ And seleccione algunos articulos y sus cobertura:
 |Building |10000000000     |Danos,Asonada,Terremoto|
 And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>
-And Ingrese la información de un reasegurador
+When Ingrese la información de los reaseguradores
 |modalidad |porcentajeParticipacion|valorReaseguro|comisionReasegurador|comisionIntermediario|comisionPromotora|porRetenido|
 |Gross rate|20                     |1,8           |30                  |7                    |3                |10         |
 |Net Rate  |30                     |1,65          |10                  |7                    |2                |20         |
-||
+Then prueba
+
+Examples:
+|descripcionDeAcuerdo            |tipoContrato                    |
+|Descripcion de acuerdo para test|Acuerdo facultativo proporcional|
 
 
