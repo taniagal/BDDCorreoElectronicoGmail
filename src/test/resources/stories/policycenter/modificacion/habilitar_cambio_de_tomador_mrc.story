@@ -13,7 +13,7 @@ Scenario: Validar cambio de tomador mrc
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |producto               |
-|C000888888|Multiriesgo corporativo|
+|C000777776|Multiriesgo corporativo|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -37,7 +37,7 @@ Examples:
 Scenario: Cambiar el tomador a principal a uno peps para validar mensaje
 Given estoy cotizando una poliza:
 |cuenta    |producto               |
-|C000888888|Multiriesgo corporativo|
+|C000777776|Multiriesgo corporativo|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -61,7 +61,7 @@ Examples:
 Scenario: Cambiar el tomador a principal a uno riesgo consultable para validar mensaje
 Given estoy cotizando una poliza:
 |cuenta    |producto               |
-|C000888888|Multiriesgo corporativo|
+|C000777776|Multiriesgo corporativo|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
