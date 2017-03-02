@@ -7,6 +7,7 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
@@ -59,8 +60,6 @@ public class ContactosAsociadosACuentaDefinitions {
         contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_PoliciesLV']/div/div/div/div");
     }
 
-
-
     @Given("y desee crear un nuevo contacto")
     public void andDeseeCrearUnNuevoContacto() {
         contactosAsociadosACuentaSteps.clicCrearNuevoContacto();
@@ -70,6 +69,11 @@ public class ContactosAsociadosACuentaDefinitions {
     public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles, Boolean darClick){
         contactosAsociadosACuentaSteps.verOpcionesDeCreacionDeContactoPorRoleDeContactos(opcionesPorRoles, darClick);
 
+    }
+
+    @When("debo oprimirClick <oprimirClick> para ver las opciones del menu crear contacto $contactosPorRoles")
+    public void thenDeboVerLasOpcionesMenuContactos(ExamplesTable contactosPorRoles, Boolean oprimirClick){
+        contactosAsociadosACuentaSteps.verOpcionesDeContactoPorRoles(contactosPorRoles, oprimirClick);
     }
 
     @Given("asocie un nuevo contacto a la cuenta con el rol seleccionado")
