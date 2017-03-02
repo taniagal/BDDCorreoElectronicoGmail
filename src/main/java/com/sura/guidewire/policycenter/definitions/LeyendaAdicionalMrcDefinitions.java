@@ -33,4 +33,9 @@ public class LeyendaAdicionalMrcDefinitions {
         edificiosUbicacionesSteps.removerRiesgos();
         leyendaAdicionalMrcSteps.ingresarNuevaLeyenda(leyendaAdicional);
     }
+
+    @When("de click en el boton aceptar")
+    public void clickearBotonAceptar() {
+        leyendaAdicionalMrcSteps.clickearBotonAceptar();
+    }
 }
