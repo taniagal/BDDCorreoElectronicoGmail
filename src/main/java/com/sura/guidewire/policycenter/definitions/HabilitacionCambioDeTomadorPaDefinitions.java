@@ -21,8 +21,13 @@ public class HabilitacionCambioDeTomadorPaDefinitions {
         habilitacionCambioDeTomadorPaSteps.cambiarTomadorPrincipal(numeroDocumento, tipoDocumento);
     }
 
-    @Then("se debe mostrar un mensaje indicando que el tomador principal es peps $mensaje")
+    @Then("se debe mostrar un mensaje indicando que el tomador principal es pep $mensaje")
     public void validarMensajePeps(ExamplesTable mensaje) {
         habilitacionCambioDeTomadorPaSteps.validarMensajePeps(mensaje);
+    }
+
+    @Then("se debe mostrar un mensaje indicando que el tomador principal es riesgo consultable $mensaje")
+    public void validarMensajeRiesgoConsultable(ExamplesTable mensaje) {
+        habilitacionCambioDeTomadorPaSteps.validarMensajeRiesgoConsultable(mensaje);
     }
 }

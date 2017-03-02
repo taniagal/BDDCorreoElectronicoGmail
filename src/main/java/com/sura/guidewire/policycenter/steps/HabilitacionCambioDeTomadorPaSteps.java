@@ -31,6 +31,15 @@ public class HabilitacionCambioDeTomadorPaSteps extends ScenarioSteps {
 
     @Step
     public void validarMensajePeps(ExamplesTable mensaje) {
-        habilitacionCambioDeTomadorPage.validarMensajes(mensaje);
+        String mensajePeps = mensaje.getRow(0).get("mensaje");
+        MatcherAssert.assertThat("mensaje personalizado", habilitacionCambioDeTomadorPage.validarmensajePeps(), Matchers.containsString(mensajePeps));
     }
+
+    @Step
+    public void validarMensajeRiesgoConsultable(ExamplesTable mensaje) {
+        String mensajeRiesgoConsultable = mensaje.getRow(0).get("mensaje");
+        MatcherAssert.assertThat("mensaje personalizado", habilitacionCambioDeTomadorPage.validarmensajeRiesgoConsultable(), Matchers.containsString(mensajeRiesgoConsultable));
+    }
+
 }
+

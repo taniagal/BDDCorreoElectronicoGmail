@@ -2,10 +2,8 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Wait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,9 +26,8 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
     private WebElementFacade labelPeps;
     @FindBy(xpath = "//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
     private WebElementFacade labelRiesgoConsultable;
-    @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
-    private WebElementFacade tablaRequisitosPendientes;
-
+    @FindBy(xpath = "html/body/div[1]/div[6]/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div[4]")
+    private WebElementFacade labelMensajePeps;
 
     public HabilitacionCambioDeTomadorPage(WebDriver driver) {
         super(driver);
@@ -54,7 +51,13 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
         esperarYClickearBoton(btnSeleccionar);
     }
 
-    public void validarMensajes(ExamplesTable mensaje) {
-        validarBusqueda(tablaRequisitosPendientes,mensaje);
+    public String validarmensajePeps() {
+        labelMensajePeps.withTimeoutOf(2, TimeUnit.SECONDS).isPresent();
+        return labelMensajePeps.getText();
+    }
+
+    public String validarmensajeRiesgoConsultable() {
+        labelRiesgoConsultable.withTimeoutOf(2, TimeUnit.SECONDS).isPresent();
+        return labelRiesgoConsultable.getText();
     }
 }
