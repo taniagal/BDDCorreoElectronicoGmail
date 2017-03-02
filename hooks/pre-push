@@ -1,22 +1,35 @@
 #!/bin/bash
 
-# save the file as <git_directory>/.git/hooks/pre-commit
+EJECUCION_EXITOSA=0
+EJECUCION_FALLIDA=1
 
-echo "Running Maven clean verify for errors"
+
+echo "[$(date +"%Y-%m-%d at %H.%M.%S")]-Inicio Ejecucion" 
+
+if [[ `git symbolic-ref HEAD` != "refs/heads/develop" ]]
+ then
+    echo "Hook pre-push solo aplica develop"
+    exit $EJECUCION_EXITOSA
+ fi
+
+# save the file as <git_directory>/.git/hooks/pre-push
+
 # retrieving current working directory
 CWD=`pwd`
 MAIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # go to main project dir
 cd $MAIN_DIR/../../
-# running maven clean verify
-echo $MAIN_DIR
-#mvn clean verify
+
+echo "[$(date +"%Y-%m-%d at %H.%M.%S")]-Ejecutando mvn clean compile"
+
 mvn clean compile
+
 if [ $? -ne 0 ]; then
-  "Error while testing the code"
-  # go back to current working dir
-  cd $CWD
-  exit 1
+  echo "[$(date +"%Y-%m-%d at %H.%M.%S")]-Error while compiling the code"
+  exit $EJECUCION_FALLIDA
 fi
+
 # go back to current working dir
 cd $CWD
+
+exit $EJECUCION_EXITOSA
