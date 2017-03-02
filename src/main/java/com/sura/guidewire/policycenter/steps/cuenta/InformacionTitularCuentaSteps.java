@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.cuenta;
 
-import com.sura.guidewire.policycenter.pages.InformacionTitularCuentaPage;
+import com.sura.guidewire.policycenter.pages.cuenta.InformacionTitularCuentaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;

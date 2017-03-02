@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.definitions.reaseguro;
 
 
-import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
-import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
+import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CesionDePrimaSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import net.thucydides.core.annotations.Steps;

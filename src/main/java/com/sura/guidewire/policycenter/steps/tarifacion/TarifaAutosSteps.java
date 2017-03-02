@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
-import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
+import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;

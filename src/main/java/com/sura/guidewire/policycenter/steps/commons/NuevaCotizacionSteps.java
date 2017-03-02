@@ -1,11 +1,11 @@
 package com.sura.guidewire.policycenter.steps.commons;
 
 
-import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
+import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
-import com.sura.guidewire.policycenter.steps.ValidacionesInformacionDeVehiculoSteps;
+import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
