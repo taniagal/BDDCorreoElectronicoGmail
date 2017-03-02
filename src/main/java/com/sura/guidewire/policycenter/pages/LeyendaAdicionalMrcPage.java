@@ -20,6 +20,8 @@ public class LeyendaAdicionalMrcPage extends PageUtil {
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptarModificacion;
+    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarIngresoLeyendaAdicional;
 
     public LeyendaAdicionalMrcPage(WebDriver driver) {
         super(driver);
@@ -45,5 +47,9 @@ public class LeyendaAdicionalMrcPage extends PageUtil {
         txtLeyendaAdicionalModificacion.clear();
         ingresarDato(txtLeyendaAdicionalModificacion, leyendaAdicional);
         esperarYClickearBoton(botonAceptarModificacion);
+    }
+
+    public void clickearBotonAceptar() {
+        esperarYClickearBoton(botonAceptarIngresoLeyendaAdicional);
     }
 }
