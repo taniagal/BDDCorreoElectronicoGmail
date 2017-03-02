@@ -24,9 +24,9 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
     private WebElementFacade btnSeleccionar;
     @FindBy(xpath = "//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[4]")
     private WebElementFacade labelPeps;
-    @FindBy(xpath = "//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
+    @FindBy(xpath = "html/body/div[1]/div[6]/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div")
     private WebElementFacade labelRiesgoConsultable;
-    @FindBy(xpath = "html/body/div[1]/div[6]/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div[4]")
+    @FindBy(xpath = "html/body/div[1]/div[6]/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div")
     private WebElementFacade labelMensajePeps;
 
     public HabilitacionCambioDeTomadorPage(WebDriver driver) {
