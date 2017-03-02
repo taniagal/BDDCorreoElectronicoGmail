@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.poliza;
 
-import com.sura.guidewire.policycenter.pages.BusquedaDePolizaPage;
+import com.sura.guidewire.policycenter.pages.poliza.BusquedaDePolizaPage;
 import com.sura.guidewire.policycenter.pages.poliza.AdministracionTraspasoDeCarteraPage;
 import com.sura.guidewire.policycenter.pages.poliza.BuscarAgentePage;
 import net.thucydides.core.annotations.Step;

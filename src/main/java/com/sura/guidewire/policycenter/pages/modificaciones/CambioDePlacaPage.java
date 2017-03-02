@@ -1,0 +1,237 @@
+package com.sura.guidewire.policycenter.pages.modificaciones;
+
+import com.sura.guidewire.policycenter.resources.PageUtil;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+public class CambioDePlacaPage extends PageUtil {
+
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plateChange-inputEl']")
+    private WebElementFacade checkBoxCambioDePlaca;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
+    private WebElementFacade campoTxtPlaca;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
+    private WebElementFacade txtModelo;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']")
+    private WebElementFacade txtCodigoFasecolda;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']")
+    private WebElementFacade txtClaseVehiculo;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']")
+    private WebElementFacade txtMarca;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']")
+    private WebElementFacade txtLinea;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
+    private WebElementFacade txtCiudadDeCirculacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:VehiculeZone-bodyEl']")
+    private WebElementFacade txtZona;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:service_DV-inputEl']")
+    private WebElementFacade txtTipoServicio;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']")
+    private WebElementFacade txtMotor;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
+    private WebElementFacade txtChasis;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
+    private WebElementFacade txtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
+    private WebElementFacade txtPlacaNueva;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
+    private WebElementFacade campoTxtCiudad;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
+    private WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
+    private WebElementFacade labelMensajePlacaExistente;
+    @FindBy(xpath = ".//*[contains(text(), 'Exped') and contains(@id, 'QuoteScreen:JobWizardToolbarButtonSet')]")
+    private WebElementFacade botonExpedirPoliza;
+    @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarExpedicion;
+    @FindBy(xpath = ".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
+    private WebElementFacade tablaRequisito;
+    @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade tablaRequisitos;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[2]")
+    private WebElementFacade labelRequisitoPorPlacaExtrangera;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    private WebElementFacade botonSiguienteProducto;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
+    private WebElementFacade botonAgregarVehiculo;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    private WebElementFacade botonEditarCambioPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    private WebElementFacade botonEditarCambioPolizaExpedicion;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonEditarCambioPolizaAceptar;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div/span")
+    private WebElementFacade menuItemVehiculosModificacion;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
+    private WebElementFacade labelMensajePlacaRiesgoConsultable;
+    @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade panelRequisitos;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
+    private WebElementFacade labelMensajePlacaExtranjeraCucuta;
+    @FindBy(xpath = ".//*[@id='centerPanel']")
+    private WebElementFacade tablaRequisitosAutorizacion;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
+    private WebElementFacade tablaRequisitosModificacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesLV-body']/div/table/tbody/tr/td[3]")
+    private WebElementFacade tablaDetallesDelVehiculoPlaca;
+
+    private static final int CONSTANTE_3 = 3;
+
+    public CambioDePlacaPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public void cambiarPlaca(String placa) {
+        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
+        esperarHasta(TIEMPO_2000);
+        campoTxtPlaca.clear();
+        campoTxtPlaca.sendKeys(placa);
+        esperarHasta(TIEMPO_2000);
+    }
+
+    public void clickCambiarPlaca() {
+        this.clickItemCambiarPlaca();
+    }
+
+    public void datosPlacaAnterior(ExamplesTable datosPlaca) {
+        Map<String, String> datos = datosPlaca.getRow(0);
+        txtMotor.waitUntilPresent();
+        MatcherAssert.assertThat("Error, el modelo fue modificado", txtModelo.getValue().equals(datos.get("modelo")));
+        MatcherAssert.assertThat("Error, el codigoFasecolda fue modificado", txtCodigoFasecolda.getValue().equals(datos.get("codigoFasecolda")));
+        MatcherAssert.assertThat("Error, la clase de vehiculo fue modificada", txtClaseVehiculo.getText().equals(datos.get("claseVehiculo")));
+        MatcherAssert.assertThat("Error, la marca de vehiculo fue modificado", txtMarca.getValue().equals(datos.get("marca")));
+        MatcherAssert.assertThat("Error, la ciudad de circulacion fue modificada", txtCiudadDeCirculacion.getValue().equals(datos.get("ciudadCirculacion")));
+        MatcherAssert.assertThat("Error, la  zona fue modificada", txtZona.getText().equals(datos.get("zona")));
+        MatcherAssert.assertThat("Error, el tipo de servicio fue modificada", txtTipoServicio.getValue().equals(datos.get("tipoServicio")));
+        MatcherAssert.assertThat("Error, el motor fue modificada", txtMotor.getValue().equals(datos.get("motor")));
+        MatcherAssert.assertThat("Error, el chasis  fue modificada", txtChasis.getValue().equals(datos.get("chasis")));
+    }
+
+    public void mostrarPlacaInicial(String placaInicial) {
+        waitForTextToAppear(placaInicial);
+        campoTxtPlaca.waitUntilPresent();
+        MatcherAssert.assertThat(campoTxtPlaca.getText(), Is.is(Matchers.equalTo(placaInicial)));
+    }
+
+    public void ingresarPlacaVenezolana(String placaVenezolana) {
+        this.deseleccionarCheckBoxDePlaca();
+        this.clickItemCambiarPlaca();
+        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
+        esperarHasta(TIEMPO_2000);
+        txtPlacaNueva.clear();
+        txtPlacaNueva.sendKeys(placaVenezolana);
+    }
+
+    public void cambiarPorPlacaExistente(String placaExistente) {
+        int intentos = 0;
+        while (intentos < CONSTANTE_3) {
+            esperarHasta(TIEMPO_2000);
+            if ("".equals(campoTxtPlaca.getText())) {
+                campoTxtPlaca.clear();
+                campoTxtPlaca.sendKeys(placaExistente);
+                break;
+            }
+            intentos++;
+        }
+    }
+
+    public void mensajePlacaExistente(ExamplesTable mensaje) {
+        botonSiguiente.click();
+        Map<String, String> datos = mensaje.getRow(0);
+        esperarHasta(TIEMPO_3000);
+        txtMotor.waitUntilPresent();
+        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExistente.getText().equals(datos.get("mensaje")));
+    }
+
+    public void clickItemCambiarPlaca() {
+        Actions actions = new Actions(getDriver());
+        int intentos = 0;
+        while (intentos < CONSTANTE_3) {
+            esperarHasta(TIEMPO_2000);
+            if (!"0px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position")) || !"-15px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position"))) {
+                actions.click(checkBoxCambioDePlaca).build().perform();
+            } else {
+                break;
+            }
+            intentos++;
+        }
+        esperarHasta(TIEMPO_2000);
+    }
+
+    public void deseleccionarCheckBoxDePlaca() {
+        Actions actions = new Actions(getDriver());
+        int intentos = 0;
+        while (intentos < CONSTANTE_3) {
+            esperarHasta(TIEMPO_2000);
+            if ("0px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position")) || "-15px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position"))) {
+                actions.click(checkBoxCambioDePlaca).build().perform();
+                esperarHasta(TIEMPO_2000);
+            } else {
+                break;
+            }
+            intentos++;
+        }
+    }
+
+    public void expedirCambioPoliza() {
+        botonExpedirPoliza.waitUntilPresent().click();
+        botonAceptarExpedicion.waitUntilPresent().click();
+    }
+
+    public void mensajeAutorizacion(ExamplesTable mensajeAutorizacion) {
+        Map<String, String> datos = mensajeAutorizacion.getRow(0);
+        tablaRequisitos.waitUntilPresent();
+        MatcherAssert.assertThat("Error, mensaje no encontrado", labelRequisitoPorPlacaExtrangera.getText().equals(datos.get("mensajeAutorizacion")));
+    }
+
+    public void editarCambioPoliza() {
+        if (botonEditarCambioPoliza.isPresent()) {
+            clickearElemento(botonEditarCambioPoliza);
+        } else if (botonEditarCambioPolizaExpedicion.isPresent()) {
+            clickearElemento(botonEditarCambioPolizaExpedicion);
+        }
+        clickearElemento(botonEditarCambioPolizaAceptar);
+    }
+
+    public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
+        clickearElemento(menuItemVehiculosModificacion);
+        clickearElemento(checkBoxCambioDePlaca);
+        clickearElemento(checkBoxCambioDePlaca);
+        try {
+            withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+        }
+        esperarHasta(TIEMPO_2000);
+        campoTxtPlaca.clear();
+        campoTxtPlaca.sendKeys(placaRiesgoConsultable);
+    }
+
+    public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
+        Map<String, String> datos = mensajePlacaRiesgoConsultable.getRow(0);
+        panelRequisitos.waitUntilPresent();
+        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaRiesgoConsultable.getText().equals(datos.get("mensajePlacaRiesgoConsultable")));
+    }
+
+    public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
+        ingresarPlacaRiesgoConsultable(venezolana);
+        seleccionarItem(campoTxtCiudad, ciudad);
+    }
+
+    public String validarMensajeAutorizacion() {
+        labelMensajePlacaExtranjeraCucuta.waitUntilPresent();
+        return labelMensajePlacaExtranjeraCucuta.getText();
+    }
+
+}

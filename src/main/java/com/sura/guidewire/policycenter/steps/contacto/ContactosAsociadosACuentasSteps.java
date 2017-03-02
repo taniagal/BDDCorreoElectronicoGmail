@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.contacto;
 
-import com.sura.guidewire.policycenter.pages.NuevoAseguradoNombradoPage;
+import com.sura.guidewire.policycenter.pages.poliza.NuevoAseguradoNombradoPage;
 import com.sura.guidewire.policycenter.pages.cuenta.ContactosAsociadosACuentasPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
 import net.thucydides.core.annotations.Step;

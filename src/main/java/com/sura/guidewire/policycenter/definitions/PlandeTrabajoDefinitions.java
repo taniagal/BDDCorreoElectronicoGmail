@@ -1,14 +1,11 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
+import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.PlanDeTrabajoSteps;
-import com.sura.guidewire.policycenter.steps.PolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 
-/**
- * Created by juanzaag on 04/11/2016.
- */
 public class PlandeTrabajoDefinitions {
 
     @Steps

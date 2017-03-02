@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 
-import com.sura.guidewire.policycenter.steps.BusquedaDePolizaSteps;
-import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
-import com.sura.guidewire.policycenter.steps.PolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.BusquedaDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
+import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.AjustePantallaPagosYValidacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.HerramientasPolizaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
