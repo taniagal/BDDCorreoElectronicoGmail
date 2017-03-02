@@ -1,5 +1,5 @@
 Meta:
-@lote2
+@lote1
 @issue #CDSEG-7045
 @tag equipo: 5
 @Sprint 15
@@ -7,6 +7,7 @@ Meta:
 Narrative:
 Como usuario de policy center en el rol de agente,csr, asegurador o gerente
 Quiero poder modificar el tomador principal de una poliza
+Para la solucion de autos
 
 Scenario: Habilitar campo en cambio de tomador
 GivenStories: stories/policycenter/login_policy.story
