@@ -128,6 +128,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public void ingresaValorEntabla(WebElementFacade xpathCampo, String textoAEscribir) {
+        String a = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:0']";
+        $(a).click();
         boolean clickEnTabla = false;
         int maximoEjecuciones = CONSTANTE_2;
         int ejecuciones = 0;

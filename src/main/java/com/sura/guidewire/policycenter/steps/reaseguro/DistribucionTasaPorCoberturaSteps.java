@@ -12,16 +12,9 @@ public class DistribucionTasaPorCoberturaSteps extends ScenarioSteps {
     DistribucionTasaPorCoberturaPage distribucionTasaPorCoberturaPage;
     CrearYEditarCumulosPage crearYEditarCumulosPage;
 
-    @Step
-    public void ingresaPrimerReaseguradorEnTabla(ExamplesTable datosReaseguradores) {
-        crearYEditarCumulosPage.ingresaParticipacion(datosReaseguradores);
-        crearYEditarCumulosPage.ingresoInformacionDeReaseguroEnTabla();
-        crearYEditarCumulosPage.ingresarComisionYValorReaseguro(datosReaseguradores);
-        crearYEditarCumulosPage.seleccionaModalidadPrima(datosReaseguradores);
-    }
 
     @Step
     public void ingresarReaseguradores(ExamplesTable infoReasegurador) {
-        distribucionTasaPorCoberturaPage.AgregarReaseguradoresATabla(infoReasegurador);
+        distribucionTasaPorCoberturaPage.agregarReaseguradoresATabla(infoReasegurador);
     }
 }
