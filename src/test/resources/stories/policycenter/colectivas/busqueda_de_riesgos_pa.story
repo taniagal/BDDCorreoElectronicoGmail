@@ -14,8 +14,8 @@ When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE860 |
 Then debo ver la informacion de los riesgos asociados
-| placa  | tipoPoliza | estado     |
-| BLE860 | Individual | Expedición |
+| placa  | tipoPoliza | estado     | contrato |
+| BLE860 | Individual | Expedición | 1234567  |
 And cuando vaya a ver los detalles de la consulta debo ver la informacion de la poliza asociada <placa>
 
 Examples:
@@ -40,8 +40,8 @@ When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE200 |
 Then debo ver la informacion de los riesgos asociados
-| placa  | tipoPoliza |estado|
-| BLE200 | Colectiva  |Expedición|
+| placa  | tipoPoliza | estado     | contrato |
+| BLE200 | Colectiva  | Expedición |          |
 And cuando vaya a ver los detalles de la consulta debo ver la informacion de la poliza asociada <placa>
 
 Examples:
@@ -77,6 +77,65 @@ Then debe mostrar el mensaje <mensaje>
 Examples:
 | mensaje                             |
 | La búsqueda no devolvió resultados. |
+
+Scenario: validar la informacion de la poliza individual asociada al numero de contrato
+Given que voy a la busqueda de riesgos
+When este buscando un riesgo por los filtros producto y numero de contrato
+| producto | contrato |
+| Autos    | 1234567  |
+Then debo ver la informacion de los riesgos asociados
+| placa  | tipoPoliza | estado     | contrato |
+| BLE860 | Individual | Expedición | 1234567  |
+
+Examples:
+|  |
+|  |
+
+Scenario: validar la informacion de la poliza individual asociada al numero de contrato y la placa
+Given que voy a la busqueda de riesgos
+When este buscando un riesgo por los filtros producto, placa y numero de contrato
+| producto | contrato | placa  |
+| Autos    | 1234567  | BLE860 |
+Then debo ver la informacion de los riesgos asociados
+| placa  | tipoPoliza | estado     | contrato |
+| BLE860 | Individual | Expedición | 1234567  |
+
+Examples:
+|  |
+|  |
+
+Scenario: validar el resultado de la consulta al ingresar datos de placa inconsistente con el numero del contrato
+Given que voy a la busqueda de riesgos
+When este buscando un riesgo por los filtros producto, placa y numero de contrato
+| producto | contrato | placa  |
+| Autos    | 1234567  | BLE000 |
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+| mensaje                             |
+| La búsqueda no devolvió resultados. |
+
+Scenario: validar el resultado de la consulta al ingresar datos de placa correctos y el numero del contrato incorrecto
+Given que voy a la busqueda de riesgos
+When este buscando un riesgo por los filtros producto, placa y numero de contrato
+| producto | contrato | placa  |
+| Autos    | 1234560  | BLE860 |
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+| mensaje                             |
+| La búsqueda no devolvió resultados. |
+
+Scenario: validar el mensaje cuando no se ingresen todos los filtros requeridos para la busqueda
+Given que voy a la busqueda de riesgos
+When este buscando un riesgo sin ingresar todos los filtros requeridos
+| producto |
+| Autos    |
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+| mensaje                                             |
+| Por favor ingrese al menos un criterio de búsqueda. |
 
 Scenario: validar que solamente se muestra la poliza en el ultimo estado
 Meta: @manual
