@@ -29,8 +29,8 @@ public class ModificacionVehiculoSteps extends ScenarioSteps{
     }
 
     @Step
-    public void registrar_Zona_De_Circulacion(String ciudadCirculacion) {
-        modificacionVehiculoPage.registrarZonaCirculacion(ciudadCirculacion);
+    public void registrar_Zona_De_Circulacion(String ciudadCirculacion, String medioVenta) {
+        modificacionVehiculoPage.registrarZonaCirculacion(ciudadCirculacion,medioVenta);
     }
 
     @Step
