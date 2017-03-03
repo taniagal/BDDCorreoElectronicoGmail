@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.modificaciones;
 
-import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
+import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;

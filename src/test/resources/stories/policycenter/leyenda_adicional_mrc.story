@@ -25,6 +25,7 @@ And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
 And intente ingresar una nueva ubicacion con <leyendaAdicional>
+And de click en el boton aceptar
 And ingrese las entradas en cambio de poliza de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO             | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Existencias Flotantes     |                     |                  | Valor asegurado máximo           | 100000000      |

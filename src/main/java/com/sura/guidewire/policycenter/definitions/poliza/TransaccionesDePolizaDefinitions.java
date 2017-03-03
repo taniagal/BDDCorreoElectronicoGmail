@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
-import com.sura.guidewire.policycenter.steps.ModificacionInformacionPolizaPASteps;
+import com.sura.guidewire.policycenter.steps.modificacion.ModificacionInformacionPolizaPASteps;
 import com.sura.guidewire.policycenter.steps.poliza.TransaccionesDePolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;

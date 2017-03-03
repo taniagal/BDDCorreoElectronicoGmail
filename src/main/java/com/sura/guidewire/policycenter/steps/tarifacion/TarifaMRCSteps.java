@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
-import com.sura.guidewire.policycenter.pages.PolizasDePrimeraPerdidaPage;
+import com.sura.guidewire.policycenter.pages.poliza.PolizasDePrimeraPerdidaPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaMRCPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import net.thucydides.core.annotations.Step;

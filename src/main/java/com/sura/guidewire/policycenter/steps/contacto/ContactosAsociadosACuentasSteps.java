@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.contacto;
 
-import com.sura.guidewire.policycenter.pages.NuevoAseguradoNombradoPage;
+import com.sura.guidewire.policycenter.pages.poliza.NuevoAseguradoNombradoPage;
 import com.sura.guidewire.policycenter.pages.cuenta.ContactosAsociadosACuentasPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
 import net.thucydides.core.annotations.Step;
@@ -73,6 +73,11 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     @Step
     public void verOpcionesDeCreacionDeContactoPorRoleDeContactos(ExamplesTable opcionesPorRol, Boolean darClick){
         contactosAsociadosACuentasPage.existeOpcionesPorSubMenu(opcionesPorRol, darClick);
+    }
+
+    @Step
+    public void verOpcionesDeContactoPorRoles(ExamplesTable contactosPorRoles,  Boolean oprimirClick){
+        contactosAsociadosACuentasPage.opcionesPorSubMenuContactos(contactosPorRoles, oprimirClick);
     }
 
     @Step

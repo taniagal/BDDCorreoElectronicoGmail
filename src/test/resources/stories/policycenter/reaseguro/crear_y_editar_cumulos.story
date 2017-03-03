@@ -1,5 +1,5 @@
 Meta:
-@lote4
+@lote2
 @sprint 7
 @tag equipo: reaseguro
 @local

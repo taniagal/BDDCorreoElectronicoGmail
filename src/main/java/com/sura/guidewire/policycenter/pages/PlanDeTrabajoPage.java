@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.pages.poliza.AnalisisDeRiesgosPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;

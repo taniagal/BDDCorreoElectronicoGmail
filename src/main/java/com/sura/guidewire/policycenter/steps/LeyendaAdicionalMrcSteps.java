@@ -18,4 +18,9 @@ public class LeyendaAdicionalMrcSteps extends ScenarioSteps {
     public void ingresarNuevaLeyenda(String leyendaAdicional) {
         leyendaAdicionalMrcPagePage.agregarLeyendaModificacion(leyendaAdicional);
     }
+
+    @Step
+    public void clickearBotonAceptar() {
+        leyendaAdicionalMrcPagePage.clickearBotonAceptar();
+    }
 }

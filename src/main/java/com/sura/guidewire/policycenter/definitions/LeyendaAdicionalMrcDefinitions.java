@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
+import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.LeyendaAdicionalMrcSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import net.thucydides.core.annotations.Steps;
@@ -32,5 +32,10 @@ public class LeyendaAdicionalMrcDefinitions {
     public void cuandoIntenteIngresarUnaNuevaUbicacion(@Named("leyendaAdicional") String leyendaAdicional) {
         edificiosUbicacionesSteps.removerRiesgos();
         leyendaAdicionalMrcSteps.ingresarNuevaLeyenda(leyendaAdicional);
+    }
+
+    @When("de click en el boton aceptar")
+    public void clickearBotonAceptar() {
+        leyendaAdicionalMrcSteps.clickearBotonAceptar();
     }
 }
