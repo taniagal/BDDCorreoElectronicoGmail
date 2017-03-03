@@ -16,12 +16,12 @@ GivenStories: stories/policycenter/login_policy.story
 Given se tiene una poliza expedida <numeroPoliza>
 When digite el numero fasecolda <numeroFasecolda> y modelo <modelo> de un vehiculo
 Then se deben recuperar los datos del vehiculo: clase vehiculo <claseVehiculo>, marca <marca>  y linea <linea>
-And registre una zona de circulacion no permitida <ciudadCirculacion>
+And registre una zona de circulacion no permitida <ciudadCirculacion> y un <medioVenta> permitido
 And se debe mostrar un mensaje <mensaje> indicando la restriccion
 
 Examples:
-|numeroPoliza |numeroFasecolda|modelo|claseVehiculo |marca|linea                            |ciudadCirculacion|mensaje
-|TEST_22222222|52525252       |2016  |Automóviles   |AUDI |TT  8S 2.0 TFSI CO - TP 2000CC T |ACANDI (Choco)   |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
+|numeroPoliza |numeroFasecolda|modelo|claseVehiculo |marca|linea                            |ciudadCirculacion|mensaje                                                                                    |medioVenta|
+|TEST_22222222|52525252       |2016  |Automóviles   |AUDI |TT  8S 2.0 TFSI CO - TP 2000CC T |ACANDI (Choco)   |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|Gestor MST|
 
 Scenario: Consultar bonificaciones
 Meta:

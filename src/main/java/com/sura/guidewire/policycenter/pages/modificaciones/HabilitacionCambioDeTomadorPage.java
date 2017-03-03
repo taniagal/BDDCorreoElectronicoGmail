@@ -26,8 +26,10 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
     private WebElementFacade labelPeps;
     @FindBy(xpath = "html/body/div[1]/div[6]/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div")
     private WebElementFacade labelRiesgoConsultable;
-    @FindBy(xpath = "html/body/div[1]/div[6]/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div")
+    @FindBy(xpath = "html/body/div[1]/div[6]/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div[4]")
     private WebElementFacade labelMensajePeps;
+    @FindBy(xpath = "html/body/div[1]/div[6]/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div")
+    private WebElementFacade labelMensajePepsMrc;
 
     public HabilitacionCambioDeTomadorPage(WebDriver driver) {
         super(driver);
@@ -52,8 +54,14 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
     }
 
     public String validarmensajePeps() {
-        labelMensajePeps.withTimeoutOf(2, TimeUnit.SECONDS).isPresent();
-        return labelMensajePeps.getText();
+        String mensaje = null;
+        if (labelMensajePeps.isPresent()) {
+            mensaje = labelMensajePeps.getText();
+        } else if (labelMensajePepsMrc.isPresent()) {
+            mensaje = labelMensajePepsMrc.getText();
+        }
+
+        return mensaje;
     }
 
     public String validarmensajeRiesgoConsultable() {
