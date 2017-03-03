@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.definitions;
+package com.sura.guidewire.policycenter.definitions.modificaciones;
 
 import com.sura.guidewire.policycenter.steps.HabilitacionCambioDeTomadorPaSteps;
 import net.thucydides.core.annotations.Steps;
