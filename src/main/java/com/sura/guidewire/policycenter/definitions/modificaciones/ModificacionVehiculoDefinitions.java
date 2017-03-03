@@ -33,9 +33,9 @@ public class ModificacionVehiculoDefinitions{
         modificacionVehiculoSteps.digitar_Fasecolda_Y_Modelo(numeroFasecolda, modelo);
     }
 
-    @Then("registre una zona de circulacion no permitida <ciudadCirculacion>")
-    public void registrarZonaCirculacion(@Named("ciudadCirculacion") String ciudadCirculacion){
-        modificacionVehiculoSteps.registrar_Zona_De_Circulacion(ciudadCirculacion);
+    @Then("registre una zona de circulacion no permitida <ciudadCirculacion> y un <medioVenta> permitido")
+    public void registrarZonaCirculacion(@Named("ciudadCirculacion") String ciudadCirculacion,@Named("medioVenta") String medioVenta){
+        modificacionVehiculoSteps.registrar_Zona_De_Circulacion(ciudadCirculacion,medioVenta);
     }
 
     @SuppressWarnings("EmptyMethod")
