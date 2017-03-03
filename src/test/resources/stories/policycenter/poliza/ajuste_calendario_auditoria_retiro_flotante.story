@@ -13,8 +13,8 @@ Given estoy cotizando una poliza de mrc:
 |oficina|agente_oficina|organizacion|producto                |tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |1059   |DIRECTO       |Sura        |Multiriesgo corporativo |Individual|CEDULA DE CIUDADANIA|02/12/1990      |DECLARIMAN   |PASCUAL        |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
-|departamento|ciudad  |direccion        |descripcion  |actividad                    |
-|Antioquia   |Medellin|CR 44 A # 43 - 07|Edificio Core|Acabado de productos textiles|
+|departamento|ciudad  |direccion        |descripcion  |actividad                    | medioVenta |
+|Antioquia   |Medellin|CR 44 A # 43 - 07|Edificio Core|Acabado de productos textiles| Televentas |
 And seleccione algunos articulos y sus cobertura:
 | articulo        | valor_asegurable | coberturas|exposicionpromedio|
 | FloatExixtences | 100000000        | Danos     |10000000          |
@@ -48,8 +48,8 @@ Given estoy cotizando una poliza de mrc:
 |oficina|agente_oficina|organizacion|producto                |tipoPoliza|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |1059   |1681          |Sura        |Multiriesgo corporativo |Individual|CEDULA DE CIUDADANIA|02/12/1990      |DECLARIMAN   |PASCUAL        |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
-|departamento|ciudad  |direccion        |descripcion  |actividad                    |
-|Antioquia   |Medellin|CR 44 A # 43 - 07|Edificio Core|Acabado de productos textiles|
+|departamento|ciudad  |direccion        |descripcion  |actividad                    | medioVenta |
+|Antioquia   |Medellin|CR 44 A # 43 - 07|Edificio Core|Acabado de productos textiles| Televentas |
 And seleccione algunos articulos y sus cobertura:
 | articulo        | valor_asegurable | coberturas|exposicionpromedio|
 | FloatExixtences | 100000000        | Danos     |10000000          |
