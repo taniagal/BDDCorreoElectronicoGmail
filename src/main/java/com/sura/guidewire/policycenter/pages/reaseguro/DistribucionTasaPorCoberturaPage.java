@@ -63,6 +63,5 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
             JOptionPane.showMessageDialog(null, dato.get("comisionIntermediario"));
         }
     }
-
 }
 
