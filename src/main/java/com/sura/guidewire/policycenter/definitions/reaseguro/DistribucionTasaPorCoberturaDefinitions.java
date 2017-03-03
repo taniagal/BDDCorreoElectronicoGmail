@@ -16,6 +16,7 @@ public class DistribucionTasaPorCoberturaDefinitions {
 
     @When("Ingrese la información de los reaseguradores $infoReasegurador")
     public void whenIngreseLaInformaciónDeLosReaseguradores(ExamplesTable infoReasegurador) {
+        //distribucionTasaPorCoberturaSteps.ingresaPrimerReaseguradorEnTabla(infoReasegurador);
         distribucionTasaPorCoberturaSteps.ingresarReaseguradores(infoReasegurador);
     }
 

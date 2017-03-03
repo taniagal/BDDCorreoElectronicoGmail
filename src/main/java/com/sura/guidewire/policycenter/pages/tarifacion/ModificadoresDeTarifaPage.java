@@ -188,7 +188,6 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     }
 
     public void verificarTarifacionPorCoberturas(ExamplesTable datos) {
-        String articulo = "";
         for (Map<String, String> dato : datos.getRows()) {
             int i = 1;
             List<WebElementFacade> tablaPrimaDePoliza = findAll(XPATH_TABLA_PRIMA_DE_POLIZA_TR);
