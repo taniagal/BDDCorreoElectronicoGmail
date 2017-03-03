@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.steps.poliza;
 
 import com.sura.guidewire.policycenter.pages.poliza.CotizacionMRCPage;
 import com.sura.guidewire.policycenter.pages.poliza.ExpedicionDePolizaPage;
-import com.sura.guidewire.policycenter.pages.PanelSurEspacioDeTrabajoPage;
+import com.sura.guidewire.policycenter.pages.poliza.PanelSurEspacioDeTrabajoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 

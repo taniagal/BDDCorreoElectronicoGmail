@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 
-import com.sura.guidewire.policycenter.steps.PagoPolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.PagoPolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.AjustePantallaPagosYValidacionesSteps;
 import com.sura.guidewire.policycenter.utils.Parametros;
 import net.thucydides.core.annotations.Steps;
