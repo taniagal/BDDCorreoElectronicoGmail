@@ -239,8 +239,15 @@ public class PolizaSteps extends GuidewireSteps {
         obtenerPolizaPage().validarQueSeMuestreValorEnCampoYNoSeaEditable(valor);
 
     }
+
     @Step
     public void ingresarFechaDeCancelacion(int dato) {
         obtenerPolizaPage().ingresarFechaDeCancelacion(obtenerPolizaPage().obtenerFechacancelacionElemento(),dato);
     }
+
+    @Step
+    public void seleccionDeOpcionContactos(){
+        obtenerPolizaPage().seleccionarOpcionContactos();
+    }
+
 }
