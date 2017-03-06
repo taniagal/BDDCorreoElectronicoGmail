@@ -52,7 +52,7 @@ public class Poliza {
         return polizaSteps.esperoVerNumeroDeSubscripcionEnEnvio(numeroSubscripcion);
     }
 
-    @Given("que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>")
+    @Given("que estoy en el resumen de la poliza $tipo con numero de poliza <numPoliza> con el rol <rolUsuario>")
     public void dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza(@Named("numPoliza") String numPoliza, @Named("rolUsuario") String rolUsuario) {
         if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
@@ -223,6 +223,11 @@ public class Poliza {
     @When("ingrese a informacion de poliza $variable")
     public void cuandoingreseAInformacionDePoliza() {
         polizaSteps.seleccionarOpcionInformacionDePoliza();
+    }
+
+    @When("ingrese a la opcion de contactos")
+    public void cuandoingreseALaOpcionDeContactos(){
+        polizaSteps.seleccionDeOpcionContactos();
     }
 
     @Then("se debe mostrar en el campo $texto la opcion <opcion> no editable")

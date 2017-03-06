@@ -12,8 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
-import java.util.List;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -54,6 +54,7 @@ public class PageUtil extends PageObject {
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
     protected Actions actions = new Actions(getDriver());
+    protected static final String OPCIONES_MENU = "OPCIONES_MENU";
 
 
     public PageUtil(WebDriver driver) {
@@ -210,6 +211,21 @@ public class PageUtil extends PageObject {
                 + tabla.getText(), tabla.containsText(tablaBusqueda.get("busqueda")));
     }
 
+    public void validarOpcion(ExamplesTable opciones, String pathinicial, String pathfinal) {
+        WebElementFacade elementotabla;
+        Map<String, String> menus;
+        String xpathOpcionDeContactos;
+        for (int i = 0; i < opciones.getRowCount(); i++) {
+            menus = opciones.getRows().get(i);
+            String mensaje = menus.get(OPCIONES_MENU);
+            xpathOpcionDeContactos = pathinicial + mensaje + pathfinal;
+            elementotabla = findBy(xpathOpcionDeContactos);
+            setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+            MatcherAssert.assertThat("El elemento: " + mensaje + ", no es visible", elementotabla.isVisible());
+            resetImplicitTimeout();
+        }
+    }
+
     public void esperarPorValor(WebElementFacade element, String value) {
         try {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
@@ -303,10 +319,12 @@ public class PageUtil extends PageObject {
         resetImplicitTimeout();
         return editables;
     }
+
     public int consultarNumeroElementosTabla(String pathTabla) {
         List<WebElementFacade> listaFacturas = this.getLista(pathTabla);
         return listaFacturas.size();
     }
+
     public String consultarTextoCeldaTabla(String path, int indiceFila, int indiceColumna) {
         WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
         return elemento.getText();
@@ -328,7 +346,7 @@ public class PageUtil extends PageObject {
         boolean ejecuto = false;
         int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
         int ejecuciones = 0;
-        while(ejecuciones < maximoEjecuciones && !ejecuto) {
+        while (ejecuciones < maximoEjecuciones && !ejecuto) {
             esperarHasta(TIEMPO_500);
             try {
                 elemento = this.getElemento(pathElemento);
@@ -341,7 +359,7 @@ public class PageUtil extends PageObject {
             ejecuciones = ejecuciones + 1;
         }
 
-        if(!ejecuto) {
+        if (!ejecuto) {
             MatcherAssert.assertThat("No se pudo dar click a el objeto", false);
         }
     }
