@@ -59,7 +59,6 @@ public class CrearYEditarCumulosPage extends PageUtil {
     private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
     private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
     private static final double CONSTANTE_UNO = 1;
-    private static final int CONSTANTE_2 = 2;
     private static final double CONSTANTE_CIEN = 100.0;
     private static final int CONSTANTE_MIL = 1000;
     private double valorTasa = 0;
@@ -101,7 +100,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     public void ingresoInformacionDeReaseguroEnTabla() {
         linkNombreReasegurador.waitUntilPresent();
         linkNombreReasegurador.click();
-        listPaisSeleccionar.waitUntilClickable();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(listPaisSeleccionar);
         seleccionarItem(listPaisSeleccionar, PAIS_ALEMANIA);
         seleccionarItem(listNombreReaseugurador, ASEGURADORA_ALLIANZ);
         clickearElemento(btnAceptarReasegurador);
