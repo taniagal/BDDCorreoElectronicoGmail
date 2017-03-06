@@ -23,11 +23,6 @@ When Ingrese la información de los reaseguradores
 |reasegurador|modalidad |porcentajeParticipacion|valorReaseguro|comisionReasegurador|comisionIntermediario|comisionPromotora|porRetenido|
 |ALLIANZ RE  |Gross rate|20                     |1,8           |30                  |7                    |3                |10         |
 |MAIDEN RE   |Net Rate  |30                     |1,65          |10                  |7                    |2                |20         |
-
-
-
-
-
 Then prueba
 
 Examples:
