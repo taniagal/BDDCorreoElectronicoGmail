@@ -367,9 +367,9 @@ public class PageUtil extends PageObject {
         }
     }
 
-    public boolean validarElementoWebVisible(WebElementFacade elemento, final int TIEMPO) {
+    public boolean validarElementoWebVisible(WebElementFacade elemento, final int tiempo) {
         boolean visible;
-        setImplicitTimeout(TIEMPO, TimeUnit.MILLISECONDS);
+        setImplicitTimeout(tiempo, TimeUnit.MILLISECONDS);
         if (!elemento.isVisible()) {
             visible = false;
         } else {
