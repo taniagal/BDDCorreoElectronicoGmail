@@ -31,7 +31,7 @@ public class HerramientasPolizaPage extends PageUtil {
         String estado = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,CONSTANTE_1,CONSTANTE_7);
         if (cantidaProgramaAuditoria>0){
             for (Map<String, String> dato : opciones.getRows()) {
-                MatcherAssert.assertThat("El valor no es equivalente, esperado: "+tipo+", "+estado+"; Elementos recibidos: "+dato.get("tipo")+"; "+dato.get("estado"),(dato.get("tipo").equals(tipo) && dato.get("estado").equals(estado)));
+                MatcherAssert.assertThat("El valor no es equivalente, esperado: "+tipo+", "+estado+"; Elementos recibidos: "+dato.get("tipo")+"; "+dato.get("estado"),dato.get("tipo").equals(tipo) && dato.get("estado").equals(estado));
             }
         }
 
@@ -42,7 +42,7 @@ public class HerramientasPolizaPage extends PageUtil {
         String estado = consultarTextoCeldaTabla(TABLA_PROGRAMA_AUDITORIA,CONSTANTE_1,CONSTANTE_7);
         if (cantidaProgramaAuditoria < CONSTANTE_2){
             for (Map<String, String> dato : opciones.getRows()) {
-                MatcherAssert.assertThat("El valor no es equivalente, esperado: "+tipo+", "+estado+"; Elementos recibidos: "+dato.get("tipo")+"; "+dato.get("estado"),(dato.get("tipo").equals(tipo) && dato.get("estado").equals(estado)));
+                MatcherAssert.assertThat("El valor no es equivalente, esperado: "+tipo+", "+estado+"; Elementos recibidos: "+dato.get("tipo")+"; "+dato.get("estado"),dato.get("tipo").equals(tipo) && dato.get("estado").equals(estado));
             }
         }
 
