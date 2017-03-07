@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PageUtil extends PageObject {
     protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    protected static final int TIEMPO_9999 = 9999;
     protected static final int TIEMPO_30000 = 30000;
     protected static final int TIEMPO_5000 = 5000;
     protected static final int TIEMPO_3500 = 3500;
@@ -51,6 +52,8 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_3 = 3;
     protected static final int CONSTANTE_7 = 7;
     protected static final int CONSTANTE_15 = 15;
+    protected static final int DIAS_31 = 31;
+    protected static final int DIAS_61 = 61;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
     protected Actions actions = new Actions(getDriver());
