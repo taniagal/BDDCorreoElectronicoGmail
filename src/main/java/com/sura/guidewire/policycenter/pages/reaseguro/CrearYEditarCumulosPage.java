@@ -100,7 +100,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     public void ingresoInformacionDeReaseguroEnTabla() {
         linkNombreReasegurador.waitUntilPresent();
         linkNombreReasegurador.click();
-        listPaisSeleccionar.waitUntilClickable();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(listPaisSeleccionar);
         seleccionarItem(listPaisSeleccionar, PAIS_ALEMANIA);
         seleccionarItem(listNombreReaseugurador, ASEGURADORA_ALLIANZ);
         clickearElemento(btnAceptarReasegurador);
