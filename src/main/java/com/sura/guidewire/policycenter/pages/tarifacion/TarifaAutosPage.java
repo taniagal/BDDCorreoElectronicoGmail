@@ -338,12 +338,15 @@ public class TarifaAutosPage extends PageUtil {
 
     public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
         campoPrimaTotal.waitUntilPresent();
+        String substringPrima = campoPrimaTotal.getText().substring(CONSTANTE_1, campoPrimaTotal.getText().length() - CONSTANTE_9);
+        String substringIva = campoIva.getText().substring(CONSTANTE_1, campoIva.getText().length() - CONSTANTE_9);
+        String substringCostoTotal = campoCostoTotal.getText().substring(CONSTANTE_1, campoCostoTotal.getText().length() - CONSTANTE_9);
         MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
-                campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
+                substringPrima, substringPrima.equals(primaTotal));
         MatcherAssert.assertThat("Error en el valor del iva, expected: " + iva + " but was: " +
-                campoIva.getText(), campoIva.containsText(iva));
+                substringIva, substringIva.equals(iva));
         MatcherAssert.assertThat("Error en el valor del costo total, expected: " + costoTotal + " but was: " +
-                campoCostoTotal.getText(), campoCostoTotal.containsText(costoTotal));
+                substringCostoTotal, substringCostoTotal.equals(costoTotal));
     }
 
     public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo) {

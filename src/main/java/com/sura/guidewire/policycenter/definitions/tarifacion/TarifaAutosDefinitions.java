@@ -15,7 +15,6 @@ public class TarifaAutosDefinitions {
     @Steps
     TarifaAutosSteps tarifaAutosSteps;
 
-
     @When("ingrese los datos del asegurado <tipo_documento> <documento>")
     public void agregarAsegurado(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
         tarifaAutosSteps.agregarAsegurados(tipoDocumento, documento);
