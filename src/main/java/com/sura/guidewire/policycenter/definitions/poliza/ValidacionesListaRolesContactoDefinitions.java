@@ -12,7 +12,7 @@ public class ValidacionesListaRolesContactoDefinitions {
 
 
     @Then("el sistema debe validar las opciones al agregar nuevo rol: $ListaContactosRoles")
-    public void validarOpcionesRolesContactos(ExamplesTable ListaContactosRoles){
-        validacionesListaRolesContactoSteps.validarListaContactosRoles(ListaContactosRoles);
+    public void validarOpcionesRolesContactos(ExamplesTable listaContactosRoles){
+        validacionesListaRolesContactoSteps.validarListaContactosRoles(listaContactosRoles);
     }
 }

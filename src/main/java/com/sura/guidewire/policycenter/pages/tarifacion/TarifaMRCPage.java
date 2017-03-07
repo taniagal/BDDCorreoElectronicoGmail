@@ -173,17 +173,8 @@ public class TarifaMRCPage extends PageUtil {
         }
         botonCotizar.waitUntilPresent();
         clickearElemento(botonCotizar);
-        descartarCambios();
+        descartarCambios(linkDescartarCambios,botonCotizar);
         waitForAnyTextToAppear("Cotizado", "Cotización");
-    }
-
-    public void descartarCambios() {
-        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-        if (linkDescartarCambios.isPresent()) {
-            clickearElemento(linkDescartarCambios);
-            clickearElemento(botonCotizar);
-        }
-        resetImplicitTimeout();
     }
 
     public void cotizarArticuloBloqueado() {
