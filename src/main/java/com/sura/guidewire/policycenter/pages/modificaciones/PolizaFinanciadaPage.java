@@ -40,10 +40,7 @@ public class PolizaFinanciadaPage extends PageUtil {
     }
 
     public void seleccionarOpcionNoFinanciarPoliza() {
-        if (optNoFinanciarPoliza.isSelected()) {
-        } else {
-            optNoFinanciarPoliza.click();
-        }
+        optNoFinanciarPoliza.click();
     }
 
     public void validarNoCampoNumeroDeCuotas() {
