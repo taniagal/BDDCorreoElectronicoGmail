@@ -118,6 +118,7 @@ public class PageUtil extends PageObject {
                 TimeUnit.MILLISECONDS);
         try {
             wait.until(new Function<Integer, Boolean>() {
+                @Override
                 public Boolean apply(Integer i) {
                     return false;
                 }
@@ -176,6 +177,7 @@ public class PageUtil extends PageObject {
                 .pollingEvery(TIEMPO_5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
         return espera.until(new Function<WebDriver, WebElementFacade>() {
+            @Override
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }
