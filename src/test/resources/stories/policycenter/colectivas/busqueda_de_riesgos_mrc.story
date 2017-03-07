@@ -26,8 +26,8 @@ And este buscando un riesgo por los filtros pais departamento ciudad y direccion
 | producto                | pais     | departamento | ciudad   | direccion   |
 | Multiriesgo corporativo | Colombia | Antioquia    | Medellin | CR 45 30 30 |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
-| tipoPoliza | direccion   | estado     |
-| Colectiva  | CR 45 30 30 | Expedición |
+| tipoPoliza | direccion   | estado     | contrato |
+| Colectiva  | CR 45 30 30 | Expedición |          |
 
 Examples:
 | numSubscripcion | documento  | tipodocumento        | tipoBeneficiario |
