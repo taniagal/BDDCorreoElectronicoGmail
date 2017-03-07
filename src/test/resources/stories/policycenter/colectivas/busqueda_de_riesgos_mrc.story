@@ -87,5 +87,3 @@ Then debe mostrar el mensaje <mensaje>
 Examples:
 | mensaje                                                                           |
 | Por favor ingrese un número de contrato o país, departamento, ciudad y dirección. |
-
-
