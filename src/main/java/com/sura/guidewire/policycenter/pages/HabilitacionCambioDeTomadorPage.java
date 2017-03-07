@@ -36,7 +36,7 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
     }
 
     public String validarItemsCambiarTomador() {
-        btnCambiarTomador.withTimeoutOf(2, TimeUnit.SECONDS).waitUntilClickable().click();
+        btnCambiarTomador.withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitUntilClickable().click();
         String listaObtenida = null;
         if (tablaOpcionesCambiarTomador.isCurrentlyVisible()) {
             listaObtenida = tablaOpcionesCambiarTomador.getText();
@@ -45,7 +45,7 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
     }
 
     public void cambiarTomadorPrincipal(String numeroDocumento, String tipoDocumento) {
-        btnCambiarTomador.withTimeoutOf(2, TimeUnit.SECONDS).waitUntilClickable().click();
+        btnCambiarTomador.withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitUntilClickable().click();
         btnDelDirectorio.click();
         seleccionarItem(conboBoxTipoDocumento, tipoDocumento);
         ingresarDato(txtTipoDocumento, numeroDocumento);
@@ -65,7 +65,7 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
     }
 
     public String validarmensajeRiesgoConsultable() {
-        labelRiesgoConsultable.withTimeoutOf(2, TimeUnit.SECONDS).isPresent();
+        labelRiesgoConsultable.withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).isPresent();
         return labelRiesgoConsultable.getText();
     }
 }
