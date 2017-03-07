@@ -22,8 +22,8 @@ Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
-|departamento|ciudad  |direccion        |descripcion    |actividad                        |
-|Antioquia   |Medellin|CR 44 A # 85 - 01|Core de Seguros|Actividades de agencias de empleo|
+|departamento|ciudad  |direccion        |descripcion    |actividad                        | medioVenta |
+|Antioquia   |Medellin|CR 44 A # 85 - 01|Core de Seguros|Actividades de agencias de empleo| Televentas |
 And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas|
 |Building |100000000       |Danos     |
