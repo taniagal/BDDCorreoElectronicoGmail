@@ -378,4 +378,13 @@ public class PageUtil extends PageObject {
         resetImplicitTimeout();
         return visible;
     }
+
+    public void descartarCambios(WebElementFacade linkDescartarCambios, WebElementFacade botonCotizar) {
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+        if (linkDescartarCambios.isPresent()) {
+            clickearElemento(linkDescartarCambios);
+            clickearElemento(botonCotizar);
+        }
+        resetImplicitTimeout();
+    }
 }
