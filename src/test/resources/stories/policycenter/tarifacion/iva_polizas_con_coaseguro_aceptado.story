@@ -31,8 +31,8 @@ And seleccione todas las coberturas de comision pactada:
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:
-|tipo_documento      |documento |prima    |iva    |costo    |bonoT|bonoC|TipoCo  |PolizaRef  |Documento|
-|CEDULA DE CIUDADANIA|1060447895|2.442.817|0,00   |2.442.817|0    |0    |Aceptado|C1060447895|123456789|
+|tipo_documento      |documento |prima    |iva |costo    |bonoT|bonoC|TipoCo  |PolizaRef  |Documento|
+|CEDULA DE CIUDADANIA|1060447895|2.442.817|0   |2.442.817|0    |0    |Aceptado|C1060447895|123456789|
 
 
 Scenario:  Realizar una cotizacion de autos donde el coaseguro es cedido
@@ -80,7 +80,7 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 |prima  |iva |costo  |TipoCo  |PolizaRef  |Documento|
-|176.421|0,00|176.421|Aceptado|C1060447895|123456789|
+|176.421|0   |176.421|Aceptado|C1060447895|123456789|
 
 
 Scenario:  Realizar una cotizacion de mrc donde el coaseguro es cedido
