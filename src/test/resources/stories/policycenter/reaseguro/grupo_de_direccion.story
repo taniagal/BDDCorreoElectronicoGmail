@@ -1,7 +1,7 @@
 Grupo De Direccion
 
 Meta:
-@lote4
+@lote2
 @sprint 8
 @tag equipo: reaseguro
 @local

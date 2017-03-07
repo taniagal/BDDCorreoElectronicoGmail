@@ -15,9 +15,9 @@ import java.util.concurrent.TimeUnit;
 
 public class ModificacionVehiculoPage extends PageUtil {
 
-    @FindBy(xpath=".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
-    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade campoCiudadCirculacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:VehiculeZone-inputEl']")
     private WebElementFacade campoTxtzona;
@@ -25,6 +25,10 @@ public class ModificacionVehiculoPage extends PageUtil {
     private WebElementFacade grupoMensajes;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:_msgs']/div")
     private WebElementFacade validacionVigencia;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl']")
+    private WebElementFacade comboMedioDeVenta;
+    @FindBy(xpath = "//li[contains(.,'Gestor MST')]")
+    private WebElementFacade itemMedioDeVenta;
 
     public ModificacionVehiculoPage(WebDriver driver) {
         super(driver);
@@ -35,7 +39,7 @@ public class ModificacionVehiculoPage extends PageUtil {
         waitFor(tituloInformacionPoliza).shouldBePresent();
         waitFor(botonSiguiente).click();
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
-        if(validacionVigencia.isPresent()){
+        if (validacionVigencia.isPresent()) {
             waitFor(botonSiguiente).click();
         }
         resetImplicitTimeout();
@@ -60,22 +64,24 @@ public class ModificacionVehiculoPage extends PageUtil {
 
     public void mostrarDatosVehiculo(String claseVehiculo, String marca, String linea) {
         WebElementFacade campoClaseVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']");
-        MatcherAssert.assertThat("Error en el valor de la clase de vehiculo",campoClaseVehiculo.getText(), Is.is(Matchers.equalTo(claseVehiculo)));
+        MatcherAssert.assertThat("Error en el valor de la clase de vehiculo", campoClaseVehiculo.getText(), Is.is(Matchers.equalTo(claseVehiculo)));
         WebElementFacade campoMarca = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']");
-        MatcherAssert.assertThat("Error en el valor de la marca",campoMarca.getValue().contains(marca));
+        MatcherAssert.assertThat("Error en el valor de la marca", campoMarca.getValue().contains(marca));
         WebElementFacade campoLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
-        MatcherAssert.assertThat("Error en el valor de la linea",campoLinea.getValue().contains(linea));
+        MatcherAssert.assertThat("Error en el valor de la linea", campoLinea.getValue().contains(linea));
         esperarHasta(TIEMPO_1000);
     }
 
-    public void registrarZonaCirculacion(String ciudadCirculacion) {
+    public void registrarZonaCirculacion(String ciudadCirculacion,String medioVenta) {
         esperarHasta(TIEMPO_3000);
         waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
         try {
-        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,"11"));
-        }catch (TimeoutException e){
+            waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, "11"));
+        } catch (TimeoutException e) {
             LOGGER.info("TimeoutException at ModificacionVehiculoPage Page 71 " + e);
         }
+        esperarHasta(TIEMPO_3000);
+        seleccionarItem(comboMedioDeVenta, medioVenta);
         waitFor(botonSiguiente).click();
         esperarHasta(TIEMPO_3000);
     }

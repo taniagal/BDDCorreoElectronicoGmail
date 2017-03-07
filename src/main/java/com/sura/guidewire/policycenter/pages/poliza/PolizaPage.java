@@ -34,9 +34,11 @@ public class PolizaPage extends PageUtil {
     @FindBy(xpath = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]")
     private WebElementFacade botonRetirarCancelacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
-    private WebElementFacade optionReaseguroEspecialSi;
+    private WebElementFacade opcionReaseguroEspecialSi;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Accepted-inputEl']")
     private WebElementFacade checkReaseguroEspecialSi;
+    @FindBy(xpath = ".//*[contains(@id,'PolicyFile_PolicyFile_Contacts')]")
+    private WebElementFacade menuItemContactos;
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
@@ -370,8 +372,8 @@ public class PolizaPage extends PageUtil {
     }
 
     public void seleccionarReaseguroEspecialSi(){
-        optionReaseguroEspecialSi.waitUntilPresent();
-        clickearElemento(optionReaseguroEspecialSi);
+        opcionReaseguroEspecialSi.waitUntilPresent();
+        clickearElemento(opcionReaseguroEspecialSi);
         checkReaseguroEspecialSi.waitUntilPresent();
         clickearElemento(checkReaseguroEspecialSi);
     }
@@ -382,10 +384,16 @@ public class PolizaPage extends PageUtil {
         MatcherAssert.assertThat(cotizacionPage.buscarInputHabilitadoEnElemento(campoEmpleadoSura), Is.is(false));
         resetImplicitTimeout();
     }
+
     public void ingresarFechaDeCancelacion(WebElementFacade fecha, int mes) {
         LocalDate fechaSuperior = formatter.parseDateTime(fecha.getValue()).toLocalDate().plusMonths(mes);
         obtenerFechacancelacionElemento().clear();
         obtenerFechacancelacionElemento().sendKeys(formatter.print(fechaSuperior));
         obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
+    }
+
+    public void seleccionarOpcionContactos(){
+        menuItemContactos.waitUntilVisible();
+        menuItemContactos.click();
     }
 }

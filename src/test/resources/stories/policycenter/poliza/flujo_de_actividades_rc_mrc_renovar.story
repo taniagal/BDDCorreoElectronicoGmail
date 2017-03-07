@@ -30,6 +30,7 @@ And ingrese las entradas en renovacion de poliza de las diferentes coberturas co
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100000000      |
 And se solicite aprobacion para los riesgos en renovacion de poliza
+
 Then se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable en renovacion de poliza
 
 Examples:
