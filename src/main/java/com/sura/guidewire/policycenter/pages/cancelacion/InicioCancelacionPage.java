@@ -89,13 +89,13 @@ public class InicioCancelacionPage extends PageUtil {
     }
 
     public LocalDate calculaRetroactividad31Dias(String fecha) {
-        return DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(fecha).toLocalDate().minusDays(31);
+        return DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(fecha).toLocalDate().minusDays(DIAS_31);
     }
 
     public String calculaEmisionAnticipada61Dias(String fecha) {
         DateTimeFormatter formato = DateTimeFormat.forPattern("dd/MM/yyyy");
         DateTime fechaEnFormatoDate = formato.parseDateTime(fecha);
-        return fechaEnFormatoDate.plusDays(61).toString(formato);
+        return fechaEnFormatoDate.plusDays(DIAS_61).toString(formato);
     }
 
     public void validaCamposEnPantalla() {
