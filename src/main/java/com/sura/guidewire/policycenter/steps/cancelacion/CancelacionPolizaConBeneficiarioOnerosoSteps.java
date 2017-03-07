@@ -11,6 +11,8 @@ public class CancelacionPolizaConBeneficiarioOnerosoSteps extends ScenarioSteps 
     @Page
     CancelacionPolizaConBeneficiarioOnerosoPage cancelacionPolizaConBeneficiarioOnerosoPage;
 
+    
+
     @Step
     public void validarMensajeAdvertenciaCancelacionPoliza(ExamplesTable mensaje) {
         solicitarRequisitoPa.validarAdvertenciaRequisitos(mensaje);

@@ -17,6 +17,4 @@ public class CancelacionPolizaConBeneficiarioOnerosoDefinitions {
         CancelacionPolizaConBeneficiarioOnerosoSteps.validarMensajeAdvertenciaCancelacionPoliza(mensaje);
     }
 
-
-
 }
