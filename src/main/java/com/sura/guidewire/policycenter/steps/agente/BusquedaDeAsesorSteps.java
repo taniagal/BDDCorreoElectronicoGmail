@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class BusquedaDeAsesorSteps extends ScenarioSteps {
 
-    public BusquedaDeAsesorPage busquedaDeAgentePage;
+    BusquedaDeAsesorPage busquedaDeAgentePage;
 
     @Step
     public void irALaPantallaDeBusquedaDeAgente() {
@@ -67,6 +67,6 @@ public class BusquedaDeAsesorSteps extends ScenarioSteps {
     @Step
     public void validarMensaje(String mensajeEsperado) {
         busquedaDeAgentePage.clicEnElBotonBuscar();
-        MatcherAssert.assertThat(busquedaDeAgentePage.obtenerMensajeDeLaVentana(), Is.is(Matchers.equalTo(mensajeEsperado)));
+        busquedaDeAgentePage.validarMensajeDeBusquedaDeAsesores(mensajeEsperado);
     }
 }

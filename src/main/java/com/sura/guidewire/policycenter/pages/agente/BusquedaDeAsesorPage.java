@@ -106,18 +106,18 @@ public class BusquedaDeAsesorPage extends PageUtil {
         campoNombreAsesor.type(nombreAsesor);
     }
 
-    public void clicEnElBotonBuscar(){
+    public void clicEnElBotonBuscar() {
         botonBuscar.waitUntilPresent().click();
     }
 
-    public void clicEnElBotonRestablecer(){
+    public void clicEnElBotonRestablecer() {
         botonRestablecer.waitUntilPresent().click();
         waitForTextToAppear("No hay datos para mostrar");
         waitFor(ExpectedConditions.attributeContains(campoCodigoAgente, "text", ""));
         waitFor(ExpectedConditions.attributeContains(campoNombreAsesor, "text", ""));
     }
 
-    public Map<String, String> obtenerResultadosDeBusqueda(){
+    public Map<String, String> obtenerResultadosDeBusqueda() {
         waitForTextToDisappear("No hay datos para mostrar");
         Map<String, String> resultadosDeConsulta = new HashMap<>();
         resultadosDeConsulta.put("codigoAsesor", tablaCampoCodigoAgente.getText());
@@ -129,8 +129,7 @@ public class BusquedaDeAsesorPage extends PageUtil {
         return resultadosDeConsulta;
     }
 
-    public String obtenerMensajeDeLaVentana(){
-        mensaje.waitUntilPresent();
-        return mensaje.getText();
+    public void validarMensajeDeBusquedaDeAsesores(String mensajeEsperado) {
+        super.verificarMensaje(mensaje, mensajeEsperado);
     }
 }

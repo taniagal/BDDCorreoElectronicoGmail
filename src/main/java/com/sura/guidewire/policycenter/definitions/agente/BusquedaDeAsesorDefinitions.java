@@ -14,37 +14,37 @@ public class BusquedaDeAsesorDefinitions {
     BusquedaDeAsesorSteps busquedaDeAgenteSteps;
 
     @Given("estoy en la busqueda de agentes")
-    public void irALaPantallaDeBusquedaDeAgente(){
+    public void irALaPantallaDeBusquedaDeAgente() {
         busquedaDeAgenteSteps.irALaPantallaDeBusquedaDeAgente();
     }
 
     @When("valide los campos de la pantalla")
-    public void validarCamposOcultosDeLaPantalla(){
+    public void validarCamposOcultosDeLaPantalla() {
         busquedaDeAgenteSteps.validarCamposOcultosDeLaPantalla();
     }
 
     @When("ingrese un codigo de un asesor <codigoAsesor>")
-    public void ingresarCodigoDeAgente(@Named("codigoAsesor") String codigoAsesor){
+    public void ingresarCodigoDeAgente(@Named("codigoAsesor") String codigoAsesor) {
         busquedaDeAgenteSteps.ingresarCodigoDeAgente(codigoAsesor);
     }
 
     @When("ingrese el nombre de un asesor <nombreAsesor>")
-    public void ingresarNombreDeAsesor(@Named("nombreAsesor") String nombreAsesor){
+    public void ingresarNombreDeAsesor(@Named("nombreAsesor") String nombreAsesor) {
         busquedaDeAgenteSteps.ingresarNombreDeAgente(nombreAsesor);
     }
 
     @When("no ingreso ningun filtro para la consulta")
-    public void noIngresarDatosEnLosCamposDeFiltro(){
+    public void noIngresarDatosEnLosCamposDeFiltro() {
         busquedaDeAgenteSteps.noIngresarDatosEnLosCamposDeFiltro();
     }
 
     @Then("debo ver la informacion del agente a continuacion $resultadoEsperado")
-    public void validarResultadosDeConsulta(ExamplesTable resultadoEsperado){
+    public void validarResultadosDeConsulta(ExamplesTable resultadoEsperado) {
         busquedaDeAgenteSteps.validarResultadosDeConsulta(resultadoEsperado);
     }
 
     @Then("debo ver el mensaje <mensaje> indicando al usuario lo sucedido")
-    public void validarMensajeParaElUsuario(@Named("mensaje") String mensaje){
+    public void validarMensajeParaElUsuario(@Named("mensaje") String mensaje) {
         busquedaDeAgenteSteps.validarMensaje(mensaje);
     }
 }
