@@ -366,4 +366,16 @@ public class PageUtil extends PageObject {
             MatcherAssert.assertThat("No se pudo dar click a el objeto", false);
         }
     }
+
+    public boolean validarElementoWebVisible(WebElementFacade elemento, final int TIEMPO) {
+        boolean visible;
+        setImplicitTimeout(TIEMPO, TimeUnit.MILLISECONDS);
+        if (!elemento.isVisible()) {
+            visible = false;
+        } else {
+            visible = true;
+        }
+        resetImplicitTimeout();
+        return visible;
+    }
 }
