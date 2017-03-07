@@ -87,7 +87,7 @@ public class BusquedaDeRiesgosPage extends PageUtil {
 
     public void seleccionarCampo(ExamplesTable filtros,WebElementFacade campo,String tag) {
         Map<String, String> datos = filtros.getRows().get(0);
-        campo.waitUntilPresent();
+        waitFor(campo);
         super.seleccionarItem(campo, datos.get(tag));
     }
 
