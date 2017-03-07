@@ -13,8 +13,8 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |medioVenta|
-| Colombia| Antioquia   | Medellin | CR 45 30 30 | Acabado de productos textiles                |Televentas|
+| pais     | departamento | ciudad   | direccion   | actividadEconomica            | medioVenta |
+| Colombia | Antioquia    | Medellin | CR 45 30 30 | Acabado de productos textiles | Televentas |
 And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -23,11 +23,11 @@ And ingrese la entrada de las diferentes coberturas con interes <documento><tipo
 And expido la poliza
 And ingreso a la busqueda de riesgos
 And este buscando un riesgo por los filtros pais departamento ciudad y direccion
-| producto                   | pais     | departamento | ciudad   | direccion                |
-| Multiriesgo corporativo    | Colombia | Antioquia    | Medellin | CR 45 30 30              |
+| producto                | pais     | departamento | ciudad   | direccion   |
+| Multiriesgo corporativo | Colombia | Antioquia    | Medellin | CR 45 30 30 |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
-| tipoPoliza  | direccion      | estado     |
-| Colectiva   | CR 45 30 30    | Expedición |
+| tipoPoliza | direccion   | estado     |
+| Colectiva  | CR 45 30 30 | Expedición |
 
 Examples:
 | numSubscripcion | documento  | tipodocumento        | tipoBeneficiario |
@@ -36,13 +36,13 @@ Examples:
 Scenario: Búsqueda sin resultados
 Given que voy a la busqueda de riesgos
 When este buscando un riesgo por los filtros pais departamento ciudad y direccion
-| producto                   | pais     | departamento | ciudad   | direccion                |
-| Multiriesgo corporativo    | Colombia | Antioquia    | Itagüi   | CR 45 30 30              |
+| producto                | pais     | departamento | ciudad | direccion   |
+| Multiriesgo corporativo | Colombia | Antioquia    | Itagüi | CR 45 30 30 |
 Then debe mostrar el mensaje <mensaje>
 
 Examples:
-| numSubscripcion | documento  | tipodocumento        | tipoBeneficiario |mensaje                                    |
-| 33355482        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        |La búsqueda no devolvió resultados.        |
+| numSubscripcion | documento  | tipodocumento        | tipoBeneficiario | mensaje                             |
+| 33355482        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        | La búsqueda no devolvió resultados. |
 
 
 Scenario: Búsqueda de poliza riesgo sin poliza principal asociada
@@ -50,8 +50,8 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-| pais    | departamento| ciudad   | direccion   | actividadEconomica                           |medioVenta|
-| Colombia| Antioquia   | Medellin | CR 20 20 20 | Acabado de productos textiles                |Televentas|
+| pais     | departamento | ciudad   | direccion   | actividadEconomica            | medioVenta |
+| Colombia | Antioquia    | Medellin | CR 20 20 20 | Acabado de productos textiles | Televentas |
 And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -60,12 +60,32 @@ And ingrese la entrada de las diferentes coberturas con interes <documento><tipo
 And expido la poliza
 And ingreso a la busqueda de riesgos
 And este buscando un riesgo por los filtros pais departamento ciudad y direccion
-| producto                   | pais     | departamento | ciudad   | direccion                |
-| Multiriesgo corporativo    | Colombia | Antioquia    | Medellin | CR 20 20 20              |
+| producto                | pais     | departamento | ciudad   | direccion   |
+| Multiriesgo corporativo | Colombia | Antioquia    | Medellin | CR 20 20 20 |
 Then debe mostrar el mensaje <mensaje>
 
 Examples:
-| numSubscripcion | documento  | tipodocumento        | tipoBeneficiario | mensaje                                    |
-| 33355336        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        | La búsqueda no devolvió resultados.
+| numSubscripcion | documento  | tipodocumento        | tipoBeneficiario | mensaje                             |
+| 33355336        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        | La búsqueda no devolvió resultados. |
+
+Scenario: Busqueda de poliza riesgo por numero de contrato
+When ingreso a la busqueda de riesgos
+And este buscando un riesgo por los filtros producto y numero de contrato
+| producto                | contrato |
+| Multiriesgo corporativo | 1234657  |
+Then se debe visualizar la informacion de los riesgos asociados en MRC
+| tipoPoliza | direccion   | estado     | contrato |
+| Colectiva  | CR 45 30 30 | Expedición | 1234567  |
+
+Scenario: Busqueda de poliza riesgo mrc sin ingresar los filtros requeridos
+When ingreso a la busqueda de riesgos
+And este buscando un riesgo sin ingresar todos los filtros requeridos
+| producto                |
+| Multiriesgo corporativo |
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+| mensaje                                                                           |
+| Por favor ingrese un número de contrato o país, departamento, ciudad y dirección. |
 
 

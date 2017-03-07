@@ -63,6 +63,8 @@ public class BusquedaDeRiesgosPage extends PageUtil {
     private WebElementFacade tablaCampoEstadoMrc;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[8]/div")
     private WebElementFacade tablaCampoContratoAutos;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[7]/div")
+    private WebElementFacade tablaCampoContratoMrc;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:LicensePlate']")
     private WebElementFacade linkPlaca;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:PolicyNumber']")
@@ -205,8 +207,13 @@ public class BusquedaDeRiesgosPage extends PageUtil {
         waitForTextToAppear("Resumen");
     }
 
-    public String obtenerContrato() {
+    public String obtenerContratoAutos() {
         tablaCampoContratoAutos.waitUntilPresent();
         return tablaCampoContratoAutos.getText();
+    }
+
+    public String obtenerContratoMrc() {
+        tablaCampoContratoMrc.waitUntilPresent();
+        return tablaCampoContratoMrc.getText();
     }
 }
