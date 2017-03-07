@@ -18,11 +18,12 @@ And seleccione algunos articulos y sus cobertura:
 |articulo |valor_asegurable|coberturas             |
 |Building |10000000000     |Danos,Asonada,Terremoto|
 And cotice el articulo
-And ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>
+And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
 |reasegurador|modalidad |porcentajeParticipacion|valorReaseguro|comisionReasegurador|comisionIntermediario|comisionPromotora|porRetenido|
-|ALLIANZ RE  |Gross rate|20                     |1,8           |30                  |7                    |3                |10         |
-|MAIDEN RE   |Net Rate  |30                     |1,65          |10                  |7                    |2                |20         |
+|ALLIANZ RE  |Gross rate|30                     |1,2           |0                   |0                    |0                |10         |
+|MAIDEN RE   |Net Rate  |20                     |1,28          |20                  |0                    |0                |20         |
+|Program     |Gross rate|0                      |0             |0                   |0                    |0                |0          |
 Then prueba
 
 Examples:
