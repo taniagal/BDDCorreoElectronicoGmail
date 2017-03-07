@@ -31,7 +31,7 @@ public class PolizaFinanciadaPage extends PageUtil {
         super(driver);
     }
 
-    public void SeleccionarOpcionFinanciarPoliza() {
+    public void seleccionarOpcionFinanciarPoliza() {
         optSiFinanciarPoliza.click();
     }
 
@@ -40,14 +40,10 @@ public class PolizaFinanciadaPage extends PageUtil {
     }
 
     public void seleccionarOpcionNoFinanciarPoliza() {
-        if(optNoFinanciarPoliza.isSelected()){
-        }
-        else{
-            optNoFinanciarPoliza.click();
-        }
+        optNoFinanciarPoliza.click();
     }
 
-    public void ValidarNoCampoNumeroDeCuotas() {
+    public void validarNoCampoNumeroDeCuotas() {
         conboBoxNumeroCuotas.waitUntilNotVisible();
     }
 

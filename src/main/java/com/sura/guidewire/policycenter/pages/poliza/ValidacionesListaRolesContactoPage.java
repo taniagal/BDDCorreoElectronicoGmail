@@ -27,9 +27,9 @@ public class ValidacionesListaRolesContactoPage extends PageUtil {
         super(driver);
     }
 
-    public void validarOpcionesAgregarRol(ExamplesTable ListaContactosRoles) {
+    public void validarOpcionesAgregarRol(ExamplesTable listaContactosRoles) {
         botonAgregarRol.click();
-        validarDatosDeLaListaRoles(ListaContactosRoles);
+        validarDatosDeLaListaRoles(listaContactosRoles);
     }
 
     private void validarDatosDeLaListaRoles(ExamplesTable tipoRol) {
