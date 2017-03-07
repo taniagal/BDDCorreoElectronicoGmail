@@ -80,7 +80,7 @@ public class ModificacionVehiculoPage extends PageUtil {
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException at ModificacionVehiculoPage Page 71 " + e);
         }
-        esperarHasta(2000);
+        esperarHasta(TIEMPO_3000);
         seleccionarItem(comboMedioDeVenta, medioVenta);
         waitFor(botonSiguiente).click();
         esperarHasta(TIEMPO_3000);
