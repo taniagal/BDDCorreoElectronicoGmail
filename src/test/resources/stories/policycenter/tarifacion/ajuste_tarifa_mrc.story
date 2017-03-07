@@ -22,4 +22,4 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 | numSubscripcion | descripcion        | prima | iva  | costo |
-| 33355481        | descripcion prueba | 0,00  | 0,00 | 0,00  |
+| 33355481        | descripcion prueba | 0     | 0    | 0     |
