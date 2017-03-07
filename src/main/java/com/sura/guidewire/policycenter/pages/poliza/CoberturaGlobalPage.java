@@ -11,6 +11,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -52,12 +53,18 @@ public class CoberturaGlobalPage extends PageUtil {
     private WebElementFacade labelDescripcion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr[1]/td[2]")
     private WebElementFacade tablaUbicaciones;
+    @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:DescriptionMasterPolicy-inputEl']")
+    private WebElementFacade txtDescripcion;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     private WebElementFacade bttonAceptar;
     @FindBy(xpath = ".//*[contains(@id,'CPBlanketSura_ExtPopup:DescriptionMasterPolicy-inputEl')]")
     private WebElementFacade labelDescripcionCoberturaGlobal;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:Update-btnInnerEl']")
+    private WebElementFacade btnAceptar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    private WebElementFacade btnCotizar;
 
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
     private static String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_INICIAL = ".//div[contains(@id,'CPBlanketSura_ExtPopup') and contains(@id,'CoverageInputSet:CovPatternInputGroup-legendTitle') and contains(.,'";
@@ -66,6 +73,11 @@ public class CoberturaGlobalPage extends PageUtil {
     private static String LBL_PESTAÑA_COBERTURAS_FINAL = "')]";
     private static String LBL_OPCION_COBERTURA_GLOBAL_INICIAL = "//span[contains(.,'";
     private static String LBL_OPCION_COBERTURA_GLOBAL_FINAL = "')]";
+    public static String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
+    public static String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_2 = ":CoverageInputSet:CovPatternInputGroup:_checkbox']";
+    public static String XPATH_TABLA_COBERTURA_GLOBAL_TR = ".//*[@id='CPBlanketSura_ExtPopup:3']/table/tbody/tr/td/div/table/tbody/tr";
+    public static String XPATH_TXT_VALOR_ASEGURADO_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
+    public static String XPATH_TXT_VALOR_ASEGURADO_PARTE_2 = ":CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']";
 
 
     public CoberturaGlobalPage(WebDriver driver) {
@@ -74,8 +86,6 @@ public class CoberturaGlobalPage extends PageUtil {
 
     public void irACoberturasGlobales() {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent();
-        clickearElemento(menuItemCoberturaGlobal);
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor($(".message")).waitUntilPresent();
         clickearElemento(menuItemCoberturaGlobal);
     }
 
@@ -151,5 +161,30 @@ public class CoberturaGlobalPage extends PageUtil {
 
     public void verificarMensajeErrorValorComercial(String mensaje) {
         verificarMensaje(labelMensajeValorComercial,mensaje);
+    }
+
+    public void ingresarDescripcionCobertura(String descripcion) {
+        txtDescripcion.waitUntilPresent().sendKeys(descripcion);
+    }
+
+    public void seleccionarCoberturasGlobales(ExamplesTable coberturas) {
+        List<WebElementFacade> tablaCoberturaGlobal = findAll(XPATH_TABLA_COBERTURA_GLOBAL_TR);
+        for (Map<String, String> dato : coberturas.getRows()) {
+            for (int j = 1; j <= tablaCoberturaGlobal.size(); j++) {
+                WebElementFacade coberturaGlobal = $(XPATH_TABLA_COBERTURA_GLOBAL_TR + "[" + j + "]");
+                if (coberturaGlobal.containsText(dato.get("COBERTURAS_GLOBALES"))) {
+                    $(XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_1 + (j - CONSTANTE_1) + XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_2).click();
+                    $(XPATH_TXT_VALOR_ASEGURADO_PARTE_1 + (j - CONSTANTE_1) + XPATH_TXT_VALOR_ASEGURADO_PARTE_2).waitUntilPresent();
+                    $(XPATH_TXT_VALOR_ASEGURADO_PARTE_1 + (j - CONSTANTE_1) + XPATH_TXT_VALOR_ASEGURADO_PARTE_2).sendKeys(dato.get("VALOR_ASEGURADO"));
+                    break;
+                }
+            }
+        }
+    }
+
+    public void darClicBotonAceptar(){
+        btnAceptar.waitUntilPresent().click();
+        esperarHasta(TIEMPO_3000);
+        btnCotizar.waitUntilPresent().click();
     }
 }
