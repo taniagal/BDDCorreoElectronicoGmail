@@ -215,7 +215,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
         } else {
-            String placa = "QWE" + (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
+            String placa = "QWE" + (int) Math.floor(Math.random() * (TIEMPO_1000 - TIEMPO_9999) + TIEMPO_9999);
             campoTxtPlaca.waitUntilVisible().clear();
             try {
                 ingresarDato(campoTxtPlaca, placa);
@@ -297,15 +297,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void verificarEstadoDelCampoCodigo() {
         MatcherAssert.assertThat("Error, no se validó el codigo fasecolda.", "".equals(campoTxtCodigoFasecolda.getValue()));
-    }
-
-    public void relacionarAseguradoDelVehiculo(String asegurado) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonRelacionarAsegurado).waitUntilClickable();
-        botonRelacionarAsegurado.click();
-        waitFor(botonAsegurado);
-        botonAsegurado.click();
-        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(nitAsegurado).shouldBePresent();
-        esperarHasta(TIEMPO_3000);
     }
 
     public void validarAvanceSiguientePagina() {

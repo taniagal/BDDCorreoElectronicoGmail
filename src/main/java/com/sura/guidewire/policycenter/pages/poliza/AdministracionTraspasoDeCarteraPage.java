@@ -138,16 +138,18 @@ public class AdministracionTraspasoDeCarteraPage extends PageUtil {
         esperarObjetoClikeableServidor(".//*[@id='SystemClock:SystemClockScreen:ttlBar']");
     }
 
-    public void ejecutarProceso(String nombreProceso){
+    public void ejecutarProceso(String nombreProceso) {
         WebElementFacade opcionHerramientasDelServidor = getElemento(".//*[@id='InternalToolsTabBar:ServerToolsTab-btnInnerEl']");
         clicObjeto(opcionHerramientasDelServidor);
         esperarObjetoClikeableServidor(".//*[@id='BatchProcessInfo:BatchProcessScreen:ttlBar']");
         String nombreProcesoEncontrado = "";
-        List<WebElementFacade> listaProceso =  getLista(".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV-body']/*/table/tbody/tr");
-        for(int i = 0; i < listaProceso.size(); i++) {
-            nombreProcesoEncontrado = getElemento(".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV-body']/*/table/tbody/tr["+String.valueOf(i + 1)+"]/td[1]").getText();
-            if(nombreProcesoEncontrado.equals(nombreProceso)) {
-                WebElementFacade botonEjecutar = getElemento(".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV:"+i+":RunBatchWithoutNotify']");
+        Integer posicion;
+        List<WebElementFacade> listaProceso = getLista(".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV-body']/*/table/tbody/tr");
+        for (int i = 0; i < listaProceso.size(); i++) {
+            posicion = i + 1;
+            nombreProcesoEncontrado = getElemento(".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV-body']/*/table/tbody/tr[" + posicion.toString() + "]/td[1]").getText();
+            if (nombreProcesoEncontrado.equals(nombreProceso)) {
+                WebElementFacade botonEjecutar = getElemento(".//*[@id='BatchProcessInfo:BatchProcessScreen:BatchProcessesLV:" + i + ":RunBatchWithoutNotify']");
                 clicObjeto(botonEjecutar);
                 esperarObjetoClikeableServidor(".//*[@id='BatchProcessInfo:BatchProcessScreen:ttlBar']");
                 break;
