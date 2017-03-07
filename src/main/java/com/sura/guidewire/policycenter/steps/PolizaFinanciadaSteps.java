@@ -15,8 +15,8 @@ public class PolizaFinanciadaSteps {
     TarifaAutosPage tarifaAutosPage;
 
     @Step
-    public void SeleccionarOpcionFinanciarPoliza() {
-        polizaFinanciadaPage.SeleccionarOpcionFinanciarPoliza();
+    public void seleccionarOpcionFinanciarPoliza() {
+        polizaFinanciadaPage.seleccionarOpcionFinanciarPoliza();
     }
 
     @Step
@@ -37,8 +37,8 @@ public class PolizaFinanciadaSteps {
     }
 
     @Step
-    public void ValidarNoCampoNumeroDeCuotas() {
-        polizaFinanciadaPage.ValidarNoCampoNumeroDeCuotas();
+    public void validarNoCampoNumeroDeCuotas() {
+        polizaFinanciadaPage.validarNoCampoNumeroDeCuotas();
     }
 
     @Step
