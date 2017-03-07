@@ -36,7 +36,7 @@ public class HabilitacionCambioDeTomadorPage extends PageUtil {
     }
 
     public String validarItemsCambiarTomador() {
-        btnCambiarTomador.withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitUntilClickable().click();
+        btnCambiarTomador.withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitUntilClickable().click();
         String listaObtenida = null;
         if (tablaOpcionesCambiarTomador.isCurrentlyVisible()) {
             listaObtenida = tablaOpcionesCambiarTomador.getText();
