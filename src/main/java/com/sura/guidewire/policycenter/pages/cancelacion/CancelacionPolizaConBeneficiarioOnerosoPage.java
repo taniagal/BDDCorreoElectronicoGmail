@@ -4,6 +4,7 @@ package com.sura.guidewire.policycenter.pages.cancelacion;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 public class CancelacionPolizaConBeneficiarioOnerosoPage extends PageUtil {
@@ -16,5 +17,8 @@ public class CancelacionPolizaConBeneficiarioOnerosoPage extends PageUtil {
         super(driver);
     }
 
+    public void  validarMensajeAdvertenciaCancelacionPoliza(ExamplesTable mensaje){
+        verificarMensajes(mensajeCancelar, mensaje);
 
+    }
 }

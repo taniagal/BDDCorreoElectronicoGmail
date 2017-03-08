@@ -14,7 +14,6 @@ public class CancelacionPolizaConBeneficiarioOnerosoDefinitions {
 
     @Then("se debe mostrar mensaje de advertencia al cancelar poliza $mensaje")
     public void validarMensajeAdvertenciaCancelacion(ExamplesTable mensaje) {
-        CancelacionPolizaConBeneficiarioOnerosoSteps.validarMensajeAdvertenciaCancelacionPoliza(mensaje);
+        cancelacionPolizaConBeneficiarioOnerosoSteps.validarMensajeAdvertenciaCancelacionPoliza(mensaje);
     }
-
 }
