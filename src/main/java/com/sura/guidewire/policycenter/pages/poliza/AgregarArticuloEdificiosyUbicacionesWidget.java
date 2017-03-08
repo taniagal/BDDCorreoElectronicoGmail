@@ -11,6 +11,10 @@ import org.openqa.selenium.WebElement;
 public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
     private WebElementFacade botonActualizar;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[1]/td[6]/div")
+    WebElementFacade campoInteresAdicionalNumeroDeContratoMRC;
+    @FindBy(xpath = ".//*[@name = 'ContractNumber']")
+    WebElementFacade campoInteresAdicionalNumeroDeContratoMRC2;
 
     private static String CHECK_EDIFICIO = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']";
     private static String CHECK_EDIFICIO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox')]";
@@ -79,5 +83,10 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     public void desplegarListaTipoBeneficiario() {
         WebElementFacade listaTipoBeneficiario = findBy(LISTA_TIPO_BENEFICIARIO);
         desplegarElementoDeLista(listaTipoBeneficiario);
+    }
+
+    public void ingresarNumeroDeContratoMRC(String numeroContrato){
+        campoInteresAdicionalNumeroDeContratoMRC.waitUntilPresent().click();
+        campoInteresAdicionalNumeroDeContratoMRC2.sendKeys(numeroContrato);
     }
 }

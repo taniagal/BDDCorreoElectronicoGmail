@@ -55,6 +55,11 @@ public class BusquedaDeRiesgosDefinitions {
         busquedaDeRiesgosSteps.irALaBusquedaDeRiesgos();
     }
 
+    @When("este buscando un riesgo por los filtros pais departamento ciudad, direccion y numero de contrato $filtros")
+    public void realizarBusquedaPorDireccionYNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosSteps.realizarBusquedaPorDireccionYNumeroDeContrato(filtros);
+    }
+
     @Then("debo ver la informacion de los riesgos asociados $riesgos")
     public void validarResultadosDeLaConsulta(ExamplesTable riesgos) {
         busquedaDeRiesgosSteps.validarResultadosDeLaConsulta(riesgos);

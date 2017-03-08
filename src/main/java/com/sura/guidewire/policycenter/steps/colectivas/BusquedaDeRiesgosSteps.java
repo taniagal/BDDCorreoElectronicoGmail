@@ -96,4 +96,15 @@ public class BusquedaDeRiesgosSteps extends ScenarioSteps {
         busquedaDeRiesgosPage.seleccionarProducto(filtros);
         busquedaDeRiesgosPage.clicEnBuscar();
     }
+
+    @Step
+    public void realizarBusquedaPorDireccionYNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosPage.seleccionarProducto(filtros);
+        busquedaDeRiesgosPage.seleccionarPais(filtros);
+        busquedaDeRiesgosPage.seleccionarDepartamento(filtros);
+        busquedaDeRiesgosPage.seleccionarCiudad(filtros);
+        busquedaDeRiesgosPage.ingresarDireccion(filtros);
+        busquedaDeRiesgosPage.ingresarContrato(filtros);
+        busquedaDeRiesgosPage.clicEnBuscar();
+    }
 }
