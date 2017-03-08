@@ -112,6 +112,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade divMensaje2;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     WebElementFacade botonAceptarCoaseguro;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:ReferencePolicyNumber-inputEl']")
+    private WebElementFacade txtPolizaDeReferencia;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:DocumentNumberReference-inputEl']")
+    private WebElementFacade txtNumeroDeDocumento;
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static final String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
@@ -123,7 +127,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private static final String LINK_MENU_LATERAL_INICIAL = ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
     private static final String LINK_MENU_LATERAL_FINAL = "')]";
     private static final String ASEGURADORA = "ASEGURADORA";
-    private static final String OPCIONES_MENU ="OPCIONES_MENU";
     private boolean esVisible;
     public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
 
@@ -264,15 +267,15 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         waitForTextToAppear("Información de póliza");
     }
 
-    public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras) {
+    public void agregarUnCoaseguro(String tipoCo, String polizaRef, String documento, ExamplesTable tablaaseguradoras) {
         waitFor(TIEMPO_3).second();
         clickearElemento(menuItemInformacionDePoliza);
         agregarCoaseguro.waitUntilPresent().click();
-        seleccionarElTipoDeCoaseguro(tipoCo);
+        seleccionarElTipoDeCoaseguro(tipoCo, polizaRef, documento);
         agregoLasAseguradoras(tablaaseguradoras);
     }
 
-    public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro) {
+    public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro, String polizaRef, String documento) {
         esperarHasta(TIEMPO_1000);
         if ("Cedido".equals(tipoCoaseguro)) {
             if ("0% 0%".equals($(radioButtonCedido).getCssValue("background-position"))) {
@@ -282,8 +285,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         } else {
             esperarHasta(TIEMPO_2000);
             radioButtonAceptado.click();
+            esperarHasta(TIEMPO_1000);
+            txtPolizaDeReferencia.sendKeys(polizaRef);
+            txtNumeroDeDocumento.sendKeys(documento);
         }
-
     }
 
     public void agregoLasAseguradoras(ExamplesTable tablaaseguradoras) {
