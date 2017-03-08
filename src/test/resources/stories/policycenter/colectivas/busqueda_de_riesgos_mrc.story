@@ -36,8 +36,8 @@ Examples:
 Scenario: Búsqueda sin resultados
 Given que voy a la busqueda de riesgos
 When este buscando un riesgo por los filtros pais departamento ciudad y direccion
-| producto                | pais     | departamento | ciudad | direccion   |
-| Multiriesgo corporativo | Colombia | Antioquia    | Itagüi | CR 45 30 30 |
+| producto                | pais     | departamento | ciudad   | direccion   |
+| Multiriesgo corporativo | Colombia | Antioquia    | Envigado | CR 45 30 30 |
 Then debe mostrar el mensaje <mensaje>
 
 Examples:
