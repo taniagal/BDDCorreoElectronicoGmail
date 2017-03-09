@@ -184,10 +184,13 @@ public class BusquedaDeRiesgosPage extends PageUtil {
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         if (botonRestablecer.isVisible()) {
             clickearElemento(botonRestablecer);
-            if ("Autos".equals(comboProducto.getText())) {
+            setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+            if (campoPlaca.isVisible()) {
+                resetImplicitTimeout();
                 waitFor(ExpectedConditions.attributeContains(campoPlaca, "value", ""));
             } else {
-                if ("Multiriesgo corporativo".equals(comboProducto.getText())) {
+                if (campoDireccion.isVisible()) {
+                    resetImplicitTimeout();
                     waitFor(ExpectedConditions.attributeContains(campoDireccion, "value", ""));
                 }
             }
