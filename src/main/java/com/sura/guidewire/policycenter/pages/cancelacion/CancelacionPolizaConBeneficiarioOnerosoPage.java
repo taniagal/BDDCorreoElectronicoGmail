@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 public class CancelacionPolizaConBeneficiarioOnerosoPage extends PageUtil {
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CancellationWizard:CancellationWizard_QuoteScreen:WarningOnerousMessageCancellation']")
     WebElementFacade mensajeCancelar;
 
 
@@ -19,6 +19,5 @@ public class CancelacionPolizaConBeneficiarioOnerosoPage extends PageUtil {
 
     public void  validarMensajeAdvertenciaCancelacionPoliza(ExamplesTable mensaje){
         verificarMensajes(mensajeCancelar, mensaje);
-
     }
 }

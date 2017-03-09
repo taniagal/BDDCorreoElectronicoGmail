@@ -29,10 +29,10 @@ And ingrese al resumen de la poliza expedida
 And necesito iniciar la cancelacion
 And realice el proceso de cancelacion completo
 Then se debe mostrar mensaje de advertencia al cancelar poliza
-| mensaje |                                                                                                                                                                                      |
-|         |
+| mensaje                                                                                                                                                                                                                 |
+| La póliza tiene beneficiario oneroso, usted debe tener en su poder el paz y salvo o el documento de la entidad onerosa en donde se acepta la cancelación , gestión que de manera previa debió haber realizado el asesor |
 
 
 Examples:
-| |
-| |
+|  |
+|  |
