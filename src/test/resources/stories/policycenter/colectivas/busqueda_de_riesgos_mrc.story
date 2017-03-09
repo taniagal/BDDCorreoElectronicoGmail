@@ -69,13 +69,30 @@ Examples:
 | 33355336        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        | La búsqueda no devolvió resultados. |
 
 Scenario: Busqueda de poliza riesgo por numero de contrato
-When ingreso a la busqueda de riesgos
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When copie la poliza
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+| pais     | departamento | ciudad   | direccion   | actividadEconomica            | medioVenta |
+| Colombia | Antioquia    | Medellin | CR 88 30 99 | Acabado de productos textiles | Televentas |
+And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario><numeroContrato> adicional y contrato
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+| Interes Adicional        | Interes Adicional |                     |                  | NULL                             | 00000          |
+And expido la poliza
+And ingreso a la busqueda de riesgos
 And este buscando un riesgo por los filtros producto y numero de contrato
 | producto                | contrato |
-| Multiriesgo corporativo | 1234656  |
+| Multiriesgo corporativo | 123987   |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
-| tipoPoliza        | direccion        | estado     | contrato |
-| Póliza individual | KR 65 # 48 - 162 | Expedición | 123456   |
+| tipoPoliza | direccion   | estado     | contrato |
+| Colectiva  | CR 88 30 99 | Expedición | 123987   |
+
+Examples:
+
+ numSubscripcion | documento  | tipodocumento        | tipoBeneficiario | numeroContrato |
+| 33355482        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        | 123987        |
 
 Scenario: Busqueda de poliza riesgo por numero de contrato y direccion
 When ingreso a la busqueda de riesgos
@@ -83,14 +100,14 @@ And este buscando un riesgo por los filtros pais departamento ciudad, direccion 
 | producto                | pais     | departamento | ciudad   | direccion        | contrato |
 | Multiriesgo corporativo | Colombia | Antioquia    | Medellin | KR 65 # 48 - 162 | 123456   |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
-| tipoPoliza        | direccion   | estado     | contrato |
-| Póliza individual | CR 45 30 30 | Expedición | 123456   |
+| tipoPoliza | direccion   | estado     | contrato |
+| Colectiva  | CR 88 30 99 | Expedición | 123987   |
 
 Scenario: Busqueda de poliza riesgo por numero de contrato y direccion ingresando un dato no consistente
 When ingreso a la busqueda de riesgos
 And este buscando un riesgo por los filtros pais departamento ciudad, direccion y numero de contrato
 | producto                | pais     | departamento | ciudad   | direccion        | contrato |
-| Multiriesgo corporativo | Colombia | Antioquia    | Medellin | KR 80 # 48 - 140 | 123456   |
+| Multiriesgo corporativo | Colombia | Antioquia    | Medellin | KR 80 # 48 - 140 | 123987   |
 Then debe mostrar el mensaje <mensaje>
 
 Examples:
