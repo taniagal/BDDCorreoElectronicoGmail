@@ -22,9 +22,25 @@ public class BusquedaDeRiesgosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarCriteriosDeBusqueda(ExamplesTable filtros) {
+    public void realizarBusquedaPorPlaca(ExamplesTable filtros) {
         busquedaDeRiesgosPage.seleccionarProducto(filtros);
         busquedaDeRiesgosPage.ingresarPlaca(filtros);
+        busquedaDeRiesgosPage.clicEnBuscar();
+    }
+
+    @Step
+    public void realizarBusquedaPorNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosPage.seleccionarProducto(filtros);
+        busquedaDeRiesgosPage.ingresarContrato(filtros);
+        busquedaDeRiesgosPage.clicEnBuscar();
+    }
+
+
+    @Step
+    public void realizarBusquedaPorPlacaYNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosPage.seleccionarProducto(filtros);
+        busquedaDeRiesgosPage.ingresarPlaca(filtros);
+        busquedaDeRiesgosPage.ingresarContrato(filtros);
         busquedaDeRiesgosPage.clicEnBuscar();
     }
 
@@ -44,6 +60,7 @@ public class BusquedaDeRiesgosSteps extends ScenarioSteps {
         MatcherAssert.assertThat(busquedaDeRiesgosPage.obtenerPlaca(), Is.is(Matchers.equalTo(datosEsperados.get("placa"))));
         MatcherAssert.assertThat(busquedaDeRiesgosPage.obtenerTipoDePoliza(), Is.is(Matchers.equalTo(datosEsperados.get("tipoPoliza"))));
         MatcherAssert.assertThat(busquedaDeRiesgosPage.obtenerEstado(), Is.is(Matchers.equalTo(datosEsperados.get("estado"))));
+        MatcherAssert.assertThat(busquedaDeRiesgosPage.obtenerContratoAutos(), Is.is(Matchers.containsString(datosEsperados.get("contrato"))));
         busquedaDeRiesgosPage.validarDatosDeTabla();
     }
 
@@ -53,6 +70,7 @@ public class BusquedaDeRiesgosSteps extends ScenarioSteps {
         MatcherAssert.assertThat("No se encontró el tipo de poliza", busquedaDeRiesgosPage.obtenerTipoDePoliza(), Is.is(Matchers.equalTo(datosEsperados.get("tipoPoliza"))));
         MatcherAssert.assertThat("No se encontró la dirección", busquedaDeRiesgosPage.obtenerDireccion(), Is.is(Matchers.equalTo(datosEsperados.get("direccion"))));
         MatcherAssert.assertThat("No se encontró el estado de la poliza", busquedaDeRiesgosPage.obtenerEstadoMrc(), Is.is(Matchers.equalTo(datosEsperados.get("estado"))));
+        MatcherAssert.assertThat("No se encontró el número de contrato de la poliza", busquedaDeRiesgosPage.obtenerContratoMrc(), Is.is(Matchers.containsString(datosEsperados.get("contrato"))));
         busquedaDeRiesgosPage.validarDatosDeTablaMrc();
     }
 
@@ -70,5 +88,23 @@ public class BusquedaDeRiesgosSteps extends ScenarioSteps {
     @Step
     public void irAConsultarLaInformacionDeLaPoliza() {
         busquedaDeRiesgosPage.clickEnElLinkPoliza();
+    }
+
+
+    @Step
+    public void realizarBusquedaSinIngresarLosFiltrosRequeridos(ExamplesTable filtros) {
+        busquedaDeRiesgosPage.seleccionarProducto(filtros);
+        busquedaDeRiesgosPage.clicEnBuscar();
+    }
+
+    @Step
+    public void realizarBusquedaPorDireccionYNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosPage.seleccionarProducto(filtros);
+        busquedaDeRiesgosPage.seleccionarPais(filtros);
+        busquedaDeRiesgosPage.seleccionarDepartamento(filtros);
+        busquedaDeRiesgosPage.seleccionarCiudad(filtros);
+        busquedaDeRiesgosPage.ingresarDireccion(filtros);
+        busquedaDeRiesgosPage.ingresarContrato(filtros);
+        busquedaDeRiesgosPage.clicEnBuscar();
     }
 }
