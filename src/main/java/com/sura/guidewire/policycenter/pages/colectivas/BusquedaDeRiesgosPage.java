@@ -117,7 +117,10 @@ public class BusquedaDeRiesgosPage extends PageUtil {
     }
 
     public void seleccionarProducto(ExamplesTable filtros) {
-        seleccionarCampo(filtros, comboProducto, "producto");
+        comboProducto.waitUntilPresent();
+        if(!comboProducto.getValue().equals(filtros.getRows().get(0).get("producto"))){
+            seleccionarCampo(filtros, comboProducto, "producto");
+        }
     }
 
     public void seleccionarPais(ExamplesTable filtros) {
