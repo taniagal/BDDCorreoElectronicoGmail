@@ -97,8 +97,8 @@ Examples:
 Scenario: Busqueda de poliza riesgo por numero de contrato y direccion
 When ingreso a la busqueda de riesgos
 And este buscando un riesgo por los filtros pais departamento ciudad, direccion y numero de contrato
-| producto                | pais     | departamento | ciudad   | direccion        | contrato |
-| Multiriesgo corporativo | Colombia | Antioquia    | Medellin | KR 65 # 48 - 162 | 123456   |
+| producto                | pais     | departamento | ciudad   | direccion   | contrato |
+| Multiriesgo corporativo | Colombia | Antioquia    | Medellin | CR 88 30 99 | 123987   |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
 | tipoPoliza | direccion   | estado     | contrato |
 | Colectiva  | CR 88 30 99 | Expedición | 123987   |
