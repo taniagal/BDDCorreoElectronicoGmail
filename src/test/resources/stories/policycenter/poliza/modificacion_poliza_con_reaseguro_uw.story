@@ -27,7 +27,7 @@ Examples:
 | mensaje                                                                |
 | La póliza tiene reaseguro especial y la expedición debe ser autorizada |
 
-Scenario: UW - poliza en reaseguro especial - poliza nueva en el producto MRC
+Scenario: Modificacion de poliza con reaseguro especial - genera UW
 Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion       | departamento | ciudad   | agente |
 | Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1968       | CARLOS        | RUIZ            | DIRECCION DE RESIDENCIA | CALLE 2I #21-22 | Antioquia    | Medellin | INT-3  |
