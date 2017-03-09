@@ -203,3 +203,44 @@ Then se debe permitir expedir la poliza
 Examples:
 |tipo_documento      |documento |cotizacion|tipoBeneficiario|cedula   | tipodocumento       |
 |CEDULA DE CIUDADANIA|1060447895|33355337  |Asegurado       | 94537281| CEDULA DE CIUDADANIA|
+
+Scenario: 9 Bloque de expedicion de poliza riesgo en PA para una zona no permitida
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos de vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion                 | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
+| random | 2016   | 52525252         | SANTIAGO DE CALI (VALLE DEL CAUCA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
+And seleccione la opcion siguiente
+And ingrese las coberturas a auto cero kilometros:
+| limite | deducible |
+| 640.   | 0         |
+And intente cotizar
+Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
+| MENSAJES_WORKSPACE                                               |
+| La zona del vehículo esta por fuera de las condiciones otorgadas.|
+
+Examples:
+|tipo_documento      |documento |cotizacion|tipoBeneficiario|cedula   | tipodocumento       |
+|CEDULA DE CIUDADANIA|1060447895|33355370  |Asegurado       | 94537281| CEDULA DE CIUDADANIA|
+
+
+Scenario: 10 Bloque de expedicion de poliza riesgo en PA para una marca no permitida
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos de vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion                 | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
+| random | 2016   | 52525252         | MEDELLIN (ANTIOQUIA)               | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
+And seleccione la opcion siguiente
+And ingrese las coberturas a auto cero kilometros:
+| limite | deducible |
+| 640.   | 0         |
+And intente cotizar
+Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
+| MENSAJES_WORKSPACE                                               |
+|La marca del vehiculo esta por fuera de las condiciones otorgadas |
+
+Examples:
+|tipo_documento      |documento |cotizacion|tipoBeneficiario|cedula   | tipodocumento       |
+|CEDULA DE CIUDADANIA|1060447895|33355372  |Asegurado       | 94537281| CEDULA DE CIUDADANIA|
