@@ -51,6 +51,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_2 = 2;
     protected static final int CONSTANTE_3 = 3;
     protected static final int CONSTANTE_7 = 7;
+    protected static final int CONSTANTE_9 = 9;
     protected static final int CONSTANTE_15 = 15;
     protected static final int DIAS_31 = 31;
     protected static final int DIAS_61 = 61;
@@ -118,6 +119,7 @@ public class PageUtil extends PageObject {
                 TimeUnit.MILLISECONDS);
         try {
             wait.until(new Function<Integer, Boolean>() {
+                @Override
                 public Boolean apply(Integer i) {
                     return false;
                 }
@@ -176,6 +178,7 @@ public class PageUtil extends PageObject {
                 .pollingEvery(TIEMPO_5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
         return espera.until(new Function<WebDriver, WebElementFacade>() {
+            @Override
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }

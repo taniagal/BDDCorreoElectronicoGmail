@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.steps.poliza;
 
 
 import com.sura.guidewire.policycenter.pages.poliza.CoberturaGlobalPage;
-import com.sura.guidewire.policycenter.pages.PanelSurEspacioDeTrabajoPage;
+import com.sura.guidewire.policycenter.pages.poliza.PanelSurEspacioDeTrabajoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -64,6 +64,17 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     @Step
     public void validarMensajesNoSeMuestranLosMensajes(ExamplesTable mensajes) {
         panelSurEspacioDeTrabajoPage.validarMensajesNoVisibles(this.obtenerMensajes(mensajes));
+    }
+
+    @Step
+    public void ingresarDescripcionCobertura(String descripcion) {
+        coberturaGlobalPage.ingresarDescripcionCobertura(descripcion);
+    }
+
+    @Step
+    public void seleccionarCoberturasGlobales (ExamplesTable coberturas) {
+        coberturaGlobalPage.seleccionarCoberturasGlobales(coberturas);
+        coberturaGlobalPage.darClicBotonAceptar();
     }
 
     public String obtenerMensajes(ExamplesTable mensajes){

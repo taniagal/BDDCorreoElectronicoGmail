@@ -91,8 +91,8 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agrego_un_coaseguro(String tipoCo, ExamplesTable tablaaseguradoras) {
-        opcionesInformacionPolizaMrcPage.agregarUnCoaseguro(tipoCo, tablaaseguradoras);
+    public void agregarCoaseguro(String tipoCo, String polizaRef, String documento, ExamplesTable tablaaseguradoras) {
+        opcionesInformacionPolizaMrcPage.agregarUnCoaseguro(tipoCo, polizaRef, documento, tablaaseguradoras);
     }
 
     @Step

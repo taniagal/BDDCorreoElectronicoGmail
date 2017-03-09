@@ -29,8 +29,10 @@ public class BusquedaDeRiesgosPage extends PageUtil {
     private WebElementFacade comboDepartamento;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:city-inputEl']")
     private WebElementFacade comboCiudad;
-    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:searchPolicy-inputEl']")
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:lisencePlate-inputEl']")
     private WebElementFacade campoPlaca;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:contractNumber-inputEl']")
+    private WebElementFacade campoContrato;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:address-inputEl']")
     private WebElementFacade campoDireccion;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -59,6 +61,10 @@ public class BusquedaDeRiesgosPage extends PageUtil {
     private WebElementFacade tablaCampoEstado;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[4]/div")
     private WebElementFacade tablaCampoEstadoMrc;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[8]/div")
+    private WebElementFacade tablaCampoContratoAutos;
+    @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV-body']/*/table/tbody/tr[1]/td[7]/div")
+    private WebElementFacade tablaCampoContratoMrc;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:LicensePlate']")
     private WebElementFacade linkPlaca;
     @FindBy(xpath = ".//*[@id='RiskSearch_Ext:RiskSearch_ExtScreen:RiskSearch_ExtPanelSet:resultsLV:0:PolicyNumber']")
@@ -85,40 +91,48 @@ public class BusquedaDeRiesgosPage extends PageUtil {
         waitForTextToAppear("Buscar riesgos");
     }
 
-    public void seleccionarCampo(ExamplesTable filtros,WebElementFacade campo,String tag) {
+    public void seleccionarCampo(ExamplesTable filtros, WebElementFacade campo, String tag) {
         Map<String, String> datos = filtros.getRows().get(0);
-        campo.waitUntilPresent();
+        waitFor(campo);
         super.seleccionarItem(campo, datos.get(tag));
     }
 
-    public void ingresarBusqueda(ExamplesTable filtros,WebElementFacade campo,String tag) {
+    public void ingresarBusqueda(ExamplesTable filtros, WebElementFacade campo, String tag) {
         Map<String, String> datos = filtros.getRows().get(0);
         campo.waitUntilPresent();
         super.ingresarDato(campo, datos.get(tag));
     }
 
     public void ingresarPlaca(ExamplesTable filtros) {
-        ingresarBusqueda(filtros,campoPlaca,"placa");
+        ingresarBusqueda(filtros, campoPlaca, "placa");
+    }
+
+
+    public void ingresarContrato(ExamplesTable filtros) {
+        ingresarBusqueda(filtros, campoContrato, "contrato");
     }
 
     public void ingresarDireccion(ExamplesTable filtros) {
-        ingresarBusqueda(filtros,campoDireccion,"direccion");
+        ingresarBusqueda(filtros, campoDireccion, "direccion");
     }
 
-    public void seleccionarProducto(ExamplesTable filtros){
-          seleccionarCampo(filtros,comboProducto,"producto");
+    public void seleccionarProducto(ExamplesTable filtros) {
+        comboProducto.waitUntilPresent();
+        if(!comboProducto.getValue().equals(filtros.getRows().get(0).get("producto"))){
+            seleccionarCampo(filtros, comboProducto, "producto");
+        }
     }
 
-    public void seleccionarPais(ExamplesTable filtros){
-        seleccionarCampo(filtros,comboPais,"pais");
+    public void seleccionarPais(ExamplesTable filtros) {
+        seleccionarCampo(filtros, comboPais, "pais");
     }
 
-    public void seleccionarDepartamento(ExamplesTable filtros){
-        seleccionarCampo(filtros,comboDepartamento,"departamento");
+    public void seleccionarDepartamento(ExamplesTable filtros) {
+        seleccionarCampo(filtros, comboDepartamento, "departamento");
     }
 
-    public void seleccionarCiudad(ExamplesTable filtros){
-        seleccionarCampo(filtros,comboCiudad,"ciudad");
+    public void seleccionarCiudad(ExamplesTable filtros) {
+        seleccionarCampo(filtros, comboCiudad, "ciudad");
     }
 
 
@@ -159,9 +173,9 @@ public class BusquedaDeRiesgosPage extends PageUtil {
         return tablaCampoEstadoMrc.getText();
     }
 
-    public String obtenerDireccion(){
+    public String obtenerDireccion() {
         tablaCampoDireccion.waitUntilPresent();
-        return  tablaCampoDireccion.getText();
+        return tablaCampoDireccion.getText();
     }
 
     public void clicEnBuscar() {
@@ -173,7 +187,16 @@ public class BusquedaDeRiesgosPage extends PageUtil {
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         if (botonRestablecer.isVisible()) {
             clickearElemento(botonRestablecer);
-            waitFor(ExpectedConditions.attributeContains(campoPlaca, "value", ""));
+            setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+            if (campoPlaca.isVisible()) {
+                resetImplicitTimeout();
+                waitFor(ExpectedConditions.attributeContains(campoPlaca, "value", ""));
+            } else {
+                if (campoDireccion.isVisible()) {
+                    resetImplicitTimeout();
+                    waitFor(ExpectedConditions.attributeContains(campoDireccion, "value", ""));
+                }
+            }
         }
         resetImplicitTimeout();
     }
@@ -194,5 +217,15 @@ public class BusquedaDeRiesgosPage extends PageUtil {
         linkPoliza.waitUntilPresent();
         linkPoliza.click();
         waitForTextToAppear("Resumen");
+    }
+
+    public String obtenerContratoAutos() {
+        tablaCampoContratoAutos.waitUntilPresent();
+        return tablaCampoContratoAutos.getText();
+    }
+
+    public String obtenerContratoMrc() {
+        tablaCampoContratoMrc.waitUntilPresent();
+        return tablaCampoContratoMrc.getText();
     }
 }
