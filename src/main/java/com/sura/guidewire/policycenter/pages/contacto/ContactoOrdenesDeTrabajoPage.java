@@ -44,8 +44,6 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_4 = 4;
-    protected static final int CONSTANTE_3 = 3;
-    protected static final int CONSTANTE_2 = 2;
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -67,15 +65,30 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
         waitFor(fechaCreacion).waitUntilPresent();
-        esperarHasta(TIEMPO_3000);
-        MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(findBy(".//*[contains(text(), '" + poliza + "')]").getText(), Matchers.containsString(poliza));
-        MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
-        MatcherAssert.assertThat(findBy(".//*[contains(text(), '" +numeroTransaccion + "') and contains(@id,'WorkOrderNumber')]").getText(), Matchers.containsString(numeroTransaccion));
-        MatcherAssert.assertThat(this.tipo.getText(), Matchers.containsString(tipo));
-        MatcherAssert.assertThat(this.estado.getText(), Matchers.containsString(estado));
-        MatcherAssert.assertThat(this.fechaFin.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(this.participante.getText(), Matchers.containsString(participante));
+        waitForTextToAppear(producto, TIEMPO_30000);
+        String xpathTabla = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']/*/table/tbody/tr[" + this.encontrarTransaccion(poliza).toString() + "]";
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[1]/div").waitUntilVisible().getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[2]/div").getText(), Is.is(Matchers.equalTo(poliza)));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[3]/div").getText(), Is.is(Matchers.equalTo(producto)));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[4]/div").getText(), Is.is(Matchers.equalTo(numeroTransaccion)));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[5]/div").getText(), Matchers.containsString(tipo));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[6]/div").getText(), Matchers.containsString(estado));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[7]/div").getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[8]/div").getText(), Matchers.containsString(participante));
+    }
+
+    public Integer encontrarTransaccion(String idTransaccion) {
+        waitFor(tablaTransaccionesDeContacto).waitUntilPresent();
+        Integer filaTransaccion = 1;
+        List<WebElement> filas = tablaTransaccionesDeContacto.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (idTransaccion.equals(columna.get(CONSTANTE_1).getText())) {
+                return filaTransaccion;
+            }
+            filaTransaccion++;
+        }
+        return filaTransaccion;
     }
 
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus

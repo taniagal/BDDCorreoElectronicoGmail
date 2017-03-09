@@ -257,4 +257,9 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void validarMensajeRiesgoEnPolizaRenovacion() {
         edificiosyUbicacionesWidget.validarMensajeSoloUnRiesgoEnRenovacion();
     }
+
+    @Step
+    public void ingresarNumeroDeContratoMRC(String numeroContrato) {
+        agregarArticuloEdificiosyUbicacionesWidget.ingresarNumeroDeContratoMRC(numeroContrato);
+    }
 }

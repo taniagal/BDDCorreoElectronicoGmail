@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.poliza;
 
-import com.sura.guidewire.policycenter.pages.PanelSurEspacioDeTrabajoPage;
+import com.sura.guidewire.policycenter.pages.poliza.PanelSurEspacioDeTrabajoPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaMRCPage;

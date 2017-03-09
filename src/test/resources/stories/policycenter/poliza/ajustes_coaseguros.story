@@ -3,6 +3,11 @@ Meta:
 @tag equipo: 2
 @Sprint 9
 
+Narrative:
+Como usuario PolicyCenter
+quiero agregar un coaseguro a una poliza
+para incluir otros aseguradores
+
 Scenario:  1 Validacion de campos obligatorios en tipo de coaseguro aceptado
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
@@ -59,3 +64,4 @@ Then debo ver en el resumen de la poliza y en informacion de poliza los coasegur
 Examples:
 | numCuenta  | TipoCo | departamento | ciudad   | direccion         | descripcion   | actividad                     |medioVenta|PolizaRef|Documento|
 | C000777777 | Cedido | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles |Televentas|         |         |
+

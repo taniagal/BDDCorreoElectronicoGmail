@@ -210,6 +210,8 @@ public class EdificiosUbicacionesDefinitions {
         tasaUnicaSteps.expedirPoliza();
     }
 
+
+
     public void cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo() {
         edificiosUbicacionesSteps.seleccionarCheckDelArticuloAAgregar();
         edificiosUbicacionesSteps.seleccionarCheckDeCoberturaQueDeseaAplicar();
@@ -223,6 +225,22 @@ public class EdificiosUbicacionesDefinitions {
     @When("seleccione el tipo de mercancia flotante <tipoMercancia>")
     public void seleccionarElTipoDeMercanciaFlotante(@Named("tipoMercancia") String tipoMercancia) {
         edificiosUbicacionesSteps.seleccionarElTipoDeMercanciaFlotante(tipoMercancia);
+    }
+
+    @When("ingrese en el interes adicional el numero de contrato <numeroContrato>")
+    public void ingresarNumeroDeContratoMRC(@Named("numeroContrato") String numeroContrato) {
+        edificiosUbicacionesSteps.ingresarNumeroDeContratoMRC(numeroContrato);
+    }
+
+    @When("ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario><numeroContrato> adicional y contrato $entradatable")
+    public void cuandoIngreseInteresAdicionalConContrato(ExamplesTable entradatable, String documento, String tipodocumento, String tipoBeneficiario, String numeroContrato) {
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
+        edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(documento, tipodocumento);
+        edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
+        edificiosUbicacionesSteps.ingresarNumeroDeContratoMRC(numeroContrato);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
     }
 
     @Then("se debe mostrar el o los siguientes mensajes $mensajesEsperados")
