@@ -128,9 +128,6 @@ Then deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Edificios y Ubicaciones   |
 | Modificadores             |
-And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones
-| OPCIONES_MENU_NO_VISIBLES |
-| Prima de póliza   |
 
 Examples:
 | numSubscripcion| rolUsuario | estadodos  |
