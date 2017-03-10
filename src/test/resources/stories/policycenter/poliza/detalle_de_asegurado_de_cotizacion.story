@@ -1,7 +1,7 @@
 Detalle De Asegurado De Cotizacion
 
-Meta: @lote2
-
+Meta:
+@lote1
 @issue #CDSEG-1027
 @tag equipo: 1, sprint:2
 @Sprint 2

@@ -1,9 +1,9 @@
 informacion de pago
 
-Meta: @lote2
-
+Meta:
+@lote2
 @issue #CDSEG-2305
-@tag equipo: 3
+@tag equipo: 3, sprint: 6
 @local
 Sprint 6
 
@@ -35,8 +35,7 @@ Examples:
 
 
 Scenario: Visualizar seleccion en programa de pagos retorno billing
-Meta:
-@manual
+Meta: @manual
 Given que estoy en la pantalla de pago
 Then ingrese a la pantalla de pago
 Then debe dejarme seleccionar un SOLO plan de pagos en la tabla mostrada

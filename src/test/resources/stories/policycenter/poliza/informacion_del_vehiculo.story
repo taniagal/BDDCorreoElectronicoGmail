@@ -1,5 +1,7 @@
-Meta: @lote2
+Meta:
+@lote2
 @issue #SUGWUSC-15123
+@tag equipo: 3
 
 Narrative:
 Como usuario de policy center
