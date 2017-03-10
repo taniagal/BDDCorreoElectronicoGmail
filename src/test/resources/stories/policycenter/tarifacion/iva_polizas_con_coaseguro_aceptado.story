@@ -47,7 +47,7 @@ And de clic en Aceptar de la ventana Coaseguro
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
-|NEL501|2018  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|
+|NEL600|2018  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|
 And seleccione que el vehiculo es cero kilometros
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
