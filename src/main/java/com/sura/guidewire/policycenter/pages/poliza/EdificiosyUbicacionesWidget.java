@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
-import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
@@ -13,6 +12,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -167,24 +167,51 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         shouldContainText(tituloDePaginaAgregarArticulos);
     }
 
-    public void agregarArticuloAPrimerUbicacionEnRenovacionDePoliza() {
+
+    public void agregarArticulosEnUbicacionEnRenovacion(int numeroUbicacion) {
+
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
             obtenerTabla();
         }
         waitFor(botonAgregarArticulosRenovacionPoliza).waitUntilPresent();
-        List<WebElementFacade> elementosList = findAll("//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
-        elementosList.get(0).click();
+
+        String xpathBotonInicio = "//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:";
+        String xpathBotonFin = ":Actions:AddNewBuilding']";
+        ArrayList<WebElementFacade> elementosList = new ArrayList<WebElementFacade>();
+
+        boolean bandera = true;
+        for (int indice = 0; bandera; indice++) {
+
+            WebElementFacade aux = findBy(xpathBotonInicio + indice + xpathBotonFin);
+
+            if (aux.isVisible()) {
+                elementosList.add(aux);
+            } else {
+                bandera = false;
+            }
+
+        }
+
+        if (numeroUbicacion <= elementosList.size()) {
+            elementosList.get(numeroUbicacion - 1).click();
+        }
+
         String tituloDePaginaAgregarArticulos = VOLVER_A_EDIFICIOS;
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
     }
 
-    public void ingresarMedioDeVenta(String medioVenta) {
-        waitFor(comboMedioVenta);
-        seleccionarItem(comboMedioVenta,medioVenta);
+
+    public void agregarArticuloAPrimerUbicacionEnRenovacionDePoliza() {
+        agregarArticulosEnUbicacionEnRenovacion(1);
     }
 
-    public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad , String medioVenta) {
+    public void ingresarMedioDeVenta(String medioVenta) {
+        waitFor(comboMedioVenta);
+        seleccionarItem(comboMedioVenta, medioVenta);
+    }
+
+    public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad, String medioVenta) {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
         clickearElemento(findBy(LINK_AGREGAR_UBICACION));
@@ -222,7 +249,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
         Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
-        agregarNuevaUbicacion(valoresUbicaion.get("departamento"), valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"), valoresUbicaion.get("actividadEconomica"),valoresUbicaion.get("medioVenta"));
+        agregarNuevaUbicacion(valoresUbicaion.get("departamento"), valoresUbicaion.get("ciudad"), valoresUbicaion.get("direccion"), valoresUbicaion.get("actividadEconomica"), valoresUbicaion.get("medioVenta"));
     }
 
     public void removerRiesgos() {
@@ -484,11 +511,20 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         descartarCambios();
     }
 
+    public boolean descarteCambios() {
+
+        if (linkDescartarCambios.isPresent()) {
+            linkDescartarCambios.click();
+            return (true);
+        }
+        return (false);
+    }
+
+
     public void descartarCambios() {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-        if (linkDescartarCambios.isPresent()) {
-            linkDescartarCambios.click();
+        if (descarteCambios()) {
             btnCotizar.click();
         }
         resetImplicitTimeout();
