@@ -31,6 +31,9 @@ And realice el proceso de cancelacion completo
 Then se debe mostrar mensaje de advertencia al cancelar poliza
 | mensaje                                                                                                                                                                                                                 |
 | La póliza tiene beneficiario oneroso, usted debe tener en su poder el paz y salvo o el documento de la entidad onerosa en donde se acepta la cancelación , gestión que de manera previa debió haber realizado el asesor |
+And se debe visualizar mensaje de advertencia al cancelar poliza por opciones de compromiso
+| mensaje                                                                                                                                                                                                                 |
+| La póliza tiene beneficiario oneroso, usted debe tener en su poder el paz y salvo o el documento de la entidad onerosa en donde se acepta la cancelación , gestión que de manera previa debió haber realizado el asesor |
 
 
 Examples:
