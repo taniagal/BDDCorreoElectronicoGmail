@@ -5,14 +5,9 @@ import core.sura.resources.MetodosComunes;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static org.hamcrest.CoreMatchers.anyOf;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='ServerTools:MenuLinks:ServerTools_InfoPages']/div/span")
