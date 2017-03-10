@@ -130,6 +130,7 @@ public class BusquedaDeAsesorPage extends PageUtil {
     }
 
     public void validarMensajeDeBusquedaDeAsesores(String mensajeEsperado) {
+        waitForTextToAppear(mensajeEsperado);
         super.verificarMensaje(mensaje, mensajeEsperado);
     }
 }
