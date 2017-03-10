@@ -133,6 +133,7 @@ public class TarifaAutosPage extends PageUtil {
 
 
     public void marcharCoberturaAccidentes() {
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, "0");
         clickearElemento(checkBoxAccidentes);
     }
 
