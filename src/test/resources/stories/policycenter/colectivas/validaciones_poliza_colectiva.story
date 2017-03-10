@@ -55,7 +55,7 @@ Then en agregar coberturas globales deben estar en estado <estadouno> las siguie
 | Gastos adicionales                                                                                    |
 | Cobertura automática de nuevos bienes                                                                 |
 | Portadores externos de datos                                                                          |
-| Sustraccion                                                                                           |
+| Sustracción                                                                                           |
 | Terremoto                                                                                             |
 | Animales vivos                                                                                        |
 | Todo riesgo construcción y todo riesgo montaje                                                        |
@@ -108,9 +108,6 @@ And deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Edificios y ubicaciones   |
 | Modificadores             |
-And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones
-| OPCIONES_MENU_NO_VISIBLES |
-| Prima de póliza   |
 And en revision de poliza deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Edificios   |
@@ -131,9 +128,6 @@ Then deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Edificios y Ubicaciones   |
 | Modificadores             |
-And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones
-| OPCIONES_MENU_NO_VISIBLES |
-| Prima de póliza   |
 
 Examples:
 | numSubscripcion| rolUsuario | estadodos  |
