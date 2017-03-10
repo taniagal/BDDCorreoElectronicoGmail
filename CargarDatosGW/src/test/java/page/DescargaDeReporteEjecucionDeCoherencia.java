@@ -28,6 +28,7 @@ public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
 
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_200000 = 200000;
+    private static final String NUMERO_DE_SUBPROCESOS = "1000000";
 
     public void descargarReporte(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
@@ -37,7 +38,7 @@ public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
         waitUntilVisible(submenuItemVerificacionesDeCoherencia, driver);
         submenuItemVerificacionesDeCoherencia.click();
         waitUntilVisible(campoNumeroDeSubprocesos, driver);
-        campoNumeroDeSubprocesos.sendKeys("1000000");
+        campoNumeroDeSubprocesos.sendKeys(NUMERO_DE_SUBPROCESOS);
         botonEjecutarVerificacionesDeCoherencia.click();
         wait.until(ExpectedConditions.visibilityOf(iconoDescargar));
         iconoDescargar.click();
