@@ -1,7 +1,7 @@
 Detalle Registros Suscripcion
 
 Meta:
-@lote2
+@lote1
 @issue #SUGWUSC-14959
 @tag equipo: 1
 
