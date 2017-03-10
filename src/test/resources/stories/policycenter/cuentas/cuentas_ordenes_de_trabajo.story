@@ -14,7 +14,7 @@ Quiero ser capaz de consultar las transacciones de una cuenta
 para obtener información de las transacciones asociadas a la misma
 
 
-Scenario: Ver informacion de las transacciones asociadas al cuenta
+Scenario: Ver informacion de las transacciones asociadas a la cuenta
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 When consulte las transacciones de poliza por estado <filtroEstado>
