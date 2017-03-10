@@ -22,7 +22,7 @@ Then debe mostrarme el listado de transacciones con su respectiva informacion: n
 
 Examples:
 | tipoContacto         | nombre | apellido | filtroEstado | poliza        | producto | transaccion | tipo       | estado   | participante |
-| CEDULA DE CIUDADANIA | DORIAN | EASTMOND | Completo     | TEST_22222222 | Autos    | 22222222    | Cotización | Expedida | Super User   |
+| CEDULA DE CIUDADANIA | DORIAN | EASTMOND | Completo     | TEST_22222222 | Autos    | 22222222    | Cotización | Expedida | System User  |
 
 Scenario: Ver informacion de transacciones sin registros
 Given que voy a consultar un contacto
