@@ -90,11 +90,10 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.verificarNoDependenciaDeCobertura();
     }
 
-    @Then("debo poder ver la cobertura de accidentes al conductor con dependencia de daños o hurto")
-    public void verificarDependenciaDeCobertura() {
-        tarifaAutosSteps.verificarDependenciaDeCobertura();
+    @Then("debo poder ver la cobertura de accidentes al conductor con dependencia de daños <danos> o hurto <hurto>")
+    public void verificarDependenciaDeCobertura(@Named("danos") String danos, @Named("hurto") String hurto) {
+        tarifaAutosSteps.verificarDependenciaDeCobertura(danos, hurto);
     }
-
 
     @When("seleccione todas las coberturas de comision: $coberturas")
     public void agregarTodasLasCoberturasDeComision(ExamplesTable coberturas) {
