@@ -108,11 +108,11 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarDependenciaDeCobertura() {
-        tarifaAutosPage.marcharCoberturaAccidentes();
+    public void verificarDependenciaDeCobertura(String danos, String hurto) {
+        tarifaAutosPage.marcarCoberturaAccidentes(hurto);
         tarifaAutosPage.verificarDependenciaDeCobertura();
-        tarifaAutosPage.desMarcarCoberturas();
-        tarifaAutosPage.verificarCoberturaAccidentes();
+        tarifaAutosPage.marcarOpcionDanos(danos);
+        tarifaAutosPage.verificarDependenciaDeCobertura();
     }
 
     @Step
