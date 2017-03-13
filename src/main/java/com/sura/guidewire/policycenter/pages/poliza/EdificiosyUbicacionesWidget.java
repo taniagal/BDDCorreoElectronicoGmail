@@ -541,6 +541,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void ingresarTextAreaDescripcion(String tipoArticulo) {
         WebElementFacade textAreaDescripcion = $(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']");
         textAreaDescripcion.waitUntilVisible();
+        esperarHasta(TIEMPO_1000);
+        textAreaDescripcion.click();
         enter(tipoArticulo).into(textAreaDescripcion);
         clickearElemento(textAreaDescripcion);
     }

@@ -57,14 +57,14 @@ Then en agregar coberturas globales deben estar en estado <estadouno> las siguie
 | Portadores externos de datos                                                                          |
 | Sustracción                                                                                           |
 | Terremoto                                                                                             |
-| Animales vivos                                                                                        |
+| Muerte de animales vivos por rotura de maquinaria                                                     |
 | Todo riesgo construcción y todo riesgo montaje                                                        |
 | Lucro cesante AMIT                                                                                    |
 | Lucro cesante terremoto                                                                               |
 | Lucro cesante danos materiales                                                                        |
-| Lucro cesante por dano interno de equipo electronico                                                  |
+| Lucro cesante por daño interno de equipo electrónico                                                  |
 | Lucro cesante por rotura de maquinaria                                                                |
-| Coberturas de ingreso manual                                                                          |
+| Cobertura de ingreso manual 1                                                                        |
 And debe estar en la pestaña coberturas en estado <estadouno> las siguientes opciones
 | OPCIONES_MENU |
 | Descripción   |
