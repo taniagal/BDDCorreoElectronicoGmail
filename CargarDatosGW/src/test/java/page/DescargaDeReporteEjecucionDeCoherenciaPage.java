@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
+public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='ServerTools:MenuLinks:ServerTools_InfoPages']/div/span")
     private WebElement menuItemPaginasDeInformacion;
     @FindBy(xpath = ".//*[@id='ServerTools:MenuLinks:ServerTools_InfoPages:InfoPages_ConsistencyChecks']/div/span")

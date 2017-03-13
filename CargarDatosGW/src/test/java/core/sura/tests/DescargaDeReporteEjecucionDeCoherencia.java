@@ -6,23 +6,19 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import page.LoginPage;
-import page.PrecondicionesPage;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Precondiciones extends MetodosComunes {
+public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
     private WebDriver driver;
     private LoginPage loginPage;
-    private DescargaDeReporteEjecucionDeCoherencia descargaDeReporteEjecucionDeCoherencia;
+    private DescargaDeReporteEjecucionDeCoherenciaPage descargaReportePage;
 
     @Before
     public void setUp() throws Exception {
@@ -36,14 +32,14 @@ public class Precondiciones extends MetodosComunes {
 
     private void initPages() {
         loginPage = PageFactory.initElements(driver, LoginPage.class);
-        descargaDeReporteEjecucionDeCoherencia = PageFactory.initElements(driver, descargaDeReporteEjecucionDeCoherencia.class);
+        descargaReportePage = PageFactory.initElements(driver, descargaReportePage.class);
     }
 
     @Test
     public void descargarReporte() {
         initPages();
         loginPage.login("pedrvevi", "pedrvevi", driver);
-        descargaDeReporteEjecucionDeCoherencia.descargaDeReporte(driver);
+        descargaReportePage.descargarReporte(driver);
     }
 
     @After
