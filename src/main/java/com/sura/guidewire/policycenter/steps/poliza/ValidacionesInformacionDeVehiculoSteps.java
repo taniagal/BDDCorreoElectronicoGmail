@@ -50,11 +50,6 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarVehiculoCeroKilometros() {
-        vehiculoPage.seleccionarVehiculoCeroKilometros();
-    }
-
-    @Step
     public void siguiente() {
         vehiculoPage.clickSiguiente();
     }
