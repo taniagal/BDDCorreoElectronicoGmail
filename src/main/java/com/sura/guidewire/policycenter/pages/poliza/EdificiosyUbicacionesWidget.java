@@ -515,9 +515,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
-            return (true);
+            return true;
         }
-        return (false);
+        return false;
     }
 
 

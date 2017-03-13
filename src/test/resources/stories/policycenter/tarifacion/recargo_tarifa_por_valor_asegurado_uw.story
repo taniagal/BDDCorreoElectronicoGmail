@@ -20,8 +20,8 @@ And ingrese los datos de vehiculo:
 |NEL509|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null     |null   |2   |Plan Autos Clásico|17900000       |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision:
-|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
-|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |
+|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|PLlaves|
+|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |       |
 And agregue un nuevo valor asegurado <valor_asegurado>
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
@@ -40,8 +40,8 @@ And ingrese los datos de vehiculo:
 |NEL507|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null     |null   |2   |Plan Autos Clásico|17900000       |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision:
-|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
-|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |
+|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|PLlaves|
+|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |       |
 And agregue un nuevo valor asegurado <valor_asegurado>
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
