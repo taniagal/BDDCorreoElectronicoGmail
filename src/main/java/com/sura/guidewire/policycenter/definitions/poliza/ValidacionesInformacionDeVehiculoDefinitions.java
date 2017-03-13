@@ -79,10 +79,4 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
     public void agregarPlaca() {
         vehiculoSteps.agregarPlaca();
     }
-
-    @When("seleccione que el vehiculo es cero kilometros")
-    public void seleccionarVehiculoCeroKilometros() {
-        vehiculoSteps.seleccionarVehiculoCeroKilometros();
-    }
-
 }
