@@ -16,7 +16,7 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion    |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|RAND590|2016  |00601182        |MEDELLIN (ANTIOQUIA) |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
+|RAND596|2016  |00601182        |MEDELLIN (ANTIOQUIA) |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
@@ -33,7 +33,7 @@ Examples:
 Scenario: Validar opcion Solicitar requisitos - modificacion
 Given estoy cotizando una poliza:
 |cuenta    |producto|tipoPoliza |
-|C002888993|Autos   |Individual |
+|C000888888|Autos   |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
@@ -41,6 +41,8 @@ And ingrese los datos del vehiculo:
 And ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
+And voy a expedir una poliza
+And acepto la expedicion de poliza
 And expido la poliza y voy al archivo de poliza
 And cotice el cambio de poliza
 And intente expedir la poliza
