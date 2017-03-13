@@ -24,6 +24,6 @@ public class CancelacionPolizaConBeneficiarioOnerosoPage extends PageUtil {
     }
 
     public void validarMensajeAdvertenciaCompromisoCancelacion(ExamplesTable mensajeCancelar){
-        verificarMensaje(mensajeCancelarCompromiso, mensajeCancelar);
+        verificarMensajes(mensajeCancelarCompromiso, mensajeCancelar);
     }
 }

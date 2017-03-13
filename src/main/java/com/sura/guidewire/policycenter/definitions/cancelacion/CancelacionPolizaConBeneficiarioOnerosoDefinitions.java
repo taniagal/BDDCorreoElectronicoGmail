@@ -25,6 +25,7 @@ public class CancelacionPolizaConBeneficiarioOnerosoDefinitions {
     public void validarMensajeAdvertenciaCancelacionCompromiso(ExamplesTable mensajeCancelar){
         polizaSteps.seleccionarOpcionCompromiso();
         polizaSteps.seleccionarOpcionCancelarAhora();
+        polizaSteps.confirmarCancelacion();
         cancelacionPolizaConBeneficiarioOnerosoSteps.validarMensajeCompromisoCancelacion(mensajeCancelar);
     }
 }
