@@ -39,7 +39,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     private WebElementFacade filtroProducto;
     @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:message:InfoMessage_ExtDV:message']")
     private WebElementFacade msjTransaccionNoEncontrada;
-    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']")
+    @FindBy(xpath = ".//*[contains(@id, 'WorkOrdersLV-body')]")
     private WebElementFacade tablaTransaccionesDeContacto;
 
     protected static final int CONSTANTE_5 = 5;
@@ -66,7 +66,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
                                            String tipo, String estado, String participante) {
         waitFor(fechaCreacion).waitUntilPresent();
         waitForTextToAppear(producto, TIEMPO_30000);
-        String xpathTabla = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']/*/table/tbody/tr[" + this.encontrarTransaccion(poliza).toString() + "]";
+        String xpathTabla = ".//*[contains(@id, 'WorkOrdersLV-body')]/*/table/tbody/tr[" + this.encontrarTransaccion(poliza).toString() + "]";
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[1]/div").waitUntilVisible().getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[2]/div").getText(), Is.is(Matchers.equalTo(poliza)));
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[3]/div").getText(), Is.is(Matchers.equalTo(producto)));

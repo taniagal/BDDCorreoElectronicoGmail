@@ -1,7 +1,7 @@
 Busqueda de Cuentas
 
 Meta:
-@lote2
+@lote1
 @issue #CDSEG-921
 @tag equipo: 1, sprint:1
 @Sprint 1

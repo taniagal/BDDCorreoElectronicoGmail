@@ -132,7 +132,8 @@ public class TarifaAutosPage extends PageUtil {
     }
 
 
-    public void marcharCoberturaAccidentes() {
+    public void marcarCoberturaAccidentes(String hurto) {
+        seleccionarItem(comboBoxPerdidaTotalHurto, hurto);
         clickearElemento(checkBoxAccidentes);
     }
 
@@ -242,7 +243,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
     public void esperarPorPantallaCoberturas() {
-        comboBoxLimite.waitUntilPresent();
+        comboBoxLimite.waitUntilVisible();
         setImplicitTimeout(0, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
             clickearElemento(botonBorrar);
@@ -361,10 +362,6 @@ public class TarifaAutosPage extends PageUtil {
         MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor no se encuentra presente.", comboBoxAccidentes.isPresent());
     }
 
-    public void verificarCoberturaAccidentes() {
-        MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor se presente.", !comboBoxAccidentes.isPresent());
-    }
-
     public void seleccionarCobertura(WebElementFacade checkBox, WebElementFacade comboBox, String dato) {
         clickearElemento(checkBox);
         seleccionarItem(comboBox, dato);
@@ -386,5 +383,11 @@ public class TarifaAutosPage extends PageUtil {
         campoPrimaTotal.waitUntilPresent();
         MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
                 campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
+    }
+
+    public void marcarOpcionDanos(String danos){
+        seleccionarItem(comboBoxPerdidaTotalHurto, OPCION_SIN_VALOR);
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, danos);
+        clickearElemento(checkBoxAccidentes);
     }
 }

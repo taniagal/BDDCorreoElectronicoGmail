@@ -1,9 +1,9 @@
 Expedicion Cambio De Poliza Uw Peps
 
-Meta: @lote2
-
+Meta:
+@lote2
 @issue #CDSEG-1252
-@tag equipo: 5
+@tag equipo: 5, sprint: 6
 @local
 @Sprint 6
 
