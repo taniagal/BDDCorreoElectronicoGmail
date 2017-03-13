@@ -1,6 +1,8 @@
 package com.sura.guidewire.policycenter.definitions.tarifacion;
 
 import com.sura.guidewire.policycenter.steps.poliza.DetallesDeUbicacionSteps;
+import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
+import com.sura.guidewire.policycenter.steps.poliza.TipoDeOnerosoPaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
@@ -23,6 +25,11 @@ public class TarifaAutosDefinitions {
     @When("ingrese los datos del vehiculo: $datosVehiculo")
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         tarifaAutosSteps.agregarVehiculo(datosVehiculo);
+    }
+
+    @When("ingrese registros del vehiculo con interes adicional: $datosVehiculoOneroso")
+    public void agregarVehiculoConInteres(ExamplesTable datosVehiculoOneroso){
+        tarifaAutosSteps.agregarVehiculoOneroso(datosVehiculoOneroso);
     }
 
     @When("agregue un nuevo valor asegurado <valor_asegurado>")
