@@ -11,7 +11,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -328,5 +327,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         MatcherAssert.assertThat("El botón de crear vehículo debe estar oculto cuando ya hay un vehículo creado ", botonCrearVehiculo.isVisible(), Is.is(Matchers.equalTo(false)));
         resetImplicitTimeout();
+    }
+
+    public void validarMayusculaDeMotorYChasis() {
+        MatcherAssert.assertThat(campoTxtMotor.getValue(), Is.is(Matchers.equalTo(campoTxtMotor.getValue().toUpperCase())));
+        MatcherAssert.assertThat(campoTxtchasis.getValue(), Is.is(Matchers.equalTo(campoTxtchasis.getValue().toUpperCase())));
     }
 }
