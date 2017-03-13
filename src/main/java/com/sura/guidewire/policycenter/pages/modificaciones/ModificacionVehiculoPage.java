@@ -87,6 +87,7 @@ public class ModificacionVehiculoPage extends PageUtil {
     }
 
     public void validarZonaCirculacion(String mensaje) {
+        esperarHasta(TIEMPO_2000);
         verificarMensaje(grupoMensajes, mensaje);
     }
 }
