@@ -418,7 +418,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarAsistenciaYCarroDeReemplazo(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, dato.get("AS"));
-        seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
+        seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
         seleccionarItem(comboBoxCarroDeReemplazoPerdidaParcial, dato.get("CRPP"));
     }
 
