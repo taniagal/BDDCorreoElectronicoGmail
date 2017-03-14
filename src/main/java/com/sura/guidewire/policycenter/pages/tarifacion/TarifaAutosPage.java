@@ -264,14 +264,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturas1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCoberturasHurto(coberturas);
-        seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
-        seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
-        seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
-    }
-
-    public void seleccionarCoberturas4(ExamplesTable coberturas) {
-        Map<String, String> dato = coberturas.getRow(0);
-        seleccionarCoberturasHurto1(coberturas);
+        seleccionarCoberturasHurto2(coberturas);
         seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
         seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
         seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
@@ -288,23 +281,18 @@ public class TarifaAutosPage extends PageUtil {
         } catch (TimeoutException f) {
             LOGGER.info("TimeoutException " + f);
         }
+    }
+
+    public void seleccionarCoberturasHurto1(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
         seleccionarItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
         esperarPorValor(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
-    public void seleccionarCoberturasHurto1(ExamplesTable coberturas) {
+    public void seleccionarCoberturasHurto2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
-        try {
-            withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
-        } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
-            labelGatosTransporte.waitUntilPresent();
-        } catch (TimeoutException f) {
-            LOGGER.info("TimeoutException " + f);
-        }
         seleccionarItem(labelGatosTransporte, dato.get("GTH"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
@@ -324,26 +312,18 @@ public class TarifaAutosPage extends PageUtil {
                 labelGatosTransporteCarro.waitUntilPresent();
             }
         }
+    }
+
+    public void seleccionarCoberturasDanios1(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
         seleccionarItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
         esperarPorValor(comboBoxGastosDeTransporteCarro, dato.get("GT"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
-    public void seleccionarCoberturasDanios1(ExamplesTable coberturas) {
+    public void seleccionarCoberturasDanios2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
-        try {
-            if (!comboBoxGastosDeTransporteCarro.isPresent()) {
-                labelGatosTransporteCarro.waitUntilPresent();
-            }
-        } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException ", e);
-            esperarHasta(TIEMPO_2000);
-            if (!comboBoxGastosDeTransporteCarro.isPresent()) {
-                labelGatosTransporteCarro.waitUntilPresent();
-            }
-        }
         seleccionarItem(comboBoxGastosDeTransporteDanos, dato.get("GT"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
