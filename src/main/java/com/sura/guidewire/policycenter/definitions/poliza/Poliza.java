@@ -305,11 +305,6 @@ public class Poliza {
         }
     }
 
-    @Then("se debe mostrar la fecha del dia de hoy")
-    public void entoncesValidarFechaSeaFechadeHOY() {
-        LOGGER.info("CotizacionDefinitions.ValidarFechaSeaFechadeHOY");
-    }
-
     @When("ingrese fecha superior a 61 dias")
     public void cuandoIngresoFechaSuperiora61Dias() {
         polizaSteps.ingresarFechaAnteriorA61Dias();
