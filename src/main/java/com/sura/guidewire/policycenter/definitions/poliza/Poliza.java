@@ -1,11 +1,11 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.AnalisisDeRiesgoSteps;
 import com.sura.guidewire.policycenter.steps.poliza.CotizacionSteps;
-import com.sura.guidewire.policycenter.steps.renovacion.InstruccionesPreviasARenovacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
-import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
+import com.sura.guidewire.policycenter.steps.renovacion.InstruccionesPreviasARenovacionSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;

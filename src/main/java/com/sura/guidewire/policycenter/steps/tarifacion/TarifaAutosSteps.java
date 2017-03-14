@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.steps.tarifacion;
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
@@ -35,6 +36,19 @@ public class TarifaAutosSteps extends ScenarioSteps {
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.esperarPorPantallaCoberturas();
     }
+    @Step
+    public void agregarVehiculoOneroso(ExamplesTable datosVehiculoOneroso){
+        vehiculoPage.crearVehiculo();
+        tarifaAutosPage.relacionarAsegurado();
+        vehiculoPage.agregarVehiculo(datosVehiculoOneroso);
+    }
+
+    @Step
+    public void agregarCoberturasOneroso(){
+        vehiculoPage.clickSiguiente();
+        tarifaAutosPage.esperarPorPantallaCoberturas();
+    }
+
 
     @Step
     public void agregarVehiculoDos(ExamplesTable datosPoliza) {
