@@ -392,11 +392,11 @@ public class PageUtil extends PageObject {
         resetImplicitTimeout();
     }
 
-    public boolean validarResultadoTabla(String PATHTABLA, String verficarDato, int nrocolumna) {
+    public boolean validarResultadoTabla(String pathTabla, String verficarDato, int nrocolumna) {
         boolean encontrada = false;
-        int cantidad = consultarNumeroElementosTabla(PATHTABLA);
+        int cantidad = consultarNumeroElementosTabla(pathTabla);
         for (int i = 1; i <= cantidad; i++) {
-            if (consultarTextoCeldaTabla(PATHTABLA, i, nrocolumna).equals(verficarDato)) {
+            if (consultarTextoCeldaTabla(pathTabla, i, nrocolumna).equals(verficarDato)) {
                 encontrada = true;
                 break;
             }
