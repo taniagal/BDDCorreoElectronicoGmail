@@ -1,12 +1,14 @@
 Meta:
+@lote4
+@tag equipo: Billing
+@sprint 14
 
 Narrative:
-As a user
-I want to perform an action
-So that I can achieve a business goal
+Como usuario de Policy Center
+requiero poder asignar un medio de venta por default para la gestión de las pólizas.
 
 
-Scenario: Medio de venta por default Administracion
+Scenario: Validacion de Medio de venta por canal por defecto
 GivenStories: stories/policycenter/login_policy.story
 Given estoy en el menu de administracion
 And seleccione la opcion de  configuracion red comercial
