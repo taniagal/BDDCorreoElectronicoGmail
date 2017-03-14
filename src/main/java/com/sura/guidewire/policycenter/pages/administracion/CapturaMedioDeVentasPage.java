@@ -182,15 +182,11 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void validarDatosMedioDeVentaPorCanal(ExamplesTable verificarDatoMediosVenta) {
-        String medioVenta = "";
-        String medioDeVentaPorDefecto = "";
-
 
         for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
-            medioVenta = verificarDato.get("mediosDeVentaAsociados");
-            medioDeVentaPorDefecto = verificarDato.get("medioDeVentaPorDefecto");
-            MatcherAssert.assertThat("No se encontro el medio de venta" + " venta esperada: " + medioVenta, validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, medioVenta, CONSTANTE_2));
-            MatcherAssert.assertThat("No se encontro el medio de venta por defecto" + " venta esperada: " + medioDeVentaPorDefecto, validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, medioDeVentaPorDefecto, CONSTANTE_5));
+
+            MatcherAssert.assertThat("No se encontro el medio de venta" + " venta esperada: " + verificarDato.get("mediosDeVentaAsociados"), validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, verificarDato.get("mediosDeVentaAsociados"), CONSTANTE_2));
+            MatcherAssert.assertThat("No se encontro el medio de venta por defecto" + " venta esperada: " + verificarDato.get("medioDeVentaPorDefecto"), validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, verificarDato.get("medioDeVentaPorDefecto"), CONSTANTE_5));
         }
     }
 
