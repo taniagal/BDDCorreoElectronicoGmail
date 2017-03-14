@@ -66,8 +66,9 @@ public class TarifaAutosSteps extends ScenarioSteps {
     @Step
     public void seleciconarCoberturas(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasBasica(coberturas);
-        tarifaAutosPage.seleccionarCoberturas4(coberturas);
-        tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
+        tarifaAutosPage.seleccionarCoberturas1(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios2(coberturas);
         tarifaAutosPage.seleccionarCoberturas2(coberturas);
         tarifaAutosPage.seleccionarCoberturas3(coberturas);
         tarifaAutosPage.cotizar();
@@ -105,7 +106,9 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void seleccionarCoberturasComisionPactada(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
         tarifaAutosPage.seleccionarCoberturasHurto(coberturas);
+        tarifaAutosPage.seleccionarCoberturasHurto1(coberturas);
         tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
         tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
         tarifaAutosPage.cotizar();
     }
@@ -137,7 +140,9 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void seleccionarCoberturasComision(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
         tarifaAutosPage.seleccionarCoberturasHurto(coberturas);
+        tarifaAutosPage.seleccionarCoberturasHurto1(coberturas);
         tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
         tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
     }
 
