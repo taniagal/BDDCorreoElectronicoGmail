@@ -18,8 +18,8 @@ public class ValidacionesListaRolesContactoSteps extends ScenarioSteps {
 
 
     @Step
-    public void validarListaContactosRoles(ExamplesTable ListaContactosRoles){
-        validacionesListaRolesContactoPage.validarOpcionesAgregarRol(ListaContactosRoles);
+    public void validarListaContactosRoles(ExamplesTable listaContactosRoles){
+        validacionesListaRolesContactoPage.validarOpcionesAgregarRol(listaContactosRoles);
     }
 
 }

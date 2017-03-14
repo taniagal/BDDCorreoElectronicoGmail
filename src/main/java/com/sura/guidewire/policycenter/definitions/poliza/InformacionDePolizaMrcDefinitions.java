@@ -68,9 +68,9 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizarPolizaPrincipal();
     }
 
-    @When("quiero agregar un coaseguro <TipoCo> con particion de aseguradoras $entradatable")
-    public void cuandoQuieroAgregarunCoaseguro(@Named("TipoCo") String tipoCo, ExamplesTable entradatable) {
-        informacionDePolizaMrcSteps.agrego_un_coaseguro(tipoCo, entradatable);
+    @When("quiero agregar coaseguro <TipoCo> con poliza referencia <PolizaRef> documento <Documento> y particion de aseguradoras $entradatable")
+    public void agregarCoaseguro(@Named("TipoCo") String tipoCo, @Named("PolizaRef") String polizaRef, @Named("Documento") String documento, ExamplesTable entradatable) {
+        informacionDePolizaMrcSteps.agregarCoaseguro(tipoCo, polizaRef, documento, entradatable);
     }
 
     @When("ingrese a edificios y ubicaciones")

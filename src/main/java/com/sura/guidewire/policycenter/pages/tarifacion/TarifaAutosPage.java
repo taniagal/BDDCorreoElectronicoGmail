@@ -40,9 +40,9 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade campoCostoTotal;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
     private WebElementFacade campoTxtNumeroDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxDaniosCarro;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxHurto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAccidentesDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
     private WebElementFacade checkBoxAccidentes;
@@ -50,7 +50,7 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade checkBoxAsistencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
     private WebElementFacade checkBoxTaller;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:1:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:1:SuraPACoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxGrua;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:2:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
     private WebElementFacade checkBoxTallerMovil;
@@ -70,11 +70,11 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade comboBoxLimite;
     @FindBy(xpath = ".//*[contains(@id, 'Wizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:1:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl')]")
     private WebElementFacade comboBoxAbogado;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaTotalHurto;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:1:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:1:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaParcialHurto;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteHurto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAccidentesDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxAccidentes;
@@ -82,17 +82,19 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade comboBoxPerdidaDeLlaves;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxTaller;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:1:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:1:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxGrua;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:2:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxTallerMovil;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACentroServiciosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxCentroDeServicios;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaTotalDaniosDeducible;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:1:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:1:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaParcialDaniosDeducible;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    private WebElementFacade comboBoxGastosDeTransporteDanos;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteCarro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxCarroDeReemplazoPerdidaParcial;
@@ -112,9 +114,9 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV:0:numDocument']")
     private WebElementFacade itemdocNum;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade labelGatosTransporte;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-labelEl']")
     private WebElementFacade labelGatosTransporteCarro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
     private WebElementFacade menuItemAsegurados;
@@ -132,7 +134,8 @@ public class TarifaAutosPage extends PageUtil {
     }
 
 
-    public void marcharCoberturaAccidentes() {
+    public void marcarCoberturaAccidentes(String hurto) {
+        seleccionarItem(comboBoxPerdidaTotalHurto, hurto);
         clickearElemento(checkBoxAccidentes);
     }
 
@@ -229,8 +232,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturasBasica(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         seleccionarCoberturasRC(datosCoberturas);
-        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
-        if (!dato.get("abogado").isEmpty()) {
+        if (!dato.get("abogado").isEmpty() && !comboBoxAbogado.getValue().equals(dato.get("abogado"))) {
             seleccionarItem(comboBoxAbogado, dato.get("abogado"));
         }
     }
@@ -243,7 +245,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
     public void esperarPorPantallaCoberturas() {
-        comboBoxLimite.waitUntilPresent();
+        comboBoxLimite.waitUntilVisible();
         setImplicitTimeout(0, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
             clickearElemento(botonBorrar);
@@ -253,7 +255,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
     public void seleccionarPerdidaDeLlaves(String llaves) {
-        if (!llaves.isEmpty()) {
+        if (!llaves.isEmpty() && !llaves.equals(comboBoxPerdidaDeLlaves.getValue())) {
             seleccionarItem(comboBoxPerdidaDeLlaves, llaves);
         }
     }
@@ -262,6 +264,14 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturas1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCoberturasHurto(coberturas);
+        seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
+        seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
+        seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
+    }
+
+    public void seleccionarCoberturas4(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        seleccionarCoberturasHurto1(coberturas);
         seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
         seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
         seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
@@ -281,6 +291,22 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
         seleccionarItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
         esperarPorValor(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
+        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+    }
+
+    public void seleccionarCoberturasHurto1(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
+        try {
+            withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            labelGatosTransporte.waitUntilPresent();
+        } catch (TimeoutException f) {
+            LOGGER.info("TimeoutException " + f);
+        }
+        seleccionarItem(labelGatosTransporte, dato.get("GTH"));
+        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
 
@@ -301,6 +327,25 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
         seleccionarItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
         esperarPorValor(comboBoxGastosDeTransporteCarro, dato.get("GT"));
+        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+    }
+
+    public void seleccionarCoberturasDanios1(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        try {
+            if (!comboBoxGastosDeTransporteCarro.isPresent()) {
+                labelGatosTransporteCarro.waitUntilPresent();
+            }
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException ", e);
+            esperarHasta(TIEMPO_2000);
+            if (!comboBoxGastosDeTransporteCarro.isPresent()) {
+                labelGatosTransporteCarro.waitUntilPresent();
+            }
+        }
+        seleccionarItem(comboBoxGastosDeTransporteDanos, dato.get("GT"));
+        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
 
@@ -338,12 +383,15 @@ public class TarifaAutosPage extends PageUtil {
 
     public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
         campoPrimaTotal.waitUntilPresent();
+        String substringPrima = campoPrimaTotal.getText().substring(CONSTANTE_1, campoPrimaTotal.getText().length() - CONSTANTE_9);
+        String substringIva = campoIva.getText().substring(CONSTANTE_1, campoIva.getText().length() - CONSTANTE_9);
+        String substringCostoTotal = campoCostoTotal.getText().substring(CONSTANTE_1, campoCostoTotal.getText().length() - CONSTANTE_9);
         MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
-                campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
+                substringPrima, substringPrima.equals(primaTotal));
         MatcherAssert.assertThat("Error en el valor del iva, expected: " + iva + " but was: " +
-                campoIva.getText(), campoIva.containsText(iva));
+                substringIva, substringIva.equals(iva));
         MatcherAssert.assertThat("Error en el valor del costo total, expected: " + costoTotal + " but was: " +
-                campoCostoTotal.getText(), campoCostoTotal.containsText(costoTotal));
+                substringCostoTotal, substringCostoTotal.equals(costoTotal));
     }
 
     public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo) {
@@ -355,10 +403,6 @@ public class TarifaAutosPage extends PageUtil {
 
     public void verificarDependenciaDeCobertura() {
         MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor no se encuentra presente.", comboBoxAccidentes.isPresent());
-    }
-
-    public void verificarCoberturaAccidentes() {
-        MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor se presente.", !comboBoxAccidentes.isPresent());
     }
 
     public void seleccionarCobertura(WebElementFacade checkBox, WebElementFacade comboBox, String dato) {
@@ -382,5 +426,11 @@ public class TarifaAutosPage extends PageUtil {
         campoPrimaTotal.waitUntilPresent();
         MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
                 campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
+    }
+
+    public void marcarOpcionDanos(String danos){
+        seleccionarItem(comboBoxPerdidaTotalHurto, OPCION_SIN_VALOR);
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, danos);
+        clickearElemento(checkBoxAccidentes);
     }
 }

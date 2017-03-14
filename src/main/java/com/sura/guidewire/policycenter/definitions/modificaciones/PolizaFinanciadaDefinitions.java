@@ -40,7 +40,7 @@ public class PolizaFinanciadaDefinitions {
 
     @When("seleccione la opcion financiar poliza")
     public void seleccionarFinanciarPoliza() {
-        polizaFinanciadaSteps.SeleccionarOpcionFinanciarPoliza();
+        polizaFinanciadaSteps.seleccionarOpcionFinanciarPoliza();
     }
 
     @When("ingrese el numero de cuotas <numeroCuotas> a financiar")
@@ -59,8 +59,8 @@ public class PolizaFinanciadaDefinitions {
     }
 
     @Then("se debe ocultar el campo numero de cuotas")
-    public void ValidarNoCampoNumeroDeCuotas() {
-        polizaFinanciadaSteps.ValidarNoCampoNumeroDeCuotas();
+    public void validarNoCampoNumeroDeCuotas() {
+        polizaFinanciadaSteps.validarNoCampoNumeroDeCuotas();
     }
 
     @Then("deben aparecer el numero de cuotas por las cuales puedo financiar la poliza $numeroCuotas")

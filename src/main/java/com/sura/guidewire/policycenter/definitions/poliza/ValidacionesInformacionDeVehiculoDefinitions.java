@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 
 
 import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
-import com.sura.guidewire.policycenter.steps.DetallesDeUbicacionSteps;
+import com.sura.guidewire.policycenter.steps.poliza.DetallesDeUbicacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -33,13 +33,18 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
 
     @Then("deben aparecer los mensajes de validacion: $mensajes")
     public void validarMensajes(ExamplesTable mensajes) {
-        vehiculoSteps.verificar_mensajes(mensajes);
+        vehiculoSteps.verificarMensajes(mensajes);
     }
 
     @Then("debe permitir continuar la cotizacion")
-    public void permitirContinuarCotizacion(){
+    public void permitirContinuarCotizacion() {
         vehiculoSteps.siguiente();
         vehiculoSteps.validarAvanceSiguientePagina();
+    }
+
+    @Then("debe mostrar los valores de motor y chasis ingresados en mayuscula")
+    public void validarMayusculaDeMotorYChasis() {
+        vehiculoSteps.validarMayusculaDeMotorYChasis();
     }
 
     /**
@@ -47,7 +52,7 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
      */
     @When("agrege un vehiculo con codigo fasecolda <codigo> que no existe")
     public void agregarCodigoFasecolda(@Named("codigo") String codigo) {
-        vehiculoSteps.ir_a_vehiculos();
+        vehiculoSteps.irAVehiculos();
         vehiculoSteps.agregarCodigoFasecolda(codigo);
     }
 
@@ -61,23 +66,17 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
      */
     @When("vaya a agregar un vehiculo con los datos: $datosVehiculo")
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        vehiculoSteps.ir_a_vehiculos();
+        vehiculoSteps.irAVehiculos();
         vehiculoSteps.agregarVehiculo(datosVehiculo);
     }
 
     @When("voy a realizar el siguiente paso")
-    public void siguiente(){
+    public void siguiente() {
         vehiculoSteps.siguiente();
     }
 
     @When("agregue la placa del vehiculo")
-    public void agregarPlaca(){
+    public void agregarPlaca() {
         vehiculoSteps.agregarPlaca();
     }
-
-    @When("seleccione que el vehiculo es cero kilometros")
-    public void seleccionarVehiculoCeroKilometros(){
-        vehiculoSteps.seleccionarVehiculoCeroKilometros();
-    }
-
 }

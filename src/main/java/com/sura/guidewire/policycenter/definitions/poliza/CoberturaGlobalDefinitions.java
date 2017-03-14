@@ -78,5 +78,13 @@ public class CoberturaGlobalDefinitions {
         coberturaGlobalSteps.validarMensajesNoSeMuestranLosMensajes(mensajes);
     }
 
+    @When("ingreso la descripcion de la cobertura <descripcion>")
+    public void ingresarDescripcionCobertura (@Named("descripcion") String descripcion) {
+        coberturaGlobalSteps.ingresarDescripcionCobertura(descripcion);
+    }
 
+    @When("selecciono las coberturas globales $coberturas")
+    public void seleccionarCoberturasGlobales (ExamplesTable coberturas) {
+        coberturaGlobalSteps.seleccionarCoberturasGlobales(coberturas);
+    }
 }

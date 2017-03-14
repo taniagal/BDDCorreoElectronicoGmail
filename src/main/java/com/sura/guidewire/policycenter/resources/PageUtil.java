@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PageUtil extends PageObject {
     protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    protected static final int TIEMPO_9999 = 9999;
     protected static final int TIEMPO_30000 = 30000;
     protected static final int TIEMPO_5000 = 5000;
     protected static final int TIEMPO_3500 = 3500;
@@ -49,10 +50,15 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_1 = 1;
     protected static final int CONSTANTE_2 = 2;
     protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_7 = 7;
+    protected static final int CONSTANTE_9 = 9;
     protected static final int CONSTANTE_15 = 15;
+    protected static final int DIAS_31 = 31;
+    protected static final int DIAS_61 = 61;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
+    protected static String OPCION_SIN_VALOR = "<ninguno>";
     protected Actions actions = new Actions(getDriver());
     protected static final String OPCIONES_MENU = "OPCIONES_MENU";
 
@@ -115,6 +121,7 @@ public class PageUtil extends PageObject {
                 TimeUnit.MILLISECONDS);
         try {
             wait.until(new Function<Integer, Boolean>() {
+                @Override
                 public Boolean apply(Integer i) {
                     return false;
                 }
@@ -173,6 +180,7 @@ public class PageUtil extends PageObject {
                 .pollingEvery(TIEMPO_5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
         return espera.until(new Function<WebDriver, WebElementFacade>() {
+            @Override
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }
@@ -362,5 +370,37 @@ public class PageUtil extends PageObject {
         if (!ejecuto) {
             MatcherAssert.assertThat("No se pudo dar click a el objeto", false);
         }
+    }
+
+    public boolean validarElementoWebVisible(WebElementFacade elemento, final int tiempo) {
+        boolean visible;
+        setImplicitTimeout(tiempo, TimeUnit.MILLISECONDS);
+        if (!elemento.isVisible()) {
+            visible = false;
+        } else {
+            visible = true;
+        }
+        resetImplicitTimeout();
+        return visible;
+    }
+
+    public void descartarCambios(WebElementFacade linkDescartarCambios, WebElementFacade botonCotizar) {
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+        if (linkDescartarCambios.isPresent()) {
+            clickearElemento(linkDescartarCambios);
+            clickearElemento(botonCotizar);
+        }
+        resetImplicitTimeout();
+    }
+    public boolean validarResultadoTabla(String PATHTABLA,String verficarDato ,int nrocolumna) {
+        boolean encontrada = false;
+        int cantidad = consultarNumeroElementosTabla(PATHTABLA);
+        for (int i = 1; i <= cantidad; i++) {
+            if(consultarTextoCeldaTabla(PATHTABLA, i, nrocolumna).equals(verficarDato))
+            {  encontrada = true;
+                break;
+            }
+        }
+        return  encontrada;
     }
 }

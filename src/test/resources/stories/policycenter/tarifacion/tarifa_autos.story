@@ -18,13 +18,13 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
 |TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And ingrese las coberturas:
-|limite|deducible|abogado |PLlaves |
-|640.  |0        |Si      |Si      |
+|limite|deducible|abogado |
+|640.  |0        |Si      |
 Then el resultado de la cotizacion debe ser <valor>
 
 Examples:
 |valor  |tipo_documento      |documento |
-|837.825|CEDULA DE CIUDADANIA|1060447895|
+|631.598|CEDULA DE CIUDADANIA|1060447895|
 
 
 
@@ -37,23 +37,23 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
 |TAU103|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And seleccione todas las coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|PPD|PPDF|GT|PP|CRPT|GTR|GP|PLlaves|
-|640.  |0        |Si      |0  |750|1.50|40.|35|Conces|Plus|Si|6 |Plus|0  |750|1.50|40|20|20  |Si |Si|Si     |
+|limite|deducible|abogado |PTH|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|GT|PP|CRPT|GTR|GP|PLlaves|
+|640.  |0        |Si      |0  |40.|35|Conces|Plus|Si|6 |Plus|0  |40|20|20  |Si |Si|Si     |
 Then el valor del monto en cada cobertura debe ser:
 |descripcion                          |valor    |
-|Cobertura de Responsabilidad Civil   |837.825  |
-|Cobertura de Daños                   |4.584.739|
-|Cobertura de Hurto                   |1.793.873|
-|Cobertura de Vehículo de Reemplazo   |15.352   |
-|Cobertura de Accidentes al Conductor |17.500   |
-|Cobertura de Pérdida de Llaves       |25.799   |
-|Cobertura de Taller                  |57.007   |
-|Cobertura de Taller móvil y cerrajero|25.799   |
-|Cobertura de Conductor Elegido       |25.799   |
-|Cobertura de Gastos de Traspaso      |25.799   |
-|Cobertura de Gasto de Parqueadero    |25.799   |
-|Cobertura de Centro de Servicio      |25.799   |
-|Cobertura de Abogado                 |25.799   |
+|Cobertura de Responsabilidad Civil   |631.598  |
+|Cobertura de Daños                   |5.600.598|
+|Cobertura de Hurto                   |4.538.580|
+|Cobertura de Vehículo de Reemplazo   |23.216   |
+|Cobertura de Accidentes al Conductor |21.875   |
+|Cobertura de Pérdida de Llaves       |36.764   |
+|Cobertura de Taller                  |86.208   |
+|Cobertura de Taller móvil y cerrajero|36.764   |
+|Cobertura de Conductor Elegido       |36.764   |
+|Cobertura de Gastos de Traspaso      |36.764   |
+|Cobertura de Gasto de Parqueadero    |36.764   |
+|Cobertura de Centro de Servicio      |36.764   |
+|Cobertura de Abogado                 |36.764   |
 
 Examples:
 |tipo_documento      |documento |

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.tarifacion;
 
-import com.sura.guidewire.policycenter.steps.DetallesDeUbicacionSteps;
+import com.sura.guidewire.policycenter.steps.poliza.DetallesDeUbicacionSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
@@ -14,7 +14,6 @@ public class TarifaAutosDefinitions {
 
     @Steps
     TarifaAutosSteps tarifaAutosSteps;
-
 
     @When("ingrese los datos del asegurado <tipo_documento> <documento>")
     public void agregarAsegurado(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
@@ -91,11 +90,10 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.verificarNoDependenciaDeCobertura();
     }
 
-    @Then("debo poder ver la cobertura de accidentes al conductor con dependencia de daños o hurto")
-    public void verificarDependenciaDeCobertura() {
-        tarifaAutosSteps.verificarDependenciaDeCobertura();
+    @Then("debo poder ver la cobertura de accidentes al conductor con dependencia de daños <danos> o hurto <hurto>")
+    public void verificarDependenciaDeCobertura(@Named("danos") String danos, @Named("hurto") String hurto) {
+        tarifaAutosSteps.verificarDependenciaDeCobertura(danos, hurto);
     }
-
 
     @When("seleccione todas las coberturas de comision: $coberturas")
     public void agregarTodasLasCoberturasDeComision(ExamplesTable coberturas) {

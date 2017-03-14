@@ -11,7 +11,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -215,7 +214,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
         } else {
-            String placa = "QWE" + (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
+            String placa = "QWE" + (int) Math.floor(Math.random() * (TIEMPO_1000 - TIEMPO_9999) + TIEMPO_9999);
             campoTxtPlaca.waitUntilVisible().clear();
             try {
                 ingresarDato(campoTxtPlaca, placa);
@@ -262,10 +261,12 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
         }
         if (!"null".equals(vehiculo.get("motor"))) {
-            campoTxtMotor.clear();
-            campoTxtMotor.sendKeys(vehiculo.get("motor"));
-            campoTxtchasis.clear();
-            campoTxtchasis.sendKeys(vehiculo.get("chasis"));
+            campoTxtMotor.type(vehiculo.get("motor"));
+            campoTxtchasis.click();
+            esperarHasta(TIEMPO_2000);
+            campoTxtchasis.type(vehiculo.get("chasis"));
+            campoTxtMotor.click();
+            esperarHasta(TIEMPO_2000);
         }
     }
 
@@ -299,15 +300,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         MatcherAssert.assertThat("Error, no se validó el codigo fasecolda.", "".equals(campoTxtCodigoFasecolda.getValue()));
     }
 
-    public void relacionarAseguradoDelVehiculo(String asegurado) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonRelacionarAsegurado).waitUntilClickable();
-        botonRelacionarAsegurado.click();
-        waitFor(botonAsegurado);
-        botonAsegurado.click();
-        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(nitAsegurado).shouldBePresent();
-        esperarHasta(TIEMPO_3000);
-    }
-
     public void validarAvanceSiguientePagina() {
         esperarHasta(TIEMPO_1000);
         WebElementFacade labelTituloCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
@@ -337,5 +329,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         MatcherAssert.assertThat("El botón de crear vehículo debe estar oculto cuando ya hay un vehículo creado ", botonCrearVehiculo.isVisible(), Is.is(Matchers.equalTo(false)));
         resetImplicitTimeout();
+    }
+
+    public void validarMayusculaDeMotorYChasis() {
+        MatcherAssert.assertThat(campoTxtMotor.getValue(), Is.is(Matchers.equalTo(campoTxtMotor.getValue().toUpperCase())));
+        MatcherAssert.assertThat(campoTxtchasis.getValue(), Is.is(Matchers.equalTo(campoTxtchasis.getValue().toUpperCase())));
     }
 }

@@ -12,7 +12,7 @@ Scenario: Modificacion de poliza no financiada a financiada
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 |tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|medioVenta|
-|CEDULA DE CIUDADANIA|1234567890|C000777776|Autos   |Individual|ABB119|2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |Televentas|
+|CEDULA DE CIUDADANIA|1234567890|C000777776|Autos   |Individual|ABB113|2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |Televentas|
 When ingrese a modificar dicha cotizacion
 And seleccione la opcion financiar poliza
 And ingrese el numero de cuotas <numeroCuotas> a financiar
@@ -29,7 +29,7 @@ Examples:
 Scenario: Validar numero de cuotas a financiar
 Given tengo una poliza de PA con los siguientes datos:
 |tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|medioVenta|
-|CEDULA DE CIUDADANIA|1234567890|C000777776|Autos   |Individual|ABB124|2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |Televentas|
+|CEDULA DE CIUDADANIA|1234567890|C000777776|Autos   |Individual|ABB125|2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |Televentas|
 When ingrese a modificar dicha cotizacion
 And seleccione la opcion financiar poliza
 Then deben aparecer el numero de cuotas por las cuales puedo financiar la poliza

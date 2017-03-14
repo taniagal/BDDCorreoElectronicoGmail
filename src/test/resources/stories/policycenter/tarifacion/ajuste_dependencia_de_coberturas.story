@@ -15,14 +15,13 @@ Given estoy cotizando una poliza:
 |C1060447895|Autos   |Individual |2796   |DIRECTO       |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
-|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Conducir Sura|Asesor    |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta  |
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Conducir Sura|Directo Sura|
 Then debo poder ver la cobertura de accidentes al conductor sin dependencia de daños o hurto
 
 Examples:
 |tipo_documento      |documento |
 |CEDULA DE CIUDADANIA|1060447895|
-
 
 
 Scenario:  Verificar dependencia de cobertura de accidentes al conductor a las coberturas de daños o hurto con plan global
@@ -33,8 +32,8 @@ When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan             |medioVenta|
 |random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Global|Televentas|
-Then debo poder ver la cobertura de accidentes al conductor con dependencia de daños o hurto
+Then debo poder ver la cobertura de accidentes al conductor con dependencia de daños <danos> o hurto <hurto>
 
 Examples:
-|tipo_documento      |documento |
-|CEDULA DE CIUDADANIA|1060447895|
+|tipo_documento      |documento |danos|hurto|
+|CEDULA DE CIUDADANIA|1060447895|0    |0    |

@@ -22,7 +22,7 @@ public class PolizaFinanciadaPage extends PageUtil {
     private WebElementFacade conboBoxNumeroCuotasSubmission;
     @FindBy(xpath = "//div[contains(.,'11')]")
     private WebElementFacade labelNumeroCuotas;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[5]/td/div/div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:6-body']")
     private WebElementFacade tblInformacionDePoliza;
     @FindBy(xpath = "html/body/div[7]")
     private WebElementFacade itemNumeroCuotas;
@@ -31,7 +31,7 @@ public class PolizaFinanciadaPage extends PageUtil {
         super(driver);
     }
 
-    public void SeleccionarOpcionFinanciarPoliza() {
+    public void seleccionarOpcionFinanciarPoliza() {
         optSiFinanciarPoliza.click();
     }
 
@@ -40,14 +40,10 @@ public class PolizaFinanciadaPage extends PageUtil {
     }
 
     public void seleccionarOpcionNoFinanciarPoliza() {
-        if(optNoFinanciarPoliza.isSelected()){
-        }
-        else{
-            optNoFinanciarPoliza.click();
-        }
+        optNoFinanciarPoliza.click();
     }
 
-    public void ValidarNoCampoNumeroDeCuotas() {
+    public void validarNoCampoNumeroDeCuotas() {
         conboBoxNumeroCuotas.waitUntilNotVisible();
     }
 

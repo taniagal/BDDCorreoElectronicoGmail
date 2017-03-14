@@ -22,7 +22,22 @@ public class BusquedaDeRiesgosDefinitions {
 
     @When("este buscando un riesgo por los filtros producto y placa del vehiculo $filtros")
     public void ingresarCriteriosDeBusqueda(ExamplesTable filtros) {
-        busquedaDeRiesgosSteps.ingresarCriteriosDeBusqueda(filtros);
+        busquedaDeRiesgosSteps.realizarBusquedaPorPlaca(filtros);
+    }
+
+    @When("este buscando un riesgo por los filtros producto y numero de contrato $filtros")
+    public void realizarBusquedaPorNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosSteps.realizarBusquedaPorNumeroDeContrato(filtros);
+    }
+
+    @When("este buscando un riesgo por los filtros producto, placa y numero de contrato $filtros")
+    public void realizarBusquedaPorPlacaYNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosSteps.realizarBusquedaPorPlacaYNumeroDeContrato(filtros);
+    }
+
+    @When("este buscando un riesgo sin ingresar todos los filtros requeridos $filtros")
+    public void realizarBusquedaSinIngresarLosFiltrosRequeridos(ExamplesTable filtros) {
+        busquedaDeRiesgosSteps.realizarBusquedaSinIngresarLosFiltrosRequeridos(filtros);
     }
 
     @When("este buscando un riesgo por los filtros pais departamento ciudad y direccion  $filtros")
@@ -38,6 +53,11 @@ public class BusquedaDeRiesgosDefinitions {
     @When("ingreso a la busqueda de riesgos")
     public void ingresoABusquedaDeRiesgos() {
         busquedaDeRiesgosSteps.irALaBusquedaDeRiesgos();
+    }
+
+    @When("este buscando un riesgo por los filtros pais departamento ciudad, direccion y numero de contrato $filtros")
+    public void realizarBusquedaPorDireccionYNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosSteps.realizarBusquedaPorDireccionYNumeroDeContrato(filtros);
     }
 
     @Then("debo ver la informacion de los riesgos asociados $riesgos")

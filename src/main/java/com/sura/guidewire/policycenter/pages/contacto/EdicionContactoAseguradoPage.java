@@ -13,25 +13,25 @@ import java.util.concurrent.TimeUnit;
 public class EdicionContactoAseguradoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:DocumentType-inputEl']")
-    WebElementFacade campoTipoDocumento;
+    WebElementFacade campoTipoDocumentoEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
-    WebElementFacade campoNumeroDocumento;
+    WebElementFacade campoNumeroDocumentoEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade campoPrimerNombre;
+    WebElementFacade campoPrimerNombreEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade campoPrimerApellido;
+    WebElementFacade campoPrimerApellidoEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
-    WebElementFacade campoPais;
+    WebElementFacade campoPaisEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    WebElementFacade campoDepartamento;
+    WebElementFacade campoDepartamentoEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
-    WebElementFacade campoCiudad;
+    WebElementFacade campoCiudadEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
-    WebElementFacade campoDireccion;
+    WebElementFacade campoDireccionEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:AddressType-inputEl']")
-    WebElementFacade campoTipoDireccion;
+    WebElementFacade campoTipoDireccionEdicion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade campoRazonSocial;
+    WebElementFacade campoRazonSocialEdicion;
 
 
     public EdicionContactoAseguradoPage(WebDriver driver) {
@@ -39,51 +39,51 @@ public class EdicionContactoAseguradoPage extends PageUtil {
     }
 
     public void editarDatosComunesDeContacto(Map<String, String> datosContacto) {
-        campoTipoDocumento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
-        campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
-        campoTipoDocumento.sendKeys(Keys.ENTER);
-        campoNumeroDocumento.clear();
-        campoNumeroDocumento.sendKeys(datosContacto.get("numeroId"));
-        campoPais.clear();
-        campoPais.sendKeys(datosContacto.get("pais"));
-        campoPais.sendKeys(Keys.ENTER);
+        campoTipoDocumentoEdicion.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoTipoDocumentoEdicion.sendKeys(datosContacto.get("tipoId"));
+        campoTipoDocumentoEdicion.sendKeys(Keys.ENTER);
+        campoNumeroDocumentoEdicion.clear();
+        campoNumeroDocumentoEdicion.sendKeys(datosContacto.get("numeroId"));
+        campoPaisEdicion.clear();
+        campoPaisEdicion.sendKeys(datosContacto.get("pais"));
+        campoPaisEdicion.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_3000);
-        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
-        campoDepartamento.sendKeys(datosContacto.get("departamento"));
-        campoDepartamento.sendKeys(Keys.ENTER);
+        campoDepartamentoEdicion.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoDepartamentoEdicion.sendKeys(datosContacto.get("departamento"));
+        campoDepartamentoEdicion.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_3000);
-        campoCiudad.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
-        campoCiudad.sendKeys(datosContacto.get("ciudad"));
-        campoCiudad.sendKeys(Keys.ENTER);
+        campoCiudadEdicion.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoCiudadEdicion.sendKeys(datosContacto.get("ciudad"));
+        campoCiudadEdicion.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_1000);
-        campoDireccion.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
-        campoDireccion.sendKeys(datosContacto.get("direccion"));
+        campoDireccionEdicion.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoDireccionEdicion.sendKeys(datosContacto.get("direccion"));
         esperarHasta(TIEMPO_1000);
-        campoTipoDireccion.clear();
-        campoTipoDireccion.sendKeys(datosContacto.get("tipoDireccion"));
-        campoTipoDireccion.sendKeys(Keys.ENTER);
+        campoTipoDireccionEdicion.clear();
+        campoTipoDireccionEdicion.sendKeys(datosContacto.get("tipoDireccion"));
+        campoTipoDireccionEdicion.sendKeys(Keys.ENTER);
     }
 
     public void editarDatosNuevaPersonaNatural(ExamplesTable edicionPersonaNatural) {
         Map<String, String> datosNuevaPersona = edicionPersonaNatural.getRows().get(0);
-        campoTipoDocumento.shouldBeEnabled();
-        campoNumeroDocumento.shouldBeEnabled();
-        campoPais.shouldBeEnabled();
-        campoDepartamento.shouldBeEnabled();
-        campoCiudad.shouldBeEnabled();
-        campoDireccion.shouldBeEnabled();
-        campoTipoDireccion.shouldBeEnabled();
-        campoPrimerNombre.clear();
-        campoPrimerNombre.sendKeys(datosNuevaPersona.get("primerNombre"));
-        campoPrimerApellido.clear();
-        campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
+        campoTipoDocumentoEdicion.shouldBeEnabled();
+        campoNumeroDocumentoEdicion.shouldBeEnabled();
+        campoPaisEdicion.shouldBeEnabled();
+        campoDepartamentoEdicion.shouldBeEnabled();
+        campoCiudadEdicion.shouldBeEnabled();
+        campoDireccionEdicion.shouldBeEnabled();
+        campoTipoDireccionEdicion.shouldBeEnabled();
+        campoPrimerNombreEdicion.clear();
+        campoPrimerNombreEdicion.sendKeys(datosNuevaPersona.get("primerNombre"));
+        campoPrimerApellidoEdicion.clear();
+        campoPrimerApellidoEdicion.sendKeys(datosNuevaPersona.get("primerApellido"));
     }
 
     public void editarDatosNuevaPersonaJuridica(ExamplesTable edicionPersonaJuridica) {
         Map<String, String> datosNuevaEmpresa = edicionPersonaJuridica.getRows().get(0);
-        campoTipoDocumento.shouldBeEnabled();
-        campoRazonSocial.clear();
-        campoRazonSocial.sendKeys(datosNuevaEmpresa.get("razonSocial"));
+        campoTipoDocumentoEdicion.shouldBeEnabled();
+        campoRazonSocialEdicion.clear();
+        campoRazonSocialEdicion.sendKeys(datosNuevaEmpresa.get("razonSocial"));
 
     }
 }

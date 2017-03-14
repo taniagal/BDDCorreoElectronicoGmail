@@ -17,13 +17,12 @@ Given estoy cotizando una poliza:
 When ingrese la comision pactada en valor <valor>
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
-|NEL501|2017  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|
-And seleccione que el vehiculo es cero kilometros
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|cero_kilometros|
+|NEL501|2018  |01601146        |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|Si             |
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
-|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
-|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |
+|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|PLlaves|
+|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |       |
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:
@@ -38,13 +37,12 @@ Given estoy cotizando una poliza:
 When ingrese la comision pactada en valor <valor>
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
-|NEL501|2017  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|
-And seleccione que el vehiculo es cero kilometros
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|cero_kilometros|
+|NEL501|2018  |01601146        |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|Si             |
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
-|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
-|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |
+|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|PLlaves|
+|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |       |
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:
@@ -63,8 +61,8 @@ And ingrese los datos de vehiculo:
 |random|2011  |01601225        |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Autos Clásico|Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
-|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
-|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |
+|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|PLlaves|
+|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |       |
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 And expido la poliza
 And se debe generar un UW con el mensaje <mensaje>

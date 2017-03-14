@@ -15,10 +15,7 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
@@ -98,10 +95,13 @@ public class Poliza {
         nuevaCotizacionSteps.copiarEnvio();
     }
 
-    // TODO: 04/08/2016 Esto va para la definicion de informacion de la poliza
+    @When("copie una poliza que es riesgo")
+    public void cuandoCopieUnaPolizaRiesgo() {
+        nuevaCotizacionSteps.copiarEnvioRiesgo();
+    }
+
     @When("cuando intente cambiar informacion de la poliza MRC")
     public void cuandoIntenteCambiarInformacionDeLaPolizaMRC() {
-        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
         polizaSteps.seleccionarBotonAcciones();
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
@@ -109,7 +109,6 @@ public class Poliza {
 
     @When("cuando intente cambiar informacion de la poliza MRC con reaseguro especial")
     public void cuandoIntenteCambiarInformacionPolizaMRCReaseguroEspecial() {
-        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
         polizaSteps.seleccionarBotonAcciones();
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
@@ -124,7 +123,6 @@ public class Poliza {
 
     @When("intente renovar la poliza")
     public void cuandoIntenterRenovarPolizaMRC() {
-        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
         polizaSteps.seleccionarBotonAcciones();
         polizaSteps.seleccionarOpcionRenovarPoliza();
         polizaSteps.confirmarRenovacion();
@@ -132,21 +130,18 @@ public class Poliza {
 
     @When("desee seleccionar instrucciones previas a la renovacion")
     public void cuandoDeseeSeleccionarInstruccionesPreviasALaRenovacion() {
-        LOGGER.info("Poliza.cuandoDeseeRealizarInstruccionesPreviasALaRenovacion");
         polizaSteps.seleccionarBotonAcciones().seleccionarInstruccionesPreviasALaRenovacion();
         instruccionesPreviasARenovacionSteps.seleccionarBotonEditar().desplegarListaInstruccion();
     }
 
     @When("ingrese los motivos de cancelacion de la poliza Motivo: $motivo, Descripción: $descripcion")
     public void cuandoIngreseLosMotivosDeCancelacion(String motivo, String descripcion) {
-        LOGGER.info("Poliza.cuandoIngreseLosMotivosDeCancelacion");
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();
         polizaSteps.ingresarMotivosCancelacion(motivo, descripcion);
     }
 
     @When("realice la cancelacion de poliza")
     public void cuandoRealiceCancelacionDeLaPoliza() {
-        LOGGER.info("Poliza.cuandoRealiceCancelacionDeLaPoliza");
         polizaSteps.iniciarCancelacionDePoliza();
         polizaSteps.seleccionarOpcionCompromiso();
         polizaSteps.seleccionarOpcionCancelarAhora();
@@ -156,13 +151,11 @@ public class Poliza {
 
     @When("ingrese fecha superior al dia actual")
     public void cuandoIngreseFechaSueperiorAlDiaActual() {
-        LOGGER.info("Poliza.cuandoIngreseFechaSueperiorAlDiaActual");
         polizaSteps.ingresarFechaSuperior();
     }
 
     @When("realice la programacion de cancelacion")
     public void cuandoRealiceLaProgramacionDeCancelacion() {
-        LOGGER.info("Poliza.cuandoRealiceLaProgramacionDeCancelacion");
         polizaSteps.iniciarCancelacionDePoliza();
         polizaSteps.seleccionarOpcionCompromiso();
         polizaSteps.seleccionarOpcionProgramarCancelacion();
@@ -171,7 +164,6 @@ public class Poliza {
 
     @When("rescinda la cancelacion de la poliza <numPoliza>")
     public void cuandoRescindaLaCancelacion(String numPoliza) {
-        LOGGER.info("Poliza.cuandoRescindaLaCancelacion");
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
         polizaSteps.seleccionarBotonAcciones().seleccionarBotonRescindirCancelacion().seleccionarPolizaARescindir();
         polizaSteps.seleccionarOpcionCierre();
@@ -180,7 +172,6 @@ public class Poliza {
 
     @When("retire la cancelacion de la subscripcion <numSubscripcion>")
     public void cuandoRetireaLaSubscripcion(String numSubscripcion) {
-        LOGGER.info("Poliza.cuandoRetireaLaSubscripcion");
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
@@ -189,33 +180,28 @@ public class Poliza {
 
     @When("ingreso al resumen de la poliza")
     public void cuandoIngreseAlResumenDeLaPoliza(String numPoliza) {
-        LOGGER.info("Poliza.cuandoIngreseAlResumenDeLaPoliza");
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
     }
 
     @When("inicie la cancelacion")
     public void cuandoInicieLaCancelacion() {
-        LOGGER.info("Poliza.cuandocuandoInicieLaCancelacion");
         polizaSteps.iniciarCancelacionDePoliza();
     }
 
     @Then("se debe generar un UW Issue para solicitar la autorización y el mensaje debe ser: $mensaje")
     public void entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion(String mensaje) {
-        LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");
         analisisDeRiesgoSteps.seleccion_opcion_analisis_de_riesgos();
         analisisDeRiesgoSteps.se_muestra_compromiso_bloqueado(mensaje);
     }
 
     @When("se solicite aprobacion para los riesgos")
     public void cuandoSeSoliciteAprobacionParaLosriesgos() {
-        LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacionDeLosRiesgos");
         analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgos_en_cotizacion();
         analisisDeRiesgoSteps.solicitar_aprobacion();
     }
 
     @When("se solicite aprobacion para los riesgos en cambio de poliza")
     public void cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza() {
-        LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
         analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza();
         analisisDeRiesgoSteps.solicitar_aprobacion();
     }
@@ -237,32 +223,27 @@ public class Poliza {
 
     @When("se solicite aprobacion para los riesgos en renovacion de poliza")
     public void cuandoSeSoliciteAprobacionParaLosriesgosEnRenovacionDePoliza() {
-        LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
         analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_renovacion_poliza();
         analisisDeRiesgoSteps.solicitar_aprobacion();
     }
 
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebeMostrarUnMensajeConElTexto(String mensaje) {
-        LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");
         polizaSteps.seMuestraBloqueoCancelacionDePoliza(mensaje);
     }
 
     @Then("se debe visualizar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebevisualizarrUnMensajeConElTexto(String mensaje) {
-        LOGGER.info("Poliza.entoncesSeDebevisualizarrUnMensajeConElTexto");
         polizaSteps.seMuestraMensajeDeBeneficiarioOneroso(mensaje);
     }
 
     @When("despliegue $opcion")
     public void cuandoDespliegue(String opcion) {
-        LOGGER.info("Poliza.cuandoDespliegue");
         instruccionesPreviasARenovacionSteps.desplegar_lista_opcion(opcion);
     }
 
     @When("seleccione instruccion $instruccion previa a la renovacion")
     public void cuandoSeleccioneInstruccionPreviaALaRenovacion(String instruccion) {
-        LOGGER.info("Poliza.cuandoSeleccioneInstruccionPreviaALaRenovacion");
         instruccionesPreviasARenovacionSteps.seleccionar_instruccion(instruccion);
     }
 
@@ -272,12 +253,10 @@ public class Poliza {
             String campo = fila.get("CAMPOS");
             assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), polizaSteps.elementoEsEditable(campo), Is.is(Matchers.equalTo(false)));
         }
-        LOGGER.info("Poliza.esperoVerInhabilitadoParaModificacionLosSiguientesCampos");
     }
 
     @Then("espero ver las opciones de instrucciones siguientes $instrucciones")
     public void esperoVerLasOpcionesDeInstruccionesSiguientes(ExamplesTable instrucciones) {
-        LOGGER.info("Poliza.esperoVerLasOpcionesDeInstruccionesSiguientes");
         for (Map<String, String> fila : instrucciones.getRows()) {
             String instruccion = fila.get("INSTRUCCIONES");
             MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.obtenerPaginInstruccionesPreviasARenovacion().obtenerInstruccionesDisponibles(), AssertUtil.hasItemContainsString(instruccion));
@@ -286,7 +265,6 @@ public class Poliza {
 
     @Then("debe visualizarse las siguientes razones $razones")
     public void esperoVisualizarLasSiguientesRazones(ExamplesTable razones) {
-        LOGGER.info("Poliza.esperoVisualizarLasSiguientesRazones");
         for (Map<String, String> fila : razones.getRows()) {
             String razon = fila.get("RAZONES");
             org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.obtenerPaginInstruccionesPreviasARenovacion().obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
@@ -295,20 +273,17 @@ public class Poliza {
 
     @Then("la $proceso es correcta si se muestra el texto: $tituloDePagina")
     public void entoncesLaCancelacionDeLaPolizaEsCorrecta(String tituloDePagina) {
-        LOGGER.info("Poliza.entoncesLaCancionDeLaPolizaEsCorrecta");
         assertThat(polizaSteps.obtenerTituloPagina(), equalTo(tituloDePagina));
     }
 
     @Then("la revocacion es correcta si no se se muestra el tipo en el campo <tipo> y se oculta el mensaje de cancelacion pendiente")
     public void entoncesLaRevocacionesEsCorrectaSiNoSeMuestra(String tipo) {
-        LOGGER.info("Poliza.entoncesLaRevocacionesEsCorrectaSiNoSeMuestra");
         polizaSteps.validarQueNoSeMuestreTipoEnTablaTransacciones(tipo);
         polizaSteps.validarQueNoSeMuestreMensaje();
     }
 
     @Then("debo ver en el resumen de la poliza y en informacion de poliza los coaseguros no editables")
     public void entoncesDeboVerEnElResumenDeLaPolizaYEnInformacionDePolizaLosCoasegurosNoEditables() {
-        LOGGER.info("Poliza.entoncesDeboVerEnElResumenDeLaPolizaLosCoasegurosNoEditables");
         polizaSteps.verResumenDeLaPolizaExpedida();
         cotizacionSteps.validar_campos_aseguradora_poliza();
         polizaSteps.seleccionarOpcionInformacionDePoliza();
@@ -318,14 +293,12 @@ public class Poliza {
 
     @When("seleccione la lista motivo de cancelacion")
     public void cuandoSeleccioneLaListaMotivoDeCancelacion() {
-        LOGGER.info("Poliza.cuandoSeleccioneLaListaMotivoDeCancelacion");
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();
         polizaSteps.desplegarListaMotivosCancelacion();
     }
 
     @Then("se debe visualizar los siguientes motivos $motivos")
     public void entoncesSeDebeVisualizarLosSiguientesMotivos(ExamplesTable motivos) {
-        LOGGER.info("Poliza.entoncesSeDebeVisualizarLosSiguientesMotivos");
         for (Map<String, String> fila : motivos.getRows()) {
             String motivo = fila.get("MOTIVOS");
             MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMotivosDisponibles(), AssertUtil.hasItemContainsString(motivo));
@@ -334,50 +307,42 @@ public class Poliza {
 
     @Then("se debe mostrar la fecha del dia de hoy")
     public void entoncesValidarFechaSeaFechadeHOY() {
-        MatcherAssert.assertThat(polizaSteps.esFechaCancelacionNHOY(), Is.is(true));
         LOGGER.info("CotizacionDefinitions.ValidarFechaSeaFechadeHOY");
     }
 
     @When("ingrese fecha superior a 61 dias")
     public void cuandoIngresoFechaSuperiora61Dias() {
-        LOGGER.info("CotizacionDefinitions.cuandoIngresoFechaSuperiora61Dias");
         polizaSteps.ingresarFechaAnteriorA61Dias();
     }
 
     @Then("se debe mostrar mensaje con el texto: $advertencia")
     public void entoncesSeDebeMostrarMensajeConElTexto(String advertencia) {
-        LOGGER.info("Poliza.entoncesSeDebeMostrarMensajeConElTexto");
         assertThat(polizaSteps.validarMensaje(), equalTo(advertencia));
     }
 
     @When("ingrese a la opcion de cancelar poliza")
     public void cuandoIngreseALaOpcionDeCancelarPoliza() {
-        LOGGER.info("Poliza.cuandoIngreseALaOpcionDeCancelarPoliza");
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();
     }
 
     @Then("se debe mostrar la opcion de cancelar transaccion")
     public void entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion() {
-        LOGGER.info("Poliza.entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion");
         polizaSteps.validarOpcionCancelarTransaccion();
     }
 
     @When("desee seleccionar motivos de cancelacion")
     public void cuandoSeleccioneMotivosdeCancelacion() {
-        LOGGER.info("Poliza.cuandoSeleccioneMotivosdeCancelacion");
         polizaSteps.desplegarListaMotivosCancelacion();
     }
 
     @When("seleccione el <motivo> de cancelacion")
     public void cuandoSeleccioneelMotivodeCancelacion(@Named("motivo") String motivo, @Named("descripcion") String descripcion) {
-        LOGGER.info("Poliza.cuandoSeleccioneelMotivodeCancelacion");
         polizaSteps.ingresarMotivosCancelacion(motivo, descripcion);
     }
 
     @Then("se debe mostrar el metodo de reembolso <reembolso> sin el campo fuente")
     public void entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente(@Named("reembolso") String reembolso) {
-        LOGGER.info("Poliza.entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente");
-        org.hamcrest.MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMetodoDeReembolso(), equalTo(reembolso));
+        MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMetodoDeReembolso(), equalTo(reembolso));
         polizaSteps.validarOcultacionCampoFuente();
     }
 }

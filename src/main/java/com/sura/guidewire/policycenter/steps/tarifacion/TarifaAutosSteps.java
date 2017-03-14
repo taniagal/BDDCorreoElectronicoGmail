@@ -53,8 +53,8 @@ public class TarifaAutosSteps extends ScenarioSteps {
     @Step
     public void seleciconarCoberturas(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasBasica(coberturas);
-        tarifaAutosPage.seleccionarCoberturas1(coberturas);
-        tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
+        tarifaAutosPage.seleccionarCoberturas4(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
         tarifaAutosPage.seleccionarCoberturas2(coberturas);
         tarifaAutosPage.seleccionarCoberturas3(coberturas);
         tarifaAutosPage.cotizar();
@@ -108,11 +108,11 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarDependenciaDeCobertura() {
-        tarifaAutosPage.marcharCoberturaAccidentes();
+    public void verificarDependenciaDeCobertura(String danos, String hurto) {
+        tarifaAutosPage.marcarCoberturaAccidentes(hurto);
         tarifaAutosPage.verificarDependenciaDeCobertura();
-        tarifaAutosPage.desMarcarCoberturas();
-        tarifaAutosPage.verificarCoberturaAccidentes();
+        tarifaAutosPage.marcarOpcionDanos(danos);
+        tarifaAutosPage.verificarDependenciaDeCobertura();
     }
 
     @Step
