@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.steps.commons;
 
 
-import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
+import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
@@ -86,16 +86,6 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void cotizarEnvioCopiadoPa() {
-        nuevaCotizacionPage.cotizarEnvioCopiada();
-    }
-
-    @Step
-    public void clickBotonCotizar() {
-        tarifaAutosPage.cotizar();
-    }
-
-    @Step
     public void intentarCotizar() {
         tarifaAutosPage.intentarCotizar();
     }
@@ -129,5 +119,10 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     @Step
     public void verificarFechaEfectivaDeCotizacion() {
         nuevaCotizacionPage.verificarFechaEfectivaDeCotizacion();
+    }
+
+    @Step
+    public void copiarEnvioRiesgo() {
+        nuevaCotizacionPage.copiarEnvioRiesgo();
     }
 }
