@@ -57,7 +57,7 @@ public class CotizacionDeCancelacionPage extends PageUtil {
 
 
     public void ingresaDatosFormulario() {
-        seleccionarItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
+        seleccionarItem(inicioCancelacionPage.txtMotivo, "Por petición del cliente");
         esperarHasta(TIEMPO_1000);
         inicioCancelacionPage.txtDescripMotivo.click();
         inicioCancelacionPage.txtDescripMotivo.sendKeys("Motivo");
