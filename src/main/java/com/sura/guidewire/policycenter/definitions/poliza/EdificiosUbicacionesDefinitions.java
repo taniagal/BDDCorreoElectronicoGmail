@@ -37,7 +37,6 @@ public class EdificiosUbicacionesDefinitions {
 
     @Given("que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>")
     public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario) {
-        LOGGER.info("EdificiosUbicacionesDefinitions.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
         nuevaCotizacionSteps.irABuscarCotizacion(numSubscripcion);
         try {
             polizaSteps.seleccionarBotonLlamadoEditarTransaccionDePoliza();
@@ -201,7 +200,6 @@ public class EdificiosUbicacionesDefinitions {
         polizaSteps.seleccionarOpcionEdificiosYUbicaciones();
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
-        LOGGER.info("Poliza.cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo");
     }
 
     @When("intente cotizar y expedir la poliza")

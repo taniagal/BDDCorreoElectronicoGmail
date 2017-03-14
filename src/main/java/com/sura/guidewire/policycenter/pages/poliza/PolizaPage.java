@@ -131,7 +131,6 @@ public class PolizaPage extends PageUtil {
     }
 
     public void editarTransaccion() {
-        LOGGER.info("PolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
         String xpatBtnAceptarConfirmacion = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
@@ -155,12 +154,10 @@ public class PolizaPage extends PageUtil {
     public void seleccionarOpcionEdificiosyUbicaciones() {
         headerEnvio.waitUntilPresent();
         seleccionarOpcion(Opcion.LINK_EDIFICIOS_Y_UBICACIONES.xpath(), "Edificios y ubicaciones");
-        LOGGER.info("PolizaPage.seleccionarOpcionEdificiosyUbicaciones");
     }
 
     public void seleccionarOpcionInformacionDeLaPoliza() {
         seleccionarOpcion(Opcion.LINK_INFORMACION_DE_LA_POLIZA.xpath(), "Información de póliza");
-        LOGGER.info("PolizaPage.seleccionarOpcionInformacionDeLaPoliza");
     }
 
     public void seleccionarOpcion(String xpath, String tituloPaginaEsperada) {
@@ -179,11 +176,9 @@ public class PolizaPage extends PageUtil {
         } catch (Exception e) {
             LOGGER.info("SE SELECCIONÓ UN ELEMENTO NO CLICLEABLE (EJ. DIV) " + e);
         }
-        LOGGER.info("PolizaPage.seleccionarOpcion");
     }
 
     public String obtenerEnvio(String numeroSubscripcion) {
-        LOGGER.info("InformacionPolizaPage.obtenerEnvio");
         headerEnvio.waitUntilPresent();
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, numeroSubscripcion));
         return headerEnvio.getText();
@@ -227,9 +222,6 @@ public class PolizaPage extends PageUtil {
 
             LOGGER.info("NO SE ENCONTRO ELEMENTO > " + e);
         }
-
-
-        LOGGER.info("PolizaPage.esEditableElemento");
         return esEditableElemento;
     }
 
@@ -248,14 +240,11 @@ public class PolizaPage extends PageUtil {
         findBy(xpathTextareaDescripcion).type(descripcion);
         waitFor(TIEMPO_2).seconds();
         findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
-
     }
 
     public void desplegarMotivosCancelacion() {
         String xpathDropdownInstruccion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']";
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
-
-
         waitFor(findBy(xpathMenuDesplegable)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(xpathMenuDesplegable)));
         listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
@@ -267,7 +256,6 @@ public class PolizaPage extends PageUtil {
     }
 
     public Boolean esFechaCancelacionHOY() {
-
         waitFor(xpathFechaVigenteCancelacion);
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathFechaVigenteCancelacion)));
         return esFechaPorDefectoHOY(obtenerFechacancelacionElemento());
@@ -366,12 +354,12 @@ public class PolizaPage extends PageUtil {
         clickearElemento(menuItemRetirarTransaccion);
     }
 
-    public void confirmarCancelacion(){
+    public void confirmarCancelacion() {
         botonRetirarCancelacion.waitUntilPresent();
         clickearElemento(botonRetirarCancelacion);
     }
 
-    public void seleccionarReaseguroEspecialSi(){
+    public void seleccionarReaseguroEspecialSi() {
         opcionReaseguroEspecialSi.waitUntilPresent();
         clickearElemento(opcionReaseguroEspecialSi);
         checkReaseguroEspecialSi.waitUntilPresent();
@@ -392,7 +380,7 @@ public class PolizaPage extends PageUtil {
         obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
     }
 
-    public void seleccionarOpcionContactos(){
+    public void seleccionarOpcionContactos() {
         menuItemContactos.waitUntilVisible();
         menuItemContactos.click();
     }

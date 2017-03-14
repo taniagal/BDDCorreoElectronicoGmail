@@ -284,14 +284,13 @@ public class PageUtil extends PageObject {
     }
 
     public void clickearElemento(WebElementFacade element) {
-        for (int i = 0; i < CONSTANTE_15; i++) {
+        for (int i = 0; i < CONSTANTE_7; i++) {
             try {
                 withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(element).click();
                 break;
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_500);
                 LOGGER.info("WebDriverException " + e);
-                LOGGER.info("--- click " + i);
             }
         }
     }
