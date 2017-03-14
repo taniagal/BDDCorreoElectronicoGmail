@@ -261,10 +261,12 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
         }
         if (!"null".equals(vehiculo.get("motor"))) {
-            campoTxtMotor.clear();
-            campoTxtMotor.sendKeys(vehiculo.get("motor"));
-            campoTxtchasis.clear();
-            campoTxtchasis.sendKeys(vehiculo.get("chasis"));
+            campoTxtMotor.type(vehiculo.get("motor"));
+            campoTxtchasis.click();
+            esperarHasta(TIEMPO_2000);
+            campoTxtchasis.type(vehiculo.get("chasis"));
+            campoTxtMotor.click();
+            esperarHasta(TIEMPO_2000);
         }
     }
 
