@@ -95,18 +95,13 @@ public class CapturaMedioDeVentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void buscarCanalComercial(String canalComercial) {
+    public void buscarCanalComercial(ExamplesTable canalComercial) {
         capturaMedioDeVentasPage.buscarCanalComercial(canalComercial);
     }
 
     @Step
     public void buscarMedioDeVentaAsociado(ExamplesTable mediosDeVentaAsociados) {
-        Map<String, String> mediosDeVentaPorCanal;
-        String listaOpcionesCanal = capturaMedioDeVentasPage.validarMediosDeVentaAsociados();
-        for (int i = 0; i < mediosDeVentaAsociados.getRowCount(); i++) {
-            mediosDeVentaPorCanal = mediosDeVentaAsociados.getRows().get(i);
-            MatcherAssert.assertThat("La lista no contiene el item esperado", listaOpcionesCanal, Matchers.containsString(mediosDeVentaPorCanal.get("mediosDeVentaAsociados")));
-        }
+        capturaMedioDeVentasPage.validarDatosMedioDeVentaPorCanal(mediosDeVentaAsociados);
     }
 
     @Step

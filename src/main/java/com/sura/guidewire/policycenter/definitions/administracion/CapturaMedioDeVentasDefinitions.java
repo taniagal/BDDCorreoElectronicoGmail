@@ -17,6 +17,7 @@ public class CapturaMedioDeVentasDefinitions {
         capturaMedioDeVentasSteps.irAlMenuAdministracion();
     }
 
+    @Given("seleccione la opcion de  configuracion red comercial")
     @When("seleccione la opcion de  configuracion red comercial")
     public void irARedComercial() {
         capturaMedioDeVentasSteps.irARedComercial();
@@ -79,8 +80,9 @@ public class CapturaMedioDeVentasDefinitions {
     public void asociarMedioDeVentaACanal(@Named("canalComercial")String canalComercial, @Named("medioDeVenta")String medioDeVenta) {
         capturaMedioDeVentasSteps.asociarMedioDeVentaACanal(canalComercial,medioDeVenta);
     }
-    @Then("cuando agrege un canal comercial <canalComercial>")
-    public void buscarCanalComercial(@Named("canalComercial") String canalComercial) {
+    @When("cuando agrege un canal comercial:$canalComercial")
+    @Then("cuando agrege un canal comercial:$canalComercial")
+    public void buscarCanalComercial(ExamplesTable canalComercial) {
         capturaMedioDeVentasSteps.buscarCanalComercial(canalComercial);
     }
     @Then("se deben mostrar los medios de venta asociados a ese canal: $mediosDeVentaAsociados")

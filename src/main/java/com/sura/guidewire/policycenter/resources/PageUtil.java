@@ -50,6 +50,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_1 = 1;
     protected static final int CONSTANTE_2 = 2;
     protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_7 = 7;
     protected static final int CONSTANTE_9 = 9;
     protected static final int CONSTANTE_15 = 15;
@@ -390,5 +391,16 @@ public class PageUtil extends PageObject {
             clickearElemento(botonCotizar);
         }
         resetImplicitTimeout();
+    }
+    public boolean validarResultadoTabla(String PATHTABLA,String verficarDato ,int nrocolumna) {
+        boolean encontrada = false;
+        int cantidad = consultarNumeroElementosTabla(PATHTABLA);
+        for (int i = 1; i <= cantidad; i++) {
+            if(consultarTextoCeldaTabla(PATHTABLA, i, nrocolumna).equals(verficarDato))
+            {  encontrada = true;
+                break;
+            }
+        }
+        return  encontrada;
     }
 }
