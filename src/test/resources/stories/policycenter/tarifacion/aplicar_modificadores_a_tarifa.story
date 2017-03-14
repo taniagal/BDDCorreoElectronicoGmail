@@ -21,23 +21,23 @@ And ingrese los valores de los modificadores de la tarifa:
 |descientoD|bonificacionC|descuento|recargo|suavizacion|bonificacionT|
 |GPS Sura  | 45          |10       | 5     | 3         |5            |
 And seleccione algunas las coberturas:
-|limite|deducible|abogado|PTH|PPH|PPHF|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|PPD|PPDF|GT|CRPP|CRPT|GTR|GP|PLlaves|
-|640.  |0        |Si     |0  |750|1.50|40.|35|Conces|Plus|Si|6 |Plus|0  |750|1.50|40|20  |20  |Si |Si|Si     |
+|limite|deducible|abogado|PTH|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|GT|CRPP|CRPT|GTR|GP|PLlaves|
+|640.  |0        |Si     |0  |40.|35|Conces|Plus|Si|6 |Plus|0  |40|20  |20  |Si |Si|Si     |
 Then el valor del monto en cada cobertura debe ser:
 |descripcion                          |valor    |
-|Cobertura de Responsabilidad Civil   |383.997  |
-|Cobertura de Daños                   |2.101.302|
-|Cobertura de Hurto                   |564.279  |
-|Cobertura de Vehículo de Reemplazo   |7.036    |
-|Cobertura de Accidentes al Conductor |8.021    |
-|Cobertura de Pérdida de Llaves       |11.825   |
-|Cobertura de Taller                  |26.128   |
-|Cobertura de Taller móvil y cerrajero|11.825   |
-|Cobertura de Conductor Elegido       |11.825   |
-|Cobertura de Gastos de Traspaso      |11.825   |
-|Cobertura de Gasto de Parqueadero    |11.825   |
-|Cobertura de Centro de Servicio      |11.825   |
-|Cobertura de Abogado                 |11.825   |
+|Cobertura de Responsabilidad Civil   |289.477  |
+|Cobertura de Daños                   |2.566.896|
+|Cobertura de Hurto                   |1.356.501|
+|Cobertura de Vehículo de Reemplazo   |10.641   |
+|Cobertura de Accidentes al Conductor |10.026   |
+|Cobertura de Pérdida de Llaves       |16.850   |
+|Cobertura de Taller                  |39.511   |
+|Cobertura de Taller móvil y cerrajero|16.850   |
+|Cobertura de Conductor Elegido       |16.850   |
+|Cobertura de Gastos de Traspaso      |16.850   |
+|Cobertura de Gasto de Parqueadero    |16.850   |
+|Cobertura de Centro de Servicio      |16.850   |
+|Cobertura de Abogado                 |16.850   |
 
 Examples:
 |tipo_documento      |documento  |

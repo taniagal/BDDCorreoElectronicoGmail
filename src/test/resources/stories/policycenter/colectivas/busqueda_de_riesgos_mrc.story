@@ -1,6 +1,6 @@
 Meta:
 @lote2
-@tag equipo: 2, sprint 13
+@tag equipo: 2, sprint: 13
 
 Narrative:
 Como usuario PolicyCenter
@@ -70,7 +70,7 @@ Examples:
 
 Scenario: Busqueda de poliza riesgo por numero de contrato
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When copie la poliza
+When copie una poliza que es riesgo
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais     | departamento | ciudad   | direccion   | actividadEconomica            | medioVenta |
