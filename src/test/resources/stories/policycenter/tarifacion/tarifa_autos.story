@@ -37,13 +37,13 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
 |TAU103|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And seleccione todas las coberturas:
-|limite|deducible|abogado |PTH|PPH|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|PPD|GT|PP|CRPT|GTR|GP|PLlaves|
-|640.  |0        |Si      |0  |750|40.|35|Conces|Plus|Si|6 |Plus|0  |750|40|20|20  |Si |Si|Si     |
+|limite|deducible|abogado |PTH|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|GT|PP|CRPT|GTR|GP|PLlaves|
+|640.  |0        |Si      |0  |40.|35|Conces|Plus|Si|6 |Plus|0  |40|20|20  |Si |Si|Si     |
 Then el valor del monto en cada cobertura debe ser:
 |descripcion                          |valor    |
 |Cobertura de Responsabilidad Civil   |631.598  |
-|Cobertura de Daños                   |9.236.856|
-|Cobertura de Hurto                   |4.994.363|
+|Cobertura de Daños                   |5.600.598|
+|Cobertura de Hurto                   |4.538.580|
 |Cobertura de Vehículo de Reemplazo   |23.216   |
 |Cobertura de Accidentes al Conductor |21.875   |
 |Cobertura de Pérdida de Llaves       |36.764   |
