@@ -4,6 +4,7 @@ package com.sura.guidewire.policycenter.pages.reaseguro;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,9 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     WebElementFacade checkContratosAutomaticos;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:DesiredComersialRate_Ext-inputEl']")
     WebElementFacade txtTasaComercialDeseada;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Comments-inputEl']")
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:DesiredComersialRate_Ext-inputEl']")
+    WebElementFacade linkEnTablaContrato;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV:2:Number']")
     WebElementFacade lblTablaAsegurada;
 
     public static final String XPATH_TABLA_REASEGURADORES_INICIO = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr";
@@ -47,7 +50,6 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     private static final int COLUMNA_NOMBRE_COMISION_REASEGURO_CEDIDO = 7;
     private static final int COLUMNA_NOMBRE_COMISION_INTERMEDIARIO = 8;
     private static final int COLUMNA_NOMBRE_COMISION_PROMOTORA = 9;
-    private static final int COLUMNA_NOMBRE_PORCENTAJE_DEPOSITO_RETENIDO = 15;
 
     CrearYEditarCumulosPage crearYEditarCumulosPage;
 
@@ -95,7 +97,6 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
                 crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_COMISION_INTERMEDIARIO + "]"), dato.get("comisionIntermediario"));
                 crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_TABLA_FORMA_DE_COTIZACION + "]"), dato.get("modalidad"));
                 crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_COMISION_PROMOTORA + "]"), dato.get("comisionPromotora"));
-                //crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_PORCENTAJE_DEPOSITO_RETENIDO + "]"), dato.get("porRetenido"));
                 i++;
             } else if (dato.get("reasegurador").equals(ASEGURADORA_MAIDEN_RE)) {
                 esperarYClickearBoton(btnAgregaInformacionReaseguro);
@@ -106,15 +107,25 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
                 crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_COMISION_INTERMEDIARIO + "]"), dato.get("comisionIntermediario"));
                 crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_TABLA_FORMA_DE_COTIZACION + "]"), dato.get("modalidad"));
                 crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_COMISION_PROMOTORA + "]"), dato.get("comisionPromotora"));
-               // crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_PORCENTAJE_DEPOSITO_RETENIDO + "]"), dato.get("porRetenido"));
                 i++;
-            } else if (dato.get("reasegurador").equals((CONTRATO_AUTOMATICO))) {
+            } else if (dato.get("reasegurador").equals(CONTRATO_AUTOMATICO)) {
                 esperarYClickearBoton(btnAgregaInformacionReaseguro);
                 ingresaContratoAutomatico();
                 i++;
             }
         }
     }
-}
 
+    public void validarDatosMedioDeVentaPorCanal(ExamplesTable verificarDatoMediosVenta) {
+        String TABLAMEDIOVENTAPORCANAL = ".//*[@id='EditAgreementPopup:AgreementScreen:ParticipantsLV-body']/*/table/tbody/tr";
+        String nombreReasegurador = "";
+        String tasaBrutaDeSecion = "";
+        for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
+            nombreReasegurador = verificarDato.get("reaseguradores");
+            tasaBrutaDeSecion = verificarDato.get("tasaBrutaDeCesion");
+            MatcherAssert.assertThat("No se encontro el medio de venta" + " venta esperada: " + nombreReasegurador, validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, nombreReasegurador, CONSTANTE_2));
+            MatcherAssert.assertThat("No se encontro el medio de venta por defecto" + " venta esperada: " + tasaBrutaDeSecion, validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, tasaBrutaDeSecion, CONSTANTE_7));
+        }
+    }
+}
 

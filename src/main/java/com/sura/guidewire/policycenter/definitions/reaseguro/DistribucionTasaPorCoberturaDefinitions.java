@@ -6,6 +6,7 @@ import com.sura.guidewire.policycenter.steps.reaseguro.SobrescribirTasaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
@@ -33,6 +34,11 @@ public class DistribucionTasaPorCoberturaDefinitions {
         distribucionTasaPorCoberturaSteps.ingresarReaseguradores(infoReasegurador);
         sobrescribirTasaSteps.crearAcuerdoFacultativo();
         sobrescribirTasaSteps.aceptaAcuerdoFacultativo();
+    }
+
+    @Then("deben aparecer los riesgos reasegurables por cada cobertura: $tablaRiesgosReasegurables")
+    public void thenRiesgosReasegurables(ExamplesTable tablaRiesgosReasegurables) {
+        distribucionTasaPorCoberturaSteps.ingresaARiesgosPorCobertura(tablaRiesgosReasegurables);
     }
 
 }

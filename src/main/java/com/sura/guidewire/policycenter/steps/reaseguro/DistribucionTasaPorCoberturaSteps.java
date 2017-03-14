@@ -9,6 +9,7 @@ import org.jbehave.core.model.ExamplesTable;
 public class DistribucionTasaPorCoberturaSteps extends ScenarioSteps {
 
     DistribucionTasaPorCoberturaPage distribucionTasaPorCoberturaPage;
+    protected ExamplesTable tablaReaseguradores;
 
 
     @Step
@@ -17,7 +18,13 @@ public class DistribucionTasaPorCoberturaSteps extends ScenarioSteps {
 
     }
 
+    @Step
     public void ingresarTasaComercialDeseada() {
         distribucionTasaPorCoberturaPage.ingresarTasaComercialDeseada();
+    }
+
+    @Step
+    public void ingresaARiesgosPorCobertura(ExamplesTable tablaRiesgosReasegurables) {
+        distribucionTasaPorCoberturaPage.validarDatosMedioDeVentaPorCanal(tablaRiesgosReasegurables);
     }
 }

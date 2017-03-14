@@ -24,10 +24,10 @@ When Ingrese la información de los reaseguradores
 |ALLIANZ RE  |Gross rate|30                     |1,2           |0                   |0                    |0                |10         |
 |MAIDEN RE   |Net Rate  |20                     |1,28          |20                  |0                    |0                |20         |
 |Program     |Gross rate|0                      |0             |0                   |0                    |0                |0          |
-Then prueba
-
+Then deben aparecer los riesgos reasegurables por cada cobertura:
+|grupoDecoberturas|tasaBrutaDeCesionAutomatica|reaseguradores|tasaBrutaDeCesion|
+|Terremoto        |0,392051                   |ALLIANZ RE    |0,735095         |
+|Terremoto        |0,392051                   |MAIDEN RE     |1,005258         |
 Examples:
 |descripcionDeAcuerdo            |tipoContrato                    |
 |Descripcion de acuerdo para test|Acuerdo facultativo proporcional|
-
-
