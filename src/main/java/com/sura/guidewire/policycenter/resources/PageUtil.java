@@ -391,15 +391,16 @@ public class PageUtil extends PageObject {
         }
         resetImplicitTimeout();
     }
-    public boolean validarResultadoTabla(String PATHTABLA,String verficarDato ,int nrocolumna) {
+
+    public boolean validarResultadoTabla(String PATHTABLA, String verficarDato, int nrocolumna) {
         boolean encontrada = false;
         int cantidad = consultarNumeroElementosTabla(PATHTABLA);
         for (int i = 1; i <= cantidad; i++) {
-            if(consultarTextoCeldaTabla(PATHTABLA, i, nrocolumna).equals(verficarDato))
-            {  encontrada = true;
+            if (consultarTextoCeldaTabla(PATHTABLA, i, nrocolumna).equals(verficarDato)) {
+                encontrada = true;
                 break;
             }
         }
-        return  encontrada;
+        return encontrada;
     }
 }
