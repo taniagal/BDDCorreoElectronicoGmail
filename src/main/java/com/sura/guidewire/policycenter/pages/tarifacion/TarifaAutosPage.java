@@ -128,6 +128,7 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade radioBotonComisionPactadaSi;
 
     private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
+    private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
@@ -204,11 +205,11 @@ public class TarifaAutosPage extends PageUtil {
             botonBuscar.waitUntilPresent();
             ingresarDato(campoTxtNumeroDocumento, documento);
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + e);
             esperarHasta(TIEMPO_2000);
             ingresarDato(campoTxtNumeroDocumento, documento);
         } catch (ElementNotVisibleException f) {
-            LOGGER.info("StaleElementReferenceException " + f);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
             esperarHasta(TIEMPO_2000);
             ingresarDato(campoTxtNumeroDocumento, documento);
         }
@@ -283,7 +284,7 @@ public class TarifaAutosPage extends PageUtil {
         try {
             withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + e);
             labelGatosTransporte.waitUntilPresent();
         } catch (TimeoutException f) {
             LOGGER.info("TimeoutException " + f);
@@ -300,7 +301,7 @@ public class TarifaAutosPage extends PageUtil {
         try {
             withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + e);
             labelGatosTransporte.waitUntilPresent();
         } catch (TimeoutException f) {
             LOGGER.info("TimeoutException " + f);
@@ -318,7 +319,7 @@ public class TarifaAutosPage extends PageUtil {
                 labelGatosTransporteCarro.waitUntilPresent();
             }
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException ", e);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION, e);
             esperarHasta(TIEMPO_2000);
             if (!comboBoxGastosDeTransporteCarro.isPresent()) {
                 labelGatosTransporteCarro.waitUntilPresent();
@@ -338,7 +339,7 @@ public class TarifaAutosPage extends PageUtil {
                 labelGatosTransporteCarro.waitUntilPresent();
             }
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException ", e);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION, e);
             esperarHasta(TIEMPO_2000);
             if (!comboBoxGastosDeTransporteCarro.isPresent()) {
                 labelGatosTransporteCarro.waitUntilPresent();

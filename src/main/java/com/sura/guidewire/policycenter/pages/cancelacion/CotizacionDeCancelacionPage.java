@@ -6,7 +6,6 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.server.handler.ClickElement;
 
 import java.util.concurrent.TimeUnit;
 
