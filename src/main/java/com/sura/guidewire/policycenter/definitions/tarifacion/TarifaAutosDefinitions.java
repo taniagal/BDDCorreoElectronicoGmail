@@ -25,6 +25,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarVehiculo(datosVehiculo);
     }
 
+    @When("ingrese registros del vehiculo con interes adicional: $datosVehiculoOneroso")
+    public void agregarVehiculoConInteres(ExamplesTable datosVehiculoOneroso){
+        tarifaAutosSteps.agregarVehiculoOneroso(datosVehiculoOneroso);
+    }
+
     @When("agregue un nuevo valor asegurado <valor_asegurado>")
     public void agregarValorasegurado(@Named("valor_asegurado") String valorAsegurado) {
         tarifaAutosSteps.agregarValorAsegurado(valorAsegurado);

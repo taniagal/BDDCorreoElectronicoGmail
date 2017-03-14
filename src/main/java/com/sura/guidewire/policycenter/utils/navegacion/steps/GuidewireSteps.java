@@ -22,7 +22,4 @@ public class GuidewireSteps extends ScenarioSteps {
         guidewirePage.barraNavegacion().deplegarMenu(MenuNavegacionSuperiorEnum.POLIZA);
         return menuPolizaSteps;
     }
-
-
-
 }
