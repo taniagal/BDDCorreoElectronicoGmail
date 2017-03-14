@@ -9,6 +9,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -116,15 +117,31 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         }
     }
 
+    public void ingresoAUnRiesgoPorEvaluar(ExamplesTable tablaRiesgosReasegurables) {
+        int i = 0;
+        for (Map<String, String> dato : tablaRiesgosReasegurables.getRows()) {
+            for (WebElementFacade cotizacion : getListaGrupoDeCoberturas()) {
+                if (dato.get("grupoDecoberturas").equals(cotizacion.getText())) {
+                    getListaGrupoDeCoberturas().get(i).click();
+                    esperarYClickearBoton(lblTablaAsegurada);
+                    break;
+                }
+                i++;
+            }
+        }
+    }
+
+    private List<WebElementFacade> getListaGrupoDeCoberturas() {
+        List<WebElementFacade> nombreGrupoCobertura;
+        nombreGrupoCobertura = withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:2-body']/div/table/tbody/tr/td[2]");
+        return nombreGrupoCobertura;
+    }
+
     public void validarDatosMedioDeVentaPorCanal(ExamplesTable verificarDatoMediosVenta) {
-        String TABLAMEDIOVENTAPORCANAL = ".//*[@id='EditAgreementPopup:AgreementScreen:ParticipantsLV-body']/*/table/tbody/tr";
-        String nombreReasegurador = "";
-        String tasaBrutaDeSecion = "";
+        String xpatTablaReaseguradores = ".//*[@id='EditAgreementPopup:AgreementScreen:ParticipantsLV-body']/*/table/tbody/tr";
         for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
-            nombreReasegurador = verificarDato.get("reaseguradores");
-            tasaBrutaDeSecion = verificarDato.get("tasaBrutaDeCesion");
-            MatcherAssert.assertThat("No se encontro el medio de venta" + " venta esperada: " + nombreReasegurador, validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, nombreReasegurador, CONSTANTE_2));
-            MatcherAssert.assertThat("No se encontro el medio de venta por defecto" + " venta esperada: " + tasaBrutaDeSecion, validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, tasaBrutaDeSecion, CONSTANTE_7));
+            MatcherAssert.assertThat("No se encontro el medio de venta" + " venta esperada: " + verificarDato.get("reaseguradores") , validarResultadoTabla(xpatTablaReaseguradores , verificarDato.get("reaseguradores") , CONSTANTE_2));
+            MatcherAssert.assertThat("No se encontro el medio de venta por defecto" + " venta esperada: " + verificarDato.get("tasaBrutaDeCesion") , validarResultadoTabla(xpatTablaReaseguradores , verificarDato.get("tasaBrutaDeCesion") , CONSTANTE_7));
         }
     }
 }

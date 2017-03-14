@@ -25,6 +25,7 @@ public class DistribucionTasaPorCoberturaSteps extends ScenarioSteps {
 
     @Step
     public void ingresaARiesgosPorCobertura(ExamplesTable tablaRiesgosReasegurables) {
+        distribucionTasaPorCoberturaPage.ingresoAUnRiesgoPorEvaluar(tablaRiesgosReasegurables);
         distribucionTasaPorCoberturaPage.validarDatosMedioDeVentaPorCanal(tablaRiesgosReasegurables);
     }
 }
