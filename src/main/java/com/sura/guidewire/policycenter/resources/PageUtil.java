@@ -52,7 +52,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_3 = 3;
     protected static final int CONSTANTE_7 = 7;
     protected static final int CONSTANTE_9 = 9;
-    protected static final int CONSTANTE_15 = 15;
+    protected static final int CONSTANTE_10 = 10;
     protected static final int DIAS_31 = 31;
     protected static final int DIAS_61 = 61;
     protected static String numeroCotizacionNoTomar;
@@ -284,7 +284,7 @@ public class PageUtil extends PageObject {
     }
 
     public void clickearElemento(WebElementFacade element) {
-        for (int i = 0; i < CONSTANTE_7; i++) {
+        for (int i = 0; i < CONSTANTE_10; i++) {
             try {
                 withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(element).click();
                 break;
