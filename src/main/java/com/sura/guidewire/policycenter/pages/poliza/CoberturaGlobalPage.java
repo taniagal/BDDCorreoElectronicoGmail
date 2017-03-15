@@ -78,6 +78,7 @@ public class CoberturaGlobalPage extends PageUtil {
     public static String XPATH_TABLA_COBERTURA_GLOBAL_TR = ".//*[@id='CPBlanketSura_ExtPopup:3']/table/tbody/tr/td/div/table/tbody/tr";
     public static String XPATH_TXT_VALOR_ASEGURADO_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
     public static String XPATH_TXT_VALOR_ASEGURADO_PARTE_2 = ":CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']";
+    public static String XPATH_RESULTADO_COBERTURAS_GLOBALES_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/div/table/tbody/tr";
 
 
     public CoberturaGlobalPage(WebDriver driver) {
@@ -176,6 +177,23 @@ public class CoberturaGlobalPage extends PageUtil {
                     $(XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_1 + (j - CONSTANTE_1) + XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_2).click();
                     $(XPATH_TXT_VALOR_ASEGURADO_PARTE_1 + (j - CONSTANTE_1) + XPATH_TXT_VALOR_ASEGURADO_PARTE_2).waitUntilPresent();
                     $(XPATH_TXT_VALOR_ASEGURADO_PARTE_1 + (j - CONSTANTE_1) + XPATH_TXT_VALOR_ASEGURADO_PARTE_2).sendKeys(dato.get("VALOR_ASEGURADO"));
+                    break;
+                }
+            }
+        }
+    }
+
+    public void verificarCoberturasGlobales(ExamplesTable coberturas) {
+        List<WebElementFacade> resultadoCoberturasGlobales = findAll(XPATH_RESULTADO_COBERTURAS_GLOBALES_TR);
+        String montoCobertura = "";
+        for (Map<String, String> dato : coberturas.getRows()) {
+            for (int j = 1; j <= resultadoCoberturasGlobales.size(); j++) {
+                WebElementFacade coberturaGlobal = $(XPATH_RESULTADO_COBERTURAS_GLOBALES_TR + "[" + j + "]");
+                WebElementFacade montoCoberturaGlobal = $(XPATH_RESULTADO_COBERTURAS_GLOBALES_TR + "[" + j + "]/td[3]");
+                if (coberturaGlobal.containsText(dato.get("DESCRIPCION_COBERTURA"))) {
+                    montoCobertura = montoCoberturaGlobal.getText().substring(CONSTANTE_1, montoCoberturaGlobal.getText().length() - CONSTANTE_9);
+                    MatcherAssert.assertThat("Error en el monto de la cobertura, expected: " + dato.get("VALOR_MONTO") + " but was: " +
+                            montoCobertura, montoCobertura.equals(dato.get("VALOR_MONTO")));
                     break;
                 }
             }
