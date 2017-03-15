@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.definitions.cuenta;
 
 import com.sura.guidewire.policycenter.steps.cuenta.HistorialCuentaSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.ResumenCuentaSteps;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public class ResumenCuentaDefinitions {
 
     private final Map<String, String> infoResumenCuenta = new HashMap<>();
 
-    public ResumenCuentaDefinitions(){
+    public ResumenCuentaDefinitions() {
         infoResumenCuenta.put("lblResumenCuenta", "Resumen de la cuenta");
         infoResumenCuenta.put("tipoDocumento", "Tipo documento");
         infoResumenCuenta.put("numDocumento", "Número documento");
@@ -93,35 +94,35 @@ public class ResumenCuentaDefinitions {
     }
 
     @Given("estoy en el resumen de una cuenta <numCuenta> de tipo persona natural <tipoCuenta>")
-    public void consultarResumenCtaPersonaNatural(@Named("numCuenta") String numCuenta){
+    public void consultarResumenCtaPersonaNatural(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
         resumenCuentaSteps.consultarResumenCuenta();
     }
 
     @Given("estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>")
-    public void consultarResumenCtaPersonaJuridica(@Named("numCuenta") String numCuenta){
+    public void consultarResumenCtaPersonaJuridica(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
         resumenCuentaSteps.consultarResumenCuenta();
     }
 
     @When("ingrese al resumen de la cuenta")
-    public void consultarResumenCuenta(){
+    public void consultarResumenCuenta() {
         resumenCuentaSteps.consultarResumenCuenta();
     }
 
     @Then("ingrese a editar dicha cuenta")
-    public void editarResumenCuenta(){
+    public void editarResumenCuenta() {
         resumenCuentaSteps.editarResumenCuenta();
     }
 
     @Then("edite el campo pais <pais>")
-    public void editarPais(@Named("pais") String pais){
+    public void editarPais(@Named("pais") String pais) {
         resumenCuentaSteps.editarPais(pais);
     }
 
     @Then("edite el campo departamento <pais> <departamento>")
     public void editarDepto(@Named("pais") String pais,
-                            @Named("departamento") String departamento){
+                            @Named("departamento") String departamento) {
         resumenCuentaSteps.editarPais(pais);
         resumenCuentaSteps.editarDepto(departamento);
     }
@@ -140,36 +141,36 @@ public class ResumenCuentaDefinitions {
 
     @Then("puedo visualizar el resumen de la cuenta seleccionada de tipo persona juridica, el listado de actividades, vigencias\n" +
             "de las polizas asociadas a la cuenta y transacciones pendientes de las polizas asociadas a la cuenta")
-    public void verInfoResumenCuentaPersonaJuridica(){
+    public void verInfoResumenCuentaPersonaJuridica() {
         resumenCuentaSteps.verInfoResumenCuenta(infoResumenCuenta);
     }
 
     @Then("puedo visualizar el resumen de la cuenta seleccionada de tipo persona natural, el listado de actividades, vigencias \n" +
             "de las polizas asociadas a la cuenta y transacciones pendientes de las polizas asociadas a la cuenta")
-    public void verInfoResumenCuentaPersonaNatural(){
+    public void verInfoResumenCuentaPersonaNatural() {
         resumenCuentaSteps.verInfoResumenCuenta(infoResumenCuenta);
     }
 
     @Then("se deben habilitar los siguientes campos: primer nombre, segundo nombre, primer apellido, segundo apellido,\n" +
             "estado civil, profesion, fecha de fallecimiento, causa de fallecimiento, tipo familia, dependientes economicos,\n" +
             "correo electronico primario, correo electronico secundario, tipo de telefono, telefono primario, direccion")
-    public void validarCamposPersonal(){
+    public void validarCamposPersonal() {
         resumenCuentaSteps.validarCamposEditablesPersona();
     }
 
     @Then("se deben habilitar los siguientes campos: razon social, nombre comercial, actividad economica, numero de empleados,\n" +
             "valor de activos, ventas anualues, telefono de la oficina, correo electronico primario, correo electronico secundario, direccion")
-    public void validarCamposCompania(){
+    public void validarCamposCompania() {
         resumenCuentaSteps.validarCamposEditablesCompania();
     }
 
     @Then("se debe cargar el valor \"<ninguno>\" en el campo departamento <departamento>")
-    public void validarDepartamento(@Named("departamento") String departamento){
+    public void validarDepartamento(@Named("departamento") String departamento) {
         resumenCuentaSteps.validarDepartamento(departamento);
     }
 
     @Then("se debe cargar el valor por defecto \"<ninguno>\" en el campo ciudad <ciudad>")
-    public void validarCiudad(@Named("ciudad") String ciudad){
+    public void validarCiudad(@Named("ciudad") String ciudad) {
         resumenCuentaSteps.validarCiudad(ciudad);
     }
 
