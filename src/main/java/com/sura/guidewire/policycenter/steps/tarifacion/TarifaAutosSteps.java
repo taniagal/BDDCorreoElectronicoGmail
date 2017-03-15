@@ -35,19 +35,6 @@ public class TarifaAutosSteps extends ScenarioSteps {
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.esperarPorPantallaCoberturas();
     }
-    @Step
-    public void agregarVehiculoOneroso(ExamplesTable datosVehiculoOneroso){
-        vehiculoPage.crearVehiculo();
-        tarifaAutosPage.relacionarAsegurado();
-        vehiculoPage.agregarVehiculo(datosVehiculoOneroso);
-    }
-
-    @Step
-    public void agregarCoberturasOneroso(){
-        vehiculoPage.clickSiguiente();
-        tarifaAutosPage.esperarPorPantallaCoberturas();
-    }
-
 
     @Step
     public void agregarVehiculoDos(ExamplesTable datosPoliza) {
@@ -66,9 +53,8 @@ public class TarifaAutosSteps extends ScenarioSteps {
     @Step
     public void seleciconarCoberturas(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasBasica(coberturas);
-        tarifaAutosPage.seleccionarCoberturas1(coberturas);
-        tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
-        tarifaAutosPage.seleccionarCoberturasDanios2(coberturas);
+        tarifaAutosPage.seleccionarCoberturas4(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
         tarifaAutosPage.seleccionarCoberturas2(coberturas);
         tarifaAutosPage.seleccionarCoberturas3(coberturas);
         tarifaAutosPage.cotizar();
@@ -106,9 +92,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void seleccionarCoberturasComisionPactada(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
         tarifaAutosPage.seleccionarCoberturasHurto(coberturas);
-        tarifaAutosPage.seleccionarCoberturasHurto1(coberturas);
         tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
-        tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
         tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
         tarifaAutosPage.cotizar();
     }
@@ -140,9 +124,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void seleccionarCoberturasComision(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
         tarifaAutosPage.seleccionarCoberturasHurto(coberturas);
-        tarifaAutosPage.seleccionarCoberturasHurto1(coberturas);
         tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
-        tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
         tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
     }
 

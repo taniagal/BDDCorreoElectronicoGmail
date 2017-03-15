@@ -147,14 +147,14 @@ Examples:
 
 
 Scenario: Ejecutar Renovacion Automatica
-Meta: @manual
+@Manual
 Given inicie el proceso de ejecucion de renovacion automatica
 When se ejecute
 Then no se deben renovar automaticamente las polizas mrc
 
 
 Scenario: Renovacion Manual
-Meta: @manual
+@Manual
 Given inicie la transacción de renovacion manual
 When La poliza cuente con  menos una cobertura global(blankets) y un siniestro
 Then debe permitir realizar la renovacion manual
