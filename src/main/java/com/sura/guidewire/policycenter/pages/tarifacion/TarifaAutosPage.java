@@ -266,9 +266,23 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCoberturasHurto(coberturas);
         seleccionarCoberturasHurto2(coberturas);
-        seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
-        seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
-        seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
+        if(comboBoxAccidentes.isVisible()){
+            seleccionarItem(comboBoxAccidentes, dato.get("AC"));
+        }else{
+            seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
+        }
+
+        if(comboBoxGastosTraspaso.isVisible()){
+            seleccionarItem(comboBoxGastosTraspaso, dato.get("GTR"));
+        }else{
+            seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
+        }
+
+        if(comboBoxgastosDeParqueadero.isVisible()){
+            seleccionarItem(comboBoxgastosDeParqueadero, dato.get("GP"));
+        }else{
+            seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
+        }
     }
 
     public void seleccionarCoberturasHurto(ExamplesTable coberturas) {
@@ -336,7 +350,12 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarCobertura(checkBoxGrua, comboBoxGrua, dato.get("Grua"));
         seleccionarCobertura(checkBoxTallerMovil, comboBoxTallerMovil, dato.get("TM"));
         seleccionarCobertura(checkBoxCentroDeServicios, comboBoxCentroDeServicios, dato.get("CS"));
-        seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
+
+        if(comboBoxCarroDeReemplazoPerdidaTotal.isVisible()){
+            seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
+        }else{
+            seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
+        }
     }
 
 
