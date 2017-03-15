@@ -19,7 +19,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     private WebElementFacade lblTipoDoc;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
     private WebElementFacade lblNumDoc;
-    @FindBy(xpath = ".//span[contains(.,'Código de agente')]")
+    @FindBy(xpath = ".//span[contains(.,'Código del asesor')]")
     private WebElementFacade lblCodAgente;
     @FindBy(xpath = ".//span[contains(.,'Descripción')]")
     private WebElementFacade lblDescAgente;

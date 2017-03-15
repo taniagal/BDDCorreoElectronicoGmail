@@ -32,7 +32,7 @@ public class ResumenCuentaDefinitions {
         infoResumenCuenta.put("lblResumenCuenta", "Resumen de la cuenta");
         infoResumenCuenta.put("tipoDocumento", "Tipo documento");
         infoResumenCuenta.put("numDocumento", "Número documento");
-        infoResumenCuenta.put("codigoAgente", "Código de agente");
+        infoResumenCuenta.put("codigoAgente", "Código del asesor");
         infoResumenCuenta.put("descAgente", "Descripción");
         infoResumenCuenta.put("numCuenta", "Cuenta número");
         infoResumenCuenta.put("estadoCuenta", "Estado de la cuenta");
@@ -63,8 +63,8 @@ public class ResumenCuentaDefinitions {
         infoResumenCuenta.put("numPoliza", "N° de póliza");
         infoResumenCuenta.put("producto", "Producto");
         infoResumenCuenta.put("estadoPol", "Estado");
-        infoResumenCuenta.put("fechaVigPol", "Fecha de vigencia");
-        infoResumenCuenta.put("fechaExpPol", "Fecha de expiración");
+        infoResumenCuenta.put("fechaVigPol", "Fecha inicio de vigencia");
+        infoResumenCuenta.put("fechaExpPol", "Fecha fin de vigencia");
         infoResumenCuenta.put("lblTransPolPendientes", "Transacciones de póliza pendientes");
         infoResumenCuenta.put("numTrans", "N.º de transacción");
         infoResumenCuenta.put("estadoTrans", "Estado");
