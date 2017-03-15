@@ -1,6 +1,6 @@
 Meta:
 @lote2
-@tag equipo: 2, sprint 13
+@tag equipo: 2, sprint: 13
 
 Narrative:
 Como usuario PolicyCenter
@@ -14,7 +14,7 @@ When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais     | departamento | ciudad   | direccion   | actividadEconomica            | medioVenta |
-| Colombia | Antioquia    | Medellin | CR 45 30 30 | Acabado de productos textiles | Televentas |
+| Colombia | Antioquia    | Medellin | CR 45 29 30 | Acabado de productos textiles | Televentas |
 And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario><numeroContrato> adicional y contrato
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -24,14 +24,14 @@ And expido la poliza
 And ingreso a la busqueda de riesgos
 And este buscando un riesgo por los filtros pais departamento ciudad y direccion
 | producto                | pais     | departamento | ciudad   | direccion   |
-| Multiriesgo corporativo | Colombia | Antioquia    | Medellin | CR 45 30 30 |
+| Multiriesgo corporativo | Colombia | Antioquia    | Medellin | CR 45 29 30 |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
 | tipoPoliza | direccion   | estado     | contrato |
-| Colectiva  | CR 45 30 30 | Expedición | 9876540  |
+| Colectiva  | CR 45 29 30 | Expedición | 9876539  |
 
 Examples:
 | numSubscripcion | documento  | tipodocumento        | tipoBeneficiario | numeroContrato |
-| 33355482        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        | 9876540        |
+| 33355482        | 1234567890 | CEDULA DE CIUDADANIA | Asegurado        | 9876539        |
 
 Scenario: Búsqueda sin resultados
 Given que voy a la busqueda de riesgos
@@ -70,7 +70,7 @@ Examples:
 
 Scenario: Busqueda de poliza riesgo por numero de contrato
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When copie la poliza
+When copie una poliza que es riesgo
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais     | departamento | ciudad   | direccion   | actividadEconomica            | medioVenta |

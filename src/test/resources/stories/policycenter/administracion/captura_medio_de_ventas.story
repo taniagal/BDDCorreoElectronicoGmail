@@ -78,19 +78,21 @@ Then deben aparecer las siguientes opciones por canal:
 |Medio de venta  |
 |Canal comercial |
 |Activo          |
-And cuando agrege un canal comercial <canalComercial>
+And cuando agrege un canal comercial:
+| canalComercial                 |medioDeVenta |
+|CC001 - Bancaseguros bancolombia|<ninguno>    |
 And se deben mostrar los medios de venta asociados a ese canal:
-|mediosDeVentaAsociados|
-|Puntos bancolombia   |
-|Televentas           |
-|Venta en linea       |
+|mediosDeVentaAsociados|medioDeVentaPorDefecto|
+|Puntos bancolombia   |No|
+|Televentas           |No|
+|Venta en linea       |No|
 And vaya al menu acciones a adicionar medios de venta a un canal
 And agrego el canal <canalComercial> y le adiciono el medio de venta <medioDeVenta> que voy a asociarle
 And debe adicionarse satisfactoriamente el medio de venta al canal
 
 Examples:
-|canalComercial                   |medioDeVenta                 |
-|CC001 - Bancaseguros bancolombia |9 - Puntos delegados         |
+||
+||
 
 
 

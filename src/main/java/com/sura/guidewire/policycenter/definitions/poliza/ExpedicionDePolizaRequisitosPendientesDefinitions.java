@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.google.inject.name.Named;
+import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaRequisitosPendientesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.InformacionPolizaPASteps;
-import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -67,6 +67,7 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
         expedicionDePolizaRequisitosPendientesSteps.verMensajeBloqueante(mensaje);
     }
 
+    @Then("debo ver un mensaje bloqueante $mensaje")
     @When("debo ver un mensaje bloqueante $mensaje")
     public void mensajeBloqueante(ExamplesTable mensaje) {
         expedicionDePolizaRequisitosPendientesSteps.verMensaje(mensaje);

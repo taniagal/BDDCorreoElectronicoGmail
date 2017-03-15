@@ -50,13 +50,15 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_1 = 1;
     protected static final int CONSTANTE_2 = 2;
     protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_7 = 7;
     protected static final int CONSTANTE_9 = 9;
-    protected static final int CONSTANTE_15 = 15;
+    protected static final int CONSTANTE_10 = 10;
     protected static final int DIAS_31 = 31;
     protected static final int DIAS_61 = 61;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
+    protected static String OPCION_SIN_VALOR = "<ninguno>";
     protected Actions actions = new Actions(getDriver());
     protected static final String OPCIONES_MENU = "OPCIONES_MENU";
 
@@ -283,14 +285,13 @@ public class PageUtil extends PageObject {
     }
 
     public void clickearElemento(WebElementFacade element) {
-        for (int i = 0; i < CONSTANTE_15; i++) {
+        for (int i = 0; i < CONSTANTE_10; i++) {
             try {
                 withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(element).click();
                 break;
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_500);
                 LOGGER.info("WebDriverException " + e);
-                LOGGER.info("--- click " + i);
             }
         }
     }
@@ -389,5 +390,17 @@ public class PageUtil extends PageObject {
             clickearElemento(botonCotizar);
         }
         resetImplicitTimeout();
+    }
+
+    public boolean validarResultadoTabla(String pathTabla, String verficarDato, int nrocolumna) {
+        boolean encontrada = false;
+        int cantidad = consultarNumeroElementosTabla(pathTabla);
+        for (int i = 1; i <= cantidad; i++) {
+            if (consultarTextoCeldaTabla(pathTabla, i, nrocolumna).equals(verficarDato)) {
+                encontrada = true;
+                break;
+            }
+        }
+        return encontrada;
     }
 }

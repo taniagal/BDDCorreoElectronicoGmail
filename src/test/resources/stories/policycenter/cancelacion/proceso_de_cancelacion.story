@@ -3,16 +3,15 @@ Proceso De Cancelacion
 Meta:
 @lote1
 @issue #USC-14750
-@tag equipo: 3
+@tag equipo: 3, sprint: 8
 @local
-Sprint 8
 
 Narrative:
 Como usuario de policyCenter
 Quiero poder procesar la cancelación de una póliza  de autos de manera manual.
 
 Scenario: Validar underwrite cuando la fecha es mayor a la politica
-Meta: @lote2 @manual
+Meta: @manual
 Given que existe una <poliza> no esta dentro de la vigencia
 When necesito iniciar la cancelacion
 And se ingrese la fecha con emision anticipada mayor a la politica
@@ -24,7 +23,7 @@ Examples:
 |TEST_22221241|Esta oferta necesita de aprobación del asegurador|
 
 Scenario: programar cancelacion
-Meta: @lote2 @manual
+Meta: @manual
 Given que existe una <poliza> y esta dentro de la vigencia en claims
 When necesito iniciar la cancelacion
 And se ingrese la fecha con emision anticipada mayor a la politica
@@ -38,7 +37,7 @@ Examples:
 
 
 Scenario: validar retroactividad con autorizacion
-Meta: @lote2 @manual
+Meta: @manual
 Given existe una <poliza> y esta dentro de la vigencia
 When necesito iniciar cancelacion
 And se ingrese la fecha con retroactividad menor a la politica dentro del periodo

@@ -21,13 +21,12 @@ When quiero agregar coaseguro <TipoCo> con poliza referencia <PolizaRef> documen
 And de clic en Aceptar de la ventana Coaseguro
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
-|NEL600|2018  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|
-And seleccione que el vehiculo es cero kilometros
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|cero_kilometros|
+|NEL600|2018  |01601146        |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|Si             |
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
-|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
-|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |
+|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|PLlaves|
+|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |       |
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:
@@ -46,13 +45,12 @@ When quiero agregar coaseguro <TipoCo> con poliza referencia <PolizaRef> documen
 And de clic en Aceptar de la ventana Coaseguro
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
-|NEL501|2018  |1601146         |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|
-And seleccione que el vehiculo es cero kilometros
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|cero_kilometros|
+|NEL600|2018  |01601146        |MEDELLIN          |Particular       |null  |null |32000000       |null     |null   |2   |Plan Autos Clásico|Televentas|Si             |
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision pactada:
-|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|
-|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |
+|limite|deducible|PTH|PPH|GTH|AS                |PTD|PPD|GT|CRPP|CRPT|PLlaves|
+|1.440 |0        |0  |730|40.|Asistencia Clásica|0  |730|40|16  |20  |       |
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:

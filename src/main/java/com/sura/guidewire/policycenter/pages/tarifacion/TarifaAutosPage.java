@@ -92,6 +92,8 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade comboBoxPerdidaTotalDaniosDeducible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:1:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaParcialDaniosDeducible;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    private WebElementFacade comboBoxGastosDeTransporteDanos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteCarro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
@@ -126,13 +128,15 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade radioBotonComisionPactadaSi;
 
     private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
+    private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
     }
 
 
-    public void marcharCoberturaAccidentes() {
+    public void marcarCoberturaAccidentes(String hurto) {
+        seleccionarItem(comboBoxPerdidaTotalHurto, hurto);
         clickearElemento(checkBoxAccidentes);
     }
 
@@ -201,11 +205,11 @@ public class TarifaAutosPage extends PageUtil {
             botonBuscar.waitUntilPresent();
             ingresarDato(campoTxtNumeroDocumento, documento);
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + e);
             esperarHasta(TIEMPO_2000);
             ingresarDato(campoTxtNumeroDocumento, documento);
         } catch (ElementNotVisibleException f) {
-            LOGGER.info("StaleElementReferenceException " + f);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
             esperarHasta(TIEMPO_2000);
             ingresarDato(campoTxtNumeroDocumento, documento);
         }
@@ -242,7 +246,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
     public void esperarPorPantallaCoberturas() {
-        comboBoxLimite.waitUntilPresent();
+        comboBoxLimite.waitUntilVisible();
         setImplicitTimeout(0, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
             clickearElemento(botonBorrar);
@@ -261,6 +265,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturas1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCoberturasHurto(coberturas);
+        seleccionarCoberturasHurto2(coberturas);
         seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
         seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
         seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
@@ -272,14 +277,24 @@ public class TarifaAutosPage extends PageUtil {
         try {
             withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).waitFor(labelGatosTransporte);
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + e);
             labelGatosTransporte.waitUntilPresent();
         } catch (TimeoutException f) {
             LOGGER.info("TimeoutException " + f);
         }
+    }
+
+    public void seleccionarCoberturasHurto1(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
         seleccionarItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
         esperarPorValor(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
+        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+    }
+
+    public void seleccionarCoberturasHurto2(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        seleccionarItem(labelGatosTransporte, dato.get("GTH"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
@@ -292,15 +307,25 @@ public class TarifaAutosPage extends PageUtil {
                 labelGatosTransporteCarro.waitUntilPresent();
             }
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException ", e);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION, e);
             esperarHasta(TIEMPO_2000);
             if (!comboBoxGastosDeTransporteCarro.isPresent()) {
                 labelGatosTransporteCarro.waitUntilPresent();
             }
         }
+    }
+
+    public void seleccionarCoberturasDanios1(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
         seleccionarItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
         esperarPorValor(comboBoxGastosDeTransporteCarro, dato.get("GT"));
+        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+    }
+
+    public void seleccionarCoberturasDanios2(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        seleccionarItem(comboBoxGastosDeTransporteDanos, dato.get("GT"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
@@ -332,7 +357,7 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         if (!"null".equals(dato.get("AC"))) {
-            seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
+            seleccionarItem(comboBoxAccidentes, dato.get("AC"));
             seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, dato.get("AS"));
         }
     }
@@ -361,10 +386,6 @@ public class TarifaAutosPage extends PageUtil {
         MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor no se encuentra presente.", comboBoxAccidentes.isPresent());
     }
 
-    public void verificarCoberturaAccidentes() {
-        MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor se presente.", !comboBoxAccidentes.isPresent());
-    }
-
     public void seleccionarCobertura(WebElementFacade checkBox, WebElementFacade comboBox, String dato) {
         clickearElemento(checkBox);
         seleccionarItem(comboBox, dato);
@@ -378,7 +399,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarAsistenciaYCarroDeReemplazo(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, dato.get("AS"));
-        seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
+        seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
         seleccionarItem(comboBoxCarroDeReemplazoPerdidaParcial, dato.get("CRPP"));
     }
 
@@ -386,5 +407,11 @@ public class TarifaAutosPage extends PageUtil {
         campoPrimaTotal.waitUntilPresent();
         MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
                 campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
+    }
+
+    public void marcarOpcionDanos(String danos){
+        seleccionarItem(comboBoxPerdidaTotalHurto, OPCION_SIN_VALOR);
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, danos);
+        clickearElemento(checkBoxAccidentes);
     }
 }

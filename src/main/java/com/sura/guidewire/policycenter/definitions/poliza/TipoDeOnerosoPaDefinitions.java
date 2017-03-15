@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.definitions.modificaciones.ModificacionIn
 import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.TipoDeOnerosoPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -23,19 +24,29 @@ public class TipoDeOnerosoPaDefinitions {
     @Steps
     ModificacionInformacionPolizaPADefinitions informacionPolizaPADefinitions;
 
+    @Steps
+    TarifaAutosSteps tarifaAutosSteps;
+
+
 
     @When("vaya agregar el interes adicional" )
     public void agregarInteresAdicional() {
-        vehiculoSteps.ir_a_vehiculos();
+        vehiculoSteps.irAVehiculos();
         onerosoPaSteps.agregarInteresAdicional();
     }
 
     @When("ingrese un interes adicional con tipo de beneficiario <tipoBeneficiario>" )
     public void agregarInteresAdicionalYTipoDeBeneficiario(@Named("tipoBeneficiario") String tipoBeneficiario) {
-        vehiculoSteps.ir_a_vehiculos();
+        vehiculoSteps.irAVehiculos();
         onerosoPaSteps.agregarInteresAdicional();
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
+    }
 
+    @When("ingrese beneficiario oneroso en los intereses <tipoBeneficiarioOneroso>")
+    public void agregarInteresAdicionalConOneroso(String tipoBeneficiarioOneroso){
+        onerosoPaSteps.agregarInteresAdicionalOneroso();
+        edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiarioOneroso);
+        tarifaAutosSteps.agregarCoberturasOneroso();
     }
 
     @When("edite los datos del interes adicional <nombre>" )
@@ -55,7 +66,7 @@ public class TipoDeOnerosoPaDefinitions {
 
     @When("Se haya creado un vehículo: $datosVehiculo")
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        vehiculoSteps.ir_a_vehiculos();
+        vehiculoSteps.irAVehiculos();
         vehiculoSteps.agregarVehiculo(datosVehiculo);
     }
 }

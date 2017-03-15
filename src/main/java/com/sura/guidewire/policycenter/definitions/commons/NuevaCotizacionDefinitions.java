@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.definitions.commons;
 
 
-import com.sura.guidewire.policycenter.steps.poliza.CotizacionPADetalleSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.CuentaNuevaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.CotizacionPADetalleSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;

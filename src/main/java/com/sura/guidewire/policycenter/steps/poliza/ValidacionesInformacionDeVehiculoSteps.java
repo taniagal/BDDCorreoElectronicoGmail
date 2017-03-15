@@ -19,12 +19,12 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps {
 
 
     @Step
-    public void verificar_mensajes(ExamplesTable mensajes) {
+    public void verificarMensajes(ExamplesTable mensajes) {
         vehiculoPage.verificarMensajes(mensajes);
     }
 
     @Step
-    public void ir_a_vehiculos() {
+    public void irAVehiculos() {
         vehiculoPage.irAVehiculos();
     }
 
@@ -50,11 +50,6 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarVehiculoCeroKilometros() {
-        vehiculoPage.seleccionarVehiculoCeroKilometros();
-    }
-
-    @Step
     public void siguiente() {
         vehiculoPage.clickSiguiente();
     }
@@ -70,12 +65,16 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps {
         vehiculo.put("placa", "random");
         vehiculo.put("modelo", "2010");
         vehiculo.put("ciudad_circulacion", "MEDELLIN");
-        vehiculo.put("medioVenta","Televentas");
+        vehiculo.put("medioVenta", "Televentas");
         vehiculoPage.irAVehiculos();
         vehiculoPage.ingresarPlacaConModelo2011(vehiculo);
         vehiculoPage.seleccionarComboBoxModelo(vehiculo);
         vehiculo.put("modelo", "2011");
         vehiculoPage.seleccionarComboBoxModelo(vehiculo);
         vehiculoPage.seleccionarCiudadDeCirculacion(vehiculo);
+    }
+
+    public void validarMayusculaDeMotorYChasis() {
+        vehiculoPage.validarMayusculaDeMotorYChasis();
     }
 }
