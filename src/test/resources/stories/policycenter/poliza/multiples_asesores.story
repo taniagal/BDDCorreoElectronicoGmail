@@ -157,7 +157,7 @@ Given estoy cotizando una poliza de mrc:
 When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la participacion del 100% de los asesores que intervienen en la poliza:
 |codigoAsesor|porcentaje|rol      |
 |10995       |30        |Lider    |
-|11005       |10        |Adicional|
+|10686       |10        |Adicional|
 |193         |10        |Adicional|
 |10686       |10        |Adicional|
 |10671       |10        |Adicional|
@@ -165,8 +165,8 @@ When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la pa
 |1916        |10        |Adicional|
 |5676        |10        |Adicional|
 Then Debe quedar un codigo de asesor:
-|mensaje                                                          |validarDato|
-|La póliza ya cuenta con un asesor con código 4999 , favor validar|codigoAsesor|
+|mensaje                                                           |validarDato|
+|La póliza ya cuenta con un asesor con código 10686 , favor validar|codigoAsesor|
 Examples:
 ||
 ||
@@ -181,14 +181,14 @@ When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la pa
 |10960       |30        |Lider    |
 |10962       |10        |Adicional|
 |10787       |10        |Adicional|
-|10714       |10        |Adicional|
+|5676        |10        |Adicional|
 |10272       |10        |Adicional|
 |1681        |10        |Adicional|
 |5676        |10        |Adicional|
 |5947        |10        |Adicional|
 Then Debe quedar un codigo de asesor:
 |mensaje                                                          |validarDato|
-|La póliza ya cuenta con un asesor con código 4999 , favor validar|codigoAsesor|
+|La póliza ya cuenta con un asesor con código 5676 , favor validar|codigoAsesor|
 Examples:
 ||
 ||

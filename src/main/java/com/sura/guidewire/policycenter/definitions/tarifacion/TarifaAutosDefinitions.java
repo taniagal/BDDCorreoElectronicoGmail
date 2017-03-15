@@ -45,6 +45,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarCoberturasRC(coberturas);
     }
 
+    @When("ingrese registros del vehiculo con interes adicional: $datosVehiculoOneroso")
+    public void agregarVehiculoConInteres(ExamplesTable datosVehiculoOneroso) {
+        tarifaAutosSteps.agregarVehiculoOneroso(datosVehiculoOneroso);
+    }
+
     @When("ingrese a la pantalla de coberturas")
     public void irACoberturas() {
         tarifaAutosSteps.seleccionarBotonSiguiente();
@@ -80,11 +85,6 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.verificarTarifacion(valor);
     }
 
-    @Then("el resultado de la cotizacion en las coberturas globales son: $coberturas")
-    public void verificarCoberturasGlobales(ExamplesTable coberturas) {
-        tarifaAutosSteps.verificarCoberturasGlobales(coberturas);
-    }
-
     @Then("el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>")
     public void verificarResultadoTarifacionTotal(@Named("prima") String primaTotal, @Named("iva") String iva, @Named("costo") String costoTotal) {
         tarifaAutosSteps.verificarTarifacionTotal(primaTotal, iva, costoTotal);
@@ -100,6 +100,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.verificarDependenciaDeCobertura(danos, hurto);
     }
 
+    @Then("el resultado de la cotizacion en las coberturas globales son: $coberturas")
+    public void verificarCoberturasGlobales(ExamplesTable coberturas) {
+        tarifaAutosSteps.verificarCoberturasGlobales(coberturas);
+    }
+
     @When("seleccione todas las coberturas de comision: $coberturas")
     public void agregarTodasLasCoberturasDeComision(ExamplesTable coberturas) {
         tarifaAutosSteps.seleccionarCoberturasComision(coberturas);
@@ -111,4 +116,3 @@ public class TarifaAutosDefinitions {
     }
 
 }
-
