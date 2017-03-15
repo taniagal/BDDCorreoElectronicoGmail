@@ -72,7 +72,6 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
             tarifaAutosPage.seleccionarCoberturasBasica(coberturas);
             tarifaAutosPage.seleccionarCoberturas1(coberturas);
             tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
-            tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
             tarifaAutosPage.cotizar();
         }
     }

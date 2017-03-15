@@ -56,11 +56,11 @@ public class CotizacionDeCancelacionPage extends PageUtil {
 
 
     public void ingresaDatosFormulario() {
-        seleccionarItem(inicioCancelacionPage.txtMotivo, "Por petición del cliente");
+        seleccionarItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
         esperarHasta(TIEMPO_1000);
         inicioCancelacionPage.txtDescripMotivo.click();
         inicioCancelacionPage.txtDescripMotivo.sendKeys("Motivo");
-        clickearElemento(btnIniciarCancelacion);
+        btnIniciarCancelacion.click();
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(inputNumPoliza).waitUntilClickable();
     }
 
