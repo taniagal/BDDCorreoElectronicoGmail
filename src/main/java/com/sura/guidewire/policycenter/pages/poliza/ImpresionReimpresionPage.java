@@ -14,10 +14,6 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade botonReimpresion;
     @FindBy(xpath = "//span[contains(.,'Opciones de compromiso')]")
     private WebElementFacade botonOpcionesDeCompromiso;
-    @FindBy(xpath = "//div[contains(.,'Emitir ahora')]")
-    private WebElementFacade botonEmitirAhora;
-    @FindBy(xpath = "//a[contains(.,'Aceptar')]")
-    private WebElementFacade botonAceptarRenovacion;
     @FindBy(xpath = "//div[contains(@id,'JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl')]")
     private WebElementFacade linkArchivoDePoliza;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div")
@@ -36,14 +32,8 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade checkBoxEndosomrc;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[3]/td[1]/div/img")
     private WebElementFacade checkBoxCotizacion;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
-    private WebElementFacade botonSiguienteRenovacion;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
-    private WebElementFacade botonEditarRenovacion;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions']")
     private WebElementFacade menuAccionesPoliza;
-    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_RenewPolicy']")
-    private WebElementFacade menuItemRenovarPoliza;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptar;
 
@@ -60,27 +50,16 @@ public class ImpresionReimpresionPage extends PageUtil {
         esperarYClickearBoton(botonReimpresion);
     }
 
-    public void expedirRenovacionPoliza() {
-        esperarYClickearBoton(botonOpcionesDeCompromiso);
-        esperarYClickearBoton(botonEmitirAhora);
-        esperarYClickearBoton(botonAceptarRenovacion);
-        linkArchivoDePoliza.click();
-    }
-
     public String validarItemsReimpresion() {
         String listaObtenida = null;
         if (tablaOpcionesReimprimir.isCurrentlyVisible()) {
             listaObtenida = tablaOpcionesReimprimir.getText();
         }
         return listaObtenida;
-
     }
 
     public void validarNoPresenciaDeReimpresion() {
-        String resultado = null;
-        if (botonReimpresion.isCurrentlyVisible()) {
-            resultado = "el boton se encuentra presente";
-        }
+       botonReimpresion.shouldNotBeCurrentlyVisible();
     }
 
     public void irADocumentos() {
@@ -90,23 +69,14 @@ public class ImpresionReimpresionPage extends PageUtil {
     public void validarOpcionesReimpresionHabilitadas() {
         checkBoxCaratula.isSelected();
         checkBoxCotizacion.isSelected();
-        if(checkBoxRelacionConCliente.isCurrentlyVisible()){
+        if (checkBoxRelacionConCliente.isCurrentlyVisible()) {
             checkBoxRelacionConCliente.isSelected();
         }
-        if(checkBoxEndoso.isCurrentlyVisible()){
+        if (checkBoxEndoso.isCurrentlyVisible()) {
             checkBoxEndoso.isSelected();
         }
-        if(checkBoxEndosomrc.isCurrentlyVisible()){
+        if (checkBoxEndosomrc.isCurrentlyVisible()) {
             checkBoxEndosomrc.isSelected();
         }
-    }
-
-    public void editarRenovacionPoliza() {
-        menuAccionesPoliza.waitUntilPresent().click();
-        menuItemRenovarPoliza.waitUntilPresent().click();
-        botonAceptar.waitUntilPresent().click();
-        botonSiguienteRenovacion.click();
-        botonSiguienteRenovacion.click();
-        esperarYClickearBoton(botonEditarRenovacion);
     }
 }

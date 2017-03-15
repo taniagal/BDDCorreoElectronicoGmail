@@ -20,11 +20,6 @@ public class ImpresionReimpresionDefinitions {
         impresionReimpresionSteps.validarBotonReimpresion();
     }
 
-    @When("expida la renovacion")
-    public void expedirRenovacionPoliza() {
-        impresionReimpresionSteps.expedirRenovacionPoliza();
-    }
-
     @When("me deben aparecer las opciones por las cuales puedo imprimir $opciones")
     public void validarOpcionesReimpresion(ExamplesTable opciones) {
         impresionReimpresionSteps.validarOpcionesReimprimir(opciones);
@@ -43,10 +38,6 @@ public class ImpresionReimpresionDefinitions {
     @Then("no se debe mostrar el boton reimpresion")
     public void validarNoPresenciaDeReimpresion() {
         impresionReimpresionSteps.validarNoPresenciaDeReimpresion();
-    }
-    @When("cuando edite la renovacion de poliza")
-    public void editarRenovacionPoliza(){
-        impresionReimpresionSteps.editarRenovacionPoliza();
     }
 
 }
