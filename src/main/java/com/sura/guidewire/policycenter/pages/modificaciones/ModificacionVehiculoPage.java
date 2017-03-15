@@ -82,8 +82,8 @@ public class ModificacionVehiculoPage extends PageUtil {
         }
         esperarHasta(TIEMPO_3000);
         seleccionarItem(comboMedioDeVenta, medioVenta);
-        waitFor(botonSiguiente).click();
         esperarHasta(TIEMPO_3000);
+        waitFor(botonSiguiente).click();
     }
 
     public void validarZonaCirculacion(String mensaje) {
