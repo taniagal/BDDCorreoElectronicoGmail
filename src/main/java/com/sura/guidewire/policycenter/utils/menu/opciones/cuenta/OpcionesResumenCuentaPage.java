@@ -6,20 +6,18 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
 
 public class OpcionesResumenCuentaPage extends PageUtil {
-    Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:ttlBar']")
     private WebElementFacade lblResumenCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:OfficialIDInputSet:DocumentType-labelEl']")
     private WebElementFacade lblTipoDoc;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
     private WebElementFacade lblNumDoc;
-    @FindBy(xpath = ".//span[contains(.,'Código de agente')]")
+    @FindBy(xpath = ".//span[contains(.,'Código del asesor')]")
     private WebElementFacade lblCodAgente;
     @FindBy(xpath = ".//span[contains(.,'Descripción')]")
     private WebElementFacade lblDescAgente;
