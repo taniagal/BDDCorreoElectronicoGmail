@@ -14,6 +14,10 @@ Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion       | departamento | ciudad   | agente |
 | Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1968       | ROGELIO       | PATAQUIBA       | DIRECCION DE RESIDENCIA | CALLE 2I #21-22 | Antioquia    | Medellin | INT-3  |
 When seleccione la poliza como reaseguro especial
+And diligencie los campos de reaseguro aceptado
+|comision|deposito|impuesto|transferencia|
+|100     |100     |100     |100          |
+And ingresa el asegurado <opcionAgregar>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And ingrese la entrada de las diferentes coberturas mrc
@@ -40,6 +44,10 @@ And ingrese la entrada de las diferentes coberturas mrc
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC con reaseguro especial
+And ingrese los campos obligatorios en cambio de poliza reaseguro especial
+|comision|deposito|impuesto|transferencia|
+|100     |100     |100     |100          |
+And ingresa el asegurado <opcionAgregar>
 And ingrese a edificios y ubicaciones en cambio de poliza
 And cotice el cambio de poliza con reaseguro especial en si
 And expida el cambio de la poliza

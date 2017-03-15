@@ -42,12 +42,20 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     private WebElementFacade botonAprobacionEspecial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:Comission-inputEl']")
     private WebElementFacade campoComisionReaseguroAceptado;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:Comission-inputEl']")
+    private WebElementFacade campoCambioComisionReaseguroAceptado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:DepositRate-inputEl']")
     private WebElementFacade campoPorcentajeDepositoRetenido;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:DepositRate-inputEl']")
+    private WebElementFacade campoCambioPorcentajeDepositoRetenido;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:TaxRate-inputEl']")
     private WebElementFacade campoPorcentajeImpuestosAplicables;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:TaxRate-inputEl']")
+    private WebElementFacade campoCambioPorcentajeImpuestosAplicables;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:TransferCost-inputEl']")
     private WebElementFacade campoCostoTransferencia;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:TransferCost-inputEl']")
+    private WebElementFacade campoCambioCostoTransferencia;
 
     public AjustesDeReglasRenovacionMrcPage(WebDriver driver) {
         super(driver);
@@ -100,15 +108,20 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     }
 
     public void diligenciarCamposReaseguroAceptado(ExamplesTable valores) {
-
         Map<String, String> valoresCampos = valores.getRow(0);
         waitFor(campoComisionReaseguroAceptado);
         campoComisionReaseguroAceptado.sendKeys(valoresCampos.get("comision"));
         campoPorcentajeDepositoRetenido.sendKeys(valoresCampos.get("deposito"));
         campoPorcentajeImpuestosAplicables.sendKeys(valoresCampos.get("impuesto"));
         campoCostoTransferencia.sendKeys(valoresCampos.get("transferencia"));
+    }
 
+    public void ingresarRegistrosReaseguro(ExamplesTable registros){
+        Map<String, String> registrosCampos = registros.getRow(0);
+        waitFor(campoCambioComisionReaseguroAceptado);
+        campoCambioComisionReaseguroAceptado.sendKeys(registrosCampos.get("comision"));
+        campoCambioPorcentajeDepositoRetenido.sendKeys(registrosCampos.get("deposito"));
+        campoCambioPorcentajeImpuestosAplicables.sendKeys(registrosCampos.get("impuesto"));
+        campoCambioCostoTransferencia.sendKeys(registrosCampos.get("transferencia"));
     }
 }
-
-

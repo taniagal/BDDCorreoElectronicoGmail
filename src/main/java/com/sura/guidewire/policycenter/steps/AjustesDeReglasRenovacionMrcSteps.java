@@ -55,6 +55,11 @@ public class AjustesDeReglasRenovacionMrcSteps {
     }
 
     @Step
+    public void ingresarRegistrosReaseguro(ExamplesTable registros){
+        ajustesDeReglasRenovacionMrcPage.ingresarRegistrosReaseguro(registros);
+    }
+
+    @Step
     public void descarteCambios() {
         edificiosyUbicacionesWidget.descarteCambios();
     }

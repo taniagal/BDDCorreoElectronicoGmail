@@ -58,6 +58,11 @@ public class AjustesDeReglasRenovacionMrcDefinitions {
         ajustesDeReglasRenovacionMrcSteps.diligenciarCamposReaseguroAceptado(valores);
     }
 
+    @When("ingrese los campos obligatorios en cambio de poliza reaseguro especial $registros")
+    public void ingresarCamposObligatoriosReaseguro (ExamplesTable registros){
+        ajustesDeReglasRenovacionMrcSteps.ingresarRegistrosReaseguro(registros);
+    }
+
     @When("descarte cambios")
     public void descarteCambios() {
         ajustesDeReglasRenovacionMrcSteps.descarteCambios();
