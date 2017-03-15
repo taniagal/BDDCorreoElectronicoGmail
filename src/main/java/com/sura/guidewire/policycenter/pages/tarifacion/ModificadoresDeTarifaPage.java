@@ -110,7 +110,8 @@ public class ModificadoresDeTarifaPage extends PageUtil {
 
     public void cambiarBonificacionTecnica(String bonoT) {
         irAVehiculos();
-        campoTxtBonificacionTecnicaCambio.waitUntilPresent().sendKeys(bonoT);
+        campoTxtBonificacionTecnicaCambio.waitUntilPresent().clear();
+        campoTxtBonificacionTecnicaCambio.sendKeys(bonoT);
     }
 
     public void irAVehiculos() {
