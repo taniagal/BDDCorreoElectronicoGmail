@@ -160,11 +160,6 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.validaMensajeEnPantalla(mensaje);
     }
 
-     /*
-    * 4 Historia
-    */
-
-
     @When("seleccione la poliza como reaseguro especial")
     public void whenSeleccioneLaPolizaComoReaseguroAceptado() {
         informacionDePolizaMrcSteps.seleccionarSiEnReaseguro();
