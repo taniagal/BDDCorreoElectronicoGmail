@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
+import com.sura.guidewire.policycenter.pages.poliza.CoberturaGlobalPage;
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
@@ -9,6 +10,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaAutosSteps extends ScenarioSteps {
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+    CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
 
     public TarifaAutosSteps(Pages page) {
@@ -111,6 +113,11 @@ public class TarifaAutosSteps extends ScenarioSteps {
         tarifaAutosPage.seleccionarCoberturasDanios1(coberturas);
         tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(coberturas);
         tarifaAutosPage.cotizar();
+    }
+
+    @Step
+    public void verificarCoberturasGlobales(ExamplesTable coberturas) {
+        coberturaGlobalPage.verificarCoberturasGlobales(coberturas);
     }
 
     @Step

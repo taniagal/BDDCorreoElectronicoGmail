@@ -85,6 +85,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.verificarTarifacion(valor);
     }
 
+    @Then("el resultado de la cotizacion en las coberturas globales son: $coberturas")
+    public void verificarCoberturasGlobales(ExamplesTable coberturas) {
+        tarifaAutosSteps.verificarCoberturasGlobales(coberturas);
+    }
+
     @Then("el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>")
     public void verificarResultadoTarifacionTotal(@Named("prima") String primaTotal, @Named("iva") String iva, @Named("costo") String costoTotal) {
         tarifaAutosSteps.verificarTarifacionTotal(primaTotal, iva, costoTotal);
