@@ -67,6 +67,7 @@ public class GuidewireLoginPages extends PageUtil {
     }
 
     public void ingresarPorRol(String rol) {
+        LOGGER.info("INICIO GuidewireLoginPages.ingresarPorRol( " + rol + ")");
         if ("Asesor".equals(rol)) {
             setImplicitTimeout(0, TimeUnit.SECONDS);
             if (!menuContacto.isPresent()) {
@@ -88,5 +89,6 @@ public class GuidewireLoginPages extends PageUtil {
             resetImplicitTimeout();
         }
         waitForPresenceOf(MNU_CONTACTO);
+        LOGGER.info("FIN GuidewireLoginPages.ingresarPorRol( " + rol + ")");
     }
 }

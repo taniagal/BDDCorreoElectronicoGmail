@@ -12,6 +12,7 @@ Scenario: Consulta de contactos asociados a una cuenta
 GivenStories: stories/policycenter/login_policy.story
 Given que he ingresado a PolicyCenter
 And existe una cuenta <numCuenta>
+And existe contactos asociados a la cuenta
 When busque la cuenta
 And desee visualizar los contactos asociados a la cuenta
 Then debo ver contactos asociados a esta cuenta
@@ -24,6 +25,7 @@ Examples:
 Scenario: Consulta de contactos asociados a una cuenta por filtros de rol
 Given que he ingresado a PolicyCenter
 Given existe una cuenta <numCuenta>
+And existe contactos asociados a la cuenta
 When busque la cuenta
 And desee visualizar los contactos asociados a la cuenta
 And filtre los contactos asociados a una cuenta por el rol <rol> en el combo con valor <combo>
@@ -37,6 +39,7 @@ Examples:
 Scenario: Consulta de contactos asociados a una cuenta por filtros de tipo de persona
 Given que he ingresado a PolicyCenter
 Given existe una cuenta <numCuenta>
+And existe contactos asociados a la cuenta
 When busque la cuenta
 And desee visualizar los contactos asociados a la cuenta
 When filtre los contactos asociados a una cuenta por el tipo de persona <tipoPersona> en el combo con valor <combo>

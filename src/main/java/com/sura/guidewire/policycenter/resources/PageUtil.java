@@ -53,7 +53,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_7 = 7;
     protected static final int CONSTANTE_9 = 9;
-    protected static final int CONSTANTE_10 = 10;
+    protected static final int CONSTANTE_15 = 15;
     protected static final int DIAS_31 = 31;
     protected static final int DIAS_61 = 61;
     protected static String numeroCotizacionNoTomar;
@@ -285,13 +285,14 @@ public class PageUtil extends PageObject {
     }
 
     public void clickearElemento(WebElementFacade element) {
-        for (int i = 0; i < CONSTANTE_10; i++) {
+        for (int i = 0; i < CONSTANTE_15; i++) {
             try {
                 withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(element).click();
                 break;
             } catch (WebDriverException e) {
                 esperarHasta(TIEMPO_500);
                 LOGGER.info("WebDriverException " + e);
+                LOGGER.info("--- click " + i);
             }
         }
     }
@@ -391,16 +392,15 @@ public class PageUtil extends PageObject {
         }
         resetImplicitTimeout();
     }
-
-    public boolean validarResultadoTabla(String pathTabla, String verficarDato, int nrocolumna) {
+    public boolean validarResultadoTabla(String PATHTABLA,String verficarDato ,int nrocolumna) {
         boolean encontrada = false;
-        int cantidad = consultarNumeroElementosTabla(pathTabla);
+        int cantidad = consultarNumeroElementosTabla(PATHTABLA);
         for (int i = 1; i <= cantidad; i++) {
-            if (consultarTextoCeldaTabla(pathTabla, i, nrocolumna).equals(verficarDato)) {
-                encontrada = true;
+            if(consultarTextoCeldaTabla(PATHTABLA, i, nrocolumna).equals(verficarDato))
+            {  encontrada = true;
                 break;
             }
         }
-        return encontrada;
+        return  encontrada;
     }
 }
