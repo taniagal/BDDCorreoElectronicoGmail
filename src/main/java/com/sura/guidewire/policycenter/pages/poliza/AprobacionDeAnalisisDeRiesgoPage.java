@@ -48,6 +48,10 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         if (!botonExpedirPoliza.isPresent()) {
             clickearElemento(menuItemCotizacion);
         }
+        if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
+            clickearElemento(botonBorrar);
+            waitForTextToDisappear("2011 AUDI AVEO FAMILY");
+        }
         resetImplicitTimeout();
         waitFor(botonExpedirPoliza);
         clickearElemento(botonExpedirPoliza);
