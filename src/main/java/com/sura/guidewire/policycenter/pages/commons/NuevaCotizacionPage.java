@@ -146,6 +146,7 @@ public class NuevaCotizacionPage extends PageUtil {
             comboBoxTipoPoliza.waitUntilPresent();
             try {
                 seleccionarItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
+                esperarHasta(TIEMPO_2000);
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
                 esperarHasta(TIEMPO_3000);
