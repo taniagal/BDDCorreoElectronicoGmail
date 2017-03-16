@@ -38,7 +38,6 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     @Alias("filtre los contactos asociados a una cuenta por el tipo de persona $filtro en el combo con valor $combo")
     public void filtreLosContactosAsociadosAEstaCuenta(@Named("filtro") String filtro, @Named("combo") String combo) {
         cuenta.obtenerContactosAsociadosWO().filtrarContactosAsociados(filtro,combo);
-        LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.filtreLosContactosAsociadosAEstaCuenta");
 
     }
 
@@ -51,7 +50,5 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
             PageUtil.esperarHasta(TIEMPO_1000);
             MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
         }
-
-        LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna");
     }
 }

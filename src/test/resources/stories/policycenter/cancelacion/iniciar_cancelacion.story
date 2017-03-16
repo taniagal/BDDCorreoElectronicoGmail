@@ -30,17 +30,6 @@ Examples:
 
 
 
-Scenario:  2 Validacion fecha de cancelacion
-Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
-When ingrese los motivos de cancelacion de la poliza Motivo: por error de cobro, Descripción: Prueba
-Then se debe mostrar la fecha del dia de hoy
-
-Examples:
-| numPoliza     | rolUsuario |
-| TEST_22222236 | Asesor     |
-
-
-
 Scenario:  3 Ingreso de fecha superior a los 60 dias de retroactividad
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: por error de cobro, Descripción: Prueba
@@ -80,9 +69,7 @@ Examples:
 
 
 Scenario: 6 Validacion lista de motivos para poliza bancolombia
-
-Meta:
-@manual
+Meta: @manual
 Given que estoy en el resumen de la poliza MRC  de bancolombia con numero de poliza <numPoliza> con el rol <rolUsuario>
 When seleccione la lista motivos de cancelacion
 Then se deben visualizar los siguientes motivos
@@ -96,3 +83,13 @@ Then se deben visualizar los siguientes motivos
 Examples:
 | numPoliza  | rolUsuario |
 | 6076942934 | Asesor     |
+
+Scenario:  2 Validacion fecha de cancelacion
+Meta: @manual
+Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario> NA
+When ingrese los motivos de cancelacion de la poliza Motivo: por error de cobro, Descripción: Prueba
+Then se debe mostrar la fecha del dia de hoy
+
+Examples:
+| numPoliza     | rolUsuario |
+| TEST_22222236 | Asesor     |

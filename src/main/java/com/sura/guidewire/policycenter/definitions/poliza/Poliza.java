@@ -1,11 +1,11 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.AnalisisDeRiesgoSteps;
 import com.sura.guidewire.policycenter.steps.poliza.CotizacionSteps;
-import com.sura.guidewire.policycenter.steps.renovacion.InstruccionesPreviasARenovacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
-import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
+import com.sura.guidewire.policycenter.steps.renovacion.InstruccionesPreviasARenovacionSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
@@ -303,11 +303,6 @@ public class Poliza {
             String motivo = fila.get("MOTIVOS");
             MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMotivosDisponibles(), AssertUtil.hasItemContainsString(motivo));
         }
-    }
-
-    @Then("se debe mostrar la fecha del dia de hoy")
-    public void entoncesValidarFechaSeaFechadeHOY() {
-        LOGGER.info("CotizacionDefinitions.ValidarFechaSeaFechadeHOY");
     }
 
     @When("ingrese fecha superior a 61 dias")
