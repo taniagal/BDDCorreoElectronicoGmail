@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
+import com.sura.guidewire.policycenter.pages.poliza.CoberturaGlobalPage;
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
@@ -9,6 +10,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaAutosSteps extends ScenarioSteps {
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+    CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
 
     public TarifaAutosSteps(Pages page) {
@@ -35,15 +37,17 @@ public class TarifaAutosSteps extends ScenarioSteps {
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.esperarPorPantallaCoberturas();
     }
+
+
     @Step
-    public void agregarVehiculoOneroso(ExamplesTable datosVehiculoOneroso){
+    public void agregarVehiculoOneroso(ExamplesTable datosVehiculoOneroso) {
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datosVehiculoOneroso);
     }
 
     @Step
-    public void agregarCoberturasOneroso(){
+    public void agregarCoberturasOneroso() {
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.esperarPorPantallaCoberturas();
     }
@@ -116,6 +120,11 @@ public class TarifaAutosSteps extends ScenarioSteps {
     @Step
     public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
         tarifaAutosPage.verificarTarifacionTotal(primaTotal, iva, costoTotal);
+    }
+
+    @Step
+    public void verificarCoberturasGlobales(ExamplesTable coberturas) {
+        coberturaGlobalPage.verificarCoberturasGlobales(coberturas);
     }
 
     @Step

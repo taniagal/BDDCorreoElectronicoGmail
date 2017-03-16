@@ -32,7 +32,7 @@ public class TipoDeOnerosoPaSteps extends ScenarioSteps {
     public void agregarInteresAdicionalOneroso(){
         tipoDeOnerosoPaPage.agregarInteresAdicional();
     }
-    
+
     @Step
     public void verificarMarca(){
         tipoDeOnerosoPaPage.verificarMarca();

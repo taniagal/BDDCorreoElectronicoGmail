@@ -62,12 +62,12 @@ public class NuevaCotizacionDefinitions {
     }
 
     @Then("vaya a la poliza riesgo <riesgo>")
-        public void irAConsultarLaCotizacionRiesgo(@Named("riesgo") String riesgo) {
-            cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(riesgo);
+    public void irAConsultarLaCotizacionRiesgo(@Named("riesgo") String riesgo) {
+        cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(riesgo);
     }
 
     @Then("cotice la poliza riesgo con el asegurado, el auto y las coberturas necesarias $datos")
-        public void cotizarLaPolizaRiesgoConTasaUnica(ExamplesTable datos) {
+    public void cotizarLaPolizaRiesgoConTasaUnica(ExamplesTable datos) {
         nuevaCotizacionSteps.cotizarLaPolizaRiesgoConTasaUnica(datos);
     }
 }
