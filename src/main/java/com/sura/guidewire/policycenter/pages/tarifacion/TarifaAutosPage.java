@@ -266,23 +266,23 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCoberturasHurto(coberturas);
         seleccionarCoberturasHurto2(coberturas);
+        setImplicitTimeout(1, TimeUnit.SECONDS);
         if(comboBoxAccidentes.isVisible()){
             seleccionarItem(comboBoxAccidentes, dato.get("AC"));
         }else{
             seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
         }
-
         if(comboBoxGastosTraspaso.isVisible()){
             seleccionarItem(comboBoxGastosTraspaso, dato.get("GTR"));
         }else{
             seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
         }
-
         if(comboBoxgastosDeParqueadero.isVisible()){
             seleccionarItem(comboBoxgastosDeParqueadero, dato.get("GP"));
         }else{
             seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
         }
+        resetImplicitTimeout();
     }
 
     public void seleccionarCoberturasHurto(ExamplesTable coberturas) {
