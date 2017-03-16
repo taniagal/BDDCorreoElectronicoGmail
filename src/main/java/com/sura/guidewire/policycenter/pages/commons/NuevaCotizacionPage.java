@@ -59,6 +59,8 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade menuItemNuevaCotizacionCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade menuItemInformacionDePoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
+    private WebElementFacade mensajes;
 
     private static final String TIPO_POLIZA = "tipoPoliza";
     private static final String INDIVIDUAL = "Individual";
@@ -85,6 +87,16 @@ public class NuevaCotizacionPage extends PageUtil {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
         }
         esperarHasta(TIEMPO_2000);
+    }
+
+
+    public void copiarEnvioRiesgo() {
+        this.copiarEnvio();
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        if (mensajes.isVisible() && mensajes.getText().contains("Se produjo un error al crear un periodo de póliza a partir del periodo actual")) {
+            this.copiarEnvio();
+        }
+        resetImplicitTimeout();
     }
 
     public void irANuevaCotizacion() {
@@ -115,11 +127,6 @@ public class NuevaCotizacionPage extends PageUtil {
         linkNombre.waitUntilVisible();
     }
 
-    public void seleccionarAgente() {
-        comboBoxNombreAgenteCuenta.waitUntilPresent();
-        clickearElemento(comboBoxNombreAgenteCuenta);
-    }
-
     public void seleccionarAgente(String cuenta, String agente) {
         ingresarCuenta(cuenta);
         seleccionarOficinaDeRadicacionYAgente("1073", agente);
@@ -139,6 +146,7 @@ public class NuevaCotizacionPage extends PageUtil {
             comboBoxTipoPoliza.waitUntilPresent();
             try {
                 seleccionarItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
+                esperarHasta(TIEMPO_2000);
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
                 esperarHasta(TIEMPO_3000);
@@ -199,12 +207,6 @@ public class NuevaCotizacionPage extends PageUtil {
         comboBoxNombreAgente.clear();
         comboBoxNombreAgente.sendKeys(agente);
         comboBoxNombreAgente.sendKeys(Keys.ENTER);
-    }
-
-    public void cotizarEnvioCopiada() {
-        menuItemInformacionDePoliza.waitUntilPresent();
-        clickearElemento(menuItemInformacionDePoliza);
-        botonBotonCotizar.waitUntilPresent().click();
     }
 
     public void llenarInfoPoliza() {

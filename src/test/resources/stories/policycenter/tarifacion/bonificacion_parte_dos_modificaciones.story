@@ -28,7 +28,7 @@ Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
 |tipo_documento      |documento|bonoT|mensaje|
-|CEDULA DE CIUDADANIA|11111111 |2    |La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
+|CEDULA DE CIUDADANIA|11111111 |40   |La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
 
 
 
@@ -51,4 +51,4 @@ Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
 |tipo_documento      |documento |bonoT|mensaje|
-|CEDULA DE CIUDADANIA|1397450166|2    |La Bonificacion se ha modificado con una fecha superior a 30 dias|
+|CEDULA DE CIUDADANIA|1397450166|45   |La Bonificacion se ha modificado con una fecha superior a 30 dias|

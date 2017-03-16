@@ -13,8 +13,8 @@ GivenStories: stories/policycenter/login_policy.story
 Given que existe una <poliza> y esta dentro de la vigencia
 When visualizo el resumen de la poliza
 Then verifico que se encuentren los siguientes datos
-|txtTipoPlazo |txtPolizaFinaciada|
-|Tipo de plazo|Póliza financiada |
+|txtTipoPlazo    |txtPolizaFinaciada         |
+|Tipo de vigencia|Póliza financiada          |
 
 Examples:
 |poliza       |

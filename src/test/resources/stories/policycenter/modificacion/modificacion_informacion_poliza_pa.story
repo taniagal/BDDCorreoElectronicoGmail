@@ -29,16 +29,6 @@ Examples:
 | numeroPoliza  | tipoDocumento        | numeroDocumento |
 | TEST_22222222 | CEDULA DE CIUDADANIA | 1234567891      |
 
-Scenario: No permitir cambiar el tomador primario
-Given ya se tiene una poliza expedida <numeroPoliza>
-When ingrese a modificar dicha cotizacion
-Then no se debe permitir cambiar el tomador primario
-
-Examples:
-| numeroPoliza  |
-| TEST_22222222 |
-
-
 Scenario: Validar campo poliza financiada
 Meta:
 @manual

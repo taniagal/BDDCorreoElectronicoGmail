@@ -2,12 +2,17 @@ package com.sura.guidewire.policycenter.pages.administracion;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class CapturaMedioDeVentasPage extends PageUtil {
+    protected static final String PATHMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:ttlBar']";
+    protected static final String TABLAMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:OfficesSearchResultsLV-body']/*/table/tbody/tr";
     @FindBy(xpath = ".//*[@id=':tabs-menu-trigger-btnIconEl']")
     private WebElementFacade menuAdministracion;
     @FindBy(xpath = "//div[5]/div/div[2]/div/div/a/span")
@@ -41,7 +46,9 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     @FindBy(xpath = "//td[@id='Admin:MenuLinks:Admin_CommercialNetwork_Ext:CommercialNetwork_Ext_AdminSuraChannelSaleMethodSearchPage_Ext']/div/span")
     private WebElementFacade itemMedioDeVentaPorCanal;
     @FindBy(xpath = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:suraChannel-inputEl']")
-    private WebElementFacade txtCanalComercial;
+    private WebElementFacade listaCanalComercial;
+    @FindBy(xpath = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:codeSura-inputEl']")
+    private WebElementFacade listMedioDeVenta;
     @FindBy(xpath = "//li[contains(.,'CC001 - Bancaseguros bancolombia')]")
     private WebElementFacade itemCanalComercial;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[5]/td/div/div[4]/div")
@@ -122,7 +129,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
         String listaObtenida = null;
         if (tablaCanal.isCurrentlyVisible()) {
             listaObtenida = tablaCanal.getText();
-        } else if(tablaCanalNuevo.isCurrentlyVisible()){
+        } else if (tablaCanalNuevo.isCurrentlyVisible()) {
             listaObtenida = tablaCanalNuevo.getText();
         }
         return listaObtenida;
@@ -137,9 +144,14 @@ public class CapturaMedioDeVentasPage extends PageUtil {
         itemMedioDeVentaPorCanal.click();
     }
 
-    public void buscarCanalComercial(String canalComercial) {
-        ingresarDato(txtCanalComercial, canalComercial);
-        itemCanalComercial.click();
+    public void buscarCanalComercial(ExamplesTable canalComercial) {
+
+        listMedioDeVenta.clear();
+        seleccionarItem(listMedioDeVenta, canalComercial.getRow(0).get("medioDeVenta"));
+        esperarObjetoClikeableServidor(PATHMEDIOVENTAPORCANAL);
+        listaCanalComercial.clear();
+        seleccionarItem(listaCanalComercial, canalComercial.getRow(0).get("canalComercial"));
+        esperarObjetoClikeableServidor(PATHMEDIOVENTAPORCANAL);
         botonBuscarMediosDeVenta.click();
 
     }
@@ -158,9 +170,9 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void asociarMedioDeVentaAlCanal(String canalComercial, String medioDeVenta) {
-        ingresarDato(txtCanal,canalComercial);
+        ingresarDato(txtCanal, canalComercial);
         itemCanalComercial.click();
-        ingresarDato(txtMedioDeVenta,medioDeVenta);
+        ingresarDato(txtMedioDeVenta, medioDeVenta);
         itemMedioDeVenta.click();
         esperarYClickearBoton(botonActualizar);
     }
@@ -168,6 +180,16 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     public void verificarAdiccionMedioDeVentaACanal() {
         withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(labelDatosBasicosMedioDeVenta);
     }
+
+    public void validarDatosMedioDeVentaPorCanal(ExamplesTable verificarDatoMediosVenta) {
+
+        for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
+
+            MatcherAssert.assertThat("No se encontro el medio de venta" + " venta esperada: " + verificarDato.get("mediosDeVentaAsociados"), validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, verificarDato.get("mediosDeVentaAsociados"), CONSTANTE_2));
+            MatcherAssert.assertThat("No se encontro el medio de venta por defecto" + " venta esperada: " + verificarDato.get("medioDeVentaPorDefecto"), validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, verificarDato.get("medioDeVentaPorDefecto"), CONSTANTE_5));
+        }
+    }
+
 }
 
 

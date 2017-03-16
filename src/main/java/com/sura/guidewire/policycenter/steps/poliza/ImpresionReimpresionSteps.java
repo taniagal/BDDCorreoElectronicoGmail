@@ -26,11 +26,6 @@ public class ImpresionReimpresionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void expedirRenovacionPoliza() {
-        impresionReimpresionPage.expedirRenovacionPoliza();
-    }
-
-    @Step
     public void validarOpcionesReimprimir(ExamplesTable opciones) {
         Map<String, String> itemsReimprimir;
         String listaOpcionesDeclinacion = impresionReimpresionPage.validarItemsReimpresion();
@@ -53,10 +48,5 @@ public class ImpresionReimpresionSteps extends ScenarioSteps {
     @Step
     public void validarOpcionesReimpresionHabilitadas() {
         impresionReimpresionPage.validarOpcionesReimpresionHabilitadas();
-    }
-
-    @Step
-    public void editarRenovacionPoliza() {
-        impresionReimpresionPage.editarRenovacionPoliza();
     }
 }
