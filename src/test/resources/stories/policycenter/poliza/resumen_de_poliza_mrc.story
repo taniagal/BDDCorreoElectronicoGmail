@@ -30,8 +30,8 @@ And intente ingresar las entradas de las diferentes coberturas
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 Then verifico que se encuentren los siguientes datos
-|txtTipoPlazo |txtPolizaFinaciada|
-|Tipo de plazo|Póliza financiada |
+|txtTipoPlazo    |txtPolizaFinaciada|
+|Tipo de vigencia|Póliza financiada |
 And verifico los datos de coseguro
 |lblAseguradora|lblParticipacion  |lblLider|lblTCoaseguro  |lblTpCoaseguro   |
 |Aseguradora   |% de participación|Líder   |Tiene Coaseguro|Tipo de coaseguro|
