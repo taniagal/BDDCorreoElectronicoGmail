@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -16,27 +17,45 @@ import java.util.concurrent.TimeUnit;
 public class DistribucionTasaPorCoberturaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:0:reName']")
-    WebElementFacade linkNombreReaseguradorUno;
+    private WebElementFacade linkNombreReaseguradorUno;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:1:reName']")
-    WebElementFacade linkNombreReaseguradorDos;
+    private WebElementFacade linkNombreReaseguradorDos;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:2:reName']")
-    WebElementFacade linkNombreReaseguradorTres;
+    private WebElementFacade linkNombreReaseguradorTres;
     @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:EditCountry-inputEl']")
-    WebElementFacade listPaisSeleccionar;
+    private WebElementFacade listPaisSeleccionar;
     @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:Reinsurer-inputEl']")
-    WebElementFacade listNombreReaseugurador;
+    private WebElementFacade listNombreReaseugurador;
     @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:Update']")
-    WebElementFacade btnAceptarReasegurador;
+    private WebElementFacade btnAceptarReasegurador;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add-btnInnerEl']")
-    WebElementFacade btnAgregaInformacionReaseguro;
+    private WebElementFacade btnAgregaInformacionReaseguro;
     @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:program-inputEl']")
-    WebElementFacade checkContratosAutomaticos;
+    private WebElementFacade checkContratosAutomaticos;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:DesiredComersialRate_Ext-inputEl']")
-    WebElementFacade txtTasaComercialDeseada;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:DesiredComersialRate_Ext-inputEl']")
-    WebElementFacade linkEnTablaContrato;
+    private WebElementFacade txtTasaComercialDeseada;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV:2:Number']")
-    WebElementFacade lblTablaAsegurada;
+    private WebElementFacade lblTablaAsegurada;
+    @FindBy(xpath = ".//*[@id='EditAgreementPopup:AgreementScreen:CededRateAutomatic-inputEl']")
+    private WebElementFacade LbltasaBrutaContratosAutomaticos;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
+    private WebElementFacade radioBotReaseguroEspecial;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Facultative-inputEl']")
+    private WebElementFacade checkiReaseguroFacultativo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']")
+    private WebElementFacade lblInformaPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
+    private WebElementFacade lblMensajeFacultativo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    private WebElementFacade btnSiguiente;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
+    private WebElementFacade botonActualizar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
+    private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade lblMensaje;
 
     public static final String XPATH_TABLA_REASEGURADORES_INICIO = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr";
     public static final String XPATH_TABLA_REASEGURADORES_CIERRE = "/td";
@@ -56,6 +75,34 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
 
     public DistribucionTasaPorCoberturaPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void seleccionaRiesgoAceptado() {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblInformaPoliza).waitUntilVisible();
+        radioBotReaseguroEspecial.click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(checkiReaseguroFacultativo).waitUntilVisible();
+        checkiReaseguroFacultativo.click();
+        esperarYClickearBoton(btnSiguiente);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblMensajeFacultativo).waitUntilVisible();
+    }
+
+    public void cotizarPoliza() {
+        try {
+            botonActualizar.waitUntilPresent();
+            clickearElemento(botonActualizar);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            clickearElemento(botonActualizar);
+        }
+        botonCotizar.waitUntilPresent();
+        clickearElemento(botonCotizar);
+        descartarCambios(linkDescartarCambios, botonCotizar);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        if (lblMensaje.isPresent()) {
+            clickearElemento(botonCotizar);
+        }
+        resetImplicitTimeout();
+        waitForAnyTextToAppear("Cotizado", "Cotización");
     }
 
     public void ingresoInformacionDePrimerAsegurado() {
@@ -123,25 +170,28 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
             for (WebElementFacade cotizacion : getListaGrupoDeCoberturas()) {
                 if (dato.get("grupoDecoberturas").equals(cotizacion.getText())) {
                     getListaGrupoDeCoberturas().get(i).click();
-                    esperarYClickearBoton(lblTablaAsegurada);
                     break;
                 }
                 i++;
             }
+            break;
         }
     }
 
     private List<WebElementFacade> getListaGrupoDeCoberturas() {
         List<WebElementFacade> nombreGrupoCobertura;
-        nombreGrupoCobertura = withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:2-body']/div/table/tbody/tr/td[2]");
+        nombreGrupoCobertura = withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:2-body']/div/table/tbody/tr/td[2]");
         return nombreGrupoCobertura;
     }
 
     public void validarDatosMedioDeVentaPorCanal(ExamplesTable verificarDatoMediosVenta) {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblTablaAsegurada.waitUntilEnabled());
+        clickearElemento(lblTablaAsegurada);
         String xpatTablaReaseguradores = ".//*[@id='EditAgreementPopup:AgreementScreen:ParticipantsLV-body']/*/table/tbody/tr";
         for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
-            MatcherAssert.assertThat("No se encontro el medio de venta" + " venta esperada: " + verificarDato.get("reaseguradores") , validarResultadoTabla(xpatTablaReaseguradores , verificarDato.get("reaseguradores") , CONSTANTE_2));
-            MatcherAssert.assertThat("No se encontro el medio de venta por defecto" + " venta esperada: " + verificarDato.get("tasaBrutaDeCesion") , validarResultadoTabla(xpatTablaReaseguradores , verificarDato.get("tasaBrutaDeCesion") , CONSTANTE_7));
+            MatcherAssert.assertThat("El reasegurador no se encuentra en la tabla" + " Reasegurador esperado: " + verificarDato.get("reaseguradores"), validarResultadoTabla(xpatTablaReaseguradores, verificarDato.get("reaseguradores"), CONSTANTE_2));
+            MatcherAssert.assertThat("Porcentaje no concuerda con el reasegurador enviado desde la tabla" + " se esperaba el reasegurador: " + verificarDato.get("reaseguradores") + " con tasa: " + verificarDato.get("tasaBrutaDeCesion"), validarResultadoTabla(xpatTablaReaseguradores, verificarDato.get("tasaBrutaDeCesion"), CONSTANTE_7));
+            MatcherAssert.assertThat("La tasa bruta esperada no cumple con el calculo" + " Reasegurador esperado: " + verificarDato.get("tasaBrutaDeCesionAutomatica"), LbltasaBrutaContratosAutomaticos.getText().equals(verificarDato.get("tasaBrutaDeCesionAutomatica")));
         }
     }
 }

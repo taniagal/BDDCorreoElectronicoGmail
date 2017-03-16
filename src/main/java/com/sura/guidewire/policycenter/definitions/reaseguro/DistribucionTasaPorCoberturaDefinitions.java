@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.reaseguro;
 
+import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.DistribucionTasaPorCoberturaSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.SobrescribirTasaSteps;
@@ -21,12 +22,26 @@ public class DistribucionTasaPorCoberturaDefinitions {
     @Steps
     SobrescribirTasaSteps sobrescribirTasaSteps;
 
+    @Steps
+    InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
+
+
     @Given("ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>")
     public void ingreseAcuerdoFacultativo(@Named("descripcionDeAcuerdo") String descripcionDeAcuerdo) {
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
         crearYEditarCumulosSteps.ingresar_a_opcion_crear_acuerdo_facultativo();
         distribucionTasaPorCoberturaSteps.ingresarTasaComercialDeseada();
         crearYEditarCumulosSteps.ingresarDescripcionDeAcuerdoyDireccion(descripcionDeAcuerdo);
+    }
+
+    @Given("seleccione la poliza como reaseguro especial")
+    public void whenSeleccioneLaPolizaComoReaseguroAceptado() {
+        distribucionTasaPorCoberturaSteps.seleccionarSiEnReaseguro();
+    }
+
+    @Given("cotice el articulo")
+    public void agregarArticulo(){
+        distribucionTasaPorCoberturaSteps.agregarArticulo();
     }
 
     @When("Ingrese la información de los reaseguradores $infoReasegurador")

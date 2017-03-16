@@ -28,4 +28,14 @@ public class DistribucionTasaPorCoberturaSteps extends ScenarioSteps {
         distribucionTasaPorCoberturaPage.ingresoAUnRiesgoPorEvaluar(tablaRiesgosReasegurables);
         distribucionTasaPorCoberturaPage.validarDatosMedioDeVentaPorCanal(tablaRiesgosReasegurables);
     }
+
+    @Step
+    public void seleccionarSiEnReaseguro() {
+        distribucionTasaPorCoberturaPage.seleccionaRiesgoAceptado();
+    }
+
+    @Step
+    public void agregarArticulo() {
+        distribucionTasaPorCoberturaPage.cotizarPoliza();
+    }
 }
