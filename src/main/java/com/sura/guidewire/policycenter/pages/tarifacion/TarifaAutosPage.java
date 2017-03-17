@@ -334,13 +334,14 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturasDanios1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-        seleccionarItem(comboBoxGastosDeTransporteDanos, dato.get("GT"));
+        seleccionarItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
     public void seleccionarCoberturasDanios2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        seleccionarItem(comboBoxGastosDeTransporteDanos1, dato.get("GT"));
+        seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+        seleccionarItem(comboBoxGastosDeTransporteDanos, dato.get("GT"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
