@@ -99,8 +99,13 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresoInformacionDeReaseguroEnTabla() {
         linkNombreReasegurador.waitUntilPresent();
-        linkNombreReasegurador.click();
-        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(listPaisSeleccionar);
+        try {
+            linkNombreReasegurador.click();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            esperarHasta(TIEMPO_1000);
+            linkNombreReasegurador.click();
+        }
         seleccionarItem(listPaisSeleccionar, PAIS_ALEMANIA);
         seleccionarItem(listNombreReaseugurador, ASEGURADORA_ALLIANZ);
         clickearElemento(btnAceptarReasegurador);
