@@ -184,8 +184,8 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         return nombreGrupoCobertura;
     }
 
-    public void validarDatosMedioDeVentaPorCanal(ExamplesTable verificarDatoMediosVenta) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblTablaAsegurada.waitUntilEnabled());
+    public void validaTasasDeReaseguradores(ExamplesTable verificarDatoMediosVenta) {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblTablaAsegurada).shouldBeEnabled();
         clickearElemento(lblTablaAsegurada);
         String xpatTablaReaseguradores = ".//*[@id='EditAgreementPopup:AgreementScreen:ParticipantsLV-body']/*/table/tbody/tr";
         for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
