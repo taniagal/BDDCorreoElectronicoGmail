@@ -156,7 +156,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
         try {
             listValorExpuestoRiesgo.click();
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.error("StaleElementReferenceException " + e);
         }
         String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
         valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
