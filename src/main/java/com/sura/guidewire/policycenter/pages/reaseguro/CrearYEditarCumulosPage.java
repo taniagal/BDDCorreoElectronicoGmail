@@ -99,7 +99,6 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public void ingresoInformacionDeReaseguroEnTabla() {
-        linkNombreReasegurador.waitUntilPresent();
         try {
             linkNombreReasegurador.click();
         } catch (StaleElementReferenceException e) {
