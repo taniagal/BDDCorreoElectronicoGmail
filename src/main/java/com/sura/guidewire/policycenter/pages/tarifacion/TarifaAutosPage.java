@@ -94,6 +94,8 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade comboBoxPerdidaParcialDaniosDeducible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:3:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteDanos;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:4:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    private WebElementFacade comboBoxGastosDeTransporteDanos1;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteCarro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
@@ -338,7 +340,7 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturasDanios2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        seleccionarItem(comboBoxGastosDeTransporteDanos, dato.get("GT"));
+        seleccionarItem(comboBoxGastosDeTransporteDanos1, dato.get("GT"));
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
     }
 
