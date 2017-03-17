@@ -23,7 +23,7 @@
         <maven.failsafe.plugin>2.19.1</maven.failsafe.plugin>
         <maven.compiler.plugin>3.2</maven.compiler.plugin>
         <maven.compiler.plugin.source>1.7</maven.compiler.plugin.source>
-        <maven.compiler.plugin.target>1.8</maven.compiler.plugin.target>
+        <maven.compiler.plugin.target>1.7</maven.compiler.plugin.target>
         <!--<webdriver.driver>phantomjs</webdriver.driver>-->
         <!--<phantomjs.binary.path>phantomjs.exe</phantomjs.binary.path>-->
         <webdriver.driver>chrome</webdriver.driver>
