@@ -21,8 +21,8 @@ And ingrese los valores de los modificadores de la tarifa:
 |descientoD|bonificacionC|descuento|recargo|suavizacion|bonificacionT|
 |GPS Sura  | 45          |10       | 5     | 3         |5            |
 And seleccione algunas las coberturas:
-|limite|deducible|abogado|PTH|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|GT|CRPP|CRPT|GTR|GP|PLlaves|
-|640.  |0        |Si     |0  |40.|35|Conces|Plus|Si|6 |Plus|0  |40|20  |20  |Si |Si|Si     |
+|limite|deducible|abogado|PTH|GTH|AC|Taller|Grua|TM|CE|CS  |PTD|GT|CRPP|CRPT|GTR|GP|PLlaves|PPD      |
+|640.  |0        |Si     |0  |40.|35|Conces|Plus|Si|6 |Plus|0  |40|20  |20  |Si |Si|Si     |<ninguno>|
 Then el valor del monto en cada cobertura debe ser:
 |descripcion                          |valor    |
 |Cobertura de Responsabilidad Civil   |289.477  |
