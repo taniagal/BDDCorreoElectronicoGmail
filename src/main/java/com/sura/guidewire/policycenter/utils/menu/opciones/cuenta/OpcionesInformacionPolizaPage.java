@@ -33,7 +33,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade tipoPlazoPoliza;
     @FindBy(xpath = ".//tr[5]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonTipoPlazo;
-    @FindBy(xpath = ".//tr[12]/td/table/tbody/tr/td[2]/table/tbody/tr/td[3]/a/img")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img")
     private WebElementFacade botonAseguradoSecundario;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']")
     private WebElementFacade itemPersonaDelDirectorio;

@@ -13,8 +13,8 @@ GivenStories: stories/policycenter/login_policy.story
 Given que existe una <poliza> y esta dentro de la vigencia
 When visualizo el resumen de la poliza
 Then verifico que se encuentren los siguientes datos
-|txtTipoPlazo |txtPolizaFinaciada|
-|Tipo de plazo|Póliza financiada |
+|txtTipoPlazo    |txtPolizaFinaciada         |
+|Tipo de vigencia|Póliza financiada          |
 
 Examples:
 |poliza       |
@@ -33,7 +33,7 @@ And acepte el coaseguro
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
-| ASX159 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA) | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
+| ASX626 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA) | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
 When ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |

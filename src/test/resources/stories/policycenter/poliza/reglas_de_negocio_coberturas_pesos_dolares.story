@@ -81,6 +81,10 @@ Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | canal             | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion       | departamento | ciudad   | agente |
 | Sura         | Multiriesgo corporativo | Canal Tradicional | CEDULA DE CIUDADANIA | 10/10/1968       | LOCO          | QUINTERO        | DIRECCION DE RESIDENCIA | CALLE 11 #21-99 | Antioquia    | Medellin | INT-3  |
 When seleccione la poliza como reaseguro especial
+And diligencie los campos de reaseguro aceptado
+|comision|deposito|impuesto|transferencia|
+|100     |100     |100     |100          |
+And ingresa el asegurado <opcionAgregar>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -108,6 +112,10 @@ Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | canal             | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion       | departamento | ciudad   | agente |
 | Sura         | Multiriesgo corporativo | Canal Tradicional | CEDULA DE CIUDADANIA | 10/10/1968       | MARIANA       | PAJON           | DIRECCION DE RESIDENCIA | CALLE 22A #21-22 | Antioquia    | Medellin | INT-3  |
 When seleccione la poliza como reaseguro especial
+And diligencie los campos de reaseguro aceptado
+|comision|deposito|impuesto|transferencia|
+|100     |100     |100     |100          |
+And ingresa el asegurado <opcionAgregar>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas

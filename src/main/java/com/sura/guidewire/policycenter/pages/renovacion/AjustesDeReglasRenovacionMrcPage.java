@@ -101,7 +101,6 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
         itemAgregarAsegurado.click();
     }
 
-
     public void aprobacionEspecial() {
         waitFor(botonAprobacionEspecial);
         botonAprobacionEspecial.click();
