@@ -147,7 +147,6 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
     }
 
     public void ingresaValoresBonificacion(String valorBoniTecnica, String valorBoniComercial) {
-
         txtBonificacionTecnica.clear();
         txtBonificacionTecnica.sendKeys(valorBoniTecnica);
         txtBonificacionComercial.click();
