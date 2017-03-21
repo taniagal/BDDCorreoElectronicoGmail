@@ -3,6 +3,7 @@ Meta:
 @issue #SUGWUSC-15123
 @tag equipo: 3
 
+
 Narrative:
 Como usuario de policy center
 con un perfil que tenga permisos quiero ser capaz de registrar toda la informacion del vehiculo
