@@ -151,7 +151,7 @@ public class TarifaAutosPage extends PageUtil {
 
     public void cotizar() {
         intentarCotizar();
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
+        waitForTextToAppear("Cotización");
     }
 
     public void intentarCotizar() {
@@ -269,19 +269,19 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarCoberturasHurto(coberturas);
         seleccionarCoberturasHurto2(coberturas);
         setImplicitTimeout(1, TimeUnit.SECONDS);
-        if(comboBoxAccidentes.isVisible()){
+        if (comboBoxAccidentes.isVisible()) {
             seleccionarItem(comboBoxAccidentes, dato.get("AC"));
-        }else{
+        } else {
             seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
         }
-        if(comboBoxGastosTraspaso.isVisible()){
+        if (comboBoxGastosTraspaso.isVisible()) {
             seleccionarItem(comboBoxGastosTraspaso, dato.get("GTR"));
-        }else{
+        } else {
             seleccionarCobertura(checkBoxGastosTaspaso, comboBoxGastosTraspaso, dato.get("GTR"));
         }
-        if(comboBoxgastosDeParqueadero.isVisible()){
+        if (comboBoxgastosDeParqueadero.isVisible()) {
             seleccionarItem(comboBoxgastosDeParqueadero, dato.get("GP"));
-        }else{
+        } else {
             seleccionarCobertura(checkBoxGAstosDeParqueadero, comboBoxgastosDeParqueadero, dato.get("GP"));
         }
         resetImplicitTimeout();
@@ -353,9 +353,9 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarCobertura(checkBoxTallerMovil, comboBoxTallerMovil, dato.get("TM"));
         seleccionarCobertura(checkBoxCentroDeServicios, comboBoxCentroDeServicios, dato.get("CS"));
 
-        if(comboBoxCarroDeReemplazoPerdidaTotal.isVisible()){
+        if (comboBoxCarroDeReemplazoPerdidaTotal.isVisible()) {
             seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
-        }else{
+        } else {
             seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
         }
     }
@@ -380,9 +380,9 @@ public class TarifaAutosPage extends PageUtil {
         if (!"null".equals(dato.get("AC"))) {
             seleccionarItem(comboBoxAccidentes, dato.get("AC"));
             setImplicitTimeout(1, TimeUnit.SECONDS);
-            if(comboBoxAsistencia.isVisible()){
+            if (comboBoxAsistencia.isVisible()) {
                 seleccionarItem(comboBoxAsistencia, dato.get("AS"));
-            }else{
+            } else {
                 seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, dato.get("AS"));
             }
             resetImplicitTimeout();
@@ -426,9 +426,9 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarAsistenciaYCarroDeReemplazo(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         setImplicitTimeout(3, TimeUnit.SECONDS);
-        if (comboBoxAsistencia.isVisible()){
-            seleccionarItem(comboBoxAsistencia, dato.get("AS")) ;
-        }else{
+        if (comboBoxAsistencia.isVisible()) {
+            seleccionarItem(comboBoxAsistencia, dato.get("AS"));
+        } else {
             seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, dato.get("AS"));
         }
         resetImplicitTimeout();
@@ -442,7 +442,7 @@ public class TarifaAutosPage extends PageUtil {
                 campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
     }
 
-    public void marcarOpcionDanos(String danos){
+    public void marcarOpcionDanos(String danos) {
         seleccionarItem(comboBoxPerdidaTotalHurto, OPCION_SIN_VALOR);
         seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, danos);
         clickearElemento(checkBoxAccidentes);
