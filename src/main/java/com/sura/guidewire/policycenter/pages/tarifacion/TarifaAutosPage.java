@@ -425,7 +425,7 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarAsistenciaYCarroDeReemplazo(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        setImplicitTimeout(1, TimeUnit.SECONDS);
+        setImplicitTimeout(3, TimeUnit.SECONDS);
         if (comboBoxAsistencia.isVisible()){
             seleccionarItem(comboBoxAsistencia, dato.get("AS")) ;
         }else{
