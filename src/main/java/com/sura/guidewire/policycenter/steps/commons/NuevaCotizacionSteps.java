@@ -115,6 +115,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         tarifaAutosPage.seleccionarCoberturasHurto1(datos);
         tarifaAutosPage.seleccionarCoberturasDanios(datos);
         tarifaAutosPage.seleccionarCoberturasDanios1(datos);
+        tarifaAutosPage.seleccionarCoberturaAsistencia(datosAsegurado.get("AS"));
         opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizarPolizaPrincipal();
     }
 
