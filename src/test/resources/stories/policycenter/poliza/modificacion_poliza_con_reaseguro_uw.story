@@ -3,7 +3,6 @@ Meta:
 @tag equipo: 3
 @Sprint 13
 
-
 Narrative:
 Se tiene una poliza expedida, al momento de realizar una modificación a un articulo con benefeiciario oneroso, se generan alertas.
 Ademas se debe solicitar una autorización para expedir la modificación de una póliza con marca de RA especial.

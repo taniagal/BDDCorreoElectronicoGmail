@@ -208,8 +208,6 @@ public class EdificiosUbicacionesDefinitions {
         tasaUnicaSteps.expedirPoliza();
     }
 
-
-
     public void cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo() {
         edificiosUbicacionesSteps.seleccionarCheckDelArticuloAAgregar();
         edificiosUbicacionesSteps.seleccionarCheckDeCoberturaQueDeseaAplicar();
