@@ -32,7 +32,7 @@ public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
 
     private void initPages() {
         loginPage = PageFactory.initElements(driver, LoginPage.class);
-        descargaReportePage = PageFactory.initElements(driver, descargaReportePage.class);
+        descargaReportePage = PageFactory.initElements(driver, DescargaDeReporteEjecucionDeCoherenciaPage.class);
     }
 
     @Test
