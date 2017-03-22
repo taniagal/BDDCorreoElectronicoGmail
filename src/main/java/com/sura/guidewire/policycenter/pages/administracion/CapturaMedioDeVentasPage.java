@@ -21,6 +21,8 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade itemConfiguracionRedComercial;
     @FindBy(xpath = "//div[contains(.,'CanalesMedios de ventaOficinas por canal')]")
     private WebElementFacade tablaMediosVenta;
+    @FindBy(xpath = "//td/div/table/tbody/tr[4]/td/div")
+    private WebElementFacade tablaNuevaAutorizacion;
     @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/div[3]/div[2]/div/table/tbody/tr[16]/td/div/span")
     private WebElementFacade menuItemCanales;
     @FindBy(xpath = ".//*[@id='AdminSaleMethodSearchPage_Ext:0']")
@@ -104,6 +106,8 @@ public class CapturaMedioDeVentasPage extends PageUtil {
         String listaObtenida = null;
         if (tablaCanalMedioDeVenta.isCurrentlyVisible()) {
             listaObtenida = tablaCanalMedioDeVenta.getText();
+        } else if (tablaNuevaAutorizacion.isCurrentlyVisible()) {
+            listaObtenida = tablaNuevaAutorizacion.getText();
         }
         return listaObtenida;
     }
@@ -191,5 +195,6 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
 }
+
 
 

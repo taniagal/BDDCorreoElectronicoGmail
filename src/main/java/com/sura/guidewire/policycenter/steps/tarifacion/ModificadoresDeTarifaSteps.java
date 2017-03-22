@@ -58,7 +58,6 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
         tarifaAutosPage.cotizar();
     }
 
-
     @Step
     public void verificarBonificacion(String bonoComercial, String bonoTecnico) {
         modificadoresDeTarifaPage.verificarBonoTecnico(bonoTecnico);

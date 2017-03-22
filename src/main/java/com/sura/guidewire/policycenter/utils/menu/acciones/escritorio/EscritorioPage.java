@@ -28,11 +28,6 @@ public class EscritorioPage extends PageUtil{
     }
 
     public void verificarAuditoriaFinal(String numeroPoliza) {
-        int cantidad = consultarNumeroElementosTabla(TABLA_ACTIVDAD);
-        boolean encontro = true;
-        for (int i = 1; i <= cantidad; i++) {
-            encontro =  consultarTextoCeldaTabla(TABLA_ACTIVDAD, i,CONSTANTE_8).equals(numeroPoliza);
-        }
-        MatcherAssert.assertThat("No se encontro la poliza", encontro);
+        MatcherAssert.assertThat("No se encontro en numero de la  poliza", validarResultadoTabla(TABLA_ACTIVDAD, numeroPoliza,CONSTANTE_8));
     }
 }

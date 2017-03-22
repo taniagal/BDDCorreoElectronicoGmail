@@ -33,7 +33,8 @@ public class CotizacionMRCPage extends PageUtil {
     private WebElementFacade campoTxtSubN;
 
     protected static final int TIEMPO_7000 = 7000;
-    CotizacionDePolizaPage cotizacionDePolizaPage;
+    CotizacionDePolizaPage cotizacionDePolizaPage = new CotizacionDePolizaPage(getDriver());
+
 
     public CotizacionMRCPage(WebDriver driver) {
         super(driver);

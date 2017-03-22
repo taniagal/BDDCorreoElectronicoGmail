@@ -402,7 +402,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         if (!"Compañía cedente".equals(lblTomador.getText())) {
             notPresent.append("salida errada: Compañía cedente|");
         }
-        if (tblTomadoresAdicionales.isPresent()) {
+        if (!tblTomadoresAdicionales.isPresent()) {
             notPresent.append("los tomadores adicionales no pueden estar presentes|");
         }
         String res = notPresent.toString();

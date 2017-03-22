@@ -21,10 +21,6 @@ public class CrearYEditarCumulosPage extends PageUtil {
     WebElementFacade btnCrearAcuerdoFacultativo;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:0-body']/div/table/tbody/tr/td[2]/div")
     WebElementFacade txtIngresaDescripcionAcuerdo;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add-btnWrap']")
-    WebElementFacade btnAgregarDireccionRiesgoAplicable;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add:0:riskbutton']")
-    WebElementFacade listDireccionRiesgoAplicable;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add-btnInnerEl']")
     WebElementFacade btnAgregaInformacionReaseguro;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:0:reName']")
@@ -62,8 +58,6 @@ public class CrearYEditarCumulosPage extends PageUtil {
     private static final double CONSTANTE_CIEN = 100.0;
     private static final int CONSTANTE_MIL = 1000;
     private double valorTasa = 0;
-    private double valorComisionReaseguroCedido = 0;
-    private double valorExpuesto = 0;
 
 
     public CrearYEditarCumulosPage(WebDriver driver) {
@@ -81,6 +75,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public void ingresarDescripcionDeAcuerdoYDireccion(String descripcionDeAcuerdo) {
+        withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(txtIngresaDescripcionAcuerdo).waitUntilClickable();
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
         ingresaCantidadDeCoberturas();
@@ -98,9 +93,14 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public void ingresoInformacionDeReaseguroEnTabla() {
-        linkNombreReasegurador.waitUntilPresent();
-        linkNombreReasegurador.click();
-        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(listPaisSeleccionar);
+        try {
+            linkNombreReasegurador.click();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.error("StaleElementReferenceException " + e);
+            esperarHasta(TIEMPO_1000);
+            linkNombreReasegurador.click();
+        }
+        listPaisSeleccionar.waitUntilPresent();
         seleccionarItem(listPaisSeleccionar, PAIS_ALEMANIA);
         seleccionarItem(listNombreReaseugurador, ASEGURADORA_ALLIANZ);
         clickearElemento(btnAceptarReasegurador);
@@ -146,7 +146,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public String calculaTasaNetaDeCesionRegla() {
         listcomisionReaseguroCedido.waitUntilPresent();
-        valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
+        double valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
         valorTasa = Double.parseDouble($(VALOR).getText().replace(",", "."));
         double valorTasaBrutaDeCesion = valorTasa / (CONSTANTE_UNO - valorComisionReaseguroCedido);
         return Double.toString(valorTasaBrutaDeCesion).replace(".", ",");
@@ -156,10 +156,10 @@ public class CrearYEditarCumulosPage extends PageUtil {
         try {
             listValorExpuestoRiesgo.click();
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.error("StaleElementReferenceException " + e);
         }
         String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
-        valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
+        double valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
         valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.", ""));
         double valorPrimaBrutaDeCesion = (valorTasa / valorExpuesto) * CONSTANTE_MIL;
         return Double.toString(valorPrimaBrutaDeCesion).replace(".", ",");

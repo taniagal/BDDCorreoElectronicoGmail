@@ -157,12 +157,6 @@ public class TarifaMRCPage extends PageUtil {
         radioBotonDeducibleNo.click();
     }
 
-    /**
-     * la variable numeroCotizacion se usa en la prueba de declinar cotizacion para obtener el numero de cotizacion
-     * generado al crear una nueva cotizacion y luego poderla consultar y declinar.
-     * numeroCotizacion es un static String y fue creada en la clase padre.
-     */
-
     public void agregarArticulo() {
         try {
             botonActualizar.waitUntilPresent();
@@ -173,7 +167,7 @@ public class TarifaMRCPage extends PageUtil {
         }
         botonCotizar.waitUntilPresent();
         clickearElemento(botonCotizar);
-        descartarCambios(linkDescartarCambios,botonCotizar);
+        descartarCambios(linkDescartarCambios, botonCotizar);
         waitForAnyTextToAppear("Cotizado", "Cotización");
     }
 
@@ -272,6 +266,8 @@ public class TarifaMRCPage extends PageUtil {
                 checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']");
             } else if ("FloatExixtences".equals(dato.get(ARTICULO))) {
                 checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasFloatExistences-inputEl']");
+            } else if ("Machine".equals(dato.get(ARTICULO))) {
+                checkBoxArticulo = $(".//*[@id='CPBuildingSuraPopup:HasMachine-inputEl']");
             }
             clickearElemento(checkBoxArticulo);
             campoTxtValorAsegurable.waitUntilPresent().sendKeys(dato.get("valor_asegurable"));
