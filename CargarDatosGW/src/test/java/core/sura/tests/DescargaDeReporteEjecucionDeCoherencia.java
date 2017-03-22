@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import page.LoginPage;
+import page.DescargaDeReporteEjecucionDeCoherenciaPage;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +33,7 @@ public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
 
     private void initPages() {
         loginPage = PageFactory.initElements(driver, LoginPage.class);
-        descargaReportePage = PageFactory.initElements(driver, descargaReportePage.class);
+        descargaReportePage = PageFactory.initElements(driver, DescargaDeReporteEjecucionDeCoherenciaPage.class);
     }
 
     @Test
