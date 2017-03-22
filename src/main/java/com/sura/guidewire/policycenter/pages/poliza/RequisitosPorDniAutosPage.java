@@ -59,6 +59,8 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade botonOficinaSeleccionada;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
     private WebElementFacade txtTipoPoliza;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton']")
+    private WebElementFacade botonBorrar;
 
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
@@ -99,6 +101,10 @@ public class RequisitosPorDniAutosPage extends PageUtil {
 
     public void cotizarYExpedirPoliza() {
         esperarYClickearBoton(botonAceptarExpedicion);
+        if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
+            clickearElemento(botonBorrar);
+            waitForTextToDisappear("2011 AUDI AVEO FAMILY");
+        }
     }
 
     public String validarItems() {
