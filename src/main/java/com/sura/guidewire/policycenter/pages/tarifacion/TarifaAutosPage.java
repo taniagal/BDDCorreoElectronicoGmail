@@ -377,8 +377,8 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if (!"null".equals(dato.get("AC"))) {
-            setImplicitTimeout(1, TimeUnit.SECONDS);
             if (comboBoxAccidentes.isVisible()) {
                 seleccionarItem(comboBoxAccidentes, dato.get("AC"));
             } else {
@@ -389,8 +389,15 @@ public class TarifaAutosPage extends PageUtil {
             } else {
                 seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, dato.get("AS"));
             }
-            resetImplicitTimeout();
+        }else{
+            if (comboBoxAccidentes.isVisible()) {
+                clickearElemento(checkBoxAccidentes);
+            }
+            if (comboBoxAsistencia.isVisible()) {
+                clickearElemento(checkBoxAsistencia);
+            }
         }
+        resetImplicitTimeout();
     }
 
     public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
