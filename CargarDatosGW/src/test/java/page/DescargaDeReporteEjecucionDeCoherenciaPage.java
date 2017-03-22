@@ -37,6 +37,6 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
         botonEjecutarVerificacionesDeCoherencia.click();
         wait.until(ExpectedConditions.visibilityOf(iconoDescargar));
         iconoDescargar.click();
-        MetodosComunes.waitUntil(TIEMPO_200000)
+        MetodosComunes.waitUntil(TIEMPO_200000);
     }
 }
