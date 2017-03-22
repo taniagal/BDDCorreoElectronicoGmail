@@ -13,6 +13,8 @@ When ingrese los datos de la cotizacion con intencion de financiacion:
 |ciudad_circulacion   |limite|deducible|abogado|PLlaves|modelo|
 |MEDELLIN (ANTIOQUIA) |640.  |0        |Si     |Si     |2016  |
 And cotice una poliza
+And voy a expedir una poliza
+And acepto la expedicion de poliza
 And expido la poliza y voy al archivo de poliza
 And comienzo una nueva renovacion
 Then se debe mostrar el campo numero de cuotas, permitiendo seleccionar entre las opciones de 11 y 12
@@ -54,7 +56,7 @@ When cotice una poliza
 Then se debe mostrar en el detalle de la cotizacion el valor por cuota a pagar
 y el numero de cotas indicadas en la informacion de la poliza
 |valorCuota |numeroCuota|
-|$184.622   |12         |
+|$0,00      |12         |
 And trate de expedir la poliza
 And se debe mostrar una advertencia en la cotizacion
 |mensaje |
