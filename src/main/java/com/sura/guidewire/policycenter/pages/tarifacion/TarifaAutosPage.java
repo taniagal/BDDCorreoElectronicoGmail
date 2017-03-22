@@ -378,8 +378,12 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         if (!"null".equals(dato.get("AC"))) {
-            seleccionarItem(comboBoxAccidentes, dato.get("AC"));
             setImplicitTimeout(1, TimeUnit.SECONDS);
+            if (comboBoxAccidentes.isVisible()) {
+                seleccionarItem(comboBoxAccidentes, dato.get("AC"));
+            } else {
+                seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
+            }
             if (comboBoxAsistencia.isVisible()) {
                 seleccionarItem(comboBoxAsistencia, dato.get("AS"));
             } else {
