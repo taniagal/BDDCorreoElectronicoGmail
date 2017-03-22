@@ -37,7 +37,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV:2:Number']")
     private WebElementFacade lblTablaAsegurada;
     @FindBy(xpath = ".//*[@id='EditAgreementPopup:AgreementScreen:CededRateAutomatic-inputEl']")
-    private WebElementFacade LbltasaBrutaContratosAutomaticos;
+    private WebElementFacade lblTasaBrutaContratosAutomaticos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     private WebElementFacade radioBotReaseguroEspecial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Facultative-inputEl']")
@@ -191,7 +191,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
             MatcherAssert.assertThat("El reasegurador no se encuentra en la tabla" + " Reasegurador esperado: " + verificarDato.get("reaseguradores"), validarResultadoTabla(xpatTablaReaseguradores, verificarDato.get("reaseguradores"), CONSTANTE_2));
             MatcherAssert.assertThat("Porcentaje no concuerda con el reasegurador enviado desde la tabla" + " se esperaba el reasegurador: " + verificarDato.get("reaseguradores") + " con tasa: " + verificarDato.get("tasaBrutaDeCesion"), validarResultadoTabla(xpatTablaReaseguradores, verificarDato.get("tasaBrutaDeCesion"), CONSTANTE_7));
-            MatcherAssert.assertThat("La tasa bruta esperada no cumple con el calculo" + " Reasegurador esperado: " + verificarDato.get("tasaBrutaDeCesionAutomatica"), LbltasaBrutaContratosAutomaticos.getText().equals(verificarDato.get("tasaBrutaDeCesionAutomatica")));
+            MatcherAssert.assertThat("La tasa bruta esperada no cumple con el calculo" + " Reasegurador esperado: " + verificarDato.get("tasaBrutaDeCesionAutomatica"), lblTasaBrutaContratosAutomaticos.getText().equals(verificarDato.get("tasaBrutaDeCesionAutomatica")));
         }
     }
 }
