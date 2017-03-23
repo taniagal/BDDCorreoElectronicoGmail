@@ -117,16 +117,9 @@ public class DetallesContactoPage extends PageUtil {
     public static final int CONSTANTE_13 = 13;
     public static final int CONSTANTE_12 = 12;
     public static final int CONSTANTE_11 = 11;
-    public static final int CONSTANTE_10 = 10;
-    public static final int CONSTANTE_9 = 9;
     public static final int CONSTANTE_8 = 8;
-    public static final int CONSTANTE_7 = 7;
     public static final int CONSTANTE_6 = 6;
-    public static final int CONSTANTE_5 = 5;
     public static final int CONSTANTE_4 = 4;
-    public static final int CONSTANTE_3 = 3;
-    public static final int CONSTANTE_2 = 2;
-    public static final int CONSTANTE_1 = 1;
 
 
     public DetallesContactoPage(WebDriver driver) {

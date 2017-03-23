@@ -72,23 +72,28 @@ public class CapturaMedioDeVentasDefinitions {
     public void irAMediosDeVentaPorCanal() {
         capturaMedioDeVentasSteps.irAMediosDeVentaPorCanal();
     }
+
     @Then("vaya al menu acciones a adicionar medios de venta a un canal")
     public void menuMedioDeVentaPorCanalNuevo() {
         capturaMedioDeVentasSteps.irMenuMedioDeVentaPorCanalNuevo();
     }
-    @Then("agrego el canal <canalComercial> y le adiciono el medio de venta <medioDeVenta> que voy a asociarle")
-    public void asociarMedioDeVentaACanal(@Named("canalComercial")String canalComercial, @Named("medioDeVenta")String medioDeVenta) {
-        capturaMedioDeVentasSteps.asociarMedioDeVentaACanal(canalComercial,medioDeVenta);
+
+    @Then("agrego el canal <canalCom> y le adiciono el medio de venta <medioVenta> que voy a asociarle")
+    public void asociarMedioDeVentaACanal(@Named("canalCom") String canalCom, @Named("medioVenta") String medioVenta) {
+        capturaMedioDeVentasSteps.asociarMedioDeVentaACanal(canalCom, medioVenta);
     }
+
     @When("cuando agrege un canal comercial:$canalComercial")
     @Then("cuando agrege un canal comercial:$canalComercial")
     public void buscarCanalComercial(ExamplesTable canalComercial) {
         capturaMedioDeVentasSteps.buscarCanalComercial(canalComercial);
     }
+
     @Then("se deben mostrar los medios de venta asociados a ese canal: $mediosDeVentaAsociados")
-    public void buscarMedioDeVentaAsociado(ExamplesTable mediosDeVentaAsociados ) {
+    public void buscarMedioDeVentaAsociado(ExamplesTable mediosDeVentaAsociados) {
         capturaMedioDeVentasSteps.buscarMedioDeVentaAsociado(mediosDeVentaAsociados);
     }
+
     @Then("debe adicionarse satisfactoriamente el medio de venta al canal")
     public void verificarAdiccionMedioDeVentaACanal() {
         capturaMedioDeVentasSteps.verificarAdiccionMedioDeVentaACanal();
