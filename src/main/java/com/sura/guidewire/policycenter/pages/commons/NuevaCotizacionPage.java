@@ -102,7 +102,7 @@ public class NuevaCotizacionPage extends PageUtil {
     public void irANuevaCotizacion() {
         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (!botonAcciones.isPresent()) {
-            menuItemEscritorio.click();
+            clickearElemento(menuItemEscritorio);
         }
         resetImplicitTimeout();
         botonAcciones.click();
