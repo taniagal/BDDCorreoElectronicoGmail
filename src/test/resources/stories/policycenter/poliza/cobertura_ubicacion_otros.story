@@ -2,8 +2,7 @@ Cobertura Ubicacion Otros
 
 Meta:
 @lote2
-@tag equipo: 2
-@Sprint 5
+@tag equipo: 2, sprint: 5
 
 Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
 GivenStories: stories/policycenter/login_policy.story

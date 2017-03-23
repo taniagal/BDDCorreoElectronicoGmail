@@ -3,9 +3,8 @@ Regla Pre Renovacion Direccion Pa
 Meta:
 @lote3
 @issue #CDSEG-997
-@tag equipo: 3
+@tag equipo: 3, sprint: 7
 @local
-Sprint 7
 
 Narrative:
 Como usuario de PolicyCenter

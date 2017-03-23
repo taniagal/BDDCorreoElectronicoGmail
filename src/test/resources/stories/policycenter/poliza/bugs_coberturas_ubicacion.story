@@ -1,8 +1,7 @@
 Meta:
 @lote2
 @Story CDSEG-2887
-@tag equipo: 2
-@Sprint 6
+@tag equipo: 2, sprint: 6
 
 
 Scenario: 1 Bug CDSEG-1900 Validaciones en valores de los sublimites cobertura

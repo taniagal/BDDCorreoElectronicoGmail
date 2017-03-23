@@ -1,7 +1,6 @@
 Meta:
 @lote2
-@tag equipo: 2
-@Sprint 4
+@tag equipo: 2, sprint: 4
 
 Scenario: Validacion de elementos bloqueados en informacion de la poliza en el proceso del cambio de poliza
 As a <rolUsuario>

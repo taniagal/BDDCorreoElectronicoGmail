@@ -1,10 +1,9 @@
 Nueva Poliza Individual
 
-Meta: @lote3
-
+Meta:
+@lote3
 @issue #CDSEG-812
-@Automatizador Eliana Alvarez
-@Sprint 4
+@tag equipo: 1, sprint: 4
 
 Narrative:
 Como usuario de Policy Center

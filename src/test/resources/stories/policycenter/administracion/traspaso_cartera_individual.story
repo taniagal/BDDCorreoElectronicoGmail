@@ -3,8 +3,7 @@ Traspaso Cartera Individual
 Meta:
 @lote5
 @Story SUGWUSC-1183
-@tag equipo: 2
-@Sprint 14
+@tag equipo: 2, sprint: 14
 
 Narrative:
 Como usuario de Policy Center quiero ser capaz de transferir

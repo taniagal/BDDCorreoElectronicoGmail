@@ -1,8 +1,7 @@
 Meta:
 @lote2
 @manual
-@tag equipo: 2
-@Sprint 9
+@tag equipo: 2, sprint: 9
 
 Scenario: 1 Rescindir Cancelacion de poliza
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>

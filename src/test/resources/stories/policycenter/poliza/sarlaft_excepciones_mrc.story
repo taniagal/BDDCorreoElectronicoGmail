@@ -3,9 +3,8 @@ Sarlaft Excepciones Mrc
 Meta:
 @lote4
 @issue #CDSEG-4393
-@tag equipo: 5
+@tag equipo: 5, sprint: 12
 @local
-@Sprint 12
 
 Narrative:
 Como usuario de negocio

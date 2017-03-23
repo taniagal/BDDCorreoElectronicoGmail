@@ -3,8 +3,7 @@ Contacto Ordenes De Trabajo
 Meta:
 @lote3
 @issue #CDSEG-875
-@tag equipo: 1, sprint:1
-@Sprint 1
+@tag equipo: 1, sprint: 1
 @local
 
 Narrative:
