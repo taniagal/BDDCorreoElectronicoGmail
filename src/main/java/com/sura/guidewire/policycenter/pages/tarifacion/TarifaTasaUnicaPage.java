@@ -285,7 +285,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void verificarTarifaRenovacionSinCambio() {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelPrimaTotalRenovacion).waitUntilPresent();
-        MatcherAssert.assertThat("No hay tarifa en la renovacion", !VALOR_PRIMA_CERO.equals(labelPrimaTotalRenovacion.getText()));
+        MatcherAssert.assertThat("No hay tarifa en la renovacion", !VALOR_PRIMA_CERO.equals(labelPrimaTotalRenovacion.getText().toString()));
     }
 
     public void verificarCambioDeTarifa() {
