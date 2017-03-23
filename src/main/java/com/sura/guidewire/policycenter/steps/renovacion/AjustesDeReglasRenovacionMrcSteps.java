@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.steps;
+package com.sura.guidewire.policycenter.steps.renovacion;
 
 
 import com.sura.guidewire.policycenter.pages.poliza.EdificiosyUbicacionesWidget;

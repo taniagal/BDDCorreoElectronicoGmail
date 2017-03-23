@@ -1,9 +1,8 @@
-package com.sura.guidewire.policycenter.definitions;
+package com.sura.guidewire.policycenter.definitions.renovacion;
 
-import com.sura.guidewire.policycenter.steps.AjustesDeReglasRenovacionMrcSteps;
+import com.sura.guidewire.policycenter.steps.renovacion.AjustesDeReglasRenovacionMrcSteps;
 import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
 import net.thucydides.core.annotations.Steps;
-import org.eclipse.jetty.util.annotation.Name;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
