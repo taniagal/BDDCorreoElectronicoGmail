@@ -52,7 +52,7 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.ingresarNombreComercial(contacto.get("nombreComercial"));
         crearNuevoContactoSteps.seleccionarTipoDireccionPersonaNatural(contacto.get("tipoDireccion"));
         crearNuevoContactoSteps.ingresarDireccionPersonaNatural(contacto.get("direccion"), contacto.get("dpto"), contacto.get("ciudad"));
-        crearNuevoContactoSteps.actualizar_juridica(contacto.get("razonSocial"));
+        crearNuevoContactoSteps.actualizarJuridica(contacto.get("razonSocial"));
     }
 
     @When("ingreso la informacion del tipo de documento <tipoDocumento>")
@@ -121,12 +121,12 @@ public class CrearNuevoContactoDefinitions {
 
     @Then("se debe crear una persona tipo juridica con razon social <razonSocial>")
     public void thenSeDebeCrearUnaPersonaTipoJuridica(@Named("razonSocial") String razonSocial) {
-        crearNuevoContactoSteps.actualizar_juridica(razonSocial);
+        crearNuevoContactoSteps.actualizarJuridica(razonSocial);
     }
 
     @Then("se debe crear una persona juridica con razon social <razonSocial>")
     public void thenSeDebeCrearUnaPersonaJuridica(@Named("razonSocial") String razonSocial) {
-        crearNuevoContactoSteps.actualizar_juridica(razonSocial);
+        crearNuevoContactoSteps.actualizarJuridica(razonSocial);
     }
 
     @Then("debe validar que el contacto ya existe")

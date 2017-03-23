@@ -33,7 +33,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void actualizar_juridica(String razonSocial) {
+    public void actualizarJuridica(String razonSocial) {
         nuevoContactoPage.actualizarJuridica(razonSocial);
     }
 

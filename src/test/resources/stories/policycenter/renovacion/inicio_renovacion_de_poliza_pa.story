@@ -17,18 +17,18 @@ GivenStories: stories/policycenter/login_policy.story
 Given que es necesario renovar una <poliza> de autos
 When quiera realizar esta renovacion
 Then se debe validar los datos del tomador:
-|cedulaTomador|nombre                         |oficinaRadicacion|codAgente     |rol    |
-|1234567891   |DORIAN STIWAR EASTMOND PULGARIN|null > null      |4999 > DIRECTO|tomador|
+| cedulaTomador | nombre                          | oficinaRadicacion                  | codAgente      | rol     |
+| 1234567891    | DORIAN STIWAR EASTMOND PULGARIN | 1059 > ASESORES EN DESARROLLO CALI | 4999 > DIRECTO | tomador |
 And validar campos informativos de asegurado:
-|cedulaAsegurado|pNombre|pApellido|rol      |
-|1294567891     |VRALLAN|ESTIGUAR |asegurado|
+| cedulaAsegurado | pNombre | pApellido | rol       |
+| 1294567891      | VRALLAN | ESTIGUAR  | asegurado |
 And validar campos informativos de vehiculo:
-|placa|modelo|codFasecolda|claseVehiculo |marca|linea                          |zona|tipoServicio|motor |chasis |rol     |
-|TKC459|2016 |52525252    |Automóviles   |AUDI |TT 8S 2.0 TFSI CO - TP 2000CC T|2   |Particular  |AB3B12|ABC1234|vehiculo|
+| placa  | modelo | codFasecolda | claseVehiculo | marca | linea                           | zona | tipoServicio | motor  | chasis  | rol      |
+| TKC459 | 2016   | 52525252     | Automóviles   | AUDI  | TT 8S 2.0 TFSI CO - TP 2000CC T | 2    | Particular   | AB3B12 | ABC1234 | vehiculo |
 
 Examples:
-|poliza       |
-|TEST_22222222|
+| poliza        |
+| TEST_22222222 |
 
 Scenario: Validar mensaje y cancelar el inicio del proceso de renovacion
 Given que es necesario renovar una <poliza> de autos
@@ -37,8 +37,8 @@ Then se deben mostrar un mensaje <mensaje>
 And se cancela el proceso de renovacion
 
 Examples:
-|poliza       |mensaje|
-|TEST_22222222|¿Esta seguro de que desea renovar esta póliza?|
+| poliza        | mensaje                                        |
+| TEST_22222222 | ¿Esta seguro de que desea renovar esta póliza? |
 
 
 Scenario: Validar renovacion despues del vencimiento
@@ -48,8 +48,8 @@ When quiera realizar la renovacion
 Then se debe validar que el proceso termine con exito
 
 Examples:
-||
-||
+|  |
+|  |
 
 Scenario: Validar campos de tomador adicional cuando NO es un riesgo consultable
 Meta: @manual
@@ -58,8 +58,8 @@ When quiera realizar la renovacion
 Then se debe validar que los campos del tomador adicional aparezcan en el fomrmulario
 
 Examples:
-|||
-|||
+|  |
+|  |
 
 
 

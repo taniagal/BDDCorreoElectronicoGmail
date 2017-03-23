@@ -58,7 +58,7 @@ public class InicioPage extends PageUtil {
     }
 
     public void assertion(String element) {
-        MatcherAssert.assertThat(labelIngreso.getText().toString(), CoreMatchers.containsString(element));
+        MatcherAssert.assertThat(labelIngreso.getText(), CoreMatchers.containsString(element));
     }
 
     // Metodos navegacion Escritorio

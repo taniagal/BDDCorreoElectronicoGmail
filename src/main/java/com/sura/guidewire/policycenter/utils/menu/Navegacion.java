@@ -388,6 +388,7 @@ public class Navegacion extends PageUtil {
         act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemNuevaCompania).release(mnuItemNuevaCompania).click().build().perform();
+        waitForTextToAppear("Nuevo Contacto");
         return new NuevaCompaniaPage(getDriver());
     }
 
@@ -396,6 +397,7 @@ public class Navegacion extends PageUtil {
         act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemNuevaPersona).release(mnuItemNuevaPersona).click().build().perform();
+        waitForTextToAppear("Nuevo Contacto");
         return new NuevaPersonaPage(getDriver());
     }
 
