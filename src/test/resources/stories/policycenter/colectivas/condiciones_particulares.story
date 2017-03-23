@@ -112,8 +112,8 @@ And  ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | transporte_combustible |medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Si                     |Televentas|
 And  ingrese las coberturas a vehiculo:
-| limite | deducible |
-| 640.0  | 0         |
+| limite | deducible |AS|
+| 640.0  | 0         |  |
 And  intente cotizar
 And  voy a expedir una poliza
 And  confirmo el mensaje de expedir poliza
@@ -132,8 +132,8 @@ And  ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | transporte_combustible |medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si                     |Televentas|
 And  ingrese las coberturas a auto cero kilometros:
-| limite | deducible |
-| 640.   | 0         |
+| limite | deducible |AS|
+| 640.   | 0         |  |
 And  intente cotizar
 And  voy a expedir una poliza
 And  confirmo el mensaje de expedir poliza
@@ -162,8 +162,8 @@ Then deben aparecer los mensajes de validacion:
 | El valor de los accesorios especiales es mayor al valor Asegurado del vehículo |
 When seleccione la opcion siguiente
 And ingrese las coberturas a vehiculo:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -188,8 +188,8 @@ And ingrese la informacion del vehiculo:
 And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 And ingrese las coberturas a vehiculo:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -233,8 +233,8 @@ And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros|medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Televentas|
 And ingrese las coberturas a vehiculo:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -252,8 +252,8 @@ And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros| vehiculo_blindado |medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                 |Televentas|
 And ingrese las coberturas a vehiculo:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
@@ -278,8 +278,8 @@ And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |transporte_combustible|medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si                    |Televentas|
 And ingrese las coberturas a vehiculo:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -300,8 +300,8 @@ And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |transporte_combustible|medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |No                    |Televentas|
 And ingrese las coberturas a vehiculo:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -319,8 +319,8 @@ And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Televentas|
 And ingrese las coberturas a vehiculo:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -338,8 +338,8 @@ And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros| transporte_combustible |medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                      |Televentas|
 And ingrese las coberturas a vehiculo:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
