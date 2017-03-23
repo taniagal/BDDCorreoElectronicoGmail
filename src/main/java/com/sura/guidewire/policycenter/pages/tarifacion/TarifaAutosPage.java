@@ -433,8 +433,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarAsistenciaYCarroDeReemplazo(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarCoberturaAsistencia(dato.get("AS"));
-        seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
-        seleccionarItem(comboBoxCarroDeReemplazoPerdidaParcial, dato.get("CRPP"));
+        seleccionarCoberturaCarroDeReemplazo(dato.get("CRPT"), dato.get("CRPP"));
     }
 
     public void verificarTarifacionPrima(String primaTotal) {
@@ -455,6 +454,18 @@ public class TarifaAutosPage extends PageUtil {
             seleccionarItem(comboBoxAsistencia, asistencia);
         } else {
             seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, asistencia);
+        }
+        resetImplicitTimeout();
+    }
+
+    public void seleccionarCoberturaCarroDeReemplazo(String carroReemplazoPerdidaTotal, String carroReemplazoPerdidaParcial) {
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        if (comboBoxCarroDeReemplazoPerdidaTotal.isVisible()) {
+            seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, carroReemplazoPerdidaTotal);
+            seleccionarItem(comboBoxCarroDeReemplazoPerdidaParcial, carroReemplazoPerdidaParcial);
+        } else {
+            seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, carroReemplazoPerdidaTotal);
+            seleccionarItem(comboBoxCarroDeReemplazoPerdidaParcial, carroReemplazoPerdidaParcial);
         }
         resetImplicitTimeout();
     }
