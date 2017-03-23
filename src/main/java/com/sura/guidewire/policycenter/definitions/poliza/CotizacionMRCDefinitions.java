@@ -134,11 +134,11 @@ public class CotizacionMRCDefinitions {
         cotizacionMRCSteps.validarBloqueoExclusividad(mensaje);
     }
 
-    @Then("se debe generar un UW issue para poder expedir la póliza nueva <mensaje>")
+    @Then("se debe generar un UW issue para solicitar autorizacion en la expedicion de poliza <mensaje>")
     public void validarMensajeUWAlExpedir(@Name("mensaje") String mensaje){
         cotizacionMRCSteps.validarMensajeUWAlExpedir(mensaje);
     }
-    @Then("Se debe generar un UW issue para poder expedir la modificación <mensaje>")
+    @Then("se debe generar un UW issue para solicitar autorizacion al expedir la modificación de poliza <mensaje>")
     public void validarMensajeUWAlExpedirCambio(@Name("mensaje") String mensaje) {
         cotizacionMRCSteps.validarMensajeUWAlExpedir(mensaje);
     }

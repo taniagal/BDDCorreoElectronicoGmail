@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.server.handler.ClickElement;
 
 import java.util.Map;
 import java.util.Set;
@@ -96,9 +97,9 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
 
     public void ingresarAsegurado(String opcionAgregar) {
         waitFor(comboAgregarAsegurado);
-        comboAgregarAsegurado.click();
+        clickearElemento(comboAgregarAsegurado);
         waitFor(itemAgregarAsegurado);
-        itemAgregarAsegurado.click();
+        clickearElemento(itemAgregarAsegurado);
     }
 
     public void aprobacionEspecial() {
