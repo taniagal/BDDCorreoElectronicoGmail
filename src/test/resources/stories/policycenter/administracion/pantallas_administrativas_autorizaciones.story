@@ -1,8 +1,7 @@
 Meta:
 @lote1
 @issue #CDSEG-7098
-@tag equipo: 5
-@Sprint 15
+@tag equipo: 5, sprint: 15
 
 
 Narrative:

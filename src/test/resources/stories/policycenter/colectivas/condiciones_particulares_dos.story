@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@sprint 14
-@tag equipo: 2
+@tag equipo: 2, sprint: 14
 @local
 
 Narrative:
@@ -15,12 +14,12 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | cero_kilometros |medioVenta|
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico | Si              |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |
-| 640.   | 0         |
+| limite | deducible |AS                 |
+| 640.   | 0         |Asistencia Clásica |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
@@ -30,7 +29,7 @@ Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 
 Examples:
 | tipo_documento       | documento  | producto |agente_oficina| numSubscripcion |bonoT|bonoC|
-| CEDULA DE CIUDADANIA | 1060447895 | Autos    | DIRECTO      | 39355347   |6    | 5   |
+| CEDULA DE CIUDADANIA | 1060447895 | Autos    | DIRECTO      | 39355347        |6    | 5   |
 
 
 Scenario: 2 Generacion de UW al ingresar bonificacion comercial mayor a la pactada
@@ -40,11 +39,11 @@ When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico| Si              |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |
-| 640.   | 0         |
+| limite | deducible |AS                 |
+| 640.   | 0         |Asistencia Clásica |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
@@ -64,11 +63,11 @@ When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico| Si              |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |
-| 640.   | 0         |
+| limite | deducible |AS                 |
+| 640.   | 0         |Asistencia Clásica |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
@@ -88,11 +87,11 @@ When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico| Si              |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |
-| 640.   | 0         |
+| limite | deducible |AS                 |
+| 640.   | 0         |Asistencia Clásica |
 And intente cotizar y expedir la poliza
 Then se debe permitir expedir la poliza
 
@@ -116,8 +115,8 @@ Then deben aparecer los mensajes de validacion:
 | Vehículo 0 Km : El vehículo no es considerado como 0 km                     |
 When seleccione la opcion siguiente
 And ingrese las coberturas a auto cero kilometros:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
@@ -174,8 +173,8 @@ And ingrese los datos del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
 When ingrese a la pantalla de coberturas
 And ingrese las coberturas a auto cero kilometros:
-|limite|deducible|
-|640.  |0        |
+|limite|deducible|AS|
+|640.  |0        |  |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -213,8 +212,8 @@ And ingrese los datos de vehiculo:
 | random | 2016   | 52525252         | SANTIAGO DE CALI (VALLE DEL CAUCA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
 And seleccione la opcion siguiente
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |
-| 640.   | 0         |
+| limite | deducible |AS|
+| 640.   | 0         |  |
 And intente cotizar
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
 | MENSAJES_WORKSPACE                                               |
@@ -234,8 +233,8 @@ And ingrese los datos de vehiculo:
 | random | 2016   | 52525252         | MEDELLIN (ANTIOQUIA)               | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
 And seleccione la opcion siguiente
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |
-| 640.   | 0         |
+| limite | deducible |AS|
+| 640.   | 0         |  |
 And intente cotizar
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
 | MENSAJES_WORKSPACE                                               |

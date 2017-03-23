@@ -69,6 +69,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
             }
         }
         resetImplicitTimeout();
+        esperarHasta(TIEMPO_5000);
         waitForAnyTextToAppear("Cotización Expedida", "Cambio en la póliza Expedida", "Asuntos que bloquean la expedición");
     }
 }

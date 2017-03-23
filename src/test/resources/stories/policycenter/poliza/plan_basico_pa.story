@@ -1,7 +1,6 @@
 Meta:
 @lote2
-@tag equipo: 5
-@sprint 14
+@tag equipo: 5, sprint: 14
 
 Narrative:
 Como usuario de negocio
@@ -18,8 +17,8 @@ When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |medioVenta|
 | RZX768 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA)| Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Básico |Televentas|
 And ingrese las coberturas a vehiculo:
-| limite | deducible |
-| 640.0  | 0         |
+| limite | deducible |AS|
+| 640.0  | 0         |  |
 Then cotice y expida la poliza
 
 Examples:
@@ -35,11 +34,9 @@ And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
 | ASDF9 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)| Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Autos Clásico |Televentas|
-
 When ingrese las coberturas a vehiculo:
-| limite | deducible |
-| 640.0  | 0         |
-
+| limite | deducible |AS                |
+| 640.0  | 0         |Asistencia Clásica|
 And cotice una poliza
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza

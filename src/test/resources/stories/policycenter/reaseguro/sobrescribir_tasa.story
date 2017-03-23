@@ -1,7 +1,6 @@
 Meta:
 @lote2
-@sprint 9
-@tag equipo: reaseguro
+@tag equipo: reaseguro, sprint: 9
 @local
 
 Narrative:

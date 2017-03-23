@@ -2,9 +2,8 @@ Sustituciones
 
 Meta:
 @lote2
-@tag equipo: 3
+@tag equipo: 3, sprint: 12
 @issue #CDSEG-4998
-@sprint 12
 
 Scenario: Realizar sustitucion de vehiculo
 GivenStories: stories/policycenter/login_policy.story

@@ -1,8 +1,7 @@
 Meta:
 @lote3
 @issue #USC-14730
-@tag equipo: 3
-@sprint 8
+@tag equipo: 3, sprint: 8
 
 Narrative:
 Como usuario de PolicyCenter

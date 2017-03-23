@@ -5,7 +5,6 @@ Meta:
 @issue #CDSEG-1252
 @tag equipo: 5, sprint: 6
 @local
-@Sprint 6
 
 Narrative:
 Como usuario

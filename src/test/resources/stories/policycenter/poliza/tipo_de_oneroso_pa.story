@@ -2,9 +2,8 @@ Tipo de Oneroso PA
 
 Meta:
 @lote3
-@tag equipo: 3
+@tag equipo: 3, sprint: 12
 @issue #CDSEG-5111
-@sprint 12
 
 
 Scenario: Agregar interes adicional

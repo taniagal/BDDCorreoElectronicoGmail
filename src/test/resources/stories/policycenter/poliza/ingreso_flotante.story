@@ -1,7 +1,6 @@
 Meta:
 @lote3
-@tag equipo: billing
-@sprint 13
+@tag equipo: billing, , sprint: 13
 
 Narrative:
 Se requiere habilitar el tipo de flotante "Automático" , al incluir el artículo flotante en un policyChange.

@@ -3,8 +3,7 @@ Excepciones Sarlaft Autos
 Meta:
 @lote2
 @issue #CDSEG-5577
-@tag equipo: 5
-@Sprint 12
+@tag equipo: 5, sprint: 12
 
 Narrative:
 Como usuario de policy center

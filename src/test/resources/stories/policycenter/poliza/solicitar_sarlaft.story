@@ -1,8 +1,7 @@
 Meta:
 @lote2
 @issue #CDSEG-834
-@tag equipo: 5
-@Sprint 10
+@tag equipo: 5, sprint: 10
 
 Narrative:
 Como usuario de negocio

@@ -1,10 +1,7 @@
-Disponibilidad Detalle Producto
-
-Meta: @lote3
-
+Meta:
+@lote3
 @issue #CDSEG-745
 @tag equipo: 1, sprint:1
-@Sprint 1
 
 Narrative:
 Como usuario de policy center

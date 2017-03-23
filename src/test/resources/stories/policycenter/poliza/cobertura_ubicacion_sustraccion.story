@@ -1,8 +1,7 @@
 Meta:
 @lote3
 @Story CDSEG-847
-@tag equipo: 2
-@Sprint 5
+@tag equipo: 2, sprint: 5
 
 
 Scenario: 1 Validacion de sublimites maximos para las otras coberturas de sustraccion (coberturas de riesgo)

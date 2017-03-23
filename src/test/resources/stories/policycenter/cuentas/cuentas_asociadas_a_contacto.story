@@ -4,8 +4,7 @@ Meta:
 @lote3
 
 @issue #CDSEG-976
-@tag equipo: 1, sprint:1
-@Sprint 1
+@tag equipo: 1, sprint: 1
 
 Narrative:
 como usuario

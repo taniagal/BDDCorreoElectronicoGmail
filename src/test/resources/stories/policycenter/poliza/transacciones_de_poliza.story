@@ -1,8 +1,7 @@
 Meta:
 @lote2
-@tag equipo: 5
+@tag equipo: 5, sprint: 13
 @local
-@sprint 13
 
 Narrative:
 Como usuario de PolicyCenter con el rol de Agente, CSR, Underwriter o Gerente

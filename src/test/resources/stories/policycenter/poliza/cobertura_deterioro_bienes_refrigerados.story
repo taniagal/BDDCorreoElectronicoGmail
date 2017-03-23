@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@tag equipo: 2
-@Sprint 5
+@tag equipo: 2, sprint: 5
 
 Scenario: 1 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo)
 GivenStories: stories/policycenter/login_policy.story

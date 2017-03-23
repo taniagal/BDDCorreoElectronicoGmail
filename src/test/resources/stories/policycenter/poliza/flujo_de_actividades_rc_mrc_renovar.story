@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@tag equipo: 2
-@Sprint 9
+@tag equipo: 2, sprint: 9
 
 Narrative:
 Como usuario de policy center quiero poder solicitar autorización a los comites de Riesgos consultables

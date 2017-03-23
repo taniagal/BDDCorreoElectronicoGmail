@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@tag equipo: 3
-@Sprint 13
+@tag equipo: 3, sprint: 13
 
 Narrative:
 Se tiene una poliza expedida, al momento de realizar una modificación a un articulo con benefeiciario oneroso, se generan alertas.
