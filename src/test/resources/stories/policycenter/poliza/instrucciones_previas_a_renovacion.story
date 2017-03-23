@@ -1,8 +1,7 @@
 Instrucciones previas a renovacion
 Meta:
 @lote3
-@tag equipo: 2
-@Sprint 7
+@tag equipo: 2, sprint: 7
 
 Narrative:
 las Instrucciones previas a la renovación que se quieren para el producto multirriesgo corporativo son :

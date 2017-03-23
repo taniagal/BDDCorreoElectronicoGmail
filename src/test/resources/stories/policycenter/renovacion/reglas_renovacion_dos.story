@@ -3,9 +3,8 @@ Reglas Renovacion Dos
 Meta:
 @lote3
 @issue #CDSEG-3014
-@tag equipo: 3
+@tag equipo: 3, sprint: 8
 @local
-Sprint 8
 
 Narrative:
 Como usuario de PolicyCenter

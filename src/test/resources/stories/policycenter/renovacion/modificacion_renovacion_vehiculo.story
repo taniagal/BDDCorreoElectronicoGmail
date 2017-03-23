@@ -1,7 +1,6 @@
 Meta:
-@tag equipo: 5
+@tag equipo: 5, sprint: 7
 @lote2
-@Sprint 7
 
 Narrative:
 Como usuario de  policy center con el perfil X,

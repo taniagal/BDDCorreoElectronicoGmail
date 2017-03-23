@@ -3,8 +3,7 @@ Contactos Asociados A Cuenta
 Meta:
 @lote3
 @Story CDSEG-845
-@tag equipo: 2
-@Sprint 1
+@tag equipo: 2, sprint: 1
 
 Narrative: Modificación de la lista de los  filtros de búsqueda de los contactos de la cuenta (Rol y tipo de persona)
 

@@ -1,8 +1,7 @@
 Meta:
 @lote4
 @issue #CDSEG-2881
-@tag equipo: 5
-@Sprint 9
+@tag equipo: 5, sprint: 9
 
 Narrative:
 Como usuario de negocio

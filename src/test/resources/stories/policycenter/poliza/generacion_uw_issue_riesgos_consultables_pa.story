@@ -3,9 +3,8 @@ Generacion Uw Issue Riesgos Consultables Pa
 Meta:
 @lote3
 @issue #CDSEG-1260
-@tag equipo: 5
+@tag equipo: 5, sprint: 9
 @local
-@Sprint 9
 
 Narrative:
 Como usuario de policy center

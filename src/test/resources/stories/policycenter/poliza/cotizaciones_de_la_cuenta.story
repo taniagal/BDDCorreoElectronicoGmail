@@ -2,9 +2,8 @@ Cotizaciones De La Cuenta
 
 Meta:
 @lote2
-@tag equipo: 5
+@tag equipo: 5, sprint: 14
 @local
-@Sprint 14
 
 Narrative:
 Como usuario PolicyCenter

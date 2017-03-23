@@ -3,9 +3,8 @@ Modificacion Vehiculo
 Meta:
 @lote3
 @issue #CDSEG-1248
-@tag equipo: 5
+@tag equipo: 5, sprint: 4
 @local
-@Sprint 4
 
 Narrative:
 Como usuario de PolicyCenter

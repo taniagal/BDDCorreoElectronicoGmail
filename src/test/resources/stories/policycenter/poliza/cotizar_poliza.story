@@ -1,7 +1,6 @@
 Meta:
-@tag equipo: 2
+@tag equipo: 2, sprint: 7
 @lote3
-@Sprint 7
 
 Scenario: Validaciones como precondicion en la realizacion de una nueva cotizacion
 GivenStories: stories/policycenter/login_policy.story

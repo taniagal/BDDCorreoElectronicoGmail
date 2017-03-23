@@ -1,8 +1,7 @@
 Meta:
 @lote2
-@tag equipo: 5
+@tag equipo: 5, sprint: 7
 @local
-@Sprint 7
 
 Scenario: Editar transaccion - Coberturas
 GivenStories: stories/policycenter/login_policy.story

@@ -3,8 +3,7 @@ Busqueda Actividades
 Meta:
 @lote1
 @issue #CDSEG-730
-@tag equipo: 1, sprint:1
-@Sprint 1
+@tag equipo: 1, sprint: 1
 
 Narrative:
 Como usuario PolicyCenter

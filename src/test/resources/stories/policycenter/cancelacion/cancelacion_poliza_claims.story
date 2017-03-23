@@ -2,9 +2,8 @@ Cancelacion Poliza Claims
 
 Meta: @lote1
 @issue #CDSEG-3842
-@tag equipo: 3
+@tag equipo: 3, sprint: 9
 @local
-Sprint 9
 
 Narrative:
 Como usuario del policy center

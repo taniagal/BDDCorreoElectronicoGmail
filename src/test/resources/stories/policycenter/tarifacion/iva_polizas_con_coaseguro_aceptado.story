@@ -1,7 +1,6 @@
 Meta:
 @lote3
-@sprint 15
-@tag equipo: 4
+@tag equipo: 4, sprint: 15
 
 Narrative:
 Como usuario de policy center

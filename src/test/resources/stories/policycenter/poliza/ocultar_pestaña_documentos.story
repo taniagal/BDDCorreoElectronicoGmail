@@ -1,8 +1,7 @@
 Meta:
 @lote4
-@tag equipo: 5
+@tag equipo: 5, sprint: 14
 @local
-@Sprint 14
 
 Narrative:
 Como suuario de policy cenjter en el rol de agente, csr, asegurador o gerente

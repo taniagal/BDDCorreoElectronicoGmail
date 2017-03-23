@@ -3,8 +3,7 @@ Proceso automatico cancelacion billing
 Meta:
 @lote3
 @issue #CDSEG-4621
-@sprint 11
-@tag equipo: 3
+@tag equipo: 3, sprint: 11
 @local
 
 

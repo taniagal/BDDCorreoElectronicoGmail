@@ -4,8 +4,7 @@ Iniciar Cancelacion
 Meta:
 @lote1
 @Story CDSEG-3417
-@tag equipo: 2
-@Sprint 8
+@tag equipo: 2, sprint: 8
 
 
 Scenario: 1 Validacion lista de motivos

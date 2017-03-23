@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@tag equipo: billing
-@sprint 13
+@tag equipo: billing, sprint: 13
 
 Narrative:
 Como usuario de policy center se requiere la creacion de una tabla relacionada al Policy Period que permita el almacenamiento

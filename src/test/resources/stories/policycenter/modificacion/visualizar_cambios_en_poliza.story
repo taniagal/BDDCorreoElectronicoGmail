@@ -1,7 +1,6 @@
 Meta:
 @lote3
-@sprint 13
-@tag equipo: 5
+@tag equipo: 5, sprint: 13
 
 Narrative:
 Como usuario de Policy Center con rol de agente, CSR, autorizador o gerente,

@@ -1,14 +1,13 @@
 Meta:
-@tag equipo: XX
+@tag equipo: XX, sprint: XXX0
 @loteXX
-@Sprint XXX
 
 Narrative:
 Como [Rol del usuario]
 Quiero [Objetivo]
 Para poder [Beneficio]
 
-Scenario: Nombre del escenario en lenguaje de negocio, no técnico
+Scenario: Nombre del escenario en lenguaje de negocio, no tï¿½cnico
 Given preparacion de la prueba en lenguaje de negocio
 And opcional (arrange)
 When ejecucion de la prueba como tal, que vamos a probar en lenguaje de negocio
@@ -22,9 +21,8 @@ Examples:
 ################### ejemplo ###########################
 
 Meta:
-@tag equipo: 1
+@tag equipo: 1, sprint: 1
 @lote1
-@Sprint 1
 
 Narrative:
 Como asesor
@@ -43,4 +41,4 @@ Examples:
 | cobertura	|
 | rc       	|
 | hurto     |
-| daño      |
+| daï¿½o      |

@@ -1,9 +1,8 @@
 
 Meta:
 @lote4
-@tag equipo: 3
+@tag equipo: 3, sprint: 13
 @issue #CDSEG-764
-@sprint 13
 
 Scenario: Validar el monto maximo permitido para algunas coberturas en el producto MRC
 GivenStories: stories/policycenter/login_policy.story

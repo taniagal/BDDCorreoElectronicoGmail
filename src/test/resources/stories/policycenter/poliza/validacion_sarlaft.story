@@ -1,6 +1,6 @@
 Meta:
 @lote4
-@tag equipo: 5, sprint 9
+@tag equipo: 5, sprint: 9
 
 Narrative:
 Como usuario de negocio

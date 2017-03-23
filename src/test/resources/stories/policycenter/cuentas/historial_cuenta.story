@@ -1,10 +1,9 @@
 Historial Cuenta
 
-Meta: @lote2
-
+Meta:
+@lote2
 @issue #CDSEG-925
-@tag equipo: 5
-@Sprint 1
+@tag equipo: 5, sprint: 1
 
 Narrative:
 Como usuario de policy center

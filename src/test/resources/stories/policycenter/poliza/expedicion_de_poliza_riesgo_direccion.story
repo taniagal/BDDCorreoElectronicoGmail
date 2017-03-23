@@ -3,9 +3,8 @@ Expedicion De Poliza Riesgo Direccion
 Meta:
 @lote2
 @issue #SUGWUSC-15128
-@tag equipo: 3
+@tag equipo: 3, sprint: 5
 @local
-Sprint 5
 
 Narrative:
 Como usuario de policy center

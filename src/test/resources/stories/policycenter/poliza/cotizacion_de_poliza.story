@@ -3,9 +3,8 @@ Cotizacion De Poliza
 Meta:
 @lote3
 @issue #CDSEG-843
-@tag equipo: 5
+@tag equipo: 5, sprint: 3
 @local
-@Sprint 3
 
 Narrative:
 Como usuario de Policy Center

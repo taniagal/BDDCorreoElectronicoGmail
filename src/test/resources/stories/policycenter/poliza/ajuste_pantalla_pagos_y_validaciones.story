@@ -1,7 +1,6 @@
 Meta:
 @lote3
-@tag equipo: billing
-@sprint 12
+@tag equipo: billing, sprint: 12
 
 Narrative:
 Como usuario de Policy Center
