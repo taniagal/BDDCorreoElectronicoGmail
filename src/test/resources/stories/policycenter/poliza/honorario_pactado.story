@@ -83,8 +83,8 @@ And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
 | random | 2016   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Global | Televentas |
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |
-| 640.   | 0         |              | 100000000      |
+| limite | deducible |AS                 |
+| 640.   | 0         |Asistencia Global  |
 And intente cotizar y expedir la poliza
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
