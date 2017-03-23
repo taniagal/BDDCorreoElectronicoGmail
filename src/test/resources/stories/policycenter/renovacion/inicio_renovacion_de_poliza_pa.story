@@ -3,9 +3,8 @@ inicio renovacion de poliza pa
 Meta:
 @lote3
 @issue #CDSEG-821
-@tag equipo: 3
+@tag equipo: 3, sprint: 6
 @local
-Sprint 6
 
 Narrative:
 Como usuario de policy center

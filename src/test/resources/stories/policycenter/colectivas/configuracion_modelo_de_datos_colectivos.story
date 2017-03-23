@@ -2,8 +2,7 @@ Configuracion Modelo De Datos Colectivos
 
 Meta:
 @lote3
-@sprint 10
-@tag equipo: 1
+@tag equipo: 1, sprint: 10
 @local
 
 Narrative:

@@ -1,8 +1,7 @@
 Meta:
 @lote2
 @Story CDSEG-5732 @Story CDSEG-5517 @Story CDSEG-5307 @Story CDSEG-5319 @Story CDSEG-5314 @Story CDSEG-5507
-@sprint 11
-@tag equipo: 2
+@tag equipo: 2, sprint: 11
 @local
 
 Narrative:

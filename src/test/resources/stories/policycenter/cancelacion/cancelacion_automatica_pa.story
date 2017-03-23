@@ -1,8 +1,7 @@
 Meta:
 @lote1
 @issue #CDSEG-3437
-@sprint 12
-@tag equipo: 3
+@tag equipo: 3, sprint: 12
 @local
 
 Narrative:

@@ -3,8 +3,7 @@ Poliza Principal Pa
 Meta:
 @lote4
 @issue #CDSEG-4619
-@sprint 10
-@tag equipo: 1
+@tag equipo: 1, sprint: 10
 @local
 
 Narrative:

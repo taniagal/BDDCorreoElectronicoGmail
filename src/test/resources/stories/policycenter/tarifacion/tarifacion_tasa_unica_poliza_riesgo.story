@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@tag equipo: 1
-@sprint 12
+@tag equipo: 1, sprint: 12
 
 Narrative:
 Como usuario de Policy Center requiero ajustar la tarifa tasa única en el nuevo modelo de colectividad, ya que el archivo

@@ -3,9 +3,8 @@ Cotizacion De Cancelacion
 Meta:
 @lote1
 @issue #USC-14740
-@tag equipo: 3
+@tag equipo: 3, sprint: 8
 @local
-Sprint 8
 
 Narrative:
 Como usuario del policy center
