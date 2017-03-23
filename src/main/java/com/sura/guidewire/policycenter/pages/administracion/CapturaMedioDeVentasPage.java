@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,12 +12,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class CapturaMedioDeVentasPage extends PageUtil {
-    protected static final String PATHMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:ttlBar']";
-    protected static final String TABLAMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:OfficesSearchResultsLV-body']/*/table/tbody/tr";
-    @FindBy(xpath = ".//*[@id=':tabs-menu-trigger-btnIconEl']")
-    private WebElementFacade menuAdministracion;
-    @FindBy(xpath = "//div[5]/div/div[2]/div/div/a/span")
-    private WebElementFacade itemAdministracion;
+
     @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_CommercialNetwork_Ext']/div/span")
     private WebElementFacade itemConfiguracionRedComercial;
     @FindBy(xpath = "//div[contains(.,'CanalesMedios de ventaOficinas por canal')]")
@@ -71,14 +67,20 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade tablaCanalNuevo;
     @FindBy(xpath = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscar;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoIrA;
+
+    protected static final String PATHMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:ttlBar']";
+    protected static final String TABLAMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:OfficesSearchResultsLV-body']/*/table/tbody/tr";
 
     public CapturaMedioDeVentasPage(WebDriver driver) {
         super(driver);
     }
 
     public void irAlMenuAdminsitracion() {
-        menuAdministracion.click();
-        itemAdministracion.click();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoIrA).shouldBePresent();
+        campoIrA.sendKeys("Admin");
+        campoIrA.sendKeys(Keys.ENTER);
     }
 
     public void irARedComercial() {
@@ -149,7 +151,6 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void buscarCanalComercial(ExamplesTable canalComercial) {
-
         listMedioDeVenta.clear();
         seleccionarItem(listMedioDeVenta, canalComercial.getRow(0).get("medioDeVenta"));
         esperarObjetoClikeableServidor(PATHMEDIOVENTAPORCANAL);
@@ -157,15 +158,6 @@ public class CapturaMedioDeVentasPage extends PageUtil {
         seleccionarItem(listaCanalComercial, canalComercial.getRow(0).get("canalComercial"));
         esperarObjetoClikeableServidor(PATHMEDIOVENTAPORCANAL);
         botonBuscarMediosDeVenta.click();
-
-    }
-
-    public String validarMediosDeVentaAsociados() {
-        String listaObtenida = null;
-        if (tablaMediosDeVentaAsociados.isCurrentlyVisible()) {
-            listaObtenida = tablaMediosDeVentaAsociados.getText();
-        }
-        return listaObtenida;
     }
 
     public void irMenuMedioDeVentaPorCanalNuevo() {
@@ -186,9 +178,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void validarDatosMedioDeVentaPorCanal(ExamplesTable verificarDatoMediosVenta) {
-
         for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
-
             MatcherAssert.assertThat("No se encontro el medio de venta" + " venta esperada: " + verificarDato.get("mediosDeVentaAsociados"), validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, verificarDato.get("mediosDeVentaAsociados"), CONSTANTE_2));
             MatcherAssert.assertThat("No se encontro el medio de venta por defecto" + " venta esperada: " + verificarDato.get("medioDeVentaPorDefecto"), validarResultadoTabla(TABLAMEDIOVENTAPORCANAL, verificarDato.get("medioDeVentaPorDefecto"), CONSTANTE_5));
         }
