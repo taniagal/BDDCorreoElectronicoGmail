@@ -53,8 +53,8 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
             waitForTextToDisappear("2011 AUDI AVEO FAMILY");
         }
         resetImplicitTimeout();
-        botonExpedirPoliza.isVisible();
-        botonExpedirPoliza.click();
+        waitFor(botonExpedirPoliza);
+        clickearElemento(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
@@ -69,6 +69,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
             }
         }
         resetImplicitTimeout();
+        esperarHasta(TIEMPO_5000);
         waitForAnyTextToAppear("Cotización Expedida", "Cambio en la póliza Expedida", "Asuntos que bloquean la expedición");
     }
 }
