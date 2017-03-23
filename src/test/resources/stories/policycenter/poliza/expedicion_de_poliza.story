@@ -3,8 +3,7 @@ Expedicion De Poliza
 Meta:
 @lote1
 @issue #SUGWUSC-15128, CDSEG-856
-@tag equipo: 1, sprint:2
-@Sprint 2
+@tag equipo: 1, sprint: 2
 @local
 
 Narrative:

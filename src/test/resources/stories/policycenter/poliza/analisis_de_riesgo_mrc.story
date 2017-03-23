@@ -3,8 +3,7 @@ Analisis De Riesgo Mrc
 Meta:
 @lote3
 @issue #CDSEG-993
-@tag equipo: 1
-@Sprint 9
+@tag equipo: 1, sprint: 9
 
 Narrative:
 Como usuario de Policy Center

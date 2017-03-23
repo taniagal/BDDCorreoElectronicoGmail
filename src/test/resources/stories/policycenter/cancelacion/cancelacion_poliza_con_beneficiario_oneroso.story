@@ -1,7 +1,6 @@
 Meta:
 @lote3
-@tag equipo: 3
-@sprint 15
+@tag equipo: 3, sprint: 15
 
 Narrative:
 Como usuario de policy center quiero poder excluir riesgos de polizas colectivas de autos o de MRC

@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@tag equipo: 5
-@sprint 14
+@tag equipo: 5, , sprint: 14
 
 Narrative:
 Como usuario de policy center en el rol de agente,csr, asegurador o gerente

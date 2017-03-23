@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@tag equipo: 2
-@Sprint 11
+@tag equipo: 2, sprint: 11
 
 Scenario: 1 Validacion de campos en menu lateral de poliza riesgo
 GivenStories: stories/policycenter/login_policy.story

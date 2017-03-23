@@ -4,8 +4,7 @@ Meta:
 @lote2
 
 @issue #CDSEG-967
-@tag equipo: 2, informer:pablo_armando_gonzales_restrepo, sprint:1
-@Sprint 1
+@tag equipo: 2, informer:pablo_armando_gonzales_restrepo, sprint: 1
 @local
 
 Narrative:

@@ -1,8 +1,7 @@
 Meta:
 @lote2
 @issue #CDSEG-774
-@tag equipo: 5
-@Sprint 3
+@tag equipo: 5, sprint: 3
 
 Narrative:
 Como usuario de Policy Center

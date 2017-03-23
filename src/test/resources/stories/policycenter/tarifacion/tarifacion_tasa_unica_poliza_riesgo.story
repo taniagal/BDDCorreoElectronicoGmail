@@ -1,7 +1,6 @@
 Meta:
 @lote4
-@tag equipo: 1
-@sprint 12
+@tag equipo: 1, sprint: 12
 
 Narrative:
 Como usuario de Policy Center requiero ajustar la tarifa tasa única en el nuevo modelo de colectividad, ya que el archivo
@@ -24,7 +23,7 @@ And cotice la poliza riesgo con el asegurado, el auto y las coberturas necesaria
 | CEDULA DE CIUDADANIA | 1234567890 | TUU225 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | 1.440. | 0         |         | Si      | 0   | 730 | 40  | 0   | 730 | 40 | Televentas | Asistencia Global |
 And el valor de la prima total y el iva deben ser:
 | primaT  | iva    |
-| 357.999 | 68.020 |
+| 358.000 | 68.020 |
 
 Examples:
 | cotizacion | infoCotizacion                | riesgo   |

@@ -3,8 +3,7 @@ Resumen Cuenta
 Meta: @lote1
 
 @issue #CDSEG-666
-@tag equipo: 5
-@Sprint 2
+@tag equipo: 5, sprint: 2
 
 Narrative:
 Como usuario PolicyCenter

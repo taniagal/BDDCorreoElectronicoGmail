@@ -1,8 +1,7 @@
 Meta:
 @lote2
 @issue #CDSEG-2295
-@tag equipo: 5
-@Sprint 7
+@tag equipo: 5, sprint: 7
 
 Narrative:
 Como usuario de policy center  con el perfil  X

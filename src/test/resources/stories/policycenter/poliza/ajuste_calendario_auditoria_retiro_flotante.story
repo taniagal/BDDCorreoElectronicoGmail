@@ -1,7 +1,6 @@
 Meta:
 @lote3
-@tag equipo: billing
-@sprint 14
+@tag equipo: billing, sprint: 14
 
 Narrative:
 Como usuario de Policy Center requiero realizar validaciones al retirar o cancelar la póliza

@@ -5,7 +5,6 @@ Meta:
 @issue #CDSEG-2305
 @tag equipo: 3, sprint: 6
 @local
-Sprint 6
 
 Narrative:
 Como usuario PolicyCenter con el papel de agente , RSE , Suscriptor o el Administrador ,

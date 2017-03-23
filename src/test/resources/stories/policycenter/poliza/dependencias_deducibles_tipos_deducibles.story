@@ -1,8 +1,7 @@
 Meta:
 @lote1
 @Story CDSEG-2443
-@tag equipo: 2
-@Sprint 6
+@tag equipo: 2, sprint: 6
 
 Narrative:
 Como usuario del policy center

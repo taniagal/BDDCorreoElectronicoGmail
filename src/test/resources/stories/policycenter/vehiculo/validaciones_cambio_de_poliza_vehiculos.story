@@ -1,9 +1,8 @@
 Meta:
 @lote4
 @issue CDSEG-1296
-@tag equipo: 5
+@tag equipo: 5, sprint: 4
 @local
-@Sprint 4
 
 Narrative:
 Como usuario del policy center
