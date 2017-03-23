@@ -245,6 +245,11 @@ public class TarifaAutosPage extends PageUtil {
         esperarPorPantallaCoberturas();
         seleccionarItem(comboBoxLimite, dato.get("limite"));
         seleccionarItem(comboBoxDeducible, dato.get("deducible"));
+        setImplicitTimeout(TIEMPO_1,TimeUnit.SECONDS);
+        if(comboBoxAsistencia.isVisible() && !dato.get("AS").isEmpty()) {
+            seleccionarCoberturaAsistencia(dato.get("AS"));
+        }
+        resetImplicitTimeout();
     }
 
     public void esperarPorPantallaCoberturas() {
