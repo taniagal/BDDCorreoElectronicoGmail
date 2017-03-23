@@ -61,7 +61,7 @@ public class PageUtil extends PageObject {
     protected static String OPCION_SIN_VALOR = "<ninguno>";
     protected Actions actions = new Actions(getDriver());
     protected static final String OPCIONES_MENU = "OPCIONES_MENU";
-
+    protected static String VALOR_PRIMA_CERO = "$0,00 (COP)";
 
     public PageUtil(WebDriver driver) {
         super(driver);
