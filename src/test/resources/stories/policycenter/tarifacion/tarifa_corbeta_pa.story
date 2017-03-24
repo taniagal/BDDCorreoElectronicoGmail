@@ -37,8 +37,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan           |medioVenta|
 |UIY456|2015  |00601182        |BOGOTA, D.C.      |Particular       |null  |null |165900000      |null     |null   |1   |Alianza Corbeta|Asesor    |
 And seleccione todas las coberturas corbeta:
-|limite|deducible|PTH|AC  |PTD|
-|320.00|0        |20 |null|20 |
+|limite|deducible|PTH|AC  |PTD|AS|
+|320.00|0        |20 |null|20 |  |
 And agregue un nuevo valor asegurado <valor_asegurado>
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
