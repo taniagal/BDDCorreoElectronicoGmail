@@ -112,7 +112,6 @@ public class Poliza {
         polizaSteps.seleccionarBotonAcciones();
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
-        polizaSteps.seleccionarReaseguroEspecialSi();
     }
 
     @When("ingrese al resumen de la poliza expedida")

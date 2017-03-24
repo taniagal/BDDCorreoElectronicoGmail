@@ -139,7 +139,7 @@ public class CotizacionMRCDefinitions {
         cotizacionMRCSteps.validarMensajeUWAlExpedir(mensaje);
     }
     @Then("se debe generar un UW issue para solicitar autorizacion al expedir la modificación de poliza <mensaje>")
-    public void validarMensajeUWAlExpedirCambio(@Name("mensaje") String mensaje) {
-        cotizacionMRCSteps.validarMensajeUWAlExpedir(mensaje);
+    public void validarMensajeUWAlExpedirPoliza(@Name("mensaje") String mensaje) {
+        cotizacionMRCSteps.validarMensajeUWAlExpedirCambio(mensaje);
     }
 }
