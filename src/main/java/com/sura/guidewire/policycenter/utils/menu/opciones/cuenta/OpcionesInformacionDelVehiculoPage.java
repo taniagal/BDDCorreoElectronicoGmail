@@ -125,7 +125,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
             itmAsegurado.click();
         }
         clickearElemento(btnDetalleVehiculo);
-        campoTxtPlaca.waitUntilPresent();
+        campoTxtPlaca.waitUntilVisible();
     }
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
