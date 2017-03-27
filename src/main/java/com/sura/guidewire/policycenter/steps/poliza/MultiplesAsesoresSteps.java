@@ -14,14 +14,17 @@ public class MultiplesAsesoresSteps extends ScenarioSteps {
     public void adicionarAsesoresDeComision() {
         multiplesAsesoresPage.adicionarAsesoresDeComision();
     }
+
     @Step
     public void ingresarInformacionDelAsesor(ExamplesTable parametros) {
        multiplesAsesoresPage.ingresarInformacionDelAsesor(parametros);
     }
+
     @Step
     public void validarDatosDelAsesor(Parametros opciones) {
         multiplesAsesoresPage.validarDatosDelAsesor(opciones);
     }
+
     @Step
     public void validarMensajes(Parametros parametros) {
         multiplesAsesoresPage.validacionMensaje(parametros);

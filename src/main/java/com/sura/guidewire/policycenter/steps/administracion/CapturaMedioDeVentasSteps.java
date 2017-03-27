@@ -46,7 +46,12 @@ public class CapturaMedioDeVentasSteps extends ScenarioSteps {
 
     @Step
     public void validarOpcionesMedioDeVenta(ExamplesTable opciones) {
-        capturaMedioDeVentasPage.validarOpcionesMedioDeVenta(opciones);
+        Map<String, String> opcionesMedioDeVenta;
+        String listaOpcionesMedioDeVenta = capturaMedioDeVentasPage.validarOpcionesMediosDeVenta();
+        for (int i = 0; i < opciones.getRowCount(); i++) {
+            opcionesMedioDeVenta = opciones.getRows().get(i);
+            MatcherAssert.assertThat("La lista no contiene el item esperado", listaOpcionesMedioDeVenta, Matchers.containsString(opcionesMedioDeVenta.get("opciones")));
+        }
     }
 
     @Step

@@ -38,9 +38,9 @@ Given estoy cotizando una poliza:
 When vaya a agregar un vehiculo con los datos:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor       | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
 | T64493 | 2017   | 09403011         | MEDELLIN           | Particular        | chasis123 | 123motor456 | 830000000       | null      | null    | 2    | Plan Modular | Televentas |
+And  valide los campos de motor y chasis, los valores ingresados deben ser mostrados en mayuscula
 And voy a realizar el siguiente paso
-Then debe mostrar los valores de motor y chasis ingresados en mayuscula
-And deben aparecer los mensajes de validacion:
+Then deben aparecer los mensajes de validacion:
 | mensaje                                                                                            |
 | El valor asegurado del vehículo ($830.000.000,00) supera el límite máximo permitido por políticas. |
 
