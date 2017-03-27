@@ -195,7 +195,9 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void seleccionarOficinaDeRadicacionYAgente(String oficina, String agente) {
         comboBoxOficinaDeRadicacion.waitUntilPresent();
-        seleccionarItem(comboBoxOficinaDeRadicacion, "1059");
+        if(comboBoxOficinaDeRadicacion.containsText(oficina)){
+            seleccionarItem(comboBoxOficinaDeRadicacion, "1059");
+        }
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
         try {
             clickearElemento(comboBoxNombreAgente, TIEMPO_4);

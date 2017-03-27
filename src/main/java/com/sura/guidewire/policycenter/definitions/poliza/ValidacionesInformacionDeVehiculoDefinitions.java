@@ -42,7 +42,7 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
         vehiculoSteps.validarAvanceSiguientePagina();
     }
 
-    @Then("debe mostrar los valores de motor y chasis ingresados en mayuscula")
+    @When("valide los campos de motor y chasis, los valores ingresados deben ser mostrados en mayuscula")
     public void validarMayusculaDeMotorYChasis() {
         vehiculoSteps.validarMayusculaDeMotorYChasis();
     }
