@@ -3,7 +3,6 @@ package com.sura.guidewire.policycenter.pages.administracion;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -120,6 +119,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public String validarOpcionesCanalOficina() {
+        waitForTextToAppear("Oficinas por canal");
         String listaObtenida = null;
         if (tablaCanalOficina.isCurrentlyVisible()) {
             listaObtenida = tablaCanalOficina.getText();
@@ -185,17 +185,4 @@ public class CapturaMedioDeVentasPage extends PageUtil {
         }
     }
 
-    public void validarOpcionesMedioDeVenta(ExamplesTable opciones) {
-        Map<String, String> opcionesMedioDeVenta;
-        String listaOpcionesMedioDeVenta = validarOpcionesMediosDeVenta();
-        esperarHasta(TIEMPO_2000);
-        for (int i = 0; i < opciones.getRowCount(); i++) {
-            opcionesMedioDeVenta = opciones.getRows().get(i);
-            MatcherAssert.assertThat("La lista no contiene el item esperado", listaOpcionesMedioDeVenta, Matchers.containsString(opcionesMedioDeVenta.get("opciones")));
-        }
-    }
-
 }
-
-
-
