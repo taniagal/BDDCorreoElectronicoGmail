@@ -4,10 +4,7 @@ import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.MultiplesAsesoresSteps;
 import com.sura.guidewire.policycenter.utils.Parametros;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Aliases;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 
 public class MultiplesAsesoresDefinitions {
@@ -31,9 +28,14 @@ public class MultiplesAsesoresDefinitions {
         multiplesAsesoresSteps.ingresarInformacionDelAsesor(opciones);
     }
 
+    @When("tenga una poliza mrc con los asesores ingresados")
+    @Alias("tenga una poliza de autos con los asesores ingresados")
+    public void asesoresIngresado(){
+        //escenario vacio solo para tener la narrativa en el .story
+    }
+
     @Then("Debe quedar un asesor con rol:$opciones")
     public void validarAsesorlider(ExamplesTable opciones) {
-
         multiplesAsesoresSteps.adicionarAsesoresDeComision();
         multiplesAsesoresSteps.validarDatosDelAsesor(new Parametros(opciones));
     }
@@ -46,7 +48,6 @@ public class MultiplesAsesoresDefinitions {
 
     @Then("validar el mensajes:$opciones")
     public void validarMensajes(ExamplesTable opciones) {
-
         multiplesAsesoresSteps.validarMensajes(new Parametros(opciones));
     }
 }
