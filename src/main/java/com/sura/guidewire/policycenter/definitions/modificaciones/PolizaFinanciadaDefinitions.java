@@ -63,9 +63,9 @@ public class PolizaFinanciadaDefinitions {
         polizaFinanciadaSteps.validarNoCampoNumeroDeCuotas();
     }
 
-    @Then("deben aparecer el numero de cuotas por las cuales puedo financiar la poliza $numeroCuotas")
-    public void validarNumeroCuotasAFinanciar(ExamplesTable numeroCuotas) {
-        polizaFinanciadaSteps.validarCuotasAFinanciar(numeroCuotas);
+    @When("deben aparecer el numero de cuotas por las cuales puedo financiar la poliza $opcionesCuotas")
+    public void validarNumeroCuotasAFinanciar(ExamplesTable opcionesCuotas) {
+        polizaFinanciadaSteps.validarCuotasAFinanciar(opcionesCuotas);
     }
 
     @Given("tengo una poliza de autos financiada con los siguientes datos: $datos")

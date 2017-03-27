@@ -82,7 +82,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).waitUntilPresent();
-        esperarHasta(TIEMPO_2000);
         clickearElemento(menuItemVehiculos);
     }
 
@@ -305,11 +304,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void validarAvanceSiguientePagina() {
-        esperarHasta(TIEMPO_1000);
+        waitForTextToAppear("Coberturas de auto personal");
         WebElementFacade labelTituloCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
         withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(labelTituloCoberturasAuto).shouldBePresent();
         MatcherAssert.assertThat(labelTituloCoberturasAuto.getText(), Is.is(Matchers.equalTo("Coberturas de auto personal")));
-        esperarHasta(TIEMPO_1000);
     }
 
     public void agregarCiudadDeCirculacion(ExamplesTable datosCotizacion) {

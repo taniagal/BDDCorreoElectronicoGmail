@@ -58,10 +58,10 @@ public class PageUtil extends PageObject {
     protected static final int DIAS_61 = 61;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
-    protected static String OPCION_SIN_VALOR = "<ninguno>";
+    protected static final String OPCION_SIN_VALOR = "<ninguno>";
     protected Actions actions = new Actions(getDriver());
     protected static final String OPCIONES_MENU = "OPCIONES_MENU";
-    protected static String VALOR_PRIMA_CERO = "$0,00 (COP)";
+    protected static final String VALOR_PRIMA_CERO = "$0,00 (COP)";
 
     public PageUtil(WebDriver driver) {
         super(driver);

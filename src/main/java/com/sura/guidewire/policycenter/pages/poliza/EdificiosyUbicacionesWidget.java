@@ -169,34 +169,26 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
 
     public void agregarArticulosEnUbicacionEnRenovacion(int numeroUbicacion) {
-
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
             obtenerTabla();
         }
         waitFor(botonAgregarArticulosRenovacionPoliza).waitUntilPresent();
-
         String xpathBotonInicio = "//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:";
         String xpathBotonFin = ":Actions:AddNewBuilding']";
-        ArrayList<WebElementFacade> elementosList = new ArrayList<WebElementFacade>();
-
+        ArrayList<WebElementFacade> elementosList = new ArrayList<>();
         boolean bandera = true;
         for (int indice = 0; bandera; indice++) {
-
             WebElementFacade aux = findBy(xpathBotonInicio + indice + xpathBotonFin);
-
             if (aux.isVisible()) {
                 elementosList.add(aux);
             } else {
                 bandera = false;
             }
-
         }
-
         if (numeroUbicacion <= elementosList.size()) {
             elementosList.get(numeroUbicacion - 1).click();
         }
-
         String tituloDePaginaAgregarArticulos = VOLVER_A_EDIFICIOS;
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
     }
@@ -498,7 +490,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void cliclearBtnCotizar() {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
         try {
-            withTimeoutOf(TIEMPO_7, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent().click();
+            withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent().click();
         } catch (TimeoutException e) {
             LOGGER.info("ElementShouldBePresentException " + e);
             setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
@@ -507,6 +499,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(btnCotizar);
                 clickearElemento(btnCotizar);
             }
+            resetImplicitTimeout();
         }
         descartarCambios();
     }

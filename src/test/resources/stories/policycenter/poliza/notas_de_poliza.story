@@ -15,7 +15,7 @@ Given estoy cotizando una poliza de autos:
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
-| DAC276 | 2011   | 01601225         | MEDELLIN           | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
+| DAC276 | 2011   | 01601225         | MEDELLIN           | Particular        | null | null | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
 When ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |

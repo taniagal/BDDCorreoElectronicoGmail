@@ -15,7 +15,7 @@ Given estoy cotizando una poliza:
 | C000222333 | Autos    | Individual |
 When vaya a agregar un vehiculo con los datos:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
-| AK0249 | 2011   | 01601225         | MEDELLIN           | Particular        | PR3B4  | SnR4  | 17900000        | null      | null    | 2    | Plan Autos Básico | Televentas |
+| AK0249 | 2011   | 01601225         | MEDELLIN           | Particular        | PR3b4  | SnR4  | 17900000        | null      | null    | 2    | Plan Autos Básico | Televentas |
 And ingrese el beneficiario o conductor <tipoDocumento> <numeroDocumento> en los intereses adicionales
 Then el sistema debe permitir pasar a la siguinete pagina
 
