@@ -14,30 +14,30 @@ Given estoy cotizando una poliza de mrc con documento:
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1036785778 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
-| AHHF7 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)| Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
+| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
+| AHHF7 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 When ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+| limite | deducible | abogado | PLlaves |
+| 640.   | 0         | Si      | Si      |
 And expido la poliza y voy al archivo de poliza
 And vaya a la opcion transacciones de poliza
 And cuando de click al boton reimprimir
 And me deben aparecer las opciones por las cuales puedo imprimir
-|opciones                        |
-|Carátula                        |
-|Carta de relación con el cliente|
-|Endoso                          |
-|Cotización                      |
+| opciones                         |
+| Carátula                         |
+| Carta de relación con el cliente |
+| Endoso                           |
+| Cotización                       |
 And cuando vaya a la opcion documentos
 Then se deben seleccionar todas las opciones por las cuales quiero reimprimir
 Examples:
-|tipo_documento      |documento |
-|CEDULA DE CIUDADANIA|1060447895|
+| tipo_documento       | documento  |
+| CEDULA DE CIUDADANIA | 1060447895 |
 
 Scenario: Mostrar opcion reimpresion en cambio de poliza
 Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|medioVenta|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|AGZ120|2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |Televentas|
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | AGZ120 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
@@ -46,45 +46,45 @@ And expido la poliza y voy al archivo de poliza
 And vaya a la opcion transacciones de poliza
 And cuando de click al boton reimprimir
 And me deben aparecer las opciones por las cuales puedo imprimir
-|opciones                        |
-|Carátula                        |
-|Endoso                          |
-|Cotización                      |
+| opciones   |
+| Carátula   |
+| Endoso     |
+| Cotización |
 And cuando vaya a la opcion documentos
 Then se deben seleccionar todas las opciones por las cuales quiero reimprimir
 Examples:
-|plan              |
-|Plan Autos Clásico|
+| plan               |
+| Plan Autos Clásico |
 
 Scenario: No mostrar opcion reimpresion en poliza cotizada
 Given estoy cotizando una poliza:
-|cuenta     |producto|tipoPoliza |
-|C1060447895|Autos   |Individual |
+| cuenta      | producto | tipoPoliza |
+| C1060447895 | Autos    | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|AS345|2016  |00601182        |MEDELLIN (ANTIOQUIA) |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
+| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
+| AS345 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular | Televentas |
 And ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+| limite | deducible | abogado | PLlaves |
+| 640.   | 0         | Si      | Si      |
 Then no se debe mostrar el boton reimpresion
 Examples:
-|tipo_documento      |documento |
-|CEDULA DE CIUDADANIA|1060447895|
+| tipo_documento       | documento  |
+| CEDULA DE CIUDADANIA | 1060447895 |
 
 
 Scenario: No mostrar opcion reimpresion en cambio de poliza cotizada
 Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|medioVenta|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABC199|2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |Televentas|
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ABC199 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
 And intente cotizar el cambio de poliza
 Then no se debe mostrar el boton reimpresion
 Examples:
-|plan              |
-|Plan Autos Clásico|
+| plan               |
+| Plan Autos Clásico |
 
 
 

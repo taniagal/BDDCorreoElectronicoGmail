@@ -15,7 +15,7 @@ Scenario: Informacion general de cotizacion
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 |tipo_documento      |documento |cuenta     |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |limite|deducible|abogado|PLlaves|medioVenta|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |Individual|LKHGFK |2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |Televentas|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |Individual|LKHGFK |2011  |01601225        |MEDELLIN (ANTIOQUIA)|Particular       | null   | null  |17900000       |null     |null   |2   |Plan Modular|640.  |0        |Si     |Si     |Televentas|
 When cotice el cambio de poliza
 Then debo ver de la cotizacion la siguiente informacion
 | tomador              | tipoDocumento        | numeroDocumento | direccion                           | tipoDireccion           | descripcionDireccion                       |

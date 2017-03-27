@@ -18,7 +18,7 @@ Given estoy cotizando una poliza de mrc con documento:
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion    | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
-| ASDF2 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)  | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
+| ASDF2 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)  | Particular        | null | null | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
 When ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
@@ -56,7 +56,7 @@ Given estoy cotizando una poliza de mrc con documento:
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
-| ASDF3 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)| Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
+| ASDF3 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)| Particular        | null | null | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
 When ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
@@ -75,7 +75,7 @@ Given estoy cotizando una poliza de mrc con documento:
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los siguientes datos del vehiculo:
 | plan                | placa | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis  | motor | valor_asegurado | marca | linea                            | clase_vehiculo     |
-| Plan Modular        | ASD25 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA)| Particular        | kljh456 | yui10 | 165900000,00    | AUDI  | TT  8S 2.0 TFSI CO - TP 2000CC T | Camperos y pickups |
+| Plan Modular        | ASD25 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA)| Particular        | null | null | 165900000,00    | AUDI  | TT  8S 2.0 TFSI CO - TP 2000CC T | Camperos y pickups |
 And deseleccione la opcion vehiculo cero kilometros
 When ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
