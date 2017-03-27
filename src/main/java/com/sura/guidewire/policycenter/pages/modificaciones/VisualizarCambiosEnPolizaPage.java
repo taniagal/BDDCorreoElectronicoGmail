@@ -4,13 +4,16 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class VisualizarCambiosEnPolizaPage extends PageUtil {
-    @FindBy(xpath = "//span[contains(.,'Revisión de póliza')]")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyReview']/div/span")
     private WebElementFacade botonRevisionPoliza;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[5]/td/div/div[2]/div/table/tbody/tr/td/div/div[2]/div/table/tbody/tr/td/div/div[2]/div/table/tbody/tr[2]/td[1]/div/span")
-    private WebElementFacade botonDesplegarComparacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_DifferencesScreen:DifferencesPanelSet:DiffTreePanelSet:ComparisonDiffTreeTab']")
+    private WebElementFacade pestaniaComparacion;
     @FindBy(xpath = "//div[contains(.,'ASD432')]")
     private WebElementFacade labelPlacaExistente;
     @FindBy(xpath = "//div[contains(.,'ASD439')]")
@@ -39,11 +42,20 @@ public class VisualizarCambiosEnPolizaPage extends PageUtil {
     }
 
     public void comparacionDePolizas() {
-        esperarYClickearBoton(botonRevisionPoliza);
-        if (botonDesplegarComparacion.isPresent()) {
-            esperarYClickearBoton(botonDesplegarComparacion);
-            esperarYClickearBoton(botonDesplegarComparacion);
+        boolean comparacion = false;
+        int intentos = 0;
+        clickearElemento(botonRevisionPoliza);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        while (intentos < CONSTANTE_3) {
+            if (pestaniaComparacion.isVisible()) {
+                comparacion = true;
+                intentos = CONSTANTE_3;
+            } else {
+                clickearElemento(botonRevisionPoliza);
+            }
         }
+        resetImplicitTimeout();
+        MatcherAssert.assertThat("No se encontró la pestaña de comparación de la modificación de la póliza ", comparacion, Matchers.equalTo(true));
     }
 
     public void cambiarCobertura(String cobertura) {
