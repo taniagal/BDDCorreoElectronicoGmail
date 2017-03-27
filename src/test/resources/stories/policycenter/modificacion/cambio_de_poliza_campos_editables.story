@@ -8,7 +8,7 @@ Como usuario de policy center en el rol de agente, csr, asegurador o gerente
 Quiero poder realizar cambios a la poliza
 Para ver informacion relacionada con esta
 
-Scenario: Modificar plan de vehiculos
+Scenario: Expedicion de modificacion en cambio de plan
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 |tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan              |limite|deducible|abogado|PLlaves|medioVenta|
@@ -35,15 +35,6 @@ And expida el cambio de la poliza
 Then debe mostrar un mensaje de autorizacion cuando voy a expedir
 |mensaje                                                                                 |
 |Valor para campo transporta combustible no permitido. Por favor verifique.              |
-
-Scenario: No transporte de combustible
-Given tengo una poliza de PA con los siguientes datos:
-|tipo_documento      |documento |cuenta    |producto|tipoPoliza|placa |modelo|codigo_fasecolda|ciudad_circulacion   |vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan               |limite|deducible|abogado|PLlaves|medioVenta|
-|CEDULA DE CIUDADANIA|1234567890|C000888888|Autos   |Individual|ABB182|2011  |01601225        |MEDELLIN (ANTIOQUIA) |Particular       |null|null|17900000       |null     |null   |2   |Plan Modular       |640.  |0        |Si     |Si     |Televentas|
-When ingrese a modificar dicha cotizacion
-And se ingrese a la opcion vehiculos
-And intente cotizar el cambio de poliza
-Then expida el cambio de la poliza
 
 Scenario: Cambio de plan basico a otro plan
 Given tengo una poliza de PA con los siguientes datos:
