@@ -498,7 +498,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void cliclearBtnCotizar() {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
         try {
-            withTimeoutOf(TIEMPO_7, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent().click();
+            withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent().click();
         } catch (TimeoutException e) {
             LOGGER.info("ElementShouldBePresentException " + e);
             setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
@@ -507,6 +507,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(btnCotizar);
                 clickearElemento(btnCotizar);
             }
+            resetImplicitTimeout();
         }
         descartarCambios();
     }
