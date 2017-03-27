@@ -29,7 +29,7 @@ And cambie una cobertura <cobertura>
 Then debe existir la comparacion entre datos de poliza existente y poliza nueva
 Examples:
 | cobertura     |
-| 1.640.000.000 |
+| 2.040.000.000 |
 
 Scenario: Visualizar cambios al modificar asegurados de vehiculo
 Given tengo una poliza de PA con los siguientes datos:
