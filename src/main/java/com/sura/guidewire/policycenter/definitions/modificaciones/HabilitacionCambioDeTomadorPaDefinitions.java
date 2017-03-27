@@ -11,6 +11,7 @@ public class HabilitacionCambioDeTomadorPaDefinitions {
     @Steps
     HabilitacionCambioDeTomadorPaSteps habilitacionCambioDeTomadorPaSteps;
 
+    @When("debe estar disposible el boton cambiar tomador con las opciones por las cuales puedo cambiarlo:$opciones")
     @Then("debe estar disposible el boton cambiar tomador con las opciones por las cuales puedo cambiarlo:$opciones")
     public void validarBotonCambiarTomador(ExamplesTable opciones) {
         habilitacionCambioDeTomadorPaSteps.validarPresenciaBotonCambiarTomadorPrincipal(opciones);

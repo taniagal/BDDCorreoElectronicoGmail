@@ -7,7 +7,7 @@ Como usuario de Policy Center con rol de agente, CSR, autorizador o gerente,
 Quiero poder reviar el borrador de un cambio de poliza y comparar el cambio contra los valores previos
 Para las polizas de auto personal en policy center
 
-Scenario: Modificacion de poliza no financiada a financiada
+Scenario: Modificacion de poliza no financiada a financiada y validacion de opciones para numero de cuotas a financiar
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 | tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
