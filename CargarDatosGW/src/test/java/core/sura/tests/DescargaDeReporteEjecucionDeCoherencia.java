@@ -27,7 +27,7 @@ public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
         Properties prop = loadProperty();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(TIEMPO_30, TimeUnit.SECONDS);
         driver.get(prop.getProperty("url") + "/pc/PolicyCenter.do");
     }
 

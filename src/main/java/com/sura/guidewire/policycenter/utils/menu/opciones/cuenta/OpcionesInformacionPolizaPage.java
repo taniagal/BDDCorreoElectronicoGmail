@@ -274,8 +274,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     }
 
     public void validarRetroactividadPoliza(String mensaje) {
-        esperarHasta(TIEMPO_30000);
-        botonSiguiente.click();
+        clickearElemento(botonSiguiente);
         waitFor(mensajeValidacion).shouldBePresent();
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
@@ -342,11 +341,6 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         waitFor(labelTituloAsegurados).shouldBePresent();
         MatcherAssert.assertThat(labelTituloAsegurados.getText(), Is.is(Matchers.equalTo("Asegurados")));
         esperarHasta(TIEMPO_1000);
-    }
-
-    public void irAInformacionDePoliza() {
-        waitFor(menuInformacionPoliza).click();
-        waitForTextToAppear("Información de póliza");
     }
 
     public void noIndicarPolizaFinanciada() {

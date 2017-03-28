@@ -24,7 +24,8 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
     private WebElement iconoDescargar;
 
     private static final int TIEMPO_1000 = 1000;
-    private static final int TIEMPO_200000 = 200000;
+    private static final int TIEMPO_1500 = 1500;
+    private static final int TIEMPO_420 = 420000;
     private static final String NUMERO_DE_SUBPROCESOS = "1000000";
 
     public void descargarReporte(WebDriver driver) {
@@ -33,12 +34,14 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
         waitUntilVisible(menuItemPaginasDeInformacion, driver);
         menuItemPaginasDeInformacion.click();
         waitUntilVisible(submenuItemVerificacionesDeCoherencia, driver);
+        waitUntil(TIEMPO_1500);
         submenuItemVerificacionesDeCoherencia.click();
         waitUntilVisible(campoNumeroDeSubprocesos, driver);
+        campoNumeroDeSubprocesos.clear();
         campoNumeroDeSubprocesos.sendKeys(NUMERO_DE_SUBPROCESOS);
         botonEjecutarVerificacionesDeCoherencia.click();
         wait.until(ExpectedConditions.visibilityOf(iconoDescargar));
         iconoDescargar.click();
-        MetodosComunes.waitUntil(TIEMPO_200000);
+        MetodosComunes.waitUntil(TIEMPO_420);
     }
 }
