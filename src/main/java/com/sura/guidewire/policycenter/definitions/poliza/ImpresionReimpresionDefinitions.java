@@ -35,7 +35,7 @@ public class ImpresionReimpresionDefinitions {
         impresionReimpresionSteps.validarOpcionesReimpresionHabilitadas();
     }
 
-    @Then("no se debe mostrar el boton reimpresion")
+    @When("valido que la opcion de reimpresion no esta disponible")
     public void validarNoPresenciaDeReimpresion() {
         impresionReimpresionSteps.validarNoPresenciaDeReimpresion();
     }
