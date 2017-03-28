@@ -41,6 +41,7 @@ public class BusquedaDeRiesgosDefinitions {
     }
 
     @When("este buscando un riesgo por los filtros pais departamento ciudad y direccion  $filtros")
+    @Then("este buscando un riesgo por los filtros pais departamento ciudad y direccion  $filtros")
     public void ingresarCriteriosDeBusquedaMrc(ExamplesTable filtros) {
         busquedaDeRiesgosSteps.ingresarCriteriosDeBusquedaMrc(filtros);
     }
@@ -56,6 +57,7 @@ public class BusquedaDeRiesgosDefinitions {
     }
 
     @When("este buscando un riesgo por los filtros pais departamento ciudad, direccion y numero de contrato $filtros")
+    @Then("este buscando un riesgo por los filtros pais departamento ciudad, direccion y numero de contrato $filtros")
     public void realizarBusquedaPorDireccionYNumeroDeContrato(ExamplesTable filtros) {
         busquedaDeRiesgosSteps.realizarBusquedaPorDireccionYNumeroDeContrato(filtros);
     }
