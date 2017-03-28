@@ -75,6 +75,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     protected static final int TIEMPO_28000 = 28000;
     private String opcion = "Si";
     private static final String VALOR_ASEGURADO = "valor_asegurado";
+    private static final String MODELO = "modelo";
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -244,18 +245,20 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
-        try {
-            seleccionarItem(comboBoxModelo, vehiculo.get("modelo"));
-        } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo Page 131 " + e);
-            seleccionarItem(comboBoxModelo, vehiculo.get("modelo"));
+        if(!comboBoxModelo.getValue().equals(vehiculo.get(MODELO))) {
+            try {
+                seleccionarItem(comboBoxModelo, vehiculo.get(MODELO));
+            } catch (StaleElementReferenceException e) {
+                LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo " + e);
+                seleccionarItem(comboBoxModelo, vehiculo.get(MODELO));
+            }
+            try {
+                waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get(MODELO)));
+            } catch (TimeoutException e) {
+                LOGGER.info("TimeoutException " + e);
+            }
+            esperarHasta(TIEMPO_2000);
         }
-        try {
-            waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get("modelo")));
-        } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException " + e);
-        }
-        esperarHasta(TIEMPO_2000);
     }
 
     public void agregarDescuento(Map<String, String> vehiculo) {
