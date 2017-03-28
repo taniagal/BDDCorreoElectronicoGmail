@@ -17,8 +17,8 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
 |random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+|limite|deducible| PTH | PPH       | GTH | abogado | AS |
+|640.  |0        | 0   | <ninguno> | 40. |         |    |
 And expido la poliza y voy al archivo de poliza
 And comience una sustitucion
 Then se debe conservar la bonificacion <bonoC> calculada con los siguientes planes:
@@ -37,4 +37,4 @@ Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
 |tipo_documento      |documento|bonoT|bonoTec|bonoC|bonoCo|placa |plan                      |mensaje                                                                    |
-|CEDULA DE CIUDADANIA|11111111 |0    |5      |38   |18    |CYU123|Plan Utilitarios y Pesados|La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
+|CEDULA DE CIUDADANIA|11111111 |0    |40     |38   |18    |CYU123|Plan Utilitarios y Pesados|La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
