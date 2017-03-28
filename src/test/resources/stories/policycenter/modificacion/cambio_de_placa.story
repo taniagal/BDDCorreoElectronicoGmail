@@ -19,7 +19,7 @@ And se ingrese a la opcion vehiculos
 And cuando cambie la placa <placa>
 And se deben recargar los datos de la placa anterior:
 | modelo | codigoFasecolda | ciudadCirculacion    | tipoServicio | chasis  | motor | valorAsegurado | claseVehiculo | marca     | zona |
-| 2011   |                 | MEDELLIN (ANTIOQUIA) | Particular   | KLJH456 | YUI10 | 17900000       | Automóviles   | CHEVROLET | 2    |
+| 2011   | 01601225        | MEDELLIN (ANTIOQUIA) | Particular   | KLJH456 | YUI10 | 17900000       | Automóviles   | CHEVROLET | 2    |
 And quiera volver a cambiar la placa
 And se debe cargar la placa inicial <placaInicial>
 And vuelva a cambiar la placa
