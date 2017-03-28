@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 
 public class InformacionPolizaWorkPlanPage extends PageUtil {
-    @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/div[4]/div[3]/div/table/tbody/tr[3]/td/div/span")
+    @FindBy(xpath = ".//*[contains(@id, ':Workplan')]/div/span")
     private WebElementFacade menuItemPlanDeTrabajo;
     @FindBy(xpath = "//span[contains(.,'Tomador')]")
     private WebElementFacade campotomador;
@@ -28,8 +28,10 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     private WebElementFacade clickMenuActividades;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade menuActividades;
-    @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/a/span/span/span[1]")
+    @FindBy(xpath = ".//*[contains(@id, 'WizardMenuActions-btnInnerEl')]")
     private WebElementFacade botonAcciones;
+    @FindBy(xpath = ".//*[@id='NewActivityWorksheet:NewActivityScreen:NewActivityScreen_CancelButton-btnInnerEl']")
+    private WebElementFacade botonCancelarNuevaActividad;
 
     public InformacionPolizaWorkPlanPage(WebDriver driver) {
         super(driver);
@@ -51,13 +53,18 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
 
     public void buscarActividades() {
         esperarYClickearBoton(botonAcciones);
-        esperarYClickearBoton(botonActividadNueva);
-        esperarYClickearBoton(botonRevision);
+        botonActividadNueva.waitUntilPresent();
+        actions.moveToElement(botonActividadNueva).release(botonActividadNueva).build().perform();
+        botonRevision.waitUntilPresent();
+        actions.moveToElement(botonRevision).release(botonRevision).build().perform();
+        botonRevisarYAprobar.waitUntilPresent();
         esperarYClickearBoton(botonRevisarYAprobar);
     }
 
     public void validarMenuActividades() {
         esperarYClickearBoton(clickMenuActividades);
         waitFor(menuActividades);
+        clickearElemento(botonCancelarNuevaActividad);
+        botonCancelarNuevaActividad.waitUntilNotVisible();
     }
 }
