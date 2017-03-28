@@ -14,18 +14,18 @@ Scenario: Maximo valor de accesorios-inspeccion-importado por terceros
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA |1030765432 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
+| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765432 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion    | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
-| ASDF2 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)  | Particular        | null | null | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
+| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
+| ASDF2 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 When ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+| limite | deducible | abogado | PLlaves |
+| 640.   | 0         | Si      | Si      |
 And llegue a la expedicion de la poliza
 And debo ver un mensaje opcional
-| mensaje                                                                                                            |
-|Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
+| mensaje                                                                                                             |
+| Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
 And seleccione la opcion importado por terceros
@@ -55,15 +55,15 @@ Given estoy cotizando una poliza de mrc con documento:
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765433 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
-| ASDF3 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA)| Particular        | null | null | 17900000        | null      | null    | 2    | Plan Modular       |Televentas|
+| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
+| ASDF3 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 When ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+| limite | deducible | abogado | PLlaves |
+| 640.   | 0         | Si      | Si      |
 And llegue a la expedicion de la poliza
 Then debo ver un mensaje bloqueante accesorios
-| mensaje                                                                                                               |
-|El contacto CAROLINA OCHOA con DNI C71318883 requiere sarlaft, diríjase a análisis de riesgo para diligenciarlo.       |
+| mensaje                                                                                                          |
+| El contacto CAROLINA OCHOA con DNI C71318883 requiere sarlaft, diríjase a análisis de riesgo para diligenciarlo. |
 Examples:
 | tipo_documento       | documento |
 | CEDULA DE CIUDADANIA | 71318883  |
@@ -71,19 +71,19 @@ Examples:
 Scenario: Vehiculo cero kilometros
 Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765434  | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
+| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765434 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los siguientes datos del vehiculo:
-| plan                | placa | modelo | codigo_fasecolda | ciudad_circulacion  | vehiculo_servicio | chasis  | motor | valor_asegurado | marca | linea                            | clase_vehiculo     |
-| Plan Modular        | ASD25 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA)| Particular        | null | null | 165900000,00    | AUDI  | TT  8S 2.0 TFSI CO - TP 2000CC T | Camperos y pickups |
+| plan         | placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | marca | linea                            | clase_vehiculo     |
+| Plan Modular | ASD25 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000,00    | AUDI  | TT  8S 2.0 TFSI CO - TP 2000CC T | Camperos y pickups |
 And deseleccione la opcion vehiculo cero kilometros
 When ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+| limite | deducible | abogado | PLlaves |
+| 640.   | 0         | Si      | Si      |
 And llegue a la expedicion de la poliza
 And debo ver un mensaje opcional
-| mensaje                                                                                                            |
-|Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
+| mensaje                                                                                                             |
+| Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
 And seleccione la opcion importado por terceros

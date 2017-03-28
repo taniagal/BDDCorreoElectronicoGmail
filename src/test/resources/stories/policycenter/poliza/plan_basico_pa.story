@@ -33,7 +33,7 @@ Given estoy cotizando una poliza de mrc con documento:
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
-| ASDF9 | 2011   | 01601225         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
+| ASDF9 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
 When ingrese las coberturas a vehiculo:
 | limite | deducible | AS                 |
 | 640.0  | 0         | Asistencia Clásica |
