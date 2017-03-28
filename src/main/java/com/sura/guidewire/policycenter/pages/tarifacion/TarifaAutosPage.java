@@ -305,6 +305,14 @@ public class TarifaAutosPage extends PageUtil {
         }
     }
 
+    public void seleccionarCoberturaHurtoTotal(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        seleccionarItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
+        seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
+        seleccionarItem(labelGatosTransporte, dato.get("GTH"));
+    }
+
+
     public void seleccionarCoberturasHurto1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
