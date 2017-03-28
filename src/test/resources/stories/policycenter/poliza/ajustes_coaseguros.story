@@ -23,10 +23,10 @@ Then se debe validar que se muestren los mensajes de obligatoriedad siguientes
 | Número de documento : Falta el campo obligatorio "Número de documento   |
 
 Examples:
-| TipoCo   | numCuenta  | departamento | ciudad   | direccion         | descripcion   | actividad                     | PolizaRef | Documento |
-| Aceptado | C000777777 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles |           |           |
+| TipoCo   | numCuenta  | PolizaRef | Documento |
+| Aceptado | C000777777 |           |           |
 
-Scenario:  2 Validacion de campo Numero de documento en tipo de coaseguro cedido
+Scenario:  2 No obligatoriedad de campo número de documento y bloqueo de edicion de coaseguro al expedir poliza
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 02/12/1990       | ZACARIAS      | ALBERTO         | DIRECCION DE RESIDENCIA | CALLE 50A #24-10 | Antioquia    | Medellin | INT-3  |
@@ -36,20 +36,6 @@ When quiero agregar coaseguro <TipoCo> con poliza referencia <PolizaRef> documen
 | ACE SEGUROS S.A.                    | 40            |
 And de clic en Aceptar de la ventana Coaseguro
 Then no se debe inhabilitar la opcion Numero de documento
-
-Examples:
-| TipoCo | numCuenta  | departamento | ciudad   | direccion         | descripcion   | actividad                     | PolizaRef | Documento |
-| Cedido | C000777777 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles |           |           |
-
-Scenario:  3 Validacion de coaseguro no editable en resumen e informacion de poliza
-Given estoy cotizando una poliza de mrc:
-| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Multiriesgo corporativo | CEDULA DE CIUDADANIA | 15/08/1972       | WILDIM        | RUPERT          | DIRECCION DE RESIDENCIA | CALLE 39G #25-10 | Antioquia    | Medellin | INT-3  |
-When quiero agregar coaseguro <TipoCo> con poliza referencia <PolizaRef> documento <Documento> y particion de aseguradoras
-| ASEGURADORA                         | PARTICIPACION |
-| Seguros Generales Suramericana S.A. | 60            |
-| ACE SEGUROS S.A                     | 40            |
-And de clic en Aceptar de la ventana Coaseguro
 And agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>
 And descripcion <descripcion>, actividad economica <actividad>
 And ingrese a edificios y ubicaciones
@@ -61,6 +47,6 @@ And intente cotizar y expedir la poliza
 Then debo ver en el resumen de la poliza y en informacion de poliza los coaseguros no editables
 
 Examples:
-| numCuenta  | TipoCo | departamento | ciudad   | direccion         | descripcion   | actividad                     | medioVenta | PolizaRef | Documento |
-| C000777777 | Cedido | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | Televentas |           |           |
+| TipoCo | numCuenta  | departamento | ciudad   | direccion         | descripcion   | actividad                     | PolizaRef | Documento |medioVenta|
+| Cedido | C000777777 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles |           |           |Televentas|
 
