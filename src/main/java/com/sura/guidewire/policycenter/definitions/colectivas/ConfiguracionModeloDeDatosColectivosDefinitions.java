@@ -11,6 +11,7 @@ public class ConfiguracionModeloDeDatosColectivosDefinitions {
     ConfiguracionModeloDeDatosColectivosSteps datosColectivosSteps;
 
     @When("ingrese a la informacion de la poliza")
+    @Then("ingrese a la informacion de la poliza")
     public void igresarAPolicy(){
         datosColectivosSteps.ingresarAPolicyInfo();
     }
