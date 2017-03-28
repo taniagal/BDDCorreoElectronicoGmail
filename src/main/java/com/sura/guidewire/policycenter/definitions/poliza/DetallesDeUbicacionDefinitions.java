@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 
-import com.sura.guidewire.policycenter.steps.poliza.DetallesDeUbicacionSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
+import com.sura.guidewire.policycenter.steps.poliza.DetallesDeUbicacionSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -20,6 +20,7 @@ public class DetallesDeUbicacionDefinitions {
     private NuevaCotizacionSteps nuevaCotizacionSteps;
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>")
+    @Then("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>")
     public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad, @Named("medioVenta") String medioVenta){
         detallesDeUbicacionSteps.validarCamposNuevos();
         detallesDeUbicacionSteps.agregarDireccion(direccion, departamento, ciudad);
@@ -27,6 +28,7 @@ public class DetallesDeUbicacionDefinitions {
     }
 
     @When("descripcion <descripcion>, actividad economica <actividad>")
+    @Then("descripcion <descripcion>, actividad economica <actividad>")
     public void agregarUbicacion(@Named("actividad")String actividad, @Named("descripcion")String descripcion){
         detallesDeUbicacionSteps.agregarUbicacion(descripcion, actividad);
     }

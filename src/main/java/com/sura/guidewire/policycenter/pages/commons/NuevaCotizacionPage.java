@@ -199,12 +199,12 @@ public class NuevaCotizacionPage extends PageUtil {
         }
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
         try {
-            clickearElemento(comboBoxNombreAgente, TIEMPO_4);
+            clickearElemento(comboBoxNombreAgente, TIEMPO_3);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException", e);
-            clickearElemento(comboBoxNombreAgente, TIEMPO_4);
+            clickearElemento(comboBoxNombreAgente, TIEMPO_3);
         }
-        esperarHasta(TIEMPO_300);
+        esperarHasta(TIEMPO_200);
         comboBoxNombreAgente.clear();
         comboBoxNombreAgente.sendKeys(agente);
         comboBoxNombreAgente.sendKeys(Keys.ENTER);

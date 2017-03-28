@@ -47,6 +47,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("intente ingresar las entradas de las diferentes coberturas $entradas")
+    @Then("intente ingresar las entradas de las diferentes coberturas $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradas);
@@ -203,6 +204,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("intente cotizar y expedir la poliza")
+    @Then("intente cotizar y expedir la poliza")
     public void cuandoIntenteCotizarYExpedirLaPoliza() {
         edificiosUbicacionesSteps.seleccionarBotonCotizar();
         tasaUnicaSteps.expedirPoliza();

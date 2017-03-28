@@ -268,7 +268,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void agregarUnCoaseguro(String tipoCo, String polizaRef, String documento, ExamplesTable tablaaseguradoras) {
-        waitFor(TIEMPO_3).second();
+        waitFor(TIEMPO_1).second();
         clickearElemento(menuItemInformacionDePoliza);
         agregarCoaseguro.waitUntilPresent().click();
         seleccionarElTipoDeCoaseguro(tipoCo, polizaRef, documento);
