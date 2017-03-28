@@ -37,7 +37,7 @@ public class TarifaAutosDefinitions {
 
     @When("ingrese las coberturas: $coberturas")
     public void agregarcoberturas(ExamplesTable coberturas) {
-        tarifaAutosSteps.agregarCoberturas(coberturas);
+        tarifaAutosSteps.agregarCoberturasSustitucion(coberturas);
     }
 
     @When("ingrese las coberturas a $texto: $coberturas")
