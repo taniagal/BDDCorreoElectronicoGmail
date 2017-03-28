@@ -29,7 +29,6 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
     private WebElementFacade campoCriterioDeBusqueda;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']")
     private WebElementFacade filaResultados;
-    public static final int TIEMPO_7 = 7000;
 
     public BusquedaDePolizaPorCriteriosPage(WebDriver driver) {
         super(driver);
