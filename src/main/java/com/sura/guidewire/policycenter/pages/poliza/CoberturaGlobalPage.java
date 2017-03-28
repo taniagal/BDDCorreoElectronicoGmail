@@ -9,7 +9,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.Map;
@@ -71,7 +70,7 @@ public class CoberturaGlobalPage extends PageUtil {
     private static String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_FINAL = "')]";
     private static String LBL_PESTAÑA_COBERTURAS_INICIAL = "//label[contains(.,'";
     private static String LBL_PESTAÑA_COBERTURAS_FINAL = "')]";
-    private static String LBL_OPCION_COBERTURA_GLOBAL_INICIAL = "//span[contains(.,'";
+    private static String LBL_OPCION_COBERTURA_GLOBAL_INICIAL = "//span[contains(text(),'";
     private static String LBL_OPCION_COBERTURA_GLOBAL_FINAL = "')]";
     public static String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
     public static String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_2 = ":CoverageInputSet:CovPatternInputGroup:_checkbox']";

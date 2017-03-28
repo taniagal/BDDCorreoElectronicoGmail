@@ -98,14 +98,7 @@ And deben estar en estado <estadodos> las siguientes opciones
 And en revision de poliza deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Edificios   |
-
-Examples:
-| numSubscripcion | rolUsuario | estadouno | estadodos  |
-| 33344336        | Asesor     | Visible   | No visible |
-
-Scenario: 5 Validaciones de poliza principal expedida
-Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When ingrese a la informacion de la poliza
+And ingrese a la informacion de la poliza
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza con requisitos
 And ingrese a ver cotizacion de poliza expedida
@@ -118,17 +111,15 @@ Then ningun campo puede ser editable en informacion
 And en informacion de poliza deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Agregar coaseguro         |
-And deben estar en estado <estadodos> las siguientes opciones
-| OPCIONES_MENU_NO_VISIBLES |
-| Coberturas globales       |
 And ingrese a la opcion de pago
 Then ningun campo puede ser editable en pago
 
 Examples:
-| numSubscripcion | rolUsuario | estadodos  |
-| 33344336        | Asesor     | No visible |
+| numSubscripcion | rolUsuario | estadouno | estadodos  |
+| 33344336        | Asesor     | Visible   | No visible |
 
-Scenario: 6 Validacion de ubicaciones en poliza riesgo
+
+Scenario: 5 Validacion de ubicaciones en poliza riesgo
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
