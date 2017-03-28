@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']")
+    @FindBy(xpath = ".//*[contains(@id, 'PolicyInfo')]/div/span")
     WebElementFacade lblInformaPolizaEnRenovacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
     WebElementFacade txtFechaVigencia;
