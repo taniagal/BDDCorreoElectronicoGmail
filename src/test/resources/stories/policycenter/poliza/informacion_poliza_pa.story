@@ -7,30 +7,23 @@ Como usuario de PolicyCenter
 Quiero ser capaz de ingresar y visualizar la informacion de la poliza incluyendo el nombre tomador,
 incluir un segundo tomador, vigencia de la poliza y la informacion de asesor
 
-Scenario: Cambiar inicio de vigencia
+Scenario: Cambiar inicio de vigencia e Ingresar segundo tomador y validar opcion deseo de financiacion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |producto|tipoPoliza |
 |C000888888|Autos   |Individual |
 When valla a la informacion de la poliza
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
-Then la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo
-
-Examples:
-|numCuenta     |fechaInicioVigencia|fechaFinVigencia|tipoPlazo |
-|C000888888    |30/11/2016         |30/11/2017      |Anual     |
-
-Scenario: Ingresar segundo tomador
-Given estoy cotizando una poliza:
-|cuenta    |producto|tipoPoliza |
-|C000888888|Autos   |Individual |
-When valla a la informacion de la poliza
 And adicione un segundo tomador <tipoDocumento>, <primerNombre>, <primerApellido>
-Then debe quedar registrado en la informacion de la poliza
+And no indique que deseo financiar la poliza
+Then la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo
+And debe quedar registrado en la informacion de la poliza
+And no se debe habilitar la opcion de numero de cuotas
 
 Examples:
-|numCuenta  |tipoDocumento        |primerNombre |primerApellido |
-|C000888888 |CEDULA DE CIUDADANIA |JORGE        |PAISA          |
+|numCuenta     |fechaInicioVigencia|fechaFinVigencia|tipoPlazo |tipoDocumento        |primerNombre |primerApellido |
+|C000888888    |30/11/2016         |30/11/2017      |Anual     |CEDULA DE CIUDADANIA |JORGE        |PAISA          |
+
 
 Scenario: Validar porcentaje descuento de poliza
 Given estoy cotizando una poliza:
@@ -57,18 +50,6 @@ izquierda o derecha
 Examples:
 |numCuenta      |porcentaje     |mensaje                                                                                 |
 |C000888888     |20,325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
-
-Scenario: No deseo de financiacion de poliza
-Given estoy cotizando una poliza:
-|cuenta    |producto|tipoPoliza |
-|C000888888|Autos   |Individual |
-When valla a la informacion de la poliza
-And no indique que deseo financiar la poliza
-Then no se debe habilitar la opcion de numero de cuotas
-
-Examples:
-|numCuenta    |
-|C000888888   |
 
 Scenario: Validar retroactividad en la vigencia de la poliza
 Given estoy cotizando una poliza:
