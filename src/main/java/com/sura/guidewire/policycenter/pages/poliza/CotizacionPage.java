@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
-import com.sura.guidewire.policycenter.pages.GuidewirePage;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -10,12 +10,14 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 // TODO: 15/06/2016 Pendiente refactor
-public class CotizacionPage extends GuidewirePage {
+public class CotizacionPage extends PageUtil {
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']")
-
     public static final String TITULO_PAGINA = "//span[@id='NewSubmission:NewSubmissionScreen:ttlBar']";
     public static final String TITULO_PAGINA_SIGUIENTE = "//span[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     public static final String TXT_NUMERO_CUENTA = "//input[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']";
@@ -36,8 +38,11 @@ public class CotizacionPage extends GuidewirePage {
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion-labelEl']")
     WebElementFacade buscarInputHabilitadoEnElementoInformacionPoliza;
     public static final String TRACE = "\nTRACE: \n";
-    protected static final int TIEMPO_15 = 15;
-    protected static final int TIEMPO_2000 = 2000;
+
+
+    public CotizacionPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
@@ -80,14 +85,15 @@ public class CotizacionPage extends GuidewirePage {
         return elemento;
     }
 
-
     public void validarCamposOpcionCotizacionDePoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
     }
 
     public void esCamposAseguradorasCoasegurosEditables() {
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
       if(buscarInputHabilitadoEnElementoResumen.isPresent()){
           MatcherAssert.assertThat(buscarInputHabilitadoEnElemento("//div[@id='PolicyFile_Summary:Policy_SummaryScreen:insuranceLV-body']/div"), Is.is(false));
       }
+      resetImplicitTimeout();
     }
 }
