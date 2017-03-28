@@ -86,7 +86,6 @@ public class CambioDePlacaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesLV-body']/div/table/tbody/tr/td[3]")
     private WebElementFacade tablaDetallesDelVehiculoPlaca;
 
-    private static final int CONSTANTE_3 = 3;
 
     public CambioDePlacaPage(WebDriver driver) {
         super(driver);
