@@ -191,13 +191,15 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     public void verificarTarifacionPorCoberturas(ExamplesTable datos) {
         for (Map<String, String> dato : datos.getRows()) {
             int i = 1;
+            String prima = "";
             List<WebElementFacade> tablaPrimaDePoliza = findAll(XPATH_TABLA_PRIMA_DE_POLIZA_TR);
             while (i <= tablaPrimaDePoliza.size()) {
                 WebElementFacade descripcionCobertura = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[1]");
                 if (descripcionCobertura.equals(dato.get("descripcion"))) {
                     WebElementFacade montoPrima = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[3]");
+                    prima = montoPrima.getText().substring(CONSTANTE_1, montoPrima.getText().length() - CONSTANTE_6);
                     MatcherAssert.assertThat("Error en el valor de la tarifa, en la cobertura " + descripcionCobertura.getText()+ ". Esperaba: " + dato.get("valor") +
-                            " pero fue: " + montoPrima.getText(), montoPrima.containsText(dato.get("valor")));
+                            " pero fue: " + prima, prima.equals(dato.get("valor")));
                     break;
                 }
                 i++;

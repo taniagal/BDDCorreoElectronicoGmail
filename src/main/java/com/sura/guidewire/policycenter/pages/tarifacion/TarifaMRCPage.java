@@ -207,8 +207,9 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarImpuestos() {
-        MatcherAssert.assertThat("Error en el valor del IVA Expected: 0,00 But was: " +
-                campoIva.getText(), campoIva.containsText("0,00"));
+        String valorIva = campoIva.getText().substring(CONSTANTE_1, campoIva.getText().length() - CONSTANTE_6);
+        MatcherAssert.assertThat("Error en el valor del IVA Expected: 0 But was: " +
+                valorIva, valorIva.equals("0"));
     }
 
     public void verificarValorIva() {
@@ -237,7 +238,9 @@ public class TarifaMRCPage extends PageUtil {
         for (int i = 0; i < primasPoliza.getRowCount(); i++) {
             fila = encontrarCobertura(primasPoliza.getRows().get(i).get("cobertura"));
             String xpath = XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + fila.toString() + "]/td[3]";
-            MatcherAssert.assertThat(findBy(xpath).getText(), containsText(primasPoliza.getRows().get(i).get("prima")));
+            String monto = findBy(xpath).getText().substring(CONSTANTE_1, findBy(xpath).getText().length() - CONSTANTE_6);
+            MatcherAssert.assertThat("Error en el monto de la cobetura, expected: " + primasPoliza.getRows().get(i).get("prima") +
+                    " put was: " + monto, monto.equals(primasPoliza.getRows().get(i).get("prima")));
         }
     }
 
@@ -317,13 +320,15 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarValorDeCobertura(int i, Map<String, String> dato, List<WebElementFacade> tablaPrimaDePoliza) {
         int indice = i;
+        String valorCobertura = "";
         while (indice <= tablaPrimaDePoliza.size()) {
             WebElementFacade descripcionCobertura = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + indice + "]/td[1]");
             if (descripcionCobertura.containsText(dato.get("descripcion"))) {
                 WebElementFacade montoPrima = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + indice + "]/td[3]");
+                valorCobertura = montoPrima.getText().substring(CONSTANTE_1, montoPrima.getText().length() - CONSTANTE_6);
                 MatcherAssert.assertThat("Error en el valor de la tarifa, en la cobertura " + descripcionCobertura.getText() +
                         " del articulo " + dato.get(ARTICULO) + " . Expected: " + dato.get("valor") +
-                        " but was: " + montoPrima.getText(), montoPrima.containsText(dato.get("valor")));
+                        " but was: " + valorCobertura, valorCobertura.equals(dato.get("valor")));
                 break;
             }
             indice++;
