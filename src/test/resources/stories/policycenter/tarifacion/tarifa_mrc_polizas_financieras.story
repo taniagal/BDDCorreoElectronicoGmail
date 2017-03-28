@@ -16,27 +16,28 @@ When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                        |medioVenta|
 |Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Actividades de agencias de empleo|Televentas|
 And seleccione algunos articulos y sus cobertura:
-|articulo |valor_asegurable|coberturas             		  |
-|Machine  |300000000       |Danos,Asonada,Rotura,Terremoto|
-|Furniture|300000000       |Danos,Asonada,Rotura,Terremoto|
+|articulo |valor_asegurable|coberturas             		              |
+|Machine  |300000000       |Danos,Asonada,Rotura,Terremoto,Sustracción|
+|Furniture|300000000       |Danos,Asonada,Sustracción,Terremoto       |
 And cotice el articulo
 Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
-|articulo  |descripcion                      |valor  |
-|Maquinaria|Cobertura de Danos materiales    |755.550|
-|Maquinaria|Cobertura de Terremoto           |306.600|
-|Maquinaria|Cobertura de Asonada             |32.850 |
-|Maquinaria|Cobertura de Rotura de maquinaria|0,00   |
-|Edificio  |Cobertura de Sustracción         |0,00   |
-|Muebles   |Cobertura de Danos materiales    |985.320|
-|Muebles   |Cobertura de Terremoto           |434.700|
-|Muebles   |Cobertura de Asonada             |28.980 |
-|Muebles   |Cobertura de Rotura de maquinaria|0,00   |
-|Muebles   |Cobertura de Sustracción         |0,00   |
-And debo poder ver el valor de la prima <prima> en la cotizacion
+|articulo  |descripcion                      |valor    |
+|Maquinaria|Cobertura de Danos materiales    |755.550  |
+|Maquinaria|Cobertura de Terremoto           |306.600  |
+|Maquinaria|Cobertura de Asonada             |32.850   |
+|Maquinaria|Cobertura de Rotura de maquinaria|0,00     |
+|Maquinaria|Cobertura de Sustracción         |0,00     |
+|Maquinaria|Subtotal                         |1.095.000|
+|Muebles   |Cobertura de Danos materiales    |985.320  |
+|Muebles   |Cobertura de Terremoto           |434.700  |
+|Muebles   |Cobertura de Asonada             |28.980   |
+|Muebles   |Cobertura de Sustracción         |0,00     |
+|Muebles   |Subtotal                         |1.449.000|
+And el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:
-|prima    |
-|2.544.000|
+|prima    |iva    |costo    |
+|2.544.000|483.360|3.027.360|
 
 
 
@@ -48,13 +49,12 @@ When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion    |actividad                        |medioVenta|
 |Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo|Televentas|
 And seleccione algunos articulos y sus cobertura:
-|articulo |valor_asegurable|coberturas             |
-|Building |100000000       |Danos,Asonada,Terremoto|
-|Furniture|140000000       |Danos,Asonada,Terremoto|
+|articulo |valor_asegurable|coberturas                         |
+|Building |100000000       |Danos,Asonada,Terremoto            |
+|Furniture|140000000       |Danos,Asonada,Terremoto,Sustracción|
 And cotice el articulo
 Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
 |articulo  |descripcion                      |valor  |
-|Edificio  |Cobertura de Sustracción         |0,00   |
 |Edificio  |Cobertura de Danos materiales    |94.500 |
 |Edificio  |Cobertura de Terremoto           |105.000|
 |Edificio  |Cobertura de Asonada             |10.500 |
@@ -64,11 +64,11 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |Muebles   |Cobertura de Terremoto           |202.860|
 |Muebles   |Cobertura de Asonada             |13.524 |
 |Muebles   |Subtotal                         |676.200|
-And debo poder ver el valor de la prima <prima> en la cotizacion
+And el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:
-|prima  |
-|886.200|
+|prima  |iva    |costo    |
+|886.200|168.378|1.054.578|
 
 
 
@@ -88,8 +88,8 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |Edificio  |Cobertura de Danos materiales    |99.474 |
 |Edificio  |Cobertura de Terremoto           |110.526|
 |Edificio  |Subtotal                         |210.000|
-And debo poder ver el valor de la prima <prima> en la cotizacion
+And el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
 Examples:
-|prima  |
-|210.000|
+|prima  |iva   |costo  |
+|210.000|39.900|249.900|
