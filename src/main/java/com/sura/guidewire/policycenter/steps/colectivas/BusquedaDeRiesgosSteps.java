@@ -99,6 +99,7 @@ public class BusquedaDeRiesgosSteps extends ScenarioSteps {
 
     @Step
     public void realizarBusquedaPorDireccionYNumeroDeContrato(ExamplesTable filtros) {
+        busquedaDeRiesgosPage.clicEnElBotonRestablecer();
         busquedaDeRiesgosPage.seleccionarProducto(filtros);
         busquedaDeRiesgosPage.seleccionarPais(filtros);
         busquedaDeRiesgosPage.seleccionarDepartamento(filtros);
