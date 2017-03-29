@@ -50,11 +50,13 @@ public class ExpedicionDePolizaDefinitions {
     }
 
     @When("confirmo el mensaje de expedir poliza con requisitos")
+    @Then("confirmo el mensaje de expedir poliza con requisitos")
     public void confirmarMensajeDeExpedirPolizaConRequisitosPendientes() {
         expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacionYRequisitos();
     }
 
     @When("ingrese a ver cotizacion de poliza expedida")
+    @Then("ingrese a ver cotizacion de poliza expedida")
     public void cuandoIngreseAVerCotizacionDePolizExpedida(){
         expedicionDePolizaSteps.clicEnVerCotizacion();
     }

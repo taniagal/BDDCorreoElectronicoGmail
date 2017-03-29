@@ -4,6 +4,7 @@ Meta:
 @lote2
 @tag equipo: 2, sprint: 5
 
+
 Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -81,14 +82,14 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                                                                                                                   | 200            |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                                                                                                                       | 51             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida                                                                                         | 52             |
-| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la preservacion de bienes y extinción del siniestro                                                                         | 52             |
-| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la remocion de escombros                                                                                                    | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la preservación de bienes y extinción del siniestro                                                                         | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la remoción de escombros                                                                                                    | 52             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos por honorarios profesionales                                                                                                     | 52             |
-| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para demostrar la ocurrencia y la cuantia del siniestro                                                                          | 52             |
-| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la reposicion de documentos                                                                                                 | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para demostrar la ocurrencia y la cuantía del siniestro                                                                          | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la reposición de documentos                                                                                                 | 52             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para bienes de propiedad de directores y empleados                                                                                           | 52             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos adicionales por concepto de horas extras, trabajo nocturno y en feriados, flete expreso, flete aéreo y gastos de viaje y estadía | 52             |
-| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la obtencion de licencias y permisos para reconstruir el inmueble asegurado                                                 | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la obtención de licencias y permisos para reconstruir el inmueble asegurado                                                 | 52             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublímite para perdida de contenido en tanques                                                                                                         | 52             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para derrame de materiales en fusion                                                                                                         | 52             |
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria                                                                               | 52             |
@@ -110,5 +111,3 @@ Then se debe mostrar el o los siguientes mensajes
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
-
-

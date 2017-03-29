@@ -96,6 +96,7 @@ public class InformacionDePolizaMrcDefinitions {
     }
 
     @When("ingrese a la opcion informacion de poliza")
+    @Then("ingrese a la opcion informacion de poliza")
     public void cuandoSeleccioneLaOpcionInformacionDePoliza() {
         informacionDePolizaMrcSteps.ingresarAOpcionInformacionDePoliza();
     }

@@ -77,14 +77,16 @@ public class ExpedicionDePolizaPage extends PageUtil {
     }
 
     public void aceptarMensajeRequisitosPendientes() {
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (mensajeRequisitosPendientes.isVisible()) {
             botonBorrar.click();
-            esperarHasta(TIEMPO_3000);
+            esperarHasta(TIEMPO_1000);
             botonExpedirPoliza.click();
-            esperarHasta(TIEMPO_3000);
+            esperarHasta(TIEMPO_2000);
             botonAceptarMensaje.click();
             waitForTextToAppear("Cotización Expedida");
         }
+        resetImplicitTimeout();
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCotizacion) {
