@@ -3,13 +3,14 @@ package page;
 import core.sura.resources.MetodosComunes;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 
 
 public class ServiciosPage extends MetodosComunes {
     @FindBy(xpath = ".//*[contains(@id,'gmenuitem') and contains(.,'Administración')]")
     private WebElement menuAdministracion;
-    @FindBy(xpath = ".//*[@id=':tabs-menu-trigger-btnEl']")
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElement tabMenu;
     @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_Utilities']/div")
     private WebElement menuItemUtilidades;
@@ -40,9 +41,8 @@ public class ServiciosPage extends MetodosComunes {
 
     public void irAServicios(WebDriver driver) {
         waitUntilVisible(tabMenu, driver);
-        tabMenu.click();
-        waitUntilVisible(menuAdministracion, driver);
-        menuAdministracion.click();
+        tabMenu.sendKeys("Admin");
+        tabMenu.sendKeys(Keys.ENTER);
         waitUntilVisible(menuItemUtilidades, driver);
         menuItemUtilidades.click();
         waitUntilVisible(botonCancelar, driver);
