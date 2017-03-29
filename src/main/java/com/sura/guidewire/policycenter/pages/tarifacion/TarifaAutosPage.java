@@ -365,12 +365,13 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarCobertura(checkBoxGrua, comboBoxGrua, dato.get("Grua"));
         seleccionarCobertura(checkBoxTallerMovil, comboBoxTallerMovil, dato.get("TM"));
         seleccionarCobertura(checkBoxCentroDeServicios, comboBoxCentroDeServicios, dato.get("CS"));
-
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (comboBoxCarroDeReemplazoPerdidaTotal.isVisible()) {
             seleccionarItem(comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
         } else {
             seleccionarCobertura(checkBoxCarroDeReemplazo, comboBoxCarroDeReemplazoPerdidaTotal, dato.get("CRPT"));
         }
+        resetImplicitTimeout();
     }
 
 
