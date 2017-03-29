@@ -111,8 +111,8 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
-        waitFor(txtPrimerNombre).waitUntilVisible();
         clickearElemento(txtPrimerNombre);
+        waitFor(txtPrimerNombre).waitUntilVisible();
         txtPrimerNombre.sendKeys(primerNombre);
         txtSegundoNombre.sendKeys(segundoNombre);
         txtPrimerApellido.sendKeys(primerApellido);
@@ -128,8 +128,8 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
         this.limpiarFormulario();
-        waitFor(txtTipoDocumento).waitUntilVisible();
         clickearElemento(txtTipoDocumento);
+        waitFor(txtTipoDocumento).waitUntilVisible();
         txtTipoDocumento.clear();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
@@ -190,8 +190,8 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
     public void buscarCuentaPorRazonSocial(String razonSocial) {
         this.limpiarFormulario();
-        waitFor(txtRazonSocial);
         clickearElemento(txtRazonSocial);
+        waitFor(txtRazonSocial);
         txtRazonSocial.sendKeys(razonSocial);
         waitFor(btnBuscar).waitUntilVisible();
         acciones.click(btnBuscar).build().perform();
@@ -206,8 +206,8 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
         this.limpiarFormulario();
-        waitFor(txtNombreComercial);
         clickearElemento(txtNombreComercial);
+        waitFor(txtNombreComercial);
         txtNombreComercial.sendKeys(nombreComercial);
         waitFor(btnBuscar).waitUntilVisible();
         acciones.click(btnBuscar).build().perform();
@@ -230,8 +230,8 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
     public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
         this.limpiarFormulario();
-        waitFor(txtRazonSocial);
         clickearElemento(txtRazonSocial);
+        waitFor(txtRazonSocial);
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         waitFor(btnBuscar).waitUntilVisible();
@@ -240,8 +240,8 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
     public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
         this.limpiarFormulario();
-        waitFor(txtNombreComercial);
         clickearElemento(txtNombreComercial);
+        waitFor(txtNombreComercial);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         waitFor(btnBuscar).waitUntilPresent();
@@ -250,8 +250,8 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
         this.limpiarFormulario();
-        waitFor(txtNombreComercial);
         clickearElemento(txtNombreComercial);
+        waitFor(txtNombreComercial);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
         waitFor(btnBuscar).waitUntilPresent();
