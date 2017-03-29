@@ -36,7 +36,12 @@ public class TarifaAutosDefinitions {
     }
 
     @When("ingrese las coberturas: $coberturas")
-    public void agregarcoberturas(ExamplesTable coberturas) {
+    public void agregarCoberturas(ExamplesTable coberturas) {
+        tarifaAutosSteps.agregarCoberturas(coberturas);
+    }
+
+    @When("ingrese las coberturas para la sustitucion: $coberturas")
+    public void agregarCoberturasSustitucion(ExamplesTable coberturas) {
         tarifaAutosSteps.agregarCoberturasSustitucion(coberturas);
     }
 
