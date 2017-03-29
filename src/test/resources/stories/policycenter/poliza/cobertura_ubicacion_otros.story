@@ -5,7 +5,7 @@ Meta:
 @tag equipo: 2, sprint: 5
 
 
-Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
+Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo), Portadores externos de datos, Gastos por arrendamiento de sistema electronico de procesamiento de datos
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
@@ -20,29 +20,15 @@ And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
 | El valor de "Sublímite para perdida de contenido en tanques" deber ser menor o igual a la sumatoria de los valores asegurables de " - Mercancías a granel - Existencias fijas - Existencias flotantes - ". |
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222211      | Asesor     |             |
-
-
-Scenario: 2 Portadores externos de datos (Coberturas del riesgo)
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar las entradas de las diferentes coberturas
+And intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                    | ENTRADAS                                                       | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Portadores externos de datos | Valor asegurado portadores externos de datos                   | 11             |
 | Coberturas del Riesgo |               |                     | Danos materiales             | Sublimite para gastos asociados a la ocurrencia de una pérdida | 5              |
-When haga clic en el boton Aceptar
+And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                      |
 | Para poder seleccionar el "Valor asegurado portadores externos de datos " debe tener asegurado "Equipo electrónico fijo |
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222211      | Asesor     |             |
-
-
-Scenario: 3 Gastos por arrendamiento de sistema electronico de procesamiento de datos (Coberturas del riesgo)
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar las entradas de las diferentes coberturas
+And intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Gastos por arrendamiento de sistema electrónico de procesamiento de datos | Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos | 11             |
 | Coberturas del Riesgo |               |                     | Danos materiales                                                          | Sublimite para gastos asociados a la ocurrencia de una pérdida                            | 5              |
@@ -50,12 +36,13 @@ And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                  |
 | Para poder seleccionar el "Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos" debe tener asegurado "Equipo electrónico fijo |
+
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
 
 
-Scenario: 4 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
+Scenario: 2 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje, Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -69,14 +56,6 @@ And intente ingresar las entradas de las diferentes coberturas
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                                                      |
 | El valor de "Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados" deber ser menor o igual al "10,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222211      | Asesor     |             |
-
-
-Scenario: 5 Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                                                                                               | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                                                                                                                   | 200            |
