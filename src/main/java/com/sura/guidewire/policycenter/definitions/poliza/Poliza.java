@@ -15,7 +15,10 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
@@ -134,6 +137,7 @@ public class Poliza {
     }
 
     @When("ingrese los motivos de cancelacion de la poliza Motivo: $motivo, Descripción: $descripcion")
+    @Then("ingrese los motivos de cancelacion de la poliza Motivo: $motivo, Descripción: $descripcion")
     public void cuandoIngreseLosMotivosDeCancelacion(String motivo, String descripcion) {
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();
         polizaSteps.ingresarMotivosCancelacion(motivo, descripcion);
@@ -305,6 +309,7 @@ public class Poliza {
     }
 
     @When("ingrese fecha superior a 61 dias")
+    @Then("ingrese fecha superior a 61 dias")
     public void cuandoIngresoFechaSuperiora61Dias() {
         polizaSteps.ingresarFechaAnteriorA61Dias();
     }
@@ -315,6 +320,7 @@ public class Poliza {
     }
 
     @When("ingrese a la opcion de cancelar poliza")
+    @Then("ingrese a la opcion de cancelar poliza")
     public void cuandoIngreseALaOpcionDeCancelarPoliza() {
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();
     }
