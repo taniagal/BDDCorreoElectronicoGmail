@@ -15,6 +15,7 @@ public class PagoPolizaDefinitions {
 
 
     @When("ingrese a la opcion de pago")
+    @Then("ingrese a la opcion de pago")
     public void cuandoIngreseALAOpcionDePago() {
         pagoPolizaSteps.ingresar_a_la_opcion_de_pago();
     }

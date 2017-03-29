@@ -68,6 +68,13 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void agregarCoberturasSustitucion(ExamplesTable datosCoberturas) {
+        tarifaAutosPage.seleccionarCoberturasBasica(datosCoberturas);
+        tarifaAutosPage.seleccionarCoberturaHurtoTotal(datosCoberturas);
+        tarifaAutosPage.cotizar();
+    }
+
+    @Step
     public void seleciconarCoberturas(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasBasica(coberturas);
         tarifaAutosPage.seleccionarCoberturas1(coberturas);
