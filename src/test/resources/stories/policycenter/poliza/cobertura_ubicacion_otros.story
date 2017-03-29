@@ -5,7 +5,7 @@ Meta:
 @tag equipo: 2, sprint: 5
 
 
-Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo), Portadores externos de datos (Coberturas del riesgo), Gastos por arrendamiento de sistema electronico de procesamiento de datos (Coberturas del riesgo)
+Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo), Portadores externos de datos, Gastos por arrendamiento de sistema electronico de procesamiento de datos
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
@@ -24,7 +24,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                    | ENTRADAS                                                       | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Portadores externos de datos | Valor asegurado portadores externos de datos                   | 11             |
 | Coberturas del Riesgo |               |                     | Danos materiales             | Sublimite para gastos asociados a la ocurrencia de una pérdida | 5              |
-When haga clic en el boton Aceptar
+And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                      |
 | Para poder seleccionar el "Valor asegurado portadores externos de datos " debe tener asegurado "Equipo electrónico fijo |
