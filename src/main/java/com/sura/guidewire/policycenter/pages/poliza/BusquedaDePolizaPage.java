@@ -70,6 +70,7 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void buscarPolizaPorNumeroDePoliza(String buscarNumeroPoliza) {
         this.limpiarCampos();
+        clickearElemento(txtNumeroPoliza);
         waitFor(txtNumeroPoliza).waitUntilPresent();
         txtNumeroPoliza.sendKeys(buscarNumeroPoliza);
         this.clicEnBotonBuscar();
@@ -108,22 +109,21 @@ public class BusquedaDePolizaPage extends PageUtil {
     }
 
     public void limpiarCampos() {
-        waitFor(botonRestablecer).waitUntilPresent();
         clickearElemento(botonRestablecer);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
         this.limpiarCampos();
-        waitFor(txtNumeroCuenta).waitUntilPresent();
         clickearElemento(txtNumeroCuenta);
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         this.clicEnBotonBuscar();
     }
 
     public void buscarPolizaPorNumeroDeCuentaSeleccionar(String numeroCuenta) {
         this.limpiarCampos();
-        waitFor(txtNumeroCuenta).waitUntilPresent();
         clickearElemento(txtNumeroCuenta);
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         this.clicEnBotonBuscar();
         WebElementFacade linkNumeroPoliza = getElemento(".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV:0:PolicyNumber']");
@@ -136,7 +136,6 @@ public class BusquedaDePolizaPage extends PageUtil {
     }
 
     public void clicEnBotonBuscar(){
-        waitFor(btnBuscar).waitUntilPresent().waitUntilClickable();
         clickearElemento(btnBuscar);
     }
 
@@ -161,24 +160,24 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void buscarPolizaPorAgente(String agente) {
         this.limpiarCampos();
+        clickearElemento(txtAgente);
         waitFor(txtAgente).waitUntilPresent();
-        clickearElemento(txtNumeroCuenta);
         txtAgente.sendKeys(agente);
         this.clicEnBotonBuscar();
     }
 
     public void buscarPolizaPorCodigoAgente(String codigoAgente) {
         this.limpiarCampos();
+        clickearElemento(txtCodigoAgente);
         waitFor(txtCodigoAgente).waitUntilPresent();
-        clickearElemento(txtNumeroCuenta);
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
     }
 
     public void buscarPolizaPorNumeroCuentaYProducto(String numeroCuenta, String producto) {
         this.limpiarCampos();
-        waitFor(txtNumeroCuenta).waitUntilPresent();
         clickearElemento(txtNumeroCuenta);
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         this.ingresarDatoEnCampoProducto(producto);
         this.clicEnBotonBuscar();
@@ -186,8 +185,8 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void buscarPorNumerocuentaYAgente(String numeroCuenta, String agente) {
         this.limpiarCampos();
-        waitFor(txtNumeroCuenta).waitUntilPresent();
         clickearElemento(txtNumeroCuenta);
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtAgente.sendKeys(agente);
         this.clicEnBotonBuscar();
@@ -195,8 +194,8 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void buscarPolizaPorNumeroCuentaYCodigoAgente(String numeroCuenta, String codigoAgente) {
         this.limpiarCampos();
-        waitFor(txtNumeroCuenta).waitUntilPresent();
         clickearElemento(txtNumeroCuenta);
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
@@ -204,8 +203,8 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void buscarPolizaPorNumeroCuentaYDosOpcionales(String numeroCuenta, String producto, String codigoAgente) {
         this.limpiarCampos();
-        waitFor(txtNumeroCuenta).waitUntilPresent();
         clickearElemento(txtNumeroCuenta);
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         this.ingresarDatoEnCampoProducto(producto);
         txtCodigoAgente.sendKeys(codigoAgente);
