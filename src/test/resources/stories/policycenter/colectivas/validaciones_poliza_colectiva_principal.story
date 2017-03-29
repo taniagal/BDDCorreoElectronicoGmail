@@ -24,6 +24,7 @@ Examples:
 | numSubscripcion | rolUsuario | estadouno | palabraabuscar                                             |
 | 33344336        | Asesor     | Visible   | Condiciones aplicables a la cobertura de suelos y terrenos |
 
+
 Scenario: 2 Validacion de campos en la opcion agregar cobertura global de poliza principal
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When seleccione la opcion coberturas globales
@@ -62,6 +63,7 @@ Examples:
 | numSubscripcion | rolUsuario | estadouno  | estadodos  |
 | 33344336        | Asesor     | Visible    | No visible |
 
+
 Scenario: 3 Validacion de campos en la opcion cobertura global de poliza principal
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When ingrese las diferentes coberturas globales
@@ -75,6 +77,7 @@ Then en coberturas globales deben estar en estado <estadouno> las siguientes opc
 Examples:
 | numSubscripcion | rolUsuario | estadouno |
 | 33344336        | Asesor     | Visible   |
+
 
 Scenario: 4 Validacion de campos y opciones en poliza principal expedida
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
@@ -112,6 +115,7 @@ Then ningun campo puede ser editable en pago
 Examples:
 | numSubscripcion | rolUsuario | estadouno | estadodos  |
 | 33344336        | Asesor     | Visible   | No visible |
+
 
 Scenario: 5 Validacion de ubicaciones en poliza riesgo
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
