@@ -318,7 +318,10 @@ public class TarifaTasaUnicaPage extends PageUtil {
         Map<String, String> valoresPrimaRiesgo = primaRiesgo.getRow(0);
         WebElementFacade campoPrimaRiesgo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:5-body']/*/table/tbody/tr[1]/td[2]");
         WebElementFacade campoIvaPrimaRiesgo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:5-body']/*/table/tbody/tr[2]/td[2]");
-        MatcherAssert.assertThat("El valor de la prima no es correcto ", campoPrimaRiesgo.getText(), Matchers.containsString(valoresPrimaRiesgo.get("primaT")));
-        MatcherAssert.assertThat("El valor del iva no es correcto ", campoIvaPrimaRiesgo.getText(), Matchers.containsString(valoresPrimaRiesgo.get("iva")));
+        String valorPrima = campoPrimaRiesgo.getText().substring(CONSTANTE_1, campoPrimaRiesgo.getText().length() - CONSTANTE_6);
+        String valorIva = campoIvaPrimaRiesgo.getText().substring(CONSTANTE_1, campoIvaPrimaRiesgo.getText().length() - CONSTANTE_6);
+        MatcherAssert.assertThat("El valor de la prima no es correcto, esperado: " + valoresPrimaRiesgo.get("primaT") + " pero fue: " + valorPrima, valorPrima.equals(valoresPrimaRiesgo.get("primaT")));
+        MatcherAssert.assertThat("El valor del iva no es correcto, esperado: " + valoresPrimaRiesgo.get("iva") + " pero fue: " + valorIva, valorIva.equals(valoresPrimaRiesgo.get("iva")));
+
     }
 }

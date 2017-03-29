@@ -105,8 +105,9 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarTarifacion(String prima) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelPrimaTotal);
+        String primaTotal = labelPrimaTotal.getText().substring(CONSTANTE_1, labelPrimaTotal.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " +
-                labelPrimaTotal.getText(), labelPrimaTotal.containsText(prima));
+                primaTotal, primaTotal.equals(prima));
     }
 
     public void irAArticulo() {

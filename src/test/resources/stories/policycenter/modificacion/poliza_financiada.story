@@ -23,7 +23,7 @@ And cotice una poliza
 Then se debe poder visualizar el valor de la cuota y el numero de cuotas a financiar
 | informacionFinanciacion |
 | 11                      |
-| $101.620,00 (COP)       |
+| $101.620 (COP)          |
 
 Examples:
 | numeroCuotas |
