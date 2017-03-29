@@ -16,7 +16,7 @@ When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
 |random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
-And ingrese las coberturas:
+And ingrese las coberturas para la sustitucion:
 |limite|deducible| PTH | PPH       | GTH | abogado | AS |
 |640.  |0        | 0   | <ninguno> | 40. |         |    |
 And expido la poliza y voy al archivo de poliza
