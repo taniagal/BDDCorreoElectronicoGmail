@@ -184,17 +184,17 @@ public class BusquedaDeRiesgosPage extends PageUtil {
     }
 
     public void clicEnElBotonRestablecer() {
-        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (botonRestablecer.isVisible()) {
             clickearElemento(botonRestablecer);
             setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
             if (campoPlaca.isVisible()) {
                 resetImplicitTimeout();
-                waitFor(ExpectedConditions.attributeContains(campoPlaca, "value", ""));
+                waitFor(ExpectedConditions.textToBePresentInElementValue(campoPlaca, ""));
             } else {
                 if (campoDireccion.isVisible()) {
                     resetImplicitTimeout();
-                    waitFor(ExpectedConditions.attributeContains(campoDireccion, "value", ""));
+                    waitFor(ExpectedConditions.textToBePresentInElementValue(campoDireccion, ""));
                 }
             }
         }

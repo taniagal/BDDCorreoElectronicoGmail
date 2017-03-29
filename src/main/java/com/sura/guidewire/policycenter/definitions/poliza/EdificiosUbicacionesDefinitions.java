@@ -187,6 +187,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("haga clic en el boton Aceptar")
+    @Then("haga clic en el boton Aceptar")
     public void cuandoHagaClicEnElBotonAceptar() {
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
