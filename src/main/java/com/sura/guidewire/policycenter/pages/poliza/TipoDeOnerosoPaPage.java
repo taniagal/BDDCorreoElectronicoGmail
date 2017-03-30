@@ -35,7 +35,7 @@ public class TipoDeOnerosoPaPage extends PageUtil {
     public void agregarInteresAdicional() {
         linkInteresAdicional.waitUntilPresent().click();
         botonAgregar.waitUntilPresent().click();
-        clickearElemento(menuIntemOtrosContactos);
+        actions.moveToElement(menuIntemOtrosContactos).release(menuIntemOtrosContactos).build().perform();
         clickearElemento(menuItemContacto1);
     }
     public void verificarMarca(){

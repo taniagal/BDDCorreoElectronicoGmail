@@ -1,7 +1,5 @@
-Direcciones De Contacto Vinculadas
-
-Meta: @lote3
-
+Meta:
+@lote3
 @issue #CDSEG-732, CDSEG-876
 @tag equipo: 1, sprint: 3
 

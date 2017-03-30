@@ -6,6 +6,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -52,10 +53,15 @@ public class PolizaFinanciadaPage extends PageUtil {
         return tblInformacionDePoliza.getText();
     }
 
-    public String validarNumeroCuotasAFinanciar() {
+    public Map<String, String> validarNumeroCuotasAFinanciar() {
+        HashMap<String, String> numeroDeCuotas = new HashMap<>();
         conboBoxNumeroCuotas.waitUntilPresent();
         conboBoxNumeroCuotas.click();
-        return itemNumeroCuotas.getText();
+        String cuota11 = findBy(".//li[contains(., '11')]").getText();
+        String cuota12 = findBy(".//li[contains(., '12')]").getText();
+        numeroDeCuotas.put("numeroCuota11", cuota11);
+        numeroDeCuotas.put("numeroCuota12", cuota12);
+        return numeroDeCuotas;
     }
 
     public void financiarPoliza(ExamplesTable datos) {

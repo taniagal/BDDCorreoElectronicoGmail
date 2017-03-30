@@ -1,7 +1,7 @@
 Busqueda Contacto
 
 Meta:
-@lote2
+@lote1
 @tag equipo: 5, sprint: 1
 
 Narrative:
