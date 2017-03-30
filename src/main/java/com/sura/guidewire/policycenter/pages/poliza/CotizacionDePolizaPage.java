@@ -221,8 +221,9 @@ public class CotizacionDePolizaPage extends PageUtil {
     public void mostrarValorYCuotas(String valorCuota, String numeroCuotas) {
         withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(labelValorCuota).shouldBeVisible();
         boolean validacion = labelValorCuota.isCurrentlyEnabled() && labelNumeroCuotas.isCurrentlyEnabled();
+        String cuota = campoValorCuota.getText().substring(CONSTANTE_1, campoValorCuota.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(true)));
-        MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+valorCuota+"' but was: "+campoValorCuota.getText(),campoValorCuota.getText().contains(valorCuota));
+        MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+ valorCuota +"' but was: "+ cuota, cuota.equals(valorCuota));
         MatcherAssert.assertThat(campoNumeroCuotas.getText(), Is.is(Matchers.equalTo(numeroCuotas)));
     }
 
