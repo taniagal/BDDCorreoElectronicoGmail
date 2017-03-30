@@ -14,7 +14,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -97,13 +96,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private static final String SUBMITIONXPATH = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final String BOTON_ACCIONES_1 = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
-    private static final int CONSTANTE_7 = 7;
     private static final int CONSTANTE_6 = 6;
-    private static final int CONSTANTE_5 = 5;
     private static final int CONSTANTE_4 = 4;
-    private static final int CONSTANTE_3 = 3;
-    private static final int CONSTANTE_2 = 2;
     private int band = 0;
 
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
@@ -268,7 +262,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     public void validarEstadoDiferenteExpedida(String estado) {
         String expedida = "Expedida";
         String vacio = "";
-
+        tblCotizaciones.waitUntilPresent();
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
