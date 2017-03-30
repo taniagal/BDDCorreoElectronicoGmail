@@ -8,7 +8,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class PolizaFinanciadaSteps {
     @Page
@@ -47,7 +47,7 @@ public class PolizaFinanciadaSteps {
     public void validarCuotasAFinanciar(ExamplesTable numeroCuotas) {
         String numeroCuotasAFinanciar1 = numeroCuotas.getRow(0).get("opcionesCuotas");
         String numeroCuotasAFinanciar2 = numeroCuotas.getRow(1).get("opcionesCuotas");
-        HashMap<String, String> cuotasObtenidas = polizaFinanciadaPage.validarNumeroCuotasAFinanciar();
+        Map<String, String> cuotasObtenidas = polizaFinanciadaPage.validarNumeroCuotasAFinanciar();
         MatcherAssert.assertThat("No existe el numero de cuotas", cuotasObtenidas.get("numeroCuota11"), Matchers.containsString(numeroCuotasAFinanciar1));
         MatcherAssert.assertThat("No existe el numero de cuotas", cuotasObtenidas.get("numeroCuota12"), Matchers.containsString(numeroCuotasAFinanciar2));
     }
