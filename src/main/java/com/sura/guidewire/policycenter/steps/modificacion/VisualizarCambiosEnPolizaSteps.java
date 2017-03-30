@@ -19,10 +19,6 @@ public class VisualizarCambiosEnPolizaSteps extends ScenarioSteps {
         visualizarCambiosEnPolizaPage.cambiarCobertura(cobertura);
     }
 
-    @Step
-    public void comparacionCoberturas(String coberturaExistente, String coberturaNueva) {
-        visualizarCambiosEnPolizaPage.comparacionCoberturas(coberturaExistente, coberturaNueva);
-    }
 
     @Step
     public void opcionAsegurados() {
