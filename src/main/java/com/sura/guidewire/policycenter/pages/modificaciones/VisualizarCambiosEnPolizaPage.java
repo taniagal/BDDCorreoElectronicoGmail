@@ -29,7 +29,7 @@ public class VisualizarCambiosEnPolizaPage extends PageUtil {
     @FindBy(xpath = ".//div[2]/div/table/tbody/tr[3]/td/div/span")
     private WebElementFacade botonCoberturas;
     @FindBy(xpath = ".//div[2]/div/table/tbody/tr[4]/td/div")
-    private WebElementFacade botonDaños;
+    private WebElementFacade botonDanios;
     @FindBy(xpath = ".//tr[6]/td[3]/div")
     private WebElementFacade labelDedudiblesNuevo;
     @FindBy(xpath = ".//tr[6]/td[2]/div")
@@ -52,6 +52,7 @@ public class VisualizarCambiosEnPolizaPage extends PageUtil {
                 intentos = CONSTANTE_3;
             } else {
                 clickearElemento(botonRevisionPoliza);
+                intentos++;
             }
         }
         resetImplicitTimeout();
@@ -61,18 +62,6 @@ public class VisualizarCambiosEnPolizaPage extends PageUtil {
     public void cambiarCobertura(String cobertura) {
         esperarYClickearBoton(botonCoberturasAutoPersonal);
         ingresarDato(txtLimite, cobertura);
-    }
-
-    public void comparacionCoberturas(String coberturaExistente, String coberturaNueva) {
-        ingresarDato(txtLimite, coberturaNueva);
-        esperarYClickearBoton(botonRevisionPoliza);
-        esperarYClickearBoton(botonDesplegarComparacionCoberturas);
-        esperarYClickearBoton(botonDesplegarComparacionCoberturas);
-        esperarYClickearBoton(botonCoberturas);
-        esperarYClickearBoton(botonDaños);
-        esperarYClickearBoton(botonDaños);
-        MatcherAssert.assertThat("Error no aparece la cobertura", labelDedudiblesExistente.getValue().equals(("coberturaNueva")));
-        MatcherAssert.assertThat("Error no aparece la cobertura", labelDedudiblesNuevo.getValue().equals(("coberturaExistente")));
     }
 
     public void opcionAsegurados() {

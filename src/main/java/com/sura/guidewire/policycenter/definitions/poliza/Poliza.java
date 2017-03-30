@@ -10,7 +10,6 @@ import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -20,7 +19,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -45,9 +43,6 @@ public class Poliza {
     NuevaCotizacionSteps nuevaCotizacionSteps;
 
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
-
     public Boolean esperoVerNumeroDeSubscripcionEnEnvio(String numeroSubscripcion) {
         return polizaSteps.esperoVerNumeroDeSubscripcionEnEnvio(numeroSubscripcion);
     }
@@ -59,13 +54,11 @@ public class Poliza {
         }
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
-        LOGGER.info("Poliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
     }
 
     @Then("espero ver mensajes de advertencia indicandome que sobrepase los limites de valores para el valor del articulo")
     public void esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo() {
         entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo();
-        LOGGER.info("Poliza.esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo");
     }
 
     public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo() {
@@ -82,19 +75,16 @@ public class Poliza {
 
     @Given("que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>")
     public void dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar(@Named("numSubscripcion") String numSubscripcion) {
-        LOGGER.info("Poliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
     }
 
     @Given("copie la poliza")
     public void entoncesCopieLaPoliza() {
-        LOGGER.info("Poliza.cuandoCopie la poliza");
         nuevaCotizacionSteps.copiarEnvio();
     }
 
     @When("copie la poliza")
     public void cuandoCopieLaPoliza() {
-        LOGGER.info("Poliza.cuandoCopie la poliza");
         nuevaCotizacionSteps.copiarEnvio();
     }
 
