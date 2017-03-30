@@ -14,8 +14,8 @@ Then se debe mostrar la informacion del detalle de cotizacion por riesgo, donde 
 |placa  |modelo |codigoFasecolda |marca |linea |
 |BLE991 |2016   |52525252        |AUDI  |TT 8S 2.0 TFSI CO - TP 2000CC T |
 And en el detalle por coberturas mostrar:
-| cobertura                          | terminoCobertura | prima       | subtotal            | subtotalPrimas      |
-| Cobertura de Responsabilidad Civil | 32.000.000       | $254.396,00 | $1.435.051,00 (COP) | $1.435.051,00 (COP) |
+| cobertura                          | terminoCobertura | prima          | subtotal         | subtotalPrimas   |
+| Cobertura de Responsabilidad Civil | 32.000.000       | $254.396 (COP) | $1.435.051 (COP) | $1.435.051 (COP) |
 And se debe ver la direccion del tomador de la poliza la cual se indico como principal
 | direccion                            |
 | CR 65 # 48 - 162, MEDELLIN, Colombia |
