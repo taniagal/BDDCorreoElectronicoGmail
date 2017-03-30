@@ -36,16 +36,11 @@ public class NuevaPolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
     WebElementFacade grdNumeroCuenta;
 
-    Actions acciones = new Actions(getDriver());
 
     public NuevaPolizaPage(WebDriver driver) {
         super(driver);
     }
 
-    public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        esperarHasta(TIEMPO_3000);
-        acciones.click(elementoDeLaLista).build().perform();
-    }
 
     public void validarListaDeOrganizaciones(ExamplesTable listaOrganizaciones) {
         WebElementFacade elemetoDeLaLista;
@@ -106,9 +101,8 @@ public class NuevaPolizaPage extends PageUtil {
 
     public void buscarCuenta(String numeroCuenta) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilPresent();
-        esperarHasta(TIEMPO_3000);
-        botonBuscar.click();
-        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonCuentas).click();
+        clickearElemento(botonBuscar);
+        clickearElemento(botonCuentas);
         txtNumeroCuenta.waitUntilPresent().sendKeys(numeroCuenta);
         WebElementFacade botonBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         botonBuscarCuenta.click();

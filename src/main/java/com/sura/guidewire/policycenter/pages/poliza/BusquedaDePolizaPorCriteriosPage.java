@@ -47,9 +47,7 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
 
     public void buscarPorResultados(ExamplesTable aVerificar) {
         Map<String, String> datosVerificar = aVerificar.getRow(0);
-
-        esperarHasta(TIEMPO_7);
-
+        clickearElemento(tablaResultados);
         Set<String> llaves = datosVerificar.keySet();
         String contenidoTabla = tablaResultados.getText();
 
