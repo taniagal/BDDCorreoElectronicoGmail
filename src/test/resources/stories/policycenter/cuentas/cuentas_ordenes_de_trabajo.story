@@ -21,7 +21,7 @@ Then debe mostrarme el listado de transacciones con su respectiva informacion: n
 
 Examples:
 | numCuenta  | filtroEstado | poliza        | producto | transaccion | tipo       | estado   | participante |
-| C001888888 | Completo     | TEST_22222222 | Autos    | 22222222    | Cotización | Expedida | System User  |
+| C001888888 | Completo     | TEST_22222222 | Autos    | 22222222    | Cotización | Expedida | User         |
 
 
 Scenario: Ver informacion de transacciones sin registros
