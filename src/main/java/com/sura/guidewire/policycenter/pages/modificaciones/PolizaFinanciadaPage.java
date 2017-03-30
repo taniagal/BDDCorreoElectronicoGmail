@@ -53,14 +53,12 @@ public class PolizaFinanciadaPage extends PageUtil {
         return tblInformacionDePoliza.getText();
     }
 
-    public HashMap<String, String> validarNumeroCuotasAFinanciar() {
+    public Map<String, String> validarNumeroCuotasAFinanciar() {
         HashMap<String, String> numeroDeCuotas = new HashMap<>();
         conboBoxNumeroCuotas.waitUntilPresent();
         conboBoxNumeroCuotas.click();
         String cuota11 = findBy(".//li[contains(., '11')]").getText();
         String cuota12 = findBy(".//li[contains(., '12')]").getText();
-        System.out.println("cuota 11 "+ cuota11);
-        System.out.println("cuota 12 "+ cuota12);
         numeroDeCuotas.put("numeroCuota11", cuota11);
         numeroDeCuotas.put("numeroCuota12", cuota12);
         return numeroDeCuotas;
