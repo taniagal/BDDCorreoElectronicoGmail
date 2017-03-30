@@ -8,6 +8,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.HashMap;
+
 public class PolizaFinanciadaSteps {
     @Page
     PolizaFinanciadaPage polizaFinanciadaPage;
@@ -43,8 +45,11 @@ public class PolizaFinanciadaSteps {
 
     @Step
     public void validarCuotasAFinanciar(ExamplesTable numeroCuotas) {
-        String numeroCuotasAFinanciar = numeroCuotas.getRow(0).get("numeroCuotas");
-        MatcherAssert.assertThat("No existe el numero de cuotas", polizaFinanciadaPage.validarNumeroCuotasAFinanciar(), Matchers.containsString(numeroCuotasAFinanciar));
+        String numeroCuotasAFinanciar1 = numeroCuotas.getRow(0).get("opcionesCuotas");
+        String numeroCuotasAFinanciar2 = numeroCuotas.getRow(1).get("opcionesCuotas");
+        HashMap<String, String> cuotasObtenidas = polizaFinanciadaPage.validarNumeroCuotasAFinanciar();
+        MatcherAssert.assertThat("No existe el numero de cuotas", cuotasObtenidas.get("numeroCuota11"), Matchers.containsString(numeroCuotasAFinanciar1));
+        MatcherAssert.assertThat("No existe el numero de cuotas", cuotasObtenidas.get("numeroCuota12"), Matchers.containsString(numeroCuotasAFinanciar2));
     }
 
     @Step
