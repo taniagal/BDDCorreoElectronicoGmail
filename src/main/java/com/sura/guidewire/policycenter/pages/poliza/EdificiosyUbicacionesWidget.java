@@ -490,7 +490,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void cliclearBtnCotizar() {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
         try {
-            withTimeoutOf(TIEMPO_7, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent().click();
+            withTimeoutOf(TIEMPO_7, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent();
+            clickearElemento(btnCotizar);
         } catch (TimeoutException e) {
             LOGGER.info("ElementShouldBePresentException " + e);
             setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
@@ -505,11 +506,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public boolean descarteCambios() {
-
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
+            resetImplicitTimeout();
             return true;
         }
+        resetImplicitTimeout();
         return false;
     }
 
