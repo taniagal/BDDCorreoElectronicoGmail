@@ -246,7 +246,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void removerRiesgos() {
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (checkBoxRiesgo.isVisible()) {
+        if (checkBoxRiesgo.isPresent()) {
             checkBoxRiesgo.click();
             waitFor(TIEMPO_1).second();
             botonRemoverRiesgo.click();
