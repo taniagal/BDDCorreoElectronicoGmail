@@ -41,6 +41,7 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
         campoNumeroDeSubprocesos.sendKeys(NUMERO_DE_SUBPROCESOS);
         botonEjecutarVerificacionesDeCoherencia.click();
         wait.until(ExpectedConditions.visibilityOf(iconoDescargar));
+        waitUntil(TIEMPO_1500);
         iconoDescargar.click();
         MetodosComunes.waitUntil(TIEMPO_420);
     }
