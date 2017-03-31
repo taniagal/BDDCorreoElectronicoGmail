@@ -8,6 +8,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -35,6 +36,8 @@ public class NuevaPolizaPage extends PageUtil {
     WebElementFacade txtNumeroCuenta;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
     WebElementFacade grdNumeroCuenta;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    WebElementFacade botonBusquedaRapida;
 
 
     public NuevaPolizaPage(WebDriver driver) {
@@ -100,12 +103,9 @@ public class NuevaPolizaPage extends PageUtil {
     }
 
     public void buscarCuenta(String numeroCuenta) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilPresent();
-        clickearElemento(botonBuscar);
-        clickearElemento(botonCuentas);
-        txtNumeroCuenta.waitUntilPresent().sendKeys(numeroCuenta);
-        WebElementFacade botonBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
-        botonBuscarCuenta.click();
-        grdNumeroCuenta.waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBusquedaRapida).shouldBePresent();
+        botonBusquedaRapida.sendKeys("Account " + numeroCuenta);
+        botonBusquedaRapida.sendKeys(Keys.ENTER);
+        waitForTextToAppear(numeroCuenta);
     }
 }
