@@ -253,7 +253,8 @@ public class TarifaAutosPage extends PageUtil {
     }
 
     public void esperarPorPantallaCoberturas() {
-        comboBoxLimite.waitUntilVisible().waitUntilClickable();
+        comboBoxLimite.waitUntilVisible();
+        clickearElemento(comboBoxLimite);
         setImplicitTimeout(0, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
             clickearElemento(botonBorrar);
