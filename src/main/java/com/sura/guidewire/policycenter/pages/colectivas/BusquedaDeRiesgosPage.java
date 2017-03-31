@@ -187,7 +187,6 @@ public class BusquedaDeRiesgosPage extends PageUtil {
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (botonRestablecer.isVisible()) {
             clickearElemento(botonRestablecer);
-            setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
             if (campoPlaca.isVisible()) {
                 resetImplicitTimeout();
                 waitFor(ExpectedConditions.textToBePresentInElementValue(campoPlaca, ""));
