@@ -136,6 +136,7 @@ public class CesionDePrimaPage extends PageUtil {
         int maxIntentos = CUATRO;
         boolean ejecuto = false;
         while (ejecuciones < maxIntentos && !ejecuto) {
+            setImplicitTimeout(TIEMPO_7, TimeUnit.SECONDS);
             if (tabla.isVisible()) {
                 ejecuto = true;
             } else {
@@ -147,7 +148,9 @@ public class CesionDePrimaPage extends PageUtil {
                 }
                 ejecuciones = ejecuciones + 1;
             }
+
         }
+        resetImplicitTimeout();
         MatcherAssert.assertThat("Error: Se esperaba la tabla de contratos", tabla.isVisible());
     }
 
