@@ -230,7 +230,7 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void seleccionarReaseguroEspecialNo() {
         WebElementFacade botonReaseguroEspecialNo = $(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']");
-        botonReaseguroEspecialNo.waitUntilPresent();
+        botonReaseguroEspecialNo.waitUntilVisible();
         clickearElemento(botonReaseguroEspecialNo);
     }
 
