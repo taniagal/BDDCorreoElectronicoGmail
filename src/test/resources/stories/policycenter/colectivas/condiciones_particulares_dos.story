@@ -17,9 +17,9 @@ And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | cero_kilometros |medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico | Si              |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
-And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |AS                 |
-| 640.   | 0         |Asistencia Clásica |
+And ingrese las coberturas necesarias:
+| limite | deducible |AS                 | PTD | PPD  | GTD |
+| 640.   | 0         |Asistencia Clásica | 0   | 730. | 40. |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
@@ -41,9 +41,9 @@ And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico| Si              |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
-And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |AS                 |
-| 640.   | 0         |Asistencia Clásica |
+And ingrese las coberturas necesarias:
+| limite | deducible |AS                 | PTD | PPD  | GTD |
+| 640.   | 0         |Asistencia Clásica | 0   | 730. | 40. |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
@@ -65,9 +65,9 @@ And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico| Si              |Televentas|
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
-And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |AS                 |
-| 640.   | 0         |Asistencia Clásica |
+And ingrese las coberturas necesarias:
+| limite | deducible |AS                 | PTD | PPD  | GTD |
+| 640.   | 0         |Asistencia Clásica | 0   | 730. | 40. |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante

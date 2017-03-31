@@ -152,6 +152,7 @@ public class BusquedaDePolizaPage extends PageUtil {
     }
 
     public void ingresarDatoEnCampoProducto(String producto){
+        clickearElemento(txtProducto);
         waitFor(txtProducto).waitUntilPresent();
         txtProducto.clear();
         txtProducto.sendKeys(producto);

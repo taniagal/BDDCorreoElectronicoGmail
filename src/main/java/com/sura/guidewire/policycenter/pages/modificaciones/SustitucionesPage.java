@@ -78,7 +78,7 @@ public class SustitucionesPage extends PageUtil {
         tablaAsegurado.waitUntilPresent();
         Map<String, String> vehiculo = infoVehiculo.getRow(0);
         MatcherAssert.assertThat("Error, el valor del plan es Incorrecto", comboBoxPlan.getValue().equals(vehiculo.get("plan")));
-        MatcherAssert.assertThat("Error, el valor de la ciudad es Incorrecto", comboBoxCiudad.getValue().equals(vehiculo.get("ciudad_circulacion")));
+        MatcherAssert.assertThat("Error, el valor de la ciudad es Incorrecto", comboBoxCiudad.getValue().contains(vehiculo.get("ciudad_circulacion")));
         MatcherAssert.assertThat("Error, el valor de la zona es Incorrecto", labelTextoZona.getText().equals(vehiculo.get("zona")));
         MatcherAssert.assertThat("Error, el valor del Tipo de servicio es Incorrecto", comboBoxTipoServicio.getValue().equals(vehiculo.get("vehiculo_servicio")));
         MatcherAssert.assertThat("Error, No se encuentra el Asegurado", tablaAsegurado.isPresent());

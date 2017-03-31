@@ -12,8 +12,8 @@ Given estoy cotizando una poliza:
 | C1060447895 | Sura         | Autos    | Canal Tradicional | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         |
-| random | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         |medioVenta|
+| random | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular |Televentas|
 And ingrese los valores de los modificadores de la tarifa:
 | descientoD | bonificacionC | descuento | recargo | suavizacion | bonificacionT |
 | GPS Sura   | 0             | 10        | 5       | 3           | 0             |
@@ -30,8 +30,8 @@ And conservar Informacion del vehículo sustituido:
 | placa  | modelo | codigo_fasecolda | chasis | motor | valor_asegurado | descuento | recargo |
 | random | 2016   | 00601182         | null   | null  | 165900000       | null      | null    |
 And conservar las coberturas del vehículo sustituido:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+|limite       |deducible|abogado|PLlaves|
+|640.000.000  |0        |Si     |Si     |
 
 Examples:
 | tipo_documento       | documento  |
