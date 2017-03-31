@@ -22,11 +22,13 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
     private WebElement botonEjecutarVerificacionesDeCoherencia;
     @FindBy(xpath = ".//*[@id='ConsistencyChecks:ConsistencyChecksScreen:ConsistencyChecksRunsLV:0:LVDownload']")
     private WebElement iconoDescargar;
+    @FindBy(xpath = ".//*[@id='ConsistencyChecks:ConsistencyChecksScreen:batchProgress']")
+    private WebElement barraDeProgreso;
 
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_1500 = 1500;
-    private static final int TIEMPO_420 = 420000;
-    private static final String NUMERO_DE_SUBPROCESOS = "1000000";
+    private static final int TIEMPO_DESCARGA = 300000;
+    private static final String NUMERO_DE_SUBPROCESOS = "100000000";
 
     public void descargarReporte(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
@@ -40,9 +42,12 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
         campoNumeroDeSubprocesos.clear();
         campoNumeroDeSubprocesos.sendKeys(NUMERO_DE_SUBPROCESOS);
         botonEjecutarVerificacionesDeCoherencia.click();
+        wait.until(ExpectedConditions.visibilityOf(barraDeProgreso));
+        wait.until(ExpectedConditions.visibilityOf(botonEjecutarVerificacionesDeCoherencia));
+        waitUntil(TIEMPO_1500);
         wait.until(ExpectedConditions.visibilityOf(iconoDescargar));
         waitUntil(TIEMPO_1500);
         iconoDescargar.click();
-        MetodosComunes.waitUntil(TIEMPO_420);
+        MetodosComunes.waitUntil(TIEMPO_DESCARGA);
     }
 }
