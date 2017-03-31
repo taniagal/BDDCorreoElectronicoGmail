@@ -312,6 +312,12 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(labelGatosTransporte, dato.get("GTH"));
     }
 
+    public void seleccionarCoberturaDanoTotal(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        seleccionarItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+        seleccionarItem(comboBoxGastosDeTransporteCarro, dato.get("GTD"));
+    }
 
     public void seleccionarCoberturasHurto1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);

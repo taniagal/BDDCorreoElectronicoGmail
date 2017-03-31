@@ -50,6 +50,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarCoberturasRC(coberturas);
     }
 
+    @When("ingrese las coberturas necesarias: $coberturas")
+    public void agregarCoberturasNecesarias(ExamplesTable coberturas) {
+        tarifaAutosSteps.agregarCoberturasNecesarias(coberturas);
+    }
+
     @When("ingrese registros del vehiculo con interes adicional: $datosVehiculoOneroso")
     public void agregarVehiculoConInteres(ExamplesTable datosVehiculoOneroso) {
         tarifaAutosSteps.agregarVehiculoOneroso(datosVehiculoOneroso);
