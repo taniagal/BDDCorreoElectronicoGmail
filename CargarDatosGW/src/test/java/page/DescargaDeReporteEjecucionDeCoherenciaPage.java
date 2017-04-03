@@ -22,7 +22,7 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
     private WebElement botonEjecutarVerificacionesDeCoherencia;
     @FindBy(xpath = ".//*[@id='ConsistencyChecks:ConsistencyChecksScreen:ConsistencyChecksRunsLV:0:LVDownload']")
     private WebElement iconoDescargar;
-    @FindBy(xpath = ".//*[@id='ConsistencyChecks:ConsistencyChecksScreen:batchProgress']")
+    @FindBy(xpath = ".//*[@id='ConsistencyChecks:ConsistencyChecksScreen:batchProgress']/div")
     private WebElement barraDeProgreso;
 
     private static final int TIEMPO_1000 = 1000;
@@ -43,6 +43,7 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
         campoNumeroDeSubprocesos.sendKeys(NUMERO_DE_SUBPROCESOS);
         botonEjecutarVerificacionesDeCoherencia.click();
         wait.until(ExpectedConditions.visibilityOf(barraDeProgreso));
+        waitUntil(TIEMPO_1500);
         wait.until(ExpectedConditions.visibilityOf(botonEjecutarVerificacionesDeCoherencia));
         waitUntil(TIEMPO_1500);
         wait.until(ExpectedConditions.visibilityOf(iconoDescargar));
