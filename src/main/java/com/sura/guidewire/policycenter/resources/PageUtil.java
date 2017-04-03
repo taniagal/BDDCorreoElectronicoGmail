@@ -51,6 +51,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_2 = 2;
     protected static final int CONSTANTE_3 = 3;
     protected static final int CONSTANTE_5 = 5;
+    protected static final int CONSTANTE_6 = 6;
     protected static final int CONSTANTE_7 = 7;
     protected static final int CONSTANTE_9 = 9;
     protected static final int CONSTANTE_10 = 10;
@@ -61,7 +62,7 @@ public class PageUtil extends PageObject {
     protected static final String OPCION_SIN_VALOR = "<ninguno>";
     protected Actions actions = new Actions(getDriver());
     protected static final String OPCIONES_MENU = "OPCIONES_MENU";
-    protected static final String VALOR_PRIMA_CERO = "$0,00 (COP)";
+    protected static final String VALOR_PRIMA_CERO = "$0 (COP)";
 
     public PageUtil(WebDriver driver) {
         super(driver);

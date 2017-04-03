@@ -390,8 +390,9 @@ public class TarifaAutosPage extends PageUtil {
 
     public void verificarTarifacion(String valor) {
         WebElementFacade tablaDescripcion = findBy(TABLAXPATH + "1]/td[3]");
+        String tarifa = tablaDescripcion.getText().substring(CONSTANTE_1, tablaDescripcion.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor de la tarifacion Expected: " + valor + " But was: " +
-                tablaDescripcion.getText(), tablaDescripcion.containsText(valor));
+                tarifa, tarifa.equals(valor));
     }
 
     public void seleccionarCoberturasCorbeta(ExamplesTable coberturas) {
@@ -419,9 +420,9 @@ public class TarifaAutosPage extends PageUtil {
 
     public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
         campoPrimaTotal.waitUntilPresent();
-        String substringPrima = campoPrimaTotal.getText().substring(CONSTANTE_1, campoPrimaTotal.getText().length() - CONSTANTE_9);
-        String substringIva = campoIva.getText().substring(CONSTANTE_1, campoIva.getText().length() - CONSTANTE_9);
-        String substringCostoTotal = campoCostoTotal.getText().substring(CONSTANTE_1, campoCostoTotal.getText().length() - CONSTANTE_9);
+        String substringPrima = campoPrimaTotal.getText().substring(CONSTANTE_1, campoPrimaTotal.getText().length() - CONSTANTE_6);
+        String substringIva = campoIva.getText().substring(CONSTANTE_1, campoIva.getText().length() - CONSTANTE_6);
+        String substringCostoTotal = campoCostoTotal.getText().substring(CONSTANTE_1, campoCostoTotal.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
                 substringPrima, substringPrima.equals(primaTotal));
         MatcherAssert.assertThat("Error en el valor del iva, expected: " + iva + " but was: " +
@@ -459,8 +460,9 @@ public class TarifaAutosPage extends PageUtil {
 
     public void verificarTarifacionPrima(String primaTotal) {
         campoPrimaTotal.waitUntilPresent();
+        String prima = campoPrimaTotal.getText().substring(CONSTANTE_1, campoPrimaTotal.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
-                campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
+                prima, prima.equals(primaTotal));
     }
 
     public void marcarOpcionDanos(String danos) {

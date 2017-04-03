@@ -25,13 +25,13 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |Maquinaria|Cobertura de Danos materiales    |755.550  |
 |Maquinaria|Cobertura de Terremoto           |306.600  |
 |Maquinaria|Cobertura de Asonada             |32.850   |
-|Maquinaria|Cobertura de Rotura de maquinaria|0,00     |
-|Maquinaria|Cobertura de Sustracción         |0,00     |
+|Maquinaria|Cobertura de Rotura de maquinaria|0        |
+|Maquinaria|Cobertura de Sustracción         |0        |
 |Maquinaria|Subtotal                         |1.095.000|
 |Muebles   |Cobertura de Danos materiales    |985.320  |
 |Muebles   |Cobertura de Terremoto           |434.700  |
 |Muebles   |Cobertura de Asonada             |28.980   |
-|Muebles   |Cobertura de Sustracción         |0,00     |
+|Muebles   |Cobertura de Sustracción         |0        |
 |Muebles   |Subtotal                         |1.449.000|
 And el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
@@ -60,7 +60,7 @@ Then debo poder verificar el valor de la prima para las coberuras de la cotizaci
 |Edificio  |Cobertura de Asonada             |10.500 |
 |Edificio  |Subtotal                         |210.000|
 |Muebles   |Cobertura de Danos materiales    |459.816|
-|Muebles   |Cobertura de Sustracción         |0,00   |
+|Muebles   |Cobertura de Sustracción         |0      |
 |Muebles   |Cobertura de Terremoto           |202.860|
 |Muebles   |Cobertura de Asonada             |13.524 |
 |Muebles   |Subtotal                         |676.200|

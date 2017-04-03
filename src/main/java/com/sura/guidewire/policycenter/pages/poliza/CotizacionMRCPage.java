@@ -87,9 +87,9 @@ public class CotizacionMRCPage extends PageUtil {
         MatcherAssert.assertThat(cotizacionDePolizaPage.campoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("direccion"))));
         MatcherAssert.assertThat(cotizacionDePolizaPage.campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(cotizacionDePolizaPage.campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
-        MatcherAssert.assertThat("Error en la tarifacion, fue $0,00", !cotizacionDePolizaPage.campoPrimaTotal.getText().contains("$0,00"));
-        MatcherAssert.assertThat("Error en la tarifacion, fue $0,00", !cotizacionDePolizaPage.campoImpuestosYCargos.getText().contains("$0,00"));
-        MatcherAssert.assertThat("Error en la tarifacion, fue $0,00", !campoCostoTotal.getText().contains("$0,00"));
+        MatcherAssert.assertThat("Error en la tarifacion, fue $0 (COP)", !cotizacionDePolizaPage.campoPrimaTotal.getText().contains(VALOR_PRIMA_CERO));
+        MatcherAssert.assertThat("Error en la tarifacion, fue $0 (COP)", !cotizacionDePolizaPage.campoImpuestosYCargos.getText().contains(VALOR_PRIMA_CERO));
+        MatcherAssert.assertThat("Error en la tarifacion, fue $0 (COP)", !campoCostoTotal.getText().contains(VALOR_PRIMA_CERO));
     }
 
     public void validarPrima(String primaTotal) {

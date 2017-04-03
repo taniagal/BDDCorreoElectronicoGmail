@@ -190,7 +190,7 @@ public class CoberturaGlobalPage extends PageUtil {
                 WebElementFacade coberturaGlobal = $(XPATH_RESULTADO_COBERTURAS_GLOBALES_TR + "[" + j + "]");
                 WebElementFacade montoCoberturaGlobal = $(XPATH_RESULTADO_COBERTURAS_GLOBALES_TR + "[" + j + "]/td[3]");
                 if (coberturaGlobal.containsText(dato.get("DESCRIPCION_COBERTURA"))) {
-                    montoCobertura = montoCoberturaGlobal.getText().substring(CONSTANTE_1, montoCoberturaGlobal.getText().length() - CONSTANTE_9);
+                    montoCobertura = montoCoberturaGlobal.getText().substring(CONSTANTE_1, montoCoberturaGlobal.getText().length() - CONSTANTE_6);
                     MatcherAssert.assertThat("Error en el monto de la cobertura, expected: " + dato.get("VALOR_MONTO") + " but was: " +
                             montoCobertura, montoCobertura.equals(dato.get("VALOR_MONTO")));
                     break;
