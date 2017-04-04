@@ -36,19 +36,4 @@ public class DisponibilidadDetalleProductoDefinitions {
         disponibilidadDetalleProductoSteps.verInformacionPoliza();
     }
 
-    @Then("debo ver la organizacion <infoOrganizacion> seleccionada")
-    public void validarLaOrganizacion(@Named("infoOrganizacion") String infoOrganizacion){
-        disponibilidadDetalleProductoSteps.validarLaOrganizacion(infoOrganizacion);
-    }
-
-    @Then("debor ver el canal <infoCanal> seleccionado")
-    public void validarElCanal(@Named("infoCanal") String infoCanal){
-        disponibilidadDetalleProductoSteps.validarElCanal(infoCanal);
-    }
-
-    @Then("debo ver el tipo de poliza <infoTipoPoliza> seleccionado")
-    public void validarElProducto(@Named("infoTipoPoliza") String infoTipoPoliza){
-        disponibilidadDetalleProductoSteps.validarElProducto(infoTipoPoliza);
-    }
-
 }

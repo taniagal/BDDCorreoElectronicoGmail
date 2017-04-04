@@ -30,19 +30,4 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
         String codigoAgente = datosAgente.get("agente_oficina");
         nuevaCotizacionPage.seleccionarOficinaDeRadicacionYAgente(oficina, codigoAgente);
     }
-
-    @Step
-    public void validarLaOrganizacion(String organizacion) {
-        disponibilidadDetalleProductoPage.validarLaOrganizacion(organizacion);
-    }
-
-    @Step
-    public void validarElCanal(String canal) {
-        disponibilidadDetalleProductoPage.validarElCanal(canal);
-    }
-
-    @Step
-    public void validarElProducto(String producto) {
-        disponibilidadDetalleProductoPage.validarElProducto(producto);
-    }
 }
