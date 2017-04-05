@@ -46,9 +46,6 @@ public class BusquedaActividadesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")
     private WebElementFacade tablaActividades;
 
-    private static final int CONSTANTE_7 = 7;
-
-
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
     }
@@ -98,17 +95,18 @@ public class BusquedaActividadesPage extends PageUtil {
     }
 
     public void limpiarFiltros() {
-        waitFor(botonRestablecer).waitUntilVisible();
-        actions.click(botonRestablecer).build().perform();
-        esperarHasta(TIEMPO_2000);
+        botonRestablecer.waitUntilPresent();
+        clickearElemento(botonRestablecer);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
+        clickearElemento(txtNumeroPoliza);
         waitFor(txtNumeroPoliza).waitUntilVisible();
         txtNumeroPoliza.sendKeys(numeroPoliza);
     }
 
     public void filtrarPorNumeroDeCuenta(String numeroCuenta) {
+        clickearElemento(txtNumeroCuenta);
         waitFor(txtNumeroCuenta).waitUntilVisible();
         txtNumeroCuenta.sendKeys(numeroCuenta);
     }
@@ -118,15 +116,14 @@ public class BusquedaActividadesPage extends PageUtil {
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
-        esperarHasta(TIEMPO_3000);
-        waitFor(btnBuscar).waitUntilPresent();
-        actions.click(btnBuscar).build().perform();
+        clickearElemento(btnBuscar);
         divMensaje.waitUntilPresent();
         MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
         waitFor(txtAsignadoA).waitUntilVisible();
+        clickearElemento(txtNumeroCuenta);
         try {
             txtAsignadoA.sendKeys(usuario);
         } catch (StaleElementReferenceException e) {
@@ -138,6 +135,7 @@ public class BusquedaActividadesPage extends PageUtil {
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
         waitFor(txtAsignadoA).waitUntilVisible();
+        clickearElemento(txtNumeroCuenta);
         try {
             txtAsignadoA.sendKeys(usuario);
         } catch (StaleElementReferenceException e) {
@@ -150,6 +148,7 @@ public class BusquedaActividadesPage extends PageUtil {
 
     public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
         waitFor(txtAsignadoA).waitUntilVisible();
+        clickearElemento(txtNumeroCuenta);
         txtAsignadoA.sendKeys(usuario);
         this.ingresarDatoEnCombo(txtVencida, vencida);
     }
