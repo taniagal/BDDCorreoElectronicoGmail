@@ -105,9 +105,9 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarTarifacion(String prima) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelPrimaTotal);
-        String primaTotal = labelPrimaTotal.getText().substring(CONSTANTE_1, labelPrimaTotal.getText().length() - CONSTANTE_6);
+        String primaCalculada = labelPrimaTotal.getText().substring(CONSTANTE_1, labelPrimaTotal.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " +
-                primaTotal, primaTotal.equals(prima));
+                primaCalculada, primaCalculada.equals(prima));
     }
 
     public void irAArticulo() {
@@ -210,7 +210,7 @@ public class TarifaMRCPage extends PageUtil {
     public void verificarImpuestos() {
         String valorIva = campoIva.getText().substring(CONSTANTE_1, campoIva.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor del IVA Expected: 0 But was: " +
-                valorIva, valorIva.equals("0"));
+                valorIva, valorIva.equals(String.valueOf(CONSTANTE_0)));
     }
 
     public void verificarValorIva() {
