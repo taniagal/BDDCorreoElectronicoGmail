@@ -158,8 +158,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
         } catch (StaleElementReferenceException e) {
             LOGGER.error("StaleElementReferenceException " + e);
         }
-        String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
-        double valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
+        String valorExpuestoCadena = listValorExpuestoRiesgo.getText().substring(CONSTANTE_1, listValorExpuestoRiesgo.getText().length() - CONSTANTE_6);
+        double valorExpuesto = Integer.parseInt(valorExpuestoCadena.replaceAll("\\.", ""));
         valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.", ""));
         double valorPrimaBrutaDeCesion = (valorTasa / valorExpuesto) * CONSTANTE_MIL;
         return Double.toString(valorPrimaBrutaDeCesion).replace(".", ",");
