@@ -10,6 +10,8 @@ import java.util.Date;
 
 public class Utils {
 
+    protected static final int CONSTANTE_1 = 1;
+    protected static final int CONSTANTE_6 = 6;
     protected static final int CONSTANTE_10000000 = 10000000;
     protected static final int CONSTANTE_99999999 = 99999999;
     protected static final int CONSTANTE_900000000 = 900000000;
@@ -55,8 +57,8 @@ public class Utils {
      * @Return:  Numero (double) para hacer operaciones matematicas
      * */
     public static double convierteTextoEnNumero(WebElementFacade valorTextoParaConvertirANumero) {
-        String[] cadenaSinCaracteres = valorTextoParaConvertirANumero.getText().split(",");
-        return Double.parseDouble(cadenaSinCaracteres[0].substring(1).replaceAll("\\.", ""));
+        String cadenaSinCaracteres = valorTextoParaConvertirANumero.getText().substring(CONSTANTE_1, valorTextoParaConvertirANumero.getText().length() - CONSTANTE_6);
+        return Double.parseDouble(cadenaSinCaracteres.replaceAll("\\.", ""));
     }
 
     /**
@@ -71,7 +73,7 @@ public class Utils {
     public static String convierteNumeroEnTexto(double numeroParaConvertirEnCadena) {
         java.text.NumberFormat nuevoFormato = java.text.NumberFormat.getInstance();
         String signoPesos = "$";
-        String caracteresCompletarTexto = ",00 (COP)";
+        String caracteresCompletarTexto = " (COP)";
         String valorConFormatoNumero = nuevoFormato.format(numeroParaConvertirEnCadena);
         return signoPesos + valorConFormatoNumero.replace(",", ".") + caracteresCompletarTexto;
     }
