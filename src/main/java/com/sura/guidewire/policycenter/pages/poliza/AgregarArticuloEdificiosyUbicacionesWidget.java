@@ -16,13 +16,13 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     @FindBy(xpath = ".//*[@name = 'ContractNumber']")
     WebElementFacade campoInteresAdicionalNumeroDeContratoMRC2;
 
-    private static String CHECK_EDIFICIO = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']";
-    private static String CHECK_EDIFICIO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox')]";
-    private static String TXT_VALOR_RECONSTRUCCION = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl')]";
-    private static String TXT_VALOR_ASEGURADO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl')]";
-    private static String TXT_VALOR_SUBLIMITE_TRANSLADO = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:') and contains(@id,'0:CoverageInputSet:CovPatternInputGroup:7:CovTermInputSet:DirectTermInput-inputEl')]";
-    private static String TXT_VALOR_SUBLIMITE_COMBUSTION = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:8:CovTermInputSet:DirectTermInput-inputEl']";
-    private static String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
+    private static final String CHECK_EDIFICIO = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']";
+    private static final String CHECK_EDIFICIO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox')]";
+    private static final String TXT_VALOR_RECONSTRUCCION = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl')]";
+    private static final String TXT_VALOR_ASEGURADO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl')]";
+    private static final String TXT_VALOR_SUBLIMITE_TRANSLADO = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:') and contains(@id,'0:CoverageInputSet:CovPatternInputGroup:7:CovTermInputSet:DirectTermInput-inputEl')]";
+    private static final String TXT_VALOR_SUBLIMITE_COMBUSTION = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:8:CovTermInputSet:DirectTermInput-inputEl']";
+    private static final String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
 
 
     public AgregarArticuloEdificiosyUbicacionesWidget(WebDriver driver) {
@@ -30,15 +30,13 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarCheck(String xpath) {
-        WebElementFacade chk = null;
-        chk = findBy(xpath).waitUntilVisible().waitUntilClickable();
+        WebElementFacade chk = findBy(xpath).waitUntilVisible().waitUntilClickable();
         chk.shouldBeCurrentlyVisible();
         chk.click();
     }
 
     public void ingresarValorAInput(String xpath, String valor) {
-        WebElement txt = null;
-        txt = getDriver().findElement(By.xpath(xpath));
+        WebElement txt = getDriver().findElement(By.xpath(xpath));
         $(txt).shouldBeCurrentlyVisible();
         $(txt).shouldBeEnabled();
         enter(valor).into(txt);
@@ -87,6 +85,12 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarNumeroDeContratoMRC(String numeroContrato){
         campoInteresAdicionalNumeroDeContratoMRC.waitUntilPresent().click();
-        campoInteresAdicionalNumeroDeContratoMRC2.sendKeys(numeroContrato);
+        try{
+            campoInteresAdicionalNumeroDeContratoMRC2.sendKeys(numeroContrato);
+        }catch (Exception unk){
+            LOGGER.info("Exception " + unk);
+            campoInteresAdicionalNumeroDeContratoMRC.waitUntilPresent().click();
+            campoInteresAdicionalNumeroDeContratoMRC2.sendKeys(numeroContrato);
+        }
     }
 }
