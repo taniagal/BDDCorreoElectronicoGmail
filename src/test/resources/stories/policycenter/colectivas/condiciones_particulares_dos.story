@@ -108,7 +108,7 @@ When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese la informacion del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | cero_kilometros | vehiculo_blindado | medioVenta |
-| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Si              | Si                | Televentas |
+| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Modular | Si              | Si                | Televentas |
 And seleccione la opcion siguiente
 Then deben aparecer los mensajes de validacion:
 | mensaje                                                 |
