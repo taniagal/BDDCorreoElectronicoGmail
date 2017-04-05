@@ -43,7 +43,7 @@ When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
+| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
 When ingrese a la pantalla de coberturas
 And ingrese las coberturas a auto cero kilometros:
 |limite|deducible|AS|
@@ -82,7 +82,7 @@ When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion                 | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2016   | 52525252         | SANTIAGO DE CALI (VALLE DEL CAUCA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
+| random | 2017   | 52525252         | SANTIAGO DE CALI (VALLE DEL CAUCA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
 And seleccione la opcion siguiente
 And ingrese las coberturas a auto cero kilometros:
 | limite | deducible |AS|
@@ -103,7 +103,7 @@ When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion                 | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN (ANTIOQUIA)               | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
+| random | 2017   | 52525252         | MEDELLIN (ANTIOQUIA)               | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
 And seleccione la opcion siguiente
 And ingrese las coberturas a auto cero kilometros:
 | limite | deducible |AS|

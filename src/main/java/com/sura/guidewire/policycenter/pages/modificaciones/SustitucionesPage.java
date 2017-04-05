@@ -54,8 +54,6 @@ public class SustitucionesPage extends PageUtil {
     private WebElementFacade campoTxtValorAsegurado;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade campoVehiculoCeroKm;
-    @FindBy(xpath = ".//*[@id='ext-gen3557']/tbody/tr[2]/td")
-    private WebElementFacade tablaVehiculocobertura;
 
     public SustitucionesPage(WebDriver driver) {
         super(driver);
@@ -67,7 +65,7 @@ public class SustitucionesPage extends PageUtil {
         radioBotonSustitucionNO.waitUntilPresent();
         MatcherAssert.assertThat("Error no se encuentra marcado el campo Sustitucion en No", "0px -15px".equals(radioBotonSustitucionNO.getCssValue("background-position")));
         radiBotonSustitucionSi.waitUntilPresent().click();
-        botonsiguiente.waitUntilPresent().click();
+        clickearElemento(botonsiguiente);
         linkVehiculos.waitUntilPresent().click();
         chekVehiculos.waitUntilPresent().click();
         botonEliminar.waitUntilPresent().click();

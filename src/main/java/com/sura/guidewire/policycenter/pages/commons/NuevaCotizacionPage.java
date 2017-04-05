@@ -123,7 +123,7 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void ingresarCuenta(String cuenta) {
         numeroDeCuenta.waitUntilPresent().sendKeys(cuenta);
-        comboBoxNombreAgente.click();
+        numeroDeCuenta.sendKeys(Keys.TAB);
         linkNombre.waitUntilVisible();
     }
 
