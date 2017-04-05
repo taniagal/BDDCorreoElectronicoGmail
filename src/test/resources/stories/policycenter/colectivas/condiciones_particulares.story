@@ -17,8 +17,8 @@ Then Se ebe expedir la transacción sin inconveniente
 And Se debe generar el UW que ya existe "El modelo es superior al máximo permitido por este canal. Por favor verifique."
 
 Examples:
-||
-||
+|  |
+|  |
 
 Scenario: 2 Coberturas
 Meta: @manual
@@ -29,8 +29,8 @@ Then Solo se deben mostrar las coberturas registradas en la condición particula
 And Se debe mostrar el mensaje de bloqueo "Existen coberturas, opciones o deducibles que no se encuentra registrada en las condiciones particulares de la póliza." y al intentar expedir en todas las operaciones se genera un UW
 
 Examples:
-||
-||
+|  |
+|  |
 
 
 Scenario: 3 Inspeccion
@@ -41,8 +41,8 @@ Then Se ebe expedir la transacción sin inconveniente
 And Se debe generar el UW que existe "El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo."
 
 Examples:
-||
-||
+|  |
+|  |
 
 
 Scenario: 4 Marcas no permitidas
@@ -53,8 +53,8 @@ Then Se debe expedir la transacción sin inconveniente
 And Se debe generar el UW que existe "Por política de la compañía este vehiculo no puede ser asegurado."
 
 Examples:
-||
-||
+|  |
+|  |
 
 Scenario: 5 Maximo valor asegurado
 Meta: @manual
@@ -65,8 +65,8 @@ And Se debe mostrar el mesaje de alerta en el siguiente de la pantalla de info v
 And Se debe generar el UW que existe al intentar expedir "El valor asegurado del vehículo supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos."
 
 Examples:
-||
-||
+|  |
+|  |
 
 
 Scenario: 6 Planes
@@ -77,8 +77,8 @@ Then Solo se deben mostrar los planes registrados en la condición particular de
 And Se debe mostrar el mensaje de bloqueo "El plan seleccionado no se encuentra registrado en las condiciones particulares de la póliza." y al intentar expedir se genera un UW
 
 Examples:
-||
-||
+|  |
+|  |
 
 Scenario: 7 Tipo de servicio
 Meta: @manual
@@ -88,8 +88,8 @@ Then Se ebe expedir la transacción sin inconveniente
 And Al expedir se debe generar el UW que existe "Tipo de servicio no permitido, debe ser autorizado."
 
 Examples:
-||
-||
+|  |
+|  |
 
 
 Scenario: 8 Zonas no permitidas
@@ -100,8 +100,8 @@ Then Se ebe expedir la transacción sin inconveniente
 And Se debe generar el UW que existe "Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona."
 
 Examples:
-||
-||
+|  |
+|  |
 
 Scenario: 9 Liberar  Excepcion deducibles especiales
 Meta: @manual
@@ -109,19 +109,19 @@ Given  que tengo una cotizacion <cotizacion>
 When  copie la poliza
 And  ingrese los datos del asegurado <tipo_documento> <documento>
 And  ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | transporte_combustible |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Si                     |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | transporte_combustible | medioVenta |
+| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Si                     | Televentas |
 And  ingrese las coberturas a vehiculo:
-| limite | deducible |AS|
-| 640.0  | 0         |  |
+| limite | deducible | AS |
+| 640.0  | 0         |    |
 And  intente cotizar
 And  voy a expedir una poliza
 And  confirmo el mensaje de expedir poliza
 Then  se debe permitir expedir la poliza
 
 Examples:
-| tipo_documento       | documento  | cuenta      | producto |agente_oficina| cotizacion |
-| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO      | 39355347   |
+| tipo_documento       | documento  | cuenta      | producto | agente_oficina | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO        | 39355347   |
 
 Scenario: 10 no Liberar  Excepcion deducible especiales
 Meta: @manual
@@ -129,11 +129,11 @@ Given  que tengo una cotizacion <cotizacion>
 When  copie la poliza
 And  ingrese los datos del asegurado <tipo_documento> <documento>
 And  ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | transporte_combustible |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si                     |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | transporte_combustible | medioVenta |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si                     | Televentas |
 And  ingrese las coberturas a auto cero kilometros:
-| limite | deducible |AS|
-| 640.   | 0         |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And  intente cotizar
 And  voy a expedir una poliza
 And  confirmo el mensaje de expedir poliza
@@ -143,8 +143,8 @@ Then  debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 | Vehiculo de excepcion de deducibles, debe ser autorizado |
 
 Examples:
-| tipo_documento       | documento  | cuenta      | producto |agente_oficina| cotizacion |
-| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO      | 33355390   |
+| tipo_documento       | documento  | cuenta      | producto | agente_oficina | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO        | 33355390   |
 
 Scenario: 11  Bloqueo de expedicion de vehiculo por maximo valor accesorios
 GivenStories: stories/policycenter/login_policy.story
@@ -152,8 +152,8 @@ Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese la informacion del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |medioVenta|
-| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Básico |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
+| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Básico | Televentas |
 And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 Then deben aparecer los mensajes de validacion:
@@ -162,192 +162,192 @@ Then deben aparecer los mensajes de validacion:
 | El valor de los accesorios especiales es mayor al valor Asegurado del vehículo |
 When seleccione la opcion siguiente
 And ingrese las coberturas a vehiculo:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-|mensaje                                                                         |
-|El valor de los accesorios es mayor al 20% del valor Asegurado                  |
-|El valor de los accesorios especiales es mayor al valor Asegurado del vehículo  |
+| mensaje                                                                        |
+| El valor de los accesorios es mayor al 20% del valor Asegurado                 |
+| El valor de los accesorios especiales es mayor al valor Asegurado del vehículo |
 
 
 Examples:
-|tipo_documento      |documento |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|33355439  |
+| tipo_documento       | documento  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | 33355439   |
 
 Scenario: 12 Expedicion de poliza de vehiculo por maximo valor accesorios
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese la informacion del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | medioVenta |
+| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Televentas |
 And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 And ingrese las coberturas a vehiculo:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355366   |
 
 Scenario: 13  Bloqueo de expedicion de vehiculo blindado
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | vehiculo_blindado |medioVenta|
-| JZA458 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Si                |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | vehiculo_blindado | medioVenta |
+| JZA458 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Si                | Televentas |
 And ingrese las coberturas basicas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+| limite | deducible | abogado | PLlaves |
+| 640.   | 0         | Si      | Si      |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
-|mensaje                                            |
-|Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza  |
+| mensaje                                                                     |
+| Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-| mensaje                                                                          |
-| Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza      |
+| mensaje                                                                     |
+| Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza |
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355366   |
 
 Scenario: 14  Expedicion de vehiculo NO blindado
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros|medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | medioVenta |
+| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Televentas |
 And ingrese las coberturas a vehiculo:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355366   |
 
 Scenario: 15  Bloqueo de expedicion de vehiculo blindado para poliza sin condicion particular(CP)
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros| vehiculo_blindado |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                 |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | vehiculo_blindado | medioVenta |
+| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Si                | Televentas |
 And ingrese las coberturas a vehiculo:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
-|mensaje                                            |
-|Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza  |
+| mensaje                                                                     |
+| Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-| mensaje                                                                          |
-| Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza      |
+| mensaje                                                                     |
+| Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza |
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355366   |
 
 Scenario: 16  Bloqueo de expedicion para vehiculo que transporte combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |transporte_combustible|medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si                    |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | transporte_combustible | medioVenta |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si                     | Televentas |
 And ingrese las coberturas a vehiculo:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-| mensaje                                                                          |
-| Valor para campo transporta combustible no permitido. Por favor verifique        |
+| mensaje                                                                   |
+| Valor para campo transporta combustible no permitido. Por favor verifique |
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355390   |
 
 Scenario: 17 Expedicion de poliza para vehiculo que NO transporta combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |transporte_combustible|medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |No                    |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | transporte_combustible | medioVenta |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | No                     | Televentas |
 And ingrese las coberturas a vehiculo:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355390   |
 
 Scenario: 18 Expedicion de poliza sin seleccionar opcion de transporte de combustible
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Televentas |
 And ingrese las coberturas a vehiculo:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355390   |
 
 Scenario: 19 Expedicion de vehiculo de transporte de combustible para poliza sin condicion particular(CP)
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros| transporte_combustible |medioVenta|
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                      |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | transporte_combustible | medioVenta |
+| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Si                     | Televentas |
 And ingrese las coberturas a vehiculo:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS |
+| 640.   | 0         |    |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355366   |
 
 Scenario: 20 Deducibles especiales
 Meta:@manual
@@ -357,9 +357,5 @@ Then  Se debe expedir la transacción sin inconveniente
 And  Se debe generar el UW que existe "Vehiculo de excepcion de deducibles, dedebe ser autorizado"
 
 Examples:
-||
-||
-
-
-
-
+|  |
+|  |
