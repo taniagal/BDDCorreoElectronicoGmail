@@ -3,9 +3,6 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
