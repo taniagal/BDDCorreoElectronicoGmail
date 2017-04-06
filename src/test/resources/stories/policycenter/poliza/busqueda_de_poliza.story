@@ -17,27 +17,8 @@ Examples:
 | buscarNumeroPoliza | mensaje                             |
 | 34565456543        | La búsqueda no devolvió resultados. |
 
-
-Scenario: Consulta sin resultados al ingresar poliza riesgo
-Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When copie la poliza
-And ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion sin riesgo consultable
-And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
-| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
-| Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-| Interes Adicional        | Interes Adicional |                     |                  | NULL                             | 00000          |
-And expido la poliza
-And voy a buscar la  poliza
-Then debe mostrar el mensaje <mensaje>
-
-
-Examples:
-| numSubscripcion | documento  | tipoBeneficiario |  tipodocumento        | mensaje                             |
-| 33355336        | 1060447895 | Asegurado        |  CEDULA DE CIUDADANIA |La búsqueda no devolvió resultados.  |
-
 Scenario: Consulta de poliza colectiva por numero de cuenta existente
+Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta>
 Then se debe visualizar la siguiente información:
 | numeroPoliza  | nombreAsegurado | numeroCuenta | producto                | estado   | fechaVigencia | fechaExpiracion | agente | tipoPoliza |
@@ -132,3 +113,23 @@ Then se visualiza la informacion de la poliza relacionada
 Examples:
 |criterio               |criterioBusqueda       |contenidoCampoCriterio|
 |Multiriesgo corporativo|Dirección              |CR 65 # 48 - 162      |
+
+
+Scenario: Consulta sin resultados al ingresar poliza riesgo
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When copie la poliza
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+| Interes Adicional        | Interes Adicional |                     |                  | NULL                             | 00000          |
+And expido la poliza
+And voy a buscar la  poliza
+Then debe mostrar el mensaje <mensaje>
+
+
+Examples:
+| numSubscripcion | documento  | tipoBeneficiario |  tipodocumento        | mensaje                             |
+| 33355336        | 1060447895 | Asegurado        |  CEDULA DE CIUDADANIA |La búsqueda no devolvió resultados.  |

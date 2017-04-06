@@ -7,8 +7,6 @@ Narrative:
 Como usuario PolicyCenter con el papel de agente, RSE , Suscriptor o el Administrador
 Quiero ser capaz de entrar y mantener detalles de la ubicación.
 
-Feature: Entrar y mantener detalles de la ubicación
-
 
 Scenario: Agregar una nueva ubicacion en una poliza de MRC
 GivenStories: stories/policycenter/login_policy.story
