@@ -73,6 +73,7 @@ public class CoaseguroPage extends PageUtil {
         int i = 1;
         for (Map<String, String> dato : datos.getRows()) {
             WebElementFacade campoAseguradora = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[2]");
+            WebElementFacade campoLider = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[4]");
             campoAseguradora.click();
             if (i == 1) {
                 act.sendKeys(Keys.TAB).build().perform();
@@ -87,6 +88,8 @@ public class CoaseguroPage extends PageUtil {
                 act.sendKeys(Keys.TAB).build().perform();
                 esperarHasta(TIEMPO_500);
                 act.sendKeys(dato.get("participacion")).build().perform();
+                esperarHasta(TIEMPO_500);
+                campoLider.click();
             }
             i++;
         }
