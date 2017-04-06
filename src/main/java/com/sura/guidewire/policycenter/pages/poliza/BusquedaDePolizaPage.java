@@ -50,7 +50,6 @@ public class BusquedaDePolizaPage extends PageUtil {
 
 
     protected static final int CONSTANTE_8 = 8;
-    protected static final int CONSTANTE_6 = 6;
     protected static final int CONSTANTE_4 = 4;
 
     public BusquedaDePolizaPage(WebDriver driver) {
