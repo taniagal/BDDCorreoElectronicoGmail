@@ -1,5 +1,5 @@
 Meta:
-@lote1
+@lote5
 @issue #CDSEG-7045
 @tag equipo: 5, sprint: 15
 

@@ -1,7 +1,5 @@
-cambio en expedicion de Poliza
-
 Meta:
-@lote2
+@lote5
 @issue #CDSEG-1251
 @tag equipo: 3, sprint: 4
 

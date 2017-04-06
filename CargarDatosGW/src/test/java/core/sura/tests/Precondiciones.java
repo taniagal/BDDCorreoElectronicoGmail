@@ -54,6 +54,13 @@ public class Precondiciones extends MetodosComunes {
         assertEquals("Mis actividades", driver.findElement(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")).getText());
     }
 
+    @Test
+    public void desactivarColasDeMensajes() {
+        initPages();
+        loginPage.login("pedrvevi", "pedrvevi", driver);
+        precondicionesPage.susperderColasDeMensajes(driver);
+    }
+
     @After
     public void tearDown() {
         driver.quit();
