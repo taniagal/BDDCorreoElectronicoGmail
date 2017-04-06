@@ -245,14 +245,15 @@ public class TarifaAutosPage extends PageUtil {
         esperarPorPantallaCoberturas();
         seleccionarItem(comboBoxLimite, dato.get("limite"));
         seleccionarItem(comboBoxDeducible, dato.get("deducible"));
-        setImplicitTimeout(TIEMPO_1,TimeUnit.SECONDS);
-        if(comboBoxAsistencia.isVisible() && !dato.get("AS").isEmpty()) {
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        if (comboBoxAsistencia.isVisible() && !dato.get("AS").isEmpty()) {
             seleccionarCoberturaAsistencia(dato.get("AS"));
         }
         resetImplicitTimeout();
     }
 
     public void esperarPorPantallaCoberturas() {
+        waitForTextToAppear("Coberturas");
         comboBoxLimite.waitUntilVisible();
         clickearElemento(comboBoxLimite);
         setImplicitTimeout(0, TimeUnit.SECONDS);
@@ -407,7 +408,7 @@ public class TarifaAutosPage extends PageUtil {
                 seleccionarCobertura(checkBoxAccidentes, comboBoxAccidentes, dato.get("AC"));
             }
             seleccionarCoberturaAsistencia(dato.get("AS"));
-        }else{
+        } else {
             if (comboBoxAccidentes.isVisible()) {
                 clickearElemento(checkBoxAccidentes);
             }
