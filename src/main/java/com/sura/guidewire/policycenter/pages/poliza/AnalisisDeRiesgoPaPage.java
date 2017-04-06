@@ -20,7 +20,9 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
     private WebElementFacade botonExpedirPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']")
-    private WebElementFacade analisiDeRiesgo;
+    private WebElementFacade analisiDeRiesgoSub;
+    @FindBy(xpath = ".//*[contains(text(), 'Análisis de riesgo') and contains(@id, 'Job_RiskAnalysisScreen')]")
+    private WebElementFacade labelAnalisisDeRiesgoSub;
 
 
     public AnalisisDeRiesgoPaPage(WebDriver driver) {
@@ -51,6 +53,7 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
     }
 
     public void ingresarAnalisisDeRiesgo(){
-        clickearElemento(analisiDeRiesgo);
+        clickearElemento(analisiDeRiesgoSub);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgoSub);
     }
 }

@@ -96,12 +96,13 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void irACanales() {
-        menuItemCanales.click();
-        esperarHasta(TIEMPO_5000);
+        clickearElemento(menuItemCanales);
+        waitForTextToAppear("Código canal");
     }
 
     public void irAMediosDeVenta() {
-        menuItemMedioDeVenta.click();
+        clickearElemento(menuItemMedioDeVenta);
+        waitForTextToAppear("Código medio de venta");
     }
 
     public String validarOpcionesMediosDeVenta() {
@@ -115,7 +116,8 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void irAOficinasPorCanal() {
-        menuItemOficinasPorCanal.click();
+        clickearElemento(menuItemOficinasPorCanal);
+        waitForTextToAppear("Canal comercial");
     }
 
     public String validarOpcionesCanalOficina() {
@@ -148,7 +150,8 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void irAMediosDeVentaPorCanal() {
-        itemMedioDeVentaPorCanal.click();
+        clickearElemento(itemMedioDeVentaPorCanal);
+        waitForTextToAppear("Medio de venta");
     }
 
     public void buscarCanalComercial(ExamplesTable canalComercial) {
