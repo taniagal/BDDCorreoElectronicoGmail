@@ -296,6 +296,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         Actions act = new Actions(getDriver());
         for (int i = 0; i < tablaaseguradoras.getRowCount(); i++) {
             asegurados = tablaaseguradoras.getRows().get(i);
+            WebElementFacade campoLider = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + (i + 1) + "]/td[4]");
             if (i == 0) {
                 if (!"Seguros Generales Suramericana S.A.".equals(asegurados.get(ASEGURADORA))) {
                     desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get(ASEGURADORA));
@@ -313,6 +314,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
                 act.sendKeys(Keys.TAB).build().perform();
+                setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+                if (txtPolizaDeReferencia.isVisible()) {
+                    campoLider.click();
+                }
+                resetImplicitTimeout();
             }
         }
     }
