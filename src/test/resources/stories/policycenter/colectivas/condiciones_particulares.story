@@ -187,6 +187,7 @@ And ingrese la informacion del vehiculo:
 | random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Televentas |
 And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
+And seleccione la opcion siguiente
 And ingrese las coberturas a vehiculo:
 | limite | deducible | AS |
 | 640.   | 0         |    |
