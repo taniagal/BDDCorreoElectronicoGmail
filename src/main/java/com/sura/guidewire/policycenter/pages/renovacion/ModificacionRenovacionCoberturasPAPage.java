@@ -160,15 +160,14 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
 
     public void retirarCoberturasOpcionales() {
         String xpathFieldsetHurto = ".//fieldset[(child::legend[contains(.,'Hurto')]) and (descendant::input[contains(@role,'checkbox')])]";
-        esperarHasta(TIEMPO_5000);
-        WebElementFacade grupoCoberturaHurto = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
+        WebElementFacade grupoCoberturaHurto = withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
         MatcherAssert.assertThat(grupoCoberturaHurto, Matchers.notNullValue());
         checkBoxHurto.click();
     }
 
     public void adicionarNuevaCobertura() {
-        String xpathFieldsetAccidentes = ".//fieldset[(child::legend[contains(.,'Accidentes al Conductor')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
+        String xpathFieldsetAccidentes = ".//fieldset[(child::legend[contains(.,'Daños')]) and (descendant::input[contains(@role,'checkbox')])]";
+        WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
         MatcherAssert.assertThat(grupoCoberturaAccidentes, Matchers.notNullValue());
         clickearElemento(checkBoxAccidentes);
     }
