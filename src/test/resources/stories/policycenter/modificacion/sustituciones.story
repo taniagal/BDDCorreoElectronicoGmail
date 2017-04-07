@@ -1,7 +1,5 @@
-Sustituciones
-
 Meta:
-@lote2
+@lote5
 @tag equipo: 3, sprint: 12
 @issue #CDSEG-4998
 

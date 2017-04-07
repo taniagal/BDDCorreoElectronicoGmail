@@ -118,7 +118,7 @@ public class BusquedaDeRiesgosPage extends PageUtil {
 
     public void seleccionarProducto(ExamplesTable filtros) {
         comboProducto.waitUntilPresent();
-        if(!comboProducto.getValue().equals(filtros.getRows().get(0).get("producto"))){
+        if (!comboProducto.getValue().equals(filtros.getRows().get(0).get("producto"))) {
             seleccionarCampo(filtros, comboProducto, "producto");
         }
     }
@@ -189,11 +189,11 @@ public class BusquedaDeRiesgosPage extends PageUtil {
             clickearElemento(botonRestablecer);
             if (campoPlaca.isVisible()) {
                 resetImplicitTimeout();
-                waitFor(ExpectedConditions.textToBePresentInElementValue(campoPlaca, ""));
+                clickearElemento(campoPlaca);
             } else {
                 if (campoDireccion.isVisible()) {
                     resetImplicitTimeout();
-                    waitFor(ExpectedConditions.textToBePresentInElementValue(campoDireccion, ""));
+                    clickearElemento(campoDireccion);
                 }
             }
         }
