@@ -1,7 +1,5 @@
-Modificacion Cotizacion De Poliza Pa
-
 Meta:
-@lote2
+@lote5
 @issue #CDSEG-1286
 @tag equipo: 5, sprint: 4
 @local

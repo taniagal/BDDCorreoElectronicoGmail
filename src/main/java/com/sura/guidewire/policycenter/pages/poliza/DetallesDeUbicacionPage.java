@@ -36,7 +36,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
     private WebElementFacade labelNumeroDePisos;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
     private WebElementFacade labelAnioDeConstruccion;
-    @FindBy(css = ".message")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:_msgs']/div")
     private WebElementFacade divMensaje;
 
 
@@ -97,7 +97,6 @@ public class DetallesDeUbicacionPage extends PageUtil {
     }
 
     public void verificarMensaje(String mensaje) {
-        divMensaje.waitUntilPresent();
-        verificarMensaje(divMensaje, mensaje);
+        waitForTextToAppear(mensaje);
     }
 }

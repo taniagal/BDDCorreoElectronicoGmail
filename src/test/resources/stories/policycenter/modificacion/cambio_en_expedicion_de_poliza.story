@@ -1,5 +1,3 @@
-cambio en expedicion de Poliza
-
 Meta:
 @lote2
 @issue #CDSEG-1251

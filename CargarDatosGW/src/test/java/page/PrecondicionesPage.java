@@ -9,10 +9,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.By;
 
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PrecondicionesPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
@@ -33,9 +39,20 @@ public class PrecondicionesPage extends MetodosComunes {
     private WebElement menuItemIdioma;
     @FindBy(xpath = ".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
     private WebElement menuItemColombia;
+    @FindBy(xpath = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationControlList_SuspendButton-btnInnerEl']")
+    private WebElement botonSuspender;
+    @FindBy(xpath = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']")
+    private WebElement tablaColasDeMensajes;
+    @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_Monitoring']/div")
+    private WebElement menuItemSupervision;
+    @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_Monitoring:Monitoring_MessagingDestinationControlList']/div")
+    private WebElement submenuColasDeMensajes;
 
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_2000 = 2000;
+    private static final int TIEMPO_5000 = 5000;
+    private static final int CONSTANTE_1 = 1;
+    private static final String XPATH = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']/*/table/tbody/tr[";
 
     public void cargarDatos(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
@@ -60,5 +77,59 @@ public class PrecondicionesPage extends MetodosComunes {
         waitUntilVisible(menuItemColombia, driver);
         menuItemColombia.click();
         MetodosComunes.waitUntil(TIEMPO_2000);
+    }
+
+    public void irAColasDeMensajes(WebDriver driver) {
+        waitUntilVisible(campoTxtBuscar, driver);
+        campoTxtBuscar.sendKeys("Admin");
+        campoTxtBuscar.sendKeys(Keys.ENTER);
+        waitUntilVisible(menuItemSupervision, driver);
+        menuItemSupervision.click();
+        waitUntilVisible(submenuColasDeMensajes, driver);
+        MetodosComunes.waitUntil(TIEMPO_1000);
+        submenuColasDeMensajes.click();
+        waitUntilVisible(tablaColasDeMensajes, driver);
+    }
+
+    public Integer encontrarColasDeMensajes(String idcola, int col, WebDriver driver) {
+        waitUntilVisible(tablaColasDeMensajes, driver);
+        Integer filaCola = 1;
+        boolean encontrado = false;
+        List<WebElement> filas = tablaColasDeMensajes.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (idcola.equals(columna.get(col).getText())) {
+                encontrado = true;
+                break;
+            }
+            filaCola++;
+        }
+        if (!encontrado) {
+            filaCola = -1;
+        }
+        return filaCola;
+    }
+
+    public void suspenderColasDeMensajes(WebDriver driver) {
+        irAColasDeMensajes(driver);
+        Integer suraGMC = encontrarColasDeMensajes("Sura.GMC.GMCInspire.Ticket", CONSTANTE_1, driver);
+        Integer gmcInspire = encontrarColasDeMensajes("GMC Inspire", CONSTANTE_1, driver);
+        boolean encontrados = false;
+        if (suraGMC != -1 && gmcInspire != -1) {
+            encontrados = true;
+            WebElement suraGMCElemento = driver.findElement(By.xpath(XPATH + suraGMC.toString() + "]/td[1]/div/img"));
+            WebElement gmcInspireElemento = driver.findElement(By.xpath(XPATH + gmcInspire.toString() + "]/td[1]/div/img"));
+            suraGMCElemento.click();
+            MetodosComunes.waitUntil(TIEMPO_1000);
+            gmcInspireElemento.click();
+            MetodosComunes.waitUntil(TIEMPO_1000);
+            botonSuspender.click();
+            MetodosComunes.waitUntil(TIEMPO_5000);
+            WebElement estadoSuraGMCElemento = driver.findElement(By.xpath(XPATH + suraGMC.toString() + "]/td[4]/div"));
+            WebElement estadoGmcInspireElemento = driver.findElement(By.xpath(XPATH + gmcInspire.toString() + "]/td[4]/div"));
+            assertEquals("Suspended", estadoSuraGMCElemento.getText());
+            assertEquals("Suspended", estadoGmcInspireElemento.getText());
+        }
+        assertTrue(encontrados);
     }
 }
