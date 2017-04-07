@@ -97,7 +97,6 @@ public class DetallesDeUbicacionPage extends PageUtil {
     }
 
     public void verificarMensaje(String mensaje) {
-        divMensaje.waitUntilPresent();
-        verificarMensaje(divMensaje, mensaje);
+        waitForTextToAppear(mensaje);
     }
 }
