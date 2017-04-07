@@ -58,7 +58,7 @@ public class Precondiciones extends MetodosComunes {
     public void desactivarColasDeMensajes() {
         initPages();
         loginPage.login("pedrvevi", "pedrvevi", driver);
-        precondicionesPage.susperderColasDeMensajes(driver);
+        precondicionesPage.suspenderColasDeMensajes(driver);
     }
 
     @After

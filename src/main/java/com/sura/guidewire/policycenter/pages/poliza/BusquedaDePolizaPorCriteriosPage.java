@@ -47,12 +47,10 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
 
     public void buscarPorResultados(ExamplesTable aVerificar) {
         Map<String, String> datosVerificar = aVerificar.getRow(0);
-
-        esperarHasta(TIEMPO_7);
-
+        tablaResultados.waitUntilPresent();
+        clickearElemento(tablaResultados);
         Set<String> llaves = datosVerificar.keySet();
         String contenidoTabla = tablaResultados.getText();
-
         for (String evaluando : llaves) {
             String verificar = datosVerificar.get(evaluando);
             MatcherAssert.assertThat("No contiene los elementos a verificar", contenidoTabla, Matchers.containsString(verificar));

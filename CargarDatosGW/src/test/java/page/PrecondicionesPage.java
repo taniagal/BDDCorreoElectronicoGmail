@@ -45,7 +45,7 @@ public class PrecondicionesPage extends MetodosComunes {
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_2000 = 2000;
     private static final int TIEMPO_5000 = 5000;
-    private static final int CONSTANTE_2 = 2;
+    private static final int CONSTANTE_1 = 1;
     private static final String XPATH = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']/*/table/tbody/tr[";
 
     public void cargarDatos(WebDriver driver) {
@@ -80,6 +80,7 @@ public class PrecondicionesPage extends MetodosComunes {
         waitUntilVisible(menuItemSupervision, driver);
         menuItemSupervision.click();
         waitUntilVisible(submenuColasDeMensajes, driver);
+        MetodosComunes.waitUntil(TIEMPO_1000);
         submenuColasDeMensajes.click();
         waitUntilVisible(tablaColasDeMensajes, driver);
     }
@@ -103,21 +104,23 @@ public class PrecondicionesPage extends MetodosComunes {
         return filaCola;
     }
 
-    public void susperderColasDeMensajes(WebDriver driver) {
+    public void suspenderColasDeMensajes(WebDriver driver) {
         irAColasDeMensajes(driver);
-        Integer suraGMC = encontrarColasDeMensajes("Sura.GMC.GMCInspire.Ticket", CONSTANTE_2);
-        Integer gmcInspire = encontrarColasDeMensajes("GMC Inspire", CONSTANTE_2);
+        Integer suraGMC = encontrarColasDeMensajes("Sura.GMC.GMCInspire.Ticket", CONSTANTE_1);
+        Integer gmcInspire = encontrarColasDeMensajes("GMC Inspire", CONSTANTE_1);
         boolean encontrados = false;
         if (suraGMC != -1 && gmcInspire != -1) {
             encontrados = true;
             WebElement suraGMCElemento = driver.findElement(By.xpath(XPATH + suraGMC.toString() + "]/td[1]/div/img"));
             WebElement gmcInspireElemento = driver.findElement(By.xpath(XPATH + gmcInspire.toString() + "]/td[1]/div/img"));
             suraGMCElemento.click();
+            MetodosComunes.waitUntil(TIEMPO_1000);
             gmcInspireElemento.click();
+            MetodosComunes.waitUntil(TIEMPO_1000);
             botonSuspender.click();
-            esperarHasta(TIEMPO_5000);
-            WebElement estadoSuraGMCElemento = find(By.xpath(XPATH + suraGMC.toString() + "]/td[4]/div"));
-            WebElement estadoGmcInspireElemento = find(By.xpath(XPATH + gmcInspire.toString() + "]/td[4]/div"));
+            MetodosComunes.waitUntil(TIEMPO_5000);
+            WebElement estadoSuraGMCElemento = driver.findElement(By.xpath(XPATH + suraGMC.toString() + "]/td[4]/div"));
+            WebElement estadoGmcInspireElemento = driver.findElement(By.xpath(XPATH + gmcInspire.toString() + "]/td[4]/div"));
             assertEquals("Suspended", estadoSuraGMCElemento.getText());
             assertEquals("Suspended", estadoGmcInspireElemento.getText());
         }
