@@ -89,11 +89,11 @@ public class CoaseguroPage extends PageUtil {
                 esperarHasta(TIEMPO_500);
                 act.sendKeys(dato.get("participacion")).build().perform();
                 esperarHasta(TIEMPO_500);
+                act.sendKeys(Keys.TAB).build().perform();
                 campoLider.click();
             }
             i++;
         }
-        act.sendKeys(Keys.TAB).build().perform();
     }
 
 
