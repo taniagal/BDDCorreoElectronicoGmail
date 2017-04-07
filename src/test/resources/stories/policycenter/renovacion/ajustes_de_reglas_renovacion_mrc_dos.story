@@ -18,7 +18,8 @@ And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-And intente cotizar y expedir la poliza
+And cotice una poliza
+And expido la poliza
 And ingrese al resumen de la poliza expedida
 And desee seleccionar instrucciones previas a la renovacion
 And diligencie las instrucciones previas a renovacion
