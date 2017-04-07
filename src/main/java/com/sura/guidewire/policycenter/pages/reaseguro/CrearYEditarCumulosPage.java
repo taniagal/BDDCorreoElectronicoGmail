@@ -94,6 +94,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresoInformacionDeReaseguroEnTabla() {
         try {
+            $(CELDA_VALOR).sendKeys(Keys.SHIFT, Keys.TAB);
+            esperarHasta(TIEMPO_2000);
             linkNombreReasegurador.click();
         } catch (StaleElementReferenceException e) {
             LOGGER.error("StaleElementReferenceException " + e);
