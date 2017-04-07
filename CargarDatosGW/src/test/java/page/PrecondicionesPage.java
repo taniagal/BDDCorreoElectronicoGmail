@@ -14,6 +14,8 @@ import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
+
 public class PrecondicionesPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElement campoTxtBuscar;
@@ -85,8 +87,8 @@ public class PrecondicionesPage extends MetodosComunes {
         waitUntilVisible(tablaColasDeMensajes, driver);
     }
 
-    public Integer encontrarColasDeMensajes(String idcola, int col) {
-        waitFor(tablaColasDeMensajes).waitUntilPresent();
+    public Integer encontrarColasDeMensajes(String idcola, int col, WebDriver driver) {
+        waitUntilVisible(tablaColasDeMensajes, driver);
         Integer filaCola = 1;
         boolean encontrado = false;
         List<WebElement> filas = tablaColasDeMensajes.findElements(By.tagName("tr"));
@@ -106,8 +108,8 @@ public class PrecondicionesPage extends MetodosComunes {
 
     public void suspenderColasDeMensajes(WebDriver driver) {
         irAColasDeMensajes(driver);
-        Integer suraGMC = encontrarColasDeMensajes("Sura.GMC.GMCInspire.Ticket", CONSTANTE_1);
-        Integer gmcInspire = encontrarColasDeMensajes("GMC Inspire", CONSTANTE_1);
+        Integer suraGMC = encontrarColasDeMensajes("Sura.GMC.GMCInspire.Ticket", CONSTANTE_1, driver);
+        Integer gmcInspire = encontrarColasDeMensajes("GMC Inspire", CONSTANTE_1, driver);
         boolean encontrados = false;
         if (suraGMC != -1 && gmcInspire != -1) {
             encontrados = true;
