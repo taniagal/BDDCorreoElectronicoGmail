@@ -54,8 +54,8 @@ Then debe salir el mensaje de autorizacion por valor superior al permitido
 | El valor asegurado del vehículo ($301.000.000,00) supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos |
 
 Examples:
-| plan               | valor        | planBasico        |
-| Plan Autos Clásico | 301000000,00 | Plan Autos Básico |
+| plan               | valor     | planBasico        |
+| Plan Autos Clásico | 301000000 | Plan Autos Básico |
 
 Scenario: Cambio de plan de autos modular a plan basico
 Given tengo una poliza de PA con los siguientes datos:
@@ -70,8 +70,8 @@ And intente cotizar el cambio de poliza
 Then expida el cambio de la poliza
 
 Examples:
-| planBasico        | valor        |
-| Plan Autos Básico | 301000000,00 |
+| planBasico        | valor     |
+| Plan Autos Básico | 301000000 |
 
 Scenario: Validar requisitos en cambio de plan basico a otro plan
 Meta: @manual

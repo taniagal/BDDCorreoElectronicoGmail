@@ -354,7 +354,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     }
 
     public void seleccionarOpcionSiguiente() {
-        botonSiguiente.click();
+        clickearElemento(botonSiguiente);
         esperarHasta(TIEMPO_1500);
     }
 
