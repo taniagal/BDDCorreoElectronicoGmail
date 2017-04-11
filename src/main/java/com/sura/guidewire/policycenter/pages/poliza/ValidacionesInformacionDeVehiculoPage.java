@@ -245,6 +245,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
+        clickearElemento(comboBoxModelo);
         if(!comboBoxModelo.getValue().equals(vehiculo.get(MODELO))) {
             try {
                 seleccionarItem(comboBoxModelo, vehiculo.get(MODELO));
