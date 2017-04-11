@@ -7,14 +7,17 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ExpedicionRenovacionPaValidacionesPage extends PageUtil {
 
-    Actions act = new Actions(getDriver());
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']")
+    WebElementFacade motor;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
+    WebElementFacade chasis;
 
     public ExpedicionRenovacionPaValidacionesPage(WebDriver driver) {
         super(driver);
@@ -56,10 +59,10 @@ public class ExpedicionRenovacionPaValidacionesPage extends PageUtil {
         }
         resetImplicitTimeout();
         Map<String, String> datosVehiculo = infoVehiculo.getRows().get(0);
-        WebElementFacade motor = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']");
-        WebElementFacade chasis = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']");
         if ("null".equals(datosVehiculo.get("motor")) && "null".equals(datosVehiculo.get("chasis"))) {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(motor).clear();
+            clickearElemento(chasis);
+            esperarHasta(TIEMPO_2000);
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(chasis).clear();
         } else {
             motor.sendKeys(datosVehiculo.get("motor"));
