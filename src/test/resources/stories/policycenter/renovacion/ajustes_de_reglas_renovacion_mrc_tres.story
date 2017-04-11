@@ -10,8 +10,8 @@ Para poder hacer un estudio y negociacion de cada poliza multiriesgo
 Scenario: Renovacion Reaseguro Especial Reaseguro Aceptado
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-| cuenta     | producto                | agente_oficina |
-| C000888888 | Multiriesgo corporativo | DIRECTO        |
+| cuenta     | producto                | agente_oficina | oficina |
+| C000888888 | Multiriesgo corporativo | DIRECTO        | 1059    |
 When seleccione la poliza como reaseguro especial
 And diligencie los campos de reaseguro aceptado
 | comision | deposito | impuesto | transferencia |

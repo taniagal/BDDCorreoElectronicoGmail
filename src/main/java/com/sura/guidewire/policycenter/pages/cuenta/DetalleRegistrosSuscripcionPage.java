@@ -132,7 +132,7 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
 
     public void buscarRegistrosSuscripcion() {
         waitFor(mnuRegistrosSuscripcion).waitUntilPresent().waitUntilClickable();
-        mnuRegistrosSuscripcion.click();
+        clickearElemento(mnuRegistrosSuscripcion);
     }
 
     public void validarNombresFiltros(String estado, String transaccion) {

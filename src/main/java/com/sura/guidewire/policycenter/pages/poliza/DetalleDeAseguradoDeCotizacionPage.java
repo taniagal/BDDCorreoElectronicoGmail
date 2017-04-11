@@ -60,7 +60,6 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
     WebElementFacade menuPolizaNuevoEnvio;
 
-    protected static final int CONSTANTE_5 = 5;
 
     public DetalleDeAseguradoDeCotizacionPage(WebDriver driver) {
         super(driver);
@@ -69,7 +68,8 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
 
     public void irAIngresarAsegurado() {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAsegurados).waitUntilClickable();
-        botonAsegurados.click();
+        clickearElemento(botonAsegurados);
+        waitForTextToAppear("Detalles del asegurado");
     }
 
     public void agregarAsegurado() {
