@@ -48,7 +48,6 @@ public class InicioRenovacionPolizaPaDefinitions {
     @When("quiera aceptar esta renovacion")
     public void whenQuieraAceptarEstaRenovacion() {
         inicioRenovacionPolizaPaSteps.aceptarOperacionDeRenovacion();
-        inicioRenovacionPolizaPaSteps.opcionesDeCierre();
     }
 
     @Then("se debe validar los datos del tomador: $datosTomador")

@@ -39,8 +39,6 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     WebElementFacade datoPrimerNombreAsegurado;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade datoPrimerApellidoAsegurado;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
-    WebElementFacade datoPlaca;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
     WebElementFacade datoModelo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']")
@@ -59,13 +57,11 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     WebElementFacade datoMotor;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
     WebElementFacade datoChasis;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
-    WebElementFacade datoValorAsegura;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:CloseOptions']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:JobWizardToolbarButtonSet:CloseOptions-btnWrap']")
     WebElementFacade btnOpcionDeCierre;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:CloseOptions:Withdraw']")
     WebElementFacade btnRetiraTransaccion;
-    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
+    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
     WebElementFacade btnAceptarRetiraTransaccion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']")
     WebElementFacade botonCotizaeV;
@@ -87,7 +83,7 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     }
 
     public void aceptaOperacionRenovacion() {
-        btnAceptarRenovacion.click();
+        clickearElemento(btnAceptarRenovacion);
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilClickable();
     }
 
