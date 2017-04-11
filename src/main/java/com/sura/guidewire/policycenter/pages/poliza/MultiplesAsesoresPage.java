@@ -70,10 +70,11 @@ public class MultiplesAsesoresPage extends PageUtil {
             esperarHasta(TIEMPO_200);
             actions.sendKeys(Keys.ENTER).build().perform();
             actions.sendKeys(Keys.TAB).build().perform();
-            esperarHasta(TIEMPO_300);
+            esperarHasta(TIEMPO_1000);
             actions.sendKeys(dato.get("porcentaje")).build().perform();
-            actions.sendKeys(Keys.TAB).build().perform();
             esperarHasta(TIEMPO_300);
+            actions.sendKeys(Keys.TAB).build().perform();
+            esperarHasta(TIEMPO_500);
             celdaRol.clear();
             actions.sendKeys(dato.get("rol")).build().perform();
             esperarHasta(TIEMPO_500);
