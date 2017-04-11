@@ -107,7 +107,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade radioBotonEsSustitucionSi;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static final int TIEMPO_7000 = 7000;
     private static final int DOS = 2;
     private static final int TREINTA_Y_TRES = 33;
     String primaTotal = "";
@@ -232,11 +231,13 @@ public class TarifaTasaUnicaPage extends PageUtil {
         int cantDeIntentosParaMostrarBotonEditarTransaccion = 0;
         String btnSiguiente = ".//*[@id='RenewalWizard:Next-btnInnerEl']";
         String btnVolver = ".//*[@id='RenewalWizard:Prev-btnInnerEl']";
-        setImplicitTimeout(0, TimeUnit.SECONDS);
-        while (cantDeIntentosParaMostrarBotonEditarTransaccion < TIEMPO_3 && !botonEditarTransaccionDePolizaAsegurado.isVisible()) {
-            clickearElemento($(btnVolver), TIEMPO_4);
-            esperarHasta(TIEMPO_7000);
-            clickearElemento($(btnSiguiente), TIEMPO_4);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+        while (cantDeIntentosParaMostrarBotonEditarTransaccion < TIEMPO_3) {
+            if (!botonEditarTransaccionDePolizaAsegurado.isVisible()) {
+                clickearElemento($(btnVolver), TIEMPO_4);
+                esperarHasta(TIEMPO_3000);
+                clickearElemento($(btnSiguiente), TIEMPO_4);
+            }
             cantDeIntentosParaMostrarBotonEditarTransaccion++;
         }
         resetImplicitTimeout();
