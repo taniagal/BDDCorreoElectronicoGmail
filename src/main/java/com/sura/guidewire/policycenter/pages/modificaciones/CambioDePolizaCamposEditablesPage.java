@@ -16,7 +16,7 @@ public class CambioDePolizaCamposEditablesPage extends PageUtil {
     private WebElementFacade txtValorAsegurado;
     @FindBy(xpath = "//span[contains(.,'Siguiente >')]")
     private WebElementFacade botonSiguienteModificacion;
-    @FindBy(xpath = "//div[contains(.,'El valor asegurado del vehículo ($301.000.000,00)")
+    @FindBy(xpath = "//div[contains(.,'El valor asegurado del vehículo ($301.000.000,00)')]")
     private WebElementFacade labelMensajeValorAsegurado;
     @FindBy(xpath = "//li[contains(.,'Plan Autos Clásico')]")
     private WebElementFacade planAutosClasico;
