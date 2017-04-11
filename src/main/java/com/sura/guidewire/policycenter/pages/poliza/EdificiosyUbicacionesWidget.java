@@ -45,7 +45,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
     private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
+    @FindBy(xpath = ".//*[contains(@id,'LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding')]")
     private WebElementFacade botonAgregarArticulos;
     @FindBy(xpath = ".//a[contains(.,'Remover Riesgo')]")
     private WebElementFacade botonRemoverRiesgo;
@@ -246,8 +246,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void removerRiesgos() {
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (checkBoxRiesgo.isPresent()) {
-            checkBoxRiesgo.click();
+        if (botonAgregarArticulos.isVisible()) {
+            clickearElemento(checkBoxRiesgo);
             waitFor(TIEMPO_1).second();
             botonRemoverRiesgo.click();
         }
