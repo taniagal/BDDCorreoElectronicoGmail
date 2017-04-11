@@ -112,6 +112,11 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
             itmAsegurado.click();
         }
         clickearElemento(btnDetalleVehiculo);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        if(!campoTxtPlaca.isVisible()){
+            clickearElemento(btnDetalleVehiculo);
+        }
+        resetImplicitTimeout();
         campoTxtPlaca.waitUntilVisible();
     }
 
