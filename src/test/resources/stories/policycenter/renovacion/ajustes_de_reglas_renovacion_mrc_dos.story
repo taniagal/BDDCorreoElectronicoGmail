@@ -11,7 +11,7 @@ Scenario: Renovacion Manual Instrucciones Previas a las renovacion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |producto               |
-|C000777776|Multiriesgo corporativo|
+|C000777778|Multiriesgo corporativo|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas

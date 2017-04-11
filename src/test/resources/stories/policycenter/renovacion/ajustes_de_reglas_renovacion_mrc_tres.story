@@ -10,12 +10,12 @@ Para poder hacer un estudio y negociacion de cada poliza multiriesgo
 Scenario: Renovacion Reaseguro Especial Reaseguro Aceptado
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |producto               |agente_oficina|
-|C000888888|Multiriesgo corporativo|DIRECTO       |
+| cuenta     | producto                | agente_oficina |
+| C000888888 | Multiriesgo corporativo | DIRECTO        |
 When seleccione la poliza como reaseguro especial
 And diligencie los campos de reaseguro aceptado
-|comision|deposito|impuesto|transferencia|
-|100     |100     |100     |100          |
+| comision | deposito | impuesto | transferencia |
+| 100      | 100      | 100      | 100           |
 And ingresa el asegurado <opcionAgregar>
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
@@ -42,9 +42,9 @@ And cotice la renovacion
 And emita la renovacion
 And acepto la expedicion de poliza
 Then debo obtener un mensaje UW
-|mensajeUno                                                              |mensajeDos                                                              |
-|La póliza tiene reaseguro especial, requiere autorización de renovación.|La póliza tiene reaseguro aceptado, requiere autorización de renovación.|
+| mensajeUno                                                                                                                                         |
+| La póliza tiene la marca de reaseguro especial: Reaseguro aceptado. Por favor diríjase a la opción análisis de riesgo para solicitar la aprobación |
 
 Examples:
-|tipoId              |numeroId  |opcionAgregar |mensaje                                                                                       |
-|CEDULA DE CIUDADANIA|1234567890|Del Directorio|La póliza tiene instrucción(es) previa(s) a la renovación, requiere autarización de renovación|
+| tipoId               | numeroId   | opcionAgregar  | mensaje                                                                                        |
+| CEDULA DE CIUDADANIA | 1234567890 | Del Directorio | La póliza tiene instrucción(es) previa(s) a la renovación, requiere autarización de renovación |
