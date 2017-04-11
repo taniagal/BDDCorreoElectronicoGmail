@@ -17,7 +17,7 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
     private WebElementFacade campoPlaca;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProductName-inputEl']")
     private WebElementFacade comboProducto;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[2]/div/table/tbody/tr[2]/td")
+    @FindBy(xpath = ".//div[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']/div/table")
     private WebElementFacade tablaResultados;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:DocumentType-inputEl']")
     private WebElementFacade comboTipoDocumento;

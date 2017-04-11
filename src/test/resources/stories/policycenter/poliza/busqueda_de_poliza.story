@@ -108,8 +108,8 @@ And seleccione el criterio de busqueda <criterioBusqueda>
 And diligencio el campo de criterio de busqueda <contenidoCampoCriterio>
 And busco poliza mediante el criterio seleccionado anteriormente
 Then se visualiza la informacion de la poliza relacionada
-|poliza        |labelFechaInicial       |labelFechaFinal      |labeltomador|
-|TEST_22222236 |Fecha inicio de vigencia|Fecha fin de vigencia|Tomador     |
+|poliza        |
+|TEST_22222236 |
 Examples:
 |criterio               |criterioBusqueda       |contenidoCampoCriterio|
 |Multiriesgo corporativo|Dirección              |CR 65 # 48 - 162      |
