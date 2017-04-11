@@ -11,7 +11,7 @@ Scenario: Renovacion Manual Instrucciones Previas a las renovacion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 | cuenta     | producto                | oficina | agente_oficina  |
-| C000777778 | Multiriesgo corporativo | 1060    | DELIMA MEDELLIN |
+| C000222333 | Multiriesgo corporativo | 1060    | DELIMA MEDELLIN |
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
