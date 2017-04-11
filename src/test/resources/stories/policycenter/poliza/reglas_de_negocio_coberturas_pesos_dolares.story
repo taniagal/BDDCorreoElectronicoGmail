@@ -101,13 +101,6 @@ And cotice una poliza
 And muestre los mensajes de advertencia para las reglas de coberturas
 | mensaje1           | mensaje2          |
 | (US$3.000.000,00)^ | (US$2.000.000,00) |
-And cotice y expida la poliza
-And vaya a la opcion de analisis de riesgo
-Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-| mensaje           |
-| (US$3.000.000,00) |
-| (US$2.000.000,00) |
-| (US$500.000,00)   |
 
 Examples:
 | tipoMercancia |
