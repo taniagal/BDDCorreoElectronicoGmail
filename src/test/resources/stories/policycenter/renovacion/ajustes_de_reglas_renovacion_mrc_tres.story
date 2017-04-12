@@ -9,9 +9,9 @@ Para poder hacer un estudio y negociacion de cada poliza multiriesgo
 
 Scenario: Renovacion Reaseguro Especial Reaseguro Aceptado
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-| cuenta     | producto                | agente_oficina | oficina |
-| C000888888 | Multiriesgo corporativo | DIRECTO        | 1059    |
+Given estoy cotizando una poliza de mrc:
+| organizacion | producto                | canal             | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion       | departamento | ciudad   | agente |
+| Sura         | Multiriesgo corporativo | Canal Tradicional | CEDULA DE CIUDADANIA | 10/10/1980       | PALOMA        | SERNA           | DIRECCION DE RESIDENCIA | CALLE 79 #28-78 | Antioquia    | Medellin | INT-3  |
 When seleccione la poliza como reaseguro especial
 And diligencie los campos de reaseguro aceptado
 | comision | deposito | impuesto | transferencia |
