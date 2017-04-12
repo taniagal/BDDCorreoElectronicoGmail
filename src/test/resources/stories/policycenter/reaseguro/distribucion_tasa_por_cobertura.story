@@ -86,8 +86,8 @@ When Ingrese la información de los reaseguradores
 |Program     |Gross rate|0                      |0             |0                   |0                    |0                |0          |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
 |grupoDecoberturas|tasaBrutaDeCesionAutomatica|reaseguradores|tasaBrutaDeCesion|
-|Daños materiales |0,285318                   |ALLIANZ RE    |0,534972         |
-|Daños materiales |0,285318                   |MAIDEN RE     |0,713296         |
+|Daños materiales |0,285319                   |ALLIANZ RE    |0,534972         |
+|Daños materiales |0,285319                   |MAIDEN RE     |0,713296         |
 
 Examples:
 |descripcionDeAcuerdo            |tipoContrato                    |
@@ -142,12 +142,15 @@ When Ingrese la información de los reaseguradores
 |Program     |Gross rate|0                      |0             |0                   |0                    |0                |0          |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
 |grupoDecoberturas|tasaBrutaDeCesionAutomatica|reaseguradores|tasaBrutaDeCesion|
-|Terremoto        |0,322682                   |ALLIANZ RE    |0,605028         |
-|Terremoto        |0,322682                   |MAIDEN RE     |0,806704         |
+|Terremoto        |0,322681                   |ALLIANZ RE    |0,605028         |
+|Terremoto        |0,322681                   |MAIDEN RE     |0,806704         |
 
 Examples:
 |descripcionDeAcuerdo            |tipoContrato                    |
 |Descripcion de acuerdo para test|Acuerdo facultativo proporcional|
+
+
+
 
 
 
