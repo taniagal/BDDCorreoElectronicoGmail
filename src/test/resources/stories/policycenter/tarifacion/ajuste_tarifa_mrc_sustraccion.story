@@ -7,7 +7,7 @@ Narrative:
 Como usuario de policy center
 Al cotizar una poliza de MRC quiero mirar el valor de la prima para las coberturas de la cotización y el nivel de riesgo
 
-Scenario:  Tarifa MRC poliza con los ariticulos edifiio y maquinaria
+Scenario:  Tarifa MRC poliza con los ariticulos edificio y maquinaria
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |cuenta     |oficina|agente_oficina|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -31,12 +31,12 @@ And debo poder verificar el valor de la prima para las coberuras de la cotizacio
 |Edificio                |Cobertura de Danos materiales    |380.000  |
 |Edificio                |Cobertura de Asonada             |75.509   |
 |Maquinaria              |Cobertura de Rotura de maquinaria|15.405   |
-|Maquinaria              |Cobertura de Danos materiales    |554.594  |
+|Maquinaria              |Cobertura de Danos materiales    |554.595  |
 |Maquinaria              |Cobertura de Asonada             |33.000   |
 
 Examples:
 |prima    |iva    |costo    |
-|2.132.175|415.943|2.548.118|
+|2.132.176|415.943|2.548.119|
 
 
 Scenario:  Tarifa MRC poliza Bancolombia con los ariticulos muebles y maquinaria
