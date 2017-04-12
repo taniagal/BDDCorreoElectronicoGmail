@@ -1,7 +1,5 @@
-Cobertura Ubicacion Otros
-
 Meta:
-@lote2
+@lote5
 @tag equipo: 2, sprint: 5
 
 
