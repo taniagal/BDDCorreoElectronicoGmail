@@ -85,10 +85,10 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
 | articulo | descripcion                   | valor   |
-| Edificio | Cobertura de Danos materiales | 125.416 |
+| Edificio | Cobertura de Danos materiales | 125.417 |
 | Edificio | Cobertura de Terremoto        | 148.264 |
 | Edificio | Cobertura de Asonada          | 14.404  |
-| Edificio | Subtotal                      | 288.084 |
+| Edificio | Subtotal                      | 288.085 |
 
 Examples:
 | valor |
