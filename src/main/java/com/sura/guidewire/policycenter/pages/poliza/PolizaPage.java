@@ -39,6 +39,9 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade checkReaseguroEspecialSi;
     @FindBy(xpath = ".//*[contains(@id,'PolicyFile_PolicyFile_Contacts')]")
     private WebElementFacade menuItemContactos;
+    @FindBy(xpath = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]")
+    private WebElementFacade botonAcciones;
+
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
@@ -51,7 +54,6 @@ public class PolizaPage extends PageUtil {
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
     protected static final int CONSTANTE_61 = 61;
-    protected static final int CONSTANTE_10 = 10;
     @Page
     CotizacionPage cotizacionPage;
 
@@ -344,9 +346,8 @@ public class PolizaPage extends PageUtil {
     }
 
     public void seleccionarBotonAcciones() {
-        String xpathLinkAcciones = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
-        WebElementFacade botonAcciones = findBy(xpathLinkAcciones);
-        botonAcciones.waitUntilPresent().click();
+        botonAcciones.waitUntilPresent();
+        clickearElemento(botonAcciones);
     }
 
     public void seleccionarOpcionRetirarTransaccion() {
