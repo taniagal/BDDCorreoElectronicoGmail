@@ -15,8 +15,6 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     WebElementFacade itemNuevaAutorizacion;
     @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:issue-inputEl']")
     WebElementFacade txtReglaValidacion;
-    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtSearchPage:issue-inputEl']")
-    WebElementFacade txtBuscarReglaValidacion;
     @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:user-inputEl']")
     WebElementFacade txtpersonaRecibe;
     @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:Username-inputEl']")
@@ -97,7 +95,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     }
 
     public void crearNuevaAutorizacion() {
-        itemNuevaAutorizacion.click();
+        actions.click(itemNuevaAutorizacion).build().perform();
     }
 
     public void agregarNuevaAutorizacion(ExamplesTable datosNuevaAutorizacion) {
