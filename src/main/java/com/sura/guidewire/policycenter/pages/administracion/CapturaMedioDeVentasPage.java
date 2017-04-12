@@ -19,7 +19,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade tablaMediosVenta;
     @FindBy(xpath = "//td/div/table/tbody/tr[4]/td/div")
     private WebElementFacade tablaNuevaAutorizacion;
-    @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/div[3]/div[2]/div/table/tbody/tr[16]/td/div/span")
+    @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_CommercialNetwork_Ext']/div/span")
     private WebElementFacade menuItemCanales;
     @FindBy(xpath = ".//*[@id='AdminSaleMethodSearchPage_Ext:0']")
     private WebElementFacade tablaCanalMedioDeVenta;
@@ -35,7 +35,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade botonBuscarMediosDeVenta;
     @FindBy(xpath = "//a[contains(.,'Restablecer')]")
     private WebElementFacade botonRestablecer;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div")
+    @FindBy(xpath = ".//*[contains(@id, 'SearchPage_Ext:0')]")
     private WebElementFacade tablaCanal;
     @FindBy(xpath = "//span[@id='Admin:AdminMenuActions-btnInnerEl']")
     private WebElementFacade mnuAcciones;
@@ -49,7 +49,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade listMedioDeVenta;
     @FindBy(xpath = "//li[contains(.,'CC001 - Bancaseguros bancolombia')]")
     private WebElementFacade itemCanalComercial;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[5]/td/div/div[4]/div")
+    @FindBy(xpath = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:OfficesSearchResultsLV-body']")
     private WebElementFacade tablaMediosDeVentaAsociados;
     @FindBy(xpath = "//span[contains(@id,'Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuAction_SuraChannelSaleMethod_Ext-textEl')]")
     private WebElementFacade itemMedioDeVentaPorCanalNuevo;
