@@ -1,5 +1,5 @@
 Meta:
-@lote3
+@lote5
 @Story CDSEG-847
 @tag equipo: 2, sprint: 5
 
