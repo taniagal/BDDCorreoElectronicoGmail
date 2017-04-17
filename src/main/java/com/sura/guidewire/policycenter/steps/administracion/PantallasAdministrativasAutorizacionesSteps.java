@@ -61,7 +61,7 @@ public class PantallasAdministrativasAutorizacionesSteps extends ScenarioSteps {
 
     @Step
     public void validarInformacionAutorizacion(ExamplesTable informacion) {
-        String informacionAutorizacion = informacion.getRow(0).get("informacion");
+        String informacionAutorizacion = informacion.getRows().get(0).get("informacion");
         MatcherAssert.assertThat("Datos no encontrados", pantallasAdministrativasAutorizacionesPage.validarInformacionAutorizacion(), Matchers.containsString(informacionAutorizacion));
     }
 
