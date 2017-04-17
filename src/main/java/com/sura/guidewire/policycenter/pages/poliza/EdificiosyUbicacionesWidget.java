@@ -545,7 +545,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void verificarMensajes(ExamplesTable mensajes) {
         for (Map<String, String> mensaje : mensajes.getRows()) {
-            setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+            setImplicitTimeout(TIEMPO_10, TimeUnit.SECONDS);
             try {
                 waitFor(divMensaje).shouldContainText(mensaje.get(MENSAJES_WORKSPACE));
                 MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
