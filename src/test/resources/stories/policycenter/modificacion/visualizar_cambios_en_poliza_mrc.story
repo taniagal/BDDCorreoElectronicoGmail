@@ -71,11 +71,11 @@ And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
-And cambie el valor de la reconstruccion <valorReconstruccion>
+And cambie el valor de edificios para la cobertura de reconstruccion <valorReconstruccion>
 And ingresar interes adicional <tipoBeneficiarios> a una sola cobertura
 | TIPO_DE_DOCUMENTO    | DOCUMENTO | TIPOBENEFICIARIO |
 | CEDULA DE CIUDADANIA | 71318883  | Asegurado        |
 Then debe existir la comparacion entre datos de poliza existente y poliza nueva
 Examples:
-| cedula   | tipodocumento        | tipoBeneficiario |
-| 71318883 | CEDULA DE CIUDADANIA | Asegurado        |
+| valorReconstruccion |
+| 200000000           |

@@ -19,4 +19,9 @@ public class VisualizarCambiosEnPolizaMrcDefinitions {
         visualizarCambiosEnPolizaMrcSteps.cambiarValorReconstruccion(valorReconstruccion);
         edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
+
+    @When("cambie el valor de edificios para la cobertura de reconstruccion <valorReconstruccion>")
+    public void cambiarValorReconstruccionSinAceptar(@Named("valorReconstruccion") String valorReconstruccion) {
+        visualizarCambiosEnPolizaMrcSteps.cambiarValorReconstruccion(valorReconstruccion);
+    }
 }
