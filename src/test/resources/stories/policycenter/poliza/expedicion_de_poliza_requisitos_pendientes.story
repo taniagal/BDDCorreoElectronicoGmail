@@ -47,7 +47,7 @@ Then debo ver un mensaje bloqueante accesorios
 
 Examples:
 | accesorios | tipo_documento       | documento  |
-| 2600000,00 | CEDULA DE CIUDADANIA | 1234567890 |
+| 2600000    | CEDULA DE CIUDADANIA | 1234567890 |
 
 Scenario: Validacion sarlaft-expedicion
 Given estoy cotizando una poliza de mrc con documento:
@@ -75,7 +75,7 @@ Given estoy cotizando una poliza de mrc con documento:
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los siguientes datos del vehiculo:
 | plan         | placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | marca | linea                            | clase_vehiculo     |
-| Plan Modular | ASD25 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000,00    | AUDI  | TT  8S 2.0 TFSI CO - TP 2000CC T | Camperos y pickups |
+| Plan Modular | ASD25 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | AUDI  | TT  8S 2.0 TFSI CO - TP 2000CC T | Camperos y pickups |
 And deseleccione la opcion vehiculo cero kilometros
 When ingrese las coberturas:
 | limite | deducible | abogado | PLlaves |

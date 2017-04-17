@@ -216,6 +216,7 @@ public class PageUtil extends PageObject {
 
     public void validarBusqueda(WebElementFacade tabla, ExamplesTable listaBusqueda) {
         Map<String, String> tablaBusqueda = listaBusqueda.getRows().get(0);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(tabla).shouldBePresent();
         MatcherAssert.assertThat("Falló el mensaje de validacion, expected: " + tablaBusqueda.get("busqueda") + " but was: "
                 + tabla.getText(), tabla.containsText(tablaBusqueda.get("busqueda")));
     }
