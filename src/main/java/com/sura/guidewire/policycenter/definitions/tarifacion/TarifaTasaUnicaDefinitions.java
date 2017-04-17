@@ -99,6 +99,7 @@ public class TarifaTasaUnicaDefinitions {
     }
 
     @Given("expido la poliza y voy a informacion de poliza expedida")
+    @When("expido la poliza y voy a informacion de poliza expedida")
     public void expedirPolizaConInfo() {
         tasaUnicaSteps.expedirPoliza();
         tasaUnicaSteps.irAInformacionDePolizaExpedida();

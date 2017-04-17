@@ -105,7 +105,9 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
     }
 
     public void validarBotonesNoVisibles() {
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         validarQueNoSeaVisibleBtnCrearVehiculo();
         validarQueNoSeaVisibleBtnEliminarVehiculo();
+        resetImplicitTimeout();
     }
 }
