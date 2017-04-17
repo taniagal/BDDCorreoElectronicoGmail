@@ -342,10 +342,12 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     public void seleccionarAccionesNoTomar() {
         Integer fila = this.encontrarCotizacion(numeroCotizacionNoTomar);
-        botonAcciones = findBy(BOTON_ACCIONES_1 + fila.toString() + ":SubmissionActions:SubmissionActionsMenuIcon']");
-        botonAcciones.waitUntilVisible().waitUntilClickable().click();
-        WebElementFacade opcionNoTomar = findBy(BOTON_ACCIONES_1 + fila.toString() + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']");
-        opcionNoTomar.waitUntilVisible().waitUntilClickable().click();
+        String xpathBotonAcciones = BOTON_ACCIONES_1 + fila.toString() + ":SubmissionActions:SubmissionActionsMenuIcon']";
+        String xpathBotonNoTomar = BOTON_ACCIONES_1 + fila.toString() + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']";
+        botonAcciones = findBy(xpathBotonAcciones);
+        clickearElemento(botonAcciones);
+        WebElementFacade opcionNoTomar = findBy(xpathBotonNoTomar);
+        clickearElemento(opcionNoTomar);
     }
 
     public Integer encontrarCotizacion(String cotizacion) {
