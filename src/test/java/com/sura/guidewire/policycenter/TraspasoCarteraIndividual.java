@@ -1,6 +1,4 @@
-//package com.sura.guidewire.policycenter;
+package com.sura.guidewire.policycenter;
 
-//import net.serenitybdd.jbehave.SerenityStory;
-//
-//public class TraspasoCarteraIndividual extends SerenityStory {
-//}
+public class TraspasoCarteraIndividual {
+}
