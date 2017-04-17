@@ -21,7 +21,9 @@ And ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
 When expido la poliza y voy al archivo de poliza
-And expida el cambio de una poliza
+And cambio la fecha de vigencia
+And intente cotizar el cambio de poliza
+And expida el cambio de la poliza
 Then debe mostrar el resumen de la poliza expedida con la informacion del cambio <infoCambio>, poliza <infoPoliza>,  escritorio <escritorio>
 
 Examples:
