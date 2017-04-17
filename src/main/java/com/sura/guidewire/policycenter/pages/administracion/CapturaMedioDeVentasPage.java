@@ -17,7 +17,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade itemConfiguracionRedComercial;
     @FindBy(xpath = "//div[contains(.,'CanalesMedios de ventaOficinas por canal')]")
     private WebElementFacade tablaMediosVenta;
-    @FindBy(xpath = "//td/div/table/tbody/tr[4]/td/div")
+    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:0']")
     private WebElementFacade tablaNuevaAutorizacion;
     @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_CommercialNetwork_Ext']/div/span")
     private WebElementFacade menuItemCanales;
@@ -107,11 +107,13 @@ public class CapturaMedioDeVentasPage extends PageUtil {
 
     public String validarOpcionesMediosDeVenta() {
         String listaObtenida = null;
-        if (tablaCanalMedioDeVenta.isCurrentlyVisible()) {
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        if (tablaCanalMedioDeVenta.isVisible()) {
             listaObtenida = tablaCanalMedioDeVenta.getText();
-        } else if (tablaNuevaAutorizacion.isCurrentlyVisible()) {
+        } else if (tablaNuevaAutorizacion.isVisible()) {
             listaObtenida = tablaNuevaAutorizacion.getText();
         }
+        resetImplicitTimeout();
         return listaObtenida;
     }
 

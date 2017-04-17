@@ -9,7 +9,7 @@ Como usuario de policy center en el rol de agente,csr, asegurador o gerente
 Quiero tener las pantallas de administracion de autorizacion de UW issue,
 Para conocer que oficinas, personas o grupos autorizan los UW issue.
 
-Scenario: Informacion pantalla nueva autorizacion
+Scenario: Informacion pantalla nueva autorizacion y edicion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy en el menu de administracion
 When vaya al menu de acciones
@@ -27,6 +27,8 @@ And cuando ingrese una nueva autorizacion con los datos:
 | reglaValidacion                 | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo |
 | Bloqueo obligatorio de pregunta | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     |
 Then se debe ingresar correctamente el registro
+And vaya a modificar la informacion de la autorizacion
+Then solo deben estar habilitados los campos activo e inactivo y se debe poder actualizar
 Examples:
 |  |
 |  |
@@ -41,19 +43,6 @@ And cuando ingrese una nueva autorizacion con los datos:
 Then debe salir un mensaje indicando que el registro esta duplicado
 | mensaje            |
 | Registro duplicado |
-Examples:
-|  |
-|  |
-
-Scenario: Validar campos deshabilitados y campos habilitados
-Given estoy en el menu de administracion
-When vaya al menu de acciones
-And vaya a crear una nueva autorizacion
-And cuando ingrese una nueva autorizacion con los datos:
-| reglaValidacion                                                         | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo |
-| A ser revisado por el asegurador 1, liberación de cotización de bloqueo | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | No     |
-And vaya a modificar la informacion de la autorizacion
-Then solo deben estar habilitados los campos activo e inactivo y se debe poder actualizar
 Examples:
 |  |
 |  |

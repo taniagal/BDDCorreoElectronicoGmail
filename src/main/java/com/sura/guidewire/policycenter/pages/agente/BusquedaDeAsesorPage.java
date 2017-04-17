@@ -113,8 +113,7 @@ public class BusquedaDeAsesorPage extends PageUtil {
     public void clicEnElBotonRestablecer() {
         botonRestablecer.waitUntilPresent().click();
         waitForTextToAppear("No hay datos para mostrar");
-        waitFor(ExpectedConditions.attributeContains(campoCodigoAgente, "text", ""));
-        waitFor(ExpectedConditions.attributeContains(campoNombreAsesor, "text", ""));
+        clickearElemento(campoCodigoAgente);
     }
 
     public Map<String, String> obtenerResultadosDeBusqueda() {
