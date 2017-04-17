@@ -123,6 +123,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonVolverEnRenovacion;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:SaleMethod_DV-inputEl']")
     private WebElementFacade comboMedioVenta;
+    @FindBy(xpath = "//*[contains(text(),'Cotizar')]")
+    private WebElementFacade botonCotizar;
 
 
     TableWidgetPage tabla;
@@ -488,17 +490,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void cliclearBtnCotizar() {
-        WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
         try {
-            withTimeoutOf(TIEMPO_7, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent();
-            clickearElemento(btnCotizar);
+            botonCotizar.waitUntilPresent();
+            clickearElemento(botonCotizar);
         } catch (TimeoutException e) {
             LOGGER.info("ElementShouldBePresentException " + e);
             setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
             if (botonAceptarCambioDePoliza.isPresent()) {
                 clickearElemento(botonAceptarCambioDePoliza);
-                withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(btnCotizar);
-                clickearElemento(btnCotizar);
+                withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonCotizar);
+                clickearElemento(botonCotizar);
             }
             resetImplicitTimeout();
         }
@@ -518,10 +519,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
 
     public void descartarCambios() {
-        WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
-        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (descarteCambios()) {
-            clickearElemento(btnCotizar);
+            clickearElemento(botonCotizar);
         }
         resetImplicitTimeout();
     }
