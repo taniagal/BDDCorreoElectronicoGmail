@@ -51,10 +51,11 @@ public class PantallasAdministrativasAutorizacionesDefinitions {
         pantallasAdministrativasAutorizacionesSteps.validarEstadoDeCampos();
     }
 
-    @When("vaya a modificar la informacion de la autorizacion")
+    @Then("vaya a modificar la informacion de la autorizacion")
     public void modificarInformacionDeLaAutorizacion() {
         pantallasAdministrativasAutorizacionesSteps.modificarInformacionDeAutorizacion();
     }
+
     @Then("se debe mostrar toda la informacion relacionada a la autorizacion $informacion")
     public void visualizarInformacionRelacionadaConLaAutorizacion(ExamplesTable informacion){
         pantallasAdministrativasAutorizacionesSteps.validarInformacionAutorizacion(informacion);
