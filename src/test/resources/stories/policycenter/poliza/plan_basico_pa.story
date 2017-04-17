@@ -15,7 +15,7 @@ Given voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto
 | CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | DIRECTO        | 1073    |
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
-| random | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Básico | Televentas |
+| LKJ998 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Básico | Televentas |
 And ingrese las coberturas a vehiculo:
 | limite | deducible | AS |
 | 640.0  | 0         |    |
@@ -26,7 +26,7 @@ Examples:
 |  |
 
 
-Scenario:
+Scenario: validar requisitos mensaje bloqueante accesorios
 Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1090658731 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
@@ -46,4 +46,4 @@ Then debo ver un mensaje bloqueante accesorios
 
 Examples:
 | tipo_documento       | documento  |
-| CEDULA DE CIUDADANIA | 1090658723 |
+| CEDULA DE CIUDADANIA | 1090658731 |
