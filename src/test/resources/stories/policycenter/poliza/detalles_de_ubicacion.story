@@ -31,5 +31,5 @@ And descripcion <descripcion>, actividad economica <actividad>
 Then que se muestre el mensaje <mensaje>
 
 Examples:
-| departamento | ciudad   | direccion      | descripcion   | mensaje                                  | actividad                     | medioVenta |
-| Antioquia    | Medellin | 2X´H !2 -0+ ** | Edificio Core | La dirección 2X´H !2 -0+ ** no es válida | Acabado de productos textiles | Televentas |
+| departamento | ciudad   | direccion     | descripcion   | mensaje                                 | actividad                     | medioVenta |
+| Antioquia    | Medellin | 2XH !2 -0+ ** | Edificio Core | La dirección 2XH !2 -0+ ** no es válida | Acabado de productos textiles | Televentas |
