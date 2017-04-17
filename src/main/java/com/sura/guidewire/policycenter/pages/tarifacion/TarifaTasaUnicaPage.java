@@ -232,8 +232,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
         String btnSiguiente = ".//*[@id='RenewalWizard:Next-btnInnerEl']";
         String btnVolver = ".//*[@id='RenewalWizard:Prev-btnInnerEl']";
         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-        while (cantDeIntentosParaMostrarBotonEditarTransaccion < TIEMPO_3) {
-            if (!botonEditarTransaccionDePolizaAsegurado.isVisible()) {
+        while (cantDeIntentosParaMostrarBotonEditarTransaccion < TIEMPO_5) {
+            if (!botonEditarTransaccionDePolizaInfo.isVisible()) {
                 clickearElemento($(btnVolver), TIEMPO_4);
                 esperarHasta(TIEMPO_3000);
                 clickearElemento($(btnSiguiente), TIEMPO_4);
