@@ -69,6 +69,10 @@ public class CuentaPage extends PageUtil {
     private WebElementFacade campoTxtTelefonoOficina;
     @FindBy(xpath = ".//*[@id='DuplicateContactsPopup:DuplicateContactsScreen:ResultsLV:0:Select']")
     private WebElementFacade linkElegir;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:EmailAddress1-inputEl']")
+    private WebElementFacade txtCorreoElectronico;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:CellPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    private WebElementFacade txtNumeroCelular;
 
     public CuentaPage(WebDriver driver) {
         super(driver);
@@ -104,6 +108,16 @@ public class CuentaPage extends PageUtil {
         esperarPorValor(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
     }
 
+    public void agregarTelefonoCelularYCorreo(ExamplesTable telefonoMail) {
+        Map<String, String> dato = telefonoMail.getRow(0);
+        txtCorreoElectronico.click();
+        txtCorreoElectronico.sendKeys(dato.get("correoElectronico"));
+        txtNumeroCelular.waitUntilClickable();
+        txtNumeroCelular.click();
+        txtNumeroCelular.sendKeys(dato.get("celular"));
+    }
+
+
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         waitFor(botonAgregarOrganizacion).click();
         esperarHasta(TIEMPO_500);
@@ -132,7 +146,7 @@ public class CuentaPage extends PageUtil {
         if (linkElegir.isPresent()) {
             linkElegir.click();
             withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonActualizarCoincidente);
-            if ("".equals(campoTxtDocumentoNuevaCuenta.getValue())){
+            if ("".equals(campoTxtDocumentoNuevaCuenta.getValue())) {
                 campoTxtDocumentoNuevaCuenta.sendKeys(Utils.cedulaRandom());
             }
             clickearElemento(botonActualizarCoincidente);
