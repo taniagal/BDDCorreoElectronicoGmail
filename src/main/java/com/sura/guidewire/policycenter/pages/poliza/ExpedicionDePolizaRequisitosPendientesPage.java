@@ -122,6 +122,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade comboBoxTipoBeneficiario;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/a[2]/span/span/span[1]")
     private WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl')]")
+    private WebElementFacade comboMedioDeVenta;
 
     public ExpedicionDePolizaRequisitosPendientesPage(WebDriver driver) {
         super(driver);
@@ -270,5 +272,10 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
             seleccionarItem(txtPerdidaDeLLaves, perdidaLlaves);
         }
     }
+
+    public void seleccionarMedioDeVenta(String medioVenta){
+        seleccionarItem(comboMedioDeVenta, medioVenta);
+    }
+
 }
 

@@ -96,9 +96,9 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
         expedicionDePolizaRequisitosPendientesSteps.clickVehiculos();
     }
 
-    @When("ingrese la ciudad de circulacion <ciudad>")
-    public void agregarCiudadCirculacion(@Named("ciudad") String ciudad) {
-        expedicionDePolizaRequisitosPendientesSteps.agregarCiudadCirculacion(ciudad);
+    @When("ingrese la ciudad de circulacion <ciudad> y medio de venta <medioVenta>")
+    public void agregarCiudadCirculacion(@Named("ciudad") String ciudad, @Named("medioVenta") String medioVenta) {
+        expedicionDePolizaRequisitosPendientesSteps.agregarCiudadCirculacion(ciudad, medioVenta);
     }
 
     @When("intente cotizar el cambio de poliza")

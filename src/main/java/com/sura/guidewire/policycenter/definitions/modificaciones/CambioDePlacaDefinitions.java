@@ -101,4 +101,9 @@ public class CambioDePlacaDefinitions {
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         tarifaAutosSteps.agregarVehiculo(datosVehiculo);
     }
+
+    @Given("ingrese los siguientes datos del vehiculo: $datosVehiculo")
+    public void ingresarDatosDelVehiculo(ExamplesTable datosVehiculo) {
+        tarifaAutosSteps.ingresarDatosDelVehiculo(datosVehiculo);
+    }
 }

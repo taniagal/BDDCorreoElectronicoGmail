@@ -73,10 +73,9 @@ Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765434 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
-And ingrese los datos del vehiculo:
+And ingrese los siguientes datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
 | ASD25 | 2017   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Modular | Televentas |
-And deseleccione la opcion vehiculo cero kilometros
 When ingrese las coberturas:
 | limite | deducible | abogado | PLlaves |
 | 640.   | 0         | Si      | Si      |
@@ -102,7 +101,7 @@ Scenario: Validacion beneficiario oneroso en expedicion-modificacion
 Given ya se tiene una poliza expedida <numeroPoliza>
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
-And ingrese la ciudad de circulacion <ciudad>
+And ingrese la ciudad de circulacion <ciudad> y medio de venta <medioVenta>
 And ingrese un beneficiario oneroso en modificacion <beneficiario>
 And ingrese algunas coberturas en modificacion <deducible> <perdidaLlaves>
 And intente cotizar el cambio de poliza
@@ -112,8 +111,8 @@ Then debo ver un mensaje bloqueante en modificacion
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
-| numeroPoliza  | ciudad               | beneficiario    | deducible | perdidaLlaves |
-| TEST_22225550 | MEDELLIN (ANTIOQUIA) | Oneroso Leasing | 0         | Opción 1      |
+| numeroPoliza  | ciudad               | beneficiario    | deducible | perdidaLlaves | medioVenta |
+| TEST_22225550 | MEDELLIN (ANTIOQUIA) | Oneroso Leasing | 0         | Opción 1      | Televentas |
 
 
 Scenario: Validar beneficiario oneroso en cancelacion
