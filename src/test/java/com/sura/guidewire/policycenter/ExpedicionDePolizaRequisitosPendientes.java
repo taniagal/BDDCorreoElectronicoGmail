@@ -1,5 +1,7 @@
 package com.sura.guidewire.policycenter;
 
 
-public class ExpedicionDePolizaRequisitosPendientes {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class ExpedicionDePolizaRequisitosPendientes extends SerenityStory{
 }

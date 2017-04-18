@@ -41,7 +41,7 @@ And ingrese un valor maximo para los accesorios <accesorios>
 And cotice una poliza
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
-Then debo ver un mensaje bloqueante accesorios
+Then debo ver un mensaje bloqueante
 | mensaje                                                                                                               |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
@@ -61,7 +61,7 @@ When ingrese las coberturas:
 | limite | deducible | abogado | PLlaves |
 | 640.   | 0         | Si      | Si      |
 And llegue a la expedicion de la poliza
-Then debo ver un mensaje bloqueante accesorios
+Then debo ver un mensaje bloqueante
 | mensaje                                                                                                          |
 | El contacto CAROLINA OCHOA con DNI C71318883 requiere sarlaft, diríjase a análisis de riesgo para diligenciarlo. |
 Examples:
@@ -90,7 +90,7 @@ And seleccione la opcion importado por terceros
 And cotice una poliza
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
-Then debo ver un mensaje bloqueante accesorios
+Then debo ver un mensaje bloqueante
 | mensaje                                                                                                               |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
