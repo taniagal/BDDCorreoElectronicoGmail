@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
 import com.sura.guidewire.policycenter.pages.poliza.CoberturaGlobalPage;
+import com.sura.guidewire.policycenter.pages.poliza.ExpedicionDePolizaRequisitosPendientesPage;
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
@@ -12,6 +13,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
     CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
+    ExpedicionDePolizaRequisitosPendientesPage expedicionDePolizaRequisitosPendientesPage = new ExpedicionDePolizaRequisitosPendientesPage(getDriver());
 
     public TarifaAutosSteps(Pages page) {
         super(page);
@@ -34,6 +36,16 @@ public class TarifaAutosSteps extends ScenarioSteps {
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datosPoliza);
+        vehiculoPage.clickSiguiente();
+        tarifaAutosPage.esperarPorPantallaCoberturas();
+    }
+
+    @Step
+    public void ingresarDatosDelVehiculo(ExamplesTable datosPoliza) {
+        vehiculoPage.crearVehiculo();
+        tarifaAutosPage.relacionarAsegurado();
+        vehiculoPage.agregarVehiculo(datosPoliza);
+        expedicionDePolizaRequisitosPendientesPage.seleccionarOpcionCeroKilometros();
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.esperarPorPantallaCoberturas();
     }
