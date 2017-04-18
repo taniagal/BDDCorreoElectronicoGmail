@@ -106,7 +106,7 @@ And ingrese un beneficiario oneroso en modificacion <beneficiario>
 And ingrese algunas coberturas en modificacion <deducible> <perdidaLlaves>
 And intente cotizar el cambio de poliza
 And expida el cambio de la poliza
-Then debo ver un mensaje bloqueante en modificacion
+Then debo ver un mensaje bloqueante
 | mensaje                                                                                                               |
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
