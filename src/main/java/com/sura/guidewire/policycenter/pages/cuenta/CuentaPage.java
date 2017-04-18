@@ -109,18 +109,8 @@ public class CuentaPage extends PageUtil {
         esperarPorValor(comboBoxCiudad, dato.get("ciudad"));
         seleccionarItem(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
         esperarPorValor(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
-        agregarTelefonoCelularYCorreo();
     }
-
-    public void agregarTelefonoCelularYCorreo() {
-        txtCorreoElectronico.click();
-        txtCorreoElectronico.sendKeys(CORREOELECTRONICO);
-        txtNumeroCelular.waitUntilClickable();
-        txtNumeroCelular.click();
-        txtNumeroCelular.sendKeys(NUMEROCELULAR);
-    }
-
-
+    
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         waitFor(botonAgregarOrganizacion).click();
         esperarHasta(TIEMPO_500);
