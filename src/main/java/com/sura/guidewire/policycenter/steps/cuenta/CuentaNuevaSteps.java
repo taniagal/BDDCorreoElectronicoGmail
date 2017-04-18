@@ -58,6 +58,7 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         agregarDireccion(datosCotizacion);
     }
 
+
     @Step
     public void abrirNuevaCuenta() {
         inicioPage().irANuevaCuenta();
@@ -116,6 +117,8 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         }
         cuentaPage.agregarTipoDocumento(tipoDocumento, documento);
     }
+
+
 
     @Step
     public void agregarDireccion(ExamplesTable datos) {
