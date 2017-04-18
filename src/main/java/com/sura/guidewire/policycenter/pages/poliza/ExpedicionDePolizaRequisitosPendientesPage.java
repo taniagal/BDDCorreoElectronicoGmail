@@ -232,7 +232,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         botonAgregarBeneficiario.waitUntilPresent();
         clickearElemento(botonAgregarBeneficiario);
         menuItemOtrosContactos.waitUntilPresent();
-        clickearElemento(menuItemOtrosContactos);
+        actions.moveToElement(menuItemOtrosContactos).release(menuItemOtrosContactos).build().perform();
         menuItemContacto1.waitUntilPresent();
         clickearElemento(menuItemContacto1);
         comboBoxTipoBeneficiario.waitUntilPresent().click();
