@@ -69,6 +69,13 @@ public class CuentaPage extends PageUtil {
     private WebElementFacade campoTxtTelefonoOficina;
     @FindBy(xpath = ".//*[@id='DuplicateContactsPopup:DuplicateContactsScreen:ResultsLV:0:Select']")
     private WebElementFacade linkElegir;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:EmailAddress1-inputEl']")
+    private WebElementFacade txtCorreoElectronico;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:CellPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    private WebElementFacade txtNumeroCelular;
+
+    private final String CORREOELECTRONICO = "sura@sura.com.co";
+    private final String NUMEROCELULAR = "3113794264";
 
     public CuentaPage(WebDriver driver) {
         super(driver);
@@ -102,7 +109,17 @@ public class CuentaPage extends PageUtil {
         esperarPorValor(comboBoxCiudad, dato.get("ciudad"));
         seleccionarItem(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
         esperarPorValor(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
+        agregarTelefonoCelularYCorreo();
     }
+
+    public void agregarTelefonoCelularYCorreo() {
+        txtCorreoElectronico.click();
+        txtCorreoElectronico.sendKeys(CORREOELECTRONICO);
+        txtNumeroCelular.waitUntilClickable();
+        txtNumeroCelular.click();
+        txtNumeroCelular.sendKeys(NUMEROCELULAR);
+    }
+
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         waitFor(botonAgregarOrganizacion).click();
@@ -132,7 +149,7 @@ public class CuentaPage extends PageUtil {
         if (linkElegir.isPresent()) {
             linkElegir.click();
             withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonActualizarCoincidente);
-            if ("".equals(campoTxtDocumentoNuevaCuenta.getValue())){
+            if ("".equals(campoTxtDocumentoNuevaCuenta.getValue())) {
                 campoTxtDocumentoNuevaCuenta.sendKeys(Utils.cedulaRandom());
             }
             clickearElemento(botonActualizarCoincidente);
