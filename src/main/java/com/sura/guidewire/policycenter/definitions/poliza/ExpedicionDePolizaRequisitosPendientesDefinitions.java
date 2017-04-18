@@ -42,11 +42,6 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
         expedicionDePolizaRequisitosPendientesSteps.seleccionarVehiculoImportado();
     }
 
-    @Given("ingrese los siguientes datos del vehiculo: $datos")
-    public void datosVehiculo(ExamplesTable datos) {
-        expedicionDePolizaRequisitosPendientesSteps.datosVehiculo(datos);
-    }
-
     @When("ingrese un beneficiario oneroso en modificacion <beneficiario>")
     public void ingresarBeneficiarioOnerosoModificacion(@Named("beneficiario") String beneficiario) {
         expedicionDePolizaRequisitosPendientesSteps.clickEnInteresAdicionalModificacion(beneficiario);

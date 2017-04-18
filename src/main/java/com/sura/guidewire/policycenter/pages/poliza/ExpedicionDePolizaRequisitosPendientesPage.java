@@ -211,44 +211,6 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         botonCotizar.click();
     }
 
-    public void agregarVehiculo(ExamplesTable datos) {
-        Map<String, String> vehiculo = datos.getRow(0);
-        comboBoxPlanSubmission.clear();
-        seleccionarItem(comboBoxPlanSubmission, vehiculo.get("plan"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(txtPlacaSubmission, vehiculo.get("placa"));
-        try {
-            comboBoxModeloSubmission.clear();
-        } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
-            comboBoxModeloSubmission.clear();
-        }
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(comboBoxModeloSubmission, vehiculo.get("modelo"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(txtCodigoFasecoldaSubmission, vehiculo.get("codigo_fasecolda"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(comboBoxClaseVehiculoSubmission, vehiculo.get("clase_vehiculo"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(comboBoxMarcaSubmission, vehiculo.get("marca"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(comboBoxLinea, vehiculo.get("linea"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(comboBoxCiudadCirculacionSubmission, vehiculo.get("ciudad_circulacion"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(comboBoxTipoServicio, vehiculo.get("vehiculo_servicio"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(txtMotorSubmission, vehiculo.get("motor"));
-        esperarHasta(TIEMPO_3000);
-        seleccionarItem(txtChasisSubmission, vehiculo.get("chasis"));
-        esperarHasta(TIEMPO_3000);
-        txtValorAseguradoSubmission.clear();
-        seleccionarItem(txtValorAseguradoSubmission, vehiculo.get("valor_asegurado"));
-        esperarHasta(TIEMPO_2000);
-        radioBotonVehiculoCeroKilometros.click();
-        esperarHasta(TIEMPO_2000);
-    }
-
     public void cambiarValorAccesorios() {
         campoTxtAccesorios.clear();
     }
