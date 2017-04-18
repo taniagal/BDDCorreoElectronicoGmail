@@ -40,7 +40,7 @@ When ingrese las coberturas a vehiculo:
 And cotice una poliza
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
-Then debo ver un mensaje bloqueante accesorios
+Then debo ver un mensaje bloqueante
 | mensaje                                                                                                             |
 | Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 

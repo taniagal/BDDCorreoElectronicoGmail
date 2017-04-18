@@ -103,13 +103,6 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void datosVehiculo(ExamplesTable datos) {
-        vehiculoPage.crearVehiculo();
-        tarifaAutosPage.relacionarAsegurado();
-        expedicionDePolizaRequisitosPendientesPage.agregarVehiculo(datos);
-    }
-
-    @Step
     public void cambiarValorAccesorios() {
         expedicionDePolizaRequisitosPendientesPage.cambiarValorAccesorios();
     }
