@@ -74,6 +74,9 @@ public class CuentaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:CellPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade txtNumeroCelular;
 
+    private final String CORREOELECTRONICO = "sura@sura.com.co";
+    private final String NUMEROCELULAR = "3113794264";
+
     public CuentaPage(WebDriver driver) {
         super(driver);
     }
@@ -106,15 +109,15 @@ public class CuentaPage extends PageUtil {
         esperarPorValor(comboBoxCiudad, dato.get("ciudad"));
         seleccionarItem(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
         esperarPorValor(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
+        agregarTelefonoCelularYCorreo();
     }
 
-    public void agregarTelefonoCelularYCorreo(ExamplesTable telefonoMail) {
-        Map<String, String> dato = telefonoMail.getRow(0);
+    public void agregarTelefonoCelularYCorreo() {
         txtCorreoElectronico.click();
-        txtCorreoElectronico.sendKeys(dato.get("correoElectronico"));
+        txtCorreoElectronico.sendKeys(CORREOELECTRONICO);
         txtNumeroCelular.waitUntilClickable();
         txtNumeroCelular.click();
-        txtNumeroCelular.sendKeys(dato.get("celular"));
+        txtNumeroCelular.sendKeys(NUMEROCELULAR);
     }
 
 

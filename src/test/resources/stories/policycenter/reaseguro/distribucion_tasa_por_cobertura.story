@@ -11,8 +11,8 @@ para que la liquidacion de primas de reaseguro correctamente por cobertura
 Scenario: scenario description
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
-|producto               |tipo_documento      |fecha_nacimiento|primer_nombre  |primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|correoElectronico|celular   |
-|Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/10/1973      |EUTIMIOTRIPASIO|MOSORONGO      |DIRECCION DE RESIDENCIA|CALLE 27a #60-68|Antioquia   |Medellin|INT-3 |test@sura.com.co |3116964785|
+|producto               |tipo_documento      |fecha_nacimiento|primer_nombre  |primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/10/1973      |EUTIMIOTRIPASIO|MOSORONGO      |DIRECCION DE RESIDENCIA|CALLE 27a #60-68|Antioquia   |Medellin|INT-3 |
 And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
