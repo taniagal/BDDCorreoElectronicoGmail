@@ -54,7 +54,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         }
         resetImplicitTimeout();
         waitFor(botonExpedirPoliza);
-        clickearElemento(botonExpedirPoliza);
+        esperarObjetoClikeableServidorWe(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
