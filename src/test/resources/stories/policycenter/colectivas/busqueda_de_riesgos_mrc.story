@@ -10,8 +10,7 @@ para poder ubicar el riesgo de una poliza  principal o una individual  para la r
 Scenario: 1 Búsqueda de poliza riesgo y búsqueda sin resultado
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When copie la poliza
-And ingrese a edificios y ubicaciones
+When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais     | departamento | ciudad   | direccion   | actividadEconomica            | medioVenta |
 | Colombia | Antioquia    | Medellin | CR 45 29 30 | Acabado de productos textiles | Televentas |
