@@ -373,6 +373,27 @@ public class PageUtil extends PageObject {
         }
     }
 
+    public void esperarObjetoClikeableServidorWe(WebElementFacade pathElemento) {
+        boolean ejecuto = false;
+        int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
+        int ejecuciones = 0;
+        while (ejecuciones < maximoEjecuciones && !ejecuto) {
+            esperarHasta(TIEMPO_500);
+            try {
+                this.clicObjeto(pathElemento);
+                ejecuto = true;
+            } catch (Exception ex) {
+                LOGGER.info("Exception " + ex);
+            }
+
+            ejecuciones = ejecuciones + 1;
+        }
+
+        if (!ejecuto) {
+            MatcherAssert.assertThat("No se pudo dar click a el objeto", false);
+        }
+    }
+
     public boolean validarElementoWebVisible(WebElementFacade elemento, final int tiempo) {
         boolean visible;
         setImplicitTimeout(tiempo, TimeUnit.MILLISECONDS);
