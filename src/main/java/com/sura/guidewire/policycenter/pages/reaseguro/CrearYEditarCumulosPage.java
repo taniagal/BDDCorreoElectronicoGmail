@@ -75,7 +75,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     }
 
     public void ingresarDescripcionDeAcuerdoYDireccion(String descripcionDeAcuerdo) {
-        withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(txtIngresaDescripcionAcuerdo).waitUntilClickable();
+        withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(txtIngresaDescripcionAcuerdo).waitUntilClickable();
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
         ingresaCantidadDeCoberturas();
