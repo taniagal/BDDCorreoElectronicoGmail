@@ -91,7 +91,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     }
 
     public void irAlMenuAcciones() {
-        mnuAcciones.click();
+        esperarObjetoClikeableServidorWe(mnuAcciones);
     }
 
     public void crearNuevaAutorizacion() {
