@@ -10,7 +10,6 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -288,7 +287,7 @@ public class TarifaMRCPage extends PageUtil {
             List<WebElementFacade> checkBoxesCoberturas = findAll(".//*[contains(@id,'CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:') and contains(@id,':CoverageInputSet:CovPatternInputGroup:_checkbox')]");
             for (int j = 0; j < checkBoxesCoberturas.size(); j++) {
                 WebElementFacade labelNombreCobertura = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:" + j + ":CoverageInputSet:CovPatternInputGroup-legendTitle']");
-                if (labelNombreCobertura.containsText(cobertura2)) {
+                if (waitFor(labelNombreCobertura).containsText(cobertura2)) {
                     WebElementFacade checkBoxCobertura2 = $(".//*[@id='CPBuildingSuraPopup:InputCoverage" + dato.get(ARTICULO) + ":ArticleTypeDetailDV:" + j + ":CoverageInputSet:CovPatternInputGroup:_checkbox']");
                     clickearElemento(checkBoxCobertura2);
                     break;
