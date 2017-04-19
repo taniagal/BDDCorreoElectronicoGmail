@@ -146,7 +146,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitForCampoTxtValorAsegurado(vehiculo);
         esperarHasta(TIEMPO_2000);
         seleccionarCiudadDeCirculacion(vehiculo);
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_2000);
         try {
             waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         } catch (TimeoutException e) {
