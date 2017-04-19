@@ -128,6 +128,7 @@ public class BusquedaDeAsesorPage extends PageUtil {
 
     public void validarMensajeDeBusquedaDeAsesores(String mensajeEsperado) {
         waitForTextToAppear(mensajeEsperado);
+        super.esperarObjetoClikeableServidorWe(mensaje);
         super.verificarMensaje(mensaje, mensajeEsperado);
     }
 }
