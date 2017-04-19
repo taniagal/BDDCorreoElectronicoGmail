@@ -139,7 +139,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     public String validarOpcionesCanal() {
         String listaObtenida = null;
         if (tablaCanal.isCurrentlyVisible()) {
-            listaObtenida = tablaCanal.getText();
+            listaObtenida = waitFor(tablaCanal).getText();
         } else if (tablaCanalNuevo.isCurrentlyVisible()) {
             listaObtenida = tablaCanalNuevo.getText();
         }
