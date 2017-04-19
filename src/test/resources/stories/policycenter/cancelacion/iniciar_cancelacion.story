@@ -2,7 +2,7 @@ Iniciar Cancelacion
 
 
 Meta:
-@lote1
+@lote6
 @Story CDSEG-3417
 @tag equipo: 2, sprint: 8
 
@@ -12,9 +12,9 @@ Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> 
 When seleccione la lista motivo de cancelacion
 Then se debe visualizar los siguientes motivos
 | MOTIVOS                       |
-| Por no pago                   |
+| Por no pagó                   |
 | Por petición del cliente      |
-| Por error de cobro            |
+| Por error de cob              |
 | Por orden de la compañía      |
 | Por no renovada               |
 | Por sustitución               |
@@ -41,9 +41,9 @@ Then se debe mostrar el metodo de reembolso <reembolso> sin el campo fuente
 Examples:
 | numPoliza     | rolUsuario | motivo                  | descripcion             | reembolso      |
 | TEST_22222236 | Asesor     | Por pérdida total       | prueba perdida total    | Sin devolución |
-| TEST_22222236 | Asesor     | Por error de trámite    | prueba error tramite    | Fijo           |
+| TEST_22222236 | Asesor     | Por error de trámite    | prueba error tramite    | Fij            |
 | TEST_22222236 | Asesor     | Por error en expedición | prueba error expedicion | Fijo           |
-| TEST_22222236 | Asesor     | Por no renovada         | prueba error prorrata   | Prorrata       |
+| TEST_22222236 | Asesor     | Por no renovada         | prueba error prorrata   | Prorrat        |
 
 
 Scenario: 3 Validacion lista de motivos para poliza bancolombia
