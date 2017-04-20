@@ -56,6 +56,7 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
         botonActividadNueva.waitUntilPresent();
         actions.moveToElement(botonActividadNueva).release(botonActividadNueva).build().perform();
         botonRevision.waitUntilPresent();
+        esperarHasta(TIEMPO_1000);
         actions.moveToElement(botonRevision).release(botonRevision).build().perform();
         botonRevisarYAprobar.waitUntilPresent();
         esperarYClickearBoton(botonRevisarYAprobar);

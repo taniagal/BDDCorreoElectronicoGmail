@@ -138,11 +138,13 @@ public class CapturaMedioDeVentasPage extends PageUtil {
 
     public String validarOpcionesCanal() {
         String listaObtenida = null;
-        if (tablaCanal.isCurrentlyVisible()) {
+        setImplicitTimeout(TIEMPO_10, TimeUnit.SECONDS);
+        if (tablaCanal.isVisible()) {
             listaObtenida = waitFor(tablaCanal).getText();
-        } else if (tablaCanalNuevo.isCurrentlyVisible()) {
+        } else if (tablaCanalNuevo.isVisible()) {
             listaObtenida = tablaCanalNuevo.getText();
         }
+        resetImplicitTimeout();
         return listaObtenida;
     }
 
@@ -180,7 +182,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void verificarAdiccionMedioDeVentaACanal() {
-        withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(labelDatosBasicosMedioDeVenta);
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(labelDatosBasicosMedioDeVenta);
     }
 
     public void validarDatosMedioDeVentaPorCanal(ExamplesTable verificarDatoMediosVenta) {
