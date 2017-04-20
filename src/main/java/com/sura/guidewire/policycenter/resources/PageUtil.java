@@ -238,11 +238,11 @@ public class PageUtil extends PageObject {
 
     public void esperarPorValor(WebElementFacade element, String value) {
         try {
-            withTimeoutOf(TIEMPO_3, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
+            withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisible at PageUtil 129 ", e);
         }
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void desplegarElementoDeLista(WebElementFacade elementoDeLaLista) {
