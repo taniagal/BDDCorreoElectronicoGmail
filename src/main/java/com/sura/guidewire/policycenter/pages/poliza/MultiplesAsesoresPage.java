@@ -75,7 +75,7 @@ public class MultiplesAsesoresPage extends PageUtil {
             esperarHasta(TIEMPO_300);
             actions.sendKeys(Keys.TAB).build().perform();
             esperarHasta(TIEMPO_500);
-            celdaRol.clear();
+            waitFor(celdaRol).clear();
             actions.sendKeys(dato.get("rol")).build().perform();
             esperarHasta(TIEMPO_500);
             actions.sendKeys(Keys.TAB).build().perform();

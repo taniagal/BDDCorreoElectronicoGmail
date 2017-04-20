@@ -223,16 +223,16 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
         botonHojaDeCalculoRenovacion.waitUntilPresent();
-        clickearElemento(botonSiguiente);
+        esperarObjetoClikeableServidorWe(botonSiguiente);
         validarBotonEditarTransaccion();
     }
 
-    public void validarBotonEditarTransaccion(){
+    public void validarBotonEditarTransaccion() {
         int cantDeIntentosParaMostrarBotonEditarTransaccion = 0;
         String btnSiguiente = ".//*[@id='RenewalWizard:Next-btnInnerEl']";
         String btnVolver = ".//*[@id='RenewalWizard:Prev-btnInnerEl']";
         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-        while (cantDeIntentosParaMostrarBotonEditarTransaccion < TIEMPO_5) {
+        while (cantDeIntentosParaMostrarBotonEditarTransaccion < TIEMPO_7) {
             if (!botonEditarTransaccionDePolizaInfo.isVisible()) {
                 clickearElemento($(btnVolver), TIEMPO_4);
                 esperarHasta(TIEMPO_3000);
