@@ -10,46 +10,8 @@ en el caso de que no se encuentren adjuntos o recibidos el sistema debe mostrar 
 y no debe dejar expedir la poliza hasta que estos no esten adjuntos, en caso de que los requisitos no sean obligatorios,
 debe sacar un mensaje de alerta y debe permitir expedir la poliza
 
-Scenario: Maximo valor de accesorios-inspeccion-importado por terceros
-GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza de mrc con documento:
-| organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765432 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
-And ingrese los datos del asegurado <tipo_documento> <documento>
-And ingrese los datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| ASDF2 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-When ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
-And llegue a la expedicion de la poliza
-And debo ver un mensaje opcional
-| mensaje                                                                                                             |
-| Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
-And cuando edite la transacion de la poliza
-And vaya a vehiculos en expedicion
-And seleccione la opcion importado por terceros
-And cotice una poliza
-And voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
-And debo ver un mensaje bloqueante
-| mensaje                                                                                                               |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
-And cuando edite la transacion de la poliza
-And vaya a vehiculos en expedicion
-And ingrese un valor maximo para los accesorios <accesorios>
-And cotice una poliza
-And voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
-Then debo ver un mensaje bloqueante
-| mensaje                                                                                                               |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
-
-Examples:
-| accesorios | tipo_documento       | documento  |
-| 2600000    | CEDULA DE CIUDADANIA | 1234567890 |
-
 Scenario: Validacion sarlaft-expedicion
+GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765433 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
@@ -114,6 +76,44 @@ Examples:
 | numeroPoliza  | ciudad               | beneficiario    | deducible | perdidaLlaves | medioVenta |
 | TEST_22225550 | MEDELLIN (ANTIOQUIA) | Oneroso Leasing | 0         | Opción 1      | Televentas |
 
+Scenario: Maximo valor de accesorios-inspeccion-importado por terceros
+Meta: @manual
+Given estoy cotizando una poliza de mrc con documento - se pone manual porque no funciona el mock y pq tiene prueba unitaria
+| organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765432 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
+| ASDF2 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
+When ingrese las coberturas:
+| limite | deducible | abogado | PLlaves |
+| 640.   | 0         | Si      | Si      |
+And llegue a la expedicion de la poliza
+And debo ver un mensaje opcional
+| mensaje                                                                                                             |
+| Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
+And cuando edite la transacion de la poliza
+And vaya a vehiculos en expedicion
+And seleccione la opcion importado por terceros
+And cotice una poliza
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And debo ver un mensaje bloqueante
+| mensaje                                                                                                               |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
+And cuando edite la transacion de la poliza
+And vaya a vehiculos en expedicion
+And ingrese un valor maximo para los accesorios <accesorios>
+And cotice una poliza
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then debo ver un mensaje bloqueante
+| mensaje                                                                                                               |
+| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
+
+Examples:
+| accesorios | tipo_documento       | documento  |
+| 2600000    | CEDULA DE CIUDADANIA | 1234567890 |
 
 Scenario: Validar beneficiario oneroso en cancelacion
 Meta: @manual
