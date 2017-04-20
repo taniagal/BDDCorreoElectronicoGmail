@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 public class EdificiosyUbicacionesWidget extends PageUtil {
 
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
-    private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
     private static final String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
     private static final String XPATH_LEGEND_COBERTURA_DE_RIESGO = ".//legend[ (descendant::div[contains(., '";
     private static final String INPUT = "input";
@@ -124,6 +123,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade comboMedioVenta;
     @FindBy(xpath = "//*[contains(text(),'Cotizar')]")
     private WebElementFacade botonCotizar;
+    @FindBy(xpath = "//a[contains(.,'Agregar ubicación')]")
+    private WebElementFacade botonAgregarUbicacion;
 
 
     TableWidgetPage tabla;
@@ -206,8 +207,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad, String medioVenta) {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
-        findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
-        clickearElemento(findBy(LINK_AGREGAR_UBICACION));
+        esperarObjetoClikeableServidorWe(botonAgregarUbicacion);
         findBy(LINK_OPCION_UBICACION_NUEVA).shouldBeVisible();
         clickearElemento(findBy(LINK_OPCION_UBICACION_NUEVA));
         campoTxtDireccion.waitUntilPresent().sendKeys(direccion);
