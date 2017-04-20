@@ -30,7 +30,7 @@ When modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>
 Then se debe mostrar un mensaje <mensajeerror> de error
 
 Examples:
-| numeroCuenta | nomProducto             | fechaInicioVigencia | organizacion | mensaje                                                                                         |
+| numeroCuenta | nomProducto             | fechaInicioVigencia | organizacion | mensajeerror                                                                                    |
 | C000888888   | Multiriesgo corporativo | 01/01/2016          | Sura         | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)     |
 | C000888888   | Multiriesgo corporativo | 30/12/2017          | Sura         | La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días) |
 
