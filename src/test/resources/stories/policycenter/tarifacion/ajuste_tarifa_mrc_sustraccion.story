@@ -36,7 +36,7 @@ And debo poder verificar el valor de la prima para las coberuras de la cotizacio
 
 Examples:
 |prima    |iva    |costo    |
-|2.132.176|415.943|2.548.119|
+|2.132.176|405.113|2.537.289|
 
 
 Scenario:  Tarifa MRC poliza Bancolombia con los ariticulos muebles y maquinaria
