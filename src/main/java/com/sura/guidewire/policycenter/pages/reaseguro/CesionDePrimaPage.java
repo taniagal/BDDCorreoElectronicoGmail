@@ -50,13 +50,14 @@ public class CesionDePrimaPage extends PageUtil {
 
     String numeroDeEnvio = null;
     private static final int CUATRO = 4;
+    private static final int DIEZ = 10;
 
     public CesionDePrimaPage(WebDriver driver) {
         super(driver);
     }
 
     public void clicEnBotonPrimasCedidas() {
-        esperarYClickearBoton(btnVerPrimasCedidas);
+        esperarObjetoClikeableServidorWe(btnVerPrimasCedidas);
     }
 
     public void irAResumenDePoliza() {
@@ -133,7 +134,7 @@ public class CesionDePrimaPage extends PageUtil {
         WebElementFacade tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[1]/td[1]");
         esperarYClickearBoton(linkIngresaATodasTransacciones);
         int ejecuciones = 0;
-        int maxIntentos = CUATRO;
+        int maxIntentos = DIEZ;
         boolean ejecuto = false;
         while (ejecuciones < maxIntentos && !ejecuto) {
             setImplicitTimeout(TIEMPO_7, TimeUnit.SECONDS);
