@@ -1,6 +1,6 @@
 Meta:
 @tag equipo: 2, sprint: 14
-@lote6
+@lote3
 
 Narrative:
 Como usuario de policy center
@@ -12,16 +12,14 @@ Given que estoy en el resumen de la poliza Mrc o Autos con numero de poliza <num
 When ingrese a la opcion de contactos
 Then se deben mostrar los siguientes campos en la tabla
 |OPCIONES_MENU |
-|Falla         |
+|Identificación|
 |Riesgo        |
 And se debe mostrar las siguientes opciones en cada contacto
 |OPCIONES_MENU      |
-|Falla              |
+|Detalle de contacto|
 
 Examples:
 | numPoliza           |rolUsuario|
 | TEST_22222222       |Asesor    |
 | TEST_33355481       |Asesor    |
-
-
 
