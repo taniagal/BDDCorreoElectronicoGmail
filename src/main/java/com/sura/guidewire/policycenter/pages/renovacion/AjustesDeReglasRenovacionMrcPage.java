@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
 
@@ -90,8 +91,20 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     public void continuarConRenovacion() {
         waitFor(botonSiguiente);
         clickearElemento(botonSiguiente);
+        int cantDeIntentosParaMostrarBotonEditarTransaccion = 0;
+        String btnVolver = ".//*[@id='RenewalWizard:Prev-btnInnerEl']";
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+        while (cantDeIntentosParaMostrarBotonEditarTransaccion < TIEMPO_7) {
+            if (!botonEditarTransaccion.isVisible()) {
+                clickearElemento($(btnVolver), TIEMPO_4);
+                esperarHasta(TIEMPO_3000);
+                clickearElemento(botonSiguiente, TIEMPO_4);
+            }
+            cantDeIntentosParaMostrarBotonEditarTransaccion++;
+        }
+        resetImplicitTimeout();
         waitFor(botonEditarTransaccion);
-        botonEditarTransaccion.click();
+        clickearElemento(botonEditarTransaccion);
     }
 
     public void ingresarAsegurado(String opcionAgregar) {
