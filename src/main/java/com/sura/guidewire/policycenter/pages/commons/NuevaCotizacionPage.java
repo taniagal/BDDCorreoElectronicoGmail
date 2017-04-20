@@ -161,7 +161,7 @@ public class NuevaCotizacionPage extends PageUtil {
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException ", e);
             esperarHasta(TIEMPO_1000);
-            String codigoAgente = comboBoxCodigoDeAgente.getValue();
+            String codigoAgente = comboBoxCodigoDeAgente.waitUntilVisible().getValue();
             clickearElemento(comboBoxCodigoDeAgente);
             esperarHasta(TIEMPO_300);
             comboBoxCodigoDeAgente.clear();
