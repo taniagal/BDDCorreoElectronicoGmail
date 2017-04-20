@@ -150,7 +150,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
         waitFor(botonAgregarArticulos).waitUntilPresent();
         List<WebElementFacade> elementosList = findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
-        elementosList.get(0).click();
+        clickearElemento(elementosList.get(0));
         String tituloDePaginaAgregarArticulos = VOLVER_A_EDIFICIOS;
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
         shouldContainText(tituloDePaginaAgregarArticulos);
