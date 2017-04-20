@@ -73,6 +73,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
 
     protected static final int TIEMPO_28000 = 28000;
+    protected static final int PLACA = 25;
     private String opcion = "Si";
     private static final String VALOR_ASEGURADO = "valor_asegurado";
     private static final String MODELO = "modelo";
@@ -146,7 +147,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitForCampoTxtValorAsegurado(vehiculo);
         esperarHasta(TIEMPO_2000);
         seleccionarCiudadDeCirculacion(vehiculo);
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_2000);
         try {
             waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         } catch (TimeoutException e) {
@@ -218,7 +219,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
         } else {
-            String placa = "QWE" + (int) Math.floor(Math.random() * (TIEMPO_1000 - TIEMPO_9999) + TIEMPO_9999);
+            String [] abecedario = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+                    "K", "L", "M","N","O","P","Q","R","S","T","U","V","W", "X","Y","Z" };
+            String placa = (abecedario[(int) Math.round(Math.random() * PLACA)] + abecedario[(int) Math.round(Math.random() * PLACA)]+ abecedario[(int) Math.round(Math.random() * PLACA)]) + (int) Math.floor(Math.random() * (TIEMPO_1000 - TIEMPO_9999) + TIEMPO_9999);
             campoTxtPlaca.waitUntilVisible().clear();
             try {
                 ingresarDato(campoTxtPlaca, placa);
@@ -278,7 +281,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void clickVehiculoServicio() {
-        comboBoxVehiculoServicio.click();
+        esperarObjetoClikeableServidorWe(comboBoxVehiculoServicio);
         try {
             waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));
         } catch (StaleElementReferenceException e) {

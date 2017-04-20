@@ -76,8 +76,7 @@ public class NuevaCotizacionPage extends PageUtil {
 
 
     public void copiarEnvio() {
-        menuAcciones.waitUntilPresent();
-        clickearElemento(menuAcciones);
+        esperarObjetoClikeableServidorWe(menuAcciones);
         menuItemCopiarEnvio.waitUntilPresent().click();
         try {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));

@@ -316,7 +316,8 @@ public class Navegacion extends PageUtil {
     }
 
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
-        campoTxtBuscar.waitUntilPresent().sendKeys("MySubmissions");
+        campoTxtBuscar.waitUntilVisible().click();
+        campoTxtBuscar.waitUntilVisible().sendKeys("MySubmissions");
         campoTxtBuscar.sendKeys(Keys.ENTER);
         campoTxtSubN.waitUntilPresent().sendKeys(numSubPoliza);
         campoTxtSubN.sendKeys(Keys.ENTER);

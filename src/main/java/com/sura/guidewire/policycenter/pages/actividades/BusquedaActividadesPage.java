@@ -66,7 +66,7 @@ public class BusquedaActividadesPage extends PageUtil {
     }
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
-        actions.click(btnBuscar).build().perform();
+        esperarObjetoClikeableServidorWe(btnBuscar);
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         waitForTextToAppear(exampleTable.get("asunto"), TIEMPO_30000);
         String xpathTabla = "//tr[" + this.encontrarActividad(exampleTable.get("id")).toString() + "]";
@@ -122,8 +122,7 @@ public class BusquedaActividadesPage extends PageUtil {
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
-        waitFor(txtAsignadoA).waitUntilVisible();
-        clickearElemento(txtNumeroCuenta);
+        esperarObjetoClikeableServidorWe(txtAsignadoA);
         try {
             txtAsignadoA.sendKeys(usuario);
         } catch (StaleElementReferenceException e) {

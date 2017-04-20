@@ -1,10 +1,6 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.List;
-import java.util.Map;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
@@ -20,6 +16,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class DireccionesDeContactoVinculadasPage extends PageUtil {
@@ -90,7 +89,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
 
     public void irALosContactosDeLaCuenta() {
         WebElementFacade mnuContactos = esperarElemento(".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div");
-        mnuContactos.click();
+        esperarObjetoClikeableServidorWe(mnuContactos);
     }
 
     public void vincularDirecciones(String nombreContactoUno, String nombreContactoDos) {
@@ -219,7 +218,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
         waitForTextToAppear("Contactos de archivo de cuenta");
     }
 
-    public void clicEnBotonCancelar(){
+    public void clicEnBotonCancelar() {
         WebElementFacade botonCancelar = esperarElemento(XPATH_BOTON_CANCELAR);
         waitFor(botonCancelar).click();
     }

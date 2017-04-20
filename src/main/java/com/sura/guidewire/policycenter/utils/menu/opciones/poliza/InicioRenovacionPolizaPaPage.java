@@ -57,7 +57,7 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     WebElementFacade datoMotor;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
     WebElementFacade datoChasis;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:JobWizardToolbarButtonSet:CloseOptions-btnWrap']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:CloseOptions-btnInnerEl']")
     WebElementFacade btnOpcionDeCierre;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:CloseOptions:Withdraw']")
     WebElementFacade btnRetiraTransaccion;

@@ -144,10 +144,10 @@ public class CuentaPage extends PageUtil {
         campoTxtNombreCompania.sendKeys(nombre);
         botonBuscar.click();
         if ("Compania".equals(persona)) {
-            botonCrearCuentaNueva.click();
+            botonCrearCuentaNueva.waitUntilVisible().click();
             botonNuevaCuentaCompania.click();
         } else {
-            botonCrearCuentaNueva.click();
+            botonCrearCuentaNueva.waitUntilVisible().click();
             botonNuevaCuentaPersonal.click();
         }
         esperarHasta(TIEMPO_1000);

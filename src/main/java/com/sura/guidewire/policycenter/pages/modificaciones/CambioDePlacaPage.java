@@ -111,7 +111,7 @@ public class CambioDePlacaPage extends PageUtil {
         MatcherAssert.assertThat("Error, la clase de vehiculo fue modificada", txtClaseVehiculo.getText().equals(datos.get("claseVehiculo")));
         MatcherAssert.assertThat("Error, la marca de vehiculo fue modificado", txtMarca.getValue().equals(datos.get("marca")));
         MatcherAssert.assertThat("Error, la ciudad de circulacion fue modificada", txtCiudadDeCirculacion.getValue().equals(datos.get("ciudadCirculacion")));
-        MatcherAssert.assertThat("Error, la  zona fue modificada", txtZona.getText().equals(datos.get("zona")));
+        MatcherAssert.assertThat("Error, la  zona fue modificada", waitFor(txtZona).getText().equals(datos.get("zona")));
         MatcherAssert.assertThat("Error, el tipo de servicio fue modificada", txtTipoServicio.getValue().equals(datos.get("tipoServicio")));
         MatcherAssert.assertThat("Error, el motor fue modificada", txtMotor.getValue().equals(datos.get("motor")));
         MatcherAssert.assertThat("Error, el chasis  fue modificada", txtChasis.getValue().equals(datos.get("chasis")));

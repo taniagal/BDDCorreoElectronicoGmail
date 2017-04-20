@@ -36,7 +36,7 @@ public class SobrescribirTasaPage extends PageUtil {
     }
 
     public void clicAceptarAcurdosFacultativoVolverAtras() {
-        esperarYClickearBoton(btnAceptarAcuerdoFacultativo);
+        esperarObjetoClikeableServidorWe(btnAceptarAcuerdoFacultativo);
     }
 
     public Boolean validaVentanaDeConfirmacion() {
@@ -61,7 +61,7 @@ public class SobrescribirTasaPage extends PageUtil {
             }
             i++;
         }
-        return columnaTipoDeReaseguros.get(i-1).getText();
+        return columnaTipoDeReaseguros.get(i - 1).getText();
     }
 
 }

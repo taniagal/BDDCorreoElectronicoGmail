@@ -89,7 +89,7 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
 
     public void continuarConRenovacion() {
         waitFor(botonSiguiente);
-        botonSiguiente.click();
+        clickearElemento(botonSiguiente);
         waitFor(botonEditarTransaccion);
         botonEditarTransaccion.click();
     }
@@ -115,7 +115,7 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
         campoCostoTransferencia.sendKeys(valoresCampos.get("transferencia"));
     }
 
-    public void ingresarRegistrosReaseguro(ExamplesTable registros){
+    public void ingresarRegistrosReaseguro(ExamplesTable registros) {
         Map<String, String> registrosCampos = registros.getRow(0);
         waitFor(campoCambioComisionReaseguroAceptado);
         campoCambioComisionReaseguroAceptado.sendKeys(registrosCampos.get("comision"));

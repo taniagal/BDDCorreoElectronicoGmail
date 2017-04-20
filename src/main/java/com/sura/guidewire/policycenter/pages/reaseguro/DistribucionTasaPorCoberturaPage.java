@@ -9,6 +9,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.Map;
@@ -185,7 +186,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     }
 
     public void validaTasasDeReaseguradores(ExamplesTable verificarDatoMediosVenta) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblTablaAsegurada).shouldBeEnabled();
+        ExpectedConditions.visibilityOf(lblTablaAsegurada);
         clickearElemento(lblTablaAsegurada);
         String xpatTablaReaseguradores = ".//*[@id='EditAgreementPopup:AgreementScreen:ParticipantsLV-body']/*/table/tbody/tr";
         for (Map<String, String> verificarDato : verificarDatoMediosVenta.getRows()) {
