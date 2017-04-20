@@ -66,7 +66,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public void ingresarReaseguroOpciones() {
         btnReaseguro.waitUntilPresent();
-        esperarYClickearBoton(btnReaseguro);
+        esperarObjetoClikeableServidorWe(btnReaseguro);
     }
 
     public void ingresarAcuerdosFacultativos() {
