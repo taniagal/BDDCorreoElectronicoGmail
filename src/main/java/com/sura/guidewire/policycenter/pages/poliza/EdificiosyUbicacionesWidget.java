@@ -583,7 +583,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         esperarHasta(TIEMPO_300);
         campoTxtNumeroDocumento.sendKeys(cedula);
         clickearElemento(botonBuscar);
-        botonSeleccionar.waitUntilPresent().click();
+        esperarObjetoClikeableServidorWe(botonSeleccionar);
         botonAgregarAsegurado.waitUntilPresent();
     }
 
