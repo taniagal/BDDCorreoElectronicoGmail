@@ -1,10 +1,12 @@
 package com.sura.guidewire.policycenter.pages.commons;
 
 
+import com.sura.guidewire.policycenter.pages.modificaciones.PolizaFinanciadaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
@@ -15,6 +17,9 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class NuevaCotizacionPage extends PageUtil {
+    @Page
+    PolizaFinanciadaPage polizaFinanciadaPage;
+
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
@@ -61,6 +66,8 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade menuItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
     private WebElementFacade mensajes;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']")
+    private WebElementFacade optSiFinanciarPoliza;
 
     private static final String TIPO_POLIZA = "tipoPoliza";
     private static final String INDIVIDUAL = "Individual";
@@ -146,6 +153,9 @@ public class NuevaCotizacionPage extends PageUtil {
             try {
                 seleccionarItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
                 esperarHasta(TIEMPO_2000);
+                if(dato.get("polizafinanciada")!=null){
+                    optSiFinanciarPoliza.click();
+                }
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
                 esperarHasta(TIEMPO_3000);

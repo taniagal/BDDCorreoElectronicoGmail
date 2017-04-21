@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class PolizaFinanciadaPage extends PageUtil {
@@ -17,7 +18,7 @@ public class PolizaFinanciadaPage extends PageUtil {
     private WebElementFacade optSiFinanciarPolizaSubmission;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyPolicyChange_false-inputEl']")
     private WebElementFacade optNoFinanciarPoliza;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumberPolicyChange-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id,'PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet') and contains(@role,'combobox')]")
     private WebElementFacade conboBoxNumeroCuotas;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']")
     private WebElementFacade conboBoxNumeroCuotasSubmission;
@@ -27,6 +28,15 @@ public class PolizaFinanciadaPage extends PageUtil {
     private WebElementFacade tblInformacionDePoliza;
     @FindBy(xpath = "html/body/div[7]")
     private WebElementFacade itemNumeroCuotas;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
+    private WebElementFacade menuItemAsegurados;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
+    private WebElementFacade botonAgregarAsegurado;
+    @FindBy(xpath = ".//span[contains(.,'Contactos de la cuenta')]")
+    private WebElementFacade lblContactosDeLaCuenta;
+    @FindBy(xpath = "//span[contains(@id,'tb:AddDriver:AddExistingContact:0:UnassignedDriver-textEl')]")
+    private WebElementFacade lblPrimerContacto;
+
 
     public PolizaFinanciadaPage(WebDriver driver) {
         super(driver);
@@ -73,4 +83,19 @@ public class PolizaFinanciadaPage extends PageUtil {
     public void seleccionDeNumeroCuotas(String numeroDeCuotas) {
         seleccionarItem(conboBoxNumeroCuotasSubmission, numeroDeCuotas);
     }
+
+    public void agregarAseguradoQueEsTitulardeLaCuenta() {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemAsegurados).waitUntilPresent();
+        clickearElemento(menuItemAsegurados);
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        if ($(".message").isPresent()) {
+            clickearElemento(menuItemAsegurados);
+        }
+        resetImplicitTimeout();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        lblContactosDeLaCuenta.waitUntilVisible().click();
+        lblPrimerContacto.waitUntilVisible().click();
+    }
+
+
 }

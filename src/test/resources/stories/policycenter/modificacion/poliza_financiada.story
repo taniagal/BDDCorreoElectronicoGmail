@@ -41,3 +41,21 @@ Then se debe ocultar el campo numero de cuotas
 Examples:
 | numeroCuotas | valorCuota |
 | 11           | 100000     |
+
+
+Scenario: Bloqueo de expedicion si al tomador principal(natural) le falta telefono y correo electronico
+Given estoy cotizando una poliza de autos:
+| producto | tipoPoliza | tipo_documento       | fecha_nacimiento   | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |polizafinanciada|
+| Autos    | Individual | CEDULA DE CIUDADANIA |   02/12/1988       | JUAN          | ELIAS           | DIRECCION DE RESIDENCIA | CALLE 65B #60-25 | Antioquia    | Medellin | INT-3  |Si              |
+When ingrese el numero de cuotas <numeroCuotas> a financiar
+And agregue un asegurado que es titular de la cuenta para la poliza financiera
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
+|TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
+
+
+Examples:
+| tipo_documento       | documento |numeroCuotas|
+| CEDULA DE CIUDADANIA | 16985439  |11          |
+
+
