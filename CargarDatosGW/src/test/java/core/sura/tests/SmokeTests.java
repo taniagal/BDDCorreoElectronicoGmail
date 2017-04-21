@@ -45,7 +45,7 @@ public class SmokeTests extends MetodosComunes {
         loginPage.login("su", "sura2017", driver);
         smokeTestPage.buscarUsuario("su", driver);
         MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
-                smokeTestPage.verificarBusquedaDeUsuario(driver));
+                smokeTestPage.verificarBusquedaDeUsuario("su", driver));
     }
 
     @After

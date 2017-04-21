@@ -48,7 +48,7 @@ public class SmokeTestPage extends MetodosComunes {
         botonBuscarUsuario.click();
     }
 
-    public Boolean verificarBusquedaDeUsuario(WebDriver driver) {
+    public Boolean verificarBusquedaDeUsuario(String nombreUsuario, WebDriver driver) {
         waitUntilVisible(tablaDeResultadosUsuarios, driver);
         return tablaDeResultadosUsuarios.getText().contains(nombreUsuario);
     }
