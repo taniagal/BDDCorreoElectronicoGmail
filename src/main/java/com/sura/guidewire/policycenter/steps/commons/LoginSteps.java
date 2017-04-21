@@ -23,8 +23,8 @@ public class LoginSteps extends ScenarioSteps {
     @Step
     public void login() {
         String pais = "Colombia";
-        String usuario = "pedrvevi";
-        String contrasenia = "pedrvevi";
+        String usuario = "su";
+        String contrasenia = "sura2017";
         seus.open();
         seus.login(pais,usuario, contrasenia);
     }
