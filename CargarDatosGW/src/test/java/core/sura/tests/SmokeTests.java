@@ -40,21 +40,12 @@ public class SmokeTests extends MetodosComunes {
     }
 
     @Test
-    public void buscarPoliza() {
+    public void buscarUsuario() {
         initPages();
-        loginPage.login("pedrvevi", "pedrvevi", driver);
-        smokeTestPage.buscarPoliza("900000000001");
-        MatcherAssert.assertThat("Error, no se encontró la poliza pero el aplicativo si está desplegado",
-                smokeTestPage.verificarResumenDePoliza("900000000001"));
-    }
-
-    @Test
-    public void buscarCuenta() {
-        initPages();
-        loginPage.login("pedrvevi", "pedrvevi", driver);
-        smokeTestPage.buscarCuenta("C1060447895");
-        MatcherAssert.assertThat("Error, no se encontró la cuenta pero el aplicativo si está desplegado",
-                smokeTestPage.verificarResumenDeCuenta("C1060447895"));
+        loginPage.login("su", "sura2017", driver);
+        smokeTestPage.buscarUsuario("su", driver);
+        MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
+                smokeTestPage.verificarBusquedaDeUsuario(driver));
     }
 
     @After
