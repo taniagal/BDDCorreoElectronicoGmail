@@ -46,6 +46,6 @@ Then debe mostrar un mensaje de autorizacion para expedir
 
 
 Examples:
-|placa  |placaInicial |placaVenezolana|ciudad|placaExistente|placaRiesgoConsultable|venezolana|                                                                     |
-|rando21|XYZ709       |AA111AA        |CUCUTA|BLE860        |RANDOT                |AA111AA   |
+| placa   | placaInicial | placaVenezolana | ciudad                      | placaExistente | placaRiesgoConsultable | venezolana |
+| rando21 | XYZ709       | AA111AA         | CUCUTA (NORTE DE SANTANDER) | BLE860         | RANDOT                 | AA111AA    |
 
