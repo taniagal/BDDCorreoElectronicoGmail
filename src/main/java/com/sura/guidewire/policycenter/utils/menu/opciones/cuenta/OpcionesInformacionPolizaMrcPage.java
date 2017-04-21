@@ -385,7 +385,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void validarValoresDeCampos() {
         StringBuilder valor = new StringBuilder(MSJVALIDARVALORES);
-        valor = concatenarElementoDiferente("CEDULA DE CIUDADANIA", inputTipoDocumento.getText(), "Tipo cedula|", valor);
+        valor = concatenarElementoDiferente("CEDULA DE CIUDADANIA", waitFor(inputTipoDocumento).getText(), "Tipo cedula|", valor);
         valor = concatenarElementoDiferente("1234567891", inputNumeroDocumento.getText(), " Numero cedula|", valor);
         valor = concatenarElementoDiferente("408-2211", inputNumeroTelefono.getText(), " Telefono|", valor);
         valor = concatenarElementoDiferente("CR 65 # 48 - 162, MEDELLIN, Colombia", inputDireccion.getText(), " Direccion|", valor);

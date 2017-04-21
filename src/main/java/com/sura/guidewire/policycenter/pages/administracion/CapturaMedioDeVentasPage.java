@@ -84,7 +84,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     }
 
     public void irARedComercial() {
-        itemConfiguracionRedComercial.click();
+        esperarObjetoClikeableServidorWe(itemConfiguracionRedComercial);
     }
 
     public String validarOpcionesRedComercial() {
