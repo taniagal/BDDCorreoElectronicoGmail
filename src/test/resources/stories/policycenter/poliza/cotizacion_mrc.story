@@ -52,8 +52,8 @@ Scenario: validacion de exclusividad en la cotizacion
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente y la oficina de radicacion:
-| oficina | agente_oficina  |
-| 1059    | ASESOR MARIA    |
+| oficina | agente_oficina |
+| 1059    | ASESOR MARIA   |
 When seleccione el producto <producto> para expedir la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
@@ -65,5 +65,5 @@ And cotice una poliza
 Then no debe permitir cotizar; se debe mostrar el mensaje de error <mensaje>
 
 Examples:
-| cuenta     | producto                | mensaje                                                                             |
-| C000112400 | Multiriesgo corporativo | ya tiene una cotización en curso para el producto seleccionado para la oficina SURA |
+| cuenta     | producto                | mensaje                                                                                                      |
+| C000112400 | Multiriesgo corporativo | ya tiene una cotización en curso para el producto seleccionado para la oficina ASESORES EN DESARROLLO BOGOTA |
