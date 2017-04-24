@@ -6,7 +6,10 @@ import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Map;
 
 public class GrupoDeDireccionPage extends PageUtil {
 
@@ -26,6 +29,8 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade lblPorcentajeRetencionVigente;
     @FindBy(xpath = ".//*[@id='EditAgreementPopup:AgreementScreen:AgreementCoverageInputSet:CededShare-inputEl']")
     private WebElementFacade lblPorcentajeCesionVigente;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:0:TIV']")
+    private WebElementFacade linkBaseReasegurableRiesgo;
 
     private static final double CONSTANTE_CIEN = 100.0;
     private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
@@ -71,5 +76,10 @@ public class GrupoDeDireccionPage extends PageUtil {
     public void validaMontoCedidoEnContratoEnExcedido() {
         MatcherAssert.assertThat("Error en el valor en contrato excedido, expected: " + calculaMontoCedidoEnContratoCotaparte() +
                 " but was: " + tblRiesgoCedidoContratoExcedenteBasico.getText(), tblRiesgoCedidoContratoExcedenteBasico.getText().equals(calculaMontoCedidoEnContratoExdente()));
+    }
+
+    public void verificarBaseReasegurableRiesgo(ExamplesTable examplesTable) {
+        Map<String, String> datoReaseguradores = examplesTable.getRow(0);
+
     }
 }

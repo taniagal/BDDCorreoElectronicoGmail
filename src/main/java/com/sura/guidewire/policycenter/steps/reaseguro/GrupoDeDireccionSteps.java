@@ -4,6 +4,7 @@ package com.sura.guidewire.policycenter.steps.reaseguro;
 import com.sura.guidewire.policycenter.pages.reaseguro.GrupoDeDireccionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class GrupoDeDireccionSteps extends ScenarioSteps {
 
@@ -20,4 +21,10 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
     public void validainformaciondeExcedente() {
         grupoDeDireccionPage.validaMontoCedidoEnContratoEnExcedido();
     }
+
+    @Step
+    public void verificarValoresContratosReasegurables(ExamplesTable examplesTable) {
+        grupoDeDireccionPage.verificarBaseReasegurableRiesgo(examplesTable);
+    }
+
 }
