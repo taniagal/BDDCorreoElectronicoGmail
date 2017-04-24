@@ -70,7 +70,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
         try {
-            botonActualizar.waitUntilPresent();
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonActualizar);
             clickearElemento(botonActualizar);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
