@@ -79,7 +79,9 @@ public class GrupoDeDireccionPage extends PageUtil {
     }
 
     public void verificarBaseReasegurableRiesgo(ExamplesTable examplesTable) {
-        Map<String, String> datoReaseguradores = examplesTable.getRow(0);
-
+        Map<String, String> data = examplesTable.getRow(0);
+        String baseReasegurable = linkBaseReasegurableRiesgo.getText().substring(CONSTANTE_1, linkBaseReasegurableRiesgo.getText().length() - CONSTANTE_6);
+        MatcherAssert.assertThat("Error en el valor Base reasegurable riesgo, expected: " + data.get("baseReasegurableRiesgo") +
+                " but was: " + linkBaseReasegurableRiesgo, baseReasegurable.equals(data.get("baseReasegurableRiesgo")));
     }
 }
