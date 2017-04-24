@@ -28,8 +28,8 @@ And intente ingresar las entradas de las diferentes coberturas
 And cotice una poliza
 When quiera reasegurar la poliza cotizada
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo    | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX |
-| 10.000.000.000            | 600000000       | 3400000000     | 6000000000     |
+| baseReasegurableRiesgo    | valorRetenidoCP   | riesgoCedidoCP    | riesgoCedidoEX    | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion |
+| 10.000.000.000            | 600.000.000       | 3.400.000.000     | 6.000.000.000     | 4.000.000.000    | 34           | 60           | 6                   |
 
 Examples:
 |fechaInicioVigencia|

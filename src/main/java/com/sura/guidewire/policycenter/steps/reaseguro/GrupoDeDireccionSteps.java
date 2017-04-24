@@ -25,6 +25,12 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
     @Step
     public void verificarValoresContratosReasegurables(ExamplesTable examplesTable) {
         grupoDeDireccionPage.verificarBaseReasegurableRiesgo(examplesTable);
+        grupoDeDireccionPage.verificarValorRetenidoCP(examplesTable);
+        grupoDeDireccionPage.verificarValorRiesgoCedidoCP(examplesTable);
+        grupoDeDireccionPage.verificarValorRiesgoCedidoEX(examplesTable);
+        grupoDeDireccionPage.verificarLimiteCuotaParte(examplesTable);
+        grupoDeDireccionPage.verificarProporcionCP(examplesTable);
+        grupoDeDireccionPage.verificarProporcionEX(examplesTable);
+        grupoDeDireccionPage.verificarProporcionRetencion(examplesTable);
     }
-
 }
