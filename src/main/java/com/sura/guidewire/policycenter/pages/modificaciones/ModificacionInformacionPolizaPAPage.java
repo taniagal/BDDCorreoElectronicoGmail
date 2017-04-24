@@ -96,6 +96,7 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void ingresarPoliza(String numeroPoliza) {
+        clickearElemento(campoTxtBuscar);
         campoTxtBuscar.waitUntilPresent().sendKeys("Policy " + numeroPoliza);
         campoTxtBuscar.sendKeys(Keys.ENTER);
     }

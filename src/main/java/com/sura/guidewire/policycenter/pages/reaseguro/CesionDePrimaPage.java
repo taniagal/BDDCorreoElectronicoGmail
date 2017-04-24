@@ -49,7 +49,6 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade linkCotizacionExpedida;
 
     String numeroDeEnvio = null;
-    private static final int CUATRO = 4;
     private static final int DIEZ = 10;
 
     public CesionDePrimaPage(WebDriver driver) {

@@ -20,7 +20,7 @@ public class SmokeTestPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='AdminUserSearchPage:UserSearchScreen:UserSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElement botonBuscarUsuario;
     @FindBy(xpath = ".//*[@id='AdminUserSearchPage:UserSearchScreen:UserSearchResultsLV-body']/div/table/tbody/tr/td[3]")
-    private WebElementFacade tablaDeResultadosUsuarios;
+    private WebElement tablaDeResultadosUsuarios;
 
     public void buscarPoliza(String numPoliza) {
         campoTxtBuscar.sendKeys("Policy " + numPoliza);
@@ -48,7 +48,7 @@ public class SmokeTestPage extends MetodosComunes {
         botonBuscarUsuario.click();
     }
 
-    public Boolean verificarBusquedaDeUsuario(WebDriver driver) {
+    public Boolean verificarBusquedaDeUsuario(String nombreUsuario, WebDriver driver) {
         waitUntilVisible(tablaDeResultadosUsuarios, driver);
         return tablaDeResultadosUsuarios.getText().contains(nombreUsuario);
     }

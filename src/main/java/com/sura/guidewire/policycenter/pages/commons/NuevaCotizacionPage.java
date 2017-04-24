@@ -184,6 +184,7 @@ public class NuevaCotizacionPage extends PageUtil {
         List<WebElementFacade> descripcionProductos = getLista(TABLA_SELECCION_DE_PRODUCTO + "/tr/td[2]");
         for (int i = 1; i <= descripcionProductos.size(); i++) {
             WebElementFacade nombreProducto = $(TABLA_SELECCION_DE_PRODUCTO + "/tr[" + i + "]/td[2]");
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(nombreProducto);
             if (nomProducto.equals(nombreProducto.getText())) {
                 WebElementFacade botonProducto = $(TABLA_SELECCION_DE_PRODUCTO + "/tr[" + i + "]/td[1]");
                 clickearElemento(botonProducto);
@@ -206,10 +207,10 @@ public class NuevaCotizacionPage extends PageUtil {
         seleccionarItem(comboBoxOficinaDeRadicacion, "3560");
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
         try {
-            clickearElemento(comboBoxNombreAgente, TIEMPO_3);
+            clickearElemento(comboBoxNombreAgente);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException", e);
-            clickearElemento(comboBoxNombreAgente, TIEMPO_3);
+            clickearElemento(comboBoxNombreAgente);
         }
         esperarHasta(TIEMPO_300);
         comboBoxNombreAgente.clear();
