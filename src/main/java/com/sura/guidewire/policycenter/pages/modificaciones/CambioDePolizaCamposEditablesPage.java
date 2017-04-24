@@ -5,6 +5,8 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class CambioDePolizaCamposEditablesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plan_DV-inputEl']")
     private WebElementFacade txtPlanVehicular;
@@ -45,6 +47,7 @@ public class CambioDePolizaCamposEditablesPage extends PageUtil {
     }
 
     public void agregarValorAsegurado(String valor) {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(txtValorAsegurado);
         ingresarDato(txtValorAsegurado, valor);
     }
 
