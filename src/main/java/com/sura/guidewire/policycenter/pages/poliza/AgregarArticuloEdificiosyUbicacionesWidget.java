@@ -8,6 +8,8 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.concurrent.TimeUnit;
+
 public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
     private WebElementFacade botonActualizar;
@@ -68,7 +70,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
         try {
-            botonActualizar.waitUntilPresent();
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonActualizar);
             clickearElemento(botonActualizar);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
@@ -84,12 +86,13 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void ingresarNumeroDeContratoMRC(String numeroContrato){
-        campoInteresAdicionalNumeroDeContratoMRC.waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(campoInteresAdicionalNumeroDeContratoMRC);
+        clickearElemento(campoInteresAdicionalNumeroDeContratoMRC);
         try{
             campoInteresAdicionalNumeroDeContratoMRC2.sendKeys(numeroContrato);
         }catch (Exception unk){
             LOGGER.info("Exception " + unk);
-            campoInteresAdicionalNumeroDeContratoMRC.waitUntilPresent().click();
+            clickearElemento(campoInteresAdicionalNumeroDeContratoMRC);
             campoInteresAdicionalNumeroDeContratoMRC2.sendKeys(numeroContrato);
         }
     }
