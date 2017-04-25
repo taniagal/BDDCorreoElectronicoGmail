@@ -104,16 +104,16 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         btnSeleccion.click();
         opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
         esperarHasta(TIEMPO_1500);
-        if(lstTipoBeneficia.isCurrentlyVisible()){
+        if (lstTipoBeneficia.isCurrentlyVisible()) {
             lstTipoBeneficia.click();
             itmAsegurado.click();
-        }else if(lstTipoBeneficia2.isCurrentlyVisible()){
+        } else if (lstTipoBeneficia2.isCurrentlyVisible()) {
             esperarHasta(TIEMPO_1000);
             itmAsegurado.click();
         }
         clickearElemento(btnDetalleVehiculo);
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if(!campoTxtPlaca.isVisible()){
+        if (!campoTxtPlaca.isVisible()) {
             clickearElemento(btnDetalleVehiculo);
         }
         resetImplicitTimeout();
@@ -122,10 +122,10 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
         txtValorAccesorios.clear();
-        ingresarDato(txtValorAccesorios,valorAccesorio);
+        ingresarDato(txtValorAccesorios, valorAccesorio);
         txtValorAsegurado.click();
         esperarHasta(TIEMPO_3000);
-        ingresarDato(txtAcceEspeciales,valorAccesorioEsp);
+        ingresarDato(txtAcceEspeciales, valorAccesorioEsp);
         txtValorAsegurado.click();
         esperarHasta(TIEMPO_3000);
         int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
