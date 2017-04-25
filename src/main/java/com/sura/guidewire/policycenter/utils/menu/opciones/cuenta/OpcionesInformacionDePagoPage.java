@@ -21,6 +21,12 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
     WebElementFacade lblPrograma;
     @FindBy (xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     WebElementFacade btnInicio;
+    @FindBy (xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:PlanInputSet:InstallmentPlan:BillingAdjustmentsInstallmentsLV-body']/*/table/tbody/tr[4]/td[1]/div/div")
+    WebElementFacade radioBtonPagoTotal;
+    @FindBy (xpath = "//input[contains(@id,'false-inputEl')]")
+    WebElementFacade radioBotonCaja;
+    @FindBy (xpath = "//div[@class='message']")
+    WebElementFacade mensajeBloqueExpedicion;
 
 
     public OpcionesInformacionDePagoPage(WebDriver driver) {
@@ -51,5 +57,12 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
+    public void seleccionOpcionPagoTotalyPagoenCaja(){
+        radioBtonPagoTotal.click();
+        esperarObjetoClikeableServidorWe(radioBotonCaja);
+    }
 
+    public void validarMensajeBloqueoExpedicion(String mensaje){
+        super.verificarMensaje(mensajeBloqueExpedicion,mensaje);
+    }
 }

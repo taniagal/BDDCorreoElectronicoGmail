@@ -67,6 +67,8 @@ public class CuentaPage extends PageUtil {
     private WebElementFacade campoTxtNombreComercial;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:Phone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade campoTxtTelefonoOficina;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:EmailAddress1-inputEl']")
+    private WebElementFacade campoTxtCorreoElectronicoPrimario;
     @FindBy(xpath = ".//*[@id='DuplicateContactsPopup:DuplicateContactsScreen:ResultsLV:0:Select']")
     private WebElementFacade linkElegir;
 
@@ -120,9 +122,10 @@ public class CuentaPage extends PageUtil {
     }
 
 
-    public void agregarTelefonoOficina(String telefonoOficina) {
-        campoTxtTelefonoOficina.sendKeys(telefonoOficina);
+    public void agregarTelefonoOficina(String telefonoOficina) { campoTxtTelefonoOficina.sendKeys(telefonoOficina);
     }
+
+    public void agregarCorreoPrimario(String correoPrimario) { campoTxtCorreoElectronicoPrimario.sendKeys(correoPrimario); }
     
     public void actualizar() {
         botonActualizar.click();
