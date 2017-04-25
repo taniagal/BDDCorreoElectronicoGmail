@@ -29,9 +29,6 @@ public class CuentasOrdenesDeTrabajoPage extends LoginPage {
     @FindBy(xpath=".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV-body']")
     private WebElementFacade tablaTransacciones;
 
-    protected static final int CONSTANTE_3 = 3;
-    protected static final int CONSTANTE_2 = 2;
-
     public CuentasOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
     }
