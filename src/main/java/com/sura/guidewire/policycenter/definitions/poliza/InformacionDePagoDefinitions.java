@@ -4,7 +4,6 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.InformacionDePagoSteps;
 import net.thucydides.core.annotations.Steps;
-import org.eclipse.jetty.util.annotation.Name;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
