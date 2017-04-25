@@ -79,8 +79,6 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     private static final String PAIS = "pais";
     private static final String TIPO_DIRECCION = "tipoDireccion";
     private static final int TIEMPO_10000 = 10000;
-    private static final int CONSTANTE_3 = 3;
-    private static final int CONSTANTE_2 = 2;
 
 
     public DireccionesDeContactoVinculadasPage(WebDriver driver) {

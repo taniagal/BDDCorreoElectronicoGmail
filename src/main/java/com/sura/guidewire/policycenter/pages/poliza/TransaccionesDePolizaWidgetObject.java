@@ -4,7 +4,6 @@ import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetP
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class TransaccionesDePolizaWidgetObject extends PageObject{
     private static final String XPATH_DIV_CONTENEDOR_TABLA_TRANSACCIONES = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV']";
