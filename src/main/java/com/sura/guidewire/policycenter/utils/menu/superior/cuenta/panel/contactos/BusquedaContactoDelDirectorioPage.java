@@ -45,7 +45,7 @@ public class BusquedaContactoDelDirectorioPage extends PageUtil {
         List<WebElementFacade> listaContactos = findAll(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV-body']/div/table/tbody/tr");
         if (!listaContactos.isEmpty()) {
             for (WebElementFacade contacto : listaContactos){
-                if (numDocumento.equals(contacto.getText().split("\n")[POSICION_2].toString())){
+                if (numDocumento.equals(contacto.getText().split("\n")[POSICION_2])){
                     WebElementFacade linkSeleccionar =  contacto.then(By.xpath(".//a[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']"));
                     linkSeleccionar.click();
                     break;

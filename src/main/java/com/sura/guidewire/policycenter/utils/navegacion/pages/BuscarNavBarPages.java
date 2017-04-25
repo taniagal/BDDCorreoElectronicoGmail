@@ -21,7 +21,7 @@ public class BuscarNavBarPages extends PageObject {
 
     protected static final int TIEMPO_1000 = 1000;
     protected static final int TIEMPO_2 = 2;
-    private static String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
+    private static final String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
 
     public enum Opciones {
         POLIZA("Pólizas"),

@@ -42,7 +42,6 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     @FindBy(xpath = ".//*[contains(@id, 'WorkOrdersLV-body')]")
     private WebElementFacade tablaTransaccionesDeContacto;
 
-    protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_4 = 4;
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {

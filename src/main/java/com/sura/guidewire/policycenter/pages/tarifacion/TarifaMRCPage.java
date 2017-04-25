@@ -91,7 +91,6 @@ public class TarifaMRCPage extends PageUtil {
     public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr";
     public static final String ARTICULO = "articulo";
     public static final int CONSTANTE_0 = 0;
-    public static final int CONSTANTE_7 = 7;
     public static final int CONSTANTE_8 = 8;
     public static final double CONSTANTE_019 = 0.19;
     double valorAsegurado = 0;
