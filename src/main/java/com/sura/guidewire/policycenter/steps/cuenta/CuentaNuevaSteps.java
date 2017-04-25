@@ -59,6 +59,9 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     private void agregarDatosCuenta(ExamplesTable datosCotizacion, Map<String, String> datosCuenta) {
         agregarOrganizacion("Sura", datosCuenta.get("agente"));
         agregarNombre(datosCuenta.get("primer_nombre"), datosCuenta.get("primer_apellido"), datosCuenta.get("fecha_nacimiento"));
+        if (datosCuenta.get("correo_electronico_primario") != null && !datosCuenta.get("correo_electronico_primario").isEmpty()) {
+            agregarCorreoPrimario(datosCuenta.get("correo_electronico_primario"));
+        }
         agregarDireccion(datosCotizacion);
     }
 
@@ -160,6 +163,12 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     public void agregarRazonSocial(String razonSocial) {
         cuentaPage.agregarRazonsocial(razonSocial);
     }
+
+    @Step
+    public void agregarCorreoPrimario(String correoPrimario) {
+        cuentaPage.agregarCorreoPrimario(correoPrimario);
+    }
+
 
     @Step
     public void verificarCuenta(String nombreCuenta) {

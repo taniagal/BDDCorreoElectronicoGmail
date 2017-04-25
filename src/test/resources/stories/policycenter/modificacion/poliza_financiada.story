@@ -52,7 +52,7 @@ When ingrese el numero de cuotas <numeroCuotas> a financiar
 And agregue un asegurado que es titular de la cuenta para la poliza financiera
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
@@ -67,6 +67,29 @@ Examples:
 | tipo_documento       | documento |numeroCuotas|mensaje                                                                      |
 | CEDULA DE CIUDADANIA | 16985439  |11          |Señor usuario el contacto debe tener teléfono celular y un correo electrónico|
 
+Scenario: Bloqueo de expedicion si al tomador principal(natural) le falta telefono celular
+Given estoy cotizando una poliza de autos:
+| producto | tipoPoliza | tipo_documento       | fecha_nacimiento   | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   |correo_electronico_primario| agente |polizafinanciada|
+| Autos    | Individual | CEDULA DE CIUDADANIA |   02/12/1988       | JUAN          | ELIAS           | DIRECCION DE RESIDENCIA | CALLE 65B #60-25 | Antioquia    | Medellin |prueba@sura.com            | INT-3  |Si              |
+When ingrese el numero de cuotas <numeroCuotas> a financiar
+And agregue un asegurado que es titular de la cuenta para la poliza financiera
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
+|random |2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
+And ingrese las coberturas:
+|limite|deducible|abogado|PLlaves|
+|640.  |0        |Si     |Si     |
+And cotice una poliza
+And visualice la pantalla de pagos
+And seleccione la opcion pago total y pago en caja
+And voy a expedir una poliza
+And acepto la expedicion de poliza
+Then se debe mostrar mensaje que bloquee la expedicion <mensaje>
+
+Examples:
+| tipo_documento       | documento |numeroCuotas|mensaje                                                                      |
+| CEDULA DE CIUDADANIA | 16985439  |11          |Señor usuario el contacto debe tener un teléfono celular                     |
+
 
 Scenario: Bloqueo de expedicion si al tomador principal(juridico) le falta telefono principal y correo electronico
 Given estoy cotizando una poliza de autos:
@@ -76,7 +99,7 @@ When ingrese el numero de cuotas <numeroCuotas> a financiar
 And agregue un asegurado que es titular de la cuenta para la poliza financiera
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
 And ingrese las coberturas:
 |limite|deducible|abogado|PLlaves|
 |640.  |0        |Si     |Si     |
