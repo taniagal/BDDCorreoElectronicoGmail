@@ -91,7 +91,7 @@ Examples:
 | CEDULA DE CIUDADANIA | 16985439  |11          |Señor usuario el contacto debe tener un teléfono celular                     |
 
 
-Scenario: Bloqueo de expedicion si al tomador principal(juridico) le falta telefono principal y correo electronico
+Scenario: Bloqueo de expedicion si al tomador principal(juridico) le falta el correo electronico
 Given estoy cotizando una poliza de autos:
 | producto | tipoPoliza | tipo_documento       | fecha_nacimiento   | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |polizafinanciada|razon_social              |
 | Autos    | Individual |  NIT                 |   02/12/1988       | SIMON         | SIMON           | DIRECCION DE RESIDENCIA | CALLE 65B #60-25 | Antioquia    | Medellin | INT-3  |Si              |FINANCIADA S.A            |
