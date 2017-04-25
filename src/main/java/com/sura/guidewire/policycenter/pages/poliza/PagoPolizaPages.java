@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class PagoPolizaPages extends PageUtil {
     @FindBy(xpath = ".//*[contains(@id,'BillingInfo')]")
     private WebElementFacade menuItemPago;
-    private static String LBL_PAGO_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard')]/td";
+    private static final String LBL_PAGO_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard')]/td";
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
     public PagoPolizaPages(WebDriver driver) {

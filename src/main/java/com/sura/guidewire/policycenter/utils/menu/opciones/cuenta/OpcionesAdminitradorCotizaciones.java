@@ -96,7 +96,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private static final String SUBMITIONXPATH = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final String BOTON_ACCIONES_1 = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
-    private static final int CONSTANTE_6 = 6;
     private static final int CONSTANTE_4 = 4;
     private int band = 0;
 

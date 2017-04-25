@@ -12,7 +12,7 @@ import static ch.lambdaj.Lambda.on;
 
 public class InstruccionesPreviasARenovacionPage extends PageObject {
 
-    private static String XPATH_MENU_DESPLEGABLE = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
+    private static final String XPATH_MENU_DESPLEGABLE = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
 
     private List<String> listaInstrucciones;
     private List<WebElementFacade> listaIntruccionesWE;

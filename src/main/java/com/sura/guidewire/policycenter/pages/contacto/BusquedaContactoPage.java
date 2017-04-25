@@ -89,10 +89,7 @@ public class BusquedaContactoPage extends PageUtil {
     private static final String BUSQUEDADECONTACTOS = "Búsqueda de contactos";
     private static final String LONGITUD_VALIDA = "Longitud válida";
     private static final String XPATH_LI_CONTAINS = ".//li[contains(.,'";
-    protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_4 = 4;
-    protected static final int CONSTANTE_3 = 3;
-    protected static final int CONSTANTE_2 = 2;
 
 
     public BusquedaContactoPage(WebDriver driver) {

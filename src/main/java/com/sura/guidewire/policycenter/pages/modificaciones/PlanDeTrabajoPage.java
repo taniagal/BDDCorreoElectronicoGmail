@@ -23,7 +23,6 @@ public class PlanDeTrabajoPage extends PageUtil {
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
     String xPathOpcionPlanDeTrabajo = ".//*[@id='SubmissionWizard:Workplan']";
     String xPathOpcionPlanDeTrabajoEnCambioDePoliza = ".//*[@id='PolicyChangeWizard:Workplan']";
-    private static final int CONSTANTE_2 = 2;
     @FindBy (xpath = ".//*[@id='RenewalWizard:Workplan']")
     WebElementFacade xPathOpcionPlanDeTrabajoEnRenovacionDePoliza;
 

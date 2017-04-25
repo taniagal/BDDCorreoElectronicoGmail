@@ -93,7 +93,6 @@ public class CotizacionDePolizaPage extends PageUtil {
     @FindBy(xpath = "//td[2]/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td[2]/div")
     private WebElementFacade campoNumeroCuotas;
 
-    private static final int CONSTANTE_5 = 5;
     private static final int TIEMPO_40000 = 40000;
 
 

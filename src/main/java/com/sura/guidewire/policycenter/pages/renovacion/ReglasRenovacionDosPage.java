@@ -43,8 +43,6 @@ public class ReglasRenovacionDosPage extends PageUtil {
 
     private static final int CONSTANTE_8 = 8;
     private static final double CONSTANTE_02 = 0.2;
-    private static final int CONSTANTE_3 = 3;
-
 
     public ReglasRenovacionDosPage(WebDriver driver) {
         super(driver);

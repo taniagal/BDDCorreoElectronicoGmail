@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 public class ContactosAsociadosACuentaWidgetPage extends PageObject {
 
-    private static String XPATH_DIV_CONTENEDOR_TABLA_CONTACTOS = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']";
+    private static final String XPATH_DIV_CONTENEDOR_TABLA_CONTACTOS = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']";
 
     TableWidgetPage tablaContactos;
 
