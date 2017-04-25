@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.HashMap;
@@ -85,6 +86,7 @@ public class PolizaFinanciadaPage extends PageUtil {
     }
 
     public void agregarAseguradoQueEsTitulardeLaCuenta() {
+        Actions act = new Actions(getDriver());
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemAsegurados).waitUntilPresent();
         clickearElemento(menuItemAsegurados);
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
@@ -93,8 +95,8 @@ public class PolizaFinanciadaPage extends PageUtil {
         }
         resetImplicitTimeout();
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
-        lblContactosDeLaCuenta.waitUntilVisible().click();
-        lblPrimerContacto.waitUntilVisible().click();
+        act.moveToElement(lblContactosDeLaCuenta.waitUntilVisible()).click().build().perform();
+        act.moveToElement(lblPrimerContacto.waitUntilVisible()).click().build().perform();
     }
 
 

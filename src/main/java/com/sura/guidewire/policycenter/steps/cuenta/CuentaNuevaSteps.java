@@ -40,7 +40,11 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         }
         abrirNuevaCuenta();
         agregarTipoDocumento(datosCuenta.get("tipo_documento"), datosCuenta.get("numeroDocumento"));
-        agregarDatosCuenta(datosCotizacion, datosCuenta);
+        if (datosCuenta.get("tipo_documento").equals("CEDULA DE CIUDADANIA")) {
+            agregarDatosCuenta(datosCotizacion, datosCuenta);
+        } else {
+            agregarDatosCuentaJuridica(datosCotizacion, datosCuenta);
+        }
     }
 
     @Step
@@ -58,6 +62,12 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         agregarDireccion(datosCotizacion);
     }
 
+    @Step
+    private void agregarDatosCuentaJuridica(ExamplesTable datosCotizacion, Map<String, String> datosCuenta) {
+        agregarOrganizacion("Sura", datosCuenta.get("agente"));
+        agregarRazonSocial(datosCuenta.get("razon_social"));
+        agregarDireccion(datosCotizacion);
+    }
 
     @Step
     public void abrirNuevaCuenta() {
@@ -117,7 +127,6 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         }
         cuentaPage.agregarTipoDocumento(tipoDocumento, documento);
     }
-
 
 
     @Step
