@@ -40,7 +40,7 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         }
         abrirNuevaCuenta();
         agregarTipoDocumento(datosCuenta.get("tipo_documento"), datosCuenta.get("numeroDocumento"));
-        if (datosCuenta.get("tipo_documento").equals("CEDULA DE CIUDADANIA")) {
+        if ("CEDULA DE CIUDADANIA".equals(datosCuenta.get("tipo_documento"))) {
             agregarDatosCuenta(datosCotizacion, datosCuenta);
         } else {
             agregarDatosCuentaJuridica(datosCotizacion, datosCuenta);

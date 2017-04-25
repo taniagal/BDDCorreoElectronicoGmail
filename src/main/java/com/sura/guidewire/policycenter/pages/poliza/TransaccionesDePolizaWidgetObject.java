@@ -6,11 +6,8 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-/**
- * Created by andralgu on 18/07/2016.
- */
 public class TransaccionesDePolizaWidgetObject extends PageObject{
-    private static String XPATH_DIV_CONTENEDOR_TABLA_TRANSACCIONES = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV']";
+    private static final String XPATH_DIV_CONTENEDOR_TABLA_TRANSACCIONES = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV']";
     TableWidgetPage tablaTransaccionesDePoliza;
 
     private TransaccionesDePolizaWidgetObject obtenerTablaContactosAsociados() {
@@ -27,7 +24,7 @@ public class TransaccionesDePolizaWidgetObject extends PageObject{
 
         this.tablaTransaccionesDePoliza.enToolbar().seleccionarDeComboConLabel("Producto");
         this.tablaTransaccionesDePoliza.opcionDeCombo("Multiriesgo corporativo");
-        ((WebElement) this.tablaTransaccionesDePoliza.obtenerColumnaDeTabla("N.º de transacción").get(0)).findElement(By.tagName("a")).click();
+        (this.tablaTransaccionesDePoliza.obtenerColumnaDeTabla("N.º de transacción").get(0)).findElement(By.tagName("a")).click();
 
         String tituloDePaginaContactos = "Información de póliza";
         waitForTextToAppear(tituloDePaginaContactos);

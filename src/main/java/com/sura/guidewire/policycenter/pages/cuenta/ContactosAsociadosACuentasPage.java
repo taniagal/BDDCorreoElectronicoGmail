@@ -81,7 +81,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
         for (Map<String, String> enc : encabezados.getRows()) {
             if (enc.containsKey(keyElement)) {
                 for (WebElement encabezad : listEncabezados) {
-                    if (encabezad.getText().equals(enc.get(keyElement).toString())) {
+                    if (encabezad.getText().equals(enc.get(keyElement))) {
                         countCoincidencias++;
                         break;
                     }

@@ -17,8 +17,8 @@ public class RevisionDePolizaPage extends PageUtil {
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
 
-    private static String LBL_OPCIONES_MENU_INICIAL =  ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
-    private static String LBL_OPCIONES_MENU_FINAL =  "')]";
+    private static final String LBL_OPCIONES_MENU_INICIAL =  ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static final String LBL_OPCIONES_MENU_FINAL =  "')]";
 
     public RevisionDePolizaPage(WebDriver driver) {
         super(driver);

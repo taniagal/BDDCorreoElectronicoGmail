@@ -21,9 +21,6 @@ public class ConfiguracionModeloDeDatosColectivosPages extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:RefundType-inputEl']")
     private WebElementFacade campoTipoDeDevolucion;
 
-    private static final int CONSTANTE_2 = 2;
-
-
     public ConfiguracionModeloDeDatosColectivosPages(WebDriver driver) {
         super(driver);
     }
