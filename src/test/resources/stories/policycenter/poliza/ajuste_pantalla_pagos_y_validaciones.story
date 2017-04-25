@@ -15,7 +15,7 @@ Given estoy cotizando una poliza de mrc:
 |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |LUISPAGO     |AKERMAN        |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                    | medioVenta |
-|Antioquia   |Medellin|CR 44 A # 43 - 07|Edificio Core|Acabado de productos textiles| Televentas |
+|Antioquia   |Medellin|CR 55 A # 43 - 07|Edificio Core|Acabado de productos textiles| Televentas |
 And seleccione algunos articulos y sus cobertura:
 | articulo        | valor_asegurable | coberturas|exposicionpromedio|
 | FloatExixtences | 100000000        | Danos     |10000             |
@@ -38,7 +38,7 @@ Given estoy cotizando una poliza de mrc:
 |1059   |DIRECTO       |Sura        |Multiriesgo corporativo|CEDULA DE CIUDADANIA|02/12/1990      |MARIOPAN     |APAGO          |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                    | medioVenta |
-|Antioquia   |Medellin|CR 44 A # 43 - 07|Edificio Core|Acabado de productos textiles| Televentas |
+|Antioquia   |Medellin|CR 67 A # 43 - 07|Edificio Core|Acabado de productos textiles| Televentas |
 And seleccione algunos articulos y sus cobertura:
 | articulo        | valor_asegurable | coberturas|exposicionpromedio|
 | FloatExixtences | 100000000        | Danos     |10000             |

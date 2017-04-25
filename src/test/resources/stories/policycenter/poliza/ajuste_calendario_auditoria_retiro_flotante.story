@@ -48,7 +48,7 @@ Given estoy cotizando una poliza de mrc:
 |1059   |1681          |Sura        |Multiriesgo corporativo |Individual|CEDULA DE CIUDADANIA|02/12/1990      |DECLARIMAN   |PASCUAL        |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion  |actividad                    | medioVenta |
-|Antioquia   |Medellin|CR 44 A # 43 - 07|Edificio Core|Acabado de productos textiles| Televentas |
+|Antioquia   |Medellin|CR 48 B # 43 - 07|Edificio Core|Acabado de productos textiles| Televentas |
 And seleccione algunos articulos y sus cobertura:
 | articulo        | valor_asegurable | coberturas|exposicionpromedio|
 | FloatExixtences | 100000000        | Danos     |10000000          |
