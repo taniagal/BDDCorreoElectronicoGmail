@@ -135,7 +135,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         campoVehiculoCeroKm.click();
         esperarHasta(TIEMPO_3000);
         seleccionarItem(comboBoxPlan, vehiculo.get("plan"));
-        waitFor(comboMedioDeVenta);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(comboMedioDeVenta);
         seleccionarItem(comboMedioDeVenta, vehiculo.get("medioVenta"));
         ingresarPlaca(vehiculo);
         clickVehiculoServicio();

@@ -78,6 +78,7 @@ public class BusquedaDeRiesgosPage extends PageUtil {
     }
 
     public void clicEnLaOpcionBuscar() {
+        clickearElemento(campoTxtBuscar);
         campoTxtBuscar.sendKeys("Search");
         campoTxtBuscar.sendKeys(Keys.ENTER);
         waitForTextToAppear("Buscar pólizas");

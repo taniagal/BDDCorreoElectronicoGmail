@@ -207,6 +207,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad, String medioVenta) {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion);
         esperarObjetoClikeableServidorWe(botonAgregarUbicacion);
         findBy(LINK_OPCION_UBICACION_NUEVA).shouldBeVisible();
         clickearElemento(findBy(LINK_OPCION_UBICACION_NUEVA));
@@ -537,7 +538,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         WebElementFacade textAreaDescripcion = $(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']");
         textAreaDescripcion.waitUntilVisible();
         esperarHasta(TIEMPO_1000);
-        textAreaDescripcion.click();
+        clickearElemento(textAreaDescripcion);
         enter(tipoArticulo).into(textAreaDescripcion);
         clickearElemento(textAreaDescripcion);
     }
