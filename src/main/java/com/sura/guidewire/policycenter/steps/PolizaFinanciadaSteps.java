@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.modificaciones.PolizaFinanciadaPage;
+import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
@@ -15,6 +16,8 @@ public class PolizaFinanciadaSteps {
     PolizaFinanciadaPage polizaFinanciadaPage;
     @Page
     TarifaAutosPage tarifaAutosPage;
+    @Page
+    ValidacionesInformacionDeVehiculoPage vehiculoPage;
 
     @Step
     public void seleccionarOpcionFinanciarPoliza() {
@@ -36,6 +39,12 @@ public class PolizaFinanciadaSteps {
     public void seleccionarOpcionNoFinanciarPoliza() {
         polizaFinanciadaPage.seleccionarOpcionNoFinanciarPoliza();
 
+    }
+
+    @Step
+    public void agregarAseguradoQueEsTitulardeLaCuenta() {
+        polizaFinanciadaPage.agregarAseguradoQueEsTitulardeLaCuenta();
+        vehiculoPage.clickSiguienteConMensaje();
     }
 
     @Step

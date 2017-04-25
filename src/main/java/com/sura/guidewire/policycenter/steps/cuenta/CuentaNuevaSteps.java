@@ -40,7 +40,11 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         }
         abrirNuevaCuenta();
         agregarTipoDocumento(datosCuenta.get("tipo_documento"), datosCuenta.get("numeroDocumento"));
-        agregarDatosCuenta(datosCotizacion, datosCuenta);
+        if (datosCuenta.get("tipo_documento").equals("CEDULA DE CIUDADANIA")) {
+            agregarDatosCuenta(datosCotizacion, datosCuenta);
+        } else {
+            agregarDatosCuentaJuridica(datosCotizacion, datosCuenta);
+        }
     }
 
     @Step
@@ -55,9 +59,18 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     private void agregarDatosCuenta(ExamplesTable datosCotizacion, Map<String, String> datosCuenta) {
         agregarOrganizacion("Sura", datosCuenta.get("agente"));
         agregarNombre(datosCuenta.get("primer_nombre"), datosCuenta.get("primer_apellido"), datosCuenta.get("fecha_nacimiento"));
+        if (datosCuenta.get("correo_electronico_primario") != null && !datosCuenta.get("correo_electronico_primario").isEmpty()) {
+            agregarCorreoPrimario(datosCuenta.get("correo_electronico_primario"));
+        }
         agregarDireccion(datosCotizacion);
     }
 
+    @Step
+    private void agregarDatosCuentaJuridica(ExamplesTable datosCotizacion, Map<String, String> datosCuenta) {
+        agregarOrganizacion("Sura", datosCuenta.get("agente"));
+        agregarRazonSocial(datosCuenta.get("razon_social"));
+        agregarDireccion(datosCotizacion);
+    }
 
     @Step
     public void abrirNuevaCuenta() {
@@ -119,7 +132,6 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
 
-
     @Step
     public void agregarDireccion(ExamplesTable datos) {
         cuentaPage.agregarDireccion(datos);
@@ -151,6 +163,12 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     public void agregarRazonSocial(String razonSocial) {
         cuentaPage.agregarRazonsocial(razonSocial);
     }
+
+    @Step
+    public void agregarCorreoPrimario(String correoPrimario) {
+        cuentaPage.agregarCorreoPrimario(correoPrimario);
+    }
+
 
     @Step
     public void verificarCuenta(String nombreCuenta) {

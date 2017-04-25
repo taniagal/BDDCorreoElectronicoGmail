@@ -4,6 +4,7 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.InformacionDePagoSteps;
 import net.thucydides.core.annotations.Steps;
+import org.eclipse.jetty.util.annotation.Name;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -27,6 +28,11 @@ public class InformacionDePagoDefinitions {
         informacionDePagoSteps.ingresarAPantallaPagos();
     }
 
+    @When("seleccione la opcion pago total y pago en caja")
+    public void entoncesSeleccioneLaOpcionPagoTotalyPagoEnCaja(){
+        informacionDePagoSteps.seleccionOpcionPagoTotalyPagoenCaja();
+    }
+
     @Then("se deben mostrar los datos correspondientes a formas de pago")
     public void thenSeDebenMostrarLosDatosCorrespondientesAFormasDePago() {
         informacionDePagoSteps.validaIngresoAPantallaPago();
@@ -41,5 +47,11 @@ public class InformacionDePagoDefinitions {
     public void thenSeDebeMostrarElPlanDePagoQueRetornaBilling(@Named("programa") String programa) {
         informacionDePagoSteps.validaPrograma(programa);
     }
+
+    @Then("se debe mostrar mensaje que bloquee la expedicion <mensaje>")
+    public void entoncesSeDebeMostrarMensajeQueBloqueeLaExpedicion(@Named("mensaje") String mensaje){
+        informacionDePagoSteps.validarMensaje(mensaje);
+    }
+
 
 }

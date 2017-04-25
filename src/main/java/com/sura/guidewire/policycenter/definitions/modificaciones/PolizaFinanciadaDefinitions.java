@@ -48,6 +48,12 @@ public class PolizaFinanciadaDefinitions {
         polizaFinanciadaSteps.ingresarNumeroDeCuotasAFinanciar(numeroCuotas);
     }
 
+    @When("agregue un asegurado que es titular de la cuenta para la poliza financiera")
+    public void ingresarAseguradoQueEsContactoDeLaCuenta() {
+        polizaFinanciadaSteps.agregarAseguradoQueEsTitulardeLaCuenta();
+
+    }
+
     @Then("se debe poder visualizar el valor de la cuota y el numero de cuotas a financiar $informacionFinanciacion")
     public void visualizarInformacionDePolizaFinanciada(ExamplesTable informacionFinanciacion) {
         polizaFinanciadaSteps.visualizarInformacionDePolizaFinanciada(informacionFinanciacion);

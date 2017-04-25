@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class InformacionDePagoSteps extends ScenarioSteps{
+public class InformacionDePagoSteps extends ScenarioSteps {
 
 
     OpcionesInformacionDePagoPage opcionesInformacionDePagoPage;
@@ -16,11 +16,13 @@ public class InformacionDePagoSteps extends ScenarioSteps{
     }
 
     @Step
-    public void ingresarAPantallaPagos(){opcionesInformacionDePagoPage.clickEnPagos();
+    public void ingresarAPantallaPagos() {
+        opcionesInformacionDePagoPage.clickEnPagos();
     }
 
     @Step
-    public void validaIngresoAPantallaPago(){opcionesInformacionDePagoPage.validaIngresoAPago();
+    public void validaIngresoAPantallaPago() {
+        opcionesInformacionDePagoPage.validaIngresoAPago();
     }
 
     @Step
@@ -31,6 +33,16 @@ public class InformacionDePagoSteps extends ScenarioSteps{
     @Step
     public void validaPrograma(String programa) {
         opcionesInformacionDePagoPage.validaPrograma(programa);
+    }
+
+    @Step
+    public void seleccionOpcionPagoTotalyPagoenCaja() {
+        opcionesInformacionDePagoPage.seleccionOpcionPagoTotalyPagoenCaja();
+    }
+
+    @Step
+    public void validarMensaje(String mensaje) {
+        opcionesInformacionDePagoPage.validarMensajeBloqueoExpedicion(mensaje);
     }
 
 }
