@@ -363,7 +363,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         WebElementFacade inputValorEntrada = trWE.findBy(xpathTREntrada).find(By.tagName(INPUT));
         withAction().moveToElement(inputValorEntrada).perform();
         enter(valorEntrada).into(inputValorEntrada);
-        inputValorEntrada.click();
+        clickearElemento(inputValorEntrada);
     }
 
     public boolean estaSeleccionadaCoberturaDeRiesgo(String cobertura, String tipoArticulo) {
