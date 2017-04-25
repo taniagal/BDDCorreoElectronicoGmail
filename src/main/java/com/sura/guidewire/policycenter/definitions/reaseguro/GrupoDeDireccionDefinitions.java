@@ -51,4 +51,9 @@ public class GrupoDeDireccionDefinitions {
     public void verificarValoresContratosReasegurables(ExamplesTable examplesTable) {
         grupoDeDireccionSteps.verificarValoresContratosReasegurables(examplesTable);
     }
+
+    @When("ingrese la <fechaInicioVigencia> para un anio")
+    public void modificarFechaInicioVigencia(@Named("fechaInicioVigencia")String fechaInicioVigencia) {
+        informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
+    }
 }
