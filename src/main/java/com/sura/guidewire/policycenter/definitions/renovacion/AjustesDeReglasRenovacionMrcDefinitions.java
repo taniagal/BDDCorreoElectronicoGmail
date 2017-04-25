@@ -50,7 +50,7 @@ public class AjustesDeReglasRenovacionMrcDefinitions {
 
     @When("realice la aprobacion especial")
     public void realiceAprobacionEspecial() {
-        ajustesDeReglasRenovacionMrcSteps.realiceAprovacionEspecial();
+        ajustesDeReglasRenovacionMrcSteps.realiceAprobacionEspecial();
     }
 
     @When("diligencie los campos de reaseguro aceptado $valores")

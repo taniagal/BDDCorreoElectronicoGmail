@@ -56,4 +56,9 @@ public class GrupoDeDireccionDefinitions {
     public void modificarFechaInicioVigencia(@Named("fechaInicioVigencia")String fechaInicioVigencia) {
         informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
     }
+
+    @When("de clic al menu reaseguro")
+    public void clicMenuReaseguro() {
+        crearYEditarCumulosSteps.clicMenuReaseguro();
+    }
 }

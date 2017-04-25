@@ -49,6 +49,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
     WebElementFacade lblMensajeAdvertencia;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add-btnWrap']")
     WebElementFacade btnAgreagarRiesgos;
+    @FindBy(xpath = ".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Reinsurance']/div")
+    WebElementFacade menuReaseguro;
 
     private static final String PAIS_ALEMANIA = "Alemania";
     private static final String ASEGURADORA_ALLIANZ = "ALLIANZ RE";
@@ -67,6 +69,11 @@ public class CrearYEditarCumulosPage extends PageUtil {
     public void ingresarReaseguroOpciones() {
         btnReaseguro.waitUntilPresent();
         esperarObjetoClikeableServidorWe(btnReaseguro);
+    }
+
+    public void clicMenuReaseguro() {
+        menuReaseguro.waitUntilPresent();
+        esperarObjetoClikeableServidorWe(menuReaseguro);
     }
 
     public void ingresarAcuerdosFacultativos() {

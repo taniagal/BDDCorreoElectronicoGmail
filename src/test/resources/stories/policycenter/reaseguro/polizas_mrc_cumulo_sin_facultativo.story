@@ -25,8 +25,14 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Edificios           |                     | Danos materiales | Valor asegurado danos materiales | 5000000000      |
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 5000000000      |
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 5000000000      |
-And cotice una poliza
-When quiera reasegurar la poliza cotizada
+And cotice y expida una poliza
+When ingrese a analisis de riesgo
+And realice la aprobacion especial
+And acepto la expedicion de poliza
+And acepto la expedicion de poliza
+And expido la poliza
+And ingrese al resumen de la poliza expedida
+And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo    | valorRetenidoCP   | riesgoCedidoCP    | riesgoCedidoEX    | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion |
 | 10.000.000.000            | 600.000.000       | 3.400.000.000     | 6.000.000.000     | 4.000.000.000    | 34           | 60           | 6                   |

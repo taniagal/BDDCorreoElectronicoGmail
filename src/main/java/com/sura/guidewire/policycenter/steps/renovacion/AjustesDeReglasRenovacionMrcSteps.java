@@ -35,7 +35,7 @@ public class AjustesDeReglasRenovacionMrcSteps {
     }
 
     @Step
-    public void realiceAprovacionEspecial() {
+    public void realiceAprobacionEspecial() {
         ajustesDeReglasRenovacionMrcPage.aprobacionEspecial();
     }
 
