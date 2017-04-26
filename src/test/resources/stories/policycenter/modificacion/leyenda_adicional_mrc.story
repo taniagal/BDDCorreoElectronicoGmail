@@ -11,10 +11,12 @@ una actividad, una transaccion de politica, una actividad, un codigo de producto
 Scenario: Validar campo leyenda adicional en poliza nueva
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112402|Multiriesgo corporativo|
+| cuenta     | producto                |
+| C000112402 | Multiriesgo corporativo |
 When ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion sin riesgo consultable
+When agregue una nueva ubicacion:
+| departamento | ciudad   | direccion         | descripcion      | actividad                     | medioVenta |
+| Antioquia    | Medellin | CR 88 C # 49 - 99 | Edificio Leyenda | Acabado de productos textiles | Televentas |
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -26,11 +28,11 @@ And ingrese a edificios y ubicaciones en cambio de poliza
 And intente ingresar una nueva ubicacion con <leyendaAdicional>
 And de click en el boton aceptar
 And ingrese las entradas en cambio de poliza de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO             | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Existencias Flotantes     |                     |                  | Valor asegurado máximo           | 100000000      |
-| Información de Artículos | Existencias Flotantes     |                     |                  | Exposición promedio              | 10000          |
-| Información de Artículos | Existencias Flotantes     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+| TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Existencias Flotantes |                     |                  | Valor asegurado máximo           | 100000000      |
+| Información de Artículos | Existencias Flotantes |                     |                  | Exposición promedio              | 10000          |
+| Información de Artículos | Existencias Flotantes |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
 Then cotice y expida la poliza
 Examples:
-|rolUsuario|leyendaAdicional|
-|          |leyendas        |
+| rolUsuario | leyendaAdicional |
+|            | leyendas         |
