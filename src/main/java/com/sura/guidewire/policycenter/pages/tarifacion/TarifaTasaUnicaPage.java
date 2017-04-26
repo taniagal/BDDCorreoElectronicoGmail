@@ -234,9 +234,9 @@ public class TarifaTasaUnicaPage extends PageUtil {
         setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         while (cantDeIntentosParaMostrarBotonEditarTransaccion < TIEMPO_7) {
             if (!botonEditarTransaccionDePolizaInfo.isVisible()) {
-                clickearElemento($(btnVolver), TIEMPO_4);
+                clickearElemento($(btnVolver), CONSTANTE_6);
                 esperarHasta(TIEMPO_3000);
-                clickearElemento($(btnSiguiente), TIEMPO_4);
+                clickearElemento($(btnSiguiente), CONSTANTE_6);
             }
             cantDeIntentosParaMostrarBotonEditarTransaccion++;
         }
