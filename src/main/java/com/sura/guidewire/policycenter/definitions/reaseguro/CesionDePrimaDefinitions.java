@@ -26,6 +26,7 @@ public class CesionDePrimaDefinitions {
     CesionDePrimaSteps cesionDePrimaSteps;
 
     @Given("cotice y expida una poliza")
+    @When("cotice y expida una poliza")
     public void givenCoticeYExpidaUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
         expedicionDePolizaSteps.clicEnExpedirPoliza();
