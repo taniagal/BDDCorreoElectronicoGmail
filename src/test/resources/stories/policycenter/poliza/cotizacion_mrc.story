@@ -62,7 +62,9 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
 And cotice una poliza
-Then no debe permitir cotizar; se debe mostrar el mensaje de error <mensaje>
+Then debo ver la informacion de la cotizacion
+| tomador                      | tipoDocumento        | numeroDocumento | direccion                            | tipoDireccion           | descripcionDireccion                       | prima          | impuestos     | total          |
+| ELIANA PAOLA MECHONES MADURO | CEDULA DE CIUDADANIA | 1235698740      | CR 65 # 48 - 162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $124.000 (COP) | $23.560 (COP) | $147.560 (COP) |
 
 Examples:
 | cuenta     | producto                | mensaje                                                                                                      |
