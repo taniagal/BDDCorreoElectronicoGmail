@@ -18,7 +18,7 @@ And ingrese la <fechaInicioVigencia> para un anio
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 33 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 14 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 5000000000      |
@@ -39,8 +39,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | 10.000.000.000         | 600.000.000     | 3.400.000.000  | 6.000.000.000  | 4.000.000.000    | 34           | 60           | 6                   | 10.000.000.000         |
 
 Examples:
-|fechaInicioVigencia|
-|01/02/2017         |
+| fechaInicioVigencia |
+| 01/02/2017          |
 
 
 Scenario: Crear polizas  MRC en una misma direccion y que hagan cumulo. Sin facultativos. Poliza B
@@ -55,7 +55,7 @@ And de clic en Aceptar de la ventana Coaseguro
 And ingrese la <fechaInicioVigencia> para un anio
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                      |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 33 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
+| Colombia| Antioquia   | Bello    | AVENIDAS 14 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 5000000000      |
@@ -79,10 +79,22 @@ And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
 | 10.000.000.000         | 120.000.000     | 680.000.000    | 9.200.000.000  | 800.000.000      | 6,8          | 92           | 1,2                 | 15.000.000.000         |
+When modifico la fecha de vigencia <fechaModificacion>
+And ingrese al menu edificios y ubicaciones
+And ingrese las entradas en cambio de poliza de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Muebles y enseres   |                     |                  | Valor Asegurable                 | 10000000000    |
+| Información de Artículos | Muebles y enseres   |                     | Danos materiales | Valor asegurado danos materiales | 10000000000    |
+And cotice y expida la poliza
+And ingrese al resumen de la poliza expedida
+And de clic al menu reaseguro
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
+| 10.000.000.000         | 600.000.000     | 3.400.000.000  | 6.000.000.000  | 4.000.000.000    | 34           | 60           | 6                   | 10.000.000.000         |
 
 Examples:
-| fechaInicioVigencia | TipoCo | PolizaRef | Documento | verApartirDe            |
-| 01/03/2017          | Cedido |           |           | 01/03/2017 - 30/06/2017 |
+| fechaInicioVigencia | TipoCo | PolizaRef | Documento | verApartirDe            | fechaModificacion |
+| 01/03/2017          | Cedido |           |           | 01/03/2017 - 30/06/2017 | 01/04/2017        |
 
 
 

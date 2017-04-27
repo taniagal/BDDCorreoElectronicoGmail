@@ -57,6 +57,11 @@ public class ModificadoresDeTarifaDefinitions {
         modificadoresDeTarifaSteps.cambiarFechaDeVigencia();
     }
 
+    @When("modifico la fecha de vigencia $fechaModificacion")
+    public void modificarFechaVigencia(@Named("fechaModificacion") String fechaModificacion) {
+        modificadoresDeTarifaSteps.modificarFechaVigencia(fechaModificacion);
+    }
+
     @When("cambio la bonificacion tecnica <bonoT>")
     public void cambiarBonificacionTecnica(@Named("bonoT") String bonoT) {
         modificadoresDeTarifaSteps.cambiarBonificacionTecnicaYValidarCampos(bonoT);
