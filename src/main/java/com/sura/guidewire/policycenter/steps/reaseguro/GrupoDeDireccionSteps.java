@@ -36,4 +36,9 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
         grupoDeDireccionPage.validarLimiteCuotaParte(examplesTable);
         grupoDeDireccionPage.verificarBaseReasegurableCumulo(examplesTable);
     }
+
+    @Step
+    public void seleccionarOpcionVerApartirDe(String verApartirDe) {
+        grupoDeDireccionPage.seleccionarOpcionVerApartirDe(verApartirDe);
+    }
 }

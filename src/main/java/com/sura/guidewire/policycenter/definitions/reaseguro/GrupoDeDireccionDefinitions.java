@@ -61,4 +61,9 @@ public class GrupoDeDireccionDefinitions {
     public void clicMenuReaseguro() {
         crearYEditarCumulosSteps.clicMenuReaseguro();
     }
+
+    @When("seleccione opcion ver a partir de $verApartirDe")
+    public void seleccionarOpcionVerApartirDe(@Named("verApartirDe") String verApartirDe) {
+        grupoDeDireccionSteps.seleccionarOpcionVerApartirDe(verApartirDe);
+    }
 }

@@ -39,6 +39,8 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade lblProporcionRetencion;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:groupTIV-inputEl')]")
     private WebElementFacade linkBaseReasegurableCumulo;
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:ViewAsOf:ViewAsOf_Arg-inputEl')]")
+    private WebElementFacade comboBoxVerApartirDe;
 
 
     private static final double CONSTANTE_CIEN = 100.0;
@@ -155,5 +157,10 @@ public class GrupoDeDireccionPage extends PageUtil {
         String baseReasegurableCumulo = linkBaseReasegurableCumulo.getText().substring(CONSTANTE_1, linkBaseReasegurableCumulo.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor Base reasegurable Cúmulo, expected: " + data.get("baseReasegurableCumulo") +
                 " but was: " + baseReasegurableCumulo, baseReasegurableCumulo.equals(data.get("baseReasegurableCumulo")));
+    }
+
+    public void seleccionarOpcionVerApartirDe(String verApartirDe){
+        comboBoxVerApartirDe.waitUntilPresent();
+        seleccionarItem(comboBoxVerApartirDe, verApartirDe);
     }
 }

@@ -10,7 +10,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
 
-
+    private static String numeroEnvio;
     ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPAPage = new ModificacionInformacionPolizaPAPage(getDriver());
 
     public ModificacionInformacionPolizaPASteps(Pages pages) {
@@ -95,5 +95,15 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
     @Step
     public void validarContinuacionDeCotizacion(String encabezado, String xpathEncabezado) {
         modificacionInformacionPolizaPAPage.validarContinuacionDeCotizacion(encabezado, xpathEncabezado);
+    }
+
+    @Step
+    public void capturarNumeroPoliza() {
+        numeroEnvio = modificacionInformacionPolizaPAPage.capturarNumeroPoliza();
+    }
+
+    @Step
+    public void consultarPolizaExpedida() {
+        modificacionInformacionPolizaPAPage.ingresarPoliza(numeroEnvio);
     }
 }
