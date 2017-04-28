@@ -112,6 +112,10 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     public String validarItems() {
         return withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(tablaRequisitos).getText();
     }
+
+    public void expedirPoliza() {
+        esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
+    }
 }
 
 

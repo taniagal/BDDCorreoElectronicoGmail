@@ -1,5 +1,5 @@
 Meta:
-@lote2
+@lote4
 @tag equipo: reaseguro
 @local
 
@@ -18,19 +18,19 @@ And ingrese la <fechaInicioVigencia> para un anio
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
-And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 5000000000      |
-| Información de Artículos | Edificios           |                     | Danos materiales | Valor asegurado danos materiales | 5000000000      |
-| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 5000000000      |
-| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 5000000000      |
-And cotice y expida una poliza
-When ingrese a analisis de riesgo
+| Colombia| Antioquia   | Bello    | AVENIDAS 46 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+And seleccione algunos articulos y sus cobertura:
+| articulo | valor_asegurable | coberturas |
+| Building | 5000000000       | Danos      |
+| Machine  | 5000000000       | Danos      |
+And cotice el articulo
+When intente expedir la poliza
+And confirmo el mensaje de expedir poliza
+And ingrese a analisis de riesgo
 And realice la aprobacion especial
-And acepto la expedicion de poliza
-And acepto la expedicion de poliza
-And expido la poliza
+And expida la poliza
+And expida la poliza
+And expido la poliza mrc
 And capturo el numero de poliza 1
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
@@ -55,19 +55,19 @@ And de clic en Aceptar de la ventana Coaseguro
 And ingrese la <fechaInicioVigencia> para un anio
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                      |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
-And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 5000000000      |
-| Información de Artículos | Edificios           |                     | Danos materiales | Valor asegurado danos materiales | 5000000000      |
-| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 5000000000      |
-| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 5000000000      |
-And cotice y expida una poliza
+| Colombia| Antioquia   | Bello    | AVENIDAS 46 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
+And seleccione algunos articulos y sus cobertura:
+| articulo | valor_asegurable | coberturas |
+| Building | 5000000000       | Danos      |
+| Machine  | 5000000000       | Danos      |
+And cotice el articulo
+When intente expedir la poliza
+And confirmo el mensaje de expedir poliza
 And ingrese a analisis de riesgo
 And realice la aprobacion especial
-And acepto la expedicion de poliza
-And acepto la expedicion de poliza
-And expido la poliza
+And expida la poliza
+And expida la poliza
+And expido la poliza mrc
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
@@ -93,7 +93,7 @@ Examples:
 | 01/03/2017 - 30/06/2017 |
 
 
-Scenario: Modificar poliza A despues de expedir la poiliza B
+Scenario: Modificar poliza A despues de expedir la poliza B
 Given modifico la fecha de vigencia <fechaModificacion>
 When ingrese al menu edificios y ubicaciones
 And ingrese las entradas en cambio de poliza de las diferentes coberturas
@@ -133,15 +133,15 @@ And ingrese la <fechaInicioVigencia> para un anio
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Cría de otros animales n.c.p | Asesor     |
-And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 1000000000     |
-| Información de Artículos | Edificios           |                     | Danos materiales | Valor asegurado danos materiales | 1000000000     |
-| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 1000000000     |
-| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 1000000000     |
-And cotice y expida una poliza
-When ingrese al resumen de la poliza expedida
+| Colombia| Antioquia   | Bello    | AVENIDAS 46 # 57 - 29 | Cría de otros animales n.c.p | Asesor     |
+And seleccione algunos articulos y sus cobertura:
+| articulo | valor_asegurable | coberturas |
+| Building | 1000000000       | Danos      |
+| Machine  | 1000000000       | Danos      |
+And cotice el articulo
+When intente expedir la poliza
+And confirmo el mensaje de expedir poliza
+And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |

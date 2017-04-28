@@ -72,4 +72,10 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         resetImplicitTimeout();
         waitForAnyTextToAppear("Cotización Expedida", "Cambio en la póliza Expedida", "Asuntos que bloquean la expedición");
     }
+
+    public void expedirPolizaMRC() {
+        esperarObjetoClikeableServidorWe(botonExpedirPoliza);
+        waitFor(botonAceptarMensaje);
+        botonAceptarMensaje.click();
+    }
 }
