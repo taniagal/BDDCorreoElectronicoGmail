@@ -170,13 +170,24 @@ public class ModificacionInformacionPolizaPADefinitions {
                 ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
     }
 
-    @When("capturo el numero de poliza")
-    public void capturarNumeroPoliza(){
-        modificacionInformacionPolizaPASteps.capturarNumeroPoliza();
+    @When("capturo el numero de poliza 1")
+    public void capturarNumeroPolizaA(){
+        modificacionInformacionPolizaPASteps.capturarNumeroPolizaA();
     }
 
-    @When("consulto poliza expedida")
-    public void consultarPolizaExpedida(){
-        modificacionInformacionPolizaPASteps.consultarPolizaExpedida();
+    @When("capturo el numero de poliza 2")
+    public void capturarNumeroPolizaB(){
+        modificacionInformacionPolizaPASteps.capturarNumeroPolizaB();
+    }
+
+    @When("consulto poliza expedida 1")
+    public void consultarPolizaExpedidaA(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedidaA();
+    }
+
+    @When("consulto poliza expedida 2")
+    @Given("consulto poliza expedida 2")
+    public void consultarPolizaExpedidaB(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedidaB();
     }
 }

@@ -18,7 +18,7 @@ And ingrese la <fechaInicioVigencia> para un anio
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 14 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 34 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 5000000000      |
@@ -31,7 +31,7 @@ And realice la aprobacion especial
 And acepto la expedicion de poliza
 And acepto la expedicion de poliza
 And expido la poliza
-And capturo el numero de poliza
+And capturo el numero de poliza 1
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
@@ -55,7 +55,7 @@ And de clic en Aceptar de la ventana Coaseguro
 And ingrese la <fechaInicioVigencia> para un anio
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                      |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 14 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
+| Colombia| Antioquia   | Bello    | AVENIDAS 34 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 5000000000      |
@@ -68,12 +68,13 @@ And realice la aprobacion especial
 And acepto la expedicion de poliza
 And acepto la expedicion de poliza
 And expido la poliza
+And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
 | 5.000.000.000          | 60.000.000      | 340.000.000    | 4.600.000.000  | 400.000.000      | 6,8          | 92           | 1,2                 | 15.000.000.000         |
-When consulto poliza expedida
+When consulto poliza expedida 1
 And de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
@@ -90,11 +91,52 @@ And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 10.000.000.000         | 600.000.000     | 3.400.000.000  | 6.000.000.000  | 4.000.000.000    | 34           | 60           | 6                   | 10.000.000.000         |
+| 20.000.000.000         | 144.000.000     | 816.000.000    | 19.040.000.000 | 960.000.000      | 4,08         | 95,2         | 0,72                | 25.000.000.000         |
 
 Examples:
 | fechaInicioVigencia | TipoCo | PolizaRef | Documento | verApartirDe            | fechaModificacion |
 | 01/03/2017          | Cedido |           |           | 01/03/2017 - 30/06/2017 | 01/04/2017        |
+
+
+Scenario: Consultar poliza B despues de modificar la poiiza A
+Given consulto poliza expedida 2
+When de clic al menu reaseguro
+And seleccione opcion ver a partir de <verApartirDe>
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
+| 5.000.000.000          | 36.000.000      | 204.000.000    | 4.760.000.000  | 240.000.000      | 4,08         | 95,2         | 0,72                | 25.000.000.000         |
+
+Examples:
+| verApartirDe            |
+| 01/04/2017 - 30/06/2017 |
+
+
+Scenario: Crear polizas  MRC en una misma direccion y que hagan cumulo. Sin facultativos. Poliza C
+Given estoy cotizando una poliza de mrc:
+|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1963      |JUANES       |PIEDRAHITA     |DIRECCION DE RESIDENCIA|CALLE 62a #71-69|Antioquia   |Medellin|INT-3 |
+And ingrese la <fechaInicioVigencia> para un anio
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+| pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
+| Colombia| Antioquia   | Bello    | AVENIDAS 34 # 57 - 29 | Cría de otros animales n.c.p | Asesor     |
+And intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 1000000000     |
+| Información de Artículos | Edificios           |                     | Danos materiales | Valor asegurado danos materiales | 1000000000     |
+| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 1000000000     |
+| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 1000000000     |
+And cotice y expida una poliza
+When ingrese al resumen de la poliza expedida
+And de clic al menu reaseguro
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
+| 2.000.000.000          | 13.333.333      | 75.555.556     | 1.911.111.111  | 88.888.889       | 3,77         | 95,56        | 0,67                | 27.000.000.000         |
+
+Examples:
+| fechaInicioVigencia |
+| 01/05/2017          |
+
 
 
 
