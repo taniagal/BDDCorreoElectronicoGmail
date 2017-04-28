@@ -169,4 +169,24 @@ public class ModificacionInformacionPolizaPADefinitions {
         modificacionInformacionPolizaPASteps.validarContinuacionDeCotizacion("Coberturas de auto personal",
                 ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
     }
+
+    @When("capturo el numero de poliza 1")
+    public void capturarNumeroPolizaA(){
+        modificacionInformacionPolizaPASteps.capturarNumeroPolizaA();
+    }
+
+    @When("capturo el numero de poliza 2")
+    public void capturarNumeroPolizaB(){
+        modificacionInformacionPolizaPASteps.capturarNumeroPolizaB();
+    }
+
+    @Given("consulto poliza expedida 1")
+    public void consultarPolizaExpedidaA(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedidaA();
+    }
+
+    @Given("consulto poliza expedida 2")
+    public void consultarPolizaExpedidaB(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedidaB();
+    }
 }

@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.pages.modificaciones;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -90,6 +91,8 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     private WebElementFacade itemVehiculos;
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtBuscar;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
+    private WebElementFacade numPoliza;
 
     public ModificacionInformacionPolizaPAPage(WebDriver driver) {
         super(driver);
@@ -291,5 +294,9 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
         esperarHasta(TIEMPO_1500);
         MatcherAssert.assertThat(labelTitulo.getText(), Is.is(Matchers.equalTo(encabezado)));
         esperarHasta(TIEMPO_1500);
+    }
+
+    public String capturarNumeroPoliza() {
+        return Utils.quitaCaracteresACadena(numPoliza);
     }
 }

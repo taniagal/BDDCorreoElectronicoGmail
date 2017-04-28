@@ -51,6 +51,13 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
     }
 
     @Step
+    public void expedirPolizaMRC() {
+        if (token == 1) {
+            analisisDeRiesgoPage.expedirPolizaMRC();
+        }
+    }
+
+    @Step
     public void irAInformacionDePolizaExpedida() {
         if (token == 1) {
             tasaUnicaPage.irAInformacionDePoliza();

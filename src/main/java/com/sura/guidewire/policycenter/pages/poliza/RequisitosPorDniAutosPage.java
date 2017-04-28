@@ -101,14 +101,20 @@ public class RequisitosPorDniAutosPage extends PageUtil {
 
     public void cotizarYExpedirPoliza() {
         esperarYClickearBoton(botonAceptarExpedicion);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
             clickearElemento(botonBorrar);
             waitForTextToDisappear("2011 AUDI AVEO FAMILY");
         }
+        resetImplicitTimeout();
     }
 
     public String validarItems() {
         return withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(tablaRequisitos).getText();
+    }
+
+    public void expedirPoliza() {
+        esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
     }
 }
 
