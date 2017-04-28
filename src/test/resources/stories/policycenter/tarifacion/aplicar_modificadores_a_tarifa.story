@@ -9,9 +9,9 @@ Quiero ser capaz de aplicar a la tarifa los modificadores que se encuentran a ni
 
 Scenario: Realizar una cotizacion de autos con modificadores de tarifa
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta     |producto|tipoPoliza|
-|C1060447895|Autos   |Individual|
+Given estoy cotizando una poliza de autos:
+| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |tipoPoliza |
+| Autos                   | CEDULA DE CIUDADANIA | 05/05/1965       | FERNI         | FIDEL           | DIRECCION DE RESIDENCIA | CALLE 39F #10-11 | Antioquia    | Medellin | INT-3  |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
