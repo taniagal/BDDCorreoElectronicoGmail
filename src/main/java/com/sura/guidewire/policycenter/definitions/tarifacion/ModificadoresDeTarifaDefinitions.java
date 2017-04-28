@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions.tarifacion;
 
 import com.sura.guidewire.policycenter.steps.tarifacion.ModificadoresDeTarifaSteps;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -57,7 +58,7 @@ public class ModificadoresDeTarifaDefinitions {
         modificadoresDeTarifaSteps.cambiarFechaDeVigencia();
     }
 
-    @When("modifico la fecha de vigencia $fechaModificacion")
+    @Given("modifico la fecha de vigencia $fechaModificacion")
     public void modificarFechaVigencia(@Named("fechaModificacion") String fechaModificacion) {
         modificadoresDeTarifaSteps.modificarFechaVigencia(fechaModificacion);
     }

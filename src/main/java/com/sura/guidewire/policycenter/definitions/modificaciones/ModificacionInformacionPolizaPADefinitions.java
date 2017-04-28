@@ -180,12 +180,11 @@ public class ModificacionInformacionPolizaPADefinitions {
         modificacionInformacionPolizaPASteps.capturarNumeroPolizaB();
     }
 
-    @When("consulto poliza expedida 1")
+    @Given("consulto poliza expedida 1")
     public void consultarPolizaExpedidaA(){
         modificacionInformacionPolizaPASteps.consultarPolizaExpedidaA();
     }
 
-    @When("consulto poliza expedida 2")
     @Given("consulto poliza expedida 2")
     public void consultarPolizaExpedidaB(){
         modificacionInformacionPolizaPASteps.consultarPolizaExpedidaB();
