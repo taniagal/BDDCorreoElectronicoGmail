@@ -166,7 +166,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
     public void clickAccionesYCambiarPoliza() {
-        menuAccionesPoliza.waitUntilPresent().click();
+        clickearElemento(menuAccionesPoliza);
         menuItemCambiarPoliza.waitUntilPresent().click();
     }
 
