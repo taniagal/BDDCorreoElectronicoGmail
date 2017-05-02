@@ -41,6 +41,18 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade linkBaseReasegurableCumulo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:ViewAsOf:ViewAsOf_Arg-inputEl')]")
     private WebElementFacade comboBoxVerApartirDe;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add']")
+    WebElementFacade btnAgregarAcuerdosFacultativos;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:1:reName']")
+    WebElementFacade btnAgregaInformacionSegundoReaseguro;
+    @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:program-inputEl']")
+    WebElementFacade checkBoxContratosAutomaticos;
+    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    WebElementFacade btnAceptar;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:ToolbarButton-btnInnerEl']")
+    WebElementFacade btnCrearAcuerdosFacultativos;
+    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
+    WebElementFacade btnAceptarFacultativo;
 
 
     private static final double CONSTANTE_CIEN = 100.0;
@@ -162,5 +174,20 @@ public class GrupoDeDireccionPage extends PageUtil {
     public void seleccionarOpcionVerApartirDe(String verApartirDe){
         comboBoxVerApartirDe.waitUntilPresent();
         seleccionarItem(comboBoxVerApartirDe, verApartirDe);
+    }
+
+    public void ingresarSegundoReasegurador() {
+        esperarYClickearBoton(btnAgregarAcuerdosFacultativos);
+        esperarYClickearBoton(btnAgregaInformacionSegundoReaseguro);
+        checkBoxContratosAutomaticos.click();
+        esperarYClickearBoton(btnAceptar);
+    }
+
+    public void aceptarFacultativo() {
+        esperarYClickearBoton(btnCrearAcuerdosFacultativos);
+        waitForTextToAppear("Se crearán los acuerdos facultativos con la información ingresada en esta plantilla.");
+        esperarYClickearBoton(btnAceptarFacultativo);
+        waitForAllTextToAppear("Facultative agreements have been successfully created.");
+        btnAceptar.click();
     }
 }

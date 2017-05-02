@@ -41,4 +41,14 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
     public void seleccionarOpcionVerApartirDe(String verApartirDe) {
         grupoDeDireccionPage.seleccionarOpcionVerApartirDe(verApartirDe);
     }
+
+    @Step
+    public void ingresarSegundoReasegurador() {
+        grupoDeDireccionPage.ingresarSegundoReasegurador();
+    }
+
+    @Step
+    public void aceptarAcuerdoFacultativo() {
+        grupoDeDireccionPage.aceptarFacultativo();
+    }
 }

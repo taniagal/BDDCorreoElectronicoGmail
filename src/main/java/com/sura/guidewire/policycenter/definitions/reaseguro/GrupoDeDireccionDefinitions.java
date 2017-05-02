@@ -66,4 +66,14 @@ public class GrupoDeDireccionDefinitions {
     public void seleccionarOpcionVerApartirDe(@Named("verApartirDe") String verApartirDe) {
         grupoDeDireccionSteps.seleccionarOpcionVerApartirDe(verApartirDe);
     }
+
+    @When("ingrese un reasegurador de tipo programa")
+    public void ingresarSegundoReasegurador() {
+        grupoDeDireccionSteps.ingresarSegundoReasegurador();
+    }
+
+    @When("acepte el acuerdo facultativo")
+    public void aceptarAcuerdoFacultativo() {
+        grupoDeDireccionSteps.aceptarAcuerdoFacultativo();
+    }
 }
