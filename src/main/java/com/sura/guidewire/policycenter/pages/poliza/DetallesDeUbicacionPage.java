@@ -38,6 +38,8 @@ public class DetallesDeUbicacionPage extends PageUtil {
     private WebElementFacade labelAnioDeConstruccion;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:_msgs']/div")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB:addExistingLocations-textEl']")
+    private WebElementFacade botonAgregarUbicacionExistente;
 
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";

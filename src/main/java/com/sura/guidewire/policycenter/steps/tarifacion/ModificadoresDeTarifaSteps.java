@@ -81,6 +81,11 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     }
 
     @Step
+    public void modificarFechaVigencia(String fechaModificacion) {
+        tasaUnicaPage.modificarFechaVigencia(fechaModificacion);
+    }
+
+    @Step
     public void cambiarBonificacionTecnicaYValidarCampos(String bonoT) {
         modificadoresDeTarifaPage.cambiarBonificacionTecnica(bonoT);
         modificadoresDeTarifaPage.verificarModificadoresHabilitados();

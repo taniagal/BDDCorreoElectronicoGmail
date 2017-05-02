@@ -39,9 +39,9 @@ Examples:
 | Asesor     |
 
 Scenario: Mostrar opcion de reimpresion en un cambio de poliza mrc
-Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000112402|Multiriesgo corporativo|
+Given estoy cotizando una poliza de mrc:
+| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Multiriesgo corporativo | CEDULA DE CIUDADANIA | 01/04/1971       | SILVESTRE     | ZACARIAS        | DIRECCION DE RESIDENCIA | CALLE 90J #25-26 | Antioquia    | Medellin | INT-3  |
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas

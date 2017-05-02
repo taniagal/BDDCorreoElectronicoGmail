@@ -68,4 +68,9 @@ public class CambioDePolizaDefinitions {
         cambioDePolizaSteps.validarMensajeNoReaseguro();
     }
 
+    @When("ingrese al menu edificios y ubicaciones")
+    public void IrAMenuEdificiosYUbicaciones() {
+        cambioDePolizaSteps.IrAMenuEdificiosYUbicaciones();
+    }
+
 }

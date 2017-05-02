@@ -10,6 +10,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.annotations.Named;
+import org.jbehave.core.model.ExamplesTable;
 
 public class GrupoDeDireccionDefinitions {
 
@@ -44,5 +45,25 @@ public class GrupoDeDireccionDefinitions {
     @Alias("se debe validar los valores del Exedidos en el contrato")
     public void thenSeDebeValidarLosValoresDelEX() {
         grupoDeDireccionSteps.validainformaciondeExcedente();
+    }
+
+    @Then("se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente: $examplesTable")
+    public void verificarValoresContratosReasegurables(ExamplesTable examplesTable) {
+        grupoDeDireccionSteps.verificarValoresContratosReasegurables(examplesTable);
+    }
+
+    @When("ingrese la <fechaInicioVigencia> para un anio")
+    public void modificarFechaInicioVigencia(@Named("fechaInicioVigencia")String fechaInicioVigencia) {
+        informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
+    }
+
+    @When("de clic al menu reaseguro")
+    public void clicMenuReaseguro() {
+        crearYEditarCumulosSteps.clicMenuReaseguro();
+    }
+
+    @When("seleccione opcion ver a partir de $verApartirDe")
+    public void seleccionarOpcionVerApartirDe(@Named("verApartirDe") String verApartirDe) {
+        grupoDeDireccionSteps.seleccionarOpcionVerApartirDe(verApartirDe);
     }
 }

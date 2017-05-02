@@ -21,6 +21,11 @@ public class CrearYEditarCumulosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void clicMenuReaseguro() {
+        crearYEditarCumulosPage.clicMenuReaseguro();
+    }
+
+    @Step
     public void ingresar_a_opcion_crear_acuerdo_facultativo() {
         crearYEditarCumulosPage.ingresarAcuerdosFacultativos();
     }

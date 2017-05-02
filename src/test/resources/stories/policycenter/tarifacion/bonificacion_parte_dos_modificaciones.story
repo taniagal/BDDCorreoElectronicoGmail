@@ -9,9 +9,9 @@ Deseo poder obtener y/o agregar la bonificacion comercial y la tecnica a un vehi
 
 Scenario: Verificar generacion de UW Issue al cambiar la bonificacion consultada Cambio de Poliza.
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta     |producto|tipoPoliza |
-|C1060447895|Autos   |Individual |
+Given estoy cotizando una poliza de autos:
+| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion         | departamento | ciudad   | agente |tipoPoliza |
+| Autos                   | CEDULA DE CIUDADANIA | 05/05/1965       | SILVIO        | ALBEIRO         | DIRECCION DE RESIDENCIA | AVENIDA 50 #14-15 | Antioquia    | Medellin | INT-3  |Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|

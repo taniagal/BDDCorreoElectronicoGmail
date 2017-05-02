@@ -39,4 +39,9 @@ public class RequisitosPorDniAutosDefinitions {
     public void cotizarYExpedirPoliza() {
         requisitosPorDniAutosSteps.clicBotonExpedicion();
     }
+
+    @When("expida la poliza")
+    public void expedirPoliza() {
+        requisitosPorDniAutosSteps.expedirPoliza();
+    }
 }
