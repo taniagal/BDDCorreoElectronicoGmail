@@ -43,14 +43,4 @@ public class CambioDePolizaCamposEditablesSteps extends ScenarioSteps {
     public void seleccionarOpcionSiguiente() {
         cambioDePolizaCamposEditablesPage.seleccionarOpcionSiguiente();
     }
-
-    @Step
-
-    public void cambiarPlanABasico(String planBasico) {
-        cambioDePolizaCamposEditablesPage.cambiarAPlanBasico(planBasico);
-    }
-
-    public void cambiarPlanAClasico(String plan) {
-        cambioDePolizaCamposEditablesPage.cambiarAPlanClasico(plan);
-    }
 }

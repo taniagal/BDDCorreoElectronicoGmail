@@ -42,7 +42,7 @@ Given tengo una poliza de PA con los siguientes datos:
 | CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ABB183 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
-And cambie el plan del vehiculo <planBasico>
+And cambie el plan del vehiculo a basico <plan>
 And cotice una poliza
 And cuando edite la transacion de la poliza
 And se ingrese a la opcion vehiculos
@@ -63,14 +63,14 @@ Given tengo una poliza de PA con los siguientes datos:
 | CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ABB184 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
-And cambie el plan del vehiculo <planBasico>
+And cambie el plan del vehiculo a basico <plan>
 And adicione un valor asegurado superior al permitido <valor>
 And seleccione la opcion siguiente en modificacion
 And intente cotizar el cambio de poliza
 Then expida el cambio de la poliza
 
 Examples:
-| planBasico        | valor     |
+| plan              | valor     |
 | Plan Autos Básico | 301000000 |
 
 Scenario: Validar requisitos en cambio de plan basico a otro plan

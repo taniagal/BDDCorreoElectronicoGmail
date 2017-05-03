@@ -33,8 +33,7 @@ public class CambioDePolizaCamposEditablesPage extends PageUtil {
     }
 
     public void cambiarPlanVehicular(String plan) {
-        ingresarDato(txtPlanVehicular, plan);
-        planAutosClasico.click();
+        seleccionarItem(txtPlanVehicular, plan);
     }
 
     public void agregarTransporteCombustible() {
@@ -60,15 +59,5 @@ public class CambioDePolizaCamposEditablesPage extends PageUtil {
 
     public void seleccionarOpcionSiguiente() {
         esperarYClickearBoton(botonSiguienteModificacion);
-    }
-
-    public void cambiarAPlanBasico(String planBasico) {
-        ingresarDato(txtPlanVehicular, planBasico);
-        botonPlanAutosBasico.click();
-    }
-
-    public void cambiarAPlanClasico(String plan) {
-        ingresarDato(txtPlanVehicular, plan);
-        botonPlanAutosClasico.click();
     }
 }
