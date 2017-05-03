@@ -1,6 +1,6 @@
 Meta:
 @tag equipo: 2, sprint: 14
-@lote2
+@lote5
 
 Narrative:
 Como usuario de PolicyCenter
@@ -16,8 +16,6 @@ And cotice una poliza
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
 | MENSAJES_WORKSPACE                    |
 | El tomador es un riesgo no estándar   |
-
-
 
 Examples:
 | numSubscripcion | tipo_documento       | documento |
@@ -56,5 +54,3 @@ And se deben validar los riesgos consultables mostrando los siguientes mensaje p
 Examples:
 | numSubscripcion | tipoDocumento        | primerNombre  | primerApellido |                                                                                                                                      |
 | 33335550        | CEDULA DE CIUDADANIA | CAROLINA      | OCHOA          |
-
-
