@@ -13,17 +13,17 @@ public class BusquedaDeTransaccionesDefinitions {
     BusquedaDeTransaccionesSteps busquedaDeTransaccionesSteps;
 
     @Given("que me encuentro en la busqueda de transacciones")
-    public void irABuscarTransacciones(){
+    public void irABuscarTransacciones() {
         busquedaDeTransaccionesSteps.irABuscarTransacciones();
     }
 
     @When("ingreso los siguientes datos para la busqueda: $filtro")
-    public void ingresarLosDatosDeBusqueda(ExamplesTable filtro){
+    public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {
         busquedaDeTransaccionesSteps.ingresarLosDatosDeBusqueda(filtro);
     }
 
     @Then("debo ver la informacion de las transacciones asociadas: $resultados")
-    public void validarResultadosDeBusqueda(ExamplesTable resultados){
+    public void validarResultadosDeBusqueda(ExamplesTable resultados) {
         busquedaDeTransaccionesSteps.validarResultadosDeBusqueda(resultados);
     }
 }

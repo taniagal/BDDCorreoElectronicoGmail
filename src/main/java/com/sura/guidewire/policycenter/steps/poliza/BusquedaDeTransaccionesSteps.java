@@ -10,7 +10,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 import java.util.Map;
 
-public class BusquedaDeTransaccionesSteps extends ScenarioSteps{
+public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
 
     BusquedaDeRiesgosPage busquedaDeRiesgosPage;
     BusquedaDeTransaccionesPage busquedaDeTransaccionesPage;
@@ -31,7 +31,7 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps{
     @Step
     public void validarResultadosDeBusqueda(ExamplesTable resultados) {
         Map<String, String> resultadoEsperado = resultados.getRows().get(0);
-        String resultadoPagina =  busquedaDeTransaccionesPage.validarResultadosDeBusqueda();
+        String resultadoPagina = busquedaDeTransaccionesPage.validarResultadosDeBusqueda();
         MatcherAssert.assertThat(resultadoPagina, Matchers.containsString(resultadoEsperado.get("numeroPoliza")));
         MatcherAssert.assertThat(resultadoPagina, Matchers.containsString(resultadoEsperado.get("numeroTransaccion")));
         MatcherAssert.assertThat(resultadoPagina, Matchers.containsString(resultadoEsperado.get("estado")));
