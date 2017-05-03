@@ -204,5 +204,11 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
         MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
         esperarHasta(TIEMPO_1000);
     }
+
+    public void validarCantidadDeAseguradosPermitidos() {
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        MatcherAssert.assertThat(botonAgregar.isVisible(), Is.is(Matchers.equalTo(false)));
+        resetImplicitTimeout();
+    }
 }
 
