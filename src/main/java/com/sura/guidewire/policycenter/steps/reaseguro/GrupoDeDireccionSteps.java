@@ -35,6 +35,7 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
         grupoDeDireccionPage.verificarProporcionRetencion(examplesTable);
         grupoDeDireccionPage.validarLimiteCuotaParte(examplesTable);
         grupoDeDireccionPage.verificarBaseReasegurableCumulo(examplesTable);
+        grupoDeDireccionPage.verificarValorRiesgoCedidoAcuerdoFacultativo(examplesTable);
     }
 
     @Step

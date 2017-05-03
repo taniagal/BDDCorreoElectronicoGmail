@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 50 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 58 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -32,14 +32,12 @@ When ingrese la informacion de un reasegurador en la tabla de reaseguradores
 And ingrese un reasegurador de tipo programa
 And acepte el acuerdo facultativo
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 6.000.000.000          | 600.000.000     | 3.400.000.000  | 2.000.000.000  | 4.000.000.000    | 34           | 20           | 6                   | 10.000.000.000         |
+| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 6.000.000.000          | 600.000.000     | 3.400.000.000  | 2.000.000.000  | 4.000.000.000    | 34           | 20           | 6                   | 10.000.000.000         | 4.000.000.000                  |
 When expido la poliza
-And confirmo el mensaje de expedir poliza
 And ingrese a analisis de riesgo
-And realice la aprobacion especial
-And expida la poliza
-And expida la poliza
+And realice aprobacion especial asociada a varias observaciones
+And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 1
 

@@ -21,6 +21,8 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade tblRiesgoCedidoContratoCotaparteBasico;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[2]/td[7]")
     private WebElementFacade tblRiesgoCedidoContratoExcedenteBasico;
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[3]/td[7]")
+    private WebElementFacade tblRiesgoCedidoAcuerdoFacultativo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[2]")
     private WebElementFacade tblnumeroDeAcuerdoContrato;
     @FindBy(xpath = ".//*[@id='EditAgreementPopup:__crumb__']")
@@ -127,6 +129,15 @@ public class GrupoDeDireccionPage extends PageUtil {
         String valorRiesgoCedidoEX = tblRiesgoCedidoContratoExcedenteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoExcedenteBasico.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor riesgo cedido excedente, expected: " + data.get("riesgoCedidoEX") +
                 " but was: " + valorRiesgoCedidoEX, valorRiesgoCedidoEX.equals(data.get("riesgoCedidoEX")));
+    }
+
+    public void verificarValorRiesgoCedidoAcuerdoFacultativo(ExamplesTable examplesTable) {
+        Map<String, String> data = examplesTable.getRow(0);
+        if (data.get("riesgoCedidoAcuerdoFacultativo") != null) {
+            String valorRiesgoCedidoAcuerdo = tblRiesgoCedidoAcuerdoFacultativo.getText().substring(CONSTANTE_1, tblRiesgoCedidoAcuerdoFacultativo.getText().length() - CONSTANTE_6);
+            MatcherAssert.assertThat("Error en el valor riesgo cedido del acuerdo facultativo, expected: " + data.get("riesgoCedidoAcuerdoFacultativo") +
+                    " but was: " + valorRiesgoCedidoAcuerdo, valorRiesgoCedidoAcuerdo.equals(data.get("riesgoCedidoAcuerdoFacultativo")));
+        }
     }
 
     public void verificarLimiteCuotaParte(ExamplesTable examplesTable) {

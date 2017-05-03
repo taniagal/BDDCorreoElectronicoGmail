@@ -40,6 +40,11 @@ public class AjustesDeReglasRenovacionMrcSteps {
     }
 
     @Step
+    public void realizarAprobacionEspecialConVariasObservaciones() {
+        ajustesDeReglasRenovacionMrcPage.realizarAprobacionEspecialConVariasObservaciones();
+    }
+
+    @Step
     public void selecionarBotonAgregarArticulo(String numeroUbicacion) {
 
         int ubicacionNumero = 1;

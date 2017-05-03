@@ -57,6 +57,8 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     private WebElementFacade campoCostoTransferencia;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:TransferCost-inputEl']")
     private WebElementFacade campoCambioCostoTransferencia;
+    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarExpedicion;
 
     public AjustesDeReglasRenovacionMrcPage(WebDriver driver) {
         super(driver);
@@ -117,6 +119,15 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     public void aprobacionEspecial() {
         waitFor(botonAprobacionEspecial);
         botonAprobacionEspecial.click();
+    }
+
+    public void realizarAprobacionEspecialConVariasObservaciones() {
+        waitFor(botonAprobacionEspecial);
+        while (botonAprobacionEspecial.isVisible()) {
+            botonAprobacionEspecial.click();
+            esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
+            esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
+        }
     }
 
     public void diligenciarCamposReaseguroAceptado(ExamplesTable valores) {
