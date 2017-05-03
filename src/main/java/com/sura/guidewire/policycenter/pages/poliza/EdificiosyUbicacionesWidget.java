@@ -570,7 +570,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarInteresAdicionalDelDirectorio(WebElementFacade elemento, String cedula, String tipodocumento) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).waitUntilPresent().click();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).waitUntilPresent();
+        clickearElemento(elemento);
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
         esperarHasta(TIEMPO_300);

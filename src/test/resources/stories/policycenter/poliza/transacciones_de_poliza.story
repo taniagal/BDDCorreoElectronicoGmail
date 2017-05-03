@@ -30,6 +30,7 @@ Examples:
 |TEST_22222222 |
 
 Scenario: Consultar varias transacciones de una poliza
+Meta: @manual
 Given se tiene una poliza con multiples transacciones
 When se consulten las transacciones de esta poliza
 Then se debe poder visualizar el detalle de cada transaccion consultada

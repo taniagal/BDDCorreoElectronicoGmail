@@ -30,9 +30,7 @@ Examples:
 
 
 Scenario: 2 Validar cierre automatico de la actividad
-Meta:
-@manual
-
+Meta: @manual
 Given  que se proceso el formulario por parte de los diferentes comites
 When  se obtenga respuesta afirmativa o negativa
 Then  se debe completar automaticamente la actividad con la respuesta
@@ -43,9 +41,7 @@ Examples:
 
 
 Scenario: 3 Validar que se genere actividad al expedidor
-Meta:
-@manual
-
+Meta: @manual
 Given  que se proceso el formulario por parte de los diferentes comites
 When  se obtenga respuesta afirmativa o negativa
 Then  se debe completar automaticamente la actividad con la respuesta

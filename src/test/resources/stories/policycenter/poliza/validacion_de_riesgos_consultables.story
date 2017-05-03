@@ -1,5 +1,5 @@
 Meta:
-@lote2
+@lote5
 @tag equipo: 2, sprint: 8
 
 Narrative:
@@ -24,16 +24,13 @@ Then se deben validar los riesgos consultables mostrando los siguientes mensaje 
 | El tomador es un riesgo no estándar   |
 | La dirección es un riesgo no estándar |
 
-
 Examples:
 | tipo_documento       | documento | tipoBeneficiario | tipodocumento        |
 | CEDULA DE CIUDADANIA | 9876543   | Asegurado        | CEDULA DE CIUDADANIA |
 
 
-
 Scenario: 2 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al modificar nueva poliza
-Meta:
-@manual
+Meta: @manual
 Given  que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
 When  quiero agregar un tomador adicional que es riesgo consultable <cedula>
 And  intente ingresar una nueva ubicacion(es)
@@ -43,12 +40,10 @@ Then  se deben validar los riesgos consultables mostrando los siguientes mensaje
 Examples:
 | numPoliza  | rolUsuario |
 | 6076942934 | Asesor     |
-
 
 
 Scenario: 3 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al renovar nueva poliza
-Meta:
-@manual
+Meta: @manual
 Given  que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
 When  quiero agregar un tomador adicional que es riesgo consultable <cedula>
 And  intente ingresar una nueva ubicacion(es)
@@ -60,10 +55,8 @@ Examples:
 | 6076942934 | Asesor     |
 
 
-
 Scenario: 4 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al expedir nueva poliza
-Meta:
-@manual
+Meta: @manual
 Given  que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
 When  quiero agregar un tomador adicional que es riesgo consultable <cedula>
 And  intente ingresar una nueva ubicacion(es)

@@ -147,4 +147,9 @@ public class DetalleDeAseguradoDeCotizacionSteps extends ScenarioSteps{
     public void validarDetalleDeRiesgo(ExamplesTable datosAsegurado) {
         consultaDetalleDeAseguradosPage.validarDetalleDeRiesgo(datosAsegurado);
     }
+
+    @Step
+    public void validarCantidadDeAseguradosPermitidos() {
+        detalleDeAseguradoDeCotizacionPage.validarCantidadDeAseguradosPermitidos();
+    }
 }

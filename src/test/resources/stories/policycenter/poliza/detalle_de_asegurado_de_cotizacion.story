@@ -72,10 +72,18 @@ And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y nu
 And seleccione el contacto a agregar
 And vaya a la opcion agregar
 And agregue un asegurado que es contacto de la cuenta
+And vaya a la opcion agregar
+And consulte un asegurado del directorio
+And ingrese el contacto del directorio con la siguiente informacion:
+| tipoDocumento | numeroDocumento |
+| NIT           | 9202086744      |
+And seleccione el contacto a agregar
 Then deben quedar agregados como asegurados:
-| nombre         | tipoDocumento        | numeroDocumento |
-| DIEGO VELEZ    | CEDULA DE CIUDADANIA | 32536001        |
-| GLORIA GALLEGO | CEDULA DE CIUDADANIA | 1264567899      |
+| nombre                  | tipoDocumento        | numeroDocumento |
+| DIEGO VELEZ             | CEDULA DE CIUDADANIA | 32536001        |
+| GLORIA GALLEGO          | CEDULA DE CIUDADANIA | 1264567899      |
+| VARIEDADES YURLEDYS S.A | NIT                  | 9202086744      |
+And no se debe permitir agregar mas de tres asegurados
 And se debe continuar al siguiente paso de la cotizacion
 
 Examples:

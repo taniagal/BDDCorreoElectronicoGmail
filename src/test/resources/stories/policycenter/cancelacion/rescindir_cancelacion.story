@@ -4,7 +4,7 @@ Meta:
 @tag equipo: 2, sprint: 9
 
 Scenario: 1 Rescindir Cancelacion de poliza
-Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
+Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario> (manual)
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba programacion
 And ingrese fecha superior al dia actual
 And realice la programacion de cancelacion
@@ -18,7 +18,7 @@ Examples:
 Meta:
 @manual
 Scenario: 2 Validar Rescindir Cancelacion de poliza
-Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
+Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario> (manual)
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba programacion
 And ingrese fecha superior al dia actual
 And realice la programacion de cancelacion
@@ -30,6 +30,3 @@ Then la revocacion es correcta si no se se muestra el tipo en el campo <tipo> y 
 Examples:
 | numPoliza     | rolUsuario | tipo        |
 | TEST_99999999 | Asesor     | Cancelación |
-
-
-

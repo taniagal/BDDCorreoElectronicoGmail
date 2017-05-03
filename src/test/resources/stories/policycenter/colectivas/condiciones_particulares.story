@@ -105,7 +105,7 @@ Examples:
 
 Scenario: 9 Liberar  Excepcion deducibles especiales
 Meta: @manual
-Given  que tengo una cotizacion <cotizacion>
+Given  que tengo una cotizacion <cotizacion> (manual)
 When  copie la poliza
 And  ingrese los datos del asegurado <tipo_documento> <documento>
 And  ingrese los datos del vehiculo:
@@ -125,7 +125,7 @@ Examples:
 
 Scenario: 10 no Liberar  Excepcion deducible especiales
 Meta: @manual
-Given  que tengo una cotizacion <cotizacion>
+Given  que tengo una cotizacion <cotizacion> (manual)
 When  copie la poliza
 And  ingrese los datos del asegurado <tipo_documento> <documento>
 And  ingrese los datos del vehiculo:

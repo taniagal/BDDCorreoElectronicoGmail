@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions.cuenta;
 import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.contacto.BusquedaContactoSteps;
 import com.sura.guidewire.policycenter.steps.commons.PolicySteps;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings("WeakerAccess")
@@ -36,14 +38,14 @@ public class BusquedaContactoDefinitions {
     }
 
     @Given("estoy en contactos para buscar")
-    public void givenContactosBuscar(){
+    public void givenContactosBuscar() {
         buscarContactoSteps.ir_A_Busqueda_Contacto();
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>")
     public void whenConsultoPorNombreYApellido(@Named("tipoDoc") String tipoDoc,
-                                                           @Named("nombre") String nombre,
-                                                           @Named("apellido") String apellido) {
+                                               @Named("nombre") String nombre,
+                                               @Named("apellido") String apellido) {
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, nombre, "", apellido, "");
     }
 
@@ -58,7 +60,7 @@ public class BusquedaContactoDefinitions {
     }
 
     @When("quiera consultar contacto de tipo persona juridica <tipoDoc> por numero de documento <numDoc>")
-    public void whenConsultarPersonaJuridicaNumDoc(@Named("tipoDoc") String tipoDoc, @Named("numDoc") String numDoc){
+    public void whenConsultarPersonaJuridicaNumDoc(@Named("tipoDoc") String tipoDoc, @Named("numDoc") String numDoc) {
         buscarContactoSteps.consultarContactoTipoNumDoc(tipoDoc, numDoc);
     }
 
@@ -78,7 +80,7 @@ public class BusquedaContactoDefinitions {
     }
 
     @When("quiera consultar contacto de tipo persona natural por tipo de documento <tipoDoc>")
-    public void whenConsultarPersNatTipoDoc(@Named("tipoDoc") String tipoDoc){
+    public void whenConsultarPersNatTipoDoc(@Named("tipoDoc") String tipoDoc) {
         buscarContactoSteps.consultarContactoTipoNumDoc(tipoDoc, "");
     }
 
@@ -150,41 +152,47 @@ public class BusquedaContactoDefinitions {
     }
 
     @When("la longitud de alguno de ellos <primerNombre> <primerApellido> sea inferior a dos caracteres")
-    public void whenValidarLongitudNombresYApellidos(@Named("primerNombre") String primerNombre, @Named("primerApellido") String primerApellido){
+    public void whenValidarLongitudNombresYApellidos(@Named("primerNombre") String primerNombre, @Named("primerApellido") String primerApellido) {
         buscarContactoSteps.validarLongitudPersonaNatural(primerNombre, "", primerApellido, "");
     }
 
     @When("la longitud de esta <nombreComercial> sea inferior a cuatro caracteres")
-    public void whenValidarLongitudNombreCcial(@Named("nombreComercial") String nombreComercial){
+    public void whenValidarLongitudNombreCcial(@Named("nombreComercial") String nombreComercial) {
         buscarContactoSteps.validarLongitudPersonaJuridica("", nombreComercial);
     }
 
     @SuppressWarnings("EmptyMethod")
     @When("quiera exportar el resultado de la busqueda")
     @Manual
-    public void validarExportar(){
+    public void validarExportar() {
         // Se realiza manualmente.
     }
 
     @When("la longitud de esta <razonSocial> sea inferior a cuatro caracteres")
-    public void whenValidarLongitudRazonSocial(@Named("razonSocial") String razonSocial){
+    public void whenValidarLongitudRazonSocial(@Named("razonSocial") String razonSocial) {
         buscarContactoSteps.validarLongitudPersonaJuridica(razonSocial, "");
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por primer apellido <primerApellido> y segundo apellido <segundoApellido>")
     public void whenConsultarPrimYSegApellido(@Named("tipoDoc") String tipoDoc, @Named("primerApellido") String primerApellido,
-                                              @Named("segundoApellido") String segundoApellido){
+                                              @Named("segundoApellido") String segundoApellido) {
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, "", "", primerApellido, segundoApellido);
     }
 
     @When("ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>")
     public void buscarContactoPorIdentificacion(@Named("tipoId") String tipoId,
-                                                @Named("numeroId") String numeroId){
+                                                @Named("numeroId") String numeroId) {
         buscarContactoSteps.consultarContactoPorTipoDocumentoCotizacion(tipoId, numeroId);
     }
 
+    @When("ingrese el contacto del directorio con la siguiente informacion: $datosContacto")
+    public void buscarContactoDeDirectorioPorId(ExamplesTable datosContacto) {
+        Map<String, String> contacto = datosContacto.getRows().get(0);
+        buscarContactoSteps.consultarContactoPorTipoDocumentoCotizacion(contacto.get("tipoDocumento"), contacto.get("numeroDocumento"));
+    }
+
     @Then("no debo ver la informacion del contacto de tipo persona juridica")
-    public void thenValidarInformacionPersonaJuridica(){
+    public void thenValidarInformacionPersonaJuridica() {
         buscarContactoSteps.validarInformacionTipoId();
     }
 
@@ -215,12 +223,12 @@ public class BusquedaContactoDefinitions {
     }
 
     @Then("debo ver un <mensaje> de alerta indicando que la longitud debe ser mayor o igual a dos caracteres")
-    public void validarMensajeLongitudPersNat(@Named("mensaje") String mensaje){
+    public void validarMensajeLongitudPersNat(@Named("mensaje") String mensaje) {
         buscarContactoSteps.validarMensaje(mensaje);
     }
 
     @Then("debo ver un <mensaje> de alerta indicando que la longitud debe ser mayor o igual a cuatro caracteres")
-    public void validarMensajeLongitudPersJurid(@Named("mensaje") String mensaje){
+    public void validarMensajeLongitudPersJurid(@Named("mensaje") String mensaje) {
         buscarContactoSteps.validarMensaje(mensaje);
     }
 
@@ -230,14 +238,14 @@ public class BusquedaContactoDefinitions {
         Map<String, String> labelsContacto = new HashMap<>();
         labelsContacto.put("tipoId", "Tipo de Documento");
         labelsContacto.put("numId", "Número de Documento");
-        labelsContacto.put("priNombre","Primer nombre");
-        labelsContacto.put("segNombre","Segundo nombre");
-        labelsContacto.put("priApellido","Primer apellido");
-        labelsContacto.put("segApellido","Segundo apellido");
-        labelsContacto.put("direccion","Dirección");
-        labelsContacto.put("telefono","Teléfono");
-        labelsContacto.put("email","Correo electrónico");
-        labelsContacto.put("externa","Externa");
+        labelsContacto.put("priNombre", "Primer nombre");
+        labelsContacto.put("segNombre", "Segundo nombre");
+        labelsContacto.put("priApellido", "Primer apellido");
+        labelsContacto.put("segApellido", "Segundo apellido");
+        labelsContacto.put("direccion", "Dirección");
+        labelsContacto.put("telefono", "Teléfono");
+        labelsContacto.put("email", "Correo electrónico");
+        labelsContacto.put("externa", "Externa");
         buscarContactoSteps.validarLabelsPersonaNatural(labelsContacto);
     }
 
@@ -247,12 +255,12 @@ public class BusquedaContactoDefinitions {
         Map<String, String> labelsContacto = new HashMap<>();
         labelsContacto.put("tipoId", "Tipo de Documento");
         labelsContacto.put("numId", "Número de Documento");
-        labelsContacto.put("nomComercial","Nombre comercial");
-        labelsContacto.put("razonSocial","Razón social");
-        labelsContacto.put("direccion","Dirección");
-        labelsContacto.put("telefono","Teléfono");
-        labelsContacto.put("email","Correo electrónico");
-        labelsContacto.put("externa","Externa");
+        labelsContacto.put("nomComercial", "Nombre comercial");
+        labelsContacto.put("razonSocial", "Razón social");
+        labelsContacto.put("direccion", "Dirección");
+        labelsContacto.put("telefono", "Teléfono");
+        labelsContacto.put("email", "Correo electrónico");
+        labelsContacto.put("externa", "Externa");
         buscarContactoSteps.validarLabelsPersonaJuridica(labelsContacto);
     }
 

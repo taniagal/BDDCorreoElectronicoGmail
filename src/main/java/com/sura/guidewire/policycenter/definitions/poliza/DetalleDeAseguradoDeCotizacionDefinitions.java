@@ -147,6 +147,11 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
     public void validarDetalleDeRiesgo(ExamplesTable datosAsegurado) {
         detalleDeAseguradoDeCotizacionSteps.validarDetalleDeRiesgo(datosAsegurado);
     }
+
+    @Then("no se debe permitir agregar mas de tres asegurados")
+    public void validarCantidadDeAseguradosPermitidos() {
+        detalleDeAseguradoDeCotizacionSteps.validarCantidadDeAseguradosPermitidos();
+    }
 }
 
 
