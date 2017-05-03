@@ -3,18 +3,20 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 import com.sura.guidewire.policycenter.steps.modificacion.CambioDePlacaSteps;
 import com.sura.guidewire.policycenter.steps.modificacion.CambioDePolizaCamposEditablesSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 
 public class CambioDePolizaCamposEditablesDefinitions {
+
     @Steps
     CambioDePolizaCamposEditablesSteps cambioDePolizaCamposEditablesSteps;
+
     @Steps
     CambioDePlacaSteps cambioDePlacaSteps;
 
     @When("cambie el plan del vehiculo <plan>")
+    @Aliases(values = {"cambie el plan del vehiculo <plan> clasico",
+                        "cambie el plan del vehiculo a basico <plan>"})
     public void cambiarPlanVehiculo(@Named("plan") String plan) {
         cambioDePolizaCamposEditablesSteps.cambiarPlanVehicular(plan);
     }
@@ -47,16 +49,5 @@ public class CambioDePolizaCamposEditablesDefinitions {
     @When("seleccione la opcion siguiente en modificacion")
     public void seleccionarSiguiente() {
         cambioDePolizaCamposEditablesSteps.seleccionarOpcionSiguiente();
-    }
-
-    @When("cambie el plan del vehiculo <planBasico>")
-    public void cambiarPlanABasico(@Named("planBasico") String planBasico) {
-        cambioDePolizaCamposEditablesSteps.cambiarPlanABasico(planBasico);
-
-    }
-
-    @When("cambie el plan del vehiculo <plan> clasico")
-    public void cambiarPlanAClasico(@Named("plan") String plan) {
-        cambioDePolizaCamposEditablesSteps.cambiarPlanAClasico(plan);
     }
 }
