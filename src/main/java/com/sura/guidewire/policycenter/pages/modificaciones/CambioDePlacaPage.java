@@ -225,6 +225,7 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
         ingresarPlacaRiesgoConsultable(venezolana);
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(campoTxtCiudad).waitUntilPresent();
         seleccionarItem(campoTxtCiudad, ciudad);
     }
 
