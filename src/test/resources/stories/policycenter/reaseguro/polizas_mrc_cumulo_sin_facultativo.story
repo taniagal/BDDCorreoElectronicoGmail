@@ -9,7 +9,7 @@ con un perfil que tenga permisos quiero ser capaz ver la distribución de cúmul
 para verificar que el reaseguro de cúmulos se haga correctamente
 
 
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Sin facultativos. Poliza A
+Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Sin facultativo. Poliza A
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -43,7 +43,7 @@ Examples:
 | 01/02/2017          |
 
 
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Sin facultativos. Poliza B
+Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Sin facultativo. Poliza B
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1985      |JUAN         |ROJAS          |DIRECCION DE RESIDENCIA|CALLE 52a #70-69|Antioquia   |Medellin|INT-3 |
@@ -81,7 +81,7 @@ Examples:
 | 01/03/2017          | Cedido |           |           | 01/03/2017 - 30/06/2017 | 01/04/2017        |
 
 
-Scenario: Consultar poliza A despues de expedir la poiiza B
+Scenario: Consultar poliza A despues de expedir la poliza B
 Given consulto poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
@@ -126,7 +126,7 @@ Examples:
 | 01/04/2017 - 30/06/2017 |
 
 
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Sin facultativos. Poliza C
+Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Sin facultativo. Poliza C
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1963      |JUANES       |PIEDRAHITA     |DIRECCION DE RESIDENCIA|CALLE 62a #71-69|Antioquia   |Medellin|INT-3 |
@@ -153,7 +153,7 @@ Examples:
 | 01/05/2017          |
 
 
-Scenario: Consultar poliza A despues de expedir la poiiza C
+Scenario: Consultar poliza A despues de expedir la poliza C
 Given consulto poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>

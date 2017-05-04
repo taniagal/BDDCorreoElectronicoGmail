@@ -123,11 +123,13 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
 
     public void realizarAprobacionEspecialConVariasObservaciones() {
         waitFor(botonAprobacionEspecial);
+        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
         while (botonAprobacionEspecial.isVisible()) {
             botonAprobacionEspecial.click();
             esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
             esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
         }
+        resetImplicitTimeout();
     }
 
     public void diligenciarCamposReaseguroAceptado(ExamplesTable valores) {
