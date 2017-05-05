@@ -32,6 +32,11 @@ public class ProcesoDeCancelacionSteps extends ScenarioSteps {
     }
 
     @Step
+    public void darClicBotonDetalle() {
+        procesoDeCancelacionPage.darClicBotonDetalle();
+    }
+
+    @Step
     public void inicia_la_programacion_en_poliza() {
         procesoDeCancelacionPage.iniciaProgramacionDeCancelacion();
     }

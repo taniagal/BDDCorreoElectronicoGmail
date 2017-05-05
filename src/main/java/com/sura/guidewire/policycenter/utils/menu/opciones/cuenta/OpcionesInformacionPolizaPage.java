@@ -87,6 +87,8 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade mensajeValidacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
+    private WebElementFacade botonSiguienteCambioDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade campoOrganizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
@@ -355,6 +357,11 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void seleccionarOpcionSiguiente() {
         clickearElemento(botonSiguiente);
+        esperarHasta(TIEMPO_1500);
+    }
+
+    public void seleccionarOpcionSiguienteModificacion() {
+        clickearElemento(botonSiguienteCambioDePoliza);
         esperarHasta(TIEMPO_1500);
     }
 

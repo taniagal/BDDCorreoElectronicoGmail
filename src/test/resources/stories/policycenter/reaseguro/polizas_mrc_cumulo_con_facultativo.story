@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 57 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -35,7 +35,7 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 6.000.000.000          | 600.000.000     | 3.400.000.000  | 2.000.000.000  | 4.000.000.000    | 34           | 20           | 6                   | 10.000.000.000         | 4.000.000.000                  |
 When expido la poliza
-And ingrese a analisis de riesgo
+And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
 And expido la poliza
 And capturo el numero de poliza 1
@@ -59,7 +59,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 57 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
+| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 30000000000      | Danos      |
@@ -75,16 +75,10 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 4.800.000.000          | 240.000.000     | 1.360.000.000  | 3.200.000.000  | 1.600.000.000    | 11,333333    | 26,666667    | 2                   | 22.000.000.000         | 7.200.000.000                  |
 When expido la poliza
-And ingrese a analisis de riesgo
+And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
 And expido la poliza
 And capturo el numero de poliza 2
-And ingrese al resumen de la poliza expedida
-And de clic al menu reaseguro
-Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 4.800.000.000          | 240.000.000     | 1.360.000.000  | 3.200.000.000  | 1.600.000.000    | 11,333333    | 26,666667    | 2                   | 22.000.000.000         | 7.200.000.000                  |
-
 
 Examples:
 | fechaInicioVigencia | TipoCo | PolizaRef | Documento | descripcionDeAcuerdo               |
@@ -107,8 +101,8 @@ Examples:
 Scenario: Modificar poliza B despues de expedir la poliza B
 Given consulto poliza expedida 2
 And modifico la fecha de vigencia <fechaModificacion>
-When ingrese al menu edificios y ubicaciones
-And seleccione la opcion siguiente
+When seleccione la opcion siguiente en la modificacion
+And ingrese al menu edificios y ubicaciones
 And ingrese las entradas en cambio de poliza de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Muebles y enseres   |                     |                  | Valor Asegurable                 | 30000000000    |
@@ -125,19 +119,6 @@ Examples:
 | 01/04/2017        |
 
 
-Scenario: Consultar poliza A despues de modificar la poliza B
-Given consulto poliza expedida 1
-When de clic al menu reaseguro
-And seleccione opcion ver a partir de <verApartirDe>
-Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 6.000.000.000          | 245.454.545     | 1.390.909.091  | 4.363.636.364  | 1.636.363.636    | 11,333333    | 26,666667    | 2                   | 28.000.000.000         | 4.000.000.000                  |
-
-Examples:
-| verApartirDe            |
-| 01/04/2017 - 30/06/2017 |
-
-
 Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza C
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -147,7 +128,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 56 # 58 - 33 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 58 - 33 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 4000000000       | Danos      |

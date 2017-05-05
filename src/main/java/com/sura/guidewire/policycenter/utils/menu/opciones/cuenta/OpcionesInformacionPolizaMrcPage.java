@@ -140,6 +140,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         txtFechaVigencia.clear();
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();
+        esperarHasta(TIEMPO_2000);
     }
 
     public void ingresarTomadorAdicional(String tipoDocumento, String documento) {

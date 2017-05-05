@@ -163,6 +163,11 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.seleccionar_Opcion_Siguiente();
     }
 
+    @When("seleccione la opcion siguiente en la modificacion")
+    public void seleccionarOpcionSiguienteModificacion() {
+        informacionPolizaPASteps.seleccionarOpcionSiguienteModificacion();
+    }
+
     @When("ingrese segundo tomador creando nuevo contacto $contacto")
     public void ingresarSegundoTomadorCreandoNuevoContacto(ExamplesTable contacto) {
         informacionPolizaPASteps.ingresarSegundoTomadorCreandoNuevoContacto(contacto);

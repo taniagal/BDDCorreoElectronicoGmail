@@ -1,17 +1,19 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
 
 import com.sura.guidewire.policycenter.pages.modificaciones.ModificacionInformacionPolizaPAPage;
+
 import java.util.Map;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 
-public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
+public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
 
-    private static String numeroEnvioA;
-    private static String numeroEnvioB;
+    private static String numeroEnvioA = null;
+    private static String numeroEnvioB = null;
     ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPAPage = new ModificacionInformacionPolizaPAPage(getDriver());
 
     public ModificacionInformacionPolizaPASteps(Pages pages) {
@@ -29,7 +31,7 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
     }
 
     @Step
-    public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza){
+    public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza) {
         modificacionInformacionPolizaPAPage.validarInformacionPoliza(labelsInformacionPoliza, informacionPoliza);
     }
 
@@ -59,7 +61,7 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
     }
 
     @Step
-    public void presionarBotonSiguiente(){
+    public void presionarBotonSiguiente() {
         modificacionInformacionPolizaPAPage.presionarBotonSiguiente();
     }
 

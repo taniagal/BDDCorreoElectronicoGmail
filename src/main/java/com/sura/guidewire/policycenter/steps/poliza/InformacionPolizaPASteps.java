@@ -143,6 +143,11 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
+    public void seleccionarOpcionSiguienteModificacion() {
+        opcionesInformacionPoliza.seleccionarOpcionSiguienteModificacion();
+    }
+
+    @Step
     public void mostrar_Mensaje_Advertencia_Financiacion(String mensaje) {
         opcionesInformacionPoliza.validarMensajeFinanciacion(mensaje);
     }
