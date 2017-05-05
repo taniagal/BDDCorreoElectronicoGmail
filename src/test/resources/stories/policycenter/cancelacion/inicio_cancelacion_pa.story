@@ -38,13 +38,10 @@ Examples:
 |poliza       |mensaje|
 |TEST_22222222|La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días)|
 
-Scenario: motivos de cancelacion para polizas diferentes a Bancolombia
+Scenario: motivos de cancelacion para polizas diferentes a Bancolombia y no financiada
 Given que existe una <poliza> y esta dentro de la vigencia
 When necesito iniciar la cancelacion
 Then Se debe validar en la lista cuando la poliza NO es de bancolombia:
-|Financiación cancelación por muerte|
-|Financiación cancelación por no pago|
-|Financiación cancelación por petición cliente|
 |Por error de trámite|
 |Por no pago|
 |Por no renovada|
@@ -63,9 +60,6 @@ Meta:
 Given que existe la <poliza> y esta dentro de la vigencia
 When necesito iniciar una cancelacion
 And ingrese uno de los motivos:
-|Financiación cancelación por muerte|
-|Financiación cancelación por no pago|
-|Financiación cancelación por petición cliente|
 |Por error de trámite|
 |Por no pago|
 |Por no renovada|

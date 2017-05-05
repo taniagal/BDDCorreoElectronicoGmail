@@ -56,7 +56,7 @@ public class InicioCancelacionPage extends PageUtil {
     }
 
     public void ingresarFechaRetroactiva() {
-        seleccionarItem(txtMotivo, "Financiación cancelación por");
+        seleccionarItem(txtMotivo, "Por petición del cliente");
         esperarHasta(TIEMPO_1000);
         try {
             clickearElemento(txtDescripMotivo);
@@ -76,7 +76,7 @@ public class InicioCancelacionPage extends PageUtil {
 
     public void ingresarFechaEmisionAnticipada() {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
-        String cadenaAux = "Financiación cancelación por";
+        String cadenaAux = "Por petición del cliente";
         seleccionarItem(txtMotivo, cadenaAux);
         esperarHasta(TIEMPO_1000);
         withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(txtFechaVigenciaCancelacion);
