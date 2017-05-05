@@ -1,6 +1,3 @@
-Iniciar Cancelacion
-
-
 Meta:
 @lote1
 @Story CDSEG-3417
@@ -48,7 +45,7 @@ Examples:
 
 Scenario: 3 Validacion lista de motivos para poliza bancolombia
 Meta: @manual
-Given  que estoy en el resumen de la poliza MRC  de bancolombia con numero de poliza <numPoliza> con el rol <rolUsuario>
+Given  que estoy en el resumen de la poliza MRC  de bancolombia con numero de poliza <numPoliza> con el rol <rolUsuario> (manual)
 When  seleccione la lista motivos de cancelacion
 Then  se deben visualizar los siguientes motivos
 | MOTIVOS                                       |
@@ -71,3 +68,13 @@ Then  se debe mostrar la fecha del dia de hoy
 Examples:
 | numPoliza     | rolUsuario |
 | TEST_22222236 | Asesor     |
+
+Scenario: 5 Validacion lista de motivos para poliza financiada
+Meta: @manual
+Given  que estoy en el resumen de la poliza MRC  de bancolombia con numero de poliza <numPoliza> con el rol <rolUsuario> (manual)
+When  seleccione la lista motivos de cancelacion
+Then  se deben visualizar los siguientes motivos
+| MOTIVOS                                       |
+| Financiación cancelación por muerte           |
+| Financiación cancelación por no pago          |
+| Financiación cancelación por petición cliente |
