@@ -87,3 +87,17 @@ Then Se debe validar en la lista cuando la poliza NO es de bancolombia
 Examples:
 |poliza       |
 |TEST_22222222|
+
+Scenario: Validacion lista de motivos para poliza financiada
+Meta: @manual
+Given que existe <poliza> esta es financiada y esta dentro de la vigencia
+When  seleccione la lista motivos de cancelacion
+Then  se deben visualizar los siguientes motivos
+| MOTIVOS                                       |
+| Financiación cancelación por muerte           |
+| Financiación cancelación por no pago          |
+| Financiación cancelación por petición cliente |
+
+Examples:
+|poliza       |
+|TEST_22222222|
