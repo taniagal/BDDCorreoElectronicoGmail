@@ -113,6 +113,11 @@ public class Poliza {
         polizaSteps.verResumenDeLaPolizaExpedida();
     }
 
+    @Given("de clic al menu escritorio")
+    public void clicBotonEscritorio() {
+        polizaSteps.clicBotonEscritorio();
+    }
+
     @When("intente renovar la poliza")
     public void cuandoIntenterRenovarPolizaMRC() {
         polizaSteps.seleccionarBotonAcciones();

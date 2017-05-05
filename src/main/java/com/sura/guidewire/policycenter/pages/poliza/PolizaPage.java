@@ -41,6 +41,8 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade menuItemContactos;
     @FindBy(xpath = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]")
     private WebElementFacade botonAcciones;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    private WebElementFacade menuEscritorio;
 
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
@@ -288,6 +290,11 @@ public class PolizaPage extends PageUtil {
     public void ingresaraResumenDeLaPolizaExpedida() {
         findBy(xpathVerPolizExpedida).click();
         waitForTextToAppear("Resumen");
+    }
+
+    public void clicBotonEscritorio() {
+        menuEscritorio.click();
+        esperarHasta(TIEMPO_2000);
     }
 
     public WebElementFacade obtenerFechacancelacionElemento() {

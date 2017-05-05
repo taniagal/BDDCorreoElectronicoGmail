@@ -101,6 +101,8 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     public void ingresarPoliza(String numeroPoliza) {
         clickearElemento(campoTxtBuscar);
+        campoTxtBuscar.clear();
+        clickearElemento(campoTxtBuscar);
         campoTxtBuscar.waitUntilPresent().sendKeys("Policy " + numeroPoliza);
         if (campoTxtBuscar.getTextValue().contains("(") || campoTxtBuscar.getTextValue().contains(")")){
             campoTxtBuscar.clear();

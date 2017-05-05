@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 57 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -59,7 +59,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
+| Colombia| Antioquia   | Bello    | AVENIDAS 57 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 30000000000      | Danos      |
@@ -79,6 +79,7 @@ And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
 And expido la poliza
 And capturo el numero de poliza 2
+And ingrese al resumen de la poliza expedida
 
 Examples:
 | fechaInicioVigencia | TipoCo | PolizaRef | Documento | descripcionDeAcuerdo               |
@@ -86,7 +87,8 @@ Examples:
 
 
 Scenario: Consultar poliza A despues de expedir la poliza B
-Given consulto poliza expedida 1
+Given de clic al menu escritorio
+And consulto poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
@@ -102,7 +104,6 @@ Scenario: Modificar poliza B despues de expedir la poliza B
 Given consulto poliza expedida 2
 And modifico la fecha de vigencia <fechaModificacion>
 When seleccione la opcion siguiente en la modificacion
-And ingrese al menu edificios y ubicaciones
 And ingrese las entradas en cambio de poliza de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Muebles y enseres   |                     |                  | Valor Asegurable                 | 30000000000    |
@@ -123,12 +124,12 @@ Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facult
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1983      |CARLOS       |VIDAL          |DIRECCION DE RESIDENCIA|CALLE 76a #80-69|Antioquia   |Medellin|INT-3 |
-And ingrese la <fechaInicioVigencia> para un anio
 And seleccione la poliza como reaseguro especial
+And ingrese la <fechaInicioVigencia> para un anio
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 58 - 33 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 57 # 58 - 33 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 4000000000       | Danos      |

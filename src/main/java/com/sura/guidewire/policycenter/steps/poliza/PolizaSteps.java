@@ -229,6 +229,11 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void clicBotonEscritorio() {
+        obtenerPolizaPage().clicBotonEscritorio();
+    }
+
+    @Step
     public void ingresarAVerCoaseguros() {
         obtenerPolizaPage().ingresarOpcionMostrarCoaseguros();
     }

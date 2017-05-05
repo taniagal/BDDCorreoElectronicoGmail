@@ -83,6 +83,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         radioBotReaseguroEspecial.click();
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(checkiReaseguroFacultativo).waitUntilVisible();
         checkiReaseguroFacultativo.click();
+        esperarHasta(TIEMPO_2000);
         esperarYClickearBoton(btnSiguiente);
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblMensajeFacultativo).waitUntilVisible();
     }
