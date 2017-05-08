@@ -127,13 +127,19 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.validaDatosDelTomador(tomador);
     }
 
-    /*
-    * 2 Historia
-    */
-
     @When("modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>")
     public void modificaFechaInicioFechaFin(@Named("fechaInicioVigencia") String fechaInicioVigencia) {
         informacionDePolizaMrcSteps.ingresarFechaDeVigencia(fechaInicioVigencia);
+    }
+
+    @Given("ingrese la fecha fin de vigencia de la poliza <fechaFinVigencia>")
+    public void ingresarFechaFinVigencia(@Named("fechaFinVigencia") String fechaFinVigencia) {
+        informacionDePolizaMrcSteps.ingresarFechaFinVigencia(fechaFinVigencia);
+    }
+
+    @Given("ingrese el tipo de vigencia de la poliza <tipoVigencia>")
+    public void ingresarTipoVigencia(@Named("tipoVigencia") String tipoVigencia) {
+        informacionDePolizaMrcSteps.ingresarTipoVigencia(tipoVigencia);
     }
 
     @Then("se debe mostrar un mensaje <mensajeerror> de error")

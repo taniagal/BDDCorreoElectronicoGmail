@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 57 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 52 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -32,12 +32,14 @@ When ingrese la informacion de un reasegurador en la tabla de reaseguradores
 And ingrese un reasegurador de tipo programa
 And acepte el acuerdo facultativo
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 6.000.000.000          | 600.000.000     | 3.400.000.000  | 2.000.000.000  | 4.000.000.000    | 34           | 20           | 6                   | 10.000.000.000         | 4.000.000.000                  |
-When expido la poliza
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 10.000.000.000         | 6.000.000.000         | 600.000.000     | 3.400.000.000  | 2.000.000.000  | 4.000.000.000    | 10.000.000.000         | 4.000.000.000                  |
+When expido la poliza mrc
+And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza
+And expido la poliza mrc
+And expido la poliza mrc
 And capturo el numero de poliza 1
 
 Examples:
@@ -59,7 +61,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 57 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
+| Colombia| Antioquia   | Bello    | AVENIDAS 51 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 30000000000      | Danos      |
@@ -72,12 +74,14 @@ When ingrese la informacion de un reasegurador en la tabla de reaseguradores
 And ingrese un reasegurador de tipo programa
 And acepte el acuerdo facultativo
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 4.800.000.000          | 240.000.000     | 1.360.000.000  | 3.200.000.000  | 1.600.000.000    | 11,333333    | 26,666667    | 2                   | 22.000.000.000         | 7.200.000.000                  |
-When expido la poliza
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 12.000.000.000         | 4.800.000.000         | 240.000.000     | 1.360.000.000  | 3.200.000.000  | 1.600.000.000    | 22.000.000.000         | 7.200.000.000                  |
+When expido la poliza mrc
+And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza
+And expido la poliza mrc
+And expido la poliza mrc
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
 
@@ -92,8 +96,8 @@ And consulto poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 6.000.000.000          | 300.000.000     | 1.700.000.000  | 4.000.000.000  | 2.000.000.000    | 17           | 40           | 3                   | 22.000.000.000         | 4.000.000.000                  |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 10.000.000.000         | 6.000.000.000         | 300.000.000     | 1.700.000.000  | 4.000.000.000  | 2.000.000.000    | 22.000.000.000         | 4.000.000.000                  |
 
 Examples:
 | verApartirDe            |
@@ -112,12 +116,25 @@ And cotice y expida la poliza
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 7.200.000.000          | 294.545.455     | 1.669.090.909  | 5.236.363.636  | 1.963.636.364    | 9,272727     | 29,090909    | 1,636364            | 28.000.000.000         | 10.800.000.000                 |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 18.000.000.000         | 7.200.000.000         | 294.545.455     | 1.669.090.909  | 5.236.363.636  | 1.963.636.364    | 28.000.000.000         | 10.800.000.000                 |
 
 Examples:
 | fechaModificacion |
 | 01/04/2017        |
+
+
+Scenario: Consultar poliza A despues de modificar la poliza B
+Given consulto poliza expedida 1
+When de clic al menu reaseguro
+And seleccione opcion ver a partir de <verApartirDe>
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 10.000.000.000         | 6.000.000.000         | 245.454.545     | 1.390.909.091  | 4.363.636.364  | 1.636.363.636    | 28.000.000.000         | 4.000.000.000                  |
+
+Examples:
+| verApartirDe            |
+| 01/04/2017 - 30/06/2017 |
 
 
 Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza C
@@ -129,7 +146,7 @@ And ingrese la <fechaInicioVigencia> para un anio
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 57 # 58 - 33 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 51 # 58 - 33 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 4000000000       | Danos      |
@@ -142,12 +159,14 @@ When ingrese la informacion de un reasegurador en la tabla de reaseguradores
 And ingrese un reasegurador de tipo programa
 And acepte el acuerdo facultativo
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 5.600.000.000          | 89.361.702      | 506.382.979    | 5.004.255.319  | 595.744.681      | 34           | 20           | 6                   | 35.000.000.000         | 1.400.000.000                  |
-When expido la poliza
-And ingrese a analisis de riesgo
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 7.000.000.000          | 5.600.000.000         | 89.361.702      | 506.382.979    | 5.004.255.319  | 595.744.681      | 35.000.000.000         | 1.400.000.000                  |
+When expido la poliza mrc
+And expido la poliza mrc
+And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza
+And expido la poliza mrc
+And expido la poliza mrc
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 
@@ -161,8 +180,8 @@ Given consulto poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 6.000.000.000          | 95.744.681      | 542.553.191    | 5.361.702.128  | 638.297.872      | 3,777778     | 95,555556    | 0,666667            | 35.000.000.000         | 4.000.000.000                  |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 10.000.000.000         | 6.000.000.000         | 95.744.681      | 542.553.191    | 5.361.702.128  | 638.297.872      | 35.000.000.000         | 4.000.000.000                  |
 
 Examples:
 | verApartirDe            |
@@ -174,8 +193,8 @@ Given consulto poliza expedida 2
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 7.200.000.000          | 114.893.617     | 651.063.830    | 6.434.042.553  | 765.957.447      | 3,777778     | 95,555556    | 0,666667            | 35.000.000.000         | 10.800.000.000                 |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 18.000.000.000         | 7.200.000.000         | 114.893.617     | 651.063.830    | 6.434.042.553  | 765.957.447      | 35.000.000.000         | 10.800.000.000                 |
 
 Examples:
 | verApartirDe            |

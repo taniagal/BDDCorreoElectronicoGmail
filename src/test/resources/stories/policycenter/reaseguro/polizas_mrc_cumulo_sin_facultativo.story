@@ -35,8 +35,8 @@ And capturo el numero de poliza 1
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 10.000.000.000         | 600.000.000     | 3.400.000.000  | 6.000.000.000  | 4.000.000.000    | 34           | 60           | 6                   | 10.000.000.000         |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
+| 10.000.000.000         | 10.000.000.000        | 600.000.000     | 3.400.000.000  | 6.000.000.000  | 4.000.000.000    | 10.000.000.000         |
 
 Examples:
 | fechaInicioVigencia |
@@ -73,8 +73,8 @@ And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 5.000.000.000          | 60.000.000      | 340.000.000    | 4.600.000.000  | 400.000.000      | 6,8          | 92           | 1,2                 | 15.000.000.000         |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
+| 5.000.000.000          | 5.000.000.000         | 60.000.000      | 340.000.000    | 4.600.000.000  | 400.000.000      | 15.000.000.000         |
 
 Examples:
 | fechaInicioVigencia | TipoCo | PolizaRef | Documento | verApartirDe            | fechaModificacion |
@@ -86,8 +86,8 @@ Given consulto poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 10.000.000.000         | 120.000.000     | 680.000.000    | 9.200.000.000  | 800.000.000      | 6,8          | 92           | 1,2                 | 15.000.000.000         |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
+| 10.000.000.000         | 10.000.000.000        | 120.000.000     | 680.000.000    | 9.200.000.000  | 800.000.000      | 15.000.000.000         |
 
 Examples:
 | verApartirDe            |
@@ -105,8 +105,8 @@ And cotice y expida la poliza
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 20.000.000.000         | 144.000.000     | 816.000.000    | 19.040.000.000 | 960.000.000      | 4,08         | 95,2         | 0,72                | 25.000.000.000         |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
+| 20.000.000.000         | 20.000.000.000        | 144.000.000     | 816.000.000    | 19.040.000.000 | 960.000.000      | 25.000.000.000         |
 
 Examples:
 | fechaModificacion |
@@ -118,8 +118,8 @@ Given consulto poliza expedida 2
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 5.000.000.000          | 36.000.000      | 204.000.000    | 4.760.000.000  | 240.000.000      | 4,08         | 95,2         | 0,72                | 25.000.000.000         |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
+| 5.000.000.000          | 5.000.000.000         | 36.000.000      | 204.000.000    | 4.760.000.000  | 240.000.000      | 25.000.000.000         |
 
 Examples:
 | verApartirDe            |
@@ -145,8 +145,8 @@ And confirmo el mensaje de expedir poliza
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 2.000.000.000          | 13.333.333      | 75.555.556     | 1.911.111.111  | 88.888.889       | 3,777778     | 95,555556    | 0,666667            | 27.000.000.000         |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
+| 2.000.000.000          | 2.000.000.000         | 13.333.333      | 75.555.556     | 1.911.111.111  | 88.888.889       | 27.000.000.000         |
 
 Examples:
 | fechaInicioVigencia |
@@ -158,8 +158,8 @@ Given consulto poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 20.000.000.000         | 133.333.333     | 755.555.556    | 19.111.111.111 | 888.888.889      | 3,777778     | 95,555556    | 0,666667            | 27.000.000.000         |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
+| 20.000.000.000         | 20.000.000.000        | 133.333.333     | 755.555.556    | 19.111.111.111 | 888.888.889      | 27.000.000.000         |
 
 Examples:
 | verApartirDe            |
@@ -171,8 +171,8 @@ Given consulto poliza expedida 2
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | proporcionCP | proporcionEX | proporcionRetencion | baseReasegurableCumulo |
-| 5.000.000.000          | 33.333.333      | 188.888.889    | 4.777.777.778  | 222.222.222      | 3,777778     | 95,555556    | 0,666667            | 27.000.000.000         |
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
+| 5.000.000.000          | 5.000.000.000         | 33.333.333      | 188.888.889    | 4.777.777.778  | 222.222.222      | 27.000.000.000         |
 
 Examples:
 | verApartirDe            |
