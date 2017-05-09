@@ -63,8 +63,7 @@ public class CesionDePrimaPage extends PageUtil {
         esperarYClickearBoton(btnPoliza);
     }
 
-    public void ejecutarTareaPrimasCedidas() {
-        String nombreTarea = "PremiumCeding";
+    public void ejecutarTareaPrimasCedidas(String nombreTarea) {
         btnVerPrimasCedidas.sendKeys(Keys.ALT, Keys.SHIFT, "t");
         buscaEnTablaTareaDeLote(nombreTarea);
         esperarYClickearBoton(btnAcciones);

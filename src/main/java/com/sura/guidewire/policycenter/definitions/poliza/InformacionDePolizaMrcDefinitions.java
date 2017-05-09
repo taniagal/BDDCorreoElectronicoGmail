@@ -132,9 +132,9 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresarFechaDeVigencia(fechaInicioVigencia);
     }
 
-    @Given("ingrese la fecha fin de vigencia de la poliza <fechaFinVigencia>")
-    public void ingresarFechaFinVigencia(@Named("fechaFinVigencia") String fechaFinVigencia) {
-        informacionDePolizaMrcSteps.ingresarFechaFinVigencia(fechaFinVigencia);
+    @Given("ingrese la fecha fin de vigencia de la poliza")
+    public void ingresarFechaFinVigencia() {
+        informacionDePolizaMrcSteps.ingresarFechaFinVigencia();
     }
 
     @Given("ingrese el tipo de vigencia de la poliza <tipoVigencia>")

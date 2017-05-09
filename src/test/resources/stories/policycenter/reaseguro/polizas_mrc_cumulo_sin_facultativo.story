@@ -166,7 +166,7 @@ Examples:
 | 01/05/2017 - 30/06/2017 |
 
 
-Scenario: Consultar poliza B despues de expedir la poiiza C
+Scenario: Consultar poliza B despues de expedir la poliza C
 Given consulto poliza expedida 2
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>

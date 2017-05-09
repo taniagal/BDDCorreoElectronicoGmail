@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -147,11 +148,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         esperarHasta(TIEMPO_2000);
     }
 
-    public void ingresarFechaFinVigencia(String fechaFinVigencia) {
+    public void ingresarFechaFinVigencia() {
         waitInfoPoliza(lblInformaPoliza);
         txtFechaFinVigencia.clear();
-        txtFechaFinVigencia.sendKeys(fechaFinVigencia);
-        actions.sendKeys(Keys.ENTER).build().perform();
+        txtFechaFinVigencia.sendKeys(Utils.sumarDiasALaFechaActual(CONSTANTE_0));
         esperarHasta(TIEMPO_2000);
     }
 

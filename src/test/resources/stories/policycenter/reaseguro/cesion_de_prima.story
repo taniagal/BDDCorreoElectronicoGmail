@@ -45,13 +45,13 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 2000000000      |
 | Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 2000000000      |
 And cotice y expida una poliza
-When quiera visualizar la informacion completa de las primas cedidas
+When quiera visualizar la informacion completa de las primas cedidas <nombreTarea>
 And quiera validar que el reaseguro para el contrato cuotaparte o excedente
 Then se deben mostrar los valores correspondientes de primas de reasegurador
 
 Examples:
-||
-||
+| nombreTarea   |
+| PremiumCeding |
 
 Scenario: validar nombre de reasegurados en la informacion de reasego
 Meta: @manual

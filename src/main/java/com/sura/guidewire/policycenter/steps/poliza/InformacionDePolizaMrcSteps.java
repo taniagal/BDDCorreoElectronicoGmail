@@ -49,8 +49,8 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarFechaFinVigencia(String fechaFinVigencia) {
-        opcionesInformacionPolizaMrcPage.ingresarFechaFinVigencia(fechaFinVigencia);
+    public void ingresarFechaFinVigencia() {
+        opcionesInformacionPolizaMrcPage.ingresarFechaFinVigencia();
     }
 
     @Step

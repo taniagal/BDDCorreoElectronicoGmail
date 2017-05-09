@@ -13,17 +13,19 @@ Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facult
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1973      |RAMON        |CARDONA        |DIRECCION DE RESIDENCIA|CALLE 66a #80-69|Antioquia   |Medellin|INT-3 |
+|Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1953      |CARLOS       |CARMONA        |DIRECCION DE RESIDENCIA|CALLE 11b #60-69|Antioquia   |Medellin|INT-3 |
+And ingrese el tipo de vigencia de la poliza <tipoVigencia>
 And ingrese la <fechaInicioVigencia> para un anio
+And ingrese la fecha fin de vigencia de la poliza
 And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 45 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 59 - 34 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
-| Building | 5000000000       | Danos      |
-| Machine  | 5000000000       | Danos      |
+| Building | 10000000000      | Danos      |
+| Machine  | 10000000000      | Danos      |
 And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>
 When ingrese la informacion de un reasegurador en la tabla de reaseguradores
@@ -33,7 +35,7 @@ And ingrese un reasegurador de tipo programa
 And acepte el acuerdo facultativo
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 10.000.000.000         | 6.000.000.000         | 600.000.000     | 3.400.000.000  | 2.000.000.000  | 4.000.000.000    | 10.000.000.000         | 4.000.000.000                  |
+| 20.000.000.000         | 12.000.000.000        | 600.000.000     | 3.400.000.000  | 8.000.000.000  | 4.000.000.000    | 20.000.000.000         | 8.000.000.000                  |
 When expido la poliza mrc
 And expido la poliza mrc
 And de clic al boton detalle
@@ -43,39 +45,34 @@ And expido la poliza mrc
 And capturo el numero de poliza 1
 
 Examples:
-| fechaInicioVigencia | descripcionDeAcuerdo               |
-| 01/02/2017          | Descripcion de acuerdo para test 1 |
+| tipoVigencia | fechaInicioVigencia | descripcionDeAcuerdo               |
+| Otra         | 01/11/2016          | Descripcion de acuerdo para test 3 |
 
 
 Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza B
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1965      |JUANES       |OCAMPO         |DIRECCION DE RESIDENCIA|CALLE 10a #00-69|Antioquia   |Medellin|INT-3 |
-When quiero agregar coaseguro <TipoCo> con poliza referencia <PolizaRef> documento <Documento> y particion de aseguradoras
-| ASEGURADORA                         | PARTICIPACION |
-| Seguros Generales Suramericana S.A. | 20            |
-| ACE SEGUROS S.A                     | 80            |
-And de clic en Aceptar de la ventana Coaseguro
-Given ingrese la <fechaInicioVigencia> para un anio
+|Multiriesgo corporativo|CEDULA DE CIUDADANIA|11/11/1945      |MANUEL       |ESCOBAR        |DIRECCION DE RESIDENCIA|CALLE 56a #80-69|Antioquia   |Medellin|INT-3 |
+And ingrese la <fechaInicioVigencia> para un anio
 And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-| pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 45 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
+| pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   | medioVenta |
+| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 59 - 34 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
-| Building | 30000000000      | Danos      |
-| Machine  | 30000000000      | Danos      |
+| Building | 10000000000      | Danos      |
+| Machine  | 10000000000      | Danos      |
 And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>
 When ingrese la informacion de un reasegurador en la tabla de reaseguradores
 |modalidad |porcentajeParticipacion|valorReaseguro|comisionReasegurador|comisionIntermediario|comisionPromotora|
-|Gross rate|60                     |1,8           |0                   |0                    |0                |
+|Gross rate|30                     |1,8           |0                   |0                    |0                |
 And ingrese un reasegurador de tipo programa
 And acepte el acuerdo facultativo
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 12.000.000.000         | 4.800.000.000         | 240.000.000     | 1.360.000.000  | 3.200.000.000  | 1.600.000.000    | 22.000.000.000         | 7.200.000.000                  |
+| 20.000.000.000         | 14.000.000.000        | 290.769.231     | 1.647.692.308  | 12.061.538.462 | 1.938.461.538    | 20.000.000.000         | 6.000.000.000                  |
 When expido la poliza mrc
 And expido la poliza mrc
 And de clic al boton detalle
@@ -83,11 +80,10 @@ And realice aprobacion especial asociada a varias observaciones
 And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 2
-And ingrese al resumen de la poliza expedida
 
 Examples:
-| fechaInicioVigencia | TipoCo | PolizaRef | Documento | descripcionDeAcuerdo               |
-| 01/03/2017          | Cedido |           |           | Descripcion de acuerdo para test 2 |
+| fechaInicioVigencia | descripcionDeAcuerdo               |
+| 01/01/2017          | Descripcion de acuerdo para test 2 |
 
 
 Scenario: Consultar poliza A despues de expedir la poliza B
@@ -175,7 +171,7 @@ Examples:
 | 01/05/2017          | Descripcion de acuerdo para test 3 |
 
 
-Scenario: Consultar poliza A despues de expedir la poliza C
+Scenario: Consultar poliza A despues de expedir la poiiza C
 Given consulto poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>
@@ -188,7 +184,7 @@ Examples:
 | 01/05/2017 - 30/06/2017 |
 
 
-Scenario: Consultar poliza B despues de expedir la poliza C
+Scenario: Consultar poliza B despues de expedir la poiiza C
 Given consulto poliza expedida 2
 When de clic al menu reaseguro
 And seleccione opcion ver a partir de <verApartirDe>

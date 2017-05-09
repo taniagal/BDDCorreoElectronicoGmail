@@ -45,13 +45,18 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.mostrarInformacionGeneralDeCobertura(informacionGeneralCobertura);
     }
 
-    @When("quiera visualizar la informacion completa de las primas cedidas")
-    public void whenElUsuarioQuieraVisualizarLaInformacionCompletaDeLasPrimasCedidas() {
+    @When("quiera visualizar la informacion completa de las primas cedidas <nombreTarea>")
+    public void whenElUsuarioQuieraVisualizarLaInformacionCompletaDeLasPrimasCedidas(@Named("nombreTarea") String nombreTarea) {
         cesionDePrimaSteps.tomaYbuscaConNumeroDeEnvio();
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
-        cesionDePrimaSteps.ejecutaTareaPrimasCedidas();
+        cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea);
         cesionDePrimaSteps.ingresarPrimasDespuesDeEjecutarTareaEnCedidas();
         cesionDePrimaSteps.ingresarATodasLasTransacciones();
+    }
+
+    @When("quiera ejecutar una tarea de proceso por lotes <nombreTarea>")
+    public void ejecutarTareaProcesoPorLotes(@Named("nombreTarea") String nombreTarea) {
+        cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea);
     }
 
     @When("quiera validar que el reaseguro para el contrato cuotaparte o excedente")
