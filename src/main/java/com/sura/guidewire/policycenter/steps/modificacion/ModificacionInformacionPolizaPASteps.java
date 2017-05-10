@@ -18,6 +18,9 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
 
     private static String numeroEnvioA = null;
     private static String numeroEnvioB = null;
+    private static String numeroEnvioC = null;
+    private static String numeroEnvioD = null;
+
     ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPAPage = new ModificacionInformacionPolizaPAPage(getDriver());
 
     public ModificacionInformacionPolizaPASteps(Pages pages) {
@@ -118,13 +121,38 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
+    public void capturarNumeroPolizaC() {
+        numeroEnvioC = modificacionInformacionPolizaPAPage.capturarNumeroPoliza();
+    }
+
+    @Step
+    public void capturarNumeroPolizaD() {
+        numeroEnvioD = modificacionInformacionPolizaPAPage.capturarNumeroPoliza();
+    }
+
+    @Step
     public void consultarPolizaExpedidaA() {
         modificacionInformacionPolizaPAPage.ingresarPoliza(numeroEnvioA);
     }
 
     @Step
-    public void consultarPolizaExpedida(){
+    public void consultarPolizaExpedida1(){
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioA);
+    }
+
+    @Step
+    public void consultarPolizaExpedida2(){
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioB);
+    }
+
+    @Step
+    public void consultarPolizaExpedida3(){
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioC);
+    }
+
+    @Step
+    public void consultarPolizaExpedida4(){
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioD);
     }
 
     @Step
