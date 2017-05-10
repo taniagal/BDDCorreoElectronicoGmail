@@ -104,7 +104,7 @@ public class CambioDePolizaPage extends PageUtil {
 
     public void irAMenuEdificiosYUbicaciones(){
         opcionEdificioYubicaciones.waitUntilPresent();
-        clickearElemento(opcionEdificioYubicaciones);
+        esperarObjetoClikeableServidorWe(opcionEdificioYubicaciones);
     }
 
     public void cambiarFechaDeVigencia(String dias) {
