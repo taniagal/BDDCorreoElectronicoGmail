@@ -9,6 +9,7 @@ import org.jbehave.core.model.ExamplesTable;
 public class GrupoDeDireccionSteps extends ScenarioSteps {
 
     GrupoDeDireccionPage grupoDeDireccionPage;
+    private static String fechaActual = "";
 
     @Step
     public void validaInformacionDeCotaparte() {
@@ -38,7 +39,18 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarOpcionVerApartirDe(String verApartirDe) {
-        grupoDeDireccionPage.seleccionarOpcionVerApartirDe(verApartirDe);
+        if (verApartirDe.startsWith("-")){
+            grupoDeDireccionPage.seleccionarOpcionVerApartirDe(fechaActual + " " + verApartirDe);
+        } else if (verApartirDe.endsWith("-")){
+            grupoDeDireccionPage.seleccionarOpcionVerApartirDe(verApartirDe + " " + fechaActual);
+        }else{
+            grupoDeDireccionPage.seleccionarOpcionVerApartirDe(verApartirDe);
+        }
+    }
+
+    @Step
+    public void ingresarFechaFinVigencia() {
+        fechaActual = grupoDeDireccionPage.ingresarFechaFinVigencia();
     }
 
     @Step

@@ -21,7 +21,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 51 # 59 - 34 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 59 - 34 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -58,7 +58,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 51 # 59 - 34 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 59 - 34 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -98,8 +98,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 And quiera ejecutar una tarea de proceso por lotes <nombreTarea>
 
 Examples:
-| verApartirDe            | nombreTarea                   |
-| 01/01/2017 - 09/05/2017 | Reinsurance Policy Expiration |
+| verApartirDe | nombreTarea                   |
+| 01/01/2017 - | Reinsurance Policy Expiration |
 
 
 Scenario: Consultar poliza B despues de ejecutar tarea
@@ -111,5 +111,5 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | 20.000.000.000         | 14.000.000.000        | 540.000.000     | 3.060.000.000  | 10.400.000.000 | 3.600.000.000    | 20.000.000.000         | 6.000.000.000                  |
 
 Examples:
-| verApartirDe            |
-| 10/05/2017 - 30/06/2017 |
+| verApartirDe |
+| - 30/06/2017 |

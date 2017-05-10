@@ -76,4 +76,9 @@ public class GrupoDeDireccionDefinitions {
     public void aceptarAcuerdoFacultativo() {
         grupoDeDireccionSteps.aceptarAcuerdoFacultativo();
     }
+
+    @Given("ingrese la fecha fin de vigencia de la poliza")
+    public void ingresarFechaFinVigencia() {
+        grupoDeDireccionSteps.ingresarFechaFinVigencia();
+    }
 }

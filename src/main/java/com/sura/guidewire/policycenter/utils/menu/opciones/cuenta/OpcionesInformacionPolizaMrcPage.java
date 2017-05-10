@@ -27,8 +27,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade lblInformaPolizaEnRenovacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
     WebElementFacade txtFechaVigencia;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
-    WebElementFacade txtFechaFinVigencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-inputEl']")
     WebElementFacade comboTipoVigencia;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
@@ -145,13 +143,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         txtFechaVigencia.clear();
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();
-        esperarHasta(TIEMPO_2000);
-    }
-
-    public void ingresarFechaFinVigencia() {
-        waitInfoPoliza(lblInformaPoliza);
-        txtFechaFinVigencia.clear();
-        txtFechaFinVigencia.sendKeys(Utils.sumarDiasALaFechaActual(CONSTANTE_0));
         esperarHasta(TIEMPO_2000);
     }
 

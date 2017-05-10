@@ -51,6 +51,9 @@ public class GrupoDeDireccionPage extends PageUtil {
     WebElementFacade btnCrearAcuerdosFacultativos;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnAceptarFacultativo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
+    WebElementFacade txtFechaFinVigencia;
+
 
 
     private static final double CONSTANTE_CIEN = 100.0;
@@ -185,5 +188,12 @@ public class GrupoDeDireccionPage extends PageUtil {
         esperarYClickearBoton(btnAceptarFacultativo);
         waitForAllTextToAppear("Facultative agreements have been successfully created.");
         btnAceptar.click();
+    }
+
+    public String ingresarFechaFinVigencia() {
+        txtFechaFinVigencia.clear();
+        txtFechaFinVigencia.sendKeys(Utils.sumarDiasALaFechaActual(CONSTANTE_0));
+        esperarHasta(TIEMPO_2000);
+        return Utils.sumarDiasALaFechaActual(CONSTANTE_0);
     }
 }
