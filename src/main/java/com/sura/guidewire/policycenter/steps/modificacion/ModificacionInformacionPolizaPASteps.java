@@ -4,9 +4,13 @@ import com.sura.guidewire.policycenter.pages.modificaciones.ModificacionInformac
 
 import java.util.Map;
 
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.model.ExamplesTable;
 
 
@@ -24,6 +28,9 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
     public void ingresarPoliza(String numeroPoliza) {
         modificacionInformacionPolizaPAPage.ingresarPoliza(numeroPoliza);
     }
+
+    @Steps
+    GuidewireSteps guidewire;
 
     @Step
     public void irAModificarInformacionPoliza() {
@@ -115,6 +122,10 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
         modificacionInformacionPolizaPAPage.ingresarPoliza(numeroEnvioA);
     }
 
+    @Step
+    public void consultarPolizaExpedida(){
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioA);
+    }
 
     @Step
     public void consultarPolizaExpedidaB() {

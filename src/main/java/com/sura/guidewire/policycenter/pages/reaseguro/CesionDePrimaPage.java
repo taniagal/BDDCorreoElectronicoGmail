@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CesionDePrimaPage extends PageUtil {
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:CededPremiumsButton']")
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:CededPremiumsButton')]")
     WebElementFacade btnVerPrimasCedidas;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnInnerEl']")
     private WebElementFacade btnPoliza;

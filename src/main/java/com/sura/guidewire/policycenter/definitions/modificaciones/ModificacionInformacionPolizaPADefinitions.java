@@ -3,6 +3,8 @@ package com.sura.guidewire.policycenter.definitions.modificaciones;
 import com.sura.guidewire.policycenter.steps.modificacion.ModificacionInformacionPolizaPASteps;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -183,6 +185,11 @@ public class ModificacionInformacionPolizaPADefinitions {
     @Given("consulto poliza expedida 1")
     public void consultarPolizaExpedidaA(){
         modificacionInformacionPolizaPASteps.consultarPolizaExpedidaA();
+    }
+
+    @Given("se va a consultar poliza expedida 1")
+    public void consultarPolizaExpedida(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedida();
     }
 
     @Given("consulto poliza expedida 2")
