@@ -172,7 +172,7 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     public void seleccionarOpcionVerApartirDe(String verApartirDe){
         comboBoxVerApartirDe.waitUntilPresent();
-        //seleccionarItem(comboBoxVerApartirDe, verApartirDe);
+        seleccionarItem(comboBoxVerApartirDe, verApartirDe);
     }
 
     public void ingresarSegundoReasegurador() {

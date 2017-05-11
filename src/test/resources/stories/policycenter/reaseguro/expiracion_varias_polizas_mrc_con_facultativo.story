@@ -21,7 +21,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 45 # 60 - 35 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 46 # 60 - 35 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -92,14 +92,13 @@ Examples:
 Scenario: Consultar poliza A despues de expedir la poliza B
 Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion ver a partir de <verApartirDe>
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 12.000.000.000        | 189.473.684     | 1.073.684.211  | 10.736.842.105 | 1.263.157.895    | 30.000.000.000         | 8.000.000.000                  |
 
 Examples:
-| verApartirDe |
-| 01/11/2017 - |
+| |
+| |
 
 
 Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza C

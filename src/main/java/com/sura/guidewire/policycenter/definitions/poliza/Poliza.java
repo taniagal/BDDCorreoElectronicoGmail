@@ -138,6 +138,16 @@ public class Poliza {
         polizaSteps.ingresarMotivosCancelacion(motivo, descripcion);
     }
 
+    @When("ingrese la fecha vigente de cancelacion <fechaCancelacion>")
+    public void ingresarFechaCancelacion(@Named("fechaCancelacion") String fechaCancelacion) {
+        polizaSteps.ingresarFechaCancelacion(fechaCancelacion);
+    }
+
+    @When("realice la cotizacion de la cancelacion")
+    public void cotizarCancelacion() {
+        polizaSteps.cotizarCancelacion();
+    }
+
     @When("realice la cancelacion de poliza")
     public void cuandoRealiceCancelacionDeLaPoliza() {
         polizaSteps.iniciarCancelacionDePoliza();
