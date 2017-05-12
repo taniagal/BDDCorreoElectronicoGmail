@@ -29,7 +29,7 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| USU422 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
+| USU423 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 And ingrese las coberturas:
 | limite | deducible | abogado | PLlaves |
 | 640.   | 0         | Si      | Si      |
@@ -39,7 +39,7 @@ And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza
 
 Examples:
 | cotizacion | placa  | tipo_documento       | documento  |
-| 22222215   | USU422 | CEDULA DE CIUDADANIA | 1060447895 |
+| 22222215   | USU423 | CEDULA DE CIUDADANIA | 1060447895 |
 
 
 Scenario: Consulta requisito inspeccion en el modelo

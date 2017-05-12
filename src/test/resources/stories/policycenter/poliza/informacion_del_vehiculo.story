@@ -48,5 +48,5 @@ And ingrese los valores de accesorios y <valorAccesorio> <valorAccesorioEsp> val
 Then el sistema debe totalizar el valor asegurado y mostrar un mensaje de error <mensaje>
 
 Examples:
-| numeroCuenta | nomProducto | valorAccesorio | valorAccesorioEsp | boniComercial | boniTecnica | mensaje                                              |
-| C000222333   | Autos       | 1750000        | 4000000           | 25            | 30          | La suma de las bonificaciones no debe ser mayor a 50 |
+| numeroCuenta | nomProducto | valorAccesorio | valorAccesorioEsp | boniComercial | boniTecnica | mensaje                                                |
+| C000222333   | Autos       | 1750000        | 4000000           | 31            | 30          | La suma de las bonificaciones no debe ser mayor a 60.0 |
