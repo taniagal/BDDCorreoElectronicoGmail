@@ -41,6 +41,12 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade menuItemContactos;
     @FindBy(xpath = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]")
     private WebElementFacade botonAcciones;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    private WebElementFacade menuEscritorio;
+    @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']")
+    private WebElementFacade txtFechaCancelacion;
+    @FindBy(xpath = ".//*[@id='CancellationWizard:CancellationWizard_EntryScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    private WebElementFacade btnCotizarCancelacion;
 
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
@@ -244,6 +250,18 @@ public class PolizaPage extends PageUtil {
         findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
     }
 
+    public void ingresarFechaCancelacion(String fechaCancelacion) {
+        txtFechaCancelacion.clear();
+        txtFechaCancelacion.sendKeys(fechaCancelacion);
+        actions.sendKeys(Keys.ENTER).build().perform();
+        esperarHasta(TIEMPO_2000);
+    }
+
+    public void cotizarCancelacion() {
+        btnCotizarCancelacion.waitUntilPresent();
+        esperarObjetoClikeableServidorWe(btnCotizarCancelacion);
+    }
+
     public void desplegarMotivosCancelacion() {
         String xpathDropdownInstruccion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']";
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
@@ -288,6 +306,11 @@ public class PolizaPage extends PageUtil {
     public void ingresaraResumenDeLaPolizaExpedida() {
         findBy(xpathVerPolizExpedida).click();
         waitForTextToAppear("Resumen");
+    }
+
+    public void clicBotonEscritorio() {
+        menuEscritorio.click();
+        esperarHasta(TIEMPO_2000);
     }
 
     public WebElementFacade obtenerFechacancelacionElemento() {

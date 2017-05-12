@@ -11,6 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -100,7 +101,13 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     public void ingresarPoliza(String numeroPoliza) {
         clickearElemento(campoTxtBuscar);
+        campoTxtBuscar.clear();
+        clickearElemento(campoTxtBuscar);
         campoTxtBuscar.waitUntilPresent().sendKeys("Policy " + numeroPoliza);
+        if (campoTxtBuscar.getTextValue().contains("(") || campoTxtBuscar.getTextValue().contains(")")){
+            campoTxtBuscar.clear();
+            campoTxtBuscar.sendKeys("Policy " + numeroPoliza);
+        }
         campoTxtBuscar.sendKeys(Keys.ENTER);
     }
 

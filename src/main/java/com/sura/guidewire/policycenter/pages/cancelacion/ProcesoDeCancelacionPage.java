@@ -66,6 +66,11 @@ public class ProcesoDeCancelacionPage extends PageUtil {
         MatcherAssert.assertThat("Autorizacion no presente, verificar", linkAutorizacion.isVisible());
     }
 
+    public void darClicBotonDetalle() {
+        btnDetalle.waitUntilPresent();
+        clickearElemento(btnDetalle);
+    }
+
     public void cerrarTransaccionEnValidacion() {
         btnOpcionDeCierre.click();
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();

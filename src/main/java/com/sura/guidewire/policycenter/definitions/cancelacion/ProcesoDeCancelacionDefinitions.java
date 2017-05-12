@@ -32,9 +32,10 @@ public class ProcesoDeCancelacionDefinitions {
         procesoDeCancelacionSteps.valida_autorizacion_en_formulario();
     }
 
-    /*
-    * Escenario II
-    */
+    @When("de clic al boton detalle")
+    public void darClicBotonDetalle() {
+        procesoDeCancelacionSteps.darClicBotonDetalle();
+    }
 
     @Then("debe permitir programar la cancelacion")
     public void thenDebePermitirProgramarLaCancelacion() {

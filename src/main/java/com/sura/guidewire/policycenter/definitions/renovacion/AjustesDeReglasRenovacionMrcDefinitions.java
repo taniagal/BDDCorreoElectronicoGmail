@@ -53,6 +53,11 @@ public class AjustesDeReglasRenovacionMrcDefinitions {
         ajustesDeReglasRenovacionMrcSteps.realiceAprobacionEspecial();
     }
 
+    @When("realice aprobacion especial asociada a varias observaciones")
+    public void realizarAprobacionEspecialConVariasObservaciones() {
+        ajustesDeReglasRenovacionMrcSteps.realizarAprobacionEspecialConVariasObservaciones();
+    }
+
     @When("diligencie los campos de reaseguro aceptado $valores")
     public void diligenciarCamposReaseguroAceptado(ExamplesTable valores) {
         ajustesDeReglasRenovacionMrcSteps.diligenciarCamposReaseguroAceptado(valores);

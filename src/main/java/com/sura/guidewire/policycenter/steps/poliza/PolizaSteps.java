@@ -93,6 +93,16 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void ingresarFechaCancelacion(String fechaCancelacion) {
+        polizaPage.ingresarFechaCancelacion(fechaCancelacion);
+    }
+
+    @Step
+    public void cotizarCancelacion() {
+        polizaPage.cotizarCancelacion();
+    }
+
+    @Step
     public void iniciarCancelacionDePoliza() {
         waitFor(CONSTANTE_3).seconds();
         String xpathBttonCancelacion = "//a[contains(.,'Iniciar cancelación')]";
@@ -226,6 +236,11 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void verResumenDeLaPolizaExpedida() {
         obtenerPolizaPage().ingresaraResumenDeLaPolizaExpedida();
+    }
+
+    @Step
+    public void clicBotonEscritorio() {
+        obtenerPolizaPage().clicBotonEscritorio();
     }
 
     @Step

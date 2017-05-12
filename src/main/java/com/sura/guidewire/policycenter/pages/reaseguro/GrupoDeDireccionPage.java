@@ -21,6 +21,8 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade tblRiesgoCedidoContratoCotaparteBasico;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[2]/td[7]")
     private WebElementFacade tblRiesgoCedidoContratoExcedenteBasico;
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[3]/td[7]")
+    private WebElementFacade tblRiesgoCedidoAcuerdoFacultativo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[2]")
     private WebElementFacade tblnumeroDeAcuerdoContrato;
     @FindBy(xpath = ".//*[@id='EditAgreementPopup:__crumb__']")
@@ -31,16 +33,27 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade lblPorcentajeCesionVigente;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:TIVMinusFac-inputEl')]")
     private WebElementFacade lblBaseReaseguroContratoAutomatico;
-    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[8]")
-    private WebElementFacade tblProporcionCuotaParte;
-    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[2]/td[8]")
-    private WebElementFacade tblProporcionExcedente;
-    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRiskDV:RetainedPropShare-inputEl')]")
-    private WebElementFacade lblProporcionRetencion;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:groupTIV-inputEl')]")
     private WebElementFacade linkBaseReasegurableCumulo;
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:TIV-inputEl')]")
+    private WebElementFacade lblBaseReasegurableRiesgo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:ViewAsOf:ViewAsOf_Arg-inputEl')]")
     private WebElementFacade comboBoxVerApartirDe;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add']")
+    WebElementFacade btnAgregarAcuerdosFacultativos;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:1:reName']")
+    WebElementFacade btnAgregaInformacionSegundoReaseguro;
+    @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:program-inputEl']")
+    WebElementFacade checkBoxContratosAutomaticos;
+    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    WebElementFacade btnAceptar;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:ToolbarButton-btnInnerEl']")
+    WebElementFacade btnCrearAcuerdosFacultativos;
+    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
+    WebElementFacade btnAceptarFacultativo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
+    WebElementFacade txtFechaFinVigencia;
+
 
 
     private static final double CONSTANTE_CIEN = 100.0;
@@ -91,9 +104,16 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     public void verificarBaseReasegurableRiesgo(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
-        String baseReasegurable = lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6);
-        MatcherAssert.assertThat("Error en el valor Base distribución de reaseguro contrato automático, expected: " + data.get("baseReasegurableRiesgo") +
-                " but was: " + baseReasegurable, baseReasegurable.equals(data.get("baseReasegurableRiesgo")));
+        String baseReasegurableRiesgo = lblBaseReasegurableRiesgo.getText().substring(CONSTANTE_1, lblBaseReasegurableRiesgo.getText().length() - CONSTANTE_6);
+        MatcherAssert.assertThat("Error en el valor Base reasegurable riesgo, expected: " + data.get("baseReasegurableRiesgo") +
+                " but was: " + baseReasegurableRiesgo, baseReasegurableRiesgo.equals(data.get("baseReasegurableRiesgo")));
+    }
+
+    public void verificarBaseReaseguroContrato(ExamplesTable examplesTable) {
+        Map<String, String> data = examplesTable.getRow(0);
+        String baseReasegoContrato = lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6);
+        MatcherAssert.assertThat("Error en el valor Base distribución de reaseguro contrato automático, expected: " + data.get("baseReaseguroContrato") +
+                " but was: " + baseReasegoContrato, baseReasegoContrato.equals(data.get("baseReaseguroContrato")));
     }
 
     public void verificarValorRetenidoCP(ExamplesTable examplesTable) {
@@ -117,29 +137,20 @@ public class GrupoDeDireccionPage extends PageUtil {
                 " but was: " + valorRiesgoCedidoEX, valorRiesgoCedidoEX.equals(data.get("riesgoCedidoEX")));
     }
 
+    public void verificarValorRiesgoCedidoAcuerdoFacultativo(ExamplesTable examplesTable) {
+        Map<String, String> data = examplesTable.getRow(0);
+        if (data.get("riesgoCedidoAcuerdoFacultativo") != null) {
+            String valorRiesgoCedidoAcuerdo = tblRiesgoCedidoAcuerdoFacultativo.getText().substring(CONSTANTE_1, tblRiesgoCedidoAcuerdoFacultativo.getText().length() - CONSTANTE_6);
+            MatcherAssert.assertThat("Error en el valor riesgo cedido del acuerdo facultativo, expected: " + data.get("riesgoCedidoAcuerdoFacultativo") +
+                    " but was: " + valorRiesgoCedidoAcuerdo, valorRiesgoCedidoAcuerdo.equals(data.get("riesgoCedidoAcuerdoFacultativo")));
+        }
+    }
+
     public void verificarLimiteCuotaParte(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String valorLimiteCuotaPate = tblLimiteContratoCp.getText().substring(CONSTANTE_1, tblLimiteContratoCp.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el limite contrato cuota parte, expected: " + data.get("limiteContratoCP") +
                 " but was: " + valorLimiteCuotaPate, valorLimiteCuotaPate.equals(data.get("limiteContratoCP")));
-    }
-
-    public void verificarProporcionCP(ExamplesTable examplesTable) {
-        Map<String, String> data = examplesTable.getRow(0);
-        MatcherAssert.assertThat("Error en la proporción cuota parte, expected: " + data.get("proporcionCP") +
-                " but was: " + tblProporcionCuotaParte.getText(), tblProporcionCuotaParte.getText().equals(data.get("proporcionCP")));
-    }
-
-    public void verificarProporcionEX(ExamplesTable examplesTable) {
-        Map<String, String> data = examplesTable.getRow(0);
-        MatcherAssert.assertThat("Error en la proporción del excedente, expected: " + data.get("proporcionEX") +
-                " but was: " + tblProporcionExcedente.getText(), tblProporcionExcedente.getText().equals(data.get("proporcionEX")));
-    }
-
-    public void verificarProporcionRetencion(ExamplesTable examplesTable) {
-        Map<String, String> data = examplesTable.getRow(0);
-        MatcherAssert.assertThat("Error en la proporción de la retención, expected: " + data.get("proporcionRetencion") +
-                " but was: " + lblProporcionRetencion.getText(), lblProporcionRetencion.getText().equals(data.get("proporcionRetencion")));
     }
 
     public void validarLimiteCuotaParte(ExamplesTable examplesTable) {
@@ -162,5 +173,27 @@ public class GrupoDeDireccionPage extends PageUtil {
     public void seleccionarOpcionVerApartirDe(String verApartirDe){
         comboBoxVerApartirDe.waitUntilPresent();
         seleccionarItem(comboBoxVerApartirDe, verApartirDe);
+    }
+
+    public void ingresarSegundoReasegurador() {
+        esperarYClickearBoton(btnAgregarAcuerdosFacultativos);
+        esperarYClickearBoton(btnAgregaInformacionSegundoReaseguro);
+        checkBoxContratosAutomaticos.click();
+        esperarYClickearBoton(btnAceptar);
+    }
+
+    public void aceptarFacultativo() {
+        esperarYClickearBoton(btnCrearAcuerdosFacultativos);
+        waitForTextToAppear("Se crearán los acuerdos facultativos con la información ingresada en esta plantilla.");
+        esperarYClickearBoton(btnAceptarFacultativo);
+        waitForAllTextToAppear("Facultative agreements have been successfully created.");
+        btnAceptar.click();
+    }
+
+    public String ingresarFechaFinVigencia() {
+        txtFechaFinVigencia.clear();
+        txtFechaFinVigencia.sendKeys(Utils.sumarDiasALaFechaActual(CONSTANTE_0));
+        esperarHasta(TIEMPO_2000);
+        return Utils.sumarDiasALaFechaActual(CONSTANTE_0);
     }
 }

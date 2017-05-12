@@ -1,17 +1,26 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
 
 import com.sura.guidewire.policycenter.pages.modificaciones.ModificacionInformacionPolizaPAPage;
+
 import java.util.Map;
+
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.model.ExamplesTable;
 
 
-public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
+public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
 
-    private static String numeroEnvioA;
-    private static String numeroEnvioB;
+    private static String numeroEnvioA = null;
+    private static String numeroEnvioB = null;
+    private static String numeroEnvioC = null;
+    private static String numeroEnvioD = null;
+
     ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPAPage = new ModificacionInformacionPolizaPAPage(getDriver());
 
     public ModificacionInformacionPolizaPASteps(Pages pages) {
@@ -23,13 +32,16 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
         modificacionInformacionPolizaPAPage.ingresarPoliza(numeroPoliza);
     }
 
+    @Steps
+    GuidewireSteps guidewire;
+
     @Step
     public void irAModificarInformacionPoliza() {
         modificacionInformacionPolizaPAPage.irAModificarInformacionPoliza();
     }
 
     @Step
-    public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza){
+    public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza) {
         modificacionInformacionPolizaPAPage.validarInformacionPoliza(labelsInformacionPoliza, informacionPoliza);
     }
 
@@ -59,7 +71,7 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
     }
 
     @Step
-    public void presionarBotonSiguiente(){
+    public void presionarBotonSiguiente() {
         modificacionInformacionPolizaPAPage.presionarBotonSiguiente();
     }
 
@@ -109,10 +121,39 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
     }
 
     @Step
+    public void capturarNumeroPolizaC() {
+        numeroEnvioC = modificacionInformacionPolizaPAPage.capturarNumeroPoliza();
+    }
+
+    @Step
+    public void capturarNumeroPolizaD() {
+        numeroEnvioD = modificacionInformacionPolizaPAPage.capturarNumeroPoliza();
+    }
+
+    @Step
     public void consultarPolizaExpedidaA() {
         modificacionInformacionPolizaPAPage.ingresarPoliza(numeroEnvioA);
     }
 
+    @Step
+    public void consultarPolizaExpedida1(){
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioA);
+    }
+
+    @Step
+    public void consultarPolizaExpedida2(){
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioB);
+    }
+
+    @Step
+    public void consultarPolizaExpedida3(){
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioC);
+    }
+
+    @Step
+    public void consultarPolizaExpedida4(){
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroEnvioD);
+    }
 
     @Step
     public void consultarPolizaExpedidaB() {

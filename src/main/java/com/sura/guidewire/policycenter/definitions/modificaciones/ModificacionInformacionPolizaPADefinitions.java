@@ -3,6 +3,8 @@ package com.sura.guidewire.policycenter.definitions.modificaciones;
 import com.sura.guidewire.policycenter.steps.modificacion.ModificacionInformacionPolizaPASteps;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -180,9 +182,39 @@ public class ModificacionInformacionPolizaPADefinitions {
         modificacionInformacionPolizaPASteps.capturarNumeroPolizaB();
     }
 
+    @When("capturo el numero de poliza 3")
+    public void capturarNumeroPolizaC(){
+        modificacionInformacionPolizaPASteps.capturarNumeroPolizaC();
+    }
+
+    @When("capturo el numero de poliza 4")
+    public void capturarNumeroPolizaD(){
+        modificacionInformacionPolizaPASteps.capturarNumeroPolizaD();
+    }
+
     @Given("consulto poliza expedida 1")
     public void consultarPolizaExpedidaA(){
         modificacionInformacionPolizaPASteps.consultarPolizaExpedidaA();
+    }
+
+    @Given("se va a consultar poliza expedida 1")
+    public void consultarPolizaExpedida1(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedida1();
+    }
+
+    @Given("se va a consultar poliza expedida 2")
+    public void consultarPolizaExpedida2(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedida2();
+    }
+
+    @Given("se va a consultar poliza expedida 3")
+    public void consultarPolizaExpedida3(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedida3();
+    }
+
+    @Given("se va a consultar poliza expedida 4")
+    public void consultarPolizaExpedida4(){
+        modificacionInformacionPolizaPASteps.consultarPolizaExpedida4();
     }
 
     @Given("consulto poliza expedida 2")

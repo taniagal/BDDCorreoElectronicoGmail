@@ -113,6 +113,11 @@ public class Poliza {
         polizaSteps.verResumenDeLaPolizaExpedida();
     }
 
+    @Given("de clic al menu escritorio")
+    public void clicBotonEscritorio() {
+        polizaSteps.clicBotonEscritorio();
+    }
+
     @When("intente renovar la poliza")
     public void cuandoIntenterRenovarPolizaMRC() {
         polizaSteps.seleccionarBotonAcciones();
@@ -131,6 +136,16 @@ public class Poliza {
     public void cuandoIngreseLosMotivosDeCancelacion(String motivo, String descripcion) {
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();
         polizaSteps.ingresarMotivosCancelacion(motivo, descripcion);
+    }
+
+    @When("ingrese la fecha vigente de cancelacion <fechaCancelacion>")
+    public void ingresarFechaCancelacion(@Named("fechaCancelacion") String fechaCancelacion) {
+        polizaSteps.ingresarFechaCancelacion(fechaCancelacion);
+    }
+
+    @When("realice la cotizacion de la cancelacion")
+    public void cotizarCancelacion() {
+        polizaSteps.cotizarCancelacion();
     }
 
     @When("realice la cancelacion de poliza")
