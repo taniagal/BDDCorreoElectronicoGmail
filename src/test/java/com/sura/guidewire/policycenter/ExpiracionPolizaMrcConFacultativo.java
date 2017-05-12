@@ -1,6 +1,4 @@
 package com.sura.guidewire.policycenter;
 
-import net.serenitybdd.jbehave.SerenityStory;
-
-public class ExpiracionPolizaMrcConFacultativo extends SerenityStory {
+public class ExpiracionPolizaMrcConFacultativo {
 }
