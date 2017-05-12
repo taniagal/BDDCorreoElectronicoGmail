@@ -1,4 +1,6 @@
 package com.sura.guidewire.policycenter;
 
-public class CancelacionRehabilitacionPolizaMrcConFacultativo {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class CancelacionRehabilitacionPolizaMrcConFacultativo extends SerenityStory {
 }

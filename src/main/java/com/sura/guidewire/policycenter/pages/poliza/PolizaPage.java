@@ -47,6 +47,24 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade txtFechaCancelacion;
     @FindBy(xpath = ".//*[@id='CancellationWizard:CancellationWizard_EntryScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade btnCotizarCancelacion;
+    @FindBy(xpath = ".//*[@id='CancellationWizard:Next-btnInnerEl']")
+    private WebElementFacade btnSiguiente;
+    @FindBy(xpath = ".//*[@id='CancellationWizard:Finish-btnInnerEl']")
+    private WebElementFacade btnFinalizar;
+    @FindBy(xpath = ".//*[@id='CancellationWizard:RequirementsScreen:JobWizardToolbarButtonSet:BindOptions-btnWrap']")
+    private WebElementFacade btnOpcionesCompromiso;
+    @FindBy(xpath = ".//*[@id='CancellationWizard:RequirementsScreen:JobWizardToolbarButtonSet:BindOptions:CancelNow-textEl']")
+    private WebElementFacade btnCancelarAhora;
+    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
+    private WebElementFacade btnAceptar;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:ttlBar']")
+    private WebElementFacade labelCancelacionExpedida;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
+    private WebElementFacade linkIrAlEscritorio;
+    @FindBy(xpath = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    private WebElementFacade btnCotizarRehabilitacion;
+    @FindBy(xpath = ".//*[@id='ReinstatementWizard:ReinstatementWizard_QuoteScreen:JobWizardToolbarButtonSet:Reinstate-btnInnerEl']")
+    private WebElementFacade btnRehabilitar;
 
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
@@ -236,11 +254,8 @@ public class PolizaPage extends PageUtil {
     public void ingresarMotivosCancelacion(String motivo, String descripcion) {
         waitForTextToAppear("Iniciar cancelación de póliza");
         shouldContainText("Iniciar cancelación de póliza");
-
-
         String xpathInputMotivo = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']";
         String xpathTextareaDescripcion = "//textarea[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']";
-
         findBy(xpathInputMotivo).type(motivo);
         waitFor(TIEMPO_2).seconds();
         findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
@@ -248,6 +263,22 @@ public class PolizaPage extends PageUtil {
         findBy(xpathTextareaDescripcion).type(descripcion);
         waitFor(TIEMPO_2).seconds();
         findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
+    }
+
+    public void ingresarMotivosRehabilitacion(String motivo, String descripcion) {
+        waitForTextToAppear("Iniciar la rehabilitación");
+        shouldContainText("Iniciar la rehabilitación");
+        String xpathInputMotivo = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonCode-inputEl']";
+        String xpathTextareaDescripcion = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonDescription-inputEl']";
+        String btnSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
+        findBy(xpathInputMotivo).type(motivo);
+        waitFor(TIEMPO_2).seconds();
+        findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
+        waitFor(TIEMPO_2).seconds();
+        findBy(xpathTextareaDescripcion).type(descripcion);
+        waitFor(TIEMPO_2).seconds();
+        findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
+        findBy(btnSiguiente).click();
     }
 
     public void ingresarFechaCancelacion(String fechaCancelacion) {
@@ -260,6 +291,15 @@ public class PolizaPage extends PageUtil {
     public void cotizarCancelacion() {
         btnCotizarCancelacion.waitUntilPresent();
         esperarObjetoClikeableServidorWe(btnCotizarCancelacion);
+    }
+
+    public void rehabilitarPoliza() {
+        btnRehabilitar.waitUntilPresent();
+        btnCotizarRehabilitacion.click();
+        btnRehabilitar.click();
+        btnAceptar.click();
+        btnRehabilitar.click();
+
     }
 
     public void desplegarMotivosCancelacion() {
@@ -371,6 +411,26 @@ public class PolizaPage extends PageUtil {
     public void seleccionarBotonAcciones() {
         botonAcciones.waitUntilPresent();
         clickearElemento(botonAcciones);
+    }
+
+    public void realizarCancelacion() {
+        btnSiguiente.waitUntilPresent();
+        clickearElemento(btnSiguiente);
+        btnFinalizar.waitUntilPresent();
+        clickearElemento(btnFinalizar);
+        clickearElemento(btnOpcionesCompromiso);
+        esperarObjetoClikeableServidorWe(btnCancelarAhora);
+        esperarObjetoClikeableServidorWe(btnAceptar);
+    }
+
+    public void verificarCancelacion() {
+        labelCancelacionExpedida.waitUntilPresent().getText().equals("Cancelación Expedida");
+        linkIrAlEscritorio.click();
+    }
+
+    public void verificarRehabilitacion() {
+        labelCancelacionExpedida.waitUntilPresent().getText().equals("Rehabilitación Expedida");
+        linkIrAlEscritorio.click();
     }
 
     public void seleccionarOpcionRetirarTransaccion() {
