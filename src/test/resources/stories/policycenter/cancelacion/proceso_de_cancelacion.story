@@ -1,7 +1,7 @@
 Proceso De Cancelacion
 
 Meta:
-@lote1
+@lote5
 @issue #USC-14750
 @tag equipo: 3, sprint: 8
 @local

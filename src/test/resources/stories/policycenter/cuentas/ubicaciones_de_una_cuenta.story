@@ -1,5 +1,5 @@
 Meta:
-@lote1
+@lot6
 @issue #SUGWUSC-14975
 @tag equipo: 4
 
