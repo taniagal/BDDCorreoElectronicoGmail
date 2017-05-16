@@ -30,7 +30,7 @@ And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>
 When ingrese la informacion de un reasegurador en la tabla de reaseguradores
 |modalidad |porcentajeParticipacion|valorReaseguro|comisionReasegurador|comisionIntermediario|comisionPromotora|
-|Gross rate|40                     |1,8           |0                   |0                    |0                |
+|Gross rate|40                     |1,8           |30                  |7                    |3                |
 And ingrese un reasegurador de tipo programa
 And acepte el acuerdo facultativo
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
@@ -67,7 +67,7 @@ And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>
 When ingrese la informacion de un reasegurador en la tabla de reaseguradores
 |modalidad |porcentajeParticipacion|valorReaseguro|comisionReasegurador|comisionIntermediario|comisionPromotora|
-|Gross rate|30                     |1,8           |0                   |0                    |0                |
+|Gross rate|30                     |1,8           |30                  |7                    |3                |
 And ingrese un reasegurador de tipo programa
 And acepte el acuerdo facultativo
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
