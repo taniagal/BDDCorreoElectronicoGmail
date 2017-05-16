@@ -14,8 +14,8 @@ Given estoy cotizando una poliza:
 | C1060447895 | Autos    | 3300    | DIRECTO        | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan            | medioVenta   |
-| UIY456 | 2015   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Alianza Corbeta | Directo Sura |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan            | medioVenta |
+| UIY456 | 2015   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Alianza Corbeta | Asesor     |
 And seleccione todas las coberturas corbeta:
 | limite | deducible | PTH | AC | AS               | PTD |
 | 320.00 | 0         | 10  | 20 | Asistencia Motos | 10  |
@@ -34,11 +34,11 @@ Given estoy cotizando una poliza:
 | C1060447895 | Autos    | 3550    | DIRECTO        | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan            | medioVenta   |
-| UIY456 | 2015   | 00601182         | BOGOTA, D.C.       | Particular        | null   | null  | 165900000       | null      | null    | 1    | Alianza Corbeta | Directo Sura |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan            | medioVenta |
+| UIY456 | 2015   | 00601182         | BOGOTA, D.C.       | Particular        | null   | null  | 165900000       | null      | null    | 1    | Alianza Corbeta | Asesor     |
 And seleccione todas las coberturas corbeta:
-|limite|deducible|PTH|AC  |PTD|AS|
-|320.00|0        |20 |null|20 |  |
+| limite | deducible | PTH | AC   | PTD | AS |
+| 320.00 | 0         | 20  | null | 20  |    |
 And agregue un nuevo valor asegurado <valor_asegurado>
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
