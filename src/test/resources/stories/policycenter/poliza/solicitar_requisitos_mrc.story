@@ -1,6 +1,6 @@
 
 Meta:
-@lote4
+@lote6
 @issue
 @tag equipo: 1, sprint: 12
 @local
