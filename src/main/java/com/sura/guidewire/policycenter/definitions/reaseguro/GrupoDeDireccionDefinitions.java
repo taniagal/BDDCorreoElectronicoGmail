@@ -25,8 +25,8 @@ public class GrupoDeDireccionDefinitions {
 
 
 
-    @Given("ingrese la <fechaInicioVigencia> para un anio")
-    public void givenModifiqueLasFechasParaQueSeanCreadasEnDosPeriodos(@Named("fechaInicioVigencia")String fechaInicioVigencia) {
+    @Given("ingrese la Fecha Inicio Vigencia: $fechaInicioVigencia")
+    public void givenModifiqueLasFechasParaQueSeanCreadasEnDosPeriodos(String fechaInicioVigencia) {
         informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
     }
 
