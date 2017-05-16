@@ -50,6 +50,17 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void realizarCancelacion() {
+        polizaPage.realizarCancelacion();
+        polizaPage.verificarCancelacion();
+    }
+
+    @Step
+    public void verificarRehabilitacion() {
+        polizaPage.verificarRehabilitacion();
+    }
+
+    @Step
     public void seleccionarOpcionCambiarPoliza() {
         accionesWidget.seleccionarOpcionCambioDePoliza();
     }
@@ -93,6 +104,11 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void ingresarMotivosRehabilitacion(String motivo, String descripcion) {
+        polizaPage.ingresarMotivosRehabilitacion(motivo, descripcion);
+    }
+
+    @Step
     public void ingresarFechaCancelacion(String fechaCancelacion) {
         polizaPage.ingresarFechaCancelacion(fechaCancelacion);
     }
@@ -100,6 +116,11 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void cotizarCancelacion() {
         polizaPage.cotizarCancelacion();
+    }
+
+    @Step
+    public void rehabilitarPoliza() {
+        polizaPage.rehabilitarPoliza();
     }
 
     @Step
