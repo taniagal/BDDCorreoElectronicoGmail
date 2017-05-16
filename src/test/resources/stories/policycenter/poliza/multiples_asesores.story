@@ -1,5 +1,5 @@
 Meta:
-@lote6
+@lote3
 @tag equipo: billing, sprint: 13
 
 Narrative:
