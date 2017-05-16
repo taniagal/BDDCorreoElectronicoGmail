@@ -1,5 +1,5 @@
 Meta:
-@lote1
+@lote6
 @tag equipo: 2, sprint: 9
 
 Narrative:
@@ -9,7 +9,7 @@ quiero poder solicitar autorización a los comites de Riesgos consultables
 Scenario: 1 Validar que se genere actividad de riesgo
 Meta:
 @manual
-Given  que esto y iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
+Given  que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario> (manual)
 When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion
@@ -29,7 +29,7 @@ Examples:
 Scenario: 2 Validar que se genere actividad de riesgo consultable al modificar una poliza
 Meta:
 @manual
-Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
+Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario> (manual)
 When cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
 And intente ingresar una nueva ubicacion
@@ -49,7 +49,7 @@ Examples:
 Scenario: 3 Validar que se genere actividad de riesgo consultable al renovar una poliza
 Meta:
 @manual
-Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
+Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario> (manual)
 When cuando intente renovar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en renovacion de poliza
 And intente ingresar una nueva ubicacion en renovacion de poliza
