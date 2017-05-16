@@ -1,5 +1,3 @@
-Excepciones Sarlaft Autos
-
 Meta:
 @lote6
 @issue #CDSEG-5577

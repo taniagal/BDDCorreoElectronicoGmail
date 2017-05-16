@@ -1,5 +1,3 @@
-Grupo De Direccion
-
 Meta:
 @lote2
 @tag equipo: reaseguro, sprint: 8

@@ -1,5 +1,3 @@
-Sarlaft Excepciones Mrc
-
 Meta:
 @lote4
 @issue #CDSEG-4393

@@ -1,5 +1,3 @@
-Contactos Asociados A Cuenta
-
 Meta:
 @lote3
 @Story CDSEG-845

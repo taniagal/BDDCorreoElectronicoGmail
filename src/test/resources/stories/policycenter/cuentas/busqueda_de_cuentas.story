@@ -1,5 +1,3 @@
-Busqueda de Cuentas
-
 Meta:
 @lote1
 @issue #CDSEG-921

@@ -1,5 +1,3 @@
-Analisis De Riesgo Mrc
-
 Meta:
 @lote3
 @issue #CDSEG-993

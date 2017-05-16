@@ -1,5 +1,3 @@
-Cotizacion De Cancelacion
-
 Meta:
 @lote1
 @issue #USC-14740

@@ -1,5 +1,3 @@
-inicio renovacion de poliza pa
-
 Meta:
 @lote3
 @issue #CDSEG-821

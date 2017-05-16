@@ -1,5 +1,3 @@
-Cotizacion De Poliza
-
 Meta:
 @lote5
 @issue #CDSEG-843

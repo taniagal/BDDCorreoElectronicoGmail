@@ -1,5 +1,3 @@
-Tipo de Oneroso PA
-
 Meta:
 @lote3
 @tag equipo: 3, sprint: 12

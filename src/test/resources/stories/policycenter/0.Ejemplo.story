@@ -41,4 +41,4 @@ Examples:
 | cobertura	|
 | rc       	|
 | hurto     |
-| da�o      |
+| dano      |

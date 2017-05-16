@@ -1,5 +1,3 @@
-Busqueda Contacto
-
 Meta:
 @lote1
 @tag equipo: 5, sprint: 1

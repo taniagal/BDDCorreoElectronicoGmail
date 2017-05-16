@@ -1,5 +1,3 @@
-Detalle De Asegurado De Cotizacion
-
 Meta:
 @lote1
 @issue #CDSEG-1027

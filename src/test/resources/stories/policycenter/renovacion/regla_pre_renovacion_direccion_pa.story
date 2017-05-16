@@ -1,5 +1,3 @@
-Regla Pre Renovacion Direccion Pa
-
 Meta:
 @lote3
 @issue #CDSEG-997

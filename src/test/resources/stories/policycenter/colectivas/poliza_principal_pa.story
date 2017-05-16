@@ -1,5 +1,3 @@
-Poliza Principal Pa
-
 Meta:
 @lote4
 @issue #CDSEG-4619

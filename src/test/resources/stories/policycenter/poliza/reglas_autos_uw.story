@@ -1,5 +1,3 @@
-Reglas autos uw
-
 Meta:
 @lote3
 @issue #CDSEG-4621

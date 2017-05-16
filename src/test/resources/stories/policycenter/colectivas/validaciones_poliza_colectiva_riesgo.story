@@ -1,4 +1,6 @@
 Meta:
+@lote1
+@tag equipo: 2
 
 Narrative:
 As a user

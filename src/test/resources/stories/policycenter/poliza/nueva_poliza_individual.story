@@ -1,5 +1,3 @@
-Nueva Poliza Individual
-
 Meta:
 @lote3
 @issue #CDSEG-812

@@ -1,5 +1,3 @@
-Proceso automatico cancelacion billing
-
 Meta:
 @lote3
 @issue #CDSEG-4621

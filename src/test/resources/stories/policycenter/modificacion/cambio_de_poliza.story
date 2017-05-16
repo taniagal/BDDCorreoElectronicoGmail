@@ -1,5 +1,3 @@
-Cambio De Poliza
-
 Meta:
 @lote3
 @issue #SUGWUSC-15127

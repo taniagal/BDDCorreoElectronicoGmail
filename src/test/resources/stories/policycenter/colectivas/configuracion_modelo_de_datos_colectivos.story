@@ -1,5 +1,3 @@
-Configuracion Modelo De Datos Colectivos
-
 Meta:
 @lote3
 @tag equipo: 1, sprint: 10

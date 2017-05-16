@@ -1,5 +1,3 @@
-Generacion Uw Issue Riesgos Consultables Pa
-
 Meta:
 @lote3
 @issue #CDSEG-1260

@@ -1,5 +1,3 @@
-Proceso De Cancelacion
-
 Meta:
 @lote5
 @issue #USC-14750

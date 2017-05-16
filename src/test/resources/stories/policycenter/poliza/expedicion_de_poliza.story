@@ -1,5 +1,3 @@
-Expedicion De Poliza
-
 Meta:
 @lote6
 @issue #SUGWUSC-15128, CDSEG-856

@@ -1,5 +1,3 @@
-informacion de pago
-
 Meta:
 @lote2
 @issue #CDSEG-2305
