@@ -67,6 +67,7 @@ public class CesionDePrimaPage extends PageUtil {
         btnVerPrimasCedidas.sendKeys(Keys.ALT, Keys.SHIFT, "t");
         buscaEnTablaTareaDeLote(nombreTarea);
         esperarYClickearBoton(btnAcciones);
+        esperarHasta(TIEMPO_1000);
         esperarYClickearBoton(linkVolverAPolicy);
         esperarHasta(TIEMPO_500);
     }

@@ -111,5 +111,5 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | 20.000.000.000         | 14.000.000.000        | 540.000.000     | 3.060.000.000  | 10.400.000.000 | 3.600.000.000    | 20.000.000.000         | 6.000.000.000                  |
 
 Examples:
-| verApartirDe |
-| - 30/06/2017 |
+| verApartirDe   |
+| - 30/06/2017   |
