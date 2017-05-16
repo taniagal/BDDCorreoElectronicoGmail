@@ -18,7 +18,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 47 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -55,7 +55,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 47 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -102,6 +102,18 @@ When ingrese los motivos de cancelacion de la poliza Motivo: Por petición del c
 And ingrese la fecha vigente de cancelacion <fechaCancelacion>
 And inicie la cancelacion
 And realice la cotizacion de la cancelacion
+Then se genera la cancelacion expedida
+
+Examples:
+| fechaCancelacion |
+| 01/04/2017       |
+
+
+Scenario: Rehabilitar poliza A Cancelada
+Given se va a consultar poliza expedida 1
+When ingrese los motivos de rehabilitacion de la poliza Motivo: Por petición del cliente, Descripción: Prueba cancelacion de poliza
+And realice la rehabilitacion de la poliza
+Then se genera la rehabilitacion expedida
 
 Examples:
 | fechaCancelacion |

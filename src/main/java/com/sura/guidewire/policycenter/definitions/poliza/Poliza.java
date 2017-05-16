@@ -138,6 +138,22 @@ public class Poliza {
         polizaSteps.ingresarMotivosCancelacion(motivo, descripcion);
     }
 
+    @When("ingrese los motivos de rehabilitacion de la poliza Motivo: $motivo, Descripción: $descripcion")
+    public void cuandoIngreseLosMotivosDeRehabilitacion(String motivo, String descripcion) {
+        polizaSteps.seleccionarBotonAcciones().seleccionarRehabilitarPoliza();
+        polizaSteps.ingresarMotivosRehabilitacion(motivo, descripcion);
+    }
+
+    @Then("se genera la cancelacion expedida")
+    public void realizarCancelacion() {
+        polizaSteps.realizarCancelacion();
+    }
+
+    @Then("se genera la rehabilitacion expedida")
+    public void verificarRehabilitacion() {
+        polizaSteps.verificarRehabilitacion();
+    }
+
     @When("ingrese la fecha vigente de cancelacion <fechaCancelacion>")
     public void ingresarFechaCancelacion(@Named("fechaCancelacion") String fechaCancelacion) {
         polizaSteps.ingresarFechaCancelacion(fechaCancelacion);
@@ -146,6 +162,11 @@ public class Poliza {
     @When("realice la cotizacion de la cancelacion")
     public void cotizarCancelacion() {
         polizaSteps.cotizarCancelacion();
+    }
+
+    @When("realice la rehabilitacion de la poliza")
+    public void rehabilitarPoliza() {
+        polizaSteps.rehabilitarPoliza();
     }
 
     @When("realice la cancelacion de poliza")
