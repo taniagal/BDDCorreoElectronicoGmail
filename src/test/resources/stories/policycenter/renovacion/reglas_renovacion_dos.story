@@ -1,5 +1,3 @@
-Reglas Renovacion Dos
-
 Meta:
 @lote3
 @issue #CDSEG-3014

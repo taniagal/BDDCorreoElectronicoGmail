@@ -1,5 +1,3 @@
-Cotizacion PA Detalle
-
 Meta:
 @lote6
 @issue #CDSEG-807

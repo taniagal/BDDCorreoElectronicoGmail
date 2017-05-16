@@ -1,7 +1,4 @@
-Resumen Cuenta
-
 Meta: @lote1
-
 @issue #CDSEG-666
 @tag equipo: 5, sprint: 2
 

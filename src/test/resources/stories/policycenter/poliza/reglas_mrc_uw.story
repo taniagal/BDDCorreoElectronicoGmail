@@ -1,5 +1,3 @@
-Reglas mrc uw
-
 Meta:
 @lote3
 @issue #CDSEG-4621

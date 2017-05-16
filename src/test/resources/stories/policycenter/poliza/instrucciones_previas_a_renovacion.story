@@ -1,4 +1,3 @@
-Instrucciones previas a renovacion
 Meta:
 @lote3
 @tag equipo: 2, sprint: 7

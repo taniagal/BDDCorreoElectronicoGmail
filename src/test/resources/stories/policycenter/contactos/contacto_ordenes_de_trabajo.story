@@ -1,5 +1,3 @@
-Contacto Ordenes De Trabajo
-
 Meta:
 @lote3
 @issue #CDSEG-875

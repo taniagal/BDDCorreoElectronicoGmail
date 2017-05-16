@@ -1,5 +1,3 @@
-Historial Cuenta
-
 Meta:
 @lote6
 @issue #CDSEG-925

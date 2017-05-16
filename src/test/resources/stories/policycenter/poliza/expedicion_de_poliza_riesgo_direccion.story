@@ -1,5 +1,3 @@
-Expedicion De Poliza Riesgo Direccion
-
 Meta:
 @lote2
 @issue #SUGWUSC-15128

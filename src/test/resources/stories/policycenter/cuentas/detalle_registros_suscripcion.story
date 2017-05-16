@@ -1,5 +1,3 @@
-Detalle Registros Suscripcion
-
 Meta:
 @lote6
 @issue #SUGWUSC-14959

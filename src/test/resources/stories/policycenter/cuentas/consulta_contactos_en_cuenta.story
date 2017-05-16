@@ -1,5 +1,3 @@
-Consulta Contactos En Cuenta
-
 Meta:
 @lote2
 @Story CDSEG-845

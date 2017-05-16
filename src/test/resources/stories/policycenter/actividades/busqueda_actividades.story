@@ -1,5 +1,3 @@
-Busqueda Actividades
-
 Meta:
 @lote1
 @issue #CDSEG-730

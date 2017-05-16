@@ -1,5 +1,3 @@
-Cuentas Asociadas A Contacto
-
 Meta:
 @lote3
 

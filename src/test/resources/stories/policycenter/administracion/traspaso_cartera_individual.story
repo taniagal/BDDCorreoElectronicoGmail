@@ -1,5 +1,3 @@
-Traspaso Cartera Individual
-
 Meta:
 @lote5
 @Story SUGWUSC-1183

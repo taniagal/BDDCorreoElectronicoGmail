@@ -1,5 +1,3 @@
-Cancelacion Poliza Claims
-
 Meta: @lote6
 @issue #CDSEG-3842
 @tag equipo: 3, sprint: 9
