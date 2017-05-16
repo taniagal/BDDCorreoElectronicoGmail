@@ -5,6 +5,7 @@ Meta:
 @lote4
 @lote5
 @lote6
+@lote7
 @local
 
 Narrative:
