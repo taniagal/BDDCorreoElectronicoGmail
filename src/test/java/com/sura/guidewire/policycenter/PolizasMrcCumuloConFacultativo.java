@@ -1,4 +1,6 @@
 package com.sura.guidewire.policycenter;
 
-public class PolizasMrcCumuloConFacultativo {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class PolizasMrcCumuloConFacultativo extends SerenityStory {
 }
