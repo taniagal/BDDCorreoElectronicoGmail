@@ -9,7 +9,7 @@ con un perfil que tenga permisos quiero ser capaz ver la distribución de cúmul
 para verificar que el reaseguro de cúmulos se haga correctamente
 
 
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza A
+Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Expiracion Poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -21,7 +21,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 49 # 59 - 34 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 44 # 59 - 34 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -43,17 +43,11 @@ And realice aprobacion especial asociada a varias observaciones
 And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 1
-
-Examples:
-| tipoVigencia | fechaInicioVigencia | descripcionDeAcuerdo               |
-| Otra         | 01/11/2016          | Descripcion de acuerdo para test 3 |
-
-
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza B
+And ingrese al resumen de la poliza expedida
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|11/11/1945      |MANUEL       |ESCOBAR        |DIRECCION DE RESIDENCIA|CALLE 56a #80-69|Antioquia   |Medellin|INT-3 |
-And ingrese la Fecha Inicio Vigencia: 01/11/2016
+And ingrese la Fecha Inicio Vigencia: 01/01/2017
 And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
@@ -81,35 +75,21 @@ And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
-
-Examples:
-| fechaInicioVigencia | descripcionDeAcuerdo               |
-| 01/01/2017          | Descripcion de acuerdo para test 2 |
-
-
-Scenario: Consultar poliza A despues de expedir la poliza B
 Given de clic al menu escritorio
 And se va a consultar poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion ver a partir de <verApartirDe>
+And seleccione opcion Ver A Partir De: 01/01/2017 -
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 12.000.000.000        | 249.230.769     | 1.412.307.693  | 10.338.461.538 | 1.661.538.462    | 40.000.000.000         | 8.000.000.000                  |
-And quiera ejecutar una tarea de proceso por lotes <nombreTarea>
-
-Examples:
-| verApartirDe | nombreTarea                   |
-| 01/01/2017 - | Reinsurance Policy Expiration |
-
-
-Scenario: Consultar poliza B despues de ejecutar tarea
+And quiera ejecutar una tarea de proceso por lotes: Reinsurance Policy Expiration
 Given consulto poliza expedida 2
 When de clic al menu reaseguro
-And seleccione opcion ver a partir de <verApartirDe>
+And seleccione opcion Ver A Partir De: - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 14.000.000.000        | 540.000.000     | 3.060.000.000  | 10.400.000.000 | 3.600.000.000    | 20.000.000.000         | 6.000.000.000                  |
 
 Examples:
-| verApartirDe   |
-| - 30/06/2017   |
+| descripcionDeAcuerdo     |
+| Acuerdo Prueba Reaseguro |
