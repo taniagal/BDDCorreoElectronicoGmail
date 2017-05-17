@@ -54,8 +54,8 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.ingresarATodasLasTransacciones();
     }
 
-    @Then("quiera ejecutar una tarea de proceso por lotes <nombreTarea>")
-    public void ejecutarTareaProcesoPorLotes(@Named("nombreTarea") String nombreTarea) {
+    @Then("quiera ejecutar una tarea de proceso por lotes: $nombreTarea")
+    public void ejecutarTareaProcesoPorLotes(String nombreTarea) {
         cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea);
     }
 

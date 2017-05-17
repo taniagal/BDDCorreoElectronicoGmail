@@ -23,10 +23,8 @@ public class GrupoDeDireccionDefinitions {
     @Steps
     GrupoDeDireccionSteps grupoDeDireccionSteps;
 
-
-
-    @Given("ingrese la <fechaInicioVigencia> para un anio")
-    public void givenModifiqueLasFechasParaQueSeanCreadasEnDosPeriodos(@Named("fechaInicioVigencia")String fechaInicioVigencia) {
+    @Given("ingrese la Fecha Inicio Vigencia: $fechaInicioVigencia")
+    public void givenModifiqueLasFechasParaQueSeanCreadasEnDosPeriodos(String fechaInicioVigencia) {
         informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
     }
 
@@ -52,8 +50,8 @@ public class GrupoDeDireccionDefinitions {
         grupoDeDireccionSteps.verificarValoresContratosReasegurables(examplesTable);
     }
 
-    @When("ingrese la <fechaInicioVigencia> para un anio")
-    public void modificarFechaInicioVigencia(@Named("fechaInicioVigencia")String fechaInicioVigencia) {
+    @When("ingrese la Fecha Inicio Vigencia: $fechaInicioVigencia")
+    public void modificarFechaInicioVigencia(String fechaInicioVigencia) {
         informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
     }
 
@@ -62,8 +60,8 @@ public class GrupoDeDireccionDefinitions {
         crearYEditarCumulosSteps.clicMenuReaseguro();
     }
 
-    @When("seleccione opcion ver a partir de $verApartirDe")
-    public void seleccionarOpcionVerApartirDe(@Named("verApartirDe") String verApartirDe) {
+    @When("seleccione opcion Ver A Partir De: $verApartirDe")
+    public void seleccionarOpcionVerApartirDe(String verApartirDe) {
         grupoDeDireccionSteps.seleccionarOpcionVerApartirDe(verApartirDe);
     }
 

@@ -132,8 +132,8 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresarFechaDeVigencia(fechaInicioVigencia);
     }
 
-    @Given("ingrese el tipo de vigencia de la poliza <tipoVigencia>")
-    public void ingresarTipoVigencia(@Named("tipoVigencia") String tipoVigencia) {
+    @Given("ingrese el tipo de vigencia de la poliza Tipo Vigencia: $tipoVigencia")
+    public void ingresarTipoVigencia(String tipoVigencia) {
         informacionDePolizaMrcSteps.ingresarTipoVigencia(tipoVigencia);
     }
 
