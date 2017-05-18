@@ -23,11 +23,13 @@ public class SmokeTests extends MetodosComunes {
     private LoginPage loginPage;
     private SmokeTestPage smokeTestPage;
     private static final int WAIT_30 = 30;
+    private String contrasenia = "sura2017";
+    Properties prop;
 
     @Before
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "..\\chromedriver.exe");
-        Properties prop = loadProperty();
+        prop = loadProperty();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(WAIT_30, TimeUnit.SECONDS);
@@ -42,7 +44,10 @@ public class SmokeTests extends MetodosComunes {
     @Test
     public void buscarUsuario() {
         initPages();
-        loginPage.login("su", "sura2017", driver);
+        if(prop.getProperty("url").contains("labcoreseguros")){
+            contrasenia = "c0r3S3gur0s";
+        }
+        loginPage.login("su", contrasenia, driver);
         smokeTestPage.buscarUsuario("su", driver);
         MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
                 smokeTestPage.verificarBusquedaDeUsuario("su", driver));
