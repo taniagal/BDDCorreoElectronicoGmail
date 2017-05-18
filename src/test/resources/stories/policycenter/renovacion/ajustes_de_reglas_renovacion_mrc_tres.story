@@ -37,8 +37,6 @@ And intente renovar la poliza
 And continue con la renovacion
 And cotice la renovacion
 And acepto la expedicion de poliza
-And descarte cambios
-And cotice la renovacion
 And emita la renovacion
 And acepto la expedicion de poliza
 Then debo obtener un mensaje UW
