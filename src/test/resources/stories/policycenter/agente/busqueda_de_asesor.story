@@ -15,7 +15,7 @@ When valide los campos de la pantalla
 And ingrese un codigo de un asesor <codigoAsesor>
 Then debo ver la informacion del agente a continuacion
 | codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal                    |
-| 1681         | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 114            | ASESORES EN DESARROLLO CALI |
+| 1681         | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activa | Sura         | 114            | ASESORES EN DESARROLLO CALI |
 
 Examples:
 | codigoAsesor |
