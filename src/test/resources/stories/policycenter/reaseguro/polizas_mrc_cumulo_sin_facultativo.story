@@ -26,7 +26,7 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 When intente expedir la poliza
 And confirmo el mensaje de expedir poliza
-And ingrese a analisis de riesgo
+And de clic al boton detalle
 And realice la aprobacion especial
 And expida la poliza
 And expida la poliza
@@ -57,7 +57,7 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 When intente expedir la poliza
 And confirmo el mensaje de expedir poliza
-And ingrese a analisis de riesgo
+And de clic al boton detalle
 And realice la aprobacion especial
 And expida la poliza
 And expida la poliza
