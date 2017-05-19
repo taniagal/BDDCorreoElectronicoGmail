@@ -62,7 +62,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     public static final String XPATH_TABLA_REASEGURADORES_CIERRE = "/td";
     private static final String PAIS_ALEMANIA = "Alemania";
     private static final String PAIS_ESTADOS_UNIDOS = "Estados Unidos";
-    private static final String ASEGURADORA_EVEREST = "Everest Reinsurance Company";
+    private static final String ASEGURADORA_MUNCHENER = "Munchener Ruckversicherungs-Gesellschaft";
     private static final String ASEGURADORA_GENERAL_CORPORATION = "General Reinsurance Corporation";
     private static final String CONTRATO_AUTOMATICO = "Program";
     private static final int COLUMNA_NOMBRE_TABLA_PORCENTAJE_PARTICIPACION = 3;
@@ -112,7 +112,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         linkNombreReaseguradorUno.click();
         listPaisSeleccionar.waitUntilClickable();
         seleccionarItem(listPaisSeleccionar, PAIS_ALEMANIA);
-        seleccionarItem(listNombreReaseugurador, ASEGURADORA_EVEREST);
+        seleccionarItem(listNombreReaseugurador, ASEGURADORA_MUNCHENER);
         clickearElemento(btnAceptarReasegurador);
     }
 
@@ -139,7 +139,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     public void agregarReaseguradoresATabla(ExamplesTable infoReasegurador) {
         int i = 1;
         for (Map<String, String> dato : infoReasegurador.getRows()) {
-            if (dato.get("reasegurador").equals(ASEGURADORA_EVEREST)) {
+            if (dato.get("reasegurador").equals(ASEGURADORA_MUNCHENER)) {
                 esperarYClickearBoton(btnAgregaInformacionReaseguro);
                 ingresoInformacionDePrimerAsegurado();
                 crearYEditarCumulosPage.ingresaValorEntabla($(XPATH_TABLA_REASEGURADORES_INICIO + "[" + i + "]" + XPATH_TABLA_REASEGURADORES_CIERRE + "[" + COLUMNA_NOMBRE_TABLA_PORCENTAJE_PARTICIPACION + "]"), dato.get("porcentajeParticipacion"));

@@ -13,7 +13,7 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|11/11/1971      |MARIA        |VAZCO          |DIRECCION DE RESIDENCIA|CALLE 81 # 80-69|Antioquia   |Medellin|INT-3 |
-And ingrese la <fechaInicioVigencia> para un anio
+And ingrese la Fecha Inicio Vigencia: 01/02/2017
 And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
@@ -40,17 +40,11 @@ And realice aprobacion especial asociada a varias observaciones
 And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 1
-
-Examples:
-| fechaInicioVigencia | descripcionDeAcuerdo               |
-| 01/02/2017          | Descripcion de acuerdo para test 8 |
-
-
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza B
+And ingrese al resumen de la poliza expedida
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|11/11/1971      |MARKOS       |RAYO           |DIRECCION DE RESIDENCIA|CALLE 81 # 66-69|Antioquia   |Medellin|INT-3 |
-And ingrese la Fecha Inicio Vigencia: 01/11/2016
+And ingrese la Fecha Inicio Vigencia: 01/03/2017
 And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
@@ -78,38 +72,17 @@ And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
-
-Examples:
-| fechaInicioVigencia | descripcionDeAcuerdo               |
-| 01/03/2017          | Descripcion de acuerdo para test 9 |
-
-
-Scenario: Consultar poliza A despues de expedir la poliza B
 Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 16.000.000.000        | 208.695.652     | 1.182.608.696  | 14.608.695.652 | 1.391.304.348    | 30.000.000.000         | 4.000.000.000                  |
-
-Examples:
-| |
-| |
-
-
-Scenario: Cancelar poliza A con fecha cancelacion 01 Abril
 Given se va a consultar poliza expedida 1
 When ingrese los motivos de cancelacion de la poliza Motivo: Por petición del cliente, Descripción: Prueba cancelacion de poliza
 And ingrese la fecha vigente de cancelacion <fechaCancelacion>
 And inicie la cancelacion
 And realice la cotizacion de la cancelacion
 Then se genera la cancelacion expedida
-
-Examples:
-| fechaCancelacion |
-| 01/04/2017       |
-
-
-Scenario: Rehabilitar poliza A Cancelada
 Given se va a consultar poliza expedida 1
 When ingrese los motivos de rehabilitacion de la poliza Motivo: Por petición del cliente, Descripción: Prueba cancelacion de poliza
 And realice la rehabilitacion de la poliza

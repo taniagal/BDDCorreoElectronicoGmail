@@ -1,4 +1,4 @@
 package com.sura.guidewire.policycenter;
 
-public class ExpiracionVariasPolizasMrcConFacultativo  {
+public class ExpiracionVariasPolizasMrcConFacultativo {
 }
