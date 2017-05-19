@@ -53,7 +53,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     WebElementFacade menuReaseguro;
 
     private static final String PAIS_ALEMANIA = "Alemania";
-    private static final String ASEGURADORA_EVEREST = "Everest Reinsurance Company";
+    private static final String ASEGURADORA_MUNCHENER = "Munchener Ruckversicherungs-Gesellschaft";
     private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
     private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
     private static final double CONSTANTE_UNO = 1;
@@ -111,7 +111,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
         }
         listPaisSeleccionar.waitUntilPresent();
         seleccionarItem(listPaisSeleccionar, PAIS_ALEMANIA);
-        seleccionarItem(listNombreReaseugurador, ASEGURADORA_EVEREST);
+        seleccionarItem(listNombreReaseugurador, ASEGURADORA_MUNCHENER);
         clickearElemento(btnAceptarReasegurador);
     }
 
