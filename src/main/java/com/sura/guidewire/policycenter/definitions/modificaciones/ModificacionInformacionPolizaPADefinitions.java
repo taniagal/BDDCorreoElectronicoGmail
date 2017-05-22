@@ -77,6 +77,11 @@ public class ModificacionInformacionPolizaPADefinitions {
         //Se ejecuta manualmente
     }
 
+    @When("ingrese a modificar la placa en la poliza expedida")
+    public void ingresarAModificarPlacaEnPolizaExpedida(){
+        modificacionInformacionPolizaPASteps.ingresarAModificarPlacaEnPolizaExpedida();
+    }
+
     @Then("se debe visualizar los datos de la informacion de la poliza $informacionPoliza")
     public void visualizarInformacionPoliza(ExamplesTable informacionPoliza){
         modificacionInformacionPolizaPASteps.validarInformacionPoliza(labelsInformacionPoliza, informacionPoliza);

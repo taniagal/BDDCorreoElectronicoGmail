@@ -18,7 +18,6 @@ public class CambioDePlacaDefinitions {
 
     @When("cuando cambie la placa <placa>")
     public void cambiarPlaca(@Named("placa") String placa) {
-        cambioDePlacaSteps.clickCambiarPlaca();
         cambioDePlacaSteps.cambioDePlaca(placa);
     }
 
