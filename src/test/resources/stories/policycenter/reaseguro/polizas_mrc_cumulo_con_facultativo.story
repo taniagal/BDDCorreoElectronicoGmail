@@ -1,5 +1,5 @@
 Meta:
-@lote6
+@lote4
 @tag equipo: reaseguro
 @local
 
@@ -9,17 +9,17 @@ con un perfil que tenga permisos quiero ser capaz ver la distribución de cúmul
 para verificar que el reaseguro de cúmulos se haga correctamente
 
 
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza A
+Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo.
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1973      |RAMON        |CARDONA        |DIRECCION DE RESIDENCIA|CALLE 66a #80-69|Antioquia   |Medellin|INT-3 |
-And ingrese la <fechaInicioVigencia> para un anio
+And ingrese la Fecha Inicio Vigencia: 01/02/2017
 And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 46 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 45 # 58 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -41,13 +41,7 @@ And realice aprobacion especial asociada a varias observaciones
 And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 1
-
-Examples:
-| fechaInicioVigencia | descripcionDeAcuerdo               |
-| 01/02/2017          | Descripcion de acuerdo para test 1 |
-
-
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza B
+And ingrese al resumen de la poliza expedida
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1965      |JUANES       |OCAMPO         |DIRECCION DE RESIDENCIA|CALLE 10a #00-69|Antioquia   |Medellin|INT-3 |
@@ -56,12 +50,12 @@ When quiero agregar coaseguro <TipoCo> con poliza referencia <PolizaRef> documen
 | Seguros Generales Suramericana S.A. | 20            |
 | ACE SEGUROS S.A                     | 80            |
 And de clic en Aceptar de la ventana Coaseguro
-Given ingrese la <fechaInicioVigencia> para un anio
+Given ingrese la Fecha Inicio Vigencia: 01/03/2017
 And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 46 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
+| Colombia| Antioquia   | Bello    | AVENIDAS 45 # 58 - 33 | Comercio al por menor de otros productos en puestos de venta móviles |Asesor    |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 30000000000      | Danos      |
@@ -84,27 +78,13 @@ And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
-
-Examples:
-| fechaInicioVigencia | TipoCo | PolizaRef | Documento | descripcionDeAcuerdo               |
-| 01/03/2017          | Cedido |           |           | Descripcion de acuerdo para test 2 |
-
-
-Scenario: Consultar poliza A despues de expedir la poliza B
 Given de clic al menu escritorio
 And consulto poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion ver a partir de <verApartirDe>
+And seleccione opcion Ver A Partir De: 01/03/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 6.000.000.000         | 300.000.000     | 1.700.000.000  | 4.000.000.000  | 2.000.000.000    | 22.000.000.000         | 4.000.000.000                  |
-
-Examples:
-| verApartirDe            |
-| 01/03/2017 - 30/06/2017 |
-
-
-Scenario: Modificar poliza B despues de expedir la poliza B
 Given consulto poliza expedida 2
 And modifico la fecha de vigencia <fechaModificacion>
 When seleccione la opcion siguiente en la modificacion
@@ -118,35 +98,21 @@ And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 18.000.000.000         | 7.200.000.000         | 294.545.455     | 1.669.090.909  | 5.236.363.636  | 1.963.636.364    | 28.000.000.000         | 10.800.000.000                 |
-
-Examples:
-| fechaModificacion |
-| 01/04/2017        |
-
-
-Scenario: Consultar poliza A despues de modificar la poliza B
 Given consulto poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion ver a partir de <verApartirDe>
+And seleccione opcion Ver A Partir De: 01/04/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 6.000.000.000         | 245.454.545     | 1.390.909.091  | 4.363.636.364  | 1.636.363.636    | 28.000.000.000         | 4.000.000.000                  |
-
-Examples:
-| verApartirDe            |
-| 01/04/2017 - 30/06/2017 |
-
-
-Scenario: Crear poliza  MRC en una misma direccion y que haga cumulo. Con facultativo. Poliza C
 Given estoy cotizando una poliza de mrc:
 |producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|CEDULA DE CIUDADANIA|10/11/1983      |CARLOS       |VIDAL          |DIRECCION DE RESIDENCIA|CALLE 76a #80-69|Antioquia   |Medellin|INT-3 |
 And seleccione la poliza como reaseguro especial
-And ingrese la <fechaInicioVigencia> para un anio
+And ingrese la Fecha Inicio Vigencia: 01/05/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 46 # 58 - 33 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 45 # 58 - 33 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 4000000000       | Danos      |
@@ -169,33 +135,19 @@ And expido la poliza mrc
 And expido la poliza mrc
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
-
-Examples:
-| fechaInicioVigencia | descripcionDeAcuerdo               |
-| 01/05/2017          | Descripcion de acuerdo para test 3 |
-
-
-Scenario: Consultar poliza A despues de expedir la poliza C
 Given consulto poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion ver a partir de <verApartirDe>
+And seleccione opcion Ver A Partir De: 01/05/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 6.000.000.000         | 95.744.681      | 542.553.191    | 5.361.702.128  | 638.297.872      | 35.000.000.000         | 4.000.000.000                  |
-
-Examples:
-| verApartirDe            |
-| 01/05/2017 - 30/06/2017 |
-
-
-Scenario: Consultar poliza B despues de expedir la poliza C
 Given consulto poliza expedida 2
 When de clic al menu reaseguro
-And seleccione opcion ver a partir de <verApartirDe>
+And seleccione opcion Ver A Partir De: 01/05/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 18.000.000.000         | 7.200.000.000         | 114.893.617     | 651.063.830    | 6.434.042.553  | 765.957.447      | 35.000.000.000         | 10.800.000.000                 |
 
 Examples:
-| verApartirDe            |
-| 01/05/2017 - 30/06/2017 |
+| TipoCo | PolizaRef | Documento | descripcionDeAcuerdo     | fechaModificacion |
+| Cedido |           |           | Acuerdo Prueba Reaseguro | 01/04/2017        |

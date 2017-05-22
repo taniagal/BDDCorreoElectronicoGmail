@@ -24,14 +24,14 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
-| reasegurador                    | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Everest Reinsurance Company     | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
-| Program                         | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
+| reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
+| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
-| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                  | tasaBrutaDeCesion |
-| Daños materiales  | 0,215949                    | Everest Reinsurance Company     | 0,404905          |
-| Daños materiales  | 0,215949                    | General Reinsurance Corporation | 0,539873          |
+| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
+| Daños materiales  | 0,215949                    | Munchener Ruckversicherungs-Gesellschaft | 0,404905          |
+| Daños materiales  | 0,215949                    | General Reinsurance Corporation          | 0,539873          |
 
 Examples:
 | descripcionDeAcuerdo             | tipoContrato                     |
@@ -52,14 +52,14 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
-| reasegurador                    | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Everest Reinsurance Company     | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
-| Program                         | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
+| reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
+| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
-| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                  | tasaBrutaDeCesion |
-| Terremoto         | 0,392051                    | Everest Reinsurance Company     | 0,735095          |
-| Terremoto         | 0,392051                    | General Reinsurance Corporation | 0,980127          |
+| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
+| Terremoto         | 0,392051                    | Munchener Ruckversicherungs-Gesellschaft | 0,735095          |
+| Terremoto         | 0,392051                    | General Reinsurance Corporation          | 0,980127          |
 
 Examples:
 | descripcionDeAcuerdo             | tipoContrato                     |
@@ -80,14 +80,14 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
-| reasegurador                    | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Everest Reinsurance Company     | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
-| Program                         | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
+| reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
+| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
-| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                  | tasaBrutaDeCesion |
-| Daños materiales  | 0,285319                    | Everest Reinsurance Company     | 0,534972          |
-| Daños materiales  | 0,285319                    | General Reinsurance Corporation | 0,713296          |
+| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
+| Daños materiales  | 0,285319                    | Munchener Ruckversicherungs-Gesellschaft | 0,534972          |
+| Daños materiales  | 0,285319                    | General Reinsurance Corporation          | 0,713296          |
 
 Examples:
 | descripcionDeAcuerdo             | tipoContrato                     |
@@ -108,14 +108,14 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
-| reasegurador                    | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Everest Reinsurance Company     | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
-| Program                         | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
+| reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
+| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
-| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                  | tasaBrutaDeCesion |
-| AMIT              | 0,032                       | Everest Reinsurance Company     | 0,06              |
-| AMIT              | 0,032                       | General Reinsurance Corporation | 0,08              |
+| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
+| AMIT              | 0,032                       | Munchener Ruckversicherungs-Gesellschaft | 0,06              |
+| AMIT              | 0,032                       | General Reinsurance Corporation          | 0,08              |
 
 Examples:
 | descripcionDeAcuerdo             | tipoContrato                     |
@@ -136,14 +136,14 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
-| reasegurador                    | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Everest Reinsurance Company     | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
-| Program                         | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
+| reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
+| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
-| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                  | tasaBrutaDeCesion |
-| Terremoto         | 0,322681                    | Everest Reinsurance Company     | 0,605028          |
-| Terremoto         | 0,322681                    | General Reinsurance Corporation | 0,806704          |
+| grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
+| Terremoto         | 0,322681                    | Munchener Ruckversicherungs-Gesellschaft | 0,605028          |
+| Terremoto         | 0,322681                    | General Reinsurance Corporation          | 0,806704          |
 
 Examples:
 | descripcionDeAcuerdo             | tipoContrato                     |
