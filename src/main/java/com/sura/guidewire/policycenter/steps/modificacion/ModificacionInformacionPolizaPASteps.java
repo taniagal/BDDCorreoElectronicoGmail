@@ -159,4 +159,9 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
     public void consultarPolizaExpedidaB() {
         modificacionInformacionPolizaPAPage.ingresarPoliza(numeroEnvioB);
     }
+
+    @Step
+    public void ingresarAModificarPlacaEnPolizaExpedida() {
+        modificacionInformacionPolizaPAPage.ingresarAModificarPlacaEnPolizaExpedida();
+    }
 }

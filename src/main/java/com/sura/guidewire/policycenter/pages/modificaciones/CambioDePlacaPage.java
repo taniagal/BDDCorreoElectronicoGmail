@@ -92,8 +92,7 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void cambiarPlaca(String placa) {
-        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
-        esperarHasta(TIEMPO_2000);
+        campoTxtPlaca.waitUntilPresent();
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placa);
         esperarHasta(TIEMPO_2000);
@@ -106,15 +105,15 @@ public class CambioDePlacaPage extends PageUtil {
     public void datosPlacaAnterior(ExamplesTable datosPlaca) {
         Map<String, String> datos = datosPlaca.getRow(0);
         txtMotor.waitUntilPresent();
-        MatcherAssert.assertThat("Error, el modelo fue modificado", txtModelo.getValue().equals(datos.get("modelo")));
-        MatcherAssert.assertThat("Error, el codigoFasecolda fue modificado", txtCodigoFasecolda.getValue().equals(datos.get("codigoFasecolda")));
+        MatcherAssert.assertThat("Error, el modelo fue modificado", txtModelo.getText().equals(datos.get("modelo")));
+        MatcherAssert.assertThat("Error, el codigoFasecolda fue modificado", txtCodigoFasecolda.getText().equals(datos.get("codigoFasecolda")));
         MatcherAssert.assertThat("Error, la clase de vehiculo fue modificada", txtClaseVehiculo.getText().equals(datos.get("claseVehiculo")));
-        MatcherAssert.assertThat("Error, la marca de vehiculo fue modificado", txtMarca.getValue().equals(datos.get("marca")));
-        MatcherAssert.assertThat("Error, la ciudad de circulacion fue modificada", txtCiudadDeCirculacion.getValue().equals(datos.get("ciudadCirculacion")));
+        MatcherAssert.assertThat("Error, la marca de vehiculo fue modificado", txtMarca.getText().equals(datos.get("marca")));
+        MatcherAssert.assertThat("Error, la ciudad de circulacion fue modificada", txtCiudadDeCirculacion.getText().equals(datos.get("ciudadCirculacion")));
         MatcherAssert.assertThat("Error, la  zona fue modificada", waitFor(txtZona).getText().equals(datos.get("zona")));
-        MatcherAssert.assertThat("Error, el tipo de servicio fue modificada", txtTipoServicio.getValue().equals(datos.get("tipoServicio")));
-        MatcherAssert.assertThat("Error, el motor fue modificada", txtMotor.getValue().equals(datos.get("motor")));
-        MatcherAssert.assertThat("Error, el chasis  fue modificada", txtChasis.getValue().equals(datos.get("chasis")));
+        MatcherAssert.assertThat("Error, el tipo de servicio fue modificada", txtTipoServicio.getText().equals(datos.get("tipoServicio")));
+        MatcherAssert.assertThat("Error, el motor fue modificada", txtMotor.getText().equals(datos.get("motor")));
+        MatcherAssert.assertThat("Error, el chasis  fue modificada", txtChasis.getText().equals(datos.get("chasis")));
     }
 
     public void mostrarPlacaInicial(String placaInicial) {
@@ -124,10 +123,6 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaVenezolana(String placaVenezolana) {
-        this.deseleccionarCheckBoxDePlaca();
-        this.clickItemCambiarPlaca();
-        waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
-        esperarHasta(TIEMPO_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
     }
@@ -205,14 +200,6 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
         clickearElemento(menuItemVehiculosModificacion);
-        clickearElemento(checkBoxCambioDePlaca);
-        clickearElemento(checkBoxCambioDePlaca);
-        try {
-            withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.attributeContains(campoTxtPlaca, "text", ""));
-        } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException " + e);
-        }
-        esperarHasta(TIEMPO_2000);
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placaRiesgoConsultable);
     }
