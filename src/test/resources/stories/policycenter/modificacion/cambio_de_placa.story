@@ -12,15 +12,12 @@ GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 | tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis  | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
 | CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | XYZ709 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | kljh456 | yui10 | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
-When ingrese a modificar dicha cotizacion
+When ingrese a modificar la placa en la poliza expedida
 And se ingrese a la opcion vehiculos
 And cuando cambie la placa <placa>
 And se deben recargar los datos de la placa anterior:
 | modelo | codigoFasecolda | ciudadCirculacion    | tipoServicio | chasis  | motor | valorAsegurado | claseVehiculo | marca     | zona |
 | 2011   | 01601225        | MEDELLIN (ANTIOQUIA) | Particular   | KLJH456 | YUI10 | 17900000       | Automóviles   | CHEVROLET | 2    |
-And quiera volver a cambiar la placa
-And se debe cargar la placa inicial <placaInicial>
-And vuelva a cambiar la placa
 And coloque una placa existente <placaExistente>
 And debe salir un mensaje de advertencia
 | mensaje                                                                         |
@@ -37,12 +34,6 @@ And intente cotizar el cambio de poliza
 And debe mostrar un mensaje de autorizacion
 | mensajePlacaRiesgoConsultable                                                                                                                              |
 | RANDOT, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación. |
-And vaya a vehiculos a ingresar una placa venezolana <venezolana> con circulacion en cucuta <ciudad>
-And intente cotizar el cambio de poliza
-And expida el cambio de la poliza
-Then debe mostrar un mensaje de autorizacion para expedir
-| mensajeDeAutorizacion                 |
-| Placa extranjera debe ser autorizada. |
 
 
 Examples:

@@ -94,6 +94,10 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     private WebElementFacade campoTxtBuscar;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     private WebElementFacade numPoliza;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:StartPolicyChangeDV:changePlatePA_true-inputEl']")
+    private WebElementFacade opcionSiCambioDePlaca;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:StartPolicyChangeDV:sustitutionPA_true-inputEl']")
+    private WebElementFacade opcionSiSustitucion;
 
     public ModificacionInformacionPolizaPAPage(WebDriver driver) {
         super(driver);
@@ -305,5 +309,14 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     public String capturarNumeroPoliza() {
         return Utils.quitaCaracteresACadena(numPoliza);
+    }
+
+    public void ingresarAModificarPlacaEnPolizaExpedida() {
+        clickearElemento(menuAcciones);
+        itemCambiarPoliza.waitUntilPresent().click();
+        waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
+        clickearElemento(opcionSiCambioDePlaca);
+        opcionSiSustitucion.waitUntilNotVisible();
+        botonSiguienteInfoPoliza.click();
     }
 }
