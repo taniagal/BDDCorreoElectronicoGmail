@@ -24,13 +24,9 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade checkBoxDocumentos;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[2]/td[1]/div/img")
     private WebElementFacade checkBoxRelacionConCliente;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[1]/td[1]/div/img")
+    @FindBy(xpath = ".//*[@id='DocumentsToReprint_ExtPopup:DocumentsScreen:DocumentsToReprintLV-body']/div/table/tbody/tr[1]/td[1]/div/img")
     private WebElementFacade checkBoxCaratula;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[4]/td[1]/div/img")
-    private WebElementFacade checkBoxEndoso;
-    @FindBy(xpath = "//td/div/div[3]/div/table/tbody/tr[3]/td/div/img")
-    private WebElementFacade checkBoxEndosomrc;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div/table/tbody/tr[3]/td[1]/div/img")
+    @FindBy(xpath = ".//*[@id='DocumentsToReprint_ExtPopup:DocumentsScreen:DocumentsToReprintLV-body']/div/table/tbody/tr[2]/td[1]/div/img")
     private WebElementFacade checkBoxCotizacion;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions']")
     private WebElementFacade menuAccionesPoliza;
@@ -71,12 +67,6 @@ public class ImpresionReimpresionPage extends PageUtil {
         checkBoxCotizacion.isSelected();
         if (checkBoxRelacionConCliente.isCurrentlyVisible()) {
             checkBoxRelacionConCliente.isSelected();
-        }
-        if (checkBoxEndoso.isCurrentlyVisible()) {
-            checkBoxEndoso.isSelected();
-        }
-        if (checkBoxEndosomrc.isCurrentlyVisible()) {
-            checkBoxEndosomrc.isSelected();
         }
     }
 }
