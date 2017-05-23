@@ -57,7 +57,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
     WebElementFacade btnDetalleVehiculo;
     @FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs")
     WebElementFacade cajaMensaje;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:totalInsured_DV-inputEl']")
+    @FindBy(xpath = "//div[contains(@id,'SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:totalInsured_DV-inputEl')]")
     WebElementFacade lblSumaValor;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:6:RateModifier-inputEl']")
     WebElementFacade txtBonificacionTecnica;
@@ -132,7 +132,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
         int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
         int valorTotalizado = valorAccesorioEntero + valorAccesorioEspEntero + valorAsegurado;
-        String valorDeLabel = lblSumaValor.getValue().substring(0, CONSTANTE_11);
+        String valorDeLabel = lblSumaValor.getText().substring(0, CONSTANTE_11);
         valorDeLabel = valorDeLabel.replaceAll("\\$", "").replaceAll("\\.", "");
         comparaValores[0] = Integer.toString(valorTotalizado);
         comparaValores[1] = valorDeLabel;
