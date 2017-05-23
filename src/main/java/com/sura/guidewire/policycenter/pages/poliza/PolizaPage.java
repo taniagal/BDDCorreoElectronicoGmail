@@ -61,7 +61,7 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade labelCancelacionExpedida;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
     private WebElementFacade linkIrAlEscritorio;
-    @FindBy(xpath = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='ReinstatementWizard:Job_RiskAnalysisScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade btnCotizarRehabilitacion;
     @FindBy(xpath = ".//*[@id='ReinstatementWizard:ReinstatementWizard_QuoteScreen:JobWizardToolbarButtonSet:Reinstate-btnInnerEl']")
     private WebElementFacade btnRehabilitar;
@@ -272,12 +272,14 @@ public class PolizaPage extends PageUtil {
         String xpathTextareaDescripcion = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonDescription-inputEl']";
         String btnSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
         findBy(xpathInputMotivo).type(motivo);
-        waitFor(TIEMPO_2).seconds();
+        waitFor(TIEMPO_1).seconds();
         findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
-        waitFor(TIEMPO_2).seconds();
+        waitFor(TIEMPO_1).seconds();
         findBy(xpathTextareaDescripcion).type(descripcion);
-        waitFor(TIEMPO_2).seconds();
+        waitFor(TIEMPO_1).seconds();
         findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
+        findBy(btnSiguiente).click();
+        waitFor(TIEMPO_2).seconds();
         findBy(btnSiguiente).click();
     }
 
@@ -294,12 +296,12 @@ public class PolizaPage extends PageUtil {
     }
 
     public void rehabilitarPoliza() {
-        btnRehabilitar.waitUntilPresent();
+        btnCotizarRehabilitacion.waitUntilPresent();
         btnCotizarRehabilitacion.click();
-        btnRehabilitar.click();
-        btnAceptar.click();
-        btnRehabilitar.click();
-
+        btnRehabilitar.waitUntilPresent().click();
+        btnAceptar.waitUntilPresent().click();
+        btnRehabilitar.waitUntilPresent().click();
+        btnAceptar.waitUntilPresent().click();
     }
 
     public void desplegarMotivosCancelacion() {
