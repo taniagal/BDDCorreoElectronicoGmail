@@ -26,7 +26,7 @@ Given estoy en la busqueda de agentes
 When ingrese el nombre de un asesor <nombreAsesor>
 Then debo ver la informacion del agente a continuacion
 | codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal                    |
-| 1681         | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 114            | ASESORES EN DESARROLLO CALI |
+|              | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 114            | ASESORES EN DESARROLLO CALI |
 
 Examples:
 | nombreAsesor      |

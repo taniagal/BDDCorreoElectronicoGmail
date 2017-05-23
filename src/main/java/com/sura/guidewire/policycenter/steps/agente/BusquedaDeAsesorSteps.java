@@ -51,7 +51,7 @@ public class BusquedaDeAsesorSteps extends ScenarioSteps {
         busquedaDeAgentePage.clicEnElBotonBuscar();
         Map<String, String> resultadoEsperado = resultado.getRows().get(0);
         Map<String, String> resultadoBusqueda = busquedaDeAgentePage.obtenerResultadosDeBusqueda();
-        MatcherAssert.assertThat(resultadoBusqueda.get("codigoAsesor"), Is.is(Matchers.equalTo(resultadoEsperado.get("codigoAsesor"))));
+        MatcherAssert.assertThat(resultadoBusqueda.get("codigoAsesor"), Is.is(Matchers.containsString(resultadoEsperado.get("codigoAsesor"))));
         MatcherAssert.assertThat(resultadoBusqueda.get("nombreAsesor"), Is.is(Matchers.equalTo(resultadoEsperado.get("nombreAsesor"))));
         MatcherAssert.assertThat(resultadoBusqueda.get("estado"), Is.is(Matchers.equalTo(resultadoEsperado.get("estado"))));
         MatcherAssert.assertThat(resultadoBusqueda.get("organizacion"), Is.is(Matchers.equalTo(resultadoEsperado.get("organizacion"))));
