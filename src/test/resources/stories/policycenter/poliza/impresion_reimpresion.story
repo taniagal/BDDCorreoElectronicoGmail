@@ -27,7 +27,6 @@ And me deben aparecer las opciones por las cuales puedo imprimir
 | opciones                         |
 | Carátula                         |
 | Carta de relación con el cliente |
-| Endoso                           |
 | Cotización                       |
 And cuando vaya a la opcion documentos
 Then se deben seleccionar todas las opciones por las cuales quiero reimprimir
@@ -50,7 +49,6 @@ And cuando de click al boton reimprimir
 And me deben aparecer las opciones por las cuales puedo imprimir
 | opciones   |
 | Carátula   |
-| Endoso     |
 | Cotización |
 And cuando vaya a la opcion documentos
 Then se deben seleccionar todas las opciones por las cuales quiero reimprimir
