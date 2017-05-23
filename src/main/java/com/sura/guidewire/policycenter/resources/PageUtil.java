@@ -288,7 +288,7 @@ public class PageUtil extends PageObject {
     }
 
     public void clickearElemento(WebElementFacade element) {
-        for (int i = 0; i < CONSTANTE_10; i++) {
+        for (int i = 0; i < CONSTANTE_MAXIMO_EJECUCIONES; i++) {
             try {
                 withTimeoutOf(TIEMPO_2, TimeUnit.SECONDS).waitFor(element).click();
                 break;
