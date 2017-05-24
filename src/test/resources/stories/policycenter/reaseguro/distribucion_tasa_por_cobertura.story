@@ -8,7 +8,7 @@ como usario de policy center en reaseguro
 con un perfil que tenga permisos quiero ser capaz crear acuerdo acuerdos facultativos con diferentes coberturas y tasas brutas de session correctas
 para que la liquidacion de primas de reaseguro correctamente por cobertura
 
-Scenario: scenario description
+Scenario: Riesgos reasegurables por coberturas para contratos mrc con facultativos
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre   | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
@@ -32,12 +32,6 @@ Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
 | Daños materiales  | 0,215949                    | Munchener Ruckversicherungs-Gesellschaft | 0,404905          |
 | Daños materiales  | 0,215949                    | General Reinsurance Corporation          | 0,539873          |
-
-Examples:
-| descripcionDeAcuerdo             | tipoContrato                     |
-| Descripcion de acuerdo para test | Acuerdo facultativo proporcional |
-
-Scenario: scenario description2
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1984       | HECTOR        | MORENO          | DIRECCION DE RESIDENCIA | CALLE 27a #60-68 | Antioquia    | Medellin | INT-3  |
@@ -60,12 +54,6 @@ Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
 | Terremoto         | 0,392051                    | Munchener Ruckversicherungs-Gesellschaft | 0,735095          |
 | Terremoto         | 0,392051                    | General Reinsurance Corporation          | 0,980127          |
-
-Examples:
-| descripcionDeAcuerdo             | tipoContrato                     |
-| Descripcion de acuerdo para test | Acuerdo facultativo proporcional |
-
-Scenario: scenario description3
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1984       | JUAN C        | RESTREPO        | DIRECCION DE RESIDENCIA | CALLE 27a #60-68 | Antioquia    | Medellin | INT-3  |
@@ -88,12 +76,6 @@ Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
 | Daños materiales  | 0,285319                    | Munchener Ruckversicherungs-Gesellschaft | 0,534972          |
 | Daños materiales  | 0,285319                    | General Reinsurance Corporation          | 0,713296          |
-
-Examples:
-| descripcionDeAcuerdo             | tipoContrato                     |
-| Descripcion de acuerdo para test | Acuerdo facultativo proporcional |
-
-Scenario: scenario description4
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1984       | GABRIEL       | SILVA           | DIRECCION DE RESIDENCIA | CALLE 27a #60-68 | Antioquia    | Medellin | INT-3  |
@@ -116,12 +98,6 @@ Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
 | AMIT              | 0,032                       | Munchener Ruckversicherungs-Gesellschaft | 0,06              |
 | AMIT              | 0,032                       | General Reinsurance Corporation          | 0,08              |
-
-Examples:
-| descripcionDeAcuerdo             | tipoContrato                     |
-| Descripcion de acuerdo para test | Acuerdo facultativo proporcional |
-
-Scenario: scenario description5
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1984       | JENNIFER      | PEREZ           | DIRECCION DE RESIDENCIA | CALLE 27a #60-68 | Antioquia    | Medellin | INT-3  |
@@ -146,8 +122,8 @@ Then deben aparecer los riesgos reasegurables por cada cobertura:
 | Terremoto         | 0,322681                    | General Reinsurance Corporation          | 0,806704          |
 
 Examples:
-| descripcionDeAcuerdo             | tipoContrato                     |
-| Descripcion de acuerdo para test | Acuerdo facultativo proporcional |
+| descripcionDeAcuerdo             |
+| Descripcion de acuerdo para test |
 
 
 

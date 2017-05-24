@@ -80,42 +80,53 @@ Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 20.000.000.000         | 16.000.000.000        | 208.695.652     | 1.182.608.696  | 14.608.695.652 | 1.391.304.348    | 30.000.000.000         | 4.000.000.000                  |
+| 20.000.000.000         | 12.000.000.000        | 189.473.684     | 1.073.684.211  | 10.736.842.105 | 1.263.157.895    | 30.000.000.000         | 8.000.000.000                  |
+Given se va a consultar poliza expedida 2
+And modifico la fecha de vigencia <fechaModificacion>
+When seleccione la opcion siguiente en la modificacion
+And ingrese las entradas en cambio de poliza de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Muebles y enseres   |                     |                  | Valor Asegurable                 | 10000000000    |
+| Información de Artículos | Muebles y enseres   |                     | Danos materiales | Valor asegurado danos materiales | 10000000000    |
+And cotice y expida la poliza
+And ingrese al resumen de la poliza expedida
+And de clic al menu reaseguro
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 10.000.000.000         | 7.000.000.000         | 300.000.000     | 1.700.000.000  | 5.000.000.000  | 2.000.000.000    | 10.000.000.000         | 3.000.000.000                  |
+Given se va a consultar poliza expedida 1
+When de clic al menu reaseguro
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
+| 20.000.000.000         | 12.000.000.000        | 138.461.538     | 784.615.385    | 11.076.923.077 | 923.076.923      | 30.000.000.000         | 8.000.000.000                  |
+Given se va a consultar poliza expedida 2
 When ingrese los motivos de cancelacion de la poliza Motivo: Por petición del cliente, Descripción: Prueba cancelacion de poliza
 And ingrese la fecha vigente de cancelacion <fechaCancelacion>
 And inicie la cancelacion
 Then se genera la cancelacion expedida
 Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/03/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 20.000.000.000         | 16.000.000.000        | 208.695.652     | 1.182.608.696  | 14.608.695.652 | 1.391.304.348    | 30.000.000.000         | 4.000.000.000                  |
+| 20.000.000.000         | 12.000.000.000        | 600.000.000     | 3.400.000.000  | 8.000.000.000  | 4.000.000.000    | 20.000.000.000         | 8.000.000.000                  |
 Given se va a consultar poliza expedida 2
-When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/04/2017 - 30/06/2017
-Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
-| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 10.000.000.000         | 7.000.000.000         | 300.000.000     | 1.700.000.000  | 5.000.000.000  | 2.000.000.000    | 10.000.000.000         | 3.000.000.000                  |
-Given se va a consultar poliza expedida 1
 When ingrese los motivos de rehabilitacion de la poliza Motivo: Otro, Descripción: Prueba cancelacion de poliza
 And realice la rehabilitacion de la poliza
 Then se genera la rehabilitacion expedida
 When seleccione opcion Ver A Partir De: 01/02/2017 - 01/02/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 20.000.000.000         | 16.000.000.000        | 600.000.000     | 3.400.000.000  | 12.000.000.000 | 4.000.000.000    | 20.000.000.000         | 4.000.000.000                  |
+| 10.000.000.000         | 7.000.000.000         | 300.000.000     | 1.700.000.000  | 5.000.000.000  | 2.000.000.000    | 10.000.000.000         | 3.000.000.000                  |
 When seleccione opcion Ver A Partir De: 01/03/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 20.000.000.000         | 16.000.000.000        | 208.695.652     | 1.182.608.696  | 14.608.695.652 | 1.391.304.348    | 30.000.000.000         | 4.000.000.000                  |
-Given se va a consultar poliza expedida 2
+| 20.000.000.000         | 14.000.000.000        | 161.538.462     | 915.384.615    | 12.923.076.923 | 1.076.923.077    | 30.000.000.000         | 6.000.000.000                  |
+Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/03/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
-| 10.000.000.000         | 7.000.000.000         | 91.304.348      | 517.391.304    | 6.391.304.348  | 608.695.652      | 30.000.000.000         | 3.000.000.000                  |
+| 20.000.000.000         | 12.000.000.000        | 138.461.538     | 784.615.385    | 11.076.923.077 | 923.076.923      | 30.000.000.000         | 8.000.000.000                  |
 
 Examples:
-| fechaCancelacion | descripcionDeAcuerdo     |
-| 01/04/2017       | Acuerdo Prueba Reaseguro |
+| fechaCancelacion | descripcionDeAcuerdo     | fechaModificacion |
+| 31/01/2017       | Acuerdo Prueba Reaseguro | 15/01/2017        |
