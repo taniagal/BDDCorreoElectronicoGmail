@@ -93,6 +93,7 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void cambiarPlaca(String placa) {
         campoTxtPlaca.waitUntilPresent();
+        clickearElemento(campoTxtPlaca);
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placa);
         esperarHasta(TIEMPO_2000);
@@ -123,6 +124,7 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaVenezolana(String placaVenezolana) {
+        clickearElemento(txtPlacaNueva);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
     }
