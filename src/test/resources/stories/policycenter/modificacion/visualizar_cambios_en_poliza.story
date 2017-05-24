@@ -14,11 +14,11 @@ Given tengo una poliza de PA con los siguientes datos:
 | CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ASD322 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
-And cuando cambie la placa <placa>
+And cambie el plan del vehiculo <plan>
 Then debe existir la comparacion entre datos de poliza existente y poliza nueva
 Examples:
-| placa   |
-| ADCF434 |
+| plan               |
+| Plan Autos Clásico |
 
 Scenario: Visualizar cambios al modificar coberturas de vehiculo
 Given tengo una poliza de PA con los siguientes datos:
