@@ -59,6 +59,8 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     private WebElementFacade campoCambioCostoTransferencia;
     @FindBy(xpath = "//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarExpedicion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:0_header_hd-textEl']/span")
+    private WebElementFacade labelEstadoDeTransaccion;
 
     public AjustesDeReglasRenovacionMrcPage(WebDriver driver) {
         super(driver);
@@ -91,7 +93,10 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     }
 
     public void continuarConRenovacion() {
-        waitForTextToAppear("Borrador", TIEMPO_30000);
+        waitForAnyTextToAppear("Borrador", "No renovando");
+        if("No renovando".equals(labelEstadoDeTransaccion.getText())){
+            clickearElemento(botonEditarTransaccion);
+        }
     }
 
     public void ingresarAsegurado(String opcionAgregar) {
