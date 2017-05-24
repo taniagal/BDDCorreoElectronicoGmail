@@ -19,10 +19,10 @@ And ingrese la entrada de las diferentes coberturas con interes <documento><tipo
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100            |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100            |
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
-| MENSAJES_WORKSPACE                    |
-| El asegurado es un riesgo no estándar |
-| El tomador es un riesgo no estándar   |
-| La dirección es un riesgo no estándar |
+| MENSAJES_WORKSPACE
+| JOSE PAEZ ALZATE, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación. |
+| JOSE PAEZ ALZATE, El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial. Diríjase a análisis de riesgos para solicitar aprobación.   |
+| CR 65 45 45, La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial. Diríjase a análisis de riesgos para solicitar aprobación. |
 
 Examples:
 | tipo_documento       | documento | tipoBeneficiario | tipodocumento        |
