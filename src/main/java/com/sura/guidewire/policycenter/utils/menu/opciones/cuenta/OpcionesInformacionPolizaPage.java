@@ -403,8 +403,10 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     }
 
     public void ingresarValorHonorarioPactado(ExamplesTable valor){
-        botonHonorarioPactadoSi.waitUntilVisible().click();
-        campoHonorarioPactado.waitUntilVisible().click();
+        botonHonorarioPactadoSi.waitUntilVisible();
+        clickearElemento(botonHonorarioPactadoSi);
+        campoHonorarioPactado.waitUntilVisible();
+        clickearElemento(campoHonorarioPactado);
         campoHonorarioPactado.clear();
         Map<String, String> valorHonorarioPactado = valor.getRows().get(0);
         campoHonorarioPactado.waitUntilVisible().sendKeys(valorHonorarioPactado.get("VALOR"));
