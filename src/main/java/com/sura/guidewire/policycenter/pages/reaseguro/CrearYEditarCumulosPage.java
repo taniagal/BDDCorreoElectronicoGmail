@@ -92,8 +92,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
         String riesgosConDireccion = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add:0:riskbutton']";
         setImplicitTimeout(0, TimeUnit.SECONDS);
         while (btnAgreagarRiesgos.isVisible()) {
-            clickearElemento(btnAgreagarRiesgos);
-            clickearElemento($(riesgosConDireccion));
+            clickearElemento(btnAgreagarRiesgos, TIEMPO_2);
+            clickearElemento($(riesgosConDireccion), TIEMPO_2);
 
         }
         resetImplicitTimeout();

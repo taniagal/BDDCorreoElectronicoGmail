@@ -1,5 +1,5 @@
 Meta:
-@lote4
+@lote1
 @tag equipo: reaseguro
 @local
 
@@ -18,7 +18,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 59 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 62 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -49,7 +49,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 59 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 62 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -94,10 +94,12 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 7.000.000.000         | 300.000.000     | 1.700.000.000  | 5.000.000.000  | 2.000.000.000    | 10.000.000.000         | 3.000.000.000                  |
 Given se va a consultar poliza expedida 1
-When ingrese los motivos de rehabilitacion de la poliza Motivo: Otro, Descripción: Prueba cancelacion de poliza
+When ingrese los motivos de rehabilitacion de la poliza Motivo: Otro, Descripción: Prueba rehabilitacion de poliza
 And realice la rehabilitacion de la poliza
 Then se genera la rehabilitacion expedida
-When seleccione opcion Ver A Partir De: 01/02/2017 - 01/02/2017
+When ingrese al resumen de la poliza expedida
+And de clic al menu reaseguro
+And seleccione opcion Ver A Partir De: 01/02/2017 - 01/03/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 16.000.000.000        | 600.000.000     | 3.400.000.000  | 12.000.000.000 | 4.000.000.000    | 20.000.000.000         | 4.000.000.000                  |
