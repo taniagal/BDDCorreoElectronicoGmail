@@ -92,8 +92,8 @@ public class CrearYEditarCumulosPage extends PageUtil {
         String riesgosConDireccion = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add:0:riskbutton']";
         setImplicitTimeout(0, TimeUnit.SECONDS);
         while (btnAgreagarRiesgos.isVisible()) {
-            clickearElemento(btnAgreagarRiesgos, TIEMPO_4);
-            clickearElemento($(riesgosConDireccion), TIEMPO_4);
+            clickearElemento(btnAgreagarRiesgos);
+            clickearElemento($(riesgosConDireccion));
 
         }
         resetImplicitTimeout();
@@ -145,7 +145,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
             if ($(CELDA_VALOR).isPresent()) {
                 $(CELDA_VALOR).clear();
                 $(CELDA_VALOR).sendKeys(textoAEscribir);
-                esperarHasta(TIEMPO_500);
+                esperarHasta(TIEMPO_1000);
                 actions.sendKeys(Keys.SHIFT, Keys.TAB).build().perform();
                 clickEnTabla = true;
             }

@@ -358,7 +358,7 @@ public class Navegacion extends PageUtil {
 
     // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
-        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
         clickearElemento(mnuCuenta);
         waitForAnyTextToAppear("Resumen de la cuenta", "Búsqueda de cuentas");
         esperarHasta(TIEMPO_2500);
