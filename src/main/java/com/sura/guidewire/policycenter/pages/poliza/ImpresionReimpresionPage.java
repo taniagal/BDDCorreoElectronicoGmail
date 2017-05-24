@@ -16,7 +16,7 @@ public class ImpresionReimpresionPage extends PageUtil {
     private WebElementFacade botonOpcionesDeCompromiso;
     @FindBy(xpath = "//div[contains(@id,'JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl')]")
     private WebElementFacade linkArchivoDePoliza;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/div[3]/div")
+    @FindBy(xpath = ".//*[@id='DocumentsToReprint_ExtPopup:DocumentsScreen:DocumentsToReprintLV-body']")
     private WebElementFacade tablaOpcionesReimprimir;
     @FindBy(xpath = "//div[@id='DocumentsToReprint_ExtPopup:DocumentsScreen:DocumentsToReprintLV-body']/div")
     private WebElementFacade tablaOpcionesReimprimirMrc;
