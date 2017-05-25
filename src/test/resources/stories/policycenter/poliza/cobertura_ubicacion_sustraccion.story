@@ -98,7 +98,6 @@ When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                                        | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Sustracción | Sublimite sustracción con violencia de dinero en efectivo dentro de caja fuerte | 11             |
 | Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia                                       | 10             |
-
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                      |
 | El valor de "Sublimite sustracción con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual a la sumatoria de los valores asegurables de "Dinero en efectivo". |
@@ -124,7 +123,6 @@ When intente ingresar las entradas de las diferentes coberturas
 | Coberturas del Riesgo |               |                     | Sustracción | Sublimite sustracción con violencia de dinero en efectivo dentro de caja fuerte | 2              |
 | Coberturas del Riesgo |               |                     | Sustracción | Sublimite sustracción con violencia de dinero en efectivo fuera de caja fuerte  | 11             |
 | Coberturas del Riesgo |               |                     | Sustracción | Valor asegurado sustracción con violencia                                       | 10             |
-
 When haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | MENSAJES_WORKSPACE                                                                                                                                                                              |
