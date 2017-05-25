@@ -65,6 +65,8 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade btnCotizarRehabilitacion;
     @FindBy(xpath = ".//*[@id='ReinstatementWizard:ReinstatementWizard_QuoteScreen:JobWizardToolbarButtonSet:Reinstate-btnInnerEl']")
     private WebElementFacade btnRehabilitar;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
+    private WebElementFacade btnBorrar;
 
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
@@ -296,12 +298,16 @@ public class PolizaPage extends PageUtil {
     }
 
     public void rehabilitarPoliza() {
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         btnCotizarRehabilitacion.waitUntilPresent();
         btnCotizarRehabilitacion.click();
         btnRehabilitar.waitUntilPresent().click();
         btnAceptar.waitUntilPresent().click();
-        btnRehabilitar.waitUntilPresent().click();
-        btnAceptar.waitUntilPresent().click();
+        if (btnBorrar.isVisible()){
+            btnRehabilitar.waitUntilPresent().click();
+            btnAceptar.waitUntilPresent().click();
+        }
+        resetImplicitTimeout();
     }
 
     public void desplegarMotivosCancelacion() {
@@ -432,7 +438,6 @@ public class PolizaPage extends PageUtil {
 
     public void verificarRehabilitacion() {
         labelCancelacionExpedida.waitUntilPresent().getText().equals("Rehabilitación Expedida");
-        linkIrAlEscritorio.click();
     }
 
     public void seleccionarOpcionRetirarTransaccion() {
