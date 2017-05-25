@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
 
 import com.sura.guidewire.policycenter.pages.modificaciones.CambioDePolizaCamposEditablesPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
@@ -11,6 +12,9 @@ import org.jbehave.core.model.ExamplesTable;
 public class CambioDePolizaCamposEditablesSteps extends ScenarioSteps {
     @Page
     CambioDePolizaCamposEditablesPage cambioDePolizaCamposEditablesPage;
+
+    @Page
+    TarifaAutosPage tarifaAutosPage;
 
     @Step
     public void cambiarPlanVehicular(String plan) {
@@ -42,5 +46,10 @@ public class CambioDePolizaCamposEditablesSteps extends ScenarioSteps {
     @Step
     public void seleccionarOpcionSiguiente() {
         cambioDePolizaCamposEditablesPage.seleccionarOpcionSiguiente();
+    }
+
+    @Step
+    public void seleccionarCoberturaAsistencia(String asistencia) {
+        tarifaAutosPage.seleccionarCoberturaAsistenciaModificacion(asistencia);
     }
 }
