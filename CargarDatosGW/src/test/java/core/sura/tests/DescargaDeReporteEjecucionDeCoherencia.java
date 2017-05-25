@@ -39,7 +39,7 @@ public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
     @Test
     public void descargarReporte() {
         initPages();
-        loginPage.login("pedrvevi", "pedrvevi", driver);
+        loginPage.login("su", "c0r3S3gur0s", driver);
         descargaReportePage.descargarReporte(driver);
     }
 
