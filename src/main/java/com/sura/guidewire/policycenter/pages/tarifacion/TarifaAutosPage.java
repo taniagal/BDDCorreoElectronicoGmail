@@ -46,6 +46,8 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade checkBoxHurto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAccidentesDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
     private WebElementFacade checkBoxAccidentes;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PALlavesDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
+    private WebElementFacade checkBoxPerdidaDeLlaves;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxAsistencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
@@ -332,7 +334,14 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturasHurto2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(labelGatosTransporte, dato.get("GTH"));
-        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        if (comboBoxPerdidaDeLlaves.isVisible()) {
+            seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+        } else {
+
+            seleccionarCobertura(checkBoxPerdidaDeLlaves, comboBoxPerdidaDeLlaves, dato.get("PLlaves"));
+        }
+        resetImplicitTimeout();
     }
 
 
