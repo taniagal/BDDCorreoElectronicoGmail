@@ -67,7 +67,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade comboBoxTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
     private WebElementFacade campoTxtNumeroDocumento;
-    @FindBy(id = "WebMessageWorksheet")
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:CPBuildings']")
     private WebElementFacade edificiosyUbicacionesRenovacion;
@@ -544,18 +544,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        for (Map<String, String> mensaje : mensajes.getRows()) {
-            setImplicitTimeout(TIEMPO_10, TimeUnit.SECONDS);
-            try {
-                divMensaje.waitUntilPresent();
-                MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
-            } catch (StaleElementReferenceException e) {
-                intentarVerificarmensaje("StaleElementReferenceException " + e, mensaje.get(MENSAJES_WORKSPACE), "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
-            } catch (ElementNotVisibleException f) {
-                intentarVerificarmensaje("ElementNotVisibleException " + f, mensaje.get(MENSAJES_WORKSPACE), "Error: en la validacion del mensaje Expected: " + mensaje.get(MENSAJES_WORKSPACE) + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get(MENSAJES_WORKSPACE)));
-            }
+        try {
+            verificarMensajes(divMensaje, mensajes);
+        } catch (StaleElementReferenceException e) {
+            verificarMensajes(divMensaje, mensajes);
+        } catch (ElementNotVisibleException f) {
+            verificarMensajes(divMensaje, mensajes);
         }
-        resetImplicitTimeout();
     }
 
     public void intentarVerificarmensaje(String s, String textValue, String reason, boolean assertion) {
