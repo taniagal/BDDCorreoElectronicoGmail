@@ -130,6 +130,8 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade menuItemAseguradoR;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:StandardCommissionCB_true-inputEl']")
     private WebElementFacade radioBotonComisionPactadaSi;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade comboBoxAsistenciaModificacion;
 
     private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
     private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
@@ -502,4 +504,15 @@ public class TarifaAutosPage extends PageUtil {
         }
         resetImplicitTimeout();
     }
+
+    public void seleccionarCoberturaAsistenciaModificacion(String asistencia) {
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        if (comboBoxAsistenciaModificacion.isVisible()) {
+            seleccionarItem(comboBoxAsistenciaModificacion, asistencia);
+        } else {
+            seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, asistencia);
+        }
+        resetImplicitTimeout();
+    }
+
 }
