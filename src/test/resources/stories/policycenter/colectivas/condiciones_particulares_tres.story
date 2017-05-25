@@ -89,7 +89,7 @@ And ingrese las coberturas a auto cero kilometros:
 | 640.   | 0         |  |
 And intente cotizar
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
-| MENSAJES_WORKSPACE                                               |
+| mensaje                                               |
 | La zona del vehículo esta por fuera de las condiciones otorgadas.|
 
 Examples:
@@ -110,7 +110,7 @@ And ingrese las coberturas a auto cero kilometros:
 | 640.   | 0         |  |
 And intente cotizar
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
-| MENSAJES_WORKSPACE                                               |
+| mensaje                                               |
 |La marca del vehiculo esta por fuera de las condiciones otorgadas |
 
 Examples:

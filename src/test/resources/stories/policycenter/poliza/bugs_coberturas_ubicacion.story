@@ -20,7 +20,7 @@ And ingrese las entradas de las diferentes coberturas
 | Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida | 10001          |
 And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
-| MENSAJES_WORKSPACE                                                                                                                                                                                                          |
+| mensaje                                                                                                                                                                                                          |
 | El valor del "Sublimite para gastos asociados a la ocurrencia de una pérdida" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
@@ -38,7 +38,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
 | Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
 Then se debe mostrar el o los siguientes mensajes
-| MENSAJES_WORKSPACE                                                                                                                                                                                                |
+| mensaje                                                                                                                                                                                                |
 | Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio". |
 
 Examples:
