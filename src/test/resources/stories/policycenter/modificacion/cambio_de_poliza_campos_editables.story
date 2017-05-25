@@ -21,7 +21,7 @@ And intente cotizar el cambio de poliza
 Then expida el cambio de la poliza
 
 Examples:
-| plan               | asistencia |
+| plan               | asistencia         |
 | Plan Autos Clásico | Asistencia Clásica |
 
 Scenario: Transporte de combustible
