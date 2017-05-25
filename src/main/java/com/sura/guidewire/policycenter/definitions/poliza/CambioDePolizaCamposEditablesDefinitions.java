@@ -1,7 +1,9 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.steps.modificacion.CambioDePlacaSteps;
 import com.sura.guidewire.policycenter.steps.modificacion.CambioDePolizaCamposEditablesSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
@@ -49,5 +51,11 @@ public class CambioDePolizaCamposEditablesDefinitions {
     @When("seleccione la opcion siguiente en modificacion")
     public void seleccionarSiguiente() {
         cambioDePolizaCamposEditablesSteps.seleccionarOpcionSiguiente();
+    }
+
+    @When("agrega cobertura asistencia <asistencia>")
+    public void agregarCoberturaAsistencia(@Named("asistencia") String asistencia) {
+        cambioDePolizaCamposEditablesSteps.seleccionarOpcionSiguiente();
+        cambioDePolizaCamposEditablesSteps.seleccionarCoberturaAsistencia(asistencia);
     }
 }
