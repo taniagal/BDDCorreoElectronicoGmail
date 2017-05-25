@@ -16,7 +16,7 @@ And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And cotice una poliza
 Then se debe mostrar el o los siguientes mensajes
-| MENSAJES_WORKSPACE                                                                                                                                                                                         |
+| mensaje                                                                                                                                                                                         |
 |Solo se permite ingresar un riesgo en la póliza.|
 |No se puede cotizar una póliza CP sin artículos y coberturas|
 
@@ -38,7 +38,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | Interes Adicional        | Interes Adicional |                     |                  |                                  |                |
 Then no debe estar visible nigun contacto por defecto
 And se debe mostrar el o los siguientes mensajes
-| MENSAJES_WORKSPACE                                                                                                                                                                                         |
+| mensaje                                                                                                                                                                                         |
 |debe tener mínimo un asegurado|
 
 
