@@ -56,7 +56,6 @@ And cuando edite la transacion de la poliza
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan> clasico
 And adicione un valor asegurado superior al permitido <valor>
-And agrega cobertura asistencia <asistencia>
 And seleccione la opcion siguiente en modificacion
 Then debe salir el mensaje de autorizacion por valor superior al permitido
 | mensaje                                                                                                                                                                                                                                              |
