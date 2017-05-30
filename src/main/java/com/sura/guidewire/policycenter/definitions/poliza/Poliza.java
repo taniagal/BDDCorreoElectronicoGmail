@@ -107,6 +107,12 @@ public class Poliza {
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
     }
 
+
+    @When("edite la transaccion para realizar cambios en la cotizacion")
+    public void cuandoEditeLaCotizacion() {
+        polizaSteps.cuandoEditeLaCotizacion();
+    }
+
     @When("ingrese al resumen de la poliza expedida")
     @Then("ingresar al resumen de la poliza cancelada")
     public void cuandoIntenteIngresarAlResumenDeLaPolizaExpedida() {
@@ -229,6 +235,11 @@ public class Poliza {
     @When("inicie la cancelacion")
     public void cuandoInicieLaCancelacion() {
         polizaSteps.iniciarCancelacionDePoliza();
+    }
+
+    @When("inicie la cancelacion de la poliza con facultativo")
+    public void iniciarCancelacionFacultativo() {
+        polizaSteps.iniciarCancelacionFacultativo();
     }
 
     @Then("se debe generar un UW Issue para solicitar la autorización y el mensaje debe ser: $mensaje")
