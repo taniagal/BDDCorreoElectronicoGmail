@@ -300,4 +300,8 @@ public class PolizaSteps extends GuidewireSteps {
         obtenerPolizaPage().seleccionarOpcionContactos();
     }
 
+    @Step
+    public void cuandoEditeLaCotizacion() {
+        polizaPage.cuandoEditeLaCotizacion();
+    }
 }

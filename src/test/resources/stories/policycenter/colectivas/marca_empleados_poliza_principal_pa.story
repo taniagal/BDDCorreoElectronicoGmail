@@ -11,7 +11,6 @@ Para identificar si es empleado de Sura y informarle a Billing
 Scenario: 1 Poliza principal con marca de empleado SURA
 GivenStories: stories/policycenter/login_policy.story
 Given que tengo una cotizacion <cotizacion>
-And copie la poliza
 When seleccione la opcion SI de empleado sura
 And cotice y expida la poliza
 And ingrese al resumen de la poliza expedida
@@ -20,7 +19,7 @@ Then se debe mostrar en el campo empleado sura la opcion <opcion> no editable
 
 Examples:
 | cotizacion |opcion |
-| 33335550   |Sí     |
+| 33335551   |Sí     |
 
 
 Scenario: 2 Poliza principal sin marca de empleado SURA
@@ -32,7 +31,7 @@ And ingrese a informacion de poliza en resumen de poliza
 Then se debe mostrar en el campo empleado sura la opcion <opcion> no editable
 Examples:
 | cotizacion |opcion |
-| 33335550   |No     |
+| 33335554   |No     |
 
 
 
