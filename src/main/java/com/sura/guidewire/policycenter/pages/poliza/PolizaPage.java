@@ -298,11 +298,15 @@ public class PolizaPage extends PageUtil {
     }
 
     public void rehabilitarPoliza() {
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         btnCotizarRehabilitacion.waitUntilPresent();
         btnCotizarRehabilitacion.click();
+        clicRehabilitarPoliza();
+    }
+
+    public void clicRehabilitarPoliza() {
         btnRehabilitar.waitUntilPresent().click();
         btnAceptar.waitUntilPresent().click();
+        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if (btnBorrar.isVisible()){
             btnRehabilitar.waitUntilPresent().click();
             btnAceptar.waitUntilPresent().click();
@@ -424,8 +428,7 @@ public class PolizaPage extends PageUtil {
     public void realizarCancelacion() {
         btnSiguiente.waitUntilPresent();
         clickearElemento(btnSiguiente);
-        btnFinalizar.waitUntilPresent();
-        clickearElemento(btnFinalizar);
+        btnOpcionesCompromiso.waitUntilPresent();
         clickearElemento(btnOpcionesCompromiso);
         esperarObjetoClikeableServidorWe(btnCancelarAhora);
         esperarObjetoClikeableServidorWe(btnAceptar);

@@ -21,13 +21,6 @@ Then el resultado de la cotizacion en las coberturas globales son:
 |DESCRIPCION_COBERTURA                                            |VALOR_MONTO|
 |Cobertura de Lucro cesante por daño interno de equipo electrónico|0          |
 And el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
-
-Examples:
-| numSubscripcion | descripcion        | prima | iva  | costo |
-| 33355481        | descripcion prueba | 0     | 0    | 0     |
-
-
-Scenario:  Cotizacion poliza colectiva MRC con coberturaa globales lucro cesante por dano interno y danos materiales
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
 And seleccione la opcion coberturas globales

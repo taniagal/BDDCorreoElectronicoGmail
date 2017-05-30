@@ -39,7 +39,7 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     private WebElementFacade comboAgregarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton:AddFromSearch']")
     private WebElementFacade itemAgregarAsegurado;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:1:UWIssueRowSet:SpecialApprove']")
+    @FindBy(xpath = ".//*[contains(@id,'Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:1:UWIssueRowSet:SpecialApprove')]")
     private WebElementFacade botonAprobacionEspecial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:Comission-inputEl']")
     private WebElementFacade campoComisionReaseguroAceptado;
