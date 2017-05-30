@@ -174,6 +174,7 @@ public class GrupoDeDireccionPage extends PageUtil {
     public void seleccionarOpcionVerApartirDe(String verApartirDe){
         comboBoxVerApartirDe.waitUntilPresent();
         seleccionarItem(comboBoxVerApartirDe, verApartirDe);
+        esperarHasta(TIEMPO_2000);
     }
 
     public void ingresarSegundoReasegurador() {
