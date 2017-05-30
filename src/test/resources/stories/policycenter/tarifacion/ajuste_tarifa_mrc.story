@@ -10,8 +10,7 @@ Al cotizar una poliza colectiva de MRC donde se tienen coberturas globales quier
 Scenario:  Cotizacion poliza colectiva MRC con cobertura global lucro cesante por dano interno
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When copie la poliza
-And seleccione la opcion coberturas globales
+When seleccione la opcion coberturas globales
 And seleccione la opcion agregar cobertura global
 And ingreso la descripcion de la cobertura <descripcion>
 And selecciono las coberturas globales
@@ -24,12 +23,12 @@ And el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <
 
 Examples:
 | numSubscripcion | descripcion        | prima | iva  | costo |
-| 33355481        | descripcion prueba | 0     | 0    | 0     |
+| 33355490        | descripcion prueba | 0     | 0    | 0     |
 
 
 Scenario:  Cotizacion poliza colectiva MRC con coberturaa globales lucro cesante por dano interno y danos materiales
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When copie la poliza
+When edite la transaccion para realizar cambios en la cotizacion
 And seleccione la opcion coberturas globales
 And seleccione la opcion agregar cobertura global
 And ingreso la descripcion de la cobertura <descripcion>
@@ -45,4 +44,4 @@ And el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <
 
 Examples:
 | numSubscripcion | descripcion        | prima | iva  | costo |
-| 33355481        | descripcion prueba | 0     | 0    | 0     |
+| 33355490        | descripcion prueba | 0     | 0    | 0     |

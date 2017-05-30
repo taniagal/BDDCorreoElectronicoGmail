@@ -67,6 +67,10 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade btnRehabilitar;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade btnBorrar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    private WebElementFacade botonEditarTransaccion;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarTransaccion;
 
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
@@ -87,7 +91,6 @@ public class PolizaPage extends PageUtil {
     public PolizaPage(WebDriver driver) {
         super(driver);
     }
-
 
     public enum Opcion {
         LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
@@ -474,5 +477,12 @@ public class PolizaPage extends PageUtil {
     public void seleccionarOpcionContactos() {
         menuItemContactos.waitUntilVisible();
         menuItemContactos.click();
+    }
+
+    public void cuandoEditeLaCotizacion() {
+        botonEditarTransaccion.waitUntilPresent();
+        clickearElemento(botonEditarTransaccion);
+        clickearElemento(botonAceptarTransaccion);
+        waitForTextToAppear("Borrador");
     }
 }

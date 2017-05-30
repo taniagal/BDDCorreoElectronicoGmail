@@ -107,6 +107,12 @@ public class Poliza {
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
     }
 
+
+    @When("edite la transaccion para realizar cambios en la cotizacion")
+    public void cuandoEditeLaCotizacion() {
+        polizaSteps.cuandoEditeLaCotizacion();
+    }
+
     @When("ingrese al resumen de la poliza expedida")
     @Then("ingresar al resumen de la poliza cancelada")
     public void cuandoIntenteIngresarAlResumenDeLaPolizaExpedida() {
