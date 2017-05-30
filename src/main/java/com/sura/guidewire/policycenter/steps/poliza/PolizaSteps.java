@@ -146,6 +146,13 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void iniciarCancelacionFacultativo() {
+        waitFor(CONSTANTE_3).seconds();
+        String xpathBttonCancelacion = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation-btnInnerEl']";
+        getDriver().findElement(By.xpath(xpathBttonCancelacion)).click();
+    }
+
+    @Step
     public void seleccionarOpcionCompromiso() {
         waitFor(CONSTANTE_2).seconds();
         String xpathBttonCompromiso = "//a[contains(.,'Opciones de compromiso')]";
@@ -300,4 +307,8 @@ public class PolizaSteps extends GuidewireSteps {
         obtenerPolizaPage().seleccionarOpcionContactos();
     }
 
+    @Step
+    public void cuandoEditeLaCotizacion() {
+        polizaPage.cuandoEditeLaCotizacion();
+    }
 }

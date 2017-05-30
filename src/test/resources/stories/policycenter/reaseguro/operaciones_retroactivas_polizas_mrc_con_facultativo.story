@@ -18,7 +18,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 97 # 62 - 37 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 23 # 62 - 37 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -49,7 +49,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 97 # 62 - 37 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 23 # 62 - 37 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -112,7 +112,7 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 Given se va a consultar poliza expedida 2
 When ingrese los motivos de cancelacion de la poliza Motivo: Por petición del cliente, Descripción: Prueba cancelacion de poliza
 And ingrese la fecha vigente de cancelacion <fechaCancelacion>
-And inicie la cancelacion
+And inicie la cancelacion de la poliza con facultativo
 Then se realiza la cancelacion
 When de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
