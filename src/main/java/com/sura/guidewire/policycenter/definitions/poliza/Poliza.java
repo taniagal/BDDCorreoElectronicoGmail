@@ -231,6 +231,11 @@ public class Poliza {
         polizaSteps.iniciarCancelacionDePoliza();
     }
 
+    @When("inicie la cancelacion de la poliza con facultativo")
+    public void iniciarCancelacionFacultativo() {
+        polizaSteps.iniciarCancelacionFacultativo();
+    }
+
     @Then("se debe generar un UW Issue para solicitar la autorización y el mensaje debe ser: $mensaje")
     public void entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion(String mensaje) {
         analisisDeRiesgoSteps.seleccion_opcion_analisis_de_riesgos();
