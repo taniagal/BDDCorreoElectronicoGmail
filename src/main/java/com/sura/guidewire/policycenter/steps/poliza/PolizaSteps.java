@@ -56,8 +56,18 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void efectuarCancelacion() {
+        polizaPage.realizarCancelacion();
+    }
+
+    @Step
     public void verificarRehabilitacion() {
         polizaPage.verificarRehabilitacion();
+    }
+
+    @Step
+    public void verificarCancelacion() {
+        polizaPage.verificarCancelacion();
     }
 
     @Step
@@ -121,6 +131,11 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void rehabilitarPoliza() {
         polizaPage.rehabilitarPoliza();
+    }
+
+    @Step
+    public void clicRehabilitarPoliza() {
+        polizaPage.clicRehabilitarPoliza();
     }
 
     @Step

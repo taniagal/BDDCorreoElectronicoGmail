@@ -103,6 +103,7 @@ public class GrupoDeDireccionPage extends PageUtil {
     }
 
     public void verificarBaseReasegurableRiesgo(ExamplesTable examplesTable) {
+        comboBoxVerApartirDe.waitUntilPresent();
         Map<String, String> data = examplesTable.getRow(0);
         String baseReasegurableRiesgo = lblBaseReasegurableRiesgo.getText().substring(CONSTANTE_1, lblBaseReasegurableRiesgo.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor Base reasegurable riesgo, expected: " + data.get("baseReasegurableRiesgo") +

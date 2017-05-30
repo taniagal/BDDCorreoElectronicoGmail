@@ -155,9 +155,18 @@ public class Poliza {
         polizaSteps.realizarCancelacion();
     }
 
+    @Then("se realiza la cancelacion")
+    public void efectuarCancelacion() {
+        polizaSteps.efectuarCancelacion();
+    }
     @Then("se genera la rehabilitacion expedida")
     public void verificarRehabilitacion() {
         polizaSteps.verificarRehabilitacion();
+    }
+
+    @Then("se verifica la cancelacion")
+    public void verificarCancelacion() {
+        polizaSteps.verificarCancelacion();
     }
 
     @When("ingrese la fecha vigente de cancelacion <fechaCancelacion>")
@@ -173,6 +182,11 @@ public class Poliza {
     @When("realice la rehabilitacion de la poliza")
     public void rehabilitarPoliza() {
         polizaSteps.rehabilitarPoliza();
+    }
+
+    @When("de clic a rehabilitar poliza")
+    public void clicRehabilitarPoliza() {
+        polizaSteps.clicRehabilitarPoliza();
     }
 
     @When("realice la cancelacion de poliza")
