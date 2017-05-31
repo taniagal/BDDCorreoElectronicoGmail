@@ -2,7 +2,6 @@ package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -249,7 +248,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionarOpcionCotizarPolizaPrincipal() {
         botonCotizar.waitUntilPresent();
         clickearElemento(botonCotizar);
-        waitForTextToAppear("Número de cotización");
+        waitForTextToAppear("Número de cotización",TIEMPO_30000);
     }
 
     public Integer encontrarProducto(String producto) {
