@@ -14,17 +14,12 @@ public class SAPClient {
     public static void main(String[] args) throws MalformedURLException {
         SIOsWSConsultasDocCxCService service;
         DTNegConsultasDocCxCReq dtNegConsultasDocCxCReq ;
-
         try {
             service = new SIOsWSConsultasDocCxCService(new URL(WS_URL), new QName("http://suramericana.servicioscompartidos.contabilidad.cxc","SI_os_WS_ConsultasDocCxCService"));
-
             SIOsWSConsultasDocCxC port = service.getHTTPPort();
-
             BindingProvider bp = (BindingProvider) port;
-
             bp.getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "coregw_sap");
             bp.getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, "qaspisap01");
-
             dtNegConsultasDocCxCReq = new DTNegConsultasDocCxCReq();
             dtNegConsultasDocCxCReq.setCdconsulta("ZC5");
             dtNegConsultasDocCxCReq.setCdcompania("01");
