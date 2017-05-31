@@ -51,9 +51,9 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade btnSiguiente;
     @FindBy(xpath = ".//*[@id='CancellationWizard:Finish-btnInnerEl']")
     private WebElementFacade btnFinalizar;
-    @FindBy(xpath = ".//*[@id='CancellationWizard:RequirementsScreen:JobWizardToolbarButtonSet:BindOptions-btnInnerEl']")
+    @FindBy(xpath = ".//*[contains(@id,'Screen:JobWizardToolbarButtonSet:BindOptions-btnInnerEl')]")
     private WebElementFacade btnOpcionesCompromiso;
-    @FindBy(xpath = ".//*[@id='CancellationWizard:RequirementsScreen:JobWizardToolbarButtonSet:BindOptions:CancelNow-textEl']")
+    @FindBy(xpath = ".//*[contains(@id,'Screen:JobWizardToolbarButtonSet:BindOptions:CancelNow-textEl')]")
     private WebElementFacade btnCancelarAhora;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     private WebElementFacade btnAceptar;
@@ -63,7 +63,7 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade linkIrAlEscritorio;
     @FindBy(xpath = ".//*[@id='ReinstatementWizard:Job_RiskAnalysisScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade btnCotizarRehabilitacion;
-    @FindBy(xpath = ".//*[@id='ReinstatementWizard:ReinstatementWizard_QuoteScreen:JobWizardToolbarButtonSet:Reinstate-btnInnerEl']")
+    @FindBy(xpath = ".//*[contains(@id,'Screen:JobWizardToolbarButtonSet:Reinstate-btnInnerEl')]")
     private WebElementFacade btnRehabilitar;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade btnBorrar;
@@ -431,6 +431,10 @@ public class PolizaPage extends PageUtil {
     public void realizarCancelacion() {
         btnSiguiente.waitUntilPresent();
         clickearElemento(btnSiguiente);
+        cliquearOpcionCompromiso();
+    }
+
+    public void cliquearOpcionCompromiso() {
         btnOpcionesCompromiso.waitUntilPresent();
         clickearElemento(btnOpcionesCompromiso);
         esperarObjetoClikeableServidorWe(btnCancelarAhora);
