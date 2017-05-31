@@ -20,7 +20,7 @@ And ingrese los datos de vehiculo:
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision:
 | limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
-| 1.440  | 0         | 0   | 730 | 40. | Asistencia Clásica | 0   | 730 | 40 | 16   | 20   |         |
+| 1.440  | 0         | 0   | 835 | 40. | Asistencia Clásica | 0   | 835 | 40 | 16   | 20   |         |
 And agregue un nuevo valor asegurado <valor_asegurado>
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
@@ -40,7 +40,7 @@ And ingrese los datos de vehiculo:
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And seleccione todas las coberturas de comision:
 | limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
-| 1.440  | 0         | 0   | 730 | 40. | Asistencia Clásica | 0   | 730 | 40 | 16   | 20   |         |
+| 1.440  | 0         | 0   | 835 | 40. | Asistencia Clásica | 0   | 835 | 40 | 16   | 20   |         |
 And agregue un nuevo valor asegurado <valor_asegurado>
 Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
 
