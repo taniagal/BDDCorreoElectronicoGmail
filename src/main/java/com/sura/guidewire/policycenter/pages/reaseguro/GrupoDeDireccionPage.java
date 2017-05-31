@@ -7,6 +7,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
@@ -172,8 +173,11 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     public void seleccionarOpcionVerApartirDe(String verApartirDe) {
         comboBoxVerApartirDe.waitUntilPresent();
-        seleccionarItem(comboBoxVerApartirDe, verApartirDe);
-        if (verApartirDe != comboBoxVerApartirDe.getValue()) {
+        if (!verApartirDe.equals(comboBoxVerApartirDe.getValue())) {
+            comboBoxVerApartirDe.clear();
+            comboBoxVerApartirDe.sendKeys(Keys.ARROW_DOWN);
+            comboBoxVerApartirDe.sendKeys(Keys.ENTER);
+            esperarHasta(TIEMPO_2000);
             seleccionarItem(comboBoxVerApartirDe, verApartirDe);
         }
         esperarHasta(TIEMPO_2000);
