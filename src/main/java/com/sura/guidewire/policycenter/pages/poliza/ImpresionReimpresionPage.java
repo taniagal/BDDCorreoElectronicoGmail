@@ -48,7 +48,7 @@ public class ImpresionReimpresionPage extends PageUtil {
 
     public String validarItemsReimpresion() {
         String listaObtenida = null;
-        if (tablaOpcionesReimprimir.isCurrentlyVisible()) {
+        if (tablaOpcionesReimprimir.isVisible()) {
             listaObtenida = tablaOpcionesReimprimir.getText();
         }
         return listaObtenida;

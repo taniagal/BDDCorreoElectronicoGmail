@@ -56,6 +56,11 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void cliquearOpcionCompromiso() {
+        polizaPage.cliquearOpcionCompromiso();
+    }
+
+    @Step
     public void efectuarCancelacion() {
         polizaPage.realizarCancelacion();
     }
