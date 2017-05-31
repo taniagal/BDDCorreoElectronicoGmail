@@ -51,7 +51,7 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade btnSiguiente;
     @FindBy(xpath = ".//*[@id='CancellationWizard:Finish-btnInnerEl']")
     private WebElementFacade btnFinalizar;
-    @FindBy(xpath = ".//*[@id='CancellationWizard:RequirementsScreen:JobWizardToolbarButtonSet:BindOptions-btnWrap']")
+    @FindBy(xpath = ".//*[@id='CancellationWizard:RequirementsScreen:JobWizardToolbarButtonSet:BindOptions-btnInnerEl']")
     private WebElementFacade btnOpcionesCompromiso;
     @FindBy(xpath = ".//*[@id='CancellationWizard:RequirementsScreen:JobWizardToolbarButtonSet:BindOptions:CancelNow-textEl']")
     private WebElementFacade btnCancelarAhora;

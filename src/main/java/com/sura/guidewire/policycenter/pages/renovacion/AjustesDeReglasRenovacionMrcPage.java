@@ -57,8 +57,11 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     private WebElementFacade campoCostoTransferencia;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:AcceptedReinsurance:TransferCost-inputEl']")
     private WebElementFacade campoCambioCostoTransferencia;
-    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    //@FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     private WebElementFacade botonAceptarExpedicion;
+    @FindBy(xpath = ".//*[@id='RiskApprovalDetailsPopup:Update-btnInnerEl']")
+    private WebElementFacade botonActualizarExpedicion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:0_header_hd-textEl']/span")
     private WebElementFacade labelEstadoDeTransaccion;
 
@@ -117,7 +120,7 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
         while (botonAprobacionEspecial.isVisible()) {
             botonAprobacionEspecial.click();
             esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
-            esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
+            esperarObjetoClikeableServidorWe(botonActualizarExpedicion);
         }
         resetImplicitTimeout();
     }
