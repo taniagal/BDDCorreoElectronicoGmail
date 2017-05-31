@@ -55,7 +55,6 @@ public class GrupoDeDireccionPage extends PageUtil {
     WebElementFacade txtFechaFinVigencia;
 
 
-
     private static final double CONSTANTE_CIEN = 100.0;
     private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
     private static String porcentajeDeRetencionContratoCotaparte = null;
@@ -64,7 +63,7 @@ public class GrupoDeDireccionPage extends PageUtil {
         super(driver);
     }
 
-    public void obtienePorcentajeDeCesionYRetencionEnContratoCotaparte(){
+    public void obtienePorcentajeDeCesionYRetencionEnContratoCotaparte() {
         tblnumeroDeAcuerdoContrato.waitUntilPresent();
         clickearElemento(tblnumeroDeAcuerdoContrato);
         porcentajeDeRetencionContratoCotaparte = lblPorcentajeRetencionVigente.getText();
@@ -156,9 +155,9 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     public void validarLimiteCuotaParte(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
-        double riesgoCedidoCP = Double.parseDouble(data.get("riesgoCedidoCP").replace(".",""));
-        double retenidoCP = Double.parseDouble(data.get("valorRetenidoCP").replace(".",""));
-        double limiteCP = Double.parseDouble(data.get("limiteContratoCP").replace(".",""));
+        double riesgoCedidoCP = Double.parseDouble(data.get("riesgoCedidoCP").replace(".", ""));
+        double retenidoCP = Double.parseDouble(data.get("valorRetenidoCP").replace(".", ""));
+        double limiteCP = Double.parseDouble(data.get("limiteContratoCP").replace(".", ""));
         double suma = riesgoCedidoCP + retenidoCP;
         MatcherAssert.assertThat("Error, el limite del contrato cuota parte no es igual al riesgo cedido más el retenido, expected: " + String.valueOf(limiteCP) +
                 " but was: " + String.valueOf(suma), String.valueOf(suma).equals(String.valueOf(limiteCP)));
@@ -171,9 +170,12 @@ public class GrupoDeDireccionPage extends PageUtil {
                 " but was: " + baseReasegurableCumulo, baseReasegurableCumulo.equals(data.get("baseReasegurableCumulo")));
     }
 
-    public void seleccionarOpcionVerApartirDe(String verApartirDe){
+    public void seleccionarOpcionVerApartirDe(String verApartirDe) {
         comboBoxVerApartirDe.waitUntilPresent();
         seleccionarItem(comboBoxVerApartirDe, verApartirDe);
+        if (verApartirDe != comboBoxVerApartirDe.getValue()) {
+            seleccionarItem(comboBoxVerApartirDe, verApartirDe);
+        }
         esperarHasta(TIEMPO_2000);
     }
 

@@ -15,7 +15,7 @@ And vaya a agregar el vehiculo con los datos:
 | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 And seleccione algunas coberturas:
 | limite | deducible | abogado | PTH | PPH | PPHF | GTH | AC | Taller | Grua | TM | CE | CS   | PTD | PPD | PPDF | GT | PP | PT | GTR | GP | PLlaves |
-| 640.   | 0         | Si      | 0   | 750 | 1.50 | 40. | 35 | Conces | Plus | Si | 6  | Plus | 0   | 750 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      |
+| 640.   | 0         | Si      | 0   | 850 | 1.50 | 40. | 35 | Conces | Plus | Si | 6  | Plus | 0   | 850 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      |
 When expido la poliza y voy al archivo de poliza
 And quiera realizar esta renovacion
 And vaya a informacion de poliza en la renovacion
