@@ -50,6 +50,7 @@ When haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | mensaje                                                                                                                                                                         |
 | El valor de "Sublimite sustracción con violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
+
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
@@ -76,6 +77,7 @@ When haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | mensaje                                                                                                                                                                         |
 | El valor de "Sublimite sustracción sin violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
+
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
@@ -103,6 +105,7 @@ Then se debe mostrar el o los siguientes mensajes
 | El "Sublimite sustracción con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual al "Valor asegurado sustracción con violencia ".                            |
 | Para poder seleccionar el "Sublimite sustracción con violencia de dinero en efectivo dentro de caja fuerte" debe tener asegurado "Dinero en efectivo"                                    |
 | El valor de "Sublimite sustracción con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual a la sumatoria de los valores asegurables de "Dinero en efectivo". |
+
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
@@ -130,6 +133,7 @@ Then se debe mostrar el o los siguientes mensajes
 | mensaje                                                                                                                                                                              |
 | El "Sublimite sustracción con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al "Valor asegurado sustracción con violencia ".                                    |
 | El "Sublimite sustracción con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al "Sublimite sustracción con violencia de dinero en efectivo dentro de caja fuerte". |
+
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
