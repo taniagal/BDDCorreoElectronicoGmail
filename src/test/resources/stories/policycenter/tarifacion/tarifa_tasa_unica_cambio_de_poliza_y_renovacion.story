@@ -21,7 +21,7 @@ And vaya a agregar el vehiculo con los datos:
 | random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 And seleccione algunas coberturas:
 | limite | deducible | abogado | PTH | PPH | PPHF | GTH | AC | PTD | PPD | PPDF | GT | PP | PT | GTR | GP | PLlaves | AS                 |
-| 640.   | 0         | Si      | 0   | 750 | 1.50 | 40. | 35 | 0   | 750 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
+| 640.   | 0         | Si      | 0   | 850 | 1.50 | 40. | 35 | 0   | 850 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
 And expido la poliza y voy a informacion de poliza expedida
 When realize una modificacion en los de datos del aseguradocon los datos nombre <primer_nombre> <segundo_nombre>, estado civil <estado_civil>
 Then se debe tarifar con el esquema de tasa unica, sin generar cobro o devolucion de prima
@@ -39,7 +39,7 @@ And vaya a agregar el vehiculo con los datos:
 | random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 And seleccione algunas coberturas:
 | limite | deducible | abogado | PTH | PPH | PPHF | GTH | AC | PTD | PPD | PPDF | GT | PP | PT | GTR | GP | PLlaves | AS                 |
-| 640.   | 0         | Si      | 0   | 750 | 1.50 | 40. | 35 | 0   | 750 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
+| 640.   | 0         | Si      | 0   | 850 | 1.50 | 40. | 35 | 0   | 850 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
 And expido la poliza y voy a informacion de poliza expedida
 When realize una modificacion en el valor asegurado <valor_asegurado>
 Then se debe tarifar con el esquema de tasa unica, generando cobro o devolucion de prima
@@ -56,7 +56,7 @@ And vaya a agregar el vehiculo con los datos:
 | random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 And seleccione algunas coberturas:
 | limite | deducible | abogado | PTH | PPH | PPHF | GTH | AC | PTD | PPD | PPDF | GT | PP | PT | GTR | GP | PLlaves | AS                 |
-| 640.   | 0         | Si      | 0   | 750 | 1.50 | 40. | 35 | 0   | 750 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
+| 640.   | 0         | Si      | 0   | 850 | 1.50 | 40. | 35 | 0   | 850 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
 And expido la poliza y voy a informacion de poliza expedida
 When realize la renovacion de una poliza
 Then se debe tarifar con el esquema de tasa unica, generando el valor de la prima

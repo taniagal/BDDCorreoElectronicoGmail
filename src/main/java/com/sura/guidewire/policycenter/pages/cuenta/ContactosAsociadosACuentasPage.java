@@ -72,7 +72,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
 
     public void consultarContactos() {
         waitFor(linkAccountFileAccountFileContacts);
-        linkAccountFileAccountFileContacts.click();
+        clickearElemento(linkAccountFileAccountFileContacts);
     }
 
     public void existeEncabezadoDeTabla(ExamplesTable encabezados, String keyElement, String xPathElementos) {
