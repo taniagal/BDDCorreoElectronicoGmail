@@ -18,7 +18,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 62 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 64 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -49,7 +49,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 62 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 64 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -79,8 +79,12 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | 20.000.000.000         | 16.000.000.000        | 208.695.652     | 1.182.608.696  | 14.608.695.652 | 1.391.304.348    | 30.000.000.000         | 4.000.000.000                  |
 When ingrese los motivos de cancelacion de la poliza Motivo: Por petición del cliente, Descripción: Prueba cancelacion de poliza
 And ingrese la fecha vigente de cancelacion <fechaCancelacion>
-And inicie la cancelacion
-Then se genera la cancelacion expedida
+And inicie la cancelacion de la poliza con facultativo
+Then se realiza la cancelacion
+When de clic al boton detalle
+And realice aprobacion especial asociada a varias observaciones
+Then se efectua la cancelacion
+And se verifica la cancelacion
 Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
 And seleccione opcion Ver A Partir De: 01/03/2017 - 30/06/2017
@@ -96,6 +100,9 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 Given se va a consultar poliza expedida 1
 When ingrese los motivos de rehabilitacion de la poliza Motivo: Otro, Descripción: Prueba rehabilitacion de poliza
 And realice la rehabilitacion de la poliza
+And de clic al boton detalle
+And realice aprobacion especial asociada a varias observaciones
+And de clic a rehabilitar poliza
 Then se genera la rehabilitacion expedida
 When ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
