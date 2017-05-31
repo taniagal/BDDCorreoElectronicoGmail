@@ -1,5 +1,5 @@
 
-package cxc.contabilidad.servicioscompartidos.suramericana;
+package servicios;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 /**
  * Data Type del Negocio para el Request de las Consultas de CxC por Documento
  * 
- * <p>Clase Java para DT_NegConsultasDocCxCReq complex type.
+ * <p>Java class for DT_NegConsultasDocCxCReq complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="DT_NegConsultasDocCxCReq">
@@ -121,7 +121,7 @@ public class DTNegConsultasDocCxCReq {
     protected String cdoperacionFuente;
 
     /**
-     * Obtiene el valor de la propiedad cdconsulta.
+     * Gets the value of the cdconsulta property.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad cdconsulta.
+     * Sets the value of the cdconsulta property.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdcompania.
+     * Gets the value of the cdcompania property.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad cdcompania.
+     * Sets the value of the cdcompania property.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdramo.
+     * Gets the value of the cdramo property.
      * 
      * @return
      *     possible object is
@@ -181,7 +181,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad cdramo.
+     * Sets the value of the cdramo property.
      * 
      * @param value
      *     allowed object is
@@ -193,7 +193,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Obtiene el valor de la propiedad nmpoliza.
+     * Gets the value of the nmpoliza property.
      * 
      * @return
      *     possible object is
@@ -205,7 +205,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad nmpoliza.
+     * Sets the value of the nmpoliza property.
      * 
      * @param value
      *     allowed object is
@@ -217,7 +217,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Obtiene el valor de la propiedad nmrecibo.
+     * Gets the value of the nmrecibo property.
      * 
      * @return
      *     possible object is
@@ -229,7 +229,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad nmrecibo.
+     * Sets the value of the nmrecibo property.
      * 
      * @param value
      *     allowed object is
@@ -241,7 +241,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdestadoDocumento.
+     * Gets the value of the cdestadoDocumento property.
      * 
      * @return
      *     possible object is
@@ -253,7 +253,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad cdestadoDocumento.
+     * Sets the value of the cdestadoDocumento property.
      * 
      * @param value
      *     allowed object is
@@ -265,7 +265,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Obtiene el valor de la propiedad nmaplicacion.
+     * Gets the value of the nmaplicacion property.
      * 
      * @return
      *     possible object is
@@ -277,7 +277,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad nmaplicacion.
+     * Sets the value of the nmaplicacion property.
      * 
      * @param value
      *     allowed object is
@@ -289,7 +289,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Obtiene el valor de la propiedad feiniVigenciaDcto.
+     * Gets the value of the feiniVigenciaDcto property.
      * 
      * @return
      *     possible object is
@@ -301,7 +301,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad feiniVigenciaDcto.
+     * Sets the value of the feiniVigenciaDcto property.
      * 
      * @param value
      *     allowed object is
@@ -313,7 +313,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdoperacionFuente.
+     * Gets the value of the cdoperacionFuente property.
      * 
      * @return
      *     possible object is
@@ -325,7 +325,7 @@ public class DTNegConsultasDocCxCReq {
     }
 
     /**
-     * Define el valor de la propiedad cdoperacionFuente.
+     * Sets the value of the cdoperacionFuente property.
      * 
      * @param value
      *     allowed object is

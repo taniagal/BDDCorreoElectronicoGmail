@@ -1,5 +1,5 @@
 
-package com.suramericana.assets.exceptions;
+package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ExchangeFaultData complex type.
+ * <p>Java class for ExchangeFaultData complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ExchangeFaultData">
@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExchangeFaultData", propOrder = {
+@XmlType(name = "ExchangeFaultData", namespace = "http://exceptions.assets.suramericana.com", propOrder = {
     "faultText",
     "faultUrl",
     "faultDetail"
@@ -44,7 +44,7 @@ public class ExchangeFaultData {
     protected List<ExchangeLogData> faultDetail;
 
     /**
-     * Obtiene el valor de la propiedad faultText.
+     * Gets the value of the faultText property.
      * 
      * @return
      *     possible object is
@@ -56,7 +56,7 @@ public class ExchangeFaultData {
     }
 
     /**
-     * Define el valor de la propiedad faultText.
+     * Sets the value of the faultText property.
      * 
      * @param value
      *     allowed object is
@@ -68,7 +68,7 @@ public class ExchangeFaultData {
     }
 
     /**
-     * Obtiene el valor de la propiedad faultUrl.
+     * Gets the value of the faultUrl property.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class ExchangeFaultData {
     }
 
     /**
-     * Define el valor de la propiedad faultUrl.
+     * Sets the value of the faultUrl property.
      * 
      * @param value
      *     allowed object is

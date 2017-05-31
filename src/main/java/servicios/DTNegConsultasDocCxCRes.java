@@ -1,5 +1,5 @@
 
-package cxc.contabilidad.servicioscompartidos.suramericana;
+package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * Data Type del Lado del Negocio para el Response de la Consulta de Cuentas por Cobrar por Documento
  * 
- * <p>Clase Java para DT_NegConsultasDocCxCRes complex type.
+ * <p>Java class for DT_NegConsultasDocCxCRes complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="DT_NegConsultasDocCxCRes">

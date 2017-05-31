@@ -1,5 +1,5 @@
 
-package com.suramericana.assets.exceptions;
+package servicios;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -31,14 +31,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "standard"
 })
-@XmlRootElement(name = "ApplicationException")
+@XmlRootElement(name = "ApplicationException", namespace = "http://exceptions.assets.suramericana.com")
 public class ApplicationException {
 
     @XmlElement(required = true)
     protected ExchangeFaultData standard;
 
     /**
-     * Obtiene el valor de la propiedad standard.
+     * Gets the value of the standard property.
      * 
      * @return
      *     possible object is
@@ -50,7 +50,7 @@ public class ApplicationException {
     }
 
     /**
-     * Define el valor de la propiedad standard.
+     * Sets the value of the standard property.
      * 
      * @param value
      *     allowed object is

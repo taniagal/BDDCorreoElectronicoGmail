@@ -1,5 +1,5 @@
 
-package com.suramericana.assets.exceptions;
+package servicios;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para ExchangeLogData complex type.
+ * <p>Java class for ExchangeLogData complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ExchangeLogData">
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExchangeLogData", propOrder = {
+@XmlType(name = "ExchangeLogData", namespace = "http://exceptions.assets.suramericana.com", propOrder = {
     "severity",
     "text",
     "url",
@@ -45,7 +45,7 @@ public class ExchangeLogData {
     protected String id;
 
     /**
-     * Obtiene el valor de la propiedad severity.
+     * Gets the value of the severity property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class ExchangeLogData {
     }
 
     /**
-     * Define el valor de la propiedad severity.
+     * Sets the value of the severity property.
      * 
      * @param value
      *     allowed object is
@@ -69,7 +69,7 @@ public class ExchangeLogData {
     }
 
     /**
-     * Obtiene el valor de la propiedad text.
+     * Gets the value of the text property.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class ExchangeLogData {
     }
 
     /**
-     * Define el valor de la propiedad text.
+     * Sets the value of the text property.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class ExchangeLogData {
     }
 
     /**
-     * Obtiene el valor de la propiedad url.
+     * Gets the value of the url property.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class ExchangeLogData {
     }
 
     /**
-     * Define el valor de la propiedad url.
+     * Sets the value of the url property.
      * 
      * @param value
      *     allowed object is
@@ -117,7 +117,7 @@ public class ExchangeLogData {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
@@ -129,7 +129,7 @@ public class ExchangeLogData {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is

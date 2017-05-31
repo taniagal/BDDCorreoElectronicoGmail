@@ -1,5 +1,5 @@
 
-package cxc.contabilidad.servicioscompartidos.suramericana;
+package servicios;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the cxc.contabilidad.servicioscompartidos.suramericana package. 
+ * generated in the servicios package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -28,7 +28,7 @@ public class ObjectFactory {
     private final static QName _MTNegConsultasDocCxCReq_QNAME = new QName("http://suramericana.servicioscompartidos.contabilidad.cxc", "MT_NegConsultasDocCxCReq");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: cxc.contabilidad.servicioscompartidos.suramericana
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: servicios
      * 
      */
     public ObjectFactory() {
@@ -56,6 +56,30 @@ public class ObjectFactory {
      */
     public DTNegRespuestaConsultasCxC createDTNegRespuestaConsultasCxC() {
         return new DTNegRespuestaConsultasCxC();
+    }
+
+    /**
+     * Create an instance of {@link ApplicationException }
+     * 
+     */
+    public ApplicationException createApplicationException() {
+        return new ApplicationException();
+    }
+
+    /**
+     * Create an instance of {@link ExchangeFaultData }
+     * 
+     */
+    public ExchangeFaultData createExchangeFaultData() {
+        return new ExchangeFaultData();
+    }
+
+    /**
+     * Create an instance of {@link ExchangeLogData }
+     * 
+     */
+    public ExchangeLogData createExchangeLogData() {
+        return new ExchangeLogData();
     }
 
     /**

@@ -1,5 +1,5 @@
 
-package cxc.contabilidad.servicioscompartidos.suramericana;
+package servicios;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -14,9 +14,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 /**
  * Data Type del Negocio con los Datos de Salida de las Consultas de Cuentas por Cobrar
  * 
- * <p>Clase Java para DT_NegRespuestaConsultasCxC complex type.
+ * <p>Java class for DT_NegRespuestaConsultasCxC complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="DT_NegRespuestaConsultasCxC">
@@ -412,7 +412,7 @@ public class DTNegRespuestaConsultasCxC {
     protected String cdformaPago;
 
     /**
-     * Obtiene el valor de la propiedad fegeneracionDcto.
+     * Gets the value of the fegeneracionDcto property.
      * 
      * @return
      *     possible object is
@@ -424,7 +424,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad fegeneracionDcto.
+     * Sets the value of the fegeneracionDcto property.
      * 
      * @param value
      *     allowed object is
@@ -436,7 +436,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad fecontabilizacion.
+     * Gets the value of the fecontabilizacion property.
      * 
      * @return
      *     possible object is
@@ -448,7 +448,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad fecontabilizacion.
+     * Sets the value of the fecontabilizacion property.
      * 
      * @param value
      *     allowed object is
@@ -460,7 +460,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad nmmesRegistro.
+     * Gets the value of the nmmesRegistro property.
      * 
      * @return
      *     possible object is
@@ -472,7 +472,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad nmmesRegistro.
+     * Sets the value of the nmmesRegistro property.
      * 
      * @param value
      *     allowed object is
@@ -484,7 +484,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdmoneda.
+     * Gets the value of the cdmoneda property.
      * 
      * @return
      *     possible object is
@@ -496,7 +496,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdmoneda.
+     * Sets the value of the cdmoneda property.
      * 
      * @param value
      *     allowed object is
@@ -508,7 +508,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad pttasaCambio.
+     * Gets the value of the pttasaCambio property.
      * 
      * @return
      *     possible object is
@@ -520,7 +520,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad pttasaCambio.
+     * Sets the value of the pttasaCambio property.
      * 
      * @param value
      *     allowed object is
@@ -532,7 +532,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad fetasaCambio.
+     * Gets the value of the fetasaCambio property.
      * 
      * @return
      *     possible object is
@@ -544,7 +544,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad fetasaCambio.
+     * Sets the value of the fetasaCambio property.
      * 
      * @param value
      *     allowed object is
@@ -556,7 +556,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad nmrecibo.
+     * Gets the value of the nmrecibo property.
      * 
      * @return
      *     possible object is
@@ -568,7 +568,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad nmrecibo.
+     * Sets the value of the nmrecibo property.
      * 
      * @param value
      *     allowed object is
@@ -580,7 +580,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad dscomentarios.
+     * Gets the value of the dscomentarios property.
      * 
      * @return
      *     possible object is
@@ -592,7 +592,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad dscomentarios.
+     * Sets the value of the dscomentarios property.
      * 
      * @param value
      *     allowed object is
@@ -604,7 +604,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad ptnetoDocumento.
+     * Gets the value of the ptnetoDocumento property.
      * 
      * @return
      *     possible object is
@@ -616,7 +616,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad ptnetoDocumento.
+     * Sets the value of the ptnetoDocumento property.
      * 
      * @param value
      *     allowed object is
@@ -628,7 +628,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad snreciboConImp.
+     * Gets the value of the snreciboConImp property.
      * 
      * @return
      *     possible object is
@@ -640,7 +640,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad snreciboConImp.
+     * Sets the value of the snreciboConImp property.
      * 
      * @param value
      *     allowed object is
@@ -652,7 +652,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad poivaReal.
+     * Gets the value of the poivaReal property.
      * 
      * @return
      *     possible object is
@@ -664,7 +664,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad poivaReal.
+     * Sets the value of the poivaReal property.
      * 
      * @param value
      *     allowed object is
@@ -676,7 +676,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdoficinaRadica.
+     * Gets the value of the cdoficinaRadica property.
      * 
      * @return
      *     possible object is
@@ -688,7 +688,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdoficinaRadica.
+     * Sets the value of the cdoficinaRadica property.
      * 
      * @param value
      *     allowed object is
@@ -700,7 +700,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad nmdiasCondPago.
+     * Gets the value of the nmdiasCondPago property.
      * 
      * @return
      *     possible object is
@@ -712,7 +712,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad nmdiasCondPago.
+     * Sets the value of the nmdiasCondPago property.
      * 
      * @param value
      *     allowed object is
@@ -724,7 +724,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad feiniVigenciaDcto.
+     * Gets the value of the feiniVigenciaDcto property.
      * 
      * @return
      *     possible object is
@@ -736,7 +736,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad feiniVigenciaDcto.
+     * Sets the value of the feiniVigenciaDcto property.
      * 
      * @param value
      *     allowed object is
@@ -748,7 +748,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad snreciboBloqueado.
+     * Gets the value of the snreciboBloqueado property.
      * 
      * @return
      *     possible object is
@@ -760,7 +760,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad snreciboBloqueado.
+     * Sets the value of the snreciboBloqueado property.
      * 
      * @param value
      *     allowed object is
@@ -772,7 +772,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdmedioPago.
+     * Gets the value of the cdmedioPago property.
      * 
      * @return
      *     possible object is
@@ -784,7 +784,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdmedioPago.
+     * Sets the value of the cdmedioPago property.
      * 
      * @param value
      *     allowed object is
@@ -796,7 +796,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad fefinVigenciaDcto.
+     * Gets the value of the fefinVigenciaDcto property.
      * 
      * @return
      *     possible object is
@@ -808,7 +808,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad fefinVigenciaDcto.
+     * Sets the value of the fefinVigenciaDcto property.
      * 
      * @param value
      *     allowed object is
@@ -820,7 +820,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdoperacion.
+     * Gets the value of the cdoperacion property.
      * 
      * @return
      *     possible object is
@@ -832,7 +832,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdoperacion.
+     * Sets the value of the cdoperacion property.
      * 
      * @param value
      *     allowed object is
@@ -844,7 +844,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdtipoReteIca.
+     * Gets the value of the cdtipoReteIca property.
      * 
      * @return
      *     possible object is
@@ -856,7 +856,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdtipoReteIca.
+     * Sets the value of the cdtipoReteIca property.
      * 
      * @param value
      *     allowed object is
@@ -868,7 +868,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad poindReteIca.
+     * Gets the value of the poindReteIca property.
      * 
      * @return
      *     possible object is
@@ -880,7 +880,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad poindReteIca.
+     * Sets the value of the poindReteIca property.
      * 
      * @param value
      *     allowed object is
@@ -892,7 +892,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdtipoReteIva.
+     * Gets the value of the cdtipoReteIva property.
      * 
      * @return
      *     possible object is
@@ -904,7 +904,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdtipoReteIva.
+     * Sets the value of the cdtipoReteIva property.
      * 
      * @param value
      *     allowed object is
@@ -916,7 +916,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad poindReteIva.
+     * Gets the value of the poindReteIva property.
      * 
      * @return
      *     possible object is
@@ -928,7 +928,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad poindReteIva.
+     * Sets the value of the poindReteIva property.
      * 
      * @param value
      *     allowed object is
@@ -940,7 +940,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdtipoReteFuente.
+     * Gets the value of the cdtipoReteFuente property.
      * 
      * @return
      *     possible object is
@@ -952,7 +952,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdtipoReteFuente.
+     * Sets the value of the cdtipoReteFuente property.
      * 
      * @param value
      *     allowed object is
@@ -964,7 +964,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad poindReteFuente.
+     * Gets the value of the poindReteFuente property.
      * 
      * @return
      *     possible object is
@@ -976,7 +976,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad poindReteFuente.
+     * Sets the value of the poindReteFuente property.
      * 
      * @param value
      *     allowed object is
@@ -988,7 +988,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad nmpoliza.
+     * Gets the value of the nmpoliza property.
      * 
      * @return
      *     possible object is
@@ -1000,7 +1000,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad nmpoliza.
+     * Sets the value of the nmpoliza property.
      * 
      * @param value
      *     allowed object is
@@ -1012,7 +1012,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdramoPrincipal.
+     * Gets the value of the cdramoPrincipal property.
      * 
      * @return
      *     possible object is
@@ -1024,7 +1024,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdramoPrincipal.
+     * Sets the value of the cdramoPrincipal property.
      * 
      * @param value
      *     allowed object is
@@ -1036,7 +1036,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdasesorLider.
+     * Gets the value of the cdasesorLider property.
      * 
      * @return
      *     possible object is
@@ -1048,7 +1048,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdasesorLider.
+     * Sets the value of the cdasesorLider property.
      * 
      * @param value
      *     allowed object is
@@ -1060,7 +1060,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdcanal.
+     * Gets the value of the cdcanal property.
      * 
      * @return
      *     possible object is
@@ -1072,7 +1072,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdcanal.
+     * Sets the value of the cdcanal property.
      * 
      * @param value
      *     allowed object is
@@ -1084,7 +1084,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad nmaplicacion.
+     * Gets the value of the nmaplicacion property.
      * 
      * @return
      *     possible object is
@@ -1096,7 +1096,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad nmaplicacion.
+     * Sets the value of the nmaplicacion property.
      * 
      * @param value
      *     allowed object is
@@ -1108,7 +1108,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdsubramo.
+     * Gets the value of the cdsubramo property.
      * 
      * @return
      *     possible object is
@@ -1120,7 +1120,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdsubramo.
+     * Sets the value of the cdsubramo property.
      * 
      * @param value
      *     allowed object is
@@ -1132,7 +1132,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdtipoCoaseguro.
+     * Gets the value of the cdtipoCoaseguro property.
      * 
      * @return
      *     possible object is
@@ -1144,7 +1144,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdtipoCoaseguro.
+     * Sets the value of the cdtipoCoaseguro property.
      * 
      * @param value
      *     allowed object is
@@ -1156,7 +1156,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad pttotalAbonado.
+     * Gets the value of the pttotalAbonado property.
      * 
      * @return
      *     possible object is
@@ -1168,7 +1168,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad pttotalAbonado.
+     * Sets the value of the pttotalAbonado property.
      * 
      * @param value
      *     allowed object is
@@ -1180,7 +1180,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad ptsaldoDocumento.
+     * Gets the value of the ptsaldoDocumento property.
      * 
      * @return
      *     possible object is
@@ -1192,7 +1192,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad ptsaldoDocumento.
+     * Sets the value of the ptsaldoDocumento property.
      * 
      * @param value
      *     allowed object is
@@ -1204,7 +1204,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdtipoDocumento.
+     * Gets the value of the cdtipoDocumento property.
      * 
      * @return
      *     possible object is
@@ -1216,7 +1216,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdtipoDocumento.
+     * Sets the value of the cdtipoDocumento property.
      * 
      * @param value
      *     allowed object is
@@ -1228,7 +1228,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdestadoDocumento.
+     * Gets the value of the cdestadoDocumento property.
      * 
      * @return
      *     possible object is
@@ -1240,7 +1240,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdestadoDocumento.
+     * Sets the value of the cdestadoDocumento property.
      * 
      * @param value
      *     allowed object is
@@ -1252,7 +1252,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdbeneficiario.
+     * Gets the value of the cdbeneficiario property.
      * 
      * @return
      *     possible object is
@@ -1264,7 +1264,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdbeneficiario.
+     * Sets the value of the cdbeneficiario property.
      * 
      * @param value
      *     allowed object is
@@ -1276,7 +1276,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdtipoIdBeneficiario.
+     * Gets the value of the cdtipoIdBeneficiario property.
      * 
      * @return
      *     possible object is
@@ -1288,7 +1288,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdtipoIdBeneficiario.
+     * Sets the value of the cdtipoIdBeneficiario property.
      * 
      * @param value
      *     allowed object is
@@ -1300,7 +1300,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad dsbeneficiario.
+     * Gets the value of the dsbeneficiario property.
      * 
      * @return
      *     possible object is
@@ -1312,7 +1312,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad dsbeneficiario.
+     * Sets the value of the dsbeneficiario property.
      * 
      * @param value
      *     allowed object is
@@ -1324,7 +1324,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Obtiene el valor de la propiedad cdformaPago.
+     * Gets the value of the cdformaPago property.
      * 
      * @return
      *     possible object is
@@ -1336,7 +1336,7 @@ public class DTNegRespuestaConsultasCxC {
     }
 
     /**
-     * Define el valor de la propiedad cdformaPago.
+     * Sets the value of the cdformaPago property.
      * 
      * @param value
      *     allowed object is
