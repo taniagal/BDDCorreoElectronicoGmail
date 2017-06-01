@@ -428,4 +428,19 @@ public class PageUtil extends PageObject {
         }
         return encontrada;
     }
+
+    public void ingresarYValidarCamposWidget(WebElementFacade campoTxt, String valorAEscribir) {
+        int numIteraciones = 0;
+        int numeroDeIntentos = 1;
+        while (!campoTxt.getValue().equals(valorAEscribir) && numIteraciones < numeroDeIntentos) {
+            campoTxt.click();
+            campoTxt.clear();
+            campoTxt.sendKeys(valorAEscribir);
+            numIteraciones++;
+        }
+        if (!campoTxt.getValue().equals(valorAEscribir)) {
+            MatcherAssert.assertThat("Error: Se esperaba que el software ingresara el valor, pero no respondio la caja de texto" +
+                    " Expected: " + valorAEscribir + " but was: " + campoTxt.getValue(), !campoTxt.getValue().equals(valorAEscribir));
+        }
+    }
 }

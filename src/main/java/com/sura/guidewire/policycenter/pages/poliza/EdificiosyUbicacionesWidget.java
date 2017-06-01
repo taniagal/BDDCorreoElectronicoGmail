@@ -135,6 +135,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         super(driver);
     }
 
+    Actions act = new Actions(getDriver());
+
 
     private void obtenerTabla() {
         this.tabla = new TableWidgetPage(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
@@ -348,12 +350,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void ingresarValorAEntrada(String entrada, String valorEntrada) {
-        waitForTextToAppear(entrada);
         String xpathTREntrada = XPATH2_PARTE1 + entrada + "') ]) and @class='x-form-item-input-row' ]";
         WebElementFacade inputValorEntrada = findBy(xpathTREntrada).find(By.tagName(INPUT));
         withAction().moveToElement(inputValorEntrada).perform();
-        enter(valorEntrada).into(inputValorEntrada);
+        inputValorEntrada.waitUntilClickable();
         inputValorEntrada.click();
+        ingresarYValidarCamposWidget(inputValorEntrada , valorEntrada);
     }
 
     public void ingresarValorAEntradaInformacionArticulo(String tipoArticulo, String entrada, String valorEntrada) {
@@ -618,7 +620,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void ingresarBeneficiarioOneroso(String tipoBeneficiario, WebElementFacade elemento) {
-        Actions act = new Actions(getDriver());
         waitFor(TIEMPO_2).second();
         desplegarElementoDeLista(elemento);
         nuevaPolizaPage.seleccionarElementoDeLaLista(tipoBeneficiario);
