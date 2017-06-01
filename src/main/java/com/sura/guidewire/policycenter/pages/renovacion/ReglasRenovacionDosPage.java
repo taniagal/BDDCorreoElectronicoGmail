@@ -93,7 +93,9 @@ public class ReglasRenovacionDosPage extends PageUtil {
         txtValorAccesoriosEspe.clear();
         clickearElemento(txtValorAccesoriosEspe);
         txtValorAccesoriosEspe.sendKeys(Integer.toString(valorTotalAccesorioEsp));
-        seleccionarItem(campoTxtCiudadDeCirculacion, "MEDELLIN");
+        if ("<ninguno>".equals(campoTxtCiudadDeCirculacion.getValue())) {
+            seleccionarItem(campoTxtCiudadDeCirculacion, "MEDELLIN (ANTIOQUIA)");
+        }
         clickearElemento(btnSiguinete);
     }
 
