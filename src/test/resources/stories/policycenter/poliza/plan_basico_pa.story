@@ -18,7 +18,7 @@ When ingrese los datos del vehiculo:
 | LKJ998 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Básico | Televentas |
 And ingrese las coberturas a vehiculo:
 | limite | deducible | AS |
-| 640.0  | 0         |    |
+| 640.0  | 0         | Asistencia Básica   |
 Then cotice y expida la poliza
 
 Examples:
