@@ -26,7 +26,7 @@ public class ConsultaPolizaDefinitions {
         numeroPoliza = buscarNumeroPoliza.capturarNumeroPoliza();
     }
 
-    @Then("se validad la creacion de la poliza en SAP")
+    @Then("se valida la creacion de la poliza en SAP")
     public void validarCreacionPolizaSaP() throws MalformedURLException {
         boolean resultado = true;
         SAPClient consultaPolizaSap = new SAPClient();

@@ -14,14 +14,13 @@ Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1979       | FICO          | FIDEL           | DIRECCION DE RESIDENCIA | CALLE 90F #35-50 | Antioquia    | Medellin | INT-3  |
 When ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion
+And intente ingresar una nueva ubicacion sin riesgo consultable
 And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100000000      |
-And se solicite aprobacion para los riesgos
 And expido la poliza y capturo el numero de poliza
-Then se validad la creacion de la poliza en SAP
+Then se valida la creacion de la poliza en SAP
 Examples:
-| rolUsuario | documento  | tipoBeneficiario |  tipodocumento        |
-| Asesor     | 1049604453 | Asegurado        |  CEDULA DE CIUDADANIA |
+| rolUsuario | documento| tipoBeneficiario |  tipodocumento        |
+| Asesor     | 1234567891  | Asegurado        |  CEDULA DE CIUDADANIA |
