@@ -159,6 +159,12 @@ public class Poliza {
     public void efectuarCancelacion() {
         polizaSteps.efectuarCancelacion();
     }
+
+    @Then("se efectua la cancelacion")
+    public void cliquearOpcionCompromiso() {
+        polizaSteps.cliquearOpcionCompromiso();
+    }
+
     @Then("se genera la rehabilitacion expedida")
     public void verificarRehabilitacion() {
         polizaSteps.verificarRehabilitacion();
