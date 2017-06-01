@@ -21,7 +21,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 47 # 60 - 35 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 60 - 35 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -54,7 +54,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 47 # 60 - 35 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 60 - 35 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -90,7 +90,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 47 # 60 - 35 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 60 - 35 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -132,7 +132,7 @@ And ingrese la Fecha Inicio Vigencia: 01/01/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 47 # 60 - 35 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 60 - 35 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 2000000000       | Danos      |
@@ -165,7 +165,7 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | 10.000.000.000         | 7.000.000.000         | 67.741.935      | 383.870.968    | 6.548.387.097  | 451.612.903      | 44.000.000.000         | 3.000.000.000                  |
 Given se va a consultar poliza expedida 3
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/01/2017 -
+And seleccione opcion Ver A Partir De: 01/01/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 8.000.000.000         | 77.419.355      | 438.709.677    | 7.483.870.968  | 516.129.032      | 44.000.000.000         | 2.000.000.000                  |
