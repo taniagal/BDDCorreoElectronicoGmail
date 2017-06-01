@@ -94,8 +94,11 @@ public class CrearYEditarCumulosPage extends PageUtil {
         while (btnAgreagarRiesgos.isVisible()) {
             clickearElemento(btnAgreagarRiesgos, TIEMPO_2);
             clickearElemento($(riesgosConDireccion), TIEMPO_2);
-
         }
+        if (btnAgreagarRiesgos.isVisible()) {
+            ingresaCantidadDeCoberturas();
+        }
+        MatcherAssert.assertThat("Error: No se ingresaron todas als direcciones en la tabla de Riesgos Aplicables", !btnAgreagarRiesgos.isVisible());
         resetImplicitTimeout();
     }
 
