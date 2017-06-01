@@ -18,23 +18,23 @@ And ingrese la informacion del vehiculo:
 |TZZ301|2011  |                |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Modular|Televentas
 And seleccione la opcion siguiente
 And ingrese las coberturas basicas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+| limite | deducible | abogado | PLlaves |
+| 640.   | 0         | Si      | Si      |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
-|mensaje                                            |
-|Este tipo de vehículo (usado) no está permitido    |
+| mensaje                                         |
+| Este tipo de vehículo (usado) no está permitido |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-|mensaje                                                                         |
-|Este tipo de vehículo (usado) no está permitido                                 |
+| mensaje                                         |
+| Este tipo de vehículo (usado) no está permitido |
 
 Examples:
-|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+| tipo_documento       | documento  | cuenta      | producto | agente  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | C1060447895 | Autos    | DIRECTO | 33355366   |
 
 
 Scenario: 7 Expedicion de poliza riesgo con riesgo consultable aceptado en poliza principal, para vehiculo cero kilometros
@@ -42,21 +42,21 @@ Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Televentas|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | medioVenta |
+| random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Televentas |
 When ingrese a la pantalla de coberturas
 And ingrese las coberturas a auto cero kilometros:
-|limite|deducible|AS|
-|640.  |0        |  |
+| limite | deducible | AS                |
+| 640.   | 0         | Asistencia Básica |
 And intente cotizar
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-|tipo_documento      |documento |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|33355366  |
-|CEDULA DE CIUDADANIA|1060447895|33355338  |
+| tipo_documento       | documento  | cotizacion |
+| CEDULA DE CIUDADANIA | 1060447895 | 33355366   |
+| CEDULA DE CIUDADANIA | 1060447895 | 33355338   |
 
 Scenario: 8 Expedicion de poliza riesgo en CP con riesgo consultable aceptado en poliza principal
 Given que tengo una cotizacion <cotizacion>
@@ -73,28 +73,28 @@ And confirmo el mensaje de expedir poliza
 Then se debe permitir expedir la poliza
 
 Examples:
-|tipo_documento      |documento |cotizacion|tipoBeneficiario|cedula   | tipodocumento       |
-|CEDULA DE CIUDADANIA|1060447895|33355337  |Asegurado       | 94537281| CEDULA DE CIUDADANIA|
+| tipo_documento       | documento  | cotizacion | tipoBeneficiario | cedula   | tipodocumento        |
+| CEDULA DE CIUDADANIA | 1060447895 | 33355337   | Asegurado        | 94537281 | CEDULA DE CIUDADANIA |
 
 Scenario: 9 Bloque de expedicion de poliza riesgo en PA para una zona no permitida
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion                 | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2017   | 52525252         | SANTIAGO DE CALI (VALLE DEL CAUCA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion                 | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | medioVenta |
+| random | 2017   | 52525252         | SANTIAGO DE CALI (VALLE DEL CAUCA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Asesor     |
 And seleccione la opcion siguiente
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |AS|
-| 640.   | 0         |  |
+| limite | deducible | AS                |
+| 640.   | 0         | Asistencia Básica |
 And intente cotizar
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
-| mensaje                                               |
-| La zona del vehículo esta por fuera de las condiciones otorgadas.|
+| mensaje                                                           |
+| La zona del vehículo esta por fuera de las condiciones otorgadas. |
 
 Examples:
-|tipo_documento      |documento |cotizacion|tipoBeneficiario|cedula   | tipodocumento       |
-|CEDULA DE CIUDADANIA|1060447895|33355370  |Asegurado       | 94537281| CEDULA DE CIUDADANIA|
+| tipo_documento       | documento  | cotizacion | tipoBeneficiario | cedula   | tipodocumento        |
+| CEDULA DE CIUDADANIA | 1060447895 | 33355370   | Asegurado        | 94537281 | CEDULA DE CIUDADANIA |
 
 
 Scenario: 10 Bloque de expedicion de poliza riesgo en PA para una marca no permitida
@@ -102,17 +102,17 @@ Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion                 | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |medioVenta|
-| random | 2017   | 52525252         | MEDELLIN (ANTIOQUIA)               | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |Asesor    |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros | medioVenta |
+| random | 2017   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              | Asesor     |
 And seleccione la opcion siguiente
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible |AS|
-| 640.   | 0         |  |
+| limite | deducible | AS                |
+| 640.   | 0         | Asistencia Básica |
 And intente cotizar
 Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
-| mensaje                                               |
-|La marca del vehiculo esta por fuera de las condiciones otorgadas |
+| mensaje                                                           |
+| La marca del vehiculo esta por fuera de las condiciones otorgadas |
 
 Examples:
-|tipo_documento      |documento |cotizacion|tipoBeneficiario|cedula   | tipodocumento       |
-|CEDULA DE CIUDADANIA|1060447895|33355372  |Asegurado       | 94537281| CEDULA DE CIUDADANIA|
+| tipo_documento       | documento  | cotizacion | tipoBeneficiario | cedula   | tipodocumento        |
+| CEDULA DE CIUDADANIA | 1060447895 | 33355372   | Asegurado        | 94537281 | CEDULA DE CIUDADANIA |
