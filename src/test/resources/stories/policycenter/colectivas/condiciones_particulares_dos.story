@@ -19,7 +19,7 @@ And ingrese los datos de vehiculo:
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas necesarias:
 | limite | deducible | AS                 | PTD | PPD  | GTD |
-| 640.   | 0         | Asistencia Clásica | 0   | 730. | 40. |
+| 640.   | 0         | Asistencia Clásica | 0   | 835. | 40. |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
@@ -43,7 +43,7 @@ And ingrese los datos de vehiculo:
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas necesarias:
 | limite | deducible | AS                 | PTD | PPD  | GTD |
-| 640.   | 0         | Asistencia Clásica | 0   | 730. | 40. |
+| 640.   | 0         | Asistencia Clásica | 0   | 835. | 40. |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
@@ -67,7 +67,7 @@ And ingrese los datos de vehiculo:
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas necesarias:
 | limite | deducible | AS                 | PTD | PPD  | GTD |
-| 640.   | 0         | Asistencia Clásica | 0   | 730. | 40. |
+| 640.   | 0         | Asistencia Clásica | 0   | 835. | 40. |
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
