@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class SAPClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private static final String WS_URL = "file:///D:\\PROYECTO\\BDD_POLYCENTER\\src\\main\\java\\servicios\\SI_os_WS_ConsultasDocCxCService.wsdl";
+    private static final String WS_URL = "file:src/main/java/servicios/SI_os_WS_ConsultasDocCxCService.wsdl";
 
     public RespuestaServicio consultaPolizaEnSap(String numeroPoliza) throws MalformedURLException {
         SIOsWSConsultasDocCxCService service;
