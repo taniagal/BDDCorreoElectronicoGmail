@@ -9,9 +9,9 @@ Al cotizar una poliza de PA quiero ser capaz de parametrizar si una dependencia 
 
 Scenario:  Verificar independencia de cobertura de accidentes al conductor a las coberturas de daños o hurto
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-| cuenta     | producto | tipoPoliza | oficina           | agente_oficina |
-| C002888993 | Autos    | Individual | 2796 > DIVISIÓN 2 | DIRECTO        |
+Given estoy cotizando una poliza de autos:
+| producto | tipoPoliza | oficina           | agente_oficina | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Autos    | Individual | 2796 > DIVISIÓN 2 | DIRECTO        | CEDULA DE CIUDADANIA | 02/12/1990       | MARIA         | CEBALLOS        | DIRECCION DE RESIDENCIA | CALLE 65B #65-25 | Antioquia    | Medellin | INT-3  |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta   |
