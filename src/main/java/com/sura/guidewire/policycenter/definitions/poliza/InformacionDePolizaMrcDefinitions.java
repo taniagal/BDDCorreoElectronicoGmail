@@ -53,6 +53,7 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("cotice una poliza")
     public void cuandoCotizeUnaPoliza() {
+
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
     }
 

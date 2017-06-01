@@ -125,4 +125,12 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.verificarTarifacionPrima(primaTotal);
     }
 
+    @When("agrego nuevamente coberturas rc : $coberturas")
+    public void agregarDeducibleEnRc(ExamplesTable coberturas){
+        tarifaAutosSteps.seleccionarBotonSiguiente();
+        tarifaAutosSteps.seleccionarBotonSiguiente();
+        tarifaAutosSteps.seleccionarBotonSiguiente();
+        tarifaAutosSteps.agregarCoberturasRC(coberturas);
+    }
+
 }
