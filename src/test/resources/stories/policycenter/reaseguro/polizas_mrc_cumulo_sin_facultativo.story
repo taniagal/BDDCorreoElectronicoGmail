@@ -18,7 +18,7 @@ And ingrese la Fecha Inicio Vigencia: 01/02/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 33 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -49,7 +49,7 @@ And ingrese la Fecha Inicio Vigencia: 01/03/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                      |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 33 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
+| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -75,7 +75,7 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
 | 10.000.000.000         | 10.000.000.000        | 120.000.000     | 680.000.000    | 9.200.000.000  | 800.000.000      | 15.000.000.000         |
 Given modifico la fecha de vigencia <fechaModificacion>
-When ingrese al menu edificios y ubicaciones
+When seleccione la opcion siguiente en la modificacion
 And ingrese las entradas en cambio de poliza de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Muebles y enseres   |                     |                  | Valor Asegurable                 | 10000000000    |
@@ -99,7 +99,7 @@ And ingrese la Fecha Inicio Vigencia: 01/05/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 33 # 57 - 29 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 1000000000       | Danos      |
