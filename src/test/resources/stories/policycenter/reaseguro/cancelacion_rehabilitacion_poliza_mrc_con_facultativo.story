@@ -18,7 +18,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 67 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 70 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -49,7 +49,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 67 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 70 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -100,6 +100,9 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 Given se va a consultar poliza expedida 1
 When ingrese los motivos de rehabilitacion de la poliza Motivo: Otro, Descripción: Prueba rehabilitacion de poliza
 And realice la rehabilitacion de la poliza
+And de clic al boton detalle
+And realice aprobacion especial asociada a varias observaciones
+And de clic a rehabilitar poliza
 Then se genera la rehabilitacion expedida
 When ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
