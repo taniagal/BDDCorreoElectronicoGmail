@@ -79,14 +79,16 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     }
 
     public void seleccionaRiesgoAceptado() {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblInformaPoliza).waitUntilVisible();
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        lblInformaPoliza.waitUntilVisible();
         radioBotReaseguroEspecial.click();
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(checkiReaseguroFacultativo).waitUntilVisible();
+        checkiReaseguroFacultativo.waitUntilVisible();
         esperarHasta(TIEMPO_2000);
         checkiReaseguroFacultativo.click();
-        esperarHasta(TIEMPO_2000);
         esperarYClickearBoton(btnSiguiente);
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(lblMensajeFacultativo).waitUntilVisible();
+        esperarHasta(TIEMPO_2000);
+        lblMensajeFacultativo.waitUntilVisible();
+        resetImplicitTimeout();
     }
 
     public void cotizarPoliza() {
