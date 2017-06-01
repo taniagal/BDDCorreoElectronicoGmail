@@ -14,7 +14,6 @@ When intente ingresar las entradas de las diferentes coberturas
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublímite para perdida de contenido en tanques                 | 31             |
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida | 5              |
 | Otros Articulos          | Mercancías a granel   |                     |                  | Valor Asegurable                                               | 10             |
-And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | mensaje                                                                                                                                                                                         |
 | El valor de "Sublímite para perdida de contenido en tanques" deber ser menor o igual a la sumatoria de los valores asegurables de " - Mercancías a granel - Existencias fijas - Existencias flotantes - ". |
@@ -22,7 +21,6 @@ And intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                    | ENTRADAS                                                       | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Portadores externos de datos | Valor asegurado portadores externos de datos                   | 11             |
 | Coberturas del Riesgo |               |                     | Danos materiales             | Sublimite para gastos asociados a la ocurrencia de una pérdida | 5              |
-And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | mensaje                                                                                                      |
 | Para poder seleccionar el "Valor asegurado portadores externos de datos " debe tener asegurado "Equipo electrónico fijo |
@@ -30,7 +28,6 @@ And intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Gastos por arrendamiento de sistema electrónico de procesamiento de datos | Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos | 11             |
 | Coberturas del Riesgo |               |                     | Danos materiales                                                          | Sublimite para gastos asociados a la ocurrencia de una pérdida                            | 5              |
-And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
 | mensaje                                                                                                                                                  |
 | Para poder seleccionar el "Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos" debe tener asegurado "Equipo electrónico fijo |
