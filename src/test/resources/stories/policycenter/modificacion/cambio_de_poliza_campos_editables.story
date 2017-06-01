@@ -73,13 +73,13 @@ When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo a basico <plan>
 And adicione un valor asegurado superior al permitido <valor>
-And seleccione la opcion siguiente en modificacion
+And agrega cobertura asistencia <asistencia>
 And intente cotizar el cambio de poliza
 Then expida el cambio de la poliza
 
 Examples:
-| plan              | valor     |
-| Plan Autos Básico | 301000000 |
+| plan              | valor     | asistencia |
+| Plan Autos Básico | 301000000 | Asistencia Básica |
 
 Scenario: Validar requisitos en cambio de plan basico a otro plan
 Meta: @manual
