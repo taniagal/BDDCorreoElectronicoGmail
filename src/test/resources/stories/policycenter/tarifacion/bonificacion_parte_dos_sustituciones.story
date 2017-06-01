@@ -32,7 +32,6 @@ And al cambiar el asegurado se debe recalcular la bonificacion como poliza nueva
 | tipo_documento       | documento  | bonoC | bonoT |
 | CEDULA DE CIUDADANIA | 1060447895 | 0     | 20    |
 When cambio la bonificacion tecnica <bonoTec>
-And se presione el boton siguiente
 And agrega cobertura asistencia <asistencia>
 And cotice y expida la sustitucion
 Then se debe generar un UW con el mensaje <mensaje>
