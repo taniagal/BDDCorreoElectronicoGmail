@@ -14,7 +14,7 @@ Given estoy cotizando una poliza de mrc con documento:
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1066777571 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
 | AHP545 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
 When ingrese las coberturas:
 | limite | deducible | abogado | PLlaves |
@@ -41,6 +41,7 @@ Given tengo una poliza de PA con los siguientes datos:
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
+And agrega cobertura asistencia <asistencia>
 And intente cotizar el cambio de poliza
 And valido que la opcion de reimpresion no esta disponible
 And expido la poliza y voy al archivo de poliza
@@ -53,5 +54,5 @@ And me deben aparecer las opciones por las cuales puedo imprimir
 And cuando vaya a la opcion documentos
 Then se deben seleccionar todas las opciones por las cuales quiero reimprimir
 Examples:
-| plan               |
-| Plan Autos Básico  |
+| plan              | asistencia        |
+| Plan Autos Básico | Asistencia Básica |
