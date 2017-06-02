@@ -1,4 +1,6 @@
 package com.sura.guidewire.policycenter;
 
-public class DistribucionPrimasCedidas {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class DistribucionPrimasCedidas extends SerenityStory {
 }

@@ -177,8 +177,10 @@ public class GrupoDeDireccionPage extends PageUtil {
             comboBoxVerApartirDe.clear();
             comboBoxVerApartirDe.sendKeys(Keys.ARROW_DOWN);
             comboBoxVerApartirDe.sendKeys(Keys.ENTER);
+            comboBoxVerApartirDe.sendKeys(Keys.TAB);
             esperarHasta(TIEMPO_2000);
             seleccionarItem(comboBoxVerApartirDe, verApartirDe);
+            comboBoxVerApartirDe.sendKeys(Keys.TAB);
         }
         esperarHasta(TIEMPO_2000);
     }
