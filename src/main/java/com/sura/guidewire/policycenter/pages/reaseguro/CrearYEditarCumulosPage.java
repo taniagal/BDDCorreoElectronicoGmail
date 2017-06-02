@@ -74,6 +74,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
     public void clicMenuReaseguro() {
         menuReaseguro.waitUntilPresent();
         esperarObjetoClikeableServidorWe(menuReaseguro);
+        esperarHasta(TIEMPO_5000);
     }
 
     public void ingresarAcuerdosFacultativos() {
