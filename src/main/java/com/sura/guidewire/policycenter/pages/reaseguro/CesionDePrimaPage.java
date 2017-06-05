@@ -49,6 +49,7 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade linkCotizacionExpedida;
 
     String numeroDeEnvio = null;
+    String ESTADO_SHIFT = "SHIFT";
     private static final int DIEZ = 10;
 
     public CesionDePrimaPage(WebDriver driver) {
@@ -63,8 +64,12 @@ public class CesionDePrimaPage extends PageUtil {
         esperarYClickearBoton(btnPoliza);
     }
 
-    public void ejecutarTareaPrimasCedidas(String nombreTarea) {
-        btnVerPrimasCedidas.sendKeys(Keys.ALT, Keys.SHIFT, "t");
+    public void ejecutarTareaPrimasCedidas(String nombreTarea, String estado) {
+        if (estado.equals(ESTADO_SHIFT)) {
+            btnVerPrimasCedidas.sendKeys(Keys.SHIFT, Keys.ALT, "t");
+        }else{
+            btnVerPrimasCedidas.sendKeys(Keys.CONTROL, Keys.ALT, "t");
+        }
         buscaEnTablaTareaDeLote(nombreTarea);
         esperarYClickearBoton(btnAcciones);
         esperarHasta(TIEMPO_1000);

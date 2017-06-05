@@ -29,8 +29,8 @@ public class CesionDePrimaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ejecutaTareaPrimasCedidas(String nombreTarea) {
-        cesionDePrimaPage.ejecutarTareaPrimasCedidas(nombreTarea);
+    public void ejecutaTareaPrimasCedidas(String nombreTarea, String estado) {
+        cesionDePrimaPage.ejecutarTareaPrimasCedidas(nombreTarea, estado);
     }
 
     @Step
