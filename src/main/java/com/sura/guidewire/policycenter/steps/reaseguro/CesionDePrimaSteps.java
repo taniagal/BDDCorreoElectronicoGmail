@@ -7,6 +7,7 @@ import com.sura.guidewire.policycenter.pages.reaseguro.CrearYEditarCumulosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CesionDePrimaSteps extends ScenarioSteps {
 
@@ -26,6 +27,16 @@ public class CesionDePrimaSteps extends ScenarioSteps {
     @Step
     public void ingresarATodasLasTransacciones() {
         cesionDePrimaPage.ingresaATodasTransacciones();
+    }
+
+    @Step
+    public void verificarPrimasCedidas(ExamplesTable datos) {
+        cesionDePrimaPage.verificarPrimasCedidas(datos);
+    }
+
+    @Step
+    public void verConsolidadoPrimasCedidas() {
+        cesionDePrimaPage.verConsolidadoPrimasCedidas();
     }
 
     @Step
