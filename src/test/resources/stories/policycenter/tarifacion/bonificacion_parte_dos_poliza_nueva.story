@@ -10,8 +10,8 @@ Deseo poder obtener y/o agregar la bonificacion comercial y la tecnica a un vehi
 Scenario: Verificar generacion de UW Issue al cambiar la bonificacion consultada Poliza Nueva.
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-| cuenta     | producto | tipoPoliza |
-| C002888993 | Autos    | Individual |
+| cuenta     | producto | tipoPoliza | oficina | agente_oficina |
+| C002888993 | Autos    | Individual | 085     | DIRECTO        |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
