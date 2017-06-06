@@ -10,6 +10,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CesionDePrimaDefinitions {
 
@@ -52,6 +53,16 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea, estado);
         cesionDePrimaSteps.ingresarPrimasDespuesDeEjecutarTareaEnCedidas();
         cesionDePrimaSteps.ingresarATodasLasTransacciones();
+    }
+
+    @Then("se debe verificar el consolidado de las primas cedidas $datos")
+    public void verificarPrimasCedidas(ExamplesTable datos) {
+        cesionDePrimaSteps.verificarPrimasCedidas(datos);
+    }
+
+    @When("quiera ingresar al consolidado de primas cedidas")
+    public void verConsolidadoPrimasCedidas() {
+        cesionDePrimaSteps.verConsolidadoPrimasCedidas();
     }
 
     @Then("quiera ejecutar una tarea de proceso por lotes <nombreTarea> <estado>")
