@@ -44,7 +44,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_15, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()) {
             withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemCotizacion);
             esperarObjetoClikeableServidorWe(menuItemCotizacion);
@@ -58,7 +58,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         esperarObjetoClikeableServidorWe(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
-        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_15, TimeUnit.SECONDS);
         if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
             try {
                 esperarHasta(TIEMPO_2000);
