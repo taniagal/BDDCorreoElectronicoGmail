@@ -37,4 +37,9 @@ public class PolicySteps extends ScenarioSteps {
     public void nuevoContactoPersona() {
         inicioPage().irANuevaPersona();
     }
+
+    @Step
+    public String obtenerPaginaActual() {
+        return seus.getDriver().getCurrentUrl();
+    }
 }

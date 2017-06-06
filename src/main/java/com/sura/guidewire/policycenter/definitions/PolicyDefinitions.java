@@ -26,6 +26,7 @@ public class PolicyDefinitions {
     @Then("el usuario deberia ver la pagina de inicio correspondiente a su rol <message>")
     public void assertion(@Named("message") String msjResult) {
         pcs.assertion(msjResult);
+
     }
 
     @Then("el usuario deberia poder acceder a nuevo contacto persona")
