@@ -49,7 +49,17 @@ Then se debe verificar el consolidado de las primas cedidas
 | Terremoto        | Excedente           | $392.051 (COP)   |
 | Terremoto        | Cuota parte         | $1.489.793 (COP) |
 | Terremoto        | Acuerdo facultativo | $4.165.539 (COP) |
+Given voy a buscar el numero de envio
+And modifico la fecha de vigencia <fechaModificacion>
+When seleccione la opcion siguiente en la modificacion
+And ingrese las entradas en cambio de poliza de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Muebles y enseres   |                     |                  | Valor Asegurable                 | 30000000000    |
+| Información de Artículos | Muebles y enseres   |                     | Danos materiales | Valor asegurado danos materiales | 30000000000    |
+And cotice y expida la poliza
+And ingrese al resumen de la poliza expedida
+And de clic al menu reaseguro
 
 Examples:
-| descripcionDeAcuerdo     | nombreTarea   | estado  |
-| Acuerdo Prueba Reaseguro | PremiumCeding | CONTROL |
+| descripcionDeAcuerdo     | nombreTarea   | estado  | fechaModificacion |
+| Acuerdo Prueba Reaseguro | PremiumCeding | CONTROL | 01/03/2017        |

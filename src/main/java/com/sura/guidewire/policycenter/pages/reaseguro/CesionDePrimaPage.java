@@ -31,7 +31,7 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade lblNumeroCotizacion;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     private WebElementFacade linkVerExpedicion;
-    @FindBy(xpath = ".//*[@id='RICededPremiums_AllPopup:__crumb__']")
+    @FindBy(xpath = ".//*[contains(@id,'Popup:__crumb__')]")
     private WebElementFacade linkVolverAPrimasCedidas;
     @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:0']")
     private WebElementFacade linkInformacionDeDireccionYCobertura;
@@ -55,6 +55,7 @@ public class CesionDePrimaPage extends PageUtil {
     String numeroDeEnvio = null;
     String ESTADO_SHIFT = "SHIFT";
     private static final int DIEZ = 10;
+    private static final int CANTIDAD_TIPO_CONTRATO = 3;
     public static final String XPATH_TABLA_PRIMAS_CEDIDAS_TR = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr";
 
     public CesionDePrimaPage(WebDriver driver) {
@@ -169,7 +170,7 @@ public class CesionDePrimaPage extends PageUtil {
     }
 
     public void verificarPrimasCedidas(ExamplesTable datos) {
-        for (int z = 0; z < datos.getRowCount();z++) {
+        for (int z = 0; z < datos.getRowCount()/CANTIDAD_TIPO_CONTRATO;z++) {
             WebElementFacade linkVerConsolidadoDePrimasCedidas = $(".//*[@id='RICededPremiumsPopup:" + z + ":ConsolidatedCededPremium']");
             linkVerConsolidadoDePrimasCedidas.waitUntilPresent().click();
             verificarPrimaBrutaCedida(datos);
