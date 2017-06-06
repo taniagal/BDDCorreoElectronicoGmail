@@ -10,6 +10,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CesionDePrimaDefinitions {
 
@@ -45,18 +46,28 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.mostrarInformacionGeneralDeCobertura(informacionGeneralCobertura);
     }
 
-    @When("quiera visualizar la informacion completa de las primas cedidas <nombreTarea>")
-    public void whenElUsuarioQuieraVisualizarLaInformacionCompletaDeLasPrimasCedidas(@Named("nombreTarea") String nombreTarea) {
+    @When("quiera visualizar la informacion completa de las primas cedidas <nombreTarea> <estado>")
+    public void whenElUsuarioQuieraVisualizarLaInformacionCompletaDeLasPrimasCedidas(@Named("nombreTarea") String nombreTarea, @Named("estado") String estado) {
         cesionDePrimaSteps.tomaYbuscaConNumeroDeEnvio();
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
-        cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea);
+        cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea, estado);
         cesionDePrimaSteps.ingresarPrimasDespuesDeEjecutarTareaEnCedidas();
         cesionDePrimaSteps.ingresarATodasLasTransacciones();
     }
 
-    @Then("quiera ejecutar una tarea de proceso por lotes: $nombreTarea")
-    public void ejecutarTareaProcesoPorLotes(String nombreTarea) {
-        cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea);
+    @Then("se debe verificar el consolidado de las primas cedidas $datos")
+    public void verificarPrimasCedidas(ExamplesTable datos) {
+        cesionDePrimaSteps.verificarPrimasCedidas(datos);
+    }
+
+    @When("quiera ingresar al consolidado de primas cedidas")
+    public void verConsolidadoPrimasCedidas() {
+        cesionDePrimaSteps.verConsolidadoPrimasCedidas();
+    }
+
+    @Then("quiera ejecutar una tarea de proceso por lotes <nombreTarea> <estado>")
+    public void ejecutarTareaProcesoPorLotes(@Named("nombreTarea") String nombreTarea, @Named("estado") String estado) {
+        cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea, estado);
     }
 
     @When("quiera validar que el reaseguro para el contrato cuotaparte o excedente")

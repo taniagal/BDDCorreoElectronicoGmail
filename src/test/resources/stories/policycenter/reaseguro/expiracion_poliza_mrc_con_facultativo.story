@@ -82,7 +82,7 @@ And seleccione opcion Ver A Partir De: 01/01/2017 -
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 12.000.000.000        | 249.230.769     | 1.412.307.693  | 10.338.461.538 | 1.661.538.462    | 40.000.000.000         | 8.000.000.000                  |
-And quiera ejecutar una tarea de proceso por lotes: Reinsurance Policy Expiration
+And quiera ejecutar una tarea de proceso por lotes <nombreTarea> <estado>
 Given consulto poliza expedida 2
 When de clic al menu reaseguro
 And seleccione opcion Ver A Partir De: - 30/06/2017
@@ -91,5 +91,5 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | 20.000.000.000         | 14.000.000.000        | 540.000.000     | 3.060.000.000  | 10.400.000.000 | 3.600.000.000    | 20.000.000.000         | 6.000.000.000                  |
 
 Examples:
-| descripcionDeAcuerdo     |
-| Acuerdo Prueba Reaseguro |
+| descripcionDeAcuerdo     | nombreTarea                   | estado |
+| Acuerdo Prueba Reaseguro | Reinsurance Policy Expiration | SHIFT  |

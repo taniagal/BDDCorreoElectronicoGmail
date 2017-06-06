@@ -5,10 +5,12 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class CesionDePrimaPage extends PageUtil {
@@ -19,6 +21,8 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade btnPoliza;
     @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:AllTransactions']")
     private WebElementFacade linkIngresaATodasTransacciones;
+    @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:ConsolidatedCededPremium']")
+    private WebElementFacade linkVerConsolidadoDePrimasCedidas;
     @FindBy(xpath = ".//*[@id='BatchProcessInfo:BatchProcessScreen:ttlBar']")
     private WebElementFacade lblInformacionPorLotes;
     @FindBy(xpath = ".//*[@id='ServerTools:InternalToolsMenuActions-btnInnerEl']")
@@ -49,7 +53,9 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade linkCotizacionExpedida;
 
     String numeroDeEnvio = null;
+    String ESTADO_SHIFT = "SHIFT";
     private static final int DIEZ = 10;
+    public static final String XPATH_TABLA_PRIMAS_CEDIDAS_TR = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr";
 
     public CesionDePrimaPage(WebDriver driver) {
         super(driver);
@@ -63,8 +69,12 @@ public class CesionDePrimaPage extends PageUtil {
         esperarYClickearBoton(btnPoliza);
     }
 
-    public void ejecutarTareaPrimasCedidas(String nombreTarea) {
-        btnVerPrimasCedidas.sendKeys(Keys.ALT, Keys.SHIFT, "t");
+    public void ejecutarTareaPrimasCedidas(String nombreTarea, String estado) {
+        if (estado.equals(ESTADO_SHIFT)) {
+            btnVerPrimasCedidas.sendKeys(Keys.SHIFT, Keys.ALT, "t");
+        }else{
+            btnVerPrimasCedidas.sendKeys(Keys.CONTROL, Keys.ALT, "t");
+        }
         buscaEnTablaTareaDeLote(nombreTarea);
         esperarYClickearBoton(btnAcciones);
         esperarHasta(TIEMPO_1000);
@@ -152,6 +162,28 @@ public class CesionDePrimaPage extends PageUtil {
         }
         resetImplicitTimeout();
         MatcherAssert.assertThat("Error: Se esperaba la tabla de contratos", tabla.isVisible());
+    }
+
+    public void verConsolidadoPrimasCedidas() {
+        esperarYClickearBoton(linkVolverAPrimasCedidas);
+        esperarObjetoClikeableServidorWe(linkVerConsolidadoDePrimasCedidas);
+    }
+
+    public void verificarPrimasCedidas(ExamplesTable datos) {
+        WebElementFacade tabla = $(".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr[1]/td[5]");
+        List<WebElementFacade> tablaPrimaCedida = findAll(XPATH_TABLA_PRIMAS_CEDIDAS_TR);
+        for (Map<String, String> dato : datos.getRows()) {
+            for (int j = 1; j <= tablaPrimaCedida.size(); j++) {
+                WebElementFacade tipoContrato = $(XPATH_TABLA_PRIMAS_CEDIDAS_TR + "[" + j + "]/td[4]");
+                if (tipoContrato.containsText(dato.get("tipoContrato"))) {
+                    WebElementFacade primaCedida = $(XPATH_TABLA_PRIMAS_CEDIDAS_TR + "[" + j + "]/td[5]");
+                    MatcherAssert.assertThat("Error en el valor de la prima bruta cedida para el contrato: " + tipoContrato.getText() +
+                            " . Expected: " + dato.get("primaBrutaCedida") +
+                            " but was: " + primaCedida.getText(), primaCedida.getText().equals(dato.get("primaBrutaCedida")));
+                    break;
+                }
+            }
+        }
     }
 
     public void validarInformacionGeneralDeCobertura(String informacionGeneralCobertura) {

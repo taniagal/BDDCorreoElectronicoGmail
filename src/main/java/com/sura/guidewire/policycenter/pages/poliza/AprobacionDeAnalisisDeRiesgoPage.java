@@ -74,7 +74,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPolizaMRC() {
-        setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()) {
             esperarObjetoClikeableServidorWe(menuItemCotizacion);
         }
