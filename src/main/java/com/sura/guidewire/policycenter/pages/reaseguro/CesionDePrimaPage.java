@@ -21,8 +21,6 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade btnPoliza;
     @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:AllTransactions']")
     private WebElementFacade linkIngresaATodasTransacciones;
-    @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:ConsolidatedCededPremium']")
-    private WebElementFacade linkVerConsolidadoDePrimasCedidas;
     @FindBy(xpath = ".//*[@id='BatchProcessInfo:BatchProcessScreen:ttlBar']")
     private WebElementFacade lblInformacionPorLotes;
     @FindBy(xpath = ".//*[@id='ServerTools:InternalToolsMenuActions-btnInnerEl']")
@@ -51,6 +49,8 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade campoTxtBuscar;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     private WebElementFacade linkCotizacionExpedida;
+    @FindBy(xpath = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:0']")
+    private WebElementFacade labelNombreRiesgo;
 
     String numeroDeEnvio = null;
     String ESTADO_SHIFT = "SHIFT";
@@ -166,21 +166,30 @@ public class CesionDePrimaPage extends PageUtil {
 
     public void verConsolidadoPrimasCedidas() {
         esperarYClickearBoton(linkVolverAPrimasCedidas);
-        esperarObjetoClikeableServidorWe(linkVerConsolidadoDePrimasCedidas);
     }
 
     public void verificarPrimasCedidas(ExamplesTable datos) {
-        WebElementFacade tabla = $(".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr[1]/td[5]");
+        for (int z = 0; z < datos.getRowCount();z++) {
+            WebElementFacade linkVerConsolidadoDePrimasCedidas = $(".//*[@id='RICededPremiumsPopup:" + z + ":ConsolidatedCededPremium']");
+            linkVerConsolidadoDePrimasCedidas.waitUntilPresent().click();
+            verificarPrimaBrutaCedida(datos);
+            linkVolverAPrimasCedidas.click();
+        }
+    }
+
+    public void verificarPrimaBrutaCedida(ExamplesTable datos) {
         List<WebElementFacade> tablaPrimaCedida = findAll(XPATH_TABLA_PRIMAS_CEDIDAS_TR);
         for (Map<String, String> dato : datos.getRows()) {
-            for (int j = 1; j <= tablaPrimaCedida.size(); j++) {
-                WebElementFacade tipoContrato = $(XPATH_TABLA_PRIMAS_CEDIDAS_TR + "[" + j + "]/td[4]");
-                if (tipoContrato.containsText(dato.get("tipoContrato"))) {
-                    WebElementFacade primaCedida = $(XPATH_TABLA_PRIMAS_CEDIDAS_TR + "[" + j + "]/td[5]");
-                    MatcherAssert.assertThat("Error en el valor de la prima bruta cedida para el contrato: " + tipoContrato.getText() +
-                            " . Expected: " + dato.get("primaBrutaCedida") +
-                            " but was: " + primaCedida.getText(), primaCedida.getText().equals(dato.get("primaBrutaCedida")));
-                    break;
+            if (labelNombreRiesgo.containsText(dato.get("riesgo"))) {
+                for (int j = 1; j <= tablaPrimaCedida.size(); j++) {
+                    WebElementFacade tipoContrato = $(XPATH_TABLA_PRIMAS_CEDIDAS_TR + "[" + j + "]/td[4]");
+                    if (tipoContrato.containsText(dato.get("tipoContrato"))) {
+                        WebElementFacade primaCedida = $(XPATH_TABLA_PRIMAS_CEDIDAS_TR + "[" + j + "]/td[5]");
+                        MatcherAssert.assertThat("Error en el valor de la prima bruta cedida para el contrato: " + tipoContrato.getText() +
+                                " . Expected: " + dato.get("primaBrutaCedida") +
+                                " but was: " + primaCedida.getText(), primaCedida.getText().equals(dato.get("primaBrutaCedida")));
+                        break;
+                    }
                 }
             }
         }

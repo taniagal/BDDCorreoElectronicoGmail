@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 99 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 88 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas              |
 | Machine  | 10000000000      | Danos,Asonada,Terremoto |
@@ -39,10 +39,16 @@ And expido la poliza mrc
 When quiera visualizar la informacion completa de las primas cedidas <nombreTarea> <estado>
 And quiera ingresar al consolidado de primas cedidas
 Then se debe verificar el consolidado de las primas cedidas
-| tipoContrato        | primaBrutaCedida   |
-| Excedente           | $392.051 (COP)     |
-| Cuota parte         | $1.489.793 (COP)   |
-| Acuerdo facultativo | $4.165.539 (COP)   |
+| riesgo           | tipoContrato        | primaBrutaCedida |
+| AMIT             | Excedente           | $32.000 (COP)    |
+| AMIT             | Cuota parte         | $108.800 (COP)   |
+| AMIT             | Acuerdo facultativo | $340.000 (COP)   |
+| Daños materiales | Excedente           | $215.949 (COP)   |
+| Daños materiales | Cuota parte         | $734.226 (COP)   |
+| Daños materiales | Acuerdo facultativo | $2.294.461 (COP) |
+| Terremoto        | Excedente           | $392.051 (COP)   |
+| Terremoto        | Cuota parte         | $1.489.793 (COP) |
+| Terremoto        | Acuerdo facultativo | $4.165.539 (COP) |
 
 Examples:
 | descripcionDeAcuerdo     | nombreTarea   | estado  |
