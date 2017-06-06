@@ -10,9 +10,10 @@ para poder cotizar o expedir una poliza
 
 Scenario: Validar que se genere actividad de riesgo consultable al renovar una poliza
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C002888992|Multiriesgo corporativo|
+Given estoy cotizando una poliza de mrc:
+| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1979       | RENE          | PEREZ           | DIRECCION DE RESIDENCIA | CALLE 95J #39-70 | Antioquia    | Medellin | INT-3  |
+When ingrese a edificios y ubicaciones
 When agregue una nueva ubicacion:
 |departamento|ciudad  |direccion        |descripcion    |actividad                                 |medioVenta|
 |Antioquia   |Medellin|CR 44 A # 43 - 00|Core de Seguros|Actividades de agencias de empleo temporal|Televentas|
