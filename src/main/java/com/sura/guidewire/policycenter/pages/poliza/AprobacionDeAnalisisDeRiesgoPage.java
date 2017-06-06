@@ -44,7 +44,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        setImplicitTimeout(TIEMPO_15, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()) {
             withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemCotizacion);
             esperarObjetoClikeableServidorWe(menuItemCotizacion);
@@ -58,7 +58,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         esperarObjetoClikeableServidorWe(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
-        setImplicitTimeout(TIEMPO_15, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
             try {
                 esperarHasta(TIEMPO_2000);
@@ -82,5 +82,29 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
         resetImplicitTimeout();
+    }
+
+    public void expedirPolizaUAT() {
+        setImplicitTimeout(TIEMPO_60, TimeUnit.SECONDS);
+        if (!botonExpedirPoliza.isPresent()) {
+            esperarObjetoClikeableServidorWe(menuItemCotizacion);
+        }
+        resetImplicitTimeout();
+        withTimeoutOf(TIEMPO_60, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
+        esperarObjetoClikeableServidorWe(botonExpedirPoliza);
+        waitFor(botonAceptarMensaje);
+        botonAceptarMensaje.click();
+        setImplicitTimeout(TIEMPO_60, TimeUnit.SECONDS);
+        if (botonBorrar.isPresent()) {
+            withTimeoutOf(TIEMPO_60, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
+            esperarObjetoClikeableServidorWe(botonExpedirPoliza);
+            waitFor(botonAceptarMensaje);
+            botonAceptarMensaje.click();
+
+        }
+        resetImplicitTimeout();
+        esperarHasta(TIEMPO_5000);
+        waitForAnyTextToAppear("Cotización Expedida", "Cambio en la póliza Expedida", "Asuntos que bloquean la expedición");
+
     }
 }

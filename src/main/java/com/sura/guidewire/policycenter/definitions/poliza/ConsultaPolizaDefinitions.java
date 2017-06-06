@@ -20,7 +20,7 @@ public class ConsultaPolizaDefinitions {
 
     @When("expido la poliza y capturo el numero de poliza")
     public void expedirPoliza() {
-        tasaUnicaSteps.expedirPoliza();
+        tasaUnicaSteps.expedirPolizaUAT();
         numeroPoliza = buscarNumeroPoliza.capturarNumeroPoliza();
     }
 
