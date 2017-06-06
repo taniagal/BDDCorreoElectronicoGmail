@@ -1,0 +1,1 @@
+http://coregw_sap:qaspisap01@qassurasappi:50000/dir/wsdl?p=ic/1326910af5b63cba93a6b85b055020b4

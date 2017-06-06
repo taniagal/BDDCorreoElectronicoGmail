@@ -126,6 +126,11 @@ public class TarifaTasaUnicaDefinitions {
         tasaUnicaSteps.expedirPoliza();
     }
 
+    @Then("se validad la creacion de la poliza en SAP")
+    public void validarCreacionPolizaEnSaP(){
+
+    }
+
     @Given("seleccione algunas coberturas: $coberturas")
     public void agregarCoberturas(ExamplesTable coberturas) {
         tasaUnicaSteps.seleciconarCoberturas(coberturas);
