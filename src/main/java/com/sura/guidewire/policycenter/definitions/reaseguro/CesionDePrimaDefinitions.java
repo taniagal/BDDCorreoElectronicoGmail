@@ -79,4 +79,9 @@ public class CesionDePrimaDefinitions {
     public void thenSeDebenMostrarLosValoresCorrespondientesDePrimasDeReasegurador() {
         cesionDePrimaSteps.validaCondicionesYValoresContratos();
     }
+
+    @Given("voy a buscar el numero de envio")
+    public void buscarNumeroEnvio() {
+        cesionDePrimaSteps.buscarNumeroEnvio();
+    }
 }
