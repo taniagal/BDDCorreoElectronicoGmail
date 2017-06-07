@@ -19,7 +19,7 @@ Then se deben validar los riesgos consultables mostrando los siguientes mensaje 
 
 Examples:
 | numSubscripcion | tipo_documento       | documento |
-| 33344336        | CEDULA DE CIUDADANIA | 9876543   |
+| 33396336        | CEDULA DE CIUDADANIA | 9876543   |
 
 
 Scenario: 2 Mensaje de alerta para tomador PEPS
@@ -34,7 +34,7 @@ Then se deben validar los riesgos consultables mostrando los siguientes mensaje 
 
 Examples:
 | numSubscripcion | tipo_documento       | documento  |                                                                                                                                        |
-| 33344336        | CEDULA DE CIUDADANIA | 71318883   |
+| 33396336        | CEDULA DE CIUDADANIA | 71318883   |
 
 
 Scenario: 3 Mensaje de alerta para tomador que requiere sarlaft
