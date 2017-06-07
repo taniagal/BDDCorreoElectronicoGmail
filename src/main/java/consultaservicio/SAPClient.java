@@ -50,10 +50,10 @@ public class SAPClient extends PageUtil {
                     String[] campo = new String[CONSTANTE_2];
                     campo[CONSTANTE_0] = dTNegRespuestaConsultasCxC.getNmrecibo();
                     campo[CONSTANTE_1] = dTNegRespuestaConsultasCxC.getNmpoliza();
-                    System.out.println("Valores retornados: ");
+                    LOGGER.info("Valores retornados: ");
                     for (int datos = CONSTANTE_0; datos <= CONSTANTE_1; datos++) {
                         MatcherAssert.assertThat(campo[datos], Matchers.is(Matchers.not(Matchers.isEmptyString())));
-                        System.out.println(campo[datos]);
+                        LOGGER.info(campo[datos]);
                     }
                 }
             } else {
@@ -61,9 +61,9 @@ public class SAPClient extends PageUtil {
             }
         } catch (P2ApplicationException e) {
             LOGGER.error("Error en la conexion" + e);
-            System.out.println(e.getFaultInfo().getStandard().getFaultText());
+            LOGGER.info(e.getFaultInfo().getStandard().getFaultText());
         } catch (SOAPFaultException e) {
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
         }
 
     }
