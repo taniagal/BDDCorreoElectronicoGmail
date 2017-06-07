@@ -40,7 +40,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
-    private static final String MENSAJES_WORKSPACE = "MENSAJES_WORKSPACE";
     private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
 
     @FindBy(xpath = ".//*[contains(@id,'LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding')]")

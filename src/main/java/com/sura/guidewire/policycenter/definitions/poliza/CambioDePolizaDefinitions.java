@@ -69,8 +69,8 @@ public class CambioDePolizaDefinitions {
     }
 
     @When("ingrese al menu edificios y ubicaciones")
-    public void IrAMenuEdificiosYUbicaciones() {
-        cambioDePolizaSteps.IrAMenuEdificiosYUbicaciones();
+    public void irAMenuEdificiosYUbicaciones() {
+        cambioDePolizaSteps.irAMenuEdificiosYUbicaciones();
     }
 
 }

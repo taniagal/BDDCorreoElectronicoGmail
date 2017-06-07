@@ -275,7 +275,7 @@ public class PolizaPage extends PageUtil {
         shouldContainText("Iniciar la rehabilitación");
         String xpathInputMotivo = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonCode-inputEl']";
         String xpathTextareaDescripcion = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonDescription-inputEl']";
-        String btnSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
+        String botonSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
         findBy(xpathInputMotivo).type(motivo);
         waitFor(TIEMPO_1).seconds();
         findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
@@ -283,9 +283,9 @@ public class PolizaPage extends PageUtil {
         findBy(xpathTextareaDescripcion).type(descripcion);
         waitFor(TIEMPO_1).seconds();
         findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
-        findBy(btnSiguiente).click();
+        findBy(botonSiguiente).click();
         waitFor(TIEMPO_2).seconds();
-        findBy(btnSiguiente).click();
+        findBy(botonSiguiente).click();
     }
 
     public void ingresarFechaCancelacion(String fechaCancelacion) {

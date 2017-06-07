@@ -76,7 +76,7 @@ public class CambioDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void IrAMenuEdificiosYUbicaciones(){
+    public void irAMenuEdificiosYUbicaciones(){
         cambioDePolizaPage.irAMenuEdificiosYUbicaciones();
     }
     @Step
