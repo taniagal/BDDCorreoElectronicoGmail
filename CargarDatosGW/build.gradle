@@ -19,7 +19,7 @@ task escribirArchivo << {
     def writer = new FileWriter(file('src/main/resources/gradle.properties'))
     try {
         if (project.getProperties().get("env") == "dev") {
-            props.setProperty("url", "http://dllocoreseguros.suramericana.com:7003")
+            props.setProperty("url", "http://dllocoreseguros.suramericana.com.co/pc")
         } else if (project.getProperties().get("env") == "qa") {
             props.setProperty("url", "https://qacoreseguros.suramericana.com")
         } else if (project.getProperties().get("env") == "reaseguro") {

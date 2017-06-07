@@ -8,19 +8,23 @@ quiero poder solicitar autorización a los comites de Riesgos consultables
 para poder cotizar o expedir una poliza
 
 
-Scenario: 1 Validar que se genere actividad de riesgo consultable al cotizar una poliza
+Scenario: Verificar la generacion de la factura de una poliza en SAP
 GivenStories: stories/policycenter/login_policy_sap.story
 Given estoy cotizando una poliza:
-|cuenta    |producto               |agente_oficina                | oficina   |
-|2012723757|Multiriesgo corporativo|ABARROTES S.A. CQLII          | 019       |
-When ingrese a edificios y ubicaciones
-And intente ingresar una nueva ubicacion sin riesgo consultable
-And ingrese la entrada de las diferentes coberturas con interes <documento><tipodocumento><tipoBeneficiario> adicional
-| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
-| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 100000000      |
-| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100000000      |
+|cuenta    |producto               |agente_oficina                | oficina   |tipoPoliza    |
+|2012723757|Autos                  |ABARROTES S.A. CQLII          | 019       |Individual    |
+When ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos de vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis      | motor      | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| random | 2017   | 01601253         | MEDELLIN           | Particular        | 526adsafd   | 34asdas  | 33500000        | null      | null    | 2    | Plan Autos Básico  | Televentas |
+And ingrese a la pantalla de coberturas
+And ingrese las coberturas a auto cero kilometros:
+| limite | deducible | AS                 |
+| 640.   | 0         | Asistencia Básica  |
+And cotice una poliza
 And expido la poliza y capturo el numero de poliza
 Then se valida la creacion de la poliza en SAP
+
 Examples:
-| rolUsuario | documento   | tipoBeneficiario |  tipodocumento         |
-| Asesor     | 1128414968  | Asegurado        |  CEDULA DE CIUDADANIA  |
+| tipo_documento       | documento  | asistencia         |
+| CEDULA DE CIUDADANIA | 1128414968 | Asistencia Básica  |
