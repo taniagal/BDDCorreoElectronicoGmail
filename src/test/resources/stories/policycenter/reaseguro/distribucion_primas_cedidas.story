@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 88 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 89 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas              |
 | Machine  | 10000000000      | Danos,Asonada,Terremoto |
@@ -36,6 +36,7 @@ And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
 And expido la poliza mrc
 And expido la poliza mrc
+And capturo el numero de poliza 1
 When quiera visualizar la informacion completa de las primas cedidas <nombreTarea> <estado>
 And quiera ingresar al consolidado de primas cedidas
 Then se debe verificar el consolidado de las primas cedidas
@@ -49,7 +50,7 @@ Then se debe verificar el consolidado de las primas cedidas
 | Terremoto        | Excedente           | $392.051 (COP)   |
 | Terremoto        | Cuota parte         | $1.489.793 (COP) |
 | Terremoto        | Acuerdo facultativo | $4.165.539 (COP) |
-Given voy a buscar el numero de envio
+Given se va a consultar poliza expedida 1
 And modifico la fecha de vigencia <fechaModificacion>
 When seleccione la opcion siguiente en la modificacion
 And ingrese las entradas en cambio de poliza de las diferentes coberturas
