@@ -53,7 +53,7 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade labelNombreRiesgo;
 
     String numeroDeEnvio = null;
-    String ESTADO_SHIFT = "SHIFT";
+    private static final String ESTADO_SHIFT = "SHIFT";
     private static final int DIEZ = 10;
     private static final int CANTIDAD_TIPO_CONTRATO = 3;
     public static final String XPATH_TABLA_PRIMAS_CEDIDAS_TR = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr";

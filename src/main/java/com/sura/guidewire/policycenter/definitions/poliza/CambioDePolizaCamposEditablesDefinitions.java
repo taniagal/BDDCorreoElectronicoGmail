@@ -1,9 +1,7 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
-import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.steps.modificacion.CambioDePlacaSteps;
 import com.sura.guidewire.policycenter.steps.modificacion.CambioDePolizaCamposEditablesSteps;
-import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
