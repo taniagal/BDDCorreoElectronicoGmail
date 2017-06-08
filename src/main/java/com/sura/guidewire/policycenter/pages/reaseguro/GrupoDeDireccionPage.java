@@ -173,14 +173,20 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     public void seleccionarOpcionVerApartirDe(String verApartirDe) {
         comboBoxVerApartirDe.waitUntilPresent();
-        if (!verApartirDe.equals(comboBoxVerApartirDe.getValue())) {
-            comboBoxVerApartirDe.clear();
-            comboBoxVerApartirDe.sendKeys(Keys.ARROW_DOWN);
-            comboBoxVerApartirDe.sendKeys(Keys.ENTER);
-            comboBoxVerApartirDe.sendKeys(Keys.TAB);
-            esperarHasta(TIEMPO_2000);
-            seleccionarItem(comboBoxVerApartirDe, verApartirDe);
-            comboBoxVerApartirDe.sendKeys(Keys.TAB);
+        int intentos = 0;
+        while (intentos < 3) {
+            if (!verApartirDe.equals(comboBoxVerApartirDe.getValue())) {
+                comboBoxVerApartirDe.clear();
+                comboBoxVerApartirDe.sendKeys(Keys.ARROW_DOWN);
+                comboBoxVerApartirDe.sendKeys(Keys.ENTER);
+                comboBoxVerApartirDe.sendKeys(Keys.TAB);
+                esperarHasta(TIEMPO_2000);
+                seleccionarItem(comboBoxVerApartirDe, verApartirDe);
+                comboBoxVerApartirDe.sendKeys(Keys.TAB);
+            } else {
+             intentos = CONSTANTE_3;
+            }
+            intentos++;
         }
         esperarHasta(TIEMPO_2000);
     }

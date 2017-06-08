@@ -10,8 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.concurrent.TimeUnit;
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
-//@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
-//@DefaultUrl("http://10.214.18.55:8180/pc/PolicyCenter.do")
+//@DefaultUrl("http://dllocoreseguros.suramericana.com.co/pc/PolicyCenter.do")
+//@DefaultUrl("http://10.214.18.58:8180/pc/PolicyCenter.do")
 public class LoginPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='country']")
