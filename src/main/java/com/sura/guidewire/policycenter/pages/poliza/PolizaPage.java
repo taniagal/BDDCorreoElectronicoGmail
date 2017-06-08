@@ -442,12 +442,12 @@ public class PolizaPage extends PageUtil {
     }
 
     public void verificarCancelacion() {
-        labelCancelacionExpedida.waitUntilPresent().getText().equals("Cancelación Expedida");
+        "Cancelación Expedida".equals(labelCancelacionExpedida.waitUntilPresent().getText());
         linkIrAlEscritorio.click();
     }
 
     public void verificarRehabilitacion() {
-        labelCancelacionExpedida.waitUntilPresent().getText().equals("Rehabilitación Expedida");
+        "Rehabilitación Expedida".equals(labelCancelacionExpedida.waitUntilPresent().getText());
     }
 
     public void seleccionarOpcionRetirarTransaccion() {

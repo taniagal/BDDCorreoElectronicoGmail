@@ -67,6 +67,8 @@ public class PageUtil extends PageObject {
     protected Actions actions = new Actions(getDriver());
     protected static final String OPCIONES_MENU = "OPCIONES_MENU";
     protected static final String VALOR_PRIMA_CERO = "$0 (COP)";
+    protected static final String BUT_WAS = " but was: ";
+    protected static final String PERDIDA_LLAVES = "PLlaves";
 
     public PageUtil(WebDriver driver) {
         super(driver);

@@ -89,17 +89,17 @@ public class GrupoDeDireccionPage extends PageUtil {
     }
 
     public void validaMontoRetenidoEnContratoEnCotaparte() {
-        MatcherAssert.assertThat("Error en el valor retenido en cuotaparte, expected: " + calculaMontoRetenidoEnContrato() + " but was: " + lblValorRetenidoCp.getText(), lblValorRetenidoCp.getText().equals(calculaMontoRetenidoEnContrato()));
+        MatcherAssert.assertThat("Error en el valor retenido en cuotaparte, expected: " + calculaMontoRetenidoEnContrato() + BUT_WAS + lblValorRetenidoCp.getText(), lblValorRetenidoCp.getText().equals(calculaMontoRetenidoEnContrato()));
     }
 
     public void validaMontoCedidoEnContratoEnCotaparte() {
         MatcherAssert.assertThat("Error en el valor cedido en cuontaparte, expected: " + calculaMontoCedidoEnContratoCotaparte() +
-                " but was: " + tblRiesgoCedidoContratoCotaparteBasico.getText(), tblRiesgoCedidoContratoCotaparteBasico.getText().equals(calculaMontoCedidoEnContratoCotaparte()));
+                BUT_WAS + tblRiesgoCedidoContratoCotaparteBasico.getText(), tblRiesgoCedidoContratoCotaparteBasico.getText().equals(calculaMontoCedidoEnContratoCotaparte()));
     }
 
     public void validaMontoCedidoEnContratoEnExcedido() {
         MatcherAssert.assertThat("Error en el valor en contrato excedido, expected: " + calculaMontoCedidoEnContratoCotaparte() +
-                " but was: " + tblRiesgoCedidoContratoExcedenteBasico.getText(), tblRiesgoCedidoContratoExcedenteBasico.getText().equals(calculaMontoCedidoEnContratoExdente()));
+                BUT_WAS + tblRiesgoCedidoContratoExcedenteBasico.getText(), tblRiesgoCedidoContratoExcedenteBasico.getText().equals(calculaMontoCedidoEnContratoExdente()));
     }
 
     public void verificarBaseReasegurableRiesgo(ExamplesTable examplesTable) {
@@ -107,35 +107,35 @@ public class GrupoDeDireccionPage extends PageUtil {
         Map<String, String> data = examplesTable.getRow(0);
         String baseReasegurableRiesgo = lblBaseReasegurableRiesgo.getText().substring(CONSTANTE_1, lblBaseReasegurableRiesgo.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor Base reasegurable riesgo, expected: " + data.get("baseReasegurableRiesgo") +
-                " but was: " + baseReasegurableRiesgo, baseReasegurableRiesgo.equals(data.get("baseReasegurableRiesgo")));
+                BUT_WAS + baseReasegurableRiesgo, baseReasegurableRiesgo.equals(data.get("baseReasegurableRiesgo")));
     }
 
     public void verificarBaseReaseguroContrato(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String baseReasegoContrato = lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor Base distribución de reaseguro contrato automático, expected: " + data.get("baseReaseguroContrato") +
-                " but was: " + baseReasegoContrato, baseReasegoContrato.equals(data.get("baseReaseguroContrato")));
+                BUT_WAS + baseReasegoContrato, baseReasegoContrato.equals(data.get("baseReaseguroContrato")));
     }
 
     public void verificarValorRetenidoCP(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String valorRetenidoCP = lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor retenido contrato cuota parte, expected: " + data.get("valorRetenidoCP") +
-                " but was: " + valorRetenidoCP, valorRetenidoCP.equals(data.get("valorRetenidoCP")));
+                BUT_WAS + valorRetenidoCP, valorRetenidoCP.equals(data.get("valorRetenidoCP")));
     }
 
     public void verificarValorRiesgoCedidoCP(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String valorRiesgoCedidoCP = tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor riesgo cedido cuota parte, expected: " + data.get("riesgoCedidoCP") +
-                " but was: " + valorRiesgoCedidoCP, valorRiesgoCedidoCP.equals(data.get("riesgoCedidoCP")));
+                BUT_WAS + valorRiesgoCedidoCP, valorRiesgoCedidoCP.equals(data.get("riesgoCedidoCP")));
     }
 
     public void verificarValorRiesgoCedidoEX(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String valorRiesgoCedidoEX = tblRiesgoCedidoContratoExcedenteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoExcedenteBasico.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor riesgo cedido excedente, expected: " + data.get("riesgoCedidoEX") +
-                " but was: " + valorRiesgoCedidoEX, valorRiesgoCedidoEX.equals(data.get("riesgoCedidoEX")));
+                BUT_WAS + valorRiesgoCedidoEX, valorRiesgoCedidoEX.equals(data.get("riesgoCedidoEX")));
     }
 
     public void verificarValorRiesgoCedidoAcuerdoFacultativo(ExamplesTable examplesTable) {
@@ -143,7 +143,7 @@ public class GrupoDeDireccionPage extends PageUtil {
         if (data.get("riesgoCedidoAcuerdoFacultativo") != null) {
             String valorRiesgoCedidoAcuerdo = tblRiesgoCedidoAcuerdoFacultativo.getText().substring(CONSTANTE_1, tblRiesgoCedidoAcuerdoFacultativo.getText().length() - CONSTANTE_6);
             MatcherAssert.assertThat("Error en el valor riesgo cedido del acuerdo facultativo, expected: " + data.get("riesgoCedidoAcuerdoFacultativo") +
-                    " but was: " + valorRiesgoCedidoAcuerdo, valorRiesgoCedidoAcuerdo.equals(data.get("riesgoCedidoAcuerdoFacultativo")));
+                    BUT_WAS + valorRiesgoCedidoAcuerdo, valorRiesgoCedidoAcuerdo.equals(data.get("riesgoCedidoAcuerdoFacultativo")));
         }
     }
 
@@ -151,7 +151,7 @@ public class GrupoDeDireccionPage extends PageUtil {
         Map<String, String> data = examplesTable.getRow(0);
         String valorLimiteCuotaPate = tblLimiteContratoCp.getText().substring(CONSTANTE_1, tblLimiteContratoCp.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el limite contrato cuota parte, expected: " + data.get("limiteContratoCP") +
-                " but was: " + valorLimiteCuotaPate, valorLimiteCuotaPate.equals(data.get("limiteContratoCP")));
+                BUT_WAS + valorLimiteCuotaPate, valorLimiteCuotaPate.equals(data.get("limiteContratoCP")));
     }
 
     public void validarLimiteCuotaParte(ExamplesTable examplesTable) {
@@ -160,15 +160,15 @@ public class GrupoDeDireccionPage extends PageUtil {
         double retenidoCP = Double.parseDouble(data.get("valorRetenidoCP").replace(".", ""));
         double limiteCP = Double.parseDouble(data.get("limiteContratoCP").replace(".", ""));
         double suma = riesgoCedidoCP + retenidoCP;
-        MatcherAssert.assertThat("Error, el limite del contrato cuota parte no es igual al riesgo cedido más el retenido, expected: " + String.valueOf(limiteCP) +
-                " but was: " + String.valueOf(suma), String.valueOf(suma).equals(String.valueOf(limiteCP)));
+        MatcherAssert.assertThat("Error, el limite del contrato cuota parte no es igual al riesgo cedido más el retenido, expected: " + limiteCP +
+                BUT_WAS + suma, String.valueOf(suma).equals(String.valueOf(limiteCP)));
     }
 
     public void verificarBaseReasegurableCumulo(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String baseReasegurableCumulo = linkBaseReasegurableCumulo.getText().substring(CONSTANTE_1, linkBaseReasegurableCumulo.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor Base reasegurable Cúmulo, expected: " + data.get("baseReasegurableCumulo") +
-                " but was: " + baseReasegurableCumulo, baseReasegurableCumulo.equals(data.get("baseReasegurableCumulo")));
+                BUT_WAS + baseReasegurableCumulo, baseReasegurableCumulo.equals(data.get("baseReasegurableCumulo")));
     }
 
     public void seleccionarOpcionVerApartirDe(String verApartirDe) {

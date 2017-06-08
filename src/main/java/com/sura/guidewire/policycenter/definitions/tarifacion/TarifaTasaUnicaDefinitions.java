@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.definitions.tarifacion;
 
-import com.sura.guidewire.policycenter.steps.poliza.CotizacionPADetalleSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
-import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.CotizacionPADetalleSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -106,7 +106,7 @@ public class TarifaTasaUnicaDefinitions {
     }
 
     @When("expido la poliza y voy al archivo de poliza")
-    public void expedirPolizaMrc() {
+    public void expedirPolizaMrcYArchivoDePoliza() {
         tasaUnicaSteps.expedirPoliza();
         tasaUnicaSteps.irAArchivoDePolizaExpedida();
     }
@@ -124,11 +124,6 @@ public class TarifaTasaUnicaDefinitions {
     @Then("expido la poliza")
     public void expedirPoliza2() {
         tasaUnicaSteps.expedirPoliza();
-    }
-
-    @Then("se validad la creacion de la poliza en SAP")
-    public void validarCreacionPolizaEnSaP(){
-
     }
 
     @Given("seleccione algunas coberturas: $coberturas")

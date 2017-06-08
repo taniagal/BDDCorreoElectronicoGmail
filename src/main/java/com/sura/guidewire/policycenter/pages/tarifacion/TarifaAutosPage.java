@@ -330,7 +330,7 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
         seleccionarItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
         esperarPorValor(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
-        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+        seleccionarPerdidaDeLlaves(dato.get(PERDIDA_LLAVES));
     }
 
     public void seleccionarCoberturasHurto2(ExamplesTable coberturas) {
@@ -338,10 +338,10 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(labelGatosTransporte, dato.get("GTH"));
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (comboBoxPerdidaDeLlaves.isVisible()) {
-            seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+            seleccionarPerdidaDeLlaves(dato.get(PERDIDA_LLAVES));
         } else {
 
-            seleccionarCobertura(checkBoxPerdidaDeLlaves, comboBoxPerdidaDeLlaves, dato.get("PLlaves"));
+            seleccionarCobertura(checkBoxPerdidaDeLlaves, comboBoxPerdidaDeLlaves, dato.get(PERDIDA_LLAVES));
         }
         resetImplicitTimeout();
     }
@@ -367,14 +367,14 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
         seleccionarItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
-        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+        seleccionarPerdidaDeLlaves(dato.get(PERDIDA_LLAVES));
     }
 
     public void seleccionarCoberturasDanios2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         seleccionarItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
         seleccionarItem(comboBoxGastosDeTransporteDanos, dato.get("GT"));
-        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
+        seleccionarPerdidaDeLlaves(dato.get(PERDIDA_LLAVES));
     }
 
 
@@ -435,11 +435,11 @@ public class TarifaAutosPage extends PageUtil {
         String substringPrima = campoPrimaTotal.getText().substring(CONSTANTE_1, campoPrimaTotal.getText().length() - CONSTANTE_6);
         String substringIva = campoIva.getText().substring(CONSTANTE_1, campoIva.getText().length() - CONSTANTE_6);
         String substringCostoTotal = campoCostoTotal.getText().substring(CONSTANTE_1, campoCostoTotal.getText().length() - CONSTANTE_6);
-        MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
+        MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + BUT_WAS +
                 substringPrima, substringPrima.equals(primaTotal));
-        MatcherAssert.assertThat("Error en el valor del iva, expected: " + iva + " but was: " +
+        MatcherAssert.assertThat("Error en el valor del iva, expected: " + iva + BUT_WAS +
                 substringIva, substringIva.equals(iva));
-        MatcherAssert.assertThat("Error en el valor del costo total, expected: " + costoTotal + " but was: " +
+        MatcherAssert.assertThat("Error en el valor del costo total, expected: " + costoTotal + BUT_WAS +
                 substringCostoTotal, substringCostoTotal.equals(costoTotal));
     }
 
@@ -473,7 +473,7 @@ public class TarifaAutosPage extends PageUtil {
     public void verificarTarifacionPrima(String primaTotal) {
         campoPrimaTotal.waitUntilPresent();
         String prima = campoPrimaTotal.getText().substring(CONSTANTE_1, campoPrimaTotal.getText().length() - CONSTANTE_6);
-        MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
+        MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + BUT_WAS +
                 prima, prima.equals(primaTotal));
     }
 

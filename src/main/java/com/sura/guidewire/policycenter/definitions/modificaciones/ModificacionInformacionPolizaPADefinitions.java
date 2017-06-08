@@ -1,10 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.modificaciones;
 
 import com.sura.guidewire.policycenter.steps.modificacion.ModificacionInformacionPolizaPASteps;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -12,6 +8,9 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ModificacionInformacionPolizaPADefinitions {
@@ -21,7 +20,7 @@ public class ModificacionInformacionPolizaPADefinitions {
     @Steps
     ModificacionInformacionPolizaPASteps modificacionInformacionPolizaPASteps;
 
-    public ModificacionInformacionPolizaPADefinitions(){
+    public ModificacionInformacionPolizaPADefinitions() {
         labelsInformacionPoliza.put("tipoDocumento", "Tipo documento");
         labelsInformacionPoliza.put("numeroDocumento", "Número documento");
         labelsInformacionPoliza.put("nombre", "Nombre");
@@ -44,52 +43,52 @@ public class ModificacionInformacionPolizaPADefinitions {
     }
 
     @Given("ya se tiene una poliza expedida <numeroPoliza>")
-    public void ingresarPoliza(@Named("numeroPoliza") String numeroPoliza){
+    public void ingresarPoliza(@Named("numeroPoliza") String numeroPoliza) {
         modificacionInformacionPolizaPASteps.ingresarPoliza(numeroPoliza);
     }
 
     @When("ingrese a modificar dicha cotizacion")
-    public void ingresarAModificarCotizacion(){
+    public void ingresarAModificarCotizacion() {
         modificacionInformacionPolizaPASteps.irAModificarInformacionPoliza();
     }
 
     @When("adicione un segundo tomador <tipoDocumento> <numeroDocumento>")
     public void adicionarSegundoTomador(@Named("tipoDocumento") String tipoDocumento,
-                                        @Named("numeroDocumento") String numeroDocumento){
+                                        @Named("numeroDocumento") String numeroDocumento) {
         modificacionInformacionPolizaPASteps.irAModificarInformacionPoliza();
         modificacionInformacionPolizaPASteps.adicionarSegundoTomador(tipoDocumento, numeroDocumento);
     }
 
     @When("el tomador sea riesgo consultable")
-    public void validarTomadorRiesgo(){
+    public void validarTomadorRiesgo() {
         modificacionInformacionPolizaPASteps.validarTomadorRiesgo();
     }
 
     @When("el tomador sea riesgo PEP")
-    public void validarRiesgoPEP(){
+    public void validarRiesgoPEP() {
         modificacionInformacionPolizaPASteps.validarTomadorRiesgo();
     }
 
     @SuppressWarnings("EmptyMethod")
     @When("el tipo de poliza es Individual")
     @Manual
-    public void validarTipoPolizaIndividual(){
+    public void validarTipoPolizaIndividual() {
         //Se ejecuta manualmente
     }
 
     @When("ingrese a modificar la placa en la poliza expedida")
-    public void ingresarAModificarPlacaEnPolizaExpedida(){
+    public void ingresarAModificarPlacaEnPolizaExpedida() {
         modificacionInformacionPolizaPASteps.ingresarAModificarPlacaEnPolizaExpedida();
     }
 
     @Then("se debe visualizar los datos de la informacion de la poliza $informacionPoliza")
-    public void visualizarInformacionPoliza(ExamplesTable informacionPoliza){
+    public void visualizarInformacionPoliza(ExamplesTable informacionPoliza) {
         modificacionInformacionPolizaPASteps.validarInformacionPoliza(labelsInformacionPoliza, informacionPoliza);
     }
 
     @Then("el tomador debe quedar registrado en la informacion de la poliza")
-    public void validarRegistroSegundoTomador(){
-        Map <String, String> datosSegundoTomador = new HashMap<>();
+    public void validarRegistroSegundoTomador() {
+        Map<String, String> datosSegundoTomador = new HashMap<>();
         datosSegundoTomador.put("tipoDocumento", "Tipo documento");
         datosSegundoTomador.put("numeroDocumento", "Número documento");
         datosSegundoTomador.put("telefono", "Teléfono");
@@ -100,130 +99,130 @@ public class ModificacionInformacionPolizaPADefinitions {
     }
 
     @Then("se debe bloquear el registro del tomador y mostrar un mensaje <mensaje>")
-    public void validarBloqueoSegundoTomador(@Named("mensaje") String mensaje){
+    public void validarBloqueoSegundoTomador(@Named("mensaje") String mensaje) {
         modificacionInformacionPolizaPASteps.validarBloqueoSegundoTomador(mensaje);
     }
 
     @Then("no se debe permitir cambiar el tomador primario")
-    public void validarRestriccionEdicionTomador(){
+    public void validarRestriccionEdicionTomador() {
         modificacionInformacionPolizaPASteps.validarRestriccionEdicionTomador();
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("se debe habilitar el campo poliza financiada")
     @Manual
-    public void habilitarPolizaFinanciada(){
+    public void habilitarPolizaFinanciada() {
         //Se ejecuta manualmente
     }
 
     @When("se presione el boton siguiente")
-    public void presionarBotonSiguiente(){
+    public void presionarBotonSiguiente() {
         modificacionInformacionPolizaPASteps.presionarBotonSiguiente();
     }
 
     @Then("se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de tomador")
-    public void validarMensajeWarningTomador(@Named("mensaje") String mensaje){
+    public void validarMensajeWarningTomador(@Named("mensaje") String mensaje) {
         modificacionInformacionPolizaPASteps.validarMensajeWarningTomador(mensaje);
     }
 
     @Then("se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de asegurado")
-    public void validarMensajeWarningAsegurado(@Named("mensaje") String mensaje){
+    public void validarMensajeWarningAsegurado(@Named("mensaje") String mensaje) {
         modificacionInformacionPolizaPASteps.validarMensajeWarningAsegurado(mensaje);
     }
 
     @Then("se debe pemitir continuar la cotizacion")
-    public void permitirContinuarCotizacion(){
+    public void permitirContinuarCotizacion() {
         modificacionInformacionPolizaPASteps.permitirContinuarCotizacion();
     }
 
     @When("ingrese a la opcion asegurados")
-    public void irAOpcionAsegurados(){
+    public void irAOpcionAsegurados() {
         modificacionInformacionPolizaPASteps.irAOpcionAsegurados();
     }
 
     @When("adicione un asegurado <tipoDocumento> <numeroDocumento>")
     public void adicionarAsegurado(@Named("tipoDocumento") String tipoDocumento,
-                                   @Named("numeroDocumento") String numeroDocumento){
+                                   @Named("numeroDocumento") String numeroDocumento) {
         modificacionInformacionPolizaPASteps.adicionarAsegurado(tipoDocumento, numeroDocumento);
     }
 
     @When("ingrese a la opcion vehiculos")
-    public void irAOpcionVehiculos(){
+    public void irAOpcionVehiculos() {
         modificacionInformacionPolizaPASteps.irAOpcionVehiculos();
     }
 
     @When("adicione un interes adicional <tipoDocumento> <numeroDocumento>")
     @Manual
     public void adicionarInteresAdicional(@Named("tipoDocumento") String tipoDocumento,
-                                          @Named("numeroDocumento") String numeroDocumento){
+                                          @Named("numeroDocumento") String numeroDocumento) {
         // Se realiza manualmente
     }
 
     @Then("se debe permitir continuar a asegurados de la modificacion")
-    public void validarContinuacionDeCotizacionInformacion(){
+    public void validarContinuacionDeCotizacionInformacion() {
         modificacionInformacionPolizaPASteps.validarContinuacionDeCotizacion("Asegurados",
                 ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
     }
 
     @Then("se debe permitir continuar a vehiculos de la modificacion")
-    public void validarContinuacionDeCotizacionAsegurados(){
+    public void validarContinuacionDeCotizacionAsegurados() {
         modificacionInformacionPolizaPASteps.validarContinuacionDeCotizacion("Vehículos",
                 ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
     }
 
     @Then("se debe permitir continuar a coberturas de la modificacion")
-    public void validarContinuacionDeCotizacionVehiculos(){
+    public void validarContinuacionDeCotizacionVehiculos() {
         modificacionInformacionPolizaPASteps.validarContinuacionDeCotizacion("Coberturas de auto personal",
                 ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
     }
 
     @When("capturo el numero de poliza 1")
-    public void capturarNumeroPolizaA(){
+    public void capturarNumeroPolizaA() {
         modificacionInformacionPolizaPASteps.capturarNumeroPolizaA();
     }
 
     @When("capturo el numero de poliza 2")
-    public void capturarNumeroPolizaB(){
+    public void capturarNumeroPolizaB() {
         modificacionInformacionPolizaPASteps.capturarNumeroPolizaB();
     }
 
     @When("capturo el numero de poliza 3")
-    public void capturarNumeroPolizaC(){
+    public void capturarNumeroPolizaC() {
         modificacionInformacionPolizaPASteps.capturarNumeroPolizaC();
     }
 
     @When("capturo el numero de poliza 4")
-    public void capturarNumeroPolizaD(){
+    public void capturarNumeroPolizaD() {
         modificacionInformacionPolizaPASteps.capturarNumeroPolizaD();
     }
 
     @Given("consulto poliza expedida 1")
-    public void consultarPolizaExpedidaA(){
+    public void consultarPolizaExpedidaA() {
         modificacionInformacionPolizaPASteps.consultarPolizaExpedidaA();
     }
 
     @Given("se va a consultar poliza expedida 1")
-    public void consultarPolizaExpedida1(){
+    public void consultarPolizaExpedida1() {
         modificacionInformacionPolizaPASteps.consultarPolizaExpedida1();
     }
 
     @Given("se va a consultar poliza expedida 2")
-    public void consultarPolizaExpedida2(){
+    public void consultarPolizaExpedida2() {
         modificacionInformacionPolizaPASteps.consultarPolizaExpedida2();
     }
 
     @Given("se va a consultar poliza expedida 3")
-    public void consultarPolizaExpedida3(){
+    public void consultarPolizaExpedida3() {
         modificacionInformacionPolizaPASteps.consultarPolizaExpedida3();
     }
 
     @Given("se va a consultar poliza expedida 4")
-    public void consultarPolizaExpedida4(){
+    public void consultarPolizaExpedida4() {
         modificacionInformacionPolizaPASteps.consultarPolizaExpedida4();
     }
 
     @Given("consulto poliza expedida 2")
-    public void consultarPolizaExpedidaB(){
+    public void consultarPolizaExpedidaB() {
         modificacionInformacionPolizaPASteps.consultarPolizaExpedidaB();
     }
 }

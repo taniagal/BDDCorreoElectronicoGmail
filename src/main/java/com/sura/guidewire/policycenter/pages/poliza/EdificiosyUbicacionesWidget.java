@@ -129,12 +129,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     TableWidgetPage tabla;
     NuevaPolizaPage nuevaPolizaPage;
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
+    Actions act = new Actions(getDriver());
+
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
     }
 
-    Actions act = new Actions(getDriver());
 
 
     private void obtenerTabla() {
@@ -549,8 +550,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             verificarMensajes(divMensaje, mensajes);
         } catch (StaleElementReferenceException e) {
             verificarMensajes(divMensaje, mensajes);
+            LOGGER.info("StaleElementReferenceException " + e);
         } catch (ElementNotVisibleException f) {
             verificarMensajes(divMensaje, mensajes);
+            LOGGER.info("StaleElementReferenceException " + f);
         }
     }
 

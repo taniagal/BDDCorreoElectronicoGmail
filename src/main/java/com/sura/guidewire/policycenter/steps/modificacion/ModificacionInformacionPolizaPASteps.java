@@ -19,6 +19,9 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
     private static String numeroEnvioC = null;
     private static String numeroEnvioD = null;
 
+    @Steps
+    GuidewireSteps guidewire;
+
     ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPAPage = new ModificacionInformacionPolizaPAPage(getDriver());
 
     public ModificacionInformacionPolizaPASteps(Pages pages) {
@@ -29,9 +32,6 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
     public void ingresarPoliza(String numeroPoliza) {
         modificacionInformacionPolizaPAPage.ingresarPoliza(numeroPoliza);
     }
-
-    @Steps
-    GuidewireSteps guidewire;
 
     @Step
     public void irAModificarInformacionPoliza() {
