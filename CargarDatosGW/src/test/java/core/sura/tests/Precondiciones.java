@@ -23,7 +23,8 @@ public class Precondiciones extends MetodosComunes {
     private WebDriver driver;
     private LoginPage loginPage;
     private PrecondicionesPage precondicionesPage;
-    private static final String USUARIO = "pedrvevi";
+    private static final String USUARIO = "su";
+    private static final String CONTRASENA = "gw";
 
     @Before
     public void setUp() throws Exception {
@@ -43,14 +44,14 @@ public class Precondiciones extends MetodosComunes {
     @Test
     public void cargaDeDatos() {
         initPages();
-        loginPage.login(USUARIO, USUARIO, driver);
+        loginPage.login(USUARIO, CONTRASENA, driver);
         precondicionesPage.cargarDatos(driver);
     }
 
     @Test
     public void seleccionarLenguaje() {
         initPages();
-        loginPage.login(USUARIO, USUARIO, driver);
+        loginPage.login(USUARIO, CONTRASENA, driver);
         precondicionesPage.elegirLenguaje(driver);
         assertEquals("Mis actividades", driver.findElement(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")).getText());
     }
@@ -58,7 +59,7 @@ public class Precondiciones extends MetodosComunes {
     @Test
     public void desactivarColasDeMensajes() {
         initPages();
-        loginPage.login(USUARIO, USUARIO, driver);
+        loginPage.login(USUARIO, CONTRASENA, driver);
         precondicionesPage.suspenderColasDeMensajes(driver);
     }
 
