@@ -149,7 +149,7 @@ public class PageUtil extends PageObject {
      */
     public void verificarMensaje(WebElementFacade elemento, String mensaje) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).shouldContainText(mensaje);
-        MatcherAssert.assertThat("Falló el mensaje de validacion, expected: " + mensaje + " but was: "
+        MatcherAssert.assertThat("Falló el mensaje de validacion, expected: " + mensaje + BUT_WAS
                 + elemento.getText(), elemento.containsText(mensaje));
     }
 
@@ -166,7 +166,7 @@ public class PageUtil extends PageObject {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
             MatcherAssert.assertThat("Error: en la validacion del mensaje, expected: " + mensaje.get("mensaje")
-                    + " but was: " + elemento.getText(), elemento.containsText(mensaje.get("mensaje")));
+                    + BUT_WAS + elemento.getText(), elemento.containsText(mensaje.get("mensaje")));
         }
     }
 
@@ -223,7 +223,7 @@ public class PageUtil extends PageObject {
     public void validarBusqueda(WebElementFacade tabla, ExamplesTable listaBusqueda) {
         Map<String, String> tablaBusqueda = listaBusqueda.getRows().get(0);
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(tabla).shouldBePresent();
-        MatcherAssert.assertThat("Falló el mensaje de validacion, expected: " + tablaBusqueda.get("busqueda") + " but was: "
+        MatcherAssert.assertThat("Falló el mensaje de validacion, expected: " + tablaBusqueda.get("busqueda") + BUT_WAS
                 + tabla.getText(), tabla.containsText(tablaBusqueda.get("busqueda")));
     }
 
@@ -444,7 +444,7 @@ public class PageUtil extends PageObject {
         }
         if (!campoTxt.getValue().equals(valorAEscribir)) {
             MatcherAssert.assertThat("Error: Se esperaba que el software ingresara el valor, pero no respondio la caja de texto" +
-                    " Expected: " + valorAEscribir + " but was: " + campoTxt.getValue(), !campoTxt.getValue().equals(valorAEscribir));
+                    " Expected: " + valorAEscribir + BUT_WAS + campoTxt.getValue(), !campoTxt.getValue().equals(valorAEscribir));
         }
     }
 }
