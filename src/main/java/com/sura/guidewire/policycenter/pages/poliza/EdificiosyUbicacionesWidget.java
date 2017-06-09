@@ -137,7 +137,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
 
-
     private void obtenerTabla() {
         this.tabla = new TableWidgetPage(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
         this.tabla.buscarTabla(XPATH_DIV_CONTENEDOR_TABLA);
@@ -355,7 +354,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         withAction().moveToElement(inputValorEntrada).perform();
         inputValorEntrada.waitUntilClickable();
         inputValorEntrada.click();
-        ingresarYValidarCamposWidget(inputValorEntrada , valorEntrada);
+        ingresarYValidarCamposWidget(inputValorEntrada, valorEntrada);
     }
 
     public void ingresarValorAEntradaInformacionArticulo(String tipoArticulo, String entrada, String valorEntrada) {
@@ -493,7 +492,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void cliclearBtnCotizar() {
         try {
-            botonCotizar.waitUntilPresent();
+            botonCotizar.waitUntilVisible();
             clickearElemento(botonCotizar);
         } catch (TimeoutException e) {
             LOGGER.info("ElementShouldBePresentException " + e);
