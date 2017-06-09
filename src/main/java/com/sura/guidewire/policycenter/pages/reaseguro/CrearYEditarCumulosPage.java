@@ -167,7 +167,7 @@ public class CrearYEditarCumulosPage extends PageUtil {
 
     public String calculaPrimaBrutaDeCesionRegla() {
         try {
-            listValorExpuestoRiesgo.click();
+            clickearElemento(listValorExpuestoRiesgo);
         } catch (StaleElementReferenceException e) {
             LOGGER.error("StaleElementReferenceException " + e);
         }

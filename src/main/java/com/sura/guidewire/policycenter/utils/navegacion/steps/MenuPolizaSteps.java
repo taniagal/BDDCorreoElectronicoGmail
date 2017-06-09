@@ -7,11 +7,16 @@ import org.openqa.selenium.Keys;
 
 public class MenuPolizaSteps extends ScenarioSteps {
 
+    protected static final int TIEMPO_2 = 2;
+
     @Step
     public void consultarNumeroDeSubscripcion(String numSubscripcion) {
         String xpathTxtNumeroSubscripcion = ".//input[contains(@name,'SubmissionNumberSearchItem')]";
+        getDriver().findElement(By.xpath(xpathTxtNumeroSubscripcion));
+        waitFor(TIEMPO_2).seconds();
         getDriver().findElement(By.xpath(xpathTxtNumeroSubscripcion)).sendKeys(numSubscripcion);
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+        waitFor(TIEMPO_2).seconds();
     }
 
     @Step

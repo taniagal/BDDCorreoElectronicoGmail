@@ -480,7 +480,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
             botonActualizar.waitUntilPresent();
         }
         clickearElemento(botonActualizar);
-        botonCotizar.waitUntilPresent().click();
+        botonCotizar.waitUntilVisible().click();
         waitForTextToAppear("Cotizado", TIEMPO_30000);
         if ("declinar".equalsIgnoreCase(accion)) {
             numeroCotizacionDeclinar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();

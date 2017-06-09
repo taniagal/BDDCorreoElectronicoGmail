@@ -164,7 +164,7 @@ public class TarifaMRCPage extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
             clickearElemento(botonActualizar);
         }
-        botonCotizar.waitUntilPresent();
+        botonCotizar.waitUntilVisible();
         clickearElemento(botonCotizar);
         descartarCambios(linkDescartarCambios, botonCotizar);
         waitForAnyTextToAppear("Cotizado", "Cotización");
