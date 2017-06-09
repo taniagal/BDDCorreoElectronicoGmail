@@ -154,7 +154,7 @@ public class NuevaCotizacionPage extends PageUtil {
             try {
                 seleccionarItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
                 esperarHasta(TIEMPO_2000);
-                if(dato.get("polizafinanciada")!=null){
+                if (dato.get("polizafinanciada") != null) {
                     optSiFinanciarPoliza.click();
                 }
             } catch (ElementNotVisibleException e) {
@@ -185,7 +185,7 @@ public class NuevaCotizacionPage extends PageUtil {
         List<WebElementFacade> descripcionProductos = getLista(TABLA_SELECCION_DE_PRODUCTO + "/tr/td[2]");
         for (int i = 1; i <= descripcionProductos.size(); i++) {
             WebElementFacade nombreProducto = $(TABLA_SELECCION_DE_PRODUCTO + "/tr[" + i + "]/td[2]");
-            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(nombreProducto);
+            withTimeoutOf(TIEMPO_40, TimeUnit.SECONDS).waitFor(nombreProducto);
             if (nomProducto.equals(nombreProducto.getText())) {
                 WebElementFacade botonProducto = $(TABLA_SELECCION_DE_PRODUCTO + "/tr[" + i + "]/td[1]");
                 clickearElemento(botonProducto);
