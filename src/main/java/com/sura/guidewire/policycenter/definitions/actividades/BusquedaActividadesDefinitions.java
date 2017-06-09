@@ -30,18 +30,28 @@ public class BusquedaActividadesDefinitions {
     }
 
     @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario>")
-    public void filtrarPorUsuarioAsignado(@Named("usuario") String usuario ) {
+    public void filtrarPorUsuarioAsignado(@Named("usuario") String usuario) {
         busquedaActividadesSteps.filtrarPorAsignado(usuario);
     }
 
+    @When("quiera realizar la busqueda de actividades por el filtro asignado a Uusuario: $user")
+    public void filtrarPorUsuario(String user) {
+        busquedaActividadesSteps.filtrarPorAsignado(user);
+    }
+
     @Then("me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado: $resultadoFiltroActividades")
-    public void validarActividadesAsignadas(ExamplesTable resultadoFiltroActividades){
+    public void validarActividadesAsignadas(ExamplesTable resultadoFiltroActividades) {
         busquedaActividadesSteps.validarResultado(resultadoFiltroActividades);
     }
 
-    @When("quiera realizar la busqueda de actividades por el filtro numero de poliza<numeroPoliza>")
-    public void filtarPorNumeroDePoliza(@Named("numeroPoliza") String numeroPoliza) {
-        busquedaActividadesSteps.filtrarPorNumeroDePoliza(numeroPoliza);
+    @When("quiera realizar la busqueda de actividades por el filtro numero de poliza<nroPoliza>")
+    public void filtarPorNumeroDePoliza(@Named("nroPoliza") String nroPoliza) {
+        busquedaActividadesSteps.filtrarPorNumeroDePoliza(nroPoliza);
+    }
+
+    @When("quiera realizar la busqueda de actividades por el filtro Numero de Poliza: $numPoliza")
+    public void filtarPorNumeroPoliza(String numPoliza) {
+        busquedaActividadesSteps.filtrarPorNumeroDePoliza(numPoliza);
     }
 
     @When("quiera realizar la busqueda de actividades por el filtro numero de cuenta<numeroCuenta>")
@@ -49,27 +59,29 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.filtrarPorNumeroDeCuenta(numeroCuenta);
     }
 
+    @When("quiera realizar la busqueda de actividades por el filtro Numero de Cuenta: $numCuenta")
+    public void filtarPorNumeroCuenta(String numCuenta) {
+        busquedaActividadesSteps.filtrarPorNumeroDeCuenta(numCuenta);
+    }
+
     @When("quiera realizar la busqueda de actividades sin algun filtro")
     public void buscarSinFiltro() {
         busquedaActividadesSteps.buscarSinFiltro();
     }
 
-    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y prioridad <filtroPrioridad>")
-    public void buscarPorFiltrosUsuarioYPrioridad(@Named("usuario") String usuario,
-                                                  @Named("filtroPrioridad") String filtroPrioridad) {
-        busquedaActividadesSteps.buscarPorFiltrosUsuarioYPrioridad(usuario, filtroPrioridad);
+    @When("quiera realizar la busqueda de actividades por el filtro asignado a Usuario: $user y Prioridad: $prioridad")
+    public void buscarPorFiltrosUsuarioYPrioridad(String user, String prioridad) {
+        busquedaActividadesSteps.buscarPorFiltrosUsuarioYPrioridad(user, prioridad);
     }
 
-    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad <estadoActividad>")
-    public void buscarPorFiltrosUsuarioYEstadoDeActividad(@Named("usuario") String usuario,
-                                                          @Named("estadoActividad") String estadoActividad) {
-        busquedaActividadesSteps.buscarPorFiltrosUsuarioYEstadoDeActividad(usuario, estadoActividad);
+    @When("quiera realizar la busqueda de actividades por el filtro asignado a Usuario: $user y Estado de actividad: $actividad")
+    public void buscarPorFiltrosUsuarioYEstadoDeActividad(String user, String actividad) {
+        busquedaActividadesSteps.buscarPorFiltrosUsuarioYEstadoDeActividad(user, actividad);
     }
 
-    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y vencida <filtroVencida>")
-    public void buscarPorFiltrosUsuarioYVencida(@Named("usuario") String usuario,
-                                                @Named("filtroVencida") String filtroVencida) {
-        busquedaActividadesSteps.buscarPorFiltrosUsuarioYVencida(usuario, filtroVencida);
+    @When("quiera realizar la busqueda de actividades por el filtro asignado a Usuario: $user y Vencida: $vencida")
+    public void buscarPorFiltrosUsuarioYVencida(String user, String vencida) {
+        busquedaActividadesSteps.buscarPorFiltrosUsuarioYVencida(user, vencida);
     }
 
     @When("quiera realizar la busqueda de actividades solo por el filtro estado de actividad <estadoActividad>")
@@ -80,6 +92,11 @@ public class BusquedaActividadesDefinitions {
     @Then("me debe mostrar el siguiente mensaje <mensaje>")
     public void validarMensajeFiltroRequerido(@Named("mensaje") String mensaje) {
         busquedaActividadesSteps.validarMensajeFiltroRequerido(mensaje);
+    }
+
+    @Then("me debe mostrar el siguiente Mensaje: $message")
+    public void validarMensajeRequerido(String message) {
+        busquedaActividadesSteps.validarMensajeFiltroRequerido(message);
     }
 
     @Then("la poliza debe quedar con una actividad asignada")
