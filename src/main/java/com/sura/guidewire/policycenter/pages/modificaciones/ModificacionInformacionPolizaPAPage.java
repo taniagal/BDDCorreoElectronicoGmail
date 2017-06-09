@@ -112,6 +112,7 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
             campoTxtBuscar.sendKeys("Policy " + numeroPoliza);
         }
         campoTxtBuscar.sendKeys(Keys.ENTER);
+        esperarHasta(TIEMPO_3000);
     }
 
     public void irAModificarInformacionPoliza() {
