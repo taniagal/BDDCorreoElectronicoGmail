@@ -492,7 +492,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void cliclearBtnCotizar() {
         try {
-            botonCotizar.waitUntilVisible();
+            waitFor(botonCotizar);
             clickearElemento(botonCotizar);
         } catch (TimeoutException e) {
             LOGGER.info("ElementShouldBePresentException " + e);

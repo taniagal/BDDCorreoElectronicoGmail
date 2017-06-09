@@ -447,8 +447,4 @@ public class PageUtil extends PageObject {
                     " Expected: " + valorAEscribir + BUT_WAS + campoTxt.getValue(), !campoTxt.getValue().equals(valorAEscribir));
         }
     }
-
-    public void ClicObjeto(WebElementFacade objeto) {
-        objeto.waitUntilClickable().click();
-    }
 }
