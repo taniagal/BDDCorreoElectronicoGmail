@@ -7,7 +7,7 @@ Narrative:
 Como usuario de policy center
 Al cotizar una poliza de MRC quiero mirar el valor de la prima para las coberturas de la cotización y el nivel de riesgo
 
-Scenario:  Tarifa MRC poliza con los ariticulos edificio y maquinaria
+Scenario:  Tarifa MRC poliza con los articulos edificio y maquinaria
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |cuenta     |oficina|agente_oficina|producto               |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
