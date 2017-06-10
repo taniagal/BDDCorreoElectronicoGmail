@@ -50,7 +50,7 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade linkNombre;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:WizardMenuActions-btnInnerEl']")
     private WebElementFacade menuAcciones;
-    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions']")
+    @FindBy(id = "AccountFile:AccountFileMenuActions")
     private WebElementFacade menuAccionesCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_CopySubmission']")
     private WebElementFacade menuItemCopiarEnvio;
@@ -117,9 +117,9 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void nuevaCotizacionEnCuenta() {
-        menuAccionesCuenta.waitUntilPresent();
+        menuAccionesCuenta.waitUntilVisible().waitUntilClickable();
         clickearElemento(menuAccionesCuenta);
-        menuItemNuevaCotizacionCuenta.waitUntilPresent().click();
+        menuItemNuevaCotizacionCuenta.waitUntilVisible().waitUntilClickable().click();
     }
 
     public void seleccionarProducto(ExamplesTable datosCotizacion) {
