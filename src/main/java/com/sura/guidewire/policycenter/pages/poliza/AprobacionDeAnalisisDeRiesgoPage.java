@@ -85,19 +85,19 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPolizaUAT() {
-        setImplicitTimeout(TIEMPO_10, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_20, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()) {
-            esperarObjetoClikeableServidorWe(menuItemCotizacion);
+            clickearElemento(menuItemCotizacion);
         }
         resetImplicitTimeout();
-        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
-        esperarObjetoClikeableServidorWe(botonExpedirPoliza);
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
+        clickearElemento(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
-        setImplicitTimeout(TIEMPO_10, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_20, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
-            withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
-            esperarObjetoClikeableServidorWe(botonExpedirPoliza);
+            withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
+            clickearElemento(botonExpedirPoliza);
             waitFor(botonAceptarMensaje);
             botonAceptarMensaje.click();
 
