@@ -431,7 +431,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
     public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
-        campoPrimaTotal.waitUntilPresent();
+        campoPrimaTotal.waitUntilVisible();
         String substringPrima = campoPrimaTotal.getText().substring(CONSTANTE_1, campoPrimaTotal.getText().length() - CONSTANTE_6);
         String substringIva = campoIva.getText().substring(CONSTANTE_1, campoIva.getText().length() - CONSTANTE_6);
         String substringCostoTotal = campoCostoTotal.getText().substring(CONSTANTE_1, campoCostoTotal.getText().length() - CONSTANTE_6);

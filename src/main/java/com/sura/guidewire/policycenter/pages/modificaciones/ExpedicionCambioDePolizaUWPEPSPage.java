@@ -56,7 +56,7 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil {
     }
 
     public void emitirPoliza() {
-        botonExpedirPoliza.waitUntilPresent();
+        botonExpedirPoliza.waitUntilVisible();
         clickearElemento(botonExpedirPoliza);
     }
 
