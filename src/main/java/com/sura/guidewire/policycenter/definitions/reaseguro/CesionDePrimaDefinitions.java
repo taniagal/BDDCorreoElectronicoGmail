@@ -55,6 +55,12 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.ingresarATodasLasTransacciones();
     }
 
+    @When("quiera visualizar la informacion de las primas cedidas nameTarea: $nameTarea, state: $state")
+    public void visualizarLaInformacionCompletaDeLasPrimasCedidas(String nameTarea, String state) {
+        crearYEditarCumulosSteps.clicMenuReaseguro();
+        cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nameTarea, state);
+    }
+
     @Then("se debe verificar el consolidado de las primas cedidas $datos")
     public void verificarPrimasCedidas(ExamplesTable datos) {
         cesionDePrimaSteps.verificarPrimasCedidas(datos);
@@ -63,6 +69,11 @@ public class CesionDePrimaDefinitions {
     @When("quiera ingresar al consolidado de primas cedidas")
     public void verConsolidadoPrimasCedidas() {
         cesionDePrimaSteps.verConsolidadoPrimasCedidas();
+    }
+
+    @When("quiera ingresar a ver primas cedidas")
+    public void ingresarAPrimasCedidas() {
+        cesionDePrimaSteps.ingresarAPrimasCedidas();
     }
 
     @Then("quiera ejecutar una tarea de proceso por lotes <nombreTarea> <estado>")
