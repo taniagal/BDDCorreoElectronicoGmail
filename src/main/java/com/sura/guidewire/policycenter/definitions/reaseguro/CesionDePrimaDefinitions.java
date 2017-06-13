@@ -46,13 +46,13 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.mostrarInformacionGeneralDeCobertura(informacionGeneralCobertura);
     }
 
-    @When("quiera visualizar la informacion completa de las primas cedidas <nombreTarea> <estado>")
-    public void whenElUsuarioQuieraVisualizarLaInformacionCompletaDeLasPrimasCedidas(@Named("nombreTarea") String nombreTarea, @Named("estado") String estado) {
+    @When("quiera visualizar la informacion completa de las primas cedidas <nombreTarea> <estado> <procesoPoliza>")
+    public void whenElUsuarioQuieraVisualizarLaInformacionCompletaDeLasPrimasCedidas(@Named("nombreTarea") String nombreTarea, @Named("estado") String estado, @Named("procesoPoliza") String procesoPoliza) {
         cesionDePrimaSteps.tomaYbuscaConNumeroDeEnvio();
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
         cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea, estado);
         cesionDePrimaSteps.ingresarPrimasDespuesDeEjecutarTareaEnCedidas();
-        cesionDePrimaSteps.ingresarATodasLasTransacciones();
+        cesionDePrimaSteps.ingresarATodasLasTransacciones(procesoPoliza);
     }
 
     @When("quiera visualizar la informacion de las primas cedidas nameTarea: $nameTarea, state: $state")
@@ -71,9 +71,9 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.verConsolidadoPrimasCedidas();
     }
 
-    @When("quiera ingresar a ver primas cedidas")
-    public void ingresarAPrimasCedidas() {
-        cesionDePrimaSteps.ingresarAPrimasCedidas();
+    @When("quiera ingresar a ver primas cedidas: $processPoliza")
+    public void ingresarAPrimasCedidas(String processPoliza) {
+        cesionDePrimaSteps.ingresarAPrimasCedidas(processPoliza);
     }
 
     @Then("quiera ejecutar una tarea de proceso por lotes <nombreTarea> <estado>")

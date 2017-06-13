@@ -174,7 +174,7 @@ public class GrupoDeDireccionPage extends PageUtil {
     public void seleccionarOpcionVerApartirDe(String verApartirDe) {
         comboBoxVerApartirDe.waitUntilPresent();
         int intentos = 0;
-        while (intentos < 3) {
+        while (intentos < CONSTANTE_3) {
             if (!verApartirDe.equals(comboBoxVerApartirDe.getValue())) {
                 comboBoxVerApartirDe.clear();
                 comboBoxVerApartirDe.sendKeys(Keys.ARROW_DOWN);

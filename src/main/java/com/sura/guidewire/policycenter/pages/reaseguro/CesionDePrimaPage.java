@@ -142,8 +142,13 @@ public class CesionDePrimaPage extends PageUtil {
         return numerosCotizacion;
     }
 
-    public void ingresaATodasTransacciones() {
-        WebElementFacade tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[1]/td[1]");
+    public void ingresaATodasTransacciones(String procesoPoliza) {
+        WebElementFacade tabla;
+        if (BANDERA_MODIFICACION.equals(procesoPoliza)) {
+            tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[12]/td[1]");
+        } else {
+            tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[1]/td[1]");
+        }
         esperarYClickearBoton(linkIngresaATodasTransacciones);
         int ejecuciones = 0;
         int maxIntentos = DIEZ;

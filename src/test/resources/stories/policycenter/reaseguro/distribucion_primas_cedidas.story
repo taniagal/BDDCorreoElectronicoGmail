@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad    | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Casanare    | La Salina | AVENIDAS 24 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Casanare    | La Salina | AVENIDAS 25 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas                     |
 | Machine  | 10000000000      | Danos,Asonada,Terremoto,Rotura |
@@ -37,7 +37,7 @@ And realice aprobacion especial asociada a varias observaciones
 And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 1
-When quiera visualizar la informacion completa de las primas cedidas <nombreTarea> <estado>
+When quiera visualizar la informacion completa de las primas cedidas <nombreTarea> <estado> <procesoPoliza>
 And quiera ingresar al consolidado de primas cedidas
 Then se debe verificar el consolidado de las primas cedidas con bandera: CREACION POLIZA y data:
 | riesgo           | tipoContrato        | primaBrutaCedida |
@@ -65,7 +65,7 @@ And ingrese al resumen de la poliza expedida
 And quiera visualizar la informacion de las primas cedidas nameTarea: PremiumCeding, state: SHIFT
 Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
-And quiera ingresar a ver primas cedidas
+And quiera ingresar a ver primas cedidas: MODIFICACION POLIZA
 And quiera ingresar al consolidado de primas cedidas
 Then se debe verificar el consolidado de las primas cedidas con bandera: MODIFICACION POLIZA y data:
 | riesgo           | tipoContrato        | primaBrutaCedida |
@@ -80,5 +80,5 @@ Then se debe verificar el consolidado de las primas cedidas con bandera: MODIFIC
 | Terremoto        | Acuerdo facultativo | $3.165.485 (COP) |
 
 Examples:
-| descripcionDeAcuerdo     | nombreTarea   | estado  | fechaModificacion |
-| Acuerdo Prueba Reaseguro | PremiumCeding | CONTROL | 01/03/2017        |
+| descripcionDeAcuerdo     | nombreTarea   | estado  | fechaModificacion | procesoPoliza   |
+| Acuerdo Prueba Reaseguro | PremiumCeding | CONTROL | 01/03/2017        | CREACION POLIZA |

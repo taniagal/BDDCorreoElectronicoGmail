@@ -25,8 +25,8 @@ public class CesionDePrimaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarATodasLasTransacciones() {
-        cesionDePrimaPage.ingresaATodasTransacciones();
+    public void ingresarATodasLasTransacciones(String procesoPoliza) {
+        cesionDePrimaPage.ingresaATodasTransacciones(procesoPoliza);
     }
 
     @Step
@@ -59,9 +59,9 @@ public class CesionDePrimaSteps extends ScenarioSteps {
        cesionDePrimaPage.clicEnBotonPrimasCedidas();
     }
 
-    public void ingresarAPrimasCedidas() {
+    public void ingresarAPrimasCedidas(String procesoPoliza) {
         cesionDePrimaPage.clicEnBotonPrimasCedidas();
-        cesionDePrimaPage.ingresaATodasTransacciones();
+        cesionDePrimaPage.ingresaATodasTransacciones(procesoPoliza);
     }
 
     @Step
