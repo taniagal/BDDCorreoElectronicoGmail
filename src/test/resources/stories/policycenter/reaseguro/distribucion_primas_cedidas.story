@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad    | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Casanare    | La Salina | AVENIDAS 19 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Casanare    | La Salina | AVENIDAS 24 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas                     |
 | Machine  | 10000000000      | Danos,Asonada,Terremoto,Rotura |
@@ -39,7 +39,7 @@ And expido la poliza mrc
 And capturo el numero de poliza 1
 When quiera visualizar la informacion completa de las primas cedidas <nombreTarea> <estado>
 And quiera ingresar al consolidado de primas cedidas
-Then se debe verificar el consolidado de las primas cedidas
+Then se debe verificar el consolidado de las primas cedidas con bandera: CREACION POLIZA y data:
 | riesgo           | tipoContrato        | primaBrutaCedida |
 | AMIT             | Excedente           | $32.000 (COP)    |
 | AMIT             | Cuota parte         | $108.800 (COP)   |
@@ -67,7 +67,7 @@ Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
 And quiera ingresar a ver primas cedidas
 And quiera ingresar al consolidado de primas cedidas
-Then se debe verificar el consolidado de las primas cedidas
+Then se debe verificar el consolidado de las primas cedidas con bandera: MODIFICACION POLIZA y data:
 | riesgo           | tipoContrato        | primaBrutaCedida |
 | AMIT             | Excedente           | $147.726 (COP)   |
 | AMIT             | Cuota parte         | $0 (COP)         |

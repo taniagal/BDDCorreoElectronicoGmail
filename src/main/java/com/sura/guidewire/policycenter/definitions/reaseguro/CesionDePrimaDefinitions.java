@@ -61,9 +61,9 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nameTarea, state);
     }
 
-    @Then("se debe verificar el consolidado de las primas cedidas $datos")
-    public void verificarPrimasCedidas(ExamplesTable datos) {
-        cesionDePrimaSteps.verificarPrimasCedidas(datos);
+    @Then("se debe verificar el consolidado de las primas cedidas con bandera: $bandera y data: $datos")
+    public void verificarPrimasCedidas(ExamplesTable datos, String bandera) {
+        cesionDePrimaSteps.verificarPrimasCedidas(datos, bandera);
     }
 
     @When("quiera ingresar al consolidado de primas cedidas")

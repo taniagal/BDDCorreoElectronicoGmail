@@ -54,6 +54,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_1 = 1;
     protected static final int CONSTANTE_2 = 2;
     protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_4 = 4;
     protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_6 = 6;
     protected static final int CONSTANTE_7 = 7;

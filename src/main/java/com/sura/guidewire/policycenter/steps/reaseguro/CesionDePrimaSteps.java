@@ -30,8 +30,8 @@ public class CesionDePrimaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarPrimasCedidas(ExamplesTable datos) {
-        cesionDePrimaPage.verificarPrimasCedidas(datos);
+    public void verificarPrimasCedidas(ExamplesTable datos, String bandera) {
+        cesionDePrimaPage.verificarPrimasCedidas(datos, bandera);
     }
 
     @Step

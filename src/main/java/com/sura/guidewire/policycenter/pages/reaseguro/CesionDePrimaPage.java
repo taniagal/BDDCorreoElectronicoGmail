@@ -53,9 +53,11 @@ public class CesionDePrimaPage extends PageUtil {
     private WebElementFacade labelNombreRiesgo;
 
     String numeroDeEnvio = null;
+    int control = CONSTANTE_1;
     private static final String ESTADO_SHIFT = "SHIFT";
     private static final int DIEZ = 10;
     private static final int CANTIDAD_TIPO_CONTRATO = 3;
+    private static final String BANDERA_MODIFICACION = "MODIFICACION POLIZA";
     public static final String XPATH_TABLA_PRIMAS_CEDIDAS_TR = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr";
 
     public CesionDePrimaPage(WebDriver driver) {
@@ -169,20 +171,23 @@ public class CesionDePrimaPage extends PageUtil {
         esperarYClickearBoton(linkVolverAPrimasCedidas);
     }
 
-    public void verificarPrimasCedidas(ExamplesTable datos) {
+    public void verificarPrimasCedidas(ExamplesTable datos, String bandera) {
         for (int z = 0; z < datos.getRowCount()/CANTIDAD_TIPO_CONTRATO;z++) {
             WebElementFacade linkVerConsolidadoDePrimasCedidas = $(".//*[@id='RICededPremiumsPopup:" + z + ":ConsolidatedCededPremium']");
             linkVerConsolidadoDePrimasCedidas.waitUntilPresent().click();
-            verificarPrimaBrutaCedida(datos);
+            verificarPrimaBrutaCedida(datos, bandera);
             linkVolverAPrimasCedidas.click();
         }
     }
 
-    public void verificarPrimaBrutaCedida(ExamplesTable datos) {
+    public void verificarPrimaBrutaCedida(ExamplesTable datos, String bandera) {
         List<WebElementFacade> tablaPrimaCedida = findAll(XPATH_TABLA_PRIMAS_CEDIDAS_TR);
+        if (BANDERA_MODIFICACION.equals(bandera)) {
+            control = CONSTANTE_4;
+        }
         for (Map<String, String> dato : datos.getRows()) {
             if (labelNombreRiesgo.containsText(dato.get("riesgo"))) {
-                for (int j = 1; j <= tablaPrimaCedida.size(); j++) {
+                for (int j = control; j <= tablaPrimaCedida.size(); j++) {
                     WebElementFacade tipoContrato = $(XPATH_TABLA_PRIMAS_CEDIDAS_TR + "[" + j + "]/td[4]");
                     if (tipoContrato.containsText(dato.get("tipoContrato"))) {
                         WebElementFacade primaCedida = $(XPATH_TABLA_PRIMAS_CEDIDAS_TR + "[" + j + "]/td[5]");
