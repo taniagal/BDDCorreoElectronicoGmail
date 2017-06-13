@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad    | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Casanare    | La Salina | AVENIDAS 25 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Casanare    | La Salina | AVENIDAS 35 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas                     |
 | Machine  | 10000000000      | Danos,Asonada,Terremoto,Rotura |
@@ -78,7 +78,53 @@ Then se debe verificar el consolidado de las primas cedidas con bandera: MODIFIC
 | Terremoto        | Excedente           | $1.489.638 (COP) |
 | Terremoto        | Cuota parte         | $1 (COP)         |
 | Terremoto        | Acuerdo facultativo | $3.165.485 (COP) |
+When de clic al link volver a reaseguro
+And ingrese los motivos de cancelacion de la poliza Motivo: Por petición del cliente, Descripción: Prueba cancelacion de poliza
+And ingrese la fecha vigente de cancelacion <fechaCancelacion>
+And inicie la cancelacion de la poliza con facultativo
+Then se realiza la cancelacion
+When ingrese al resumen de la poliza expedida
+And quiera visualizar la informacion de las primas cedidas nameTarea: PremiumCeding, state: SHIFT
+Given se va a consultar poliza expedida 1
+When de clic al menu reaseguro
+And quiera ingresar a ver primas cedidas: CANCELACION POLIZA
+And quiera ingresar al consolidado de primas cedidas
+Then se debe verificar el consolidado de las primas cedidas con bandera: CANCELACION POLIZA y data:
+| riesgo           | tipoContrato        | primaBrutaCedida |
+| AMIT             | Excedente           | -$16.833 (COP)   |
+| AMIT             | Cuota parte         | -$9.539 (COP)    |
+| AMIT             | Acuerdo facultativo | -$59.616 (COP)   |
+| Daños materiales | Excedente           | -$150.086 (COP)  |
+| Daños materiales | Cuota parte         | -$85.048 (COP)   |
+| Daños materiales | Acuerdo facultativo | -$531.551 (COP)  |
+| Terremoto        | Excedente           | -$169.739 (COP)  |
+| Terremoto        | Cuota parte         | -$107.501 (COP)  |
+| Terremoto        | Acuerdo facultativo | -$601.161 (COP)  |
+When de clic al link volver a reaseguro
+When ingrese los motivos de rehabilitacion de la poliza Motivo: Otro, Descripción: Prueba rehabilitacion de poliza
+And realice la rehabilitacion de la poliza
+And de clic al boton detalle
+And realice aprobacion especial asociada a varias observaciones
+And de clic a rehabilitar poliza
+Then se genera la rehabilitacion expedida
+When ingrese al resumen de la poliza expedida
+And quiera visualizar la informacion de las primas cedidas nameTarea: PremiumCeding, state: SHIFT
+Given se va a consultar poliza expedida 1
+When de clic al menu reaseguro
+And quiera ingresar a ver primas cedidas: REHABILITACION POLIZA
+And quiera ingresar al consolidado de primas cedidas
+Then se debe verificar el consolidado de las primas cedidas con bandera: REHABILITACION POLIZA y data:
+| riesgo           | tipoContrato        | primaBrutaCedida |
+| AMIT             | Excedente           | $16.833 (COP)    |
+| AMIT             | Cuota parte         | $9.539 (COP)     |
+| AMIT             | Acuerdo facultativo | $59.616 (COP)    |
+| Daños materiales | Excedente           | $150.086 (COP)   |
+| Daños materiales | Cuota parte         | $85.048 (COP)    |
+| Daños materiales | Acuerdo facultativo | $531.551 (COP)   |
+| Terremoto        | Excedente           | $169.739 (COP)   |
+| Terremoto        | Cuota parte         | $107.501 (COP)   |
+| Terremoto        | Acuerdo facultativo | $601.161 (COP)   |
 
 Examples:
-| descripcionDeAcuerdo     | nombreTarea   | estado  | fechaModificacion | procesoPoliza   |
-| Acuerdo Prueba Reaseguro | PremiumCeding | CONTROL | 01/03/2017        | CREACION POLIZA |
+| descripcionDeAcuerdo     | nombreTarea   | estado  | fechaModificacion | procesoPoliza   | fechaCancelacion |
+| Acuerdo Prueba Reaseguro | PremiumCeding | CONTROL | 01/03/2017        | CREACION POLIZA | 31/12/2017       |

@@ -69,6 +69,11 @@ public class CesionDePrimaSteps extends ScenarioSteps {
         cotizacionMRCPage.irABuscarCotizacion(numeroDeEnvio);
     }
 
+    @Step
+    public void volverAReaseguro() {
+        cotizacionMRCPage.volverAReaseguro();
+    }
+
     public void ingresaADetalleDeContratoExcedente() {
         cesionDePrimaPage.ingresaADetalleDeContratoExcedente();
         cesionDePrimaPage.validarCondicionesDeContratoExcedente();

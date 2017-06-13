@@ -31,6 +31,8 @@ public class CotizacionMRCPage extends PageUtil {
     private WebElementFacade campoTxtBuscar;
     @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
     private WebElementFacade campoTxtSubN;
+    @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:__crumb__']")
+    private WebElementFacade linkVolverAReaseguro;
 
     protected static final int TIEMPO_7000 = 7000;
     CotizacionDePolizaPage cotizacionDePolizaPage = new CotizacionDePolizaPage(getDriver());
@@ -45,6 +47,10 @@ public class CotizacionMRCPage extends PageUtil {
         campoTxtBuscar.sendKeys(Keys.ENTER);
         campoTxtSubN.waitUntilPresent().sendKeys(cotizacion);
         campoTxtSubN.sendKeys(Keys.ENTER);
+    }
+
+    public void volverAReaseguro() {
+        linkVolverAReaseguro.waitUntilPresent().click();
     }
 
     public void ingresarACotizacion() {

@@ -58,6 +58,8 @@ public class CesionDePrimaPage extends PageUtil {
     private static final int DIEZ = 10;
     private static final int CANTIDAD_TIPO_CONTRATO = 3;
     private static final String BANDERA_MODIFICACION = "MODIFICACION POLIZA";
+    private static final String BANDERA_CANCELACION = "CANCELACION POLIZA";
+    private static final String BANDERA_REHABILITACION = "REHABILITACION POLIZA";
     public static final String XPATH_TABLA_PRIMAS_CEDIDAS_TR = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr";
 
     public CesionDePrimaPage(WebDriver driver) {
@@ -146,6 +148,10 @@ public class CesionDePrimaPage extends PageUtil {
         WebElementFacade tabla;
         if (BANDERA_MODIFICACION.equals(procesoPoliza)) {
             tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[12]/td[1]");
+        } else if (BANDERA_CANCELACION.equals(procesoPoliza)){
+            tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[24]/td[1]");
+        } else if (BANDERA_REHABILITACION.equals(procesoPoliza)){
+            tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[36]/td[1]");
         } else {
             tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[1]/td[1]");
         }
@@ -166,7 +172,6 @@ public class CesionDePrimaPage extends PageUtil {
                 }
                 ejecuciones = ejecuciones + 1;
             }
-
         }
         resetImplicitTimeout();
         MatcherAssert.assertThat("Error: Se esperaba la tabla de contratos", tabla.isVisible());
@@ -189,6 +194,10 @@ public class CesionDePrimaPage extends PageUtil {
         List<WebElementFacade> tablaPrimaCedida = findAll(XPATH_TABLA_PRIMAS_CEDIDAS_TR);
         if (BANDERA_MODIFICACION.equals(bandera)) {
             control = CONSTANTE_4;
+        } else if (BANDERA_CANCELACION.equals(bandera)) {
+            control = CONSTANTE_7;
+        } else if (BANDERA_REHABILITACION.equals(bandera)) {
+            control = CONSTANTE_10;
         }
         for (Map<String, String> dato : datos.getRows()) {
             if (labelNombreRiesgo.containsText(dato.get("riesgo"))) {

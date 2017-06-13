@@ -429,12 +429,14 @@ public class PolizaPage extends PageUtil {
     }
 
     public void realizarCancelacion() {
+        esperarHasta(TIEMPO_2000);
         btnSiguiente.waitUntilPresent();
         clickearElemento(btnSiguiente);
         cliquearOpcionCompromiso();
     }
 
     public void cliquearOpcionCompromiso() {
+        esperarHasta(TIEMPO_2000);
         btnOpcionesCompromiso.waitUntilPresent();
         clickearElemento(btnOpcionesCompromiso);
         esperarObjetoClikeableServidorWe(btnCancelarAhora);

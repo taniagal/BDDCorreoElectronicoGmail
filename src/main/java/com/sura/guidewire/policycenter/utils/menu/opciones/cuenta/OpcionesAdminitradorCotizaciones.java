@@ -481,7 +481,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         }
         clickearElemento(botonActualizar);
         botonCotizar.waitUntilVisible().click();
-        waitForTextToAppear("Cotizado", TIEMPO_30000);
+        waitForTextToAppear("Cotizado", TIEMPO_40000);
         if ("declinar".equalsIgnoreCase(accion)) {
             numeroCotizacionDeclinar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
         } else {
