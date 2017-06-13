@@ -76,6 +76,11 @@ public class CesionDePrimaDefinitions {
         cesionDePrimaSteps.ingresarAPrimasCedidas(processPoliza);
     }
 
+    @When("de clic al link volver a reaseguro")
+    public void volverAReaseguro() {
+        cesionDePrimaSteps.volverAReaseguro();
+    }
+
     @Then("quiera ejecutar una tarea de proceso por lotes <nombreTarea> <estado>")
     public void ejecutarTareaProcesoPorLotes(@Named("nombreTarea") String nombreTarea, @Named("estado") String estado) {
         cesionDePrimaSteps.ejecutaTareaPrimasCedidas(nombreTarea, estado);
