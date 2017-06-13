@@ -18,9 +18,10 @@ When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | cero_kilometros | medioVenta |
 | random | 2017   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Global  | Si              | Televentas |
-And ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+And vaya a la pantalla de coberturas
+And seleccione todas las coberturas de comision:
+| limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
+| 1.440  | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   |         |
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And ingrese al resumen de la poliza expedida
