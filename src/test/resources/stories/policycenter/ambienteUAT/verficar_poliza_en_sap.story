@@ -11,8 +11,8 @@ para poder cotizar o expedir una poliza
 Scenario: Verificar la generacion de la factura de una poliza en SAP
 GivenStories: stories/policycenter/login_policy_sap.story
 Given estoy cotizando una poliza:
-| cuenta     | producto | agente_oficina  | oficina | tipoPoliza |
-| 7085177908 | Autos    | CENTRO SURA     | 4029    | Individual |
+| cuenta     | producto | agente_oficina                             | oficina | tipoPoliza |
+| 7085177908 | Autos    | AGUDELO*RODRIGUEZ CQLII**GLORIA STELLA     | 4029    | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor   | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
