@@ -42,7 +42,7 @@ public class SAPClient extends PageUtil {
             PageUtil.esperarHasta(TIEMPO_60000);
             DTNegConsultasDocCxCRes response = port.siOsWSConsultasDocCxC(dtNegConsultasDocCxCReq);
             while (response.getDatosConsultasDocCxC().size() == CONSTANTE_0 && intentos <= CONSTANTE_30) {
-                PageUtil.esperarHasta(TIEMPO_3000);
+                PageUtil.esperarHasta(TIEMPO_60000);
                 response = port.siOsWSConsultasDocCxC(dtNegConsultasDocCxCReq);
                 intentos++;
             }
@@ -61,11 +61,13 @@ public class SAPClient extends PageUtil {
                 MatcherAssert.assertThat("Sin resultados en la consulta " + response.getDatosConsultasDocCxC().isEmpty(), response.getDatosConsultasDocCxC().isEmpty(), Is.is(Matchers.equalTo(false)));
             }
         } catch (P2ApplicationException e) {
-            LOGGER.error("Error en la conexion" + e);
-            LOGGER.info(e.getFaultInfo().getStandard().getFaultText());
+            LOGGER.error("Error en la conexion", e);
+            //LOGGER.info(e.getFaultInfo().getStandard().getFaultText());
         } catch (SOAPFaultException e) {
-            LOGGER.info("SOAPFaultException " + e);
-            LOGGER.info(e.getMessage());
+            LOGGER.info("SOAPFaultException ", e);
+            //LOGGER.info(e.getMessage());
+        } catch (Exception e){
+            LOGGER.info("Exception ", e);
         }
 
     }
