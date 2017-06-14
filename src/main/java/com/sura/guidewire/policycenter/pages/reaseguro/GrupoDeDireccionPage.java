@@ -184,7 +184,7 @@ public class GrupoDeDireccionPage extends PageUtil {
                 seleccionarItem(comboBoxVerApartirDe, verApartirDe);
                 comboBoxVerApartirDe.sendKeys(Keys.TAB);
             } else {
-             intentos = CONSTANTE_3;
+                intentos = CONSTANTE_3;
             }
             intentos++;
         }
