@@ -27,4 +27,4 @@ Then se valida la creacion de la poliza en SAP
 
 Examples:
 | tipo_documento       | documento  | asistencia        |
-| CEDULA DE CIUDADANIA | 1128414968 | Asistencia Básica |
+| CEDULA DE CIUDADANIA | 1136201252 | Asistencia Básica |
