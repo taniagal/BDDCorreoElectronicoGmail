@@ -39,8 +39,8 @@ public class SAPClient extends PageUtil {
             dtNegConsultasDocCxCReq.setCdramo("040");
             dtNegConsultasDocCxCReq.setNmpoliza(numeroPoliza);
             dtNegConsultasDocCxCReq.setCdestadoDocumento("P;A;L");
-            DTNegConsultasDocCxCRes response = port.siOsWSConsultasDocCxC(dtNegConsultasDocCxCReq);
             PageUtil.esperarHasta(TIEMPO_60000);
+            DTNegConsultasDocCxCRes response = port.siOsWSConsultasDocCxC(dtNegConsultasDocCxCReq);
             while (response.getDatosConsultasDocCxC().size() == CONSTANTE_0 && intentos <= CONSTANTE_30) {
                 PageUtil.esperarHasta(TIEMPO_3000);
                 response = port.siOsWSConsultasDocCxC(dtNegConsultasDocCxCReq);
