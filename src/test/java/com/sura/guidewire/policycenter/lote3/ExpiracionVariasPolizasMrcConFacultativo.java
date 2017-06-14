@@ -1,4 +1,6 @@
 package com.sura.guidewire.policycenter.lote3;
 
-public class ExpiracionVariasPolizasMrcConFacultativo {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class ExpiracionVariasPolizasMrcConFacultativo extends SerenityStory {
 }

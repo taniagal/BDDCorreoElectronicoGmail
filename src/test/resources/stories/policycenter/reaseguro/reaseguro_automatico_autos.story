@@ -21,20 +21,9 @@ And ingrese los datos de vehiculo:
 And vaya a la pantalla de coberturas
 And seleccione todas las coberturas de comision:
 | limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
-| 1.440  | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   |         |
-And voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
-And ingrese al resumen de la poliza expedida
-And necesito iniciar la cancelacion
-And realice el proceso de cancelacion completo
-Then se debe mostrar mensaje de advertencia al cancelar poliza
-| mensaje                                                                                                                                                                                                                 |
-| La póliza tiene beneficiario oneroso, usted debe tener en su poder el paz y salvo o el documento de la entidad onerosa en donde se acepta la cancelación , gestión que de manera previa debió haber realizado el asesor |
-And se debe visualizar mensaje de advertencia al cancelar poliza por opciones de compromiso
-| mensaje                                                                                                                                                                                                                 |
-| La póliza tiene beneficiario oneroso, usted debe tener en su poder el paz y salvo o el documento de la entidad onerosa en donde se acepta la cancelación , gestión que de manera previa debió haber realizado el asesor |
-
+| 3.040  | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   |         |
+And agregue un nuevo valor asegurado <valor_asegurado>
 
 Examples:
-| tipo_documento       | documento  | tipoBeneficiarioOneroso |
-| CEDULA DE CIUDADANIA | 1264567899 | Oneroso Leasing         |
+| tipo_documento       | documento  | valor_asegurado |
+| CEDULA DE CIUDADANIA | 1264567899 | 300000000       |
