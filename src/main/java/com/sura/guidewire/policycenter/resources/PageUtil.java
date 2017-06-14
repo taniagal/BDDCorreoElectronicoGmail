@@ -22,6 +22,7 @@ public class PageUtil extends PageObject {
     protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     protected static final int TIEMPO_9999 = 9999;
     protected static final int TIEMPO_30000 = 30000;
+    protected static final int TIEMPO_60000 = 60000;
     protected static final int TIEMPO_40000 = 40000;
     protected static final int TIEMPO_5000 = 5000;
     protected static final int TIEMPO_3500 = 3500;
