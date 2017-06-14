@@ -11,12 +11,12 @@ para poder cotizar o expedir una poliza
 Scenario: Verificar la generacion de la factura de una poliza en SAP
 GivenStories: stories/policycenter/login_policy_sap.story
 Given estoy cotizando una poliza:
-| cuenta     | producto | agente_oficina       | oficina | tipoPoliza |
-| 2012723757 | Autos    | ABARROTES S.A. CQLII | 019     | Individual |
+| cuenta     | producto | agente_oficina  | oficina | tipoPoliza |
+| 7085177908 | Autos    | CENTRO SURA     | 4029    | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor   | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
-| random | 2017   | 01601253         | MEDELLIN           | Particular        | 526adsafd | 34asdas | 29800000        | null      | null    | 2    | Plan Autos Básico | Televentas |
+| random | 2017   | 01601253         | MEDELLIN           | Particular        | 526adsafd | 34asdas | 29800000        | null      | null    | 2    | Plan Autos Básico | Asesor     |
 And ingrese a la pantalla de coberturas
 And ingrese las coberturas a auto cero kilometros:
 | limite | deducible | AS                |
@@ -27,4 +27,4 @@ Then se valida la creacion de la poliza en SAP
 
 Examples:
 | tipo_documento       | documento  | asistencia        |
-| CEDULA DE CIUDADANIA | 1003372363 | Asistencia Básica |
+| CEDULA DE CIUDADANIA | 1036618627 | Asistencia Básica |
