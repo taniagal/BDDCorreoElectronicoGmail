@@ -24,6 +24,11 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
     }
 
     @Step
+    public void cliquearRegistroAutosPD(String gruposAutos) {
+        grupoDeDireccionPage.cliquearRegistroAutosPD(gruposAutos);
+    }
+
+    @Step
     public void verificarValoresContratosReasegurables(ExamplesTable examplesTable) {
 
         grupoDeDireccionPage.verificarBaseReasegurableRiesgo(examplesTable);
@@ -35,6 +40,8 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
         grupoDeDireccionPage.validarLimiteCuotaParte(examplesTable);
         grupoDeDireccionPage.verificarBaseReasegurableCumulo(examplesTable);
         grupoDeDireccionPage.verificarValorRiesgoCedidoAcuerdoFacultativo(examplesTable);
+        grupoDeDireccionPage.verificarRetencionSobreElRiesgo(examplesTable);
+        grupoDeDireccionPage.verificarProporcionExcedente(examplesTable);
     }
 
     @Step

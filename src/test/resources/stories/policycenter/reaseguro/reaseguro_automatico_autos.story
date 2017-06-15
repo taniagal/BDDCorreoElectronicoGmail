@@ -23,6 +23,29 @@ And seleccione todas las coberturas de comision:
 | limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
 | 3.040  | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   |         |
 And agregue un nuevo valor asegurado <valor_asegurado>
+And quiera reasegurar la poliza cotizada
+And de clic en el registro de autos: Auto Liability
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | retencionSobreRiesgo | proporcionExcedente |
+| 3.040.000.000          | 3.040.000.000         | 570.000.000     | 30.000.000     | 2.440.000.000  | 600.000.000      | 18,75                | 80,263158           |
+When de clic en el registro de autos: Auto PD
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | limiteContratoCP | retencionSobreRiesgo |
+| 300.000.000            | 300.000.000           | 285.000.000     | 15.000.000     | 300.000.000      | 95                   |
+When expido la poliza mrc
+And de clic al boton detalle
+And realice aprobacion especial asociada a varias observaciones
+And expido la poliza mrc
+And ingrese al resumen de la poliza expedida
+And de clic al menu reaseguro
+And de clic en el registro de autos: Auto Liability
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | retencionSobreRiesgo | proporcionExcedente |
+| 3.040.000.000          | 3.040.000.000         | 570.000.000     | 30.000.000     | 2.440.000.000  | 600.000.000      | 18,75                | 80,263158           |
+When de clic en el registro de autos: Auto PD
+Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
+| baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | limiteContratoCP | retencionSobreRiesgo |
+| 300.000.000            | 300.000.000           | 285.000.000     | 15.000.000     | 300.000.000      | 95                   |
 
 Examples:
 | tipo_documento       | documento  | valor_asegurado |

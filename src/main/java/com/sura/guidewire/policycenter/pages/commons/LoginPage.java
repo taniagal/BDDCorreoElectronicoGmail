@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com.co/pc/PolicyCenter.do")
-//@DefaultUrl("http://10.214.18.58:8180/pc/PolicyCenter.do")
+//@DefaultUrl("http://PQVIPF0DVJY5:8180/pc/PolicyCenter.do")
 public class LoginPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='country']")
