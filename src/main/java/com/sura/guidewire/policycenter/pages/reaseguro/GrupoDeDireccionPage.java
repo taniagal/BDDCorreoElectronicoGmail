@@ -40,7 +40,7 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade linkBaseReasegurableCumulo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:TIV-inputEl')]")
     private WebElementFacade lblBaseReasegurableRiesgo;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:RetainedPropShare-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRiskDV:RetainedPropShare-inputEl')]")
     private WebElementFacade lblRetencionSobreElRiesgo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:ViewAsOf:ViewAsOf_Arg-inputEl')]")
     private WebElementFacade comboBoxVerApartirDe;
@@ -145,9 +145,11 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     public void verificarValorRiesgoCedidoEX(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
-        String valorRiesgoCedidoEX = tblRiesgoCedidoContratoExcedenteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoExcedenteBasico.getText().length() - CONSTANTE_6);
-        MatcherAssert.assertThat("Error en el valor riesgo cedido excedente, expected: " + data.get("riesgoCedidoEX") +
-                BUT_WAS + valorRiesgoCedidoEX, valorRiesgoCedidoEX.equals(data.get("riesgoCedidoEX")));
+        if (data.get("riesgoCedidoEX") != null) {
+            String valorRiesgoCedidoEX = tblRiesgoCedidoContratoExcedenteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoExcedenteBasico.getText().length() - CONSTANTE_6);
+            MatcherAssert.assertThat("Error en el valor riesgo cedido excedente, expected: " + data.get("riesgoCedidoEX") +
+                    BUT_WAS + valorRiesgoCedidoEX, valorRiesgoCedidoEX.equals(data.get("riesgoCedidoEX")));
+        }
     }
 
     public void verificarProporcionExcedente(ExamplesTable examplesTable) {
@@ -186,9 +188,11 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     public void verificarBaseReasegurableCumulo(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
-        String baseReasegurableCumulo = linkBaseReasegurableCumulo.getText().substring(CONSTANTE_1, linkBaseReasegurableCumulo.getText().length() - CONSTANTE_6);
-        MatcherAssert.assertThat("Error en el valor Base reasegurable Cúmulo, expected: " + data.get("baseReasegurableCumulo") +
-                BUT_WAS + baseReasegurableCumulo, baseReasegurableCumulo.equals(data.get("baseReasegurableCumulo")));
+        if (data.get("baseReasegurableCumulo") != null) {
+            String baseReasegurableCumulo = linkBaseReasegurableCumulo.getText().substring(CONSTANTE_1, linkBaseReasegurableCumulo.getText().length() - CONSTANTE_6);
+            MatcherAssert.assertThat("Error en el valor Base reasegurable Cúmulo, expected: " + data.get("baseReasegurableCumulo") +
+                    BUT_WAS + baseReasegurableCumulo, baseReasegurableCumulo.equals(data.get("baseReasegurableCumulo")));
+        }
     }
 
     public void seleccionarOpcionVerApartirDe(String verApartirDe) {
@@ -231,5 +235,18 @@ public class GrupoDeDireccionPage extends PageUtil {
         txtFechaFinVigencia.sendKeys(Utils.sumarDiasALaFechaActual(CONSTANTE_0));
         esperarHasta(TIEMPO_2000);
         return Utils.sumarDiasALaFechaActual(CONSTANTE_0);
+    }
+
+    public void cliquearRegistroAutosPD(String gruposAutos) {
+
+        WebElementFacade grupoAuto = $(".//*[contains(@id,'PolicyReinsuranceCV:2-body')]/div/table/tbody/tr[1]/td[2]");
+        if (grupoAuto.containsText(gruposAutos)) {
+            grupoAuto.click();
+            esperarHasta(TIEMPO_2000);
+        } else {
+            grupoAuto = $(".//*[contains(@id,'PolicyReinsuranceCV:2-body')]/div/table/tbody/tr[2]/td[2]");
+            grupoAuto.click();
+            esperarHasta(TIEMPO_2000);
+        }
     }
 }

@@ -49,6 +49,11 @@ public class GrupoDeDireccionDefinitions {
         grupoDeDireccionSteps.verificarValoresContratosReasegurables(examplesTable);
     }
 
+    @When("de clic en el registro de autos: $gruposAutos")
+    public void cliquearRegistroAutosPD(String gruposAutos) {
+        grupoDeDireccionSteps.cliquearRegistroAutosPD(gruposAutos);
+    }
+
     @When("ingrese la Fecha Inicio Vigencia: $fechaInicioVigencia")
     public void modificarFechaInicioVigencia(String fechaInicioVigencia) {
         informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
