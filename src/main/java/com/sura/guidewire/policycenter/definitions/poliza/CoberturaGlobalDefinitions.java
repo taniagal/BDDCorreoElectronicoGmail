@@ -19,17 +19,17 @@ public class CoberturaGlobalDefinitions {
 
 
     @When("seleccione la opcion coberturas globales")
-    public void cuandoSeleccioneLaOpcionAgregarCobertura(){
+    public void cuandoSeleccioneLaOpcionAgregarCobertura() {
         coberturaGlobalSteps.ir_a_coberturas_globales();
     }
 
     @When("seleccione la opcion agregar cobertura global")
-    public void cuandoSeleccioneLaOpcionAgregarCoberturaGlobal(){
+    public void cuandoSeleccioneLaOpcionAgregarCoberturaGlobal() {
         coberturaGlobalSteps.ir_a_agregar_cobertura_global();
     }
 
     @When("muestre los mensajes de advertencia para las reglas de coberturas $mensajes")
-    public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(ExamplesTable mensajes){
+    public void verLosMensajesDeAdvertenciaDeReglasDeCoberturas(ExamplesTable mensajes) {
         coberturaGlobalSteps.verLosMensajesDeAdvertenciaDeReglasDeCoberturas(mensajes);
     }
 
@@ -48,29 +48,30 @@ public class CoberturaGlobalDefinitions {
 
         coberturaGlobalSteps.seleccionar_boton_aceptar_de_la_parte_superior_izquierda();
     }
+
     @Then("en coberturas globales deben estar en estado <estadouno> las siguientes opciones $menusesperados")
 
     public void entoncesEnCoberturasGlobalesSeDebeValidarLasSiguienteOpcione(@Named("estadouno") String estadouno,
-                                                                             ExamplesTable menusesperados){
-        coberturaGlobalSteps.validar_campos_coberturas_globales(estadouno,menusesperados);
+                                                                             ExamplesTable menusesperados) {
+        coberturaGlobalSteps.validar_campos_coberturas_globales(estadouno, menusesperados);
     }
 
     @Then("se debe validar el siguiente mensaje<mensaje> de error")
-    public void verificarMensajeErrorValorComercial(@Named("mensaje")String mensaje){
+    public void verificarMensajeErrorValorComercial(@Named("mensaje") String mensaje) {
         coberturaGlobalSteps.verificarMensajeErrorValorComercial(mensaje);
     }
 
     @Then("en agregar coberturas globales deben estar en estado <estadouno> las siguientes opciones $menusesperados")
-    public void entoncesEnAgregarCoberturasSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno, ExamplesTable menusesperados){
+    public void entoncesEnAgregarCoberturasSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno, ExamplesTable menusesperados) {
         String estadodos = "";
-        coberturaGlobalSteps.validar_campos_agregar_cobertura(estadouno,estadodos,menusesperados);
+        coberturaGlobalSteps.validar_campos_agregar_cobertura(estadouno, estadodos, menusesperados);
     }
 
     @Then("debe estar en la pestaña coberturas en estado <estadouno> las siguientes opciones $menusesperados")
     public void entoncesEnLaPestanaCoberturasSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,
                                                                                  @Named("estadodos") String estadodos,
                                                                                  ExamplesTable menusesperados) {
-        coberturaGlobalSteps.validar_campos_pestaña_coberturas(estadouno,estadodos,menusesperados);
+        coberturaGlobalSteps.validar_campos_pestana_coberturas(estadouno, estadodos, menusesperados);
     }
 
     @Then("no debe mostrar los mensajes de advertencia para las reglas de coberturas $mensajes")
@@ -79,12 +80,12 @@ public class CoberturaGlobalDefinitions {
     }
 
     @When("ingreso la descripcion de la cobertura <descripcion>")
-    public void ingresarDescripcionCobertura (@Named("descripcion") String descripcion) {
+    public void ingresarDescripcionCobertura(@Named("descripcion") String descripcion) {
         coberturaGlobalSteps.ingresarDescripcionCobertura(descripcion);
     }
 
     @When("selecciono las coberturas globales $coberturas")
-    public void seleccionarCoberturasGlobales (ExamplesTable coberturas) {
+    public void seleccionarCoberturasGlobales(ExamplesTable coberturas) {
         coberturaGlobalSteps.seleccionarCoberturasGlobales(coberturas);
     }
 }

@@ -17,7 +17,7 @@ public class ContactosAsociadosAPolizaSteps {
     }
 
     @Step
-    public void validarPestañasEnContactos(ExamplesTable opciones) {
+    public void validarPestanasEnContactos(ExamplesTable opciones) {
         contactosAsociadosAPolizaPage.validarPestanasDeOpcionContactos(opciones);
     }
 }

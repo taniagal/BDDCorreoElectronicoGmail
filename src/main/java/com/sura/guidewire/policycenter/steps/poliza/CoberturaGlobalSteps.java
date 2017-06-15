@@ -14,45 +14,47 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
     PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
 
-    public CoberturaGlobalSteps(Pages pages){
+    public CoberturaGlobalSteps(Pages pages) {
         super(pages);
     }
 
     @Step
-    public void ir_a_coberturas_globales(){
+    public void ir_a_coberturas_globales() {
         coberturaGlobalPage.irACoberturasGlobales();
     }
 
     @Step
-    public void ir_a_agregar_cobertura_global(){
+    public void ir_a_agregar_cobertura_global() {
         coberturaGlobalPage.ingresarAgregarCoberturaGlobal();
-    }
-    @Step
-    public void validar_campos_agregar_cobertura(String estadouno,String estadodos,ExamplesTable menusesperados){
-        coberturaGlobalPage.validarCamposAgregarCobertura(estadouno,estadodos,menusesperados);
-    }
-    @Step
-    public void validar_campos_pestaña_coberturas(String estadouno,String estadodos,ExamplesTable menusesperados){
-        coberturaGlobalPage.validarCamposPestañaCoberturas(estadouno,estadodos,menusesperados);
     }
 
     @Step
-    public void seleccionar_boton_aceptar_de_la_parte_superior_izquierda(){
+    public void validar_campos_agregar_cobertura(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        coberturaGlobalPage.validarCamposAgregarCobertura(estadouno, estadodos, menusesperados);
+    }
+
+    @Step
+    public void validar_campos_pestana_coberturas(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        coberturaGlobalPage.validarCamposPestanaCoberturas(estadouno, estadodos, menusesperados);
+    }
+
+    @Step
+    public void seleccionar_boton_aceptar_de_la_parte_superior_izquierda() {
         coberturaGlobalPage.seleccionarBotonAceptar();
     }
 
     @Step
-    public void ingresar_descripcion_detalle_cobertua_global(String descripcion){
+    public void ingresar_descripcion_detalle_cobertua_global(String descripcion) {
         coberturaGlobalPage.ingresarDescripcionDetalleCoberturaGlobal(descripcion);
     }
 
     @Step
-    public void validar_campos_coberturas_globales(String estadouno, ExamplesTable menusesperados){
-        coberturaGlobalPage.validarCamposCoberturasGlobales(estadouno,menusesperados);
+    public void validar_campos_coberturas_globales(String estadouno, ExamplesTable menusesperados) {
+        coberturaGlobalPage.validarCamposCoberturasGlobales(estadouno, menusesperados);
     }
 
     @Step
-    public void verificarMensajeErrorValorComercial(String mensaje){
+    public void verificarMensajeErrorValorComercial(String mensaje) {
         coberturaGlobalPage.verificarMensajeErrorValorComercial(mensaje);
     }
 
@@ -72,17 +74,17 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarCoberturasGlobales (ExamplesTable coberturas) {
+    public void seleccionarCoberturasGlobales(ExamplesTable coberturas) {
         coberturaGlobalPage.seleccionarCoberturasGlobales(coberturas);
         coberturaGlobalPage.darClicBotonAceptar();
     }
 
-    public String obtenerMensajes(ExamplesTable mensajes){
+    public String obtenerMensajes(ExamplesTable mensajes) {
         Map<String, String> mensajesEsperados = mensajes.getRows().get(0);
         String listaDeMensajes = "";
         String llave;
-        for (int i = 0; i < mensajesEsperados.size(); i++){
-            llave = "mensaje" + (i+1);
+        for (int i = 0; i < mensajesEsperados.size(); i++) {
+            llave = "mensaje" + (i + 1);
             listaDeMensajes = listaDeMensajes + mensajesEsperados.get(llave);
         }
         return listaDeMensajes;

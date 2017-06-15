@@ -112,12 +112,12 @@ public class CoberturaGlobalPage extends PageUtil {
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_INICIAL, LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_FINAL);
     }
 
-    public void validarCamposPestañaCoberturas(String estadouno, String estadodos, ExamplesTable menusesperados) {
+    public void validarCamposPestanaCoberturas(String estadouno, String estadodos, ExamplesTable menusesperados) {
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_PESTAÑA_COBERTURAS_INICIAL, LBL_PESTAÑA_COBERTURAS_FINAL);
     }
 
-    public void validarCamposCoberturasGlobales(String estadouno,ExamplesTable menusesperados) {
-        opcionesInformacionPolizaMrcPage.validarCampos(estadouno,menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
+    public void validarCamposCoberturasGlobales(String estadouno, ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
     }
 
     public void cargarCoberturaUnica(String nombreCobertura, String valor) {
@@ -160,7 +160,7 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void verificarMensajeErrorValorComercial(String mensaje) {
-        verificarMensaje(labelMensajeValorComercial,mensaje);
+        verificarMensaje(labelMensajeValorComercial, mensaje);
     }
 
     public void ingresarDescripcionCobertura(String descripcion) {
@@ -199,7 +199,7 @@ public class CoberturaGlobalPage extends PageUtil {
         }
     }
 
-    public void darClicBotonAceptar(){
+    public void darClicBotonAceptar() {
         btnAceptar.waitUntilPresent().click();
         esperarHasta(TIEMPO_3000);
         btnCotizar.waitUntilPresent().click();

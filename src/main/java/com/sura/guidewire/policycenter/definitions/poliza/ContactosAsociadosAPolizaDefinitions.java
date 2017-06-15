@@ -18,7 +18,7 @@ public class ContactosAsociadosAPolizaDefinitions {
 
     @Then("se debe mostrar las siguientes opciones en cada contacto $opciones")
     public void entoncesSeDebenMostrarLosSiguientesOpcionesEnCadaContacto(ExamplesTable opciones) {
-        contactosAsociadosAPolizaSteps.validarPestañasEnContactos(opciones);
+        contactosAsociadosAPolizaSteps.validarPestanasEnContactos(opciones);
 
     }
 
