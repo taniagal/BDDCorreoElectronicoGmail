@@ -22,6 +22,8 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade tblRiesgoCedidoContratoCotaparteBasico;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[2]/td[7]")
     private WebElementFacade tblRiesgoCedidoContratoExcedenteBasico;
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[2]/td[8]")
+    private WebElementFacade tblProporcionExcedente;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[3]/td[7]")
     private WebElementFacade tblRiesgoCedidoAcuerdoFacultativo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[2]")
@@ -38,6 +40,8 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade linkBaseReasegurableCumulo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:TIV-inputEl')]")
     private WebElementFacade lblBaseReasegurableRiesgo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV:PerRiskDV:RetainedPropShare-inputEl']")
+    private WebElementFacade lblRetencionSobreElRiesgo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:ViewAsOf:ViewAsOf_Arg-inputEl')]")
     private WebElementFacade comboBoxVerApartirDe;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add']")
@@ -117,6 +121,14 @@ public class GrupoDeDireccionPage extends PageUtil {
                 BUT_WAS + baseReasegoContrato, baseReasegoContrato.equals(data.get("baseReaseguroContrato")));
     }
 
+    public void verificarRetencionSobreElRiesgo(ExamplesTable examplesTable) {
+        Map<String, String> data = examplesTable.getRow(0);
+        if (data.get("retencionSobreRiesgo") != null) {
+            MatcherAssert.assertThat("Error en el valor Retención sobre el riesgo, expected: " + data.get("retencionSobreRiesgo") +
+                    BUT_WAS + lblRetencionSobreElRiesgo.getText(), lblRetencionSobreElRiesgo.getText().equals(data.get("retencionSobreRiesgo")));
+        }
+    }
+
     public void verificarValorRetenidoCP(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String valorRetenidoCP = lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6);
@@ -136,6 +148,14 @@ public class GrupoDeDireccionPage extends PageUtil {
         String valorRiesgoCedidoEX = tblRiesgoCedidoContratoExcedenteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoExcedenteBasico.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor riesgo cedido excedente, expected: " + data.get("riesgoCedidoEX") +
                 BUT_WAS + valorRiesgoCedidoEX, valorRiesgoCedidoEX.equals(data.get("riesgoCedidoEX")));
+    }
+
+    public void verificarProporcionExcedente(ExamplesTable examplesTable) {
+        Map<String, String> data = examplesTable.getRow(0);
+        if (data.get("proporcionExcedente") != null) {
+            MatcherAssert.assertThat("Error en el valor Proporcion Excedente, expected: " + data.get("proporcionExcedente") +
+                    BUT_WAS + tblProporcionExcedente.getText(), tblProporcionExcedente.getText().equals(data.get("proporcionExcedente")));
+        }
     }
 
     public void verificarValorRiesgoCedidoAcuerdoFacultativo(ExamplesTable examplesTable) {
