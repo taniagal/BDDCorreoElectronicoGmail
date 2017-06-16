@@ -107,6 +107,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
             clickearElemento(botonCotizar);
         }
         resetImplicitTimeout();
+        esperarHasta(TIEMPO_5000);
         waitForAnyTextToAppear("Cotizado", "Cotización");
     }
 
