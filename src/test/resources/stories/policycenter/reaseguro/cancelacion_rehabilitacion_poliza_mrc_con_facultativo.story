@@ -18,7 +18,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 70 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 72 # 61 - 36 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -49,7 +49,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 70 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 72 # 61 - 36 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -74,6 +74,7 @@ And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
 Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
+And seleccione opcion Ver A Partir De: 01/03/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 16.000.000.000        | 208.695.652     | 1.182.608.696  | 14.608.695.652 | 1.391.304.348    | 30.000.000.000         | 4.000.000.000                  |
@@ -116,7 +117,7 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | 20.000.000.000         | 16.000.000.000        | 208.695.652     | 1.182.608.696  | 14.608.695.652 | 1.391.304.348    | 30.000.000.000         | 4.000.000.000                  |
 Given se va a consultar poliza expedida 2
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/03/2017 - 30/06/2017
+And seleccione opcion Ver A Partir De: 01/03/2017 - 01/04/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 7.000.000.000         | 91.304.348      | 517.391.304    | 6.391.304.348  | 608.695.652      | 30.000.000.000         | 3.000.000.000                  |
