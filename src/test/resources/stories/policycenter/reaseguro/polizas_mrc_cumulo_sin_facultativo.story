@@ -18,7 +18,7 @@ And ingrese la Fecha Inicio Vigencia: 01/02/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 40 # 57 - 29 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -49,7 +49,7 @@ And ingrese la Fecha Inicio Vigencia: 01/03/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                      |medioVenta|
-| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
+| Colombia| Antioquia   | Bello    | AVENIDAS 40 # 57 - 29 | Fabricación de otros productos químicos |Asesor    |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -99,7 +99,7 @@ And ingrese la Fecha Inicio Vigencia: 01/05/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 37 # 57 - 29 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 40 # 57 - 29 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 1000000000       | Danos      |
@@ -107,6 +107,11 @@ And seleccione algunos articulos y sus cobertura:
 And cotice el articulo
 When intente expedir la poliza
 And confirmo el mensaje de expedir poliza
+And de clic al boton detalle
+And realice la aprobacion especial
+And expida la poliza
+And expida la poliza
+And expido la poliza mrc
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
