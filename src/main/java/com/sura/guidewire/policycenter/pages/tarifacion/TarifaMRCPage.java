@@ -167,6 +167,7 @@ public class TarifaMRCPage extends PageUtil {
         botonCotizar.waitUntilVisible();
         esperarObjetoClikeableServidorWe(botonCotizar);
         descartarCambios(linkDescartarCambios, botonCotizar);
+        esperarHasta(TIEMPO_5000);
         waitForAnyTextToAppear("Cotizado", "Cotización");
     }
 
