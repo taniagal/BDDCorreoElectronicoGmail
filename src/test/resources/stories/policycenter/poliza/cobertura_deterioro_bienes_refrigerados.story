@@ -15,8 +15,11 @@ And ingrese las entradas de las diferentes coberturas
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida           | 25             |
 And haga clic en el boton Aceptar
 Then se debe mostrar el o los siguientes mensajes
-| mensaje                                                                                                                                                                                                                                            |
-| El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura "Danos materiales" de los articulos "-Existencias flotantes - Existencias fijas - ". |
+| mensaje                                                                                                                                                                                                      |
+| El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura "Danos materiales" de los articulos |
+| Existencias flotantes                                                                                                                                                                                        |
+| Existencias fijas                                                                                                                                                                                            |
+
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222211        | Asesor     |             |
