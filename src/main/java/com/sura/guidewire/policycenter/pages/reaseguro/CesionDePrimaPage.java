@@ -185,6 +185,7 @@ public class CesionDePrimaPage extends PageUtil {
         for (int z = 0; z < datos.getRowCount()/CANTIDAD_TIPO_CONTRATO;z++) {
             WebElementFacade linkVerConsolidadoDePrimasCedidas = $(".//*[@id='RICededPremiumsPopup:" + z + ":ConsolidatedCededPremium']");
             linkVerConsolidadoDePrimasCedidas.waitUntilPresent().click();
+            esperarHasta(TIEMPO_2000);
             verificarPrimaBrutaCedida(datos, bandera);
             linkVolverAPrimasCedidas.click();
         }
