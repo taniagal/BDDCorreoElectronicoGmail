@@ -231,7 +231,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
         botonHojaDeCalculoRenovacion.waitUntilPresent();
-        waitForTextToAppear("Borrador", TIEMPO_40000);
+        waitForTextToAppear("Borrador", TIEMPO_80000);
     }
 
     public void validarBotonEditarTransaccion() {

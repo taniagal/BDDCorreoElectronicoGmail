@@ -23,6 +23,7 @@ public class PageUtil extends PageObject {
     protected static final int TIEMPO_9999 = 9999;
     protected static final int TIEMPO_30000 = 30000;
     protected static final int TIEMPO_60000 = 60000;
+    protected static final int TIEMPO_80000 = 80000;
     protected static final int TIEMPO_40000 = 40000;
     protected static final int TIEMPO_5000 = 5000;
     protected static final int TIEMPO_3500 = 3500;
@@ -103,7 +104,7 @@ public class PageUtil extends PageObject {
      */
     public void seleccionarItem(WebElementFacade elemento, String opcion) {
         clickearElemento(elemento);
-        esperarHasta(TIEMPO_200);
+        esperarHasta(TIEMPO_500);
         try {
             elemento.clear();
         } catch (StaleElementReferenceException g) {
@@ -165,7 +166,7 @@ public class PageUtil extends PageObject {
      * @param mensajes ExamplesTable que es la estructura de datos que contiene todos los mensajes a validar
      */
     public void verificarMensajes(WebElementFacade elemento, ExamplesTable mensajes) {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(elemento).shouldBePresent();
+        withTimeoutOf(TIEMPO_60, TimeUnit.SECONDS).waitFor(elemento).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
             MatcherAssert.assertThat("Error: en la validacion del mensaje, expected: " + mensaje.get("mensaje")
                     + BUT_WAS + elemento.getText(), elemento.containsText(mensaje.get("mensaje")));

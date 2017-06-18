@@ -72,6 +72,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
         try {
             withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonActualizar);
             clickearElemento(botonActualizar);
+            esperarHasta(TIEMPO_2000);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
@@ -85,12 +86,12 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
         desplegarElementoDeLista(listaTipoBeneficiario);
     }
 
-    public void ingresarNumeroDeContratoMRC(String numeroContrato){
+    public void ingresarNumeroDeContratoMRC(String numeroContrato) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(campoInteresAdicionalNumeroDeContratoMRC);
         clickearElemento(campoInteresAdicionalNumeroDeContratoMRC);
-        try{
+        try {
             campoInteresAdicionalNumeroDeContratoMRC2.sendKeys(numeroContrato);
-        }catch (Exception unk){
+        } catch (Exception unk) {
             LOGGER.info("Exception " + unk);
             clickearElemento(campoInteresAdicionalNumeroDeContratoMRC);
             campoInteresAdicionalNumeroDeContratoMRC2.sendKeys(numeroContrato);
