@@ -2,7 +2,6 @@ Meta:
 @lote3
 @tag equipo: 4, sprint: 14
 
-
 Narrative:
 Como usuario de policy center
 Al cotizar una poliza de MRC quiero mirar el valor de la prima para las coberturas de la cotización y el nivel de riesgo
