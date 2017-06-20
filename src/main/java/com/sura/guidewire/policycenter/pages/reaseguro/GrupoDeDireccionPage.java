@@ -241,12 +241,12 @@ public class GrupoDeDireccionPage extends PageUtil {
 
         WebElementFacade grupoAuto = $(".//*[contains(@id,'PolicyReinsuranceCV:2-body')]/div/table/tbody/tr[1]/td[2]");
         if (grupoAuto.containsText(gruposAutos)) {
-            grupoAuto.click();
-            esperarHasta(TIEMPO_2000);
+            esperarObjetoClikeableServidorWe(grupoAuto);
+            esperarHasta(TIEMPO_3500);
         } else {
             grupoAuto = $(".//*[contains(@id,'PolicyReinsuranceCV:2-body')]/div/table/tbody/tr[2]/td[2]");
-            grupoAuto.click();
-            esperarHasta(TIEMPO_2000);
+            esperarObjetoClikeableServidorWe(grupoAuto);
+            esperarHasta(TIEMPO_3500);
         }
     }
 }

@@ -432,6 +432,7 @@ public class PolizaPage extends PageUtil {
         esperarHasta(TIEMPO_2000);
         btnSiguiente.waitUntilPresent();
         clickearElemento(btnSiguiente);
+        esperarHasta(TIEMPO_2000);
         cliquearOpcionCompromiso();
     }
 
@@ -439,6 +440,7 @@ public class PolizaPage extends PageUtil {
         esperarHasta(TIEMPO_2000);
         btnOpcionesCompromiso.waitUntilPresent();
         clickearElemento(btnOpcionesCompromiso);
+        esperarHasta(TIEMPO_2000);
         esperarObjetoClikeableServidorWe(btnCancelarAhora);
         esperarObjetoClikeableServidorWe(btnAceptar);
     }
