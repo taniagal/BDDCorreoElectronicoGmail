@@ -54,7 +54,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
     }
 
     @When("ingrese a editar la direccion por <direccion> en detalle contacto pestaña direcciones")
-    public void editarDireccionEnPestañaDirecciones(@Named("direccion") String direccion) {
+    public void editarDireccionEnPestanaDirecciones(@Named("direccion") String direccion) {
         direccionesDeContactoVinculadasSteps.editarDireccionEnPestaniaDirecciones(direccion);
     }
 

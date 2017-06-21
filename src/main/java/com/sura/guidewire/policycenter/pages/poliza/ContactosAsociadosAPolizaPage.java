@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class ContactosAsociadosAPolizaPage extends PageUtil {
 
     String pathInicialCamposTablaContactos = "//*[contains(@id,'gridcolum') and contains(.,'";
-    String pathInicialPestañasDeContactos = "//span[contains(.,'";
+    String pathInicialPestanasDeContactos = "//span[contains(.,'";
     String pathFinal = "')]";
 
     public ContactosAsociadosAPolizaPage(WebDriver driver) {
@@ -19,7 +19,7 @@ public class ContactosAsociadosAPolizaPage extends PageUtil {
     }
 
     public void validarPestanasDeOpcionContactos(ExamplesTable opciones) {
-        validarOpcion(opciones, pathInicialPestañasDeContactos, pathFinal);
+        validarOpcion(opciones, pathInicialPestanasDeContactos, pathFinal);
     }
 
 }
