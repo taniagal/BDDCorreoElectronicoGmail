@@ -103,7 +103,7 @@ Then me debe permitir crear una carta de declinacion por medio de un boton. El l
 
 Examples:
 | envio    | numCuenta  | declinado | propiedadComercial      | crearCarta                 | departamento | ciudad   | direccion         | descripcion   | actividad                     | razon   |medioVenta|
-| 22222211 | C001888888 | Declinada | Multiriesgo corporativo | Crear carta de declinación | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | Cartera |Televentas|
+| 22222211 | C001888888 | Declinada | Multiriesgo corporativo | Crear carta de declinación | Antioquia    | Medellin | CR 14 D # 45 - 00 | Edificio Core | Acabado de productos textiles | Cartera |Televentas|
 
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>
