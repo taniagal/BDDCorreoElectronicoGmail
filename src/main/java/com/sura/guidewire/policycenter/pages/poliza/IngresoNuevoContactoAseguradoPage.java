@@ -46,6 +46,8 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil {
         campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
         campoTipoDocumento.sendKeys(Keys.ENTER);
         campoNumeroDocumento.sendKeys(datosContacto.get("numeroId"));
+        campoNumeroDocumento.sendKeys(Keys.ENTER);
+        esperarHasta(TIEMPO_2000);
         campoPais.clear();
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
