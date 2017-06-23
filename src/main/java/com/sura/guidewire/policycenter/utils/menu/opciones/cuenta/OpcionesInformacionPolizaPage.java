@@ -385,6 +385,8 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         Map<String, String> contacto = informacionContacto.getRows().get(0);
         super.seleccionarItem(textoTipoDocumento, contacto.get("tipoDocumento"));
         textoNumeroDocumentoSegundoTomador.type(contacto.get("numeroDocumento"));
+        textoPrimerNombre.click();
+        esperarHasta(TIEMPO_2000);
         textoPrimerNombre.type(contacto.get("primerNombre"));
         textoPrimerApellido.type(contacto.get("primerApellido"));
         campoDireccion.type(contacto.get("direccion"));
