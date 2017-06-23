@@ -28,7 +28,7 @@ Then expido la poliza y voy al archivo de poliza
 
 Examples:
 |departamento|ciudad  |direccion        |descripcion  |actividad                    |tipo_documento|documento  |
-|Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Acabado de productos textiles|NIT           |9202086744 |
+|Antioquia   |Medellin|CR 44 A # 43 - 00|Edificio Core|Acabado de productos textiles|NIT           |9202096748 |
 
 
 Scenario: Validar sarlaft en tomador-modificacion
@@ -51,4 +51,4 @@ Then expido la poliza y voy al archivo de poliza
 
 Examples:
 |tipoDocumento |numeroDocumento  |
-|NIT           |9202086744       |
+|NIT           |9202096748       |

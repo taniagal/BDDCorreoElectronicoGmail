@@ -149,7 +149,7 @@ And debo ver un <mensaje> de alerta indicando que es necesario ingresar tipo y n
 
 Examples:
 | tipoDoc   | numDoc     | mensaje                                                                                                                                                                                                                                                                          |
-| <ninguno> | 9202086744 | No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas). |
+| <ninguno> | 9202096748 | No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas). |
 
 Scenario: Consultar contacto de tipo persona natural unicamente por numero de identificacion
 Given estoy en busqueda de contactos

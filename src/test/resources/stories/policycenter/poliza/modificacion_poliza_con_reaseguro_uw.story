@@ -76,14 +76,14 @@ And ingrese la entrada de las diferentes coberturas mrc
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 200000000      |
 And ingresar interes adicional <tipoBeneficiarios> a una sola cobertura
 | TIPO_DE_DOCUMENTO | DOCUMENTO  | TIPOBENEFICIARIO |
-| NIT               | 9202086744 | Oneroso          |
+| NIT               | 9202096748 | Oneroso          |
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
 And ingrese a edificios y ubicaciones en cambio de poliza
 And agregar algun interés adicional <agregarTipoBeneficiario> a un artículo que tiene beneficiario oneroso en cambio de poliza
 | TIPO_DE_DOCUMENTO | DOCUMENTO  | TIPOBENEFICIARIO |
-| NIT               | 9202086744 | Oneroso          |
+| NIT               | 9202096748 | Oneroso          |
 Then se debe mostrar un mensaje de advertencia
 | mensaje                                                                                                                                                                                       |
 | Modificación con beneficario oneroso. Si la modificación afecta los intereses del beneficiario, por favor verifique que este haya suministrado la carta de autorización de dicha modificación |

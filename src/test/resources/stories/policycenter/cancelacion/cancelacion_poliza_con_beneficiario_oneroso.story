@@ -21,7 +21,7 @@ And ingrese la entrada de las diferentes coberturas mrc
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 200000000      |
 And ingresar interes adicional <tipoBeneficiarios> a una sola cobertura
 | TIPO_DE_DOCUMENTO | DOCUMENTO  | TIPOBENEFICIARIO |
-| NIT               | 9202086744 | Oneroso          |
+| NIT               | 9202096748 | Oneroso          |
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And necesito iniciar la cancelacion
