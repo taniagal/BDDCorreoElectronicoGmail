@@ -23,7 +23,7 @@ Examples:
 
 
 Scenario: Crear una cuenta para un contacto persona juridica
-When quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento> y nro documento <nroDocumento>
+When quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento> y nro documento <nro_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
@@ -32,8 +32,8 @@ And ingrese los datos de direccion:
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
-|razon_social|tipo_documento |tipo_direccion         |direccion       |departamento|ciudad  |nombre_organizacion|agente| nroDocumento |
-|UMBRELLA    |NIT            |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 | 7215640195   |
+|razon_social|tipo_documento |tipo_direccion         |direccion       |departamento|ciudad  |nombre_organizacion|agente| nro_documento |
+|UMBRELLA    |NIT            |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 | 7215640195    |
 
 
 Scenario: Creacion unica de cuenta persona natural y crear una cuenta para un contacto menor de edad

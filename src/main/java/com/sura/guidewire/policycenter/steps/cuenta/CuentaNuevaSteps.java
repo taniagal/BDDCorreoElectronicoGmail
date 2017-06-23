@@ -95,18 +95,6 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarTipoDocumentoB(String tipoDocumento) {
-        initRandoms();
-        if ("NIT".equals(tipoDocumento)) {
-            cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
-            cuentaPage.agregarTipoDocumento(tipoDocumento, nit);
-        } else {
-            cuentaPage.buscarPersona(NOMBRECUENTA, "Persona");
-            cuentaPage.agregarTipoDocumento(tipoDocumento, cedula);
-        }
-    }
-
-    @Step
     public void agregarDocumento(String tipoDocumento) {
         initRandoms();
         StringBuilder documento = new StringBuilder("us");

@@ -23,10 +23,10 @@ public class ValidacionesMDMDefinitions {
         cuentaNuevaSteps.agregarDocumento(tipoDocumento,documento);
     }
 
-    @When("quiera crear una cuenta para un contacto persona juridica e tipo de documento <tipo_documento>")
-    public void crearCuentaNuevaJuridica(@Named("tipo_documento")String tipoDocumento){
+    @When("quiera crear una cuenta para un contacto persona juridica con tipo de documento <tipo_documento> y nro documento <nro_documento>")
+    public void crearCuentaNuevaJuridica(@Named("tipo_documento")String tipoDocumento, @Named("nro_documento")String nroDocumento){
         cuentaNuevaSteps.abrirNuevaCuenta();
-        cuentaNuevaSteps.agregarTipoDocumentoB(tipoDocumento);
+        cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento, nroDocumento);
     }
 
     @When("nombre comercial <nombre_comercial>")
