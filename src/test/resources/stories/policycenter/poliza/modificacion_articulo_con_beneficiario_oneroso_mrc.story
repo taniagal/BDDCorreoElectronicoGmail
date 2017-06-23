@@ -21,7 +21,7 @@ And seleccione algunos articulos y sus cobertura:
 | Machine  | 100000000        | Terremoto  |
 And ingresar interes adicional <tipoBeneficiario> a cada cobertura
 | TIPO_DE_DOCUMENTO | DOCUMENTO  | TIPOBENEFICIARIO |
-| NIT               | 9202096748 | Oneroso          |
+| NIT               | 9202096740 | Oneroso          |
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
@@ -47,7 +47,7 @@ And seleccione algunos articulos y sus cobertura:
 | Building | 100000000        | Danos      |
 And ingresar interes adicional <tipoBeneficiarios> a una sola cobertura
 | TIPO_DE_DOCUMENTO | DOCUMENTO  | TIPOBENEFICIARIO |
-| NIT               | 9202096748 | Oneroso          |
+| NIT               | 9202096740 | Oneroso          |
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC
@@ -75,7 +75,7 @@ And seleccione algunos articulos y sus cobertura:
 | Building | 200000000        | Danos      |
 And ingresar interes adicional <tipoBeneficiarios> a una sola cobertura
 | TIPO_DE_DOCUMENTO | DOCUMENTO  | TIPOBENEFICIARIO |
-| NIT               | 9202096748 | Oneroso          |
+| NIT               | 9202096740 | Oneroso          |
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
 And cuando intente cambiar informacion de la poliza MRC

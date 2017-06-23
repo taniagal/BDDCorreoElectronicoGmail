@@ -47,10 +47,10 @@ public class CuentaNuevaDefinitions {
     /**
      * ESCENARIO 2
      */
-    @When("quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento>")
-    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento){
+    @When("quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento> y nro documento <nroDocumento>")
+    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento, @Named("nro_documento")String nroDocumento){
         cuentaNuevaSteps.abrirNuevaCuenta();
-        cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento, "");
+        cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento, nroDocumento);
     }
 
     @When("nombre empresa <razon_social>")

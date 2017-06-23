@@ -185,7 +185,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 | tipoDocumento | numeroDocumento | numeroCuenta | nombre              | direccion                           |
-| NIT           | 9202096748      | C010478975   | VARIEDADES YURLEDYS | CRA 72 # 81-17, MEDELLIN, Antioquia |
+| NIT           | 9202096740      | C010478975   | VARIEDADES YURLEDYS | CRA 72 # 81-17, MEDELLIN, Antioquia |
 
 Scenario: Busqueda cuenta por persona juridica por razon social
 When ingrese la informacion de tipo de razon social <razonSocial> del titular de la cuenta

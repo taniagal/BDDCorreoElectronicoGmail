@@ -30,4 +30,4 @@ Then se debe ver minimo la siguiente informacion definida para el panel de detal
 
 Examples:
 |tipo_documento|documento |
-|NIT           |9212086748|
+|NIT           |9212086741|
