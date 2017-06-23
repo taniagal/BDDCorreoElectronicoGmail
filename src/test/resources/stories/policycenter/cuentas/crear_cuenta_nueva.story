@@ -33,7 +33,7 @@ Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
 |razon_social|tipo_documento |tipo_direccion         |direccion       |departamento|ciudad  |nombre_organizacion|agente| nro_documento |
-|UMBRELLA    |NIT            |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 | 7215640195    |
+|UMBRELLA    |NIT            |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 | 8215640198    |
 
 
 Scenario: Creacion unica de cuenta persona natural y crear una cuenta para un contacto menor de edad

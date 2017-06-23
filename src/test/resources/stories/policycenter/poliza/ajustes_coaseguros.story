@@ -48,5 +48,5 @@ Then debo ver en el resumen de la poliza y en informacion de poliza los coasegur
 
 Examples:
 | TipoCo | numCuenta  | departamento | ciudad   | direccion         | descripcion   | actividad                     | PolizaRef | Documento |medioVenta|
-| Cedido | C000777777 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles |           |           |Televentas|
+| Cedido | C000777777 | Antioquia    | Medellin | CR 43 Z # 45 - 00 | Edificio Core | Acabado de productos textiles |           |           |Televentas|
 
