@@ -93,8 +93,8 @@ Examples:
 
 Scenario: Bloqueo de expedicion si al tomador principal(juridico) le falta el correo electronico
 Given estoy cotizando una poliza de autos:
-| producto | tipoPoliza | tipo_documento       | fecha_nacimiento   | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |polizafinanciada|razon_social              |
-| Autos    | Individual |  NIT                 |   02/12/1988       | SIMON         | SIMON           | DIRECCION DE RESIDENCIA | CALLE 65B #60-25 | Antioquia    | Medellin | INT-3  |Si              |FINANCIADA S.A            |
+| numeroDocumento | producto | tipoPoliza | tipo_documento       | fecha_nacimiento   | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |polizafinanciada|razon_social              |
+| 9001548230      | Autos    | Individual |  NIT                 |   02/12/1988       | SIMON         | SIMON           | DIRECCION DE RESIDENCIA | CALLE 65B #60-25 | Antioquia    | Medellin | INT-3  |Si              |FINANCIADA S.A            |
 When ingrese el numero de cuotas <numeroCuotas> a financiar
 And agregue un asegurado que es titular de la cuenta para la poliza financiera
 And ingrese los datos del vehiculo:

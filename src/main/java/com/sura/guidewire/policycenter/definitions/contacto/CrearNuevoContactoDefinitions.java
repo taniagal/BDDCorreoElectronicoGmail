@@ -65,6 +65,10 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.ingresarNumeroDocumentoPersonaNatural(numeroDeDocumento);
     }
 
+    @When("ingreso la informacion del nit para persona juridica <numeroDeNit>")
+    public void ingresarNitPersonaJuridica(@Named("numeroDeNit") String numeroDeNit) {
+        crearNuevoContactoSteps.ingresarNumeroNit(numeroDeNit);
+    }
 
     @When("ingreso la informacion de primer nombre <primerNombre>")
     public void whenIngresoLaInformacionDePrimerNombreprimerNombre(@Named("primerNombre") String primerNombre) {

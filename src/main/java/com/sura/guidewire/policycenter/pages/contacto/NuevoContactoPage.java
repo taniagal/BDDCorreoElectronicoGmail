@@ -142,6 +142,8 @@ public class NuevoContactoPage extends PageUtil {
      * @param razonSocial
      */
     public void ingresarRazonSocial(String razonSocial) {
+        this.razonSocial.click();
+        esperarHasta(TIEMPO_2000);
         this.razonSocial.type(razonSocial);
     }
 

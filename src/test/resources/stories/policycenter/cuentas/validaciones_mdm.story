@@ -38,7 +38,7 @@ Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 Examples:
 | razon_social | documento | tipo_documento | nombre_organizacion | agente | mensaje                                                                                                                                                                     | nro_documento |
 | NO SE SABE   | NIT       | NIT            | Sura                | INT-3  | Razón social: "NO SE SABE" no es válido                                                                                                                                     | 8562301451    |
-| NONONONONO   | NIT       | NIT            | Sura                | INT-3  | Razón social: Existen letras o palabras repetidas, no se permiten palabras iguales seguidas o más de 2 letras iguales seguidas. Por favor valide el contenido "NONONONONO". | 9254812361    |
+| NONONONONO   | NIT       | NIT            | Sura                | INT-3  | Razón social: Existen letras o palabras repetidas, no se permiten palabras iguales seguidas o más de 2 letras iguales seguidas. Por favor valide el contenido "NONONONONO". | 8562301451    |
 
 
 Scenario: Crear una cuenta para un contacto persona juridica con nombre comercial no valido (validaciones MDM)

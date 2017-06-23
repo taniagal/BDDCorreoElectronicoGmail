@@ -133,16 +133,16 @@ And vaya a la opcion agregar
 And seleccione ingresar nueva persona juridica
 And ingrese los datos de persona juridica:
 | tipoId | numeroId   | razonSocial           | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
-| NIT    | 9998887777 | COOPERATIVA NUMERODOS | Colombia | Antioquia    | Medellin | Cra 66 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
+| NIT    | 7012548965 | COOPERATIVA NUMERODOS | Colombia | Antioquia    | Medellin | Cra 66 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
 And quiera editar los datos del nuevo contacto persona juridica:
 | tipoId | numeroId   | razonSocial      | pais     | departamento | ciudad   | direccion       | tipoDireccion                  | monedaPreferida |
-| NIT    | 9998887778 | COOPERATIVA LALO | Colombia | Antioquia    | Medellin | Cra 67 # 48-162 | DIRECCION DE OFICINA PRINCIPAL | COP             |
+| NIT    | 7012548965 | COOPERATIVA LALO | Colombia | Antioquia    | Medellin | Cra 67 # 48-162 | DIRECCION DE OFICINA PRINCIPAL | COP             |
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
 And vuelva a ver los asegurados
 Then deben quedar agregados como asegurados:
 | nombre           | tipoDocumento | numeroDocumento |
-| COOPERATIVA LALO | NIT           | 9998887777      |
+| COOPERATIVA LALO | NIT           | 7012548965      |
 
 Examples:
 | cuenta     | producto |

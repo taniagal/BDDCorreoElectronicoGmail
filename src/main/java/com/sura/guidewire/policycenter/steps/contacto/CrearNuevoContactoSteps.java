@@ -54,6 +54,11 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresarNumeroNit(String numeroDeNit) {
+        nuevoContactoPage.ingresarNumeroDocumento(numeroDeNit);
+    }
+
+    @Step
     public void ingresarPrimerNombrePersonaNatural(String primerNombre) {
         nuevoContactoPage.ingresarPrimerNombre(primerNombre);
     }
