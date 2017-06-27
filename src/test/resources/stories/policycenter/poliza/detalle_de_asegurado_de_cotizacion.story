@@ -142,7 +142,7 @@ And consulte un asegurado del directorio
 And vuelva a ver los asegurados
 Then deben quedar agregados como asegurados:
 | nombre           | tipoDocumento | numeroDocumento |
-| COOPERATIVA LALO | NIT           | 7012548965      |
+| COOPERATIVA LALO | NIT           | 9635521405      |
 
 Examples:
 | cuenta     | producto |
