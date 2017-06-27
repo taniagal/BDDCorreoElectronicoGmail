@@ -145,6 +145,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
         }
         clickearElemento(checkBoxDanios);
         MatcherAssert.assertThat(campoPerdidaTotalDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        seleccionarItem(campoPerdidaTotalDanos, String.valueOf(CONSTANTE_0));
         try {
             MatcherAssert.assertThat(campoPerdidaParcialDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         } catch (ElementNotVisibleException f) {
@@ -155,6 +156,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
         MatcherAssert.assertThat(campoAbogado.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         clickearElemento(checkBoxHurto);
         MatcherAssert.assertThat(campoPerdidaTotalHurto.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        seleccionarItem(campoPerdidaTotalHurto, String.valueOf(CONSTANTE_0));
         MatcherAssert.assertThat(campoPerdidaParcialHurto.getTagName(), Matchers.is(Matchers.equalTo(editable)));
     }
 
