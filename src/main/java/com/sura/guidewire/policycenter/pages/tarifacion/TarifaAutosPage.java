@@ -50,6 +50,8 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade checkBoxPerdidaDeLlaves;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxAsistencia;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxAsistenciaModificacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
     private WebElementFacade checkBoxTaller;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:1:SuraPACoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -510,7 +512,7 @@ public class TarifaAutosPage extends PageUtil {
         if (comboBoxAsistenciaModificacion.isVisible()) {
             seleccionarItem(comboBoxAsistenciaModificacion, asistencia);
         } else {
-            seleccionarCobertura(checkBoxAsistencia, comboBoxAsistencia, asistencia);
+            seleccionarCobertura(checkBoxAsistenciaModificacion, comboBoxAsistenciaModificacion, asistencia);
         }
         resetImplicitTimeout();
     }
