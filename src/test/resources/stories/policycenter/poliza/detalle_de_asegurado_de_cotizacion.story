@@ -133,10 +133,10 @@ And vaya a la opcion agregar
 And seleccione ingresar nueva persona juridica
 And ingrese los datos de persona juridica:
 | tipoId | numeroId   | razonSocial           | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
-| NIT    | 7012548965 | COOPERATIVA NUMERODOS | Colombia | Antioquia    | Medellin | Cra 66 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
+| NIT    | 9635521405 | COOPERATIVA NUMERODOS | Colombia | Antioquia    | Medellin | Cra 66 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
 And quiera editar los datos del nuevo contacto persona juridica:
 | tipoId | numeroId   | razonSocial      | pais     | departamento | ciudad   | direccion       | tipoDireccion                  | monedaPreferida |
-| NIT    | 7012548965 | COOPERATIVA LALO | Colombia | Antioquia    | Medellin | Cra 67 # 48-162 | DIRECCION DE OFICINA PRINCIPAL | COP             |
+| NIT    | 8852365489 | COOPERATIVA LALO | Colombia | Antioquia    | Medellin | Cra 67 # 48-162 | DIRECCION DE OFICINA PRINCIPAL | COP             |
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
 And vuelva a ver los asegurados
