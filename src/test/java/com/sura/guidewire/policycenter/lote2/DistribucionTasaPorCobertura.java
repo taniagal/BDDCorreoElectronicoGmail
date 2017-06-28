@@ -1,4 +1,6 @@
 package com.sura.guidewire.policycenter.lote2;
 
-public class DistribucionTasaPorCobertura {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class DistribucionTasaPorCobertura extends SerenityStory {
 }
