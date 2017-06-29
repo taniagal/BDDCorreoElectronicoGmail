@@ -23,7 +23,8 @@ public class SmokeTests extends MetodosComunes {
     private LoginPage loginPage;
     private SmokeTestPage smokeTestPage;
     private static final int WAIT_30 = 30;
-    private String contrasenia = "sura2017";
+    private String contrasenia = "gw";
+    private String usuario = "su";
     Properties prop;
 
     @Before
@@ -45,12 +46,13 @@ public class SmokeTests extends MetodosComunes {
     public void buscarUsuario() {
         initPages();
         if(prop.getProperty("url").contains("labcoreseguros")){
-            contrasenia = "c0r3S3gur0s";
+            usuario = "luissadi";
+            contrasenia = "sura2017"
         }
-        loginPage.login("su", contrasenia, driver);
-        smokeTestPage.buscarUsuario("su", driver);
+        loginPage.login(usuario, contrasenia, driver);
+        smokeTestPage.buscarUsuario(usuario, driver);
         MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
-                smokeTestPage.verificarBusquedaDeUsuario("su", driver));
+                smokeTestPage.verificarBusquedaDeUsuario(usuario, driver));
     }
 
     @After
