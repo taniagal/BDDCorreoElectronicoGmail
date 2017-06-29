@@ -21,6 +21,12 @@ public class SmokeTestPage extends MetodosComunes {
     private WebElement botonBuscarUsuario;
     @FindBy(xpath = ".//*[@id='AdminUserSearchPage:UserSearchScreen:UserSearchResultsLV-body']/div/table/tbody/tr/td[3]")
     private WebElement tablaDeResultadosUsuarios;
+    @FindBy(xpath = ".//*[@id='AdminProducerCodeSearch:AdminProducerCodeSearchScreen:ProducerCodeSearchDV:Code-inputEl']")
+    private WebElement campoCodigoAgente;
+    @FindBy(xpath = ".//*[@id='AdminProducerCodeSearch:AdminProducerCodeSearchScreen:ProducerCodeSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElement botonBuscarAgente;
+    @FindBy(xpath = ".//*[@id='AdminProducerCodeSearch:AdminProducerCodeSearchScreen:AdminProducerCodeSearchLV-body']/div/table/tbody/tr/td[2]")
+    private WebElement tablaDeResultadosAgentes;
 
     public void buscarPoliza(String numPoliza) {
         campoTxtBuscar.sendKeys("Policy " + numPoliza);
@@ -51,5 +57,18 @@ public class SmokeTestPage extends MetodosComunes {
     public Boolean verificarBusquedaDeUsuario(String nombreUsuario, WebDriver driver) {
         waitUntilVisible(tablaDeResultadosUsuarios, driver);
         return tablaDeResultadosUsuarios.getText().contains(nombreUsuario);
+    }
+
+    public void buscarAgenteUAT(String codigoAgente, WebDriver driver) {
+        campoTxtBuscar.sendKeys("AdminProducerCodeSearch");
+        campoTxtBuscar.sendKeys(Keys.ENTER);
+        waitUntilVisible(campoCodigoAgente, driver);
+        campoCodigoAgente.sendKeys(codigoAgente);
+        botonBuscarAgente.click();
+    }
+
+    public Boolean verificarBusquedaDeAgenteUAT(String codigoAgente, WebDriver driver) {
+        waitUntilVisible(tablaDeResultadosAgentes, driver);
+        return tablaDeResultadosAgentes.getText().contains(codigoAgente);
     }
 }
