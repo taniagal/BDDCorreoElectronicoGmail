@@ -17,6 +17,8 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[5]")
     private WebElementFacade tblLimiteContratoCp;
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[6]")
+    private WebElementFacade tblPorcentajeCesionCP;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRiskDV:PropRetention-inputEl')]")
     private WebElementFacade lblValorRetenidoCp;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[7]")
@@ -62,6 +64,8 @@ public class GrupoDeDireccionPage extends PageUtil {
 
 
     private static final double CONSTANTE_CIEN = 100.0;
+    private static final double CONSTANTE_CIEN_MIL = 100000;
+    private static final double CONSTANTE_DIEZ_MILLONES = 10000000;
     private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
     private static String porcentajeDeRetencionContratoCotaparte = null;
 
@@ -130,6 +134,15 @@ public class GrupoDeDireccionPage extends PageUtil {
         }
     }
 
+    public void validarRetencionSobreElRiesgo() {
+        String retencionSobreRiesgo = lblRetencionSobreElRiesgo.getText();
+        Double valorRetenido = Double.parseDouble(lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6));
+        Double baseReasegoContrato = Double.parseDouble(lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6));
+        String calculoRetencionSobreRiesgo = String.valueOf(Math.floor(valorRetenido / baseReasegoContrato) * CONSTANTE_DIEZ_MILLONES  / CONSTANTE_CIEN_MIL);
+        MatcherAssert.assertThat("Error en el valor Retención sobre el riesgo, expected: " + calculoRetencionSobreRiesgo +
+                    BUT_WAS + retencionSobreRiesgo, retencionSobreRiesgo.contains(calculoRetencionSobreRiesgo));
+    }
+
     public void verificarValorRetenidoCP(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String valorRetenidoCP = lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6);
@@ -137,11 +150,27 @@ public class GrupoDeDireccionPage extends PageUtil {
                 BUT_WAS + valorRetenidoCP, valorRetenidoCP.equals(data.get("valorRetenidoCP")));
     }
 
+    public void validarValorRetenido() {
+        String valorRetenido = lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6);
+        Double limiteContratoCP = Double.parseDouble(tblLimiteContratoCp.getText().substring(CONSTANTE_1, tblLimiteContratoCp.getText().length() - CONSTANTE_6));
+        Double baseReasegoContrato = Double.parseDouble(lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6));
+        String calculoValorRetenido = String.valueOf(baseReasegoContrato - limiteContratoCP);
+        MatcherAssert.assertThat("Error en el valor retenido, expected: " + calculoValorRetenido + BUT_WAS + valorRetenido, valorRetenido.equals(calculoValorRetenido));
+    }
+
     public void verificarValorRiesgoCedidoCP(ExamplesTable examplesTable) {
         Map<String, String> data = examplesTable.getRow(0);
         String valorRiesgoCedidoCP = tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6);
         MatcherAssert.assertThat("Error en el valor riesgo cedido cuota parte, expected: " + data.get("riesgoCedidoCP") +
                 BUT_WAS + valorRiesgoCedidoCP, valorRiesgoCedidoCP.equals(data.get("riesgoCedidoCP")));
+    }
+
+    public void validarRiesgoCedidoCP() {
+        String RiesgoCedidoCP = tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6);
+        Double limiteContratoCP = Double.parseDouble(tblLimiteContratoCp.getText().substring(CONSTANTE_1, tblLimiteContratoCp.getText().length() - CONSTANTE_6));
+        Integer porcentajeCesion = Integer.parseInt(tblPorcentajeCesionCP.getText());
+        String calculoRiesgoCP = String.valueOf(limiteContratoCP * porcentajeCesion / 100);
+        MatcherAssert.assertThat("Error en el valor riesgo cedido cuota parte, expected: " + calculoRiesgoCP + BUT_WAS + RiesgoCedidoCP, RiesgoCedidoCP.equals(calculoRiesgoCP));
     }
 
     public void verificarValorRiesgoCedidoEX(ExamplesTable examplesTable) {
