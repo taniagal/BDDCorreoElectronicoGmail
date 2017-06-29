@@ -47,7 +47,7 @@ public class SmokeTests extends MetodosComunes {
         initPages();
         if(prop.getProperty("url").contains("labcoreseguros")){
             usuario = "luissadi";
-            contrasenia = "sura2017"
+            contrasenia = "sura2017";
         }
         loginPage.login(usuario, contrasenia, driver);
         smokeTestPage.buscarUsuario(usuario, driver);
