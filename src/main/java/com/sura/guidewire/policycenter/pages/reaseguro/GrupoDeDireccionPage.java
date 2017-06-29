@@ -227,6 +227,7 @@ public class GrupoDeDireccionPage extends PageUtil {
         esperarYClickearBoton(btnCrearAcuerdosFacultativos);
         waitForTextToAppear("Se crearán los acuerdos facultativos con la información ingresada en esta plantilla.");
         esperarYClickearBoton(btnAceptarFacultativo);
+        esperarHasta(TIEMPO_3500);
         waitForAllTextToAppear("Facultative agreements have been successfully created.");
         btnAceptar.click();
     }
