@@ -440,8 +440,9 @@ public class PolizaPage extends PageUtil {
         esperarHasta(TIEMPO_2000);
         btnOpcionesCompromiso.waitUntilPresent();
         clickearElemento(btnOpcionesCompromiso);
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_3500);
         esperarObjetoClikeableServidorWe(btnCancelarAhora);
+        esperarHasta(TIEMPO_3500);
         esperarObjetoClikeableServidorWe(btnAceptar);
     }
 
