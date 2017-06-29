@@ -32,6 +32,8 @@ Examples:
 | CEDULA DE CIUDADANIA | 1234567890 | Del Directorio | La póliza tiene la marca de reaseguro especial: Reaseguro aceptado. Por favor diríjase a la opción análisis de riesgo para solicitar la aprobación. |
 
 Scenario: Modificacion de poliza con reaseguro especial - genera UW
+Meta:
+@manual
 Given estoy cotizando una poliza de mrc:
 | organizacion | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion       | departamento | ciudad   | agente |
 | Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1968       | CARLOS        | RUIZ            | DIRECCION DE RESIDENCIA | CALLE 2I #21-22 | Antioquia    | Medellin | INT-3  |
