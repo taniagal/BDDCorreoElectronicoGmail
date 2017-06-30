@@ -23,7 +23,9 @@ public class SmokeTests extends MetodosComunes {
     private LoginPage loginPage;
     private SmokeTestPage smokeTestPage;
     private static final int WAIT_30 = 30;
-    private String contrasenia = "sura2017";
+    private String contrasenia = "gw";
+    private String usuario = "su";
+    private String codigoAgente = "7800";
     Properties prop;
 
     @Before
@@ -44,13 +46,19 @@ public class SmokeTests extends MetodosComunes {
     @Test
     public void buscarUsuario() {
         initPages();
-        if(prop.getProperty("url").contains("labcoreseguros")){
-            contrasenia = "c0r3S3gur0s";
+        if (prop.getProperty("url").contains("labcoreseguros")) {
+            usuario = "luissadi";
+            contrasenia = "sura2017";
+            loginPage.login(usuario, contrasenia, driver);
+            smokeTestPage.buscarAgenteUAT(codigoAgente, driver);
+            MatcherAssert.assertThat("Error, no se encontró el agente pero el aplicativo si está desplegado",
+                    smokeTestPage.verificarBusquedaDeAgenteUAT(codigoAgente, driver));
+        } else {
+            loginPage.login(usuario, contrasenia, driver);
+            smokeTestPage.buscarUsuario(usuario, driver);
+            MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
+                    smokeTestPage.verificarBusquedaDeUsuario(usuario, driver));
         }
-        loginPage.login("su", contrasenia, driver);
-        smokeTestPage.buscarUsuario("su", driver);
-        MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
-                smokeTestPage.verificarBusquedaDeUsuario("su", driver));
     }
 
     @After

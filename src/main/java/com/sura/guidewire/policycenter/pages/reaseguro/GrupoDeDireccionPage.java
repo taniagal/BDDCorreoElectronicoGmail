@@ -10,6 +10,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
 import java.util.Map;
 
 public class GrupoDeDireccionPage extends PageUtil {
@@ -226,6 +227,7 @@ public class GrupoDeDireccionPage extends PageUtil {
         esperarYClickearBoton(btnCrearAcuerdosFacultativos);
         waitForTextToAppear("Se crearán los acuerdos facultativos con la información ingresada en esta plantilla.");
         esperarYClickearBoton(btnAceptarFacultativo);
+        esperarHasta(TIEMPO_3500);
         waitForAllTextToAppear("Facultative agreements have been successfully created.");
         btnAceptar.click();
     }
@@ -239,14 +241,13 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     public void cliquearRegistroAutosPD(String gruposAutos) {
 
-        WebElementFacade grupoAuto = $(".//*[contains(@id,'PolicyReinsuranceCV:2-body')]/div/table/tbody/tr[1]/td[2]");
-        if (grupoAuto.containsText(gruposAutos)) {
-            esperarObjetoClikeableServidorWe(grupoAuto);
-            esperarHasta(TIEMPO_3500);
-        } else {
-            grupoAuto = $(".//*[contains(@id,'PolicyReinsuranceCV:2-body')]/div/table/tbody/tr[2]/td[2]");
-            esperarObjetoClikeableServidorWe(grupoAuto);
-            esperarHasta(TIEMPO_3500);
+        List<WebElementFacade> grupoAutos = findAll(".//*[contains(@id,'PolicyReinsuranceCV:2-body')]/div/table/tbody/tr");
+        for (WebElementFacade grupoAuto : grupoAutos) {
+            if (grupoAuto.containsText(gruposAutos)) {
+                esperarObjetoClikeableServidorWe(grupoAuto);
+                esperarHasta(TIEMPO_3500);
+                break;
+            }
         }
     }
 }

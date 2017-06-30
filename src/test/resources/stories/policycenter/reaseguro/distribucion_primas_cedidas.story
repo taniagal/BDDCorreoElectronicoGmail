@@ -19,7 +19,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad    | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Casanare    | La Salina | AVENIDAS 35 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Casanare    | La Salina | AVENIDAS 37 # 22 - 33 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas                     |
 | Machine  | 10000000000      | Danos,Asonada,Terremoto,Rotura |
