@@ -21,7 +21,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 60 - 35 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 49 # 60 - 35 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -54,7 +54,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica           | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 60 - 35 | Cría de otros animales n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 49 # 60 - 35 | Cría de otros animales n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -90,7 +90,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 60 - 35 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 49 # 60 - 35 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 5000000000       | Danos      |
@@ -115,13 +115,13 @@ And capturo el numero de poliza 3
 And ingrese al resumen de la poliza expedida
 Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/01/2017 -
+And seleccione opcion Ver A Partir De: 01/01/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 12.000.000.000        | 133.333.333     | 755.555.556    | 11.111.111.111 | 888.888.889      | 40.000.000.000         | 8.000.000.000                  |
 Given se va a consultar poliza expedida 2
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/01/2017 -
+And seleccione opcion Ver A Partir De: 01/01/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 7.000.000.000         | 77.777.778      | 440.740.741    | 6.481.481.481  | 518.518.519      | 40.000.000.000         | 3.000.000.000                  |
@@ -132,7 +132,7 @@ And ingrese la Fecha Inicio Vigencia: 01/01/2017
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 48 # 60 - 35 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 49 # 60 - 35 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 2000000000       | Danos      |
@@ -153,13 +153,13 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | 4.000.000.000          | 4.000.000.000         | 38.709.677      | 219.354.839    | 3.741.935.484  | 258.064.516      | 44.000.000.000         |
 Given se va a consultar poliza expedida 1
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/01/2017 -
+And seleccione opcion Ver A Partir De: 01/01/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 12.000.000.000        | 116.129.032     | 658.064.516    | 11.225.806.452 | 774.193.548      | 44.000.000.000         | 8.000.000.000                  |
 Given se va a consultar poliza expedida 2
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 01/01/2017 -
+And seleccione opcion Ver A Partir De: 01/01/2017 - 30/06/2017
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 7.000.000.000         | 67.741.935      | 383.870.968    | 6.548.387.097  | 451.612.903      | 44.000.000.000         | 3.000.000.000                  |
@@ -172,13 +172,13 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 And quiera ejecutar una tarea de proceso por lotes <nombreTarea> <estado>
 Given se va a consultar poliza expedida 3
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 30/06/2017 - 01/01/2018
+And seleccione opcion Ver A Partir De: - 01/01/2018
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 8.000.000.000         | 360.000.000     | 2.040.000.000  | 5.600.000.000  | 2.400.000.000    | 14.000.000.000         | 2.000.000.000                  |
 Given se va a consultar poliza expedida 4
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 30/06/2017 - 01/01/2018
+And seleccione opcion Ver A Partir De: - 01/01/2018
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo |
 | 4.000.000.000          | 4.000.000.000         | 180.000.000     | 1.020.000.000  | 2.800.000.000  | 1.200.000.000    | 14.000.000.000         |
