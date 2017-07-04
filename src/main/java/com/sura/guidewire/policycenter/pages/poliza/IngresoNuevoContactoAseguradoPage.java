@@ -52,7 +52,7 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil {
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_3000);
-        campoDepartamento.clear();
+        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_3000);
