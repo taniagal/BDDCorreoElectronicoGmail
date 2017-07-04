@@ -40,8 +40,25 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
         grupoDeDireccionPage.validarLimiteCuotaParte(examplesTable);
         grupoDeDireccionPage.verificarBaseReasegurableCumulo(examplesTable);
         grupoDeDireccionPage.verificarValorRiesgoCedidoAcuerdoFacultativo(examplesTable);
-        grupoDeDireccionPage.verificarRetencionSobreElRiesgo(examplesTable);
-        grupoDeDireccionPage.verificarProporcionExcedente(examplesTable);
+    }
+
+    @Step
+    public void verificarBasesReasegurablesRiesgos(ExamplesTable examplesTable) {
+        grupoDeDireccionPage.verificarBaseReasegurableRiesgo(examplesTable);
+        grupoDeDireccionPage.verificarBaseReaseguroContrato(examplesTable);
+    }
+
+    @Step
+    public void validarValorRetenidoRiesgoCedidoCuotaParte() {
+        grupoDeDireccionPage.validarValorRetenido();
+        grupoDeDireccionPage.validarRiesgoCedidoCP();
+    }
+
+    @Step
+    public void validarPorcentajeRetencionRiesgoCedido() {
+        grupoDeDireccionPage.validarRetencionSobreElRiesgo();
+        grupoDeDireccionPage.validarRiesgoCedidoOperativoExceso();
+        grupoDeDireccionPage.validarProporcionCP();
     }
 
     @Step

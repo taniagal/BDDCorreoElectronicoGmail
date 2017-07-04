@@ -49,6 +49,21 @@ public class GrupoDeDireccionDefinitions {
         grupoDeDireccionSteps.verificarValoresContratosReasegurables(examplesTable);
     }
 
+    @Then("se debe verificar la base reasegurable del riesgo y la base del contrato automatico: $examplesTable")
+    public void verificarBasesReasegurablesRiesgos(ExamplesTable examplesTable) {
+        grupoDeDireccionSteps.verificarBasesReasegurablesRiesgos(examplesTable);
+    }
+
+    @Then("se valida el valor retenido y el riesgo cedido del contrato cuota parte")
+    public void validarValorRetenidoRiesgoCedidoCuotaParte() {
+        grupoDeDireccionSteps.validarValorRetenidoRiesgoCedidoCuotaParte();
+    }
+
+    @Then("se valida el porcentaje de retencion y el riesgo cedido del operativo de exceso")
+    public void validarPorcentajeRetencionRiesgoCedido() {
+        grupoDeDireccionSteps.validarPorcentajeRetencionRiesgoCedido();
+    }
+
     @When("de clic en el registro de autos: $gruposAutos")
     public void cliquearRegistroAutosPD(String gruposAutos) {
         grupoDeDireccionSteps.cliquearRegistroAutosPD(gruposAutos);

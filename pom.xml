@@ -117,7 +117,7 @@
                         <exclude>**/policycenter/MainStories.java</exclude>
                     </excludes>
                     <reuseForks>false</reuseForks>
-                    <forkCount>4</forkCount>
+                    <forkCount>3</forkCount>
                     <forkedProcessTimeoutInSeconds>1500</forkedProcessTimeoutInSeconds>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <systemPropertyVariables>
