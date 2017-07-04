@@ -129,21 +129,31 @@ public class GrupoDeDireccionPage extends PageUtil {
     }
 
     public void validarRetencionSobreElRiesgo() {
+        String calculoRetencionSobreRiesgo;
         String retencionSobreRiesgo = lblRetencionSobreElRiesgo.getText();
         Double valorRetenido = Double.parseDouble(lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6).replace(".", ""));
         Double baseReasegoContrato = Double.parseDouble(lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6).replace(".", ""));
         BigDecimal RetencionSobreRiesgo = new BigDecimal((valorRetenido / baseReasegoContrato) * CONSTANTE_CIEN);
-        String calculoRetencionSobreRiesgo = String.valueOf(RetencionSobreRiesgo).substring(CONSTANTE_1, CONSTANTE_7);
+        if(String.valueOf(RetencionSobreRiesgo).length() > 6){
+            calculoRetencionSobreRiesgo = String.valueOf(RetencionSobreRiesgo).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
+        } else {
+            calculoRetencionSobreRiesgo = String.valueOf(RetencionSobreRiesgo);
+        }
         MatcherAssert.assertThat("Error en el valor Retención sobre el riesgo, expected: " + calculoRetencionSobreRiesgo +
                     BUT_WAS + retencionSobreRiesgo, retencionSobreRiesgo.contains(calculoRetencionSobreRiesgo));
     }
 
     public void validarProporcionCP() {
+        String calculoProporcionCP;
         String proporcionCP = tblProporcionCuotaParte.getText();
         Double RiesgoCedidoCP = Double.parseDouble(tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6).replace(".", ""));
         Double baseReaseguroContrato = Double.parseDouble(lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6).replace(".", ""));
         BigDecimal ProporcionCP = new BigDecimal((RiesgoCedidoCP / baseReaseguroContrato) * CONSTANTE_CIEN);
-        String calculoProporcionCP = String.valueOf(ProporcionCP).substring(CONSTANTE_1, CONSTANTE_7);
+        if(String.valueOf(ProporcionCP).length() > 6){
+            calculoProporcionCP = String.valueOf(ProporcionCP).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
+        } else {
+            calculoProporcionCP = String.valueOf(ProporcionCP);
+        }
         MatcherAssert.assertThat("Error en el valor de la proporción cuota parte, expected: " + proporcionCP +
                 BUT_WAS + calculoProporcionCP, proporcionCP.contains(calculoProporcionCP));
     }
