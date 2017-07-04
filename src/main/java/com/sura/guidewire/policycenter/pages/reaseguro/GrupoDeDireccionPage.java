@@ -137,7 +137,7 @@ public class GrupoDeDireccionPage extends PageUtil {
         if(String.valueOf(RetencionSobreRiesgo).length() > 6){
             calculoRetencionSobreRiesgo = String.valueOf(RetencionSobreRiesgo).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
         } else {
-            calculoRetencionSobreRiesgo = String.valueOf(RetencionSobreRiesgo);
+            calculoRetencionSobreRiesgo = String.valueOf(RetencionSobreRiesgo).replace(".", ",");
         }
         MatcherAssert.assertThat("Error en el valor Retención sobre el riesgo, expected: " + calculoRetencionSobreRiesgo +
                     BUT_WAS + retencionSobreRiesgo, retencionSobreRiesgo.contains(calculoRetencionSobreRiesgo));
@@ -152,7 +152,7 @@ public class GrupoDeDireccionPage extends PageUtil {
         if(String.valueOf(ProporcionCP).length() > 6){
             calculoProporcionCP = String.valueOf(ProporcionCP).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
         } else {
-            calculoProporcionCP = String.valueOf(ProporcionCP);
+            calculoProporcionCP = String.valueOf(ProporcionCP).replace(".", ",");
         }
         MatcherAssert.assertThat("Error en el valor de la proporción cuota parte, expected: " + proporcionCP +
                 BUT_WAS + calculoProporcionCP, proporcionCP.contains(calculoProporcionCP));
