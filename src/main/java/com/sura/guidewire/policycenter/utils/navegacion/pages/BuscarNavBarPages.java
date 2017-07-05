@@ -18,14 +18,17 @@ public class BuscarNavBarPages extends PageObject {
     private WebElementFacade btnBuscaCuenta;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
     private WebElementFacade linkCuenta;
+    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
 
     protected static final int TIEMPO_1000 = 1000;
+    protected static final int TIEMPO_20 = 20;
     protected static final int TIEMPO_2 = 2;
     private static final String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
 
     public enum Opciones {
         POLIZA("Pólizas"),
-        CUENTAS(".//a[contains(*,'Cuentas')]"),
+        CUENTAS("//*[@id='Search:MenuLinks:Search_AccountSearch']/div"),
         CODIGO_AGENTE("Código de agente"),
         ACTIVIDADES("Actividades"),
         CONTACTOS("Contactos");
@@ -51,11 +54,10 @@ public class BuscarNavBarPages extends PageObject {
 
 
     public void seleccionarOpcion() {
-        findBy(MENU_BUSCAR).waitUntilVisible();
-        WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_BUSCAR));
-        element(menuBuscar).setWindowFocus();
-        element(menuBuscar).sendKeys(Keys.ARROW_DOWN);
-        fluent().await().atMost(TIEMPO_2, TimeUnit.SECONDS);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        waitForTextToAppear("Buscar pólizas");
     }
 
     public void clicenOpcionCuentas() {
