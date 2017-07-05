@@ -27,7 +27,7 @@
         <!--<webdriver.driver>phantomjs</webdriver.driver>-->
         <!--<phantomjs.binary.path>phantomjs.exe</phantomjs.binary.path>-->
         <webdriver.driver>chrome</webdriver.driver>
-        <webdriver.chrome.driver>C://chromedriver.exe</webdriver.chrome.driver>
+        <webdriver.chrome.driver>chromedriver.exe</webdriver.chrome.driver>
     </properties>
 
     <repositories>
