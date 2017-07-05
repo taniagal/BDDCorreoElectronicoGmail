@@ -17,15 +17,13 @@ Given tengo una poliza de PA con los siguientes datos:
 When cotice el cambio de poliza
 Then debo ver de la cotizacion la siguiente informacion
 | tomador              | tipoDocumento        | numeroDocumento | direccion                            | tipoDireccion           | descripcionDireccion                       |
-| DANIEL MEJIA CUARTAS | CEDULA DE CIUDADANIA | 1060447895      | CRA 65 # 48-162, MEDELLIN, Colombia  | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 |
+| DANIEL MEJIA CUARTAS | CEDULA DE CIUDADANIA | 1060447895      | CR 65 # 48 - 162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 |
 And debo poder ver la direccion del tomador de la modificacion <direccion>, la cual se indico como principal
 And se debe mostrar en la columna "Termino" de la modificacion el limite o deducible de la cobertura en el caso de que aplique
 And se debe mostrar en la columna "Termino" de la modificacion el limite de la cobertura en el caso de que aplique
 And se debe mostrar en la columna "Termino" de la modificacion el deducible de la cobertura en el caso de que aplique
 
 Examples:
-| tipo_documento       | documento  |  direccion                            |
-| CEDULA DE CIUDADANIA | 1060447895 |  CRA 65 # 48-162, MEDELLIN, Colombia  |
-
-
+| tipo_documento       | documento  | direccion                            |
+| CEDULA DE CIUDADANIA | 1060447895 | CR 65 # 48 - 162, MEDELLIN, Colombia |
 
