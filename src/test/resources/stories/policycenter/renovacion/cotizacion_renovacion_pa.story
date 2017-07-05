@@ -18,13 +18,13 @@ And en el detalle por coberturas mostrar:
 | Cobertura de Responsabilidad Civil | 640.000.000       | $505.278 (COP) | $1.435.051 (COP) | $1.435.051 (COP) |
 And se debe ver la direccion del tomador de la poliza la cual se indico como principal
 | direccion                            |
-| CR 65 # 48 - 162, MEDELLIN, Colombia |
+| CRA 65 # 48-162, MEDELLIN, Colombia  |
 And se debe mostrar en la columna Termino el limite o deducible de la cobertura en el caso de que aplique
 |limite     |deducible |
 |640.000.000|0         |
 And se debe mostrar la informacion general de la poliza cotizada con los siguientes datos:
 | numeroPoliza  | numeroRenovacion | tomador          | tipoDocumento        | numeroDocumento | direccion                            | tipoDireccion           | descripcionDireccion                       | primaTotal       | iva            | costoTotal       |
-| TEST_22222124 | 22222335         | JOSE PAEZ ALZATE | CEDULA DE CIUDADANIA | 9876543         | CR 65 # 48 - 162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $1.435.051 (COP) | $229.608 (COP) | $1.664.659 (COP) |
+| TEST_22222124 | 22222335         | JOSE PAEZ ALZATE | CEDULA DE CIUDADANIA | 9876543         | CRA 65 # 48-162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $1.435.051 (COP) | $229.608 (COP) | $1.664.659 (COP) |
 
 Examples:
 |cotizacion |
