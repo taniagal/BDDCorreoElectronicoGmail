@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class BusquedaDePolizaPage extends PageUtil {
@@ -47,6 +48,8 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade numPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearchPopup:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV:0:_Select']")
     WebElementFacade linkBotonNumeroPolizaEncontrada;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
 
 
     protected static final int CONSTANTE_8 = 8;
@@ -57,9 +60,10 @@ public class BusquedaDePolizaPage extends PageUtil {
     }
 
     public void irABuscarPoliza() {
-        waitFor(menuBuscar).waitUntilPresent();
-        menuBuscar.click();
-        waitForAnyTextToAppear("Buscar", "Búsqueda");
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        waitForTextToAppear("Buscar pólizas");
         if (!tituloBuscarPoliza.isVisible()) {
             menuBuscarPoliza.click();
             waitForTextToAppear("Buscar pólizas");
