@@ -16,11 +16,11 @@ Given estoy cotizando una poliza:
 When seleccione la opcion siguiente
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|T64497|2016  |00601182        |MEDELLIN (ANTIOQUIA)|Particular       |CH212121|AB3C2 |165900000      |null     |null   |2   |Plan Modular|Televentas|
-And ingrese las coberturas basicas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|T64497|2016  |00601182        |MEDELLIN (ANTIOQUIA)|Particular       |CH212121|AB3C2 |165900000      |null     |null   |2   |Plan Autos Clásico|Televentas|
+And ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
 And intente cotizar
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
