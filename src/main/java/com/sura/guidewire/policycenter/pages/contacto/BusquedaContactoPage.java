@@ -85,6 +85,8 @@ public class BusquedaContactoPage extends PageUtil {
     private WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div/span")
     private WebElementFacade menuBuscarContacto;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
 
     private static final String BUSQUEDADECONTACTOS = "Búsqueda de contactos";
     private static final String LONGITUD_VALIDA = "Longitud válida";
@@ -97,8 +99,9 @@ public class BusquedaContactoPage extends PageUtil {
     }
 
     public void irABuscarContacto() {
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
-        clickearElemento(menuBuscar);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
         waitForTextToAppear("Buscar pólizas");
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuBuscarContacto).waitUntilPresent();
         clickearElemento(menuBuscarContacto);
