@@ -12,7 +12,7 @@ Scenario: Verificar la generacion de la factura de una poliza en SAP
 GivenStories: stories/policycenter/login_policy_sap.story
 Given estoy cotizando una poliza:
 | cuenta     | producto | agente_oficina                             | oficina | tipoPoliza |
-| 8924134333 | Autos    | AGUDELO*RODRIGUEZ CQLII**GLORIA STELLA     | 4029    | Individual |
+| 3809223880 | Autos    | AGUDELO*RODRIGUEZ CQLII**GLORIA STELLA     | 4029    | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor   | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
