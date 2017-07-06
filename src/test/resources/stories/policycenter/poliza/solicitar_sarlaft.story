@@ -20,11 +20,11 @@ When seleccione el producto <producto> para expedir la poliza
 And ingrese la organizacion, canal y tipo de poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|TYU130|2016  |00601182        |MEDELLIN (ANTIOQUIA)|Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
-And ingrese las coberturas basicas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion  |vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|TYU130|2016  |00601182        |MEDELLIN (ANTIOQUIA)|Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Clásico|Televentas|
+When ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
 And intente cotizar
 And intente expedir la poliza cuyas figuras requieran Sarlaft
 And debe aparecer un mensaje bloqueante en la ventana de requisitos

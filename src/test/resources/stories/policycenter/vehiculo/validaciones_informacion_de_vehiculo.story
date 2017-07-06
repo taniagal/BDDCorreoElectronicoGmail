@@ -35,9 +35,9 @@ Given estoy cotizando una poliza:
 | cuenta      | producto | tipoPoliza |
 | C1060447895 | Autos    | Individual |
 When vaya a agregar un vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor       | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| T64493 | 2017   | 09403011         | MEDELLIN           | Particular        | chasis123 | 123motor456 | 830000000       | null      | null    | 2    | Plan Modular | Televentas |
-And  valide los campos de motor y chasis, los valores ingresados deben ser mostrados en mayuscula
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor       | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| T64493 | 2017   | 09403011         | MEDELLIN           | Particular        | chasis123 | 123motor456 | 830000000       | null      | null    | 2    | Plan Autos Clásico | Televentas |
+And valide los campos de motor y chasis, los valores ingresados deben ser mostrados en mayuscula
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 | mensaje                                                                                            |
@@ -53,8 +53,8 @@ Given estoy cotizando una poliza:
 | cuenta      | producto | tipoPoliza |
 | C1060447895 | Autos    | Individual |
 When vaya a agregar un vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| T64413 | 1993   | 07015010         | MEDELLIN           | Particular        | null   | null  | 1400000         | null      | null    | 2    | Plan Modular | Televentas |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| T64413 | 1993   | 07015010         | MEDELLIN           | Particular        | null   | null  | 1400000         | null      | null    | 2    | Plan Autos Clásico | Televentas |
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 | mensaje                                                                |
