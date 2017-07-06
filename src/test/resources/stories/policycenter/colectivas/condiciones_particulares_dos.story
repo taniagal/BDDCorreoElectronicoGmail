@@ -107,16 +107,16 @@ Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese la informacion del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | cero_kilometros | vehiculo_blindado | medioVenta |
-| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Modular | Si              | Si                | Televentas |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | cero_kilometros | vehiculo_blindado | medioVenta |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico | Si              | Si                | Televentas |
 And seleccione la opcion siguiente
 Then deben aparecer los mensajes de validacion:
 | mensaje                                                 |
 | Vehículo 0 Km : El vehículo no es considerado como 0 km |
 When seleccione la opcion siguiente
 And ingrese las coberturas a auto cero kilometros:
-| limite | deducible | AS |
-| 640.   | 0         |    |
+| limite | deducible | AS                   |
+| 640.   | 0         | Asistencia Clásica   |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
 | mensaje                                         |
