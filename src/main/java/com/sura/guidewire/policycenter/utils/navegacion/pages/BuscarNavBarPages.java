@@ -1,14 +1,12 @@
 package com.sura.guidewire.policycenter.utils.navegacion.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.concurrent.TimeUnit;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class BuscarNavBarPages extends PageObject {
