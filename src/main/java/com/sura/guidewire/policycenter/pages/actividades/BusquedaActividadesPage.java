@@ -16,6 +16,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class BusquedaActividadesPage extends PageUtil {
@@ -45,16 +46,18 @@ public class BusquedaActividadesPage extends PageUtil {
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")
     private WebElementFacade tablaActividades;
+    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
     }
 
     public void irABuscarActividades() {
-        waitFor(menuBuscar);
-        actions.click(menuBuscar).build().perform();
-        waitFor(menuBuscarActividades);
-        esperarHasta(TIEMPO_1500);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        waitForAnyTextToAppear("Buscar pólizas", "Búsqueda de actividades");
         clickearElemento(menuBuscarActividades);
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();

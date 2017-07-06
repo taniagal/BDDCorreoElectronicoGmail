@@ -48,12 +48,13 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil {
         campoNumeroDocumento.sendKeys(datosContacto.get("numeroId"));
         campoNumeroDocumento.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_2000);
-        campoPais.clear();
+        campoPais.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).click();
+        campoPais.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).clear();
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_3000);
-        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().click();
-        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).click();
+        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_3000);

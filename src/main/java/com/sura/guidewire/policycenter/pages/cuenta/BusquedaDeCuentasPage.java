@@ -1,5 +1,7 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
+import java.util.concurrent.TimeUnit;
+
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -92,6 +94,8 @@ public class BusquedaDeCuentasPage extends PageUtil {
     private WebElementFacade menuBuscarCuentas;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade botonRestablecer;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
 
     Actions acciones = new Actions(getDriver());
 
@@ -103,8 +107,9 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
 
     public void irABuscarCuentas() {
-        waitFor(menuBuscar).waitUntilVisible().waitUntilClickable();
-        acciones.click(menuBuscar).build().perform();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
         waitForTextToAppear("Buscar pólizas");
         clickearElemento(menuBuscarCuentas);
     }
