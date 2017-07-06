@@ -22,6 +22,7 @@ public class BuscarNavBarPages extends PageObject {
     private WebElementFacade campoTxtIrA;
 
     protected static final int TIEMPO_1000 = 1000;
+    protected static final int TIEMPO_5000 = 5000;
     protected static final int TIEMPO_20 = 20;
     protected static final int TIEMPO_2 = 2;
     private static final String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
@@ -45,11 +46,13 @@ public class BuscarNavBarPages extends PageObject {
     }
 
     public void navegacionBuscarCuenta(String numCuenta) {
+        findBy(Opciones.CUENTAS.nombre()).waitUntilVisible().click();
         lblCuenta.clear();
         lblCuenta.sendKeys(numCuenta);
         btnBuscaCuenta.click();
         PageUtil.esperarHasta(TIEMPO_1000);
         linkCuenta.click();
+        PageUtil.esperarHasta(TIEMPO_5000);
     }
 
 
