@@ -21,7 +21,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                            | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 54 # 59 - 34 | Fabricación de otros artículos textiles n.c.p | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 58 # 59 - 34 | Fabricación de otros artículos textiles n.c.p | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -52,7 +52,7 @@ And seleccione la poliza como reaseguro especial
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion             | actividadEconomica                                                   | medioVenta |
-| Colombia| Antioquia   | Bello    | AVENIDAS 54 # 59 - 34 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
+| Colombia| Antioquia   | Bello    | AVENIDAS 58 # 59 - 34 | Comercio al por menor de otros productos en puestos de venta móviles | Asesor     |
 And seleccione algunos articulos y sus cobertura:
 | articulo | valor_asegurable | coberturas |
 | Building | 10000000000      | Danos      |
@@ -85,7 +85,7 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 And quiera ejecutar una tarea de proceso por lotes <nombreTarea> <estado>
 Given consulto poliza expedida 2
 When de clic al menu reaseguro
-And seleccione opcion Ver A Partir De: 04/07/2017 - 01/01/2018
+And seleccione opcion Ver A Partir De: - 01/01/2018
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 14.000.000.000        | 540.000.000     | 3.060.000.000  | 10.400.000.000 | 3.600.000.000    | 20.000.000.000         | 6.000.000.000                  |

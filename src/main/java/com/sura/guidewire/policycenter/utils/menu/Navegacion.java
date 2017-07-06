@@ -52,6 +52,8 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuItemMisColas;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
 
     // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
@@ -415,8 +417,10 @@ public class Navegacion extends PageUtil {
     }
 
     public BuscarCuentasPage irABuscarCuentas() {
-        gw.desplegarMenu(mnuBuscar);
-        act.moveToElement(mnuItemBuscarCuenta).release(mnuItemBuscarCuenta).click().build().perform();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        waitForTextToAppear("Buscar pólizas");
         return new BuscarCuentasPage(getDriver());
     }
 

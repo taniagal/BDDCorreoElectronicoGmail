@@ -1,14 +1,12 @@
 package com.sura.guidewire.policycenter.utils.navegacion.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.concurrent.TimeUnit;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class BuscarNavBarPages extends PageObject {
@@ -18,14 +16,18 @@ public class BuscarNavBarPages extends PageObject {
     private WebElementFacade btnBuscaCuenta;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
     private WebElementFacade linkCuenta;
+    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
 
     protected static final int TIEMPO_1000 = 1000;
+    protected static final int TIEMPO_5000 = 5000;
+    protected static final int TIEMPO_20 = 20;
     protected static final int TIEMPO_2 = 2;
     private static final String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
 
     public enum Opciones {
         POLIZA("Pólizas"),
-        CUENTAS(".//a[contains(*,'Cuentas')]"),
+        CUENTAS("//*[@id='Search:MenuLinks:Search_AccountSearch']/div"),
         CODIGO_AGENTE("Código de agente"),
         ACTIVIDADES("Actividades"),
         CONTACTOS("Contactos");
@@ -42,20 +44,21 @@ public class BuscarNavBarPages extends PageObject {
     }
 
     public void navegacionBuscarCuenta(String numCuenta) {
+        findBy(Opciones.CUENTAS.nombre()).waitUntilVisible().click();
         lblCuenta.clear();
         lblCuenta.sendKeys(numCuenta);
         btnBuscaCuenta.click();
         PageUtil.esperarHasta(TIEMPO_1000);
         linkCuenta.click();
+        PageUtil.esperarHasta(TIEMPO_5000);
     }
 
 
     public void seleccionarOpcion() {
-        findBy(MENU_BUSCAR).waitUntilVisible();
-        WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_BUSCAR));
-        element(menuBuscar).setWindowFocus();
-        element(menuBuscar).sendKeys(Keys.ARROW_DOWN);
-        fluent().await().atMost(TIEMPO_2, TimeUnit.SECONDS);
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        waitForTextToAppear("Buscar pólizas");
     }
 
     public void clicenOpcionCuentas() {
