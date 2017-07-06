@@ -44,12 +44,13 @@ Given estoy cotizando una poliza de autos:
 | Autos    | Individual | CEDULA DE CIUDADANIA | 02/12/1990       | CAMILO        | RUIZ            | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese registros del vehiculo con interes adicional:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| random | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular | Televentas |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| random | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Clásico | Televentas |
 And ingrese beneficiario oneroso en los intereses <tipoBeneficiarioOneroso>
-And ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+And ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
+And cotice una poliza
 And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And ingrese al resumen de la poliza expedida
