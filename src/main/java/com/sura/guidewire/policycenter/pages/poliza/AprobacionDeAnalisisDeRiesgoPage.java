@@ -78,7 +78,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         if (!botonExpedirPoliza.isPresent()) {
             esperarObjetoClikeableServidorWe(menuItemCotizacion);
         }
-        if (botonBorrar.isPresent()) {
+        while (botonBorrar.isVisible()) {
             clickearElemento(botonBorrar);
             esperarHasta(TIEMPO_2000);
         }
