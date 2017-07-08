@@ -68,7 +68,7 @@ Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
 |nro_documento | razon_social    | tipo_documento | nombre_organizacion | agente | telefono_oficina   |
-| 8562301451   | ELECTRONIC ARTS | NIT            | Sura                | INT-3  | 5554142 ext. 12345 |
+| 8562301451   | ELECTRONIC ARTS | NIT            | Sura                | INT-3  | 5554142            |
 
 Scenario: Crear contacto para agregar segundo tomador a cotizacion de autos
 Given estoy cotizando una poliza:
