@@ -81,10 +81,10 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     public void seleccionaRiesgoAceptado() {
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         lblInformaPoliza.waitUntilVisible();
-        radioBotReaseguroEspecial.click();
+        clickearElemento(radioBotReaseguroEspecial);
         checkiReaseguroFacultativo.waitUntilVisible();
         esperarHasta(TIEMPO_2000);
-        checkiReaseguroFacultativo.click();
+        clickearElemento(checkiReaseguroFacultativo);
         esperarYClickearBoton(btnSiguiente);
         esperarHasta(TIEMPO_2000);
         lblMensajeFacultativo.waitUntilVisible();
