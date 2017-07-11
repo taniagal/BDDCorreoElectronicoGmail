@@ -92,15 +92,15 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade comboBoxTallerMovil;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACentroServiciosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxCentroDeServicios;
-    @FindBy(xpath = ".//*[contains(@id, 'SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:') and contains(@id, 'TermInput-inputEl')]")
+    @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:') and contains(@id, 'TermInput-inputEl')]")
     private WebElementFacade comboBoxPerdidaTotalDaniosDeducible;
-    @FindBy(xpath = ".//*[contains(@id, 'SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:1:SuraPACovTermInputSet:') and contains(@id, 'TermInput-inputEl')]")
+    @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:1:SuraPACovTermInputSet:') and contains(@id, 'TermInput-inputEl')]")
     private WebElementFacade comboBoxPerdidaParcialDaniosDeducible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteDanos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:4:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteDanos1;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:2:SuraPACovTermInputSet:SubmitOptionTermInput-inputEl')]")
     private WebElementFacade comboBoxGastosDeTransporteCarro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxCarroDeReemplazoPerdidaParcial;
@@ -114,7 +114,7 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade comboBoxgastosDeParqueadero;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
     private WebElementFacade comboBoxTipoDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl')]")
     private WebElementFacade comboBoxAsistencia;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:0_header_hd-textEl']")
     private WebElementFacade headerEnvio;
@@ -447,9 +447,12 @@ public class TarifaAutosPage extends PageUtil {
 
     public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo) {
         Map<String, String> coberturaVehiculo = datosCoberturaVehiculo.getRow(0);
-        MatcherAssert.assertThat("Error, el campo valor Limite es Incorrecto", comboBoxLimite.getValue(), Is.is(Matchers.equalTo(coberturaVehiculo.get("limite"))));
+        MatcherAssert.assertThat("Error, el campo valor Limite es Incorrecto", comboBoxLimite.getValue(), Is.is(Matchers.containsString(coberturaVehiculo.get("limite"))));
         MatcherAssert.assertThat("Error, el campo Deducible es Incorrecto", comboBoxDeducible.getValue(), Is.is(Matchers.equalTo(coberturaVehiculo.get("deducible"))));
-        MatcherAssert.assertThat("Error, el campo Abogado es Incorrecto", comboBoxAbogado.getValue(), Is.is(Matchers.equalTo(coberturaVehiculo.get("abogado"))));
+        MatcherAssert.assertThat("Error, el campo Asistencia es Incorrecto", comboBoxAsistencia.getValue(), Is.is(Matchers.equalTo(coberturaVehiculo.get("AS"))));
+        MatcherAssert.assertThat("Error, el campo valor PTD es Incorrecto", comboBoxPerdidaTotalDaniosDeducible.getValue(), Is.is(Matchers.containsString(coberturaVehiculo.get("PTD"))));
+        MatcherAssert.assertThat("Error, el campo valor PPD es Incorrecto", comboBoxPerdidaParcialDaniosDeducible.getValue(), Is.is(Matchers.containsString(coberturaVehiculo.get("PPD"))));
+        MatcherAssert.assertThat("Error, el campo valor GTD es Incorrecto", comboBoxGastosDeTransporteCarro.getValue(), Is.is(Matchers.containsString(coberturaVehiculo.get("GTD"))));
     }
 
     public void verificarDependenciaDeCobertura() {
