@@ -38,7 +38,11 @@ public class NuevaPolizaDefinitions {
         nuevaCotizacionSteps.seleccionarProducto(datos);
         tarifaAutosSteps.agregarAsegurados(dato.get("tipo_documento"), dato.get("documento"));
         tarifaAutosSteps.agregarVehiculo(datos);
-        tarifaAutosSteps.agregarCoberturas(datos);
+        if (dato.get("plan").equals("Plan Autos Global")){
+            nuevaCotizacionSteps.coberturasPlanGlobal(datos);
+        } else{
+            tarifaAutosSteps.agregarCoberturas(datos);
+        }
         tasaUnicaSteps.expedirPoliza();
         tasaUnicaSteps.irAArchivoDePolizaExpedida();
     }

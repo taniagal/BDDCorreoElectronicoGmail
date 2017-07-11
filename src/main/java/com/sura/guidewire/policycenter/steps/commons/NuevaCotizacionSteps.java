@@ -110,6 +110,11 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datos);
         vehiculoPage.clickSiguiente();
+        this.coberturasPlanGlobal(datos);
+    }
+
+    public void coberturasPlanGlobal(ExamplesTable datos) {
+        Map<String, String> datosAsegurado = datos.getRows().get(0);
         tarifaAutosPage.seleccionarCoberturasBasica(datos);
         tarifaAutosPage.seleccionarCoberturasHurto(datos);
         tarifaAutosPage.seleccionarCoberturasHurto1(datos);

@@ -10,8 +10,8 @@ Para las polizas de auto personal en policy center
 Scenario: Visualizar cambios realizados a una poliza pa
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
-| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
-| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ASD322 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | limite | deducible | abogado | PLlaves | PTH | PPH | GTH | PTD | PPD | GT |CRPT  |CRPP   | medioVenta | AS                |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ASD322 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | 1.440. | 0         |         | Si      | 0   | 835 | 40  | 0   | 835 | 40 | 20   | 20    | Televentas | Asistencia Global |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
