@@ -32,6 +32,8 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     private WebElementFacade labelHurtoCarro;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup-legendTitle']")
     private WebElementFacade labelResponsabilidadCivil;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0']")
+    private WebElementFacade labelAsistencia;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup-legendTitle']")
     private WebElementFacade labelDanos;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup-legendTitle']")
@@ -92,6 +94,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
         MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("responsabilidadCivil"))));
         MatcherAssert.assertThat(labelDanosCarro.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosCarro"))));
         MatcherAssert.assertThat(labelHurtoCarro.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("hurtoCarro"))));
+        MatcherAssert.assertThat(labelAsistencia.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("asistencia"))));
     }
 
     public void editarTransaccionPoliza() {
@@ -153,7 +156,6 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
             esperarHasta(TIEMPO_2000);
             MatcherAssert.assertThat(campoPerdidaParcialDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         }
-        MatcherAssert.assertThat(campoAbogado.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         clickearElemento(checkBoxHurto);
         MatcherAssert.assertThat(campoPerdidaTotalHurto.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         seleccionarItem(campoPerdidaTotalHurto, String.valueOf(CONSTANTE_0));
