@@ -18,7 +18,7 @@ Given estoy cotizando una poliza de mrc con documento:
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan                  | medioVenta |
-| ASDF3 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico    | Televentas |
+| ASDF4 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico    | Televentas |
 When ingrese las coberturas a vehiculo:
 | limite | deducible | AS                 |
 | 640.0  | 0         | Asistencia Clásica |
@@ -34,15 +34,15 @@ Examples:
 Scenario: Vehiculo cero kilometros
 Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765434 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
+| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765425 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
-And ingrese los siguientes datos del vehiculo:
+When ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
-| ASD25 | 2017   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
-When ingrese las coberturas a vehiculo:
-| limite | deducible | AS                 |
-| 640.0  | 0         | Asistencia Clásica |
-And cotice una poliza
+| ASD26 | 2017   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
+And ingrese las coberturas basicas:
+| limite | deducible | abogado | AS                 |
+| 640.   | 0         |         | Asistencia Clásica |
+And intente cotizar
 And llegue a la expedicion de la poliza
 And debo ver un mensaje opcional
 | mensaje                                                                                                             |
