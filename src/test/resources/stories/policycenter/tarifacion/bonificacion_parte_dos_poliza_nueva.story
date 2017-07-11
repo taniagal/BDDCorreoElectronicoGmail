@@ -14,12 +14,12 @@ Given estoy cotizando una poliza:
 | C002888993 | Autos    | Individual | 085     | DIRECTO        |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| CYU123 | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular | Televentas |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| CYU133 | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Clásico | Televentas |
 And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
-And ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+And ingrese las coberturas de RC, asistencia y hurto:
+| limite | deducible | PTH | PPH    | GTH | abogado | AS                 |
+| 640.   | 0         | 0   | 1.040. | 40. |         | Asistencia Clásica |
 And expido la poliza
 Then se debe generar un UW con el mensaje <mensaje>
 
