@@ -17,11 +17,13 @@ Scenario: Realizar una modificacion de datos de asegurado, beneficiario a una po
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
 And vaya a agregar el vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-And seleccione algunas coberturas:
-| limite | deducible | abogado | PTH | PPH | PPHF | GTH | AC | PTD | PPD | PPDF | GT | PP | PT | GTR | GP | PLlaves | AS                 |
-| 640.   | 0         | Si      | 0   | 850 | 1.50 | 40. | 35 | 0   | 850 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
+| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | Asesor     |
+When vaya a la pantalla de coberturas
+And seleccione todas las coberturas de comision:
+| limite   | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
+| 1.440.   | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   |         |
+And intente cotizar
 And expido la poliza y voy a informacion de poliza expedida
 When realize una modificacion en los de datos del aseguradocon los datos nombre <primer_nombre> <segundo_nombre>, estado civil <estado_civil>
 Then se debe tarifar con el esquema de tasa unica, sin generar cobro o devolucion de prima
@@ -31,15 +33,16 @@ Examples:
 | Miguel        | Felipe         | CASADO       | 22228589 |
 
 
-
 Scenario: Realizar una modificacion de valor asegurado a una poliza con tarifa tasa unica
 Given estoy cotizando una poliza basado en otro envio <envio>
 And vaya a agregar el vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-And seleccione algunas coberturas:
-| limite | deducible | abogado | PTH | PPH | PPHF | GTH | AC | PTD | PPD | PPDF | GT | PP | PT | GTR | GP | PLlaves | AS                 |
-| 640.   | 0         | Si      | 0   | 850 | 1.50 | 40. | 35 | 0   | 850 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
+| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | Televentas |
+When vaya a la pantalla de coberturas
+And seleccione todas las coberturas de comision:
+| limite   | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
+| 1.440.   | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   |         |
+And intente cotizar
 And expido la poliza y voy a informacion de poliza expedida
 When realize una modificacion en el valor asegurado <valor_asegurado>
 Then se debe tarifar con el esquema de tasa unica, generando cobro o devolucion de prima
@@ -52,11 +55,13 @@ Examples:
 Scenario: Realizar la renovacion de una poliza con tarifa tasa unica
 Given estoy cotizando una poliza basado en otro envio <envio>
 And vaya a agregar el vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-And seleccione algunas coberturas:
-| limite | deducible | abogado | PTH | PPH | PPHF | GTH | AC | PTD | PPD | PPDF | GT | PP | PT | GTR | GP | PLlaves | AS                 |
-| 640.   | 0         | Si      | 0   | 850 | 1.50 | 40. | 35 | 0   | 850 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      | Asistencia Clásica |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
+| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | Televentas |
+When vaya a la pantalla de coberturas
+And seleccione todas las coberturas de comision:
+| limite   | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
+| 1.440.   | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   |         |
+And intente cotizar
 And expido la poliza y voy a informacion de poliza expedida
 When realize la renovacion de una poliza
 Then se debe tarifar con el esquema de tasa unica, generando el valor de la prima

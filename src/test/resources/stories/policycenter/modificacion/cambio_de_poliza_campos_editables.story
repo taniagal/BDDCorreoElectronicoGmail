@@ -13,8 +13,8 @@ Para ver informacion relacionada con esta
 Scenario: Expedicion de modificacion en cambio de plan
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
-| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
-| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | limite | deducible | abogado | AS                 | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | 640.   | 0         |         | Asistencia Clásica | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
@@ -28,8 +28,8 @@ Examples:
 
 Scenario: Transporte de combustible
 Given tengo una poliza de PA con los siguientes datos:
-| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
-| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | limite | deducible | abogado | AS                 | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | 640.   | 0         |         | Asistencia Clásica | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And seleccione la opcion transporte de combustible
@@ -45,8 +45,8 @@ Examples:
 
 Scenario: Cambio de plan basico a otro plan
 Given tengo una poliza de PA con los siguientes datos:
-| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
-| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | limite | deducible | abogado | AS                 | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | 640.   | 0         |         | Asistencia Clásica | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo a basico <plan>
@@ -67,8 +67,8 @@ Examples:
 
 Scenario: Cambio de plan de autos modular a plan basico
 Given tengo una poliza de PA con los siguientes datos:
-| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
-| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | limite | deducible | abogado | AS                 | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | 640.   | 0         |         | Asistencia Clásica | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo a basico <plan>
