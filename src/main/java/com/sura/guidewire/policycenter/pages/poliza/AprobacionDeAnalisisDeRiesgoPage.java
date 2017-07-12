@@ -74,7 +74,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPolizaMRC() {
-        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()) {
             esperarObjetoClikeableServidorWe(menuItemCotizacion);
         }
@@ -85,6 +85,11 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         esperarObjetoClikeableServidorWe(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
+        if (botonExpedirPoliza.isPresent()){
+            esperarObjetoClikeableServidorWe(botonExpedirPoliza);
+            waitFor(botonAceptarMensaje);
+            botonAceptarMensaje.click();
+        }
         resetImplicitTimeout();
     }
 
