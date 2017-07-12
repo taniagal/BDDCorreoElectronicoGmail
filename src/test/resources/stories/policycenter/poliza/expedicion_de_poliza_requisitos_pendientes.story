@@ -10,6 +10,7 @@ en el caso de que no se encuentren adjuntos o recibidos el sistema debe mostrar 
 y no debe dejar expedir la poliza hasta que estos no esten adjuntos, en caso de que los requisitos no sean obligatorios,
 debe sacar un mensaje de alerta y debe permitir expedir la poliza
 
+
 Scenario: Validacion sarlaft-expedicion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc con documento:
@@ -34,11 +35,11 @@ Examples:
 Scenario: Vehiculo cero kilometros
 Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765425 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
+| Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765434 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
 | placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
-| ASD26 | 2017   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
+| ASD25 | 2017   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
 And ingrese las coberturas basicas:
 | limite | deducible | abogado | AS                 |
 | 640.   | 0         |         | Asistencia Clásica |
