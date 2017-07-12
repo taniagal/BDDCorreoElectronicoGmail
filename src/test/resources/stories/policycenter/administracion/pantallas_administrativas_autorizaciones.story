@@ -9,51 +9,14 @@ Como usuario de policy center en el rol de agente,csr, asegurador o gerente
 Quiero tener las pantallas de administracion de autorizacion de UW issue,
 Para conocer que oficinas, personas o grupos autorizan los UW issue.
 
-Scenario: Informacion pantalla nueva autorizacion y edicion
+Scenario: Buscar una autorizacion por regla de validacion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy en el menu de administracion
 When vaya al menu de acciones
 And vaya a crear una nueva autorizacion
-And deben aparecer los siguientes campos:
-| opciones          |
-| Regla Validación  |
-| Recibe / Persona  |
-| Recibe / Grupo    |
-| Grupo Autorizador |
-| Oficina           |
-| Asesor            |
-| Activo            |
-And cuando ingrese una nueva autorizacion con los datos:
-| reglaValidacion                 | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo |
-| Bloqueo obligatorio de pregunta | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     |
-Then se debe ingresar correctamente el registro
-And vaya a modificar la informacion de la autorizacion
-Then solo deben estar habilitados los campos activo e inactivo y se debe poder actualizar
-Examples:
-|  |
-|  |
-
-Scenario: Validar registros duplicados
-Given estoy en el menu de administracion
-When vaya al menu de acciones
-And vaya a crear una nueva autorizacion
-And cuando ingrese una nueva autorizacion con los datos:
-| reglaValidacion                 | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo |
-| Bloqueo obligatorio de pregunta | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     |
-Then debe salir un mensaje indicando que el registro esta duplicado
-| mensaje            |
-| Registro duplicado |
-Examples:
-|  |
-|  |
-
-Scenario: Buscar una autorizacion por regla de validacion
-Given estoy en el menu de administracion
-When vaya al menu de acciones
-And vaya a crear una nueva autorizacion
 And cuando ingrese una nueva  autorizacion con los datos:
-| reglaValidacion                                         | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo |
-| A ser revisado por el asegurador 2, bloqueo obligatorio | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | No     |
+| reglaValidacion                                         | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
+| A ser revisado por el asegurador 2, bloqueo obligatorio | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | No     | CC020          |
 And vaya a buscar la autorizacion con regla de validacion <reglaValidacion>
 Then se debe mostrar toda la informacion relacionada a la autorizacion
 | informacion                                             |
@@ -68,3 +31,42 @@ Then se debe mostrar toda la informacion relacionada a la autorizacion
 Examples:
 | reglaValidacion                                         |
 | A ser revisado por el asegurador 2, bloqueo obligatorio |
+
+
+Scenario: Informacion pantalla nueva autorizacion y edicion
+Given estoy en el menu de administracion
+When vaya al menu de acciones
+And vaya a crear una nueva autorizacion
+And deben aparecer los siguientes campos:
+| opciones          |
+| Regla Validación  |
+| Recibe / Persona  |
+| Recibe / Grupo    |
+| Grupo Autorizador |
+| Oficina           |
+| Asesor            |
+| Activo            |
+And cuando ingrese una nueva autorizacion con los datos:
+| reglaValidacion                 | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
+| Bloqueo obligatorio de pregunta | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     | CC020          |
+Then se debe ingresar correctamente el registro
+And vaya a modificar la informacion de la autorizacion
+Then solo deben estar habilitados los campos activo e inactivo y se debe poder actualizar
+Examples:
+|  |
+|  |
+
+Scenario: Validar registros duplicados
+Given estoy en el menu de administracion
+When vaya al menu de acciones
+And vaya a crear una nueva autorizacion
+And cuando ingrese una nueva autorizacion con los datos:
+| reglaValidacion                 | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
+| Bloqueo obligatorio de pregunta | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     | CC020          |
+Then debe salir un mensaje indicando que el registro esta duplicado
+| mensaje            |
+| Registro duplicado |
+Examples:
+|  |
+|  |
+
