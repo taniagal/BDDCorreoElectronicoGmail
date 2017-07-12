@@ -37,10 +37,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 12.000.000.000        | 600.000.000     | 3.400.000.000  | 8.000.000.000  | 4.000.000.000    | 20.000.000.000         | 8.000.000.000                  |
 When expido la poliza mrc
-And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 1
 And ingrese al resumen de la poliza expedida
@@ -70,10 +68,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 7.000.000.000         | 110.526.316     | 626.315.789    | 6.263.157.895  | 736.842.105      | 30.000.000.000         | 3.000.000.000                  |
 When expido la poliza mrc
-And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
@@ -106,10 +102,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 8.000.000.000         | 88.888.889      | 503.703.704    | 7.407.407.407  | 592.592.593      | 40.000.000.000         | 2.000.000.000                  |
 When expido la poliza mrc
-And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 3
 And ingrese al resumen de la poliza expedida

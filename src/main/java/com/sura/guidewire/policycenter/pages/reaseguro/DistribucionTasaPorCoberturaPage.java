@@ -102,12 +102,15 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         botonCotizar.waitUntilPresent();
         clickearElemento(botonCotizar);
         descartarCambios(linkDescartarCambios, botonCotizar);
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (lblMensaje.isPresent()) {
             clickearElemento(botonCotizar);
         }
+        esperarHasta(TIEMPO_1000);
+        if (botonCotizar.isPresent()){
+            clickearElemento(botonCotizar);
+        }
         resetImplicitTimeout();
-        esperarHasta(TIEMPO_5000);
         waitForAnyTextToAppear("Cotizado", "Cotización");
     }
 

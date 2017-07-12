@@ -61,10 +61,18 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     WebElementFacade btnBuscarOficinaAutorizacion;
     @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:Agente:SelectAgente']")
     WebElementFacade btnBuscarAsesor;
+    @FindBy(xpath = ".//*[@id ='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:SaleChannel:SelectSaleChannel']")
+    WebElementFacade btnBuscarCanal;
     @FindBy(xpath = ".//*[@id='ProducerCodeSearchPopup:ProducerCodeSearchScreen:ProducerCodeSearchDV:Code-inputEl']")
     WebElementFacade txtCodigoAsesor;
+    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:SaleChannel-inputEl']")
+    WebElementFacade txtCodigoCanal;
+    @FindBy(xpath = ".//*[@id='SuraSaleChannelSearchPopup:SaleChannelSearchScreen:codeChannel-inputEl']")
+    WebElementFacade txtCampoCodigoCanal;
     @FindBy(xpath = ".//*[@id='ProducerCodeSearchPopup:ProducerCodeSearchScreen:ProducerCodeSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     WebElementFacade btnBuscarAsesorAutorizacion;
+    @FindBy(xpath = ".//*[@id='SuraSaleChannelSearchPopup:SaleChannelSearchScreen:SearchLinksInputSet:Search']")
+    WebElementFacade btnBuscarCodigoCanal;
     @FindBy(xpath = "//tr[3]/td/div/div")
     WebElementFacade labelRegistroDuplicado;
     @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:issue-inputEl']")
@@ -126,6 +134,12 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
         } else {
             ingresarDato(txtAsesor, nuevaAutorizacion.get("asesor"));
         }
+        if (txtCodigoCanal.getAttribute(PROPIEDADLECTURA) != null) {
+            agregarCanalComercial(nuevaAutorizacion);
+        } else {
+            ingresarDato(txtCodigoCanal, nuevaAutorizacion.get("canalcomercial"));
+
+        }
         if (activo.equals(nuevaAutorizacion.get("activo"))) {
             seleccionarAutorizacionActiva();
         }
@@ -136,6 +150,13 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
         ingresarDato(txtCodigoAsesor, nuevaAutorizacion.get("asesor"));
         btnBuscarAsesorAutorizacion.click();
         btnSeleccionar.click();
+    }
+
+    private void agregarCanalComercial(Map<String, String> nuevaAutorizacion) {
+        btnBuscarCanal.click();
+        ingresarDato(txtCampoCodigoCanal, nuevaAutorizacion.get("canalcomercial"));
+        btnBuscarCodigoCanal.click();
+        clickearElemento(btnSeleccionar);
     }
 
     private void agregarOficinaAutorizacion(Map<String, String> nuevaAutorizacion) {

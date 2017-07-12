@@ -30,7 +30,7 @@ And de clic al boton detalle
 And realice la aprobacion especial
 And expida la poliza
 And expida la poliza
-And expido la poliza mrc
+And expido la poliza mrc sin facultativo
 And capturo el numero de poliza 1
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
@@ -61,7 +61,7 @@ And de clic al boton detalle
 And realice la aprobacion especial
 And expida la poliza
 And expida la poliza
-And expido la poliza mrc
+And expido la poliza mrc sin facultativo
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
@@ -111,7 +111,7 @@ And de clic al boton detalle
 And realice la aprobacion especial
 And expida la poliza
 And expida la poliza
-And expido la poliza mrc
+And expido la poliza mrc sin facultativo
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 Then se debe verificar el valor reasegurado, el valor retenido del contrato cuota parte CP, el riesgo cedido del contrato cuota parte y excedente:

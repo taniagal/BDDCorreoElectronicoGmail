@@ -35,10 +35,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 6.000.000.000         | 600.000.000     | 3.400.000.000  | 2.000.000.000  | 4.000.000.000    | 10.000.000.000         | 4.000.000.000                  |
 When expido la poliza mrc
-And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 1
 And ingrese al resumen de la poliza expedida
@@ -71,10 +69,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 12.000.000.000         | 4.800.000.000         | 240.000.000     | 1.360.000.000  | 3.200.000.000  | 1.600.000.000    | 22.000.000.000         | 7.200.000.000                  |
 When expido la poliza mrc
-And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
@@ -128,10 +124,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 7.000.000.000          | 5.600.000.000         | 89.361.702      | 506.382.979    | 5.004.255.319  | 595.744.681      | 35.000.000.000         | 1.400.000.000                  |
 When expido la poliza mrc
-And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
 And expido la poliza mrc
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro

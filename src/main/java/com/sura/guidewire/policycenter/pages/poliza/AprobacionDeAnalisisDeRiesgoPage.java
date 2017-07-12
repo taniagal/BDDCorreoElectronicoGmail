@@ -73,8 +73,19 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         waitForAnyTextToAppear("Cotización Expedida", "Cambio en la póliza Expedida", "Asuntos que bloquean la expedición");
     }
 
+    public void expedirPolizaMRCFacultativo() {
+        expedirPolizaMRC();
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        if (botonExpedirPoliza.isVisible()){
+            esperarObjetoClikeableServidorWe(botonExpedirPoliza);
+            waitFor(botonAceptarMensaje);
+            botonAceptarMensaje.click();
+        }
+        resetImplicitTimeout();
+    }
+
     public void expedirPolizaMRC() {
-        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()) {
             esperarObjetoClikeableServidorWe(menuItemCotizacion);
         }

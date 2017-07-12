@@ -117,6 +117,11 @@ public class TarifaTasaUnicaDefinitions {
     }
 
     @When("expido la poliza mrc")
+    public void expedirPolizaMRCFacultativo() {
+        tasaUnicaSteps.expedirPolizaMRCFacultativo();
+    }
+
+    @When("expido la poliza mrc sin facultativo")
     public void expedirPolizaMRC() {
         tasaUnicaSteps.expedirPolizaMRC();
     }
