@@ -52,4 +52,9 @@ public class CambioDePolizaCamposEditablesSteps extends ScenarioSteps {
     public void seleccionarCoberturaAsistencia(String asistencia) {
         tarifaAutosPage.seleccionarCoberturaAsistenciaModificacion(asistencia);
     }
+
+    @Step
+    public void agregarValorLimite(String limite) {
+        tarifaAutosPage.agregarValorLimite(limite);
+    }
 }

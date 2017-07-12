@@ -520,4 +520,9 @@ public class TarifaAutosPage extends PageUtil {
         resetImplicitTimeout();
     }
 
+    public void agregarValorLimite(String limite) {
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
+        seleccionarItem(comboBoxLimite, limite);
+        resetImplicitTimeout();
+    }
 }
