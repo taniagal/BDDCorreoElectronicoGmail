@@ -26,8 +26,8 @@ And este buscando un riesgo por los filtros pais departamento ciudad y direccion
 | producto                | pais     | departamento | ciudad   | direccion   |
 | Multiriesgo corporativo | Colombia | Antioquia    | Medellin | CR 45 29 30 |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
-| tipoPoliza | direccion   | estado     | contrato |
-| Colectiva  | CR 45 29 30 | Expedición | 9876539  |
+| tipoPoliza | direccion   | estado   | contrato |
+| Colectiva  | CR 45 29 30 | Vigentes | 9876539  |
 And este buscando un riesgo por los filtros pais departamento ciudad y direccion
 | producto                | pais     | departamento | ciudad   | direccion   |
 | Multiriesgo corporativo | Colombia | Antioquia    | Envigado | CR 45 30 30 |
@@ -78,14 +78,14 @@ And este buscando un riesgo por los filtros producto y numero de contrato
 | producto                | contrato |
 | Multiriesgo corporativo | 123987   |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
-| tipoPoliza | direccion   | estado     | contrato |
-| Colectiva  | CR 88 30 99 | Expedición | 123987   |
+| tipoPoliza | direccion   | estado   | contrato |
+| Colectiva  | CR 88 30 99 | Vigentes | 123987   |
 And este buscando un riesgo por los filtros pais departamento ciudad, direccion y numero de contrato
 | producto                | pais     | departamento | ciudad   | direccion   | contrato |
 | Multiriesgo corporativo | Colombia | Antioquia    | Medellin | CR 88 30 99 | 123987   |
 Then se debe visualizar la informacion de los riesgos asociados en MRC
-| tipoPoliza | direccion   | estado     | contrato |
-| Colectiva  | CR 88 30 99 | Expedición | 123987   |
+| tipoPoliza | direccion   | estado   | contrato |
+| Colectiva  | CR 88 30 99 | Vigentes | 123987   |
 And este buscando un riesgo por los filtros pais departamento ciudad, direccion y numero de contrato
 | producto                | pais     | departamento | ciudad   | direccion        | contrato |
 | Multiriesgo corporativo | Colombia | Antioquia    | Medellin | KR 80 # 48 - 140 | 123987   |
