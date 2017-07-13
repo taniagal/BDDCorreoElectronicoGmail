@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.steps.poliza;
 
 import com.sura.guidewire.policycenter.pages.modificaciones.AccionesWidget;
-import com.sura.guidewire.policycenter.pages.renovacion.InstruccionesPreviasARenovacionPage;
 import com.sura.guidewire.policycenter.pages.poliza.PolizaPage;
+import com.sura.guidewire.policycenter.pages.renovacion.InstruccionesPreviasARenovacionPage;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.EspacioDeTrabajoWidget;
 import net.serenitybdd.core.annotations.findby.By;
@@ -99,6 +99,11 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void seleccionarOpcionInformacionDePolizaDos() {
+        polizaPage.seleccionarOpcionInformacionDePolizaDos();
+    }
+
+    @Step
     public void seleccionarBotonSiguienteParaIniciarCambioEnPoliza() {
         polizaPage.seleccionarBotonSiguienteEnInicioDeCambioDePoliza();
     }
@@ -110,7 +115,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public String consultarOficinaDeRadicacion() {
-        return  polizaPage.consultarOficinaDeRadicacion();
+        return polizaPage.consultarOficinaDeRadicacion();
     }
 
     @Step
@@ -304,11 +309,11 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void ingresarFechaDeCancelacion(int dato) {
-        obtenerPolizaPage().ingresarFechaDeCancelacion(obtenerPolizaPage().obtenerFechacancelacionElemento(),dato);
+        obtenerPolizaPage().ingresarFechaDeCancelacion(obtenerPolizaPage().obtenerFechacancelacionElemento(), dato);
     }
 
     @Step
-    public void seleccionDeOpcionContactos(){
+    public void seleccionDeOpcionContactos() {
         obtenerPolizaPage().seleccionarOpcionContactos();
     }
 

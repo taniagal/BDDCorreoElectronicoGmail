@@ -47,6 +47,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarCoberturasSustitucion(coberturas);
     }
 
+    @When("ingrese las coberturas de a la modificacion: $coberturas")
+    public void ingresarCoberturasAModificacion(ExamplesTable coberturas) {
+        tarifaAutosSteps.agregarCoberturasSustitucionModificacion(coberturas);
+    }
+
     @When("ingrese las coberturas a $texto: $coberturas")
     public void agregarcoberturasCeroKilometros(ExamplesTable coberturas) {
         tarifaAutosSteps.agregarCoberturasRC(coberturas);
@@ -128,7 +133,7 @@ public class TarifaAutosDefinitions {
     }
 
     @When("agrego nuevamente coberturas rc : $coberturas")
-    public void agregarDeducibleEnRc(ExamplesTable coberturas){
+    public void agregarDeducibleEnRc(ExamplesTable coberturas) {
         tarifaAutosSteps.seleccionarBotonSiguiente();
         tarifaAutosSteps.seleccionarBotonSiguiente();
         tarifaAutosSteps.seleccionarBotonSiguiente();

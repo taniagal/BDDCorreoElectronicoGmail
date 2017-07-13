@@ -95,6 +95,7 @@ public class PolizaPage extends PageUtil {
     public enum Opcion {
         LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
         LINK_INFORMACION_DE_LA_POLIZA(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']/div"),
+        LINK_INFORMACION_DE_LA_POLIZA_CAMBIO(".//*[@id='SubmissionWizard:PolicyInfo']/div"),
         ENVIO(".//*[@id='SubmissionWizard:0_header_hd']");
         private String elemento;
 
@@ -190,6 +191,11 @@ public class PolizaPage extends PageUtil {
     public void seleccionarOpcionInformacionDeLaPoliza() {
         seleccionarOpcion(Opcion.LINK_INFORMACION_DE_LA_POLIZA.xpath(), "Información de póliza");
     }
+
+    public void seleccionarOpcionInformacionDePolizaDos() {
+        seleccionarOpcion(Opcion.LINK_INFORMACION_DE_LA_POLIZA_CAMBIO.xpath(), "Información de póliza");
+    }
+
 
     public void seleccionarOpcion(String xpath, String tituloPaginaEsperada) {
         try {
@@ -310,7 +316,7 @@ public class PolizaPage extends PageUtil {
         btnRehabilitar.waitUntilPresent().click();
         btnAceptar.waitUntilPresent().click();
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
-        if (btnBorrar.isVisible()){
+        if (btnBorrar.isVisible()) {
             btnRehabilitar.waitUntilPresent().click();
             btnAceptar.waitUntilPresent().click();
         }

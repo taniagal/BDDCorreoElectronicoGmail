@@ -35,14 +35,16 @@ Scenario: Verificar generacion de UW Issue al cambiar la bonificacion consultada
 Given estoy cotizando una poliza de autos:
 | producto | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion         | departamento | ciudad   | agente | tipoPoliza | oficina | agente_oficina |
 | Autos    | CEDULA DE CIUDADANIA | 05/09/1973       | ORTENCIA      | MONDRAGON       | DIRECCION DE RESIDENCIA | AVENIDA 30 #10-11 | Antioquia    | Medellin | INT-3  | Individual | 085     | DIRECTO        |
-And ingrese la Fecha Inicio Vigencia: 10/06/2017
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
 | random | 2016   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Clásico | Televentas |
-And ingrese las coberturas de RC, asistencia y hurto:
+And ingrese las coberturas de a la modificacion:
 | limite | deducible | PTH | PPH    | GTH | abogado | AS                 |
 | 640.   | 0         | 0   | 1.040. | 40. |         | Asistencia Clásica |
+And ingrese a informacion de poliza de la poliza
+And ingrese la Fecha Inicio Vigencia: 10/06/2017
+And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 And cambio la fecha de vigencia
 And cambio la bonificacion tecnica <bonoT>
