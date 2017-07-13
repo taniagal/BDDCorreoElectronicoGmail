@@ -15,7 +15,7 @@ When valide los campos de la pantalla
 And ingrese un codigo de un asesor <codigoAsesor>
 Then debo ver la informacion del agente a continuacion
 | codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal                    |
-| 1681         | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 114            | ASESORES EN DESARROLLO CALI |
+| 1681         | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 1059           | ASESORES EN DESARROLLO CALI |
 
 Examples:
 | codigoAsesor |
@@ -25,8 +25,8 @@ Scenario: validar la busqueda por nombre de asesor
 Given estoy en la busqueda de agentes
 When ingrese el nombre de un asesor <nombreAsesor>
 Then debo ver la informacion del agente a continuacion
-| codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal                    |
-|              | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 114            |                             |
+| codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal |
+|              | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 1059           |          |
 
 Examples:
 | nombreAsesor      |
@@ -38,7 +38,7 @@ When ingrese un codigo de un asesor <codigoAsesor>
 And ingrese el nombre de un asesor <nombreAsesor>
 Then debo ver la informacion del agente a continuacion
 | codigoAsesor | nombreAsesor | estado | organizacion | codigoSucursal | sucursal                    |
-| 193          | ASESOR MARIA | Activo | Sura         | 114            | ASESORES EN DESARROLLO CALI |
+| 193          | ASESOR MARIA | Activo | Sura         | 1059           | ASESORES EN DESARROLLO CALI |
 
 Examples:
 | codigoAsesor | nombreAsesor |
