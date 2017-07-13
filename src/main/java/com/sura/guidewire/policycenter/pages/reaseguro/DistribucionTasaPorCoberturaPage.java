@@ -83,9 +83,16 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         lblInformaPoliza.waitUntilVisible();
         clickearElemento(radioBotReaseguroEspecial);
         esperarHasta(TIEMPO_2000);
-        checkiReaseguroFacultativo.waitUntilClickable();
-        esperarHasta(TIEMPO_2000);
-        clickearElemento(checkiReaseguroFacultativo);
+        if(checkiReaseguroFacultativo.isVisible()){
+            checkiReaseguroFacultativo.waitUntilClickable();
+            esperarHasta(TIEMPO_2000);
+            clickearElemento(checkiReaseguroFacultativo);
+        } else {
+            clickearElemento(radioBotReaseguroEspecial);
+            checkiReaseguroFacultativo.waitUntilClickable();
+            esperarHasta(TIEMPO_2000);
+            clickearElemento(checkiReaseguroFacultativo);
+        }
         esperarYClickearBoton(btnSiguiente);
         esperarHasta(TIEMPO_2000);
         lblMensajeFacultativo.waitUntilVisible();
