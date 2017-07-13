@@ -42,32 +42,18 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil {
 
     public void ingresarDatosComunesDeContacto(Map<String, String> datosContacto) {
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
-        campoTipoDocumento.clear();
-        campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
-        campoTipoDocumento.sendKeys(Keys.ENTER);
+        seleccionarItem(campoTipoDocumento, datosContacto.get("tipoId"));
         campoNumeroDocumento.sendKeys(datosContacto.get("numeroId"));
         campoNumeroDocumento.sendKeys(Keys.ENTER);
-        esperarHasta(TIEMPO_2000);
-        campoPais.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).click();
-        campoPais.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).clear();
-        campoPais.sendKeys(datosContacto.get("pais"));
-        campoPais.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_3000);
-        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).click();
-        campoDepartamento.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).clear();
-        campoDepartamento.sendKeys(datosContacto.get("departamento"));
-        campoDepartamento.sendKeys(Keys.ENTER);
+        seleccionarItem(campoDepartamento, datosContacto.get("departamento"));
         esperarHasta(TIEMPO_3000);
-        campoCiudad.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
-        campoCiudad.sendKeys(datosContacto.get("ciudad"));
-        campoCiudad.sendKeys(Keys.ENTER);
+        seleccionarItem(campoCiudad, datosContacto.get("ciudad"));
         esperarHasta(TIEMPO_2000);
         campoDireccion.withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
         esperarHasta(TIEMPO_2000);
-        campoTipoDireccion.clear();
-        campoTipoDireccion.sendKeys(datosContacto.get("tipoDireccion"));
-        campoTipoDireccion.sendKeys(Keys.ENTER);
+        seleccionarItem(campoTipoDireccion, datosContacto.get("tipoDireccion"));
     }
 
     public void ingresarDatosNuevaPersonaNatural(ExamplesTable datosPersonaNatural) {
