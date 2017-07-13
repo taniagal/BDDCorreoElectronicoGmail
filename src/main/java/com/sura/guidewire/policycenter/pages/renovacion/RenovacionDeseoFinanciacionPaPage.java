@@ -50,7 +50,7 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
 
     public void irARevisionDePoliza() {
         WebElementFacade revisionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyReview']/div");
-        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(revisionPoliza).click();
+        clickearElemento(revisionPoliza);
         WebElementFacade labelRevisionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_DifferencesScreen:ttlBar']");
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelRevisionPoliza).shouldBeVisible();
     }
