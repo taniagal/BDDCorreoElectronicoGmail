@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.steps.poliza;
 
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.poliza.ExpedicionDePolizaRequisitosPendientesPage;
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
-import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -134,7 +134,7 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarCoberturasModificacion(String deducible, String perdidaLlaves) {
-        expedicionDePolizaRequisitosPendientesPage.ingresarCoberturas(deducible, perdidaLlaves);
+    public void ingresarCoberturasModificacion(String deducible, String perdidaLlaves, String perdidaParcialReemplazo, String perdidaTotalReemplazo, String asistencia) {
+        expedicionDePolizaRequisitosPendientesPage.ingresarCoberturas(deducible, perdidaLlaves, perdidaParcialReemplazo, perdidaTotalReemplazo, asistencia);
     }
 }

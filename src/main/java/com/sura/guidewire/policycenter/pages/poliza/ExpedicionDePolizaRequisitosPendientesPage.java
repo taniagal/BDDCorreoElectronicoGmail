@@ -107,6 +107,12 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade txtLimiteCobertura;
     @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:1:SuraPACovTermInputSet:DirectTermInput-inputEl')]")
     private WebElementFacade comboBoxDeducible;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade perdidaParcialReemplazoCambioPoliza;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:1:SuraPACovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade perdidaTotalReemplazoCambioPoliza;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade asistenciaGlobalCambioPoliza;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PALlavesDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade txtPerdidaDeLLaves;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestCardTab-btnInnerEl']")
@@ -260,19 +266,22 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         seleccionarItem(txtciudadPolizaModificacion, ciudad);
     }
 
-    public void ingresarCoberturas(String deducible, String perdidaLlaves) {
+    public void ingresarCoberturas(String deducible, String perdidaLlaves, String perdidaParcialReemplazo, String perdidaTotalReemplazo, String asistencia) {
         clickearElemento(botonSiguienteModificacion);
         botonBorrar.waitUntilPresent();
         clickearElemento(botonBorrar);
         botonBorrar.waitUntilNotVisible();
         seleccionarItem(txtLimiteCobertura, "640.");
         seleccionarItem(comboBoxDeducible, deducible);
+        seleccionarItem(perdidaParcialReemplazoCambioPoliza, perdidaParcialReemplazo);
+        seleccionarItem(perdidaTotalReemplazoCambioPoliza, perdidaTotalReemplazo);
+        seleccionarItem(asistenciaGlobalCambioPoliza, asistencia);
         if (txtPerdidaDeLLaves.isPresent()) {
             seleccionarItem(txtPerdidaDeLLaves, perdidaLlaves);
         }
     }
 
-    public void seleccionarMedioDeVenta(String medioVenta){
+    public void seleccionarMedioDeVenta(String medioVenta) {
         seleccionarItem(comboMedioDeVenta, medioVenta);
     }
 

@@ -68,7 +68,7 @@ When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And ingrese la ciudad de circulacion <ciudad> y medio de venta <medioVenta>
 And ingrese un beneficiario oneroso en modificacion <beneficiario>
-And ingrese algunas coberturas en modificacion <deducible> <perdidaLlaves>
+And ingrese algunas coberturas en modificacion <deducible> <perdidaLlaves><perdidaParcialReemplazo><perdidaTotalReemplazo><asistencia>
 And intente cotizar el cambio de poliza
 And expida el cambio de la poliza
 Then debo ver un mensaje bloqueante
@@ -76,8 +76,8 @@ Then debo ver un mensaje bloqueante
 | Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
-| numeroPoliza  | ciudad               | beneficiario    | deducible | perdidaLlaves | medioVenta |
-| TEST_22225550 | MEDELLIN (ANTIOQUIA) | Oneroso Leasing | 0         | Opción 1      | Televentas |
+| numeroPoliza  | ciudad               | beneficiario    | deducible | perdidaLlaves | medioVenta |perdidaParcialReemplazo|perdidaTotalReemplazo  |asistencia                 |
+| TEST_22225550 | MEDELLIN (ANTIOQUIA) | Oneroso Leasing | 0         | Opción 1      | Televentas | 20                    |20                     |Asistencia Global          |
 
 Scenario: Maximo valor de accesorios-inspeccion-importado por terceros
 Meta: @manual

@@ -47,9 +47,9 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
         expedicionDePolizaRequisitosPendientesSteps.clickEnInteresAdicionalModificacion(beneficiario);
     }
 
-    @When("ingrese algunas coberturas en modificacion <deducible> <perdidaLlaves>")
-    public void ingresarCoberturasModificacion(@Named("deducible") String deducible, @Named("perdidaLlaves") String perdidaLlaves) {
-        expedicionDePolizaRequisitosPendientesSteps.ingresarCoberturasModificacion(deducible, perdidaLlaves);
+    @When("ingrese algunas coberturas en modificacion <deducible> <perdidaLlaves><perdidaParcialReemplazo><perdidaTotalReemplazo><asistencia>")
+    public void ingresarCoberturasModificacion(@Named("deducible") String deducible, @Named("perdidaLlaves") String perdidaLlaves,@Named("perdidaParcialReemplazo") String perdidaParcialReemplazo, @Named("perdidaTotalReemplazo") String perdidaTotalReemplazo, @Named("asistencia") String asistencia ) {
+        expedicionDePolizaRequisitosPendientesSteps.ingresarCoberturasModificacion(deducible, perdidaLlaves,perdidaParcialReemplazo,perdidaTotalReemplazo,asistencia);
     }
 
     @When("vaya a vehiculos en expedicion")
