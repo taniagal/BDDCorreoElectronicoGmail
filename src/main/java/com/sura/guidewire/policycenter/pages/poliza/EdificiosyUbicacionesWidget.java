@@ -351,7 +351,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void ingresarValorAEntrada(String entrada, String valorEntrada) {
         String xpathTREntrada = XPATH2_PARTE1 + entrada + "') ]) and @class='x-form-item-input-row' ]";
         WebElementFacade inputValorEntrada = findBy(xpathTREntrada).find(By.tagName(INPUT));
-        withAction().moveToElement(inputValorEntrada).perform();
+        inputValorEntrada.waitUntilVisible();
+        withAction().moveToElement(inputValorEntrada).build().perform();
         inputValorEntrada.waitUntilClickable();
         inputValorEntrada.click();
         ingresarYValidarCamposWidget(inputValorEntrada, valorEntrada);
