@@ -35,10 +35,10 @@ Then se debe verificar la base reasegurable del riesgo y la base del contrato au
 | baseReasegurableRiesgo | baseReaseguroContrato |
 | 300.000.000            | 300.000.000           |
 And se valida el valor retenido y el riesgo cedido del contrato cuota parte
-When expido la poliza mrc
+When expido la poliza mrc sin facultativo
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
+And expido la poliza mrc sin facultativo
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro
 And de clic en el registro de autos: Auto Liability

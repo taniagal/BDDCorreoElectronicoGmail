@@ -138,7 +138,7 @@ And ingrese a analisis de riesgo
 And realice la aprobacion especial
 And expida la poliza
 And expida la poliza
-And expido la poliza mrc
+And expido la poliza mrc sin facultativo
 And capturo el numero de poliza 4
 And ingrese al resumen de la poliza expedida
 And de clic al menu reaseguro

@@ -34,10 +34,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 20.000.000.000         | 16.000.000.000        | 600.000.000     | 3.400.000.000  | 12.000.000.000 | 4.000.000.000    | 20.000.000.000         | 4.000.000.000                  |
 When expido la poliza mrc
-And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 1
 And ingrese al resumen de la poliza expedida
@@ -65,10 +63,8 @@ Then se debe verificar el valor reasegurado, el valor retenido del contrato cuot
 | baseReasegurableRiesgo | baseReaseguroContrato | valorRetenidoCP | riesgoCedidoCP | riesgoCedidoEX | limiteContratoCP | baseReasegurableCumulo | riesgoCedidoAcuerdoFacultativo |
 | 10.000.000.000         | 7.000.000.000         | 91.304.348      | 517.391.304    | 6.391.304.348  | 608.695.652      | 30.000.000.000         | 3.000.000.000                  |
 When expido la poliza mrc
-And expido la poliza mrc
 And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
-And expido la poliza mrc
 And expido la poliza mrc
 And capturo el numero de poliza 2
 And ingrese al resumen de la poliza expedida
