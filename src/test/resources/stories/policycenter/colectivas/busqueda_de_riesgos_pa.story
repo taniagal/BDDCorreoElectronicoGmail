@@ -14,8 +14,8 @@ When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE860 |
 Then debo ver la informacion de los riesgos asociados
-| placa  | tipoPoliza | estado     | contrato |
-| BLE860 | Individual | Expedición | 1234567  |
+| placa  | tipoPoliza | estado   | contrato |
+| BLE860 | Individual | Vigentes | 1234567  |
 And cuando vaya a ver los detalles de la consulta debo ver la informacion de la poliza asociada <placa>
 
 Examples:
@@ -40,8 +40,8 @@ When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE200 |
 Then debo ver la informacion de los riesgos asociados
-| placa  | tipoPoliza | estado     | contrato |
-| BLE200 | Colectiva  | Expedición |          |
+| placa  | tipoPoliza | estado   | contrato |
+| BLE200 | Colectiva  | Vigentes |          |
 And cuando vaya a ver los detalles de la consulta debo ver la informacion de la poliza asociada <placa>
 
 Examples:
@@ -84,8 +84,8 @@ When este buscando un riesgo por los filtros producto y numero de contrato
 | producto | contrato |
 | Autos    | 1234567  |
 Then debo ver la informacion de los riesgos asociados
-| placa  | tipoPoliza | estado     | contrato |
-| BLE860 | Individual | Expedición | 1234567  |
+| placa  | tipoPoliza | estado   | contrato |
+| BLE860 | Individual | Vigentes | 1234567  |
 
 Examples:
 |  |
@@ -97,8 +97,8 @@ When este buscando un riesgo por los filtros producto, placa y numero de contrat
 | producto | contrato | placa  |
 | Autos    | 1234567  | BLE860 |
 Then debo ver la informacion de los riesgos asociados
-| placa  | tipoPoliza | estado     | contrato |
-| BLE860 | Individual | Expedición | 1234567  |
+| placa  | tipoPoliza | estado   | contrato |
+| BLE860 | Individual | Vigentes | 1234567  |
 
 Examples:
 |  |
