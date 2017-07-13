@@ -10,8 +10,8 @@ Scenario: Validar numero de cuotas - informacion de poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
 When ingrese los datos de la cotizacion con intencion de financiacion:
-| ciudad_circulacion   | limite | deducible | abogado | PLlaves | modelo |
-| MEDELLIN (ANTIOQUIA) | 640.   | 0         | Si      | Si      | 2016   |
+| ciudad_circulacion   | modelo | limite | deducible | PTH | PPH | GTH | AS                | PTD | PPD | GT | CRPP | CRPT | PLlaves |
+| MEDELLIN (ANTIOQUIA) | 2016   | 1.440  | 0         | 0   | 835 | 40. | Asistencia Global | 0   | 835 | 40 | 20   | 20   | Si      |
 And cotice una poliza
 And voy a expedir una poliza
 And acepto la expedicion de poliza

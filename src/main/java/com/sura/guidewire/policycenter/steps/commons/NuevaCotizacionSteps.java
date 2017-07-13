@@ -81,7 +81,12 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         vehiculoPage.agregarCiudadDeCirculacion(datosCotizacion);
         vehiculoPage.validarQueNoPermiteAgregarMasDeUnAuto();
         vehiculoPage.clickSiguiente();
-        seleccionarCoberturaBasicas(datosCotizacion);
+        tarifaAutosPage.seleccionarCoberturasRC(datosCotizacion);
+        tarifaAutosPage.seleccionarCoberturasHurto(datosCotizacion);
+        tarifaAutosPage.seleccionarCoberturasHurto1(datosCotizacion);
+        tarifaAutosPage.seleccionarCoberturasDanios(datosCotizacion);
+        tarifaAutosPage.seleccionarCoberturasDanios1(datosCotizacion);
+        tarifaAutosPage.seleccionarAsistenciaYCarroDeReemplazo(datosCotizacion);
         tarifaAutosPage.intentarCotizar();
     }
 
