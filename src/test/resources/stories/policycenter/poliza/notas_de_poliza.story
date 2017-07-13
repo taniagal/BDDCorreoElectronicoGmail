@@ -14,11 +14,12 @@ Given estoy cotizando una poliza de autos:
 | Sura         | Autos    | CEDULA DE CIUDADANIA | 89651011        | 04/02/1980       | DIEGO         | CARDONA         | DIRECCION DE RESIDENCIA | CALLE 50 #50-50 | Antioquia    | Medellin | INT-3  | Individual |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| DAC276 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-When ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| DAC276 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
+When ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
+And cotice una poliza
 And vaya a la opcion de Notas de la transaccion
 And seleccione la opcion de fecha
 | fechaDesde | fechaHasta |

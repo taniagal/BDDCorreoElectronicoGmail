@@ -15,11 +15,12 @@ Given estoy cotizando una poliza de mrc con documento:
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030861443 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| AKCF2 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-When ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| AKCF2 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
+When ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
+And cotice una poliza
 And ingese al plan del trabajo
 And me debe mostrar los siguientes campos: numeroPoliza, tomador, tipoDocumento, numeroDocumento
 And cuando vea las actividades asociadas a ese tomador
@@ -49,8 +50,8 @@ Examples:
 
 Scenario: Plan de trabajo en modificacion de poliza
 Given tengo una poliza de PA con los siguientes datos:
-| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
-| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ABK196 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | limite | deducible | abogado | AS                 | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ABK196 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | 640.   | 0         |         |Asistencia Clásica  | Televentas |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And ingese al plan del trabajo
@@ -69,6 +70,7 @@ When ingrese el motivo de cancelacion
 And incie su cancelacion
 And ingrese al plan de trabajo
 Then se deben mostrar los campos, tomador, numeroPoliza, tipoDocumento, numeroDocumento
+
 
 
 

@@ -11,8 +11,8 @@ Para la solucion de autos
 Scenario: Habilitar campo en cambio de tomador y cambiar el tomador a principal a uno peps para validar mensaje
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
-| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
-| CEDULA DE CIUDADANIA | 1234567890 | C000777776 | Autos    | Individual | ABI189 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | limite | deducible | abogado | AS                 | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000777776 | Autos    | Individual | ABI189 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | 640.   | 0         |         | Asistencia Clásica | Televentas |
 When ingrese a modificar dicha cotizacion
 And debe estar disposible el boton cambiar tomador con las opciones por las cuales puedo cambiarlo:
 | opciones               |
@@ -33,8 +33,8 @@ Examples:
 
 Scenario: Cambiar el tomador principal a uno riesgo consultable para validar mensaje
 Given tengo una poliza de PA con los siguientes datos:
-| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | limite | deducible | abogado | PLlaves | medioVenta |
-| CEDULA DE CIUDADANIA | 1234567890 | C000777776 | Autos    | Individual | ABI173 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | 640.   | 0         | Si      | Si      | Televentas |
+| tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | limite | deducible | abogado | AS                 | medioVenta |
+| CEDULA DE CIUDADANIA | 1234567890 | C000777776 | Autos    | Individual | ABI173 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | 640.   | 0         |         | Asistencia Clásica | Televentas |
 When ingrese a modificar dicha cotizacion
 And quiera cambiar el tomador principal por uno existente que es pep con <numeroDocumento> y <tipoDocumento>
 And cotice una poliza

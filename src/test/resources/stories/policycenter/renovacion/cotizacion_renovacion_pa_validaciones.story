@@ -11,12 +11,13 @@ Scenario: Quote - Riesgos Consultables - Figuras Tomador, Asegurado y Beneficiar
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
 And vaya a agregar el vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-And seleccione algunas coberturas:
-| limite | deducible | abogado | PTH | PPH | PPHF | GTH | AC | Taller | Grua | TM | CE | CS   | PTD | PPD | PPDF | GT | PP | PT | GTR | GP | PLlaves |
-| 640.   | 0         | Si      | 0   | 850 | 1.50 | 40. | 35 | Conces | Plus | Si | 6  | Plus | 0   | 850 | 1.50 | 40 | 20 | 20 | Si  | Si | Si      |
-When expido la poliza y voy al archivo de poliza
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | medioVenta |
+| random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | Televentas |
+When seleccione la opcion siguiente
+And seleccione todas las coberturas de comision pactada:
+| limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
+| 1.440  | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   | Si      |
+And expido la poliza y voy al archivo de poliza
 And quiera realizar esta renovacion
 And vaya a informacion de poliza en la renovacion
 And adicione un segundo tomador en la renovacion el cual es riesgo consultable

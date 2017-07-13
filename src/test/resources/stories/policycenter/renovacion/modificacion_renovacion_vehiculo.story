@@ -13,11 +13,12 @@ Given estoy cotizando una poliza de autos:
 | Autos    | Individual | CEDULA DE CIUDADANIA | 02/12/1988       | MARIO         | PITONIZO        | DIRECCION DE RESIDENCIA | CALLE 65B #60-25 | Antioquia    | Medellin | INT-3  |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-And ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
+And ingrese las coberturas basicas:
+| limite | deducible | abogado | AS                 |
+| 640.   | 0         |         | Asistencia Clásica |
+And intente cotizar
 When expido la poliza y voy a informacion de poliza expedida
 And realize la renovacion de una poliza
 And estoy en la pantalla de Vehiculo

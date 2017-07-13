@@ -204,11 +204,11 @@ Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | vehiculo_blindado | medioVenta |
-| JZA458 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Si                | Televentas |
-And ingrese las coberturas basicas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | vehiculo_blindado | medioVenta |
+| JZA458 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | Si                | Televentas |
+When ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
 And intente cotizar
 Then se debe mostrar un mensaje de advertencia
 | mensaje                                                                     |

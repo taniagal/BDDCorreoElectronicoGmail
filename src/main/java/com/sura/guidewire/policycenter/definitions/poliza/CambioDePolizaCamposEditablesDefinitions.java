@@ -56,4 +56,9 @@ public class CambioDePolizaCamposEditablesDefinitions {
         cambioDePolizaCamposEditablesSteps.seleccionarOpcionSiguiente();
         cambioDePolizaCamposEditablesSteps.seleccionarCoberturaAsistencia(asistencia);
     }
+
+    @When("agraga el valor del limite <limite>")
+    public void agregarValorLimite(@Named("limite") String limite) {
+        cambioDePolizaCamposEditablesSteps.agregarValorLimite(limite);
+    }
 }

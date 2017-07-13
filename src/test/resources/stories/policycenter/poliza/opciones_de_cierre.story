@@ -15,11 +15,11 @@ Given voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto
 | tipoDocumento        | documento | cuenta     | producto |agente_oficina| oficina |
 | CEDULA DE CIUDADANIA | 71318883  | C000888888 | Autos    | DIRECTO      | 1073    |
 When ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         |medioVenta|
-| TYU130 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular |Televentas|
-And ingrese las coberturas basicas:
-|limite|deducible|abogado |PLlaves |
-|640.  |0        |Si      |Si      |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
+| TYU130 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Clásico |Televentas|
+When ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
 And intente cotizar
 And decline la transaccion
 Then deben aparecer todas las razones de declinar poliza
@@ -39,11 +39,11 @@ Given voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto
 | tipoDocumento        | documento | cuenta     | producto |agente_oficina| oficina |
 | CEDULA DE CIUDADANIA | 71318883  | C000888888 | Autos    | DIRECTO      | 1060    |
 When ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         |medioVenta|
-| TYU131 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Modular |Televentas|
-And ingrese las coberturas basicas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               |medioVenta|
+| TYU131 | 2016   | 00601182         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 165900000       | null      | null    | 2    | Plan Autos Clásico |Televentas|
+When ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
 And intente cotizar
 And decida no tomar la poliza
 Then deben aparecer todas las razones para no tomar la poliza

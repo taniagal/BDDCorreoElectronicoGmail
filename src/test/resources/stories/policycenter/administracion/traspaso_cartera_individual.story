@@ -21,11 +21,12 @@ And seleccione el tipo de poliza:
 |Individual|
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
-And ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Clásico|Televentas|
+And ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
+And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 When Ir al menu traspaso de cartera
 And Traspasar cartera de asesor a asesor:
@@ -54,11 +55,12 @@ And seleccione el tipo de poliza:
 |Individual|
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
-And ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Clásico|Televentas|
+And ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
+And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 When Ir al menu traspaso de cartera
 And Traspasar cartera de asesor a asesor directo:
@@ -87,11 +89,12 @@ And seleccione el tipo de poliza:
 |Individual|
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
-And ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Clásico|Televentas|
+And ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
+And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 When Ir al menu traspaso de cartera
 And Traspasar cartera en poliza:
@@ -120,11 +123,12 @@ And seleccione el tipo de poliza:
 |Individual|
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |medioVenta|
-|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|Televentas|
-And ingrese las coberturas:
-|limite|deducible|abogado|PLlaves|
-|640.  |0        |Si     |Si     |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Clásico|Televentas|
+And ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
+And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 When Ir al menu traspaso de cartera
 And Traspasar cartera de oficina a oficina:

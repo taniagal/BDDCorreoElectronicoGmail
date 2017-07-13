@@ -10,6 +10,7 @@ en el caso de que no se encuentren adjuntos o recibidos el sistema debe mostrar 
 y no debe dejar expedir la poliza hasta que estos no esten adjuntos, en caso de que los requisitos no sean obligatorios,
 debe sacar un mensaje de alerta y debe permitir expedir la poliza
 
+
 Scenario: Validacion sarlaft-expedicion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc con documento:
@@ -17,11 +18,12 @@ Given estoy cotizando una poliza de mrc con documento:
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765433 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| ASDF3 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Televentas |
-When ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan                  | medioVenta |
+| ASDF4 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico    | Televentas |
+When ingrese las coberturas a vehiculo:
+| limite | deducible | AS                 |
+| 640.0  | 0         | Asistencia Clásica |
+And cotice una poliza
 And llegue a la expedicion de la poliza
 Then debo ver un mensaje bloqueante
 | mensaje                                                                                                          |
@@ -35,12 +37,13 @@ Given estoy cotizando una poliza de mrc con documento:
 | organizacion | producto | canal             | tipoPoliza | tipo_documento       | documento  | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Sura         | Autos    | Canal Tradicional | Individual | CEDULA DE CIUDADANIA | 1030765434 | 10/10/1973       | LUCIANA       | LONDOÑO         | DIRECCION DE RESIDENCIA | CALLE 65F #60-69 | Antioquia    | Medellin | INT-3  |
 And ingrese los datos del asegurado <tipo_documento> <documento>
-And ingrese los siguientes datos del vehiculo:
-| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
-| ASD25 | 2017   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Modular | Televentas |
-When ingrese las coberturas:
-| limite | deducible | abogado | PLlaves |
-| 640.   | 0         | Si      | Si      |
+When ingrese los datos del vehiculo:
+| placa | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| ASD25 | 2017   | 52525252         | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
+And ingrese las coberturas basicas:
+| limite | deducible | abogado | AS                 |
+| 640.   | 0         |         | Asistencia Clásica |
+And intente cotizar
 And llegue a la expedicion de la poliza
 And debo ver un mensaje opcional
 | mensaje                                                                                                             |
