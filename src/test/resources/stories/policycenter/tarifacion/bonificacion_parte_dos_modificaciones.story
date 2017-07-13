@@ -35,6 +35,7 @@ Scenario: Verificar generacion de UW Issue al cambiar la bonificacion consultada
 Given estoy cotizando una poliza de autos:
 | producto | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion         | departamento | ciudad   | agente | tipoPoliza | oficina | agente_oficina |
 | Autos    | CEDULA DE CIUDADANIA | 05/09/1973       | ORTENCIA      | MONDRAGON       | DIRECCION DE RESIDENCIA | AVENIDA 30 #10-11 | Antioquia    | Medellin | INT-3  | Individual | 085     | DIRECTO        |
+And ingrese la Fecha Inicio Vigencia: 10/06/2017
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
