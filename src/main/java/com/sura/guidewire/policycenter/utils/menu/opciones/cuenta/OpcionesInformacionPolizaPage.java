@@ -102,6 +102,8 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade menuInformacionPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
+    private WebElementFacade mensajeComisionPactada;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
     private WebElementFacade mensajeFinanciacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:AdditionalNamedPersonAdder-textEl']")
     private WebElementFacade opcionNuevaPersona;
@@ -369,6 +371,10 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void validarMensajeFinanciacion(String mensaje) {
         MatcherAssert.assertThat(mensajeFinanciacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+    }
+
+    public void validarMensajeComisionPactada(String mensaje) {
+        MatcherAssert.assertThat(mensajeComisionPactada.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void adicionarSegundoTomadorOpcionNuevaPersona(ExamplesTable informacionContacto) {

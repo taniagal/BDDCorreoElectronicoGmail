@@ -153,6 +153,10 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
+    public void mostrar_mensaje_advertencia_comision_pactada(String mensaje) {
+        opcionesInformacionPoliza.validarMensajeComisionPactada(mensaje);
+    }
+    @Step
     public void ingresarSegundoTomadorCreandoNuevoContacto(ExamplesTable contacto) {
         opcionesInformacionPoliza.adicionarSegundoTomadorOpcionNuevaPersona(contacto);
     }
