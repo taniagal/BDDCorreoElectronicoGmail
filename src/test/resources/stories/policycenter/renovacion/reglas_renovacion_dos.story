@@ -13,8 +13,8 @@ Scenario: Valor accesorios superior al 20% del valor asegurado
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
 When ingrese los datos de la cotizacion PA
-|ciudad_circulacion|limite|deducible|abogado|PLlaves|modelo|
-|MEDELLIN          |640.  |0        |Si     |Si     |2016  |
+| ciudad_circulacion | limite | deducible | abogado | PLlaves | modelo | AS                | CRPP | CRPT | PTH | PPH | GTH | PTD | PPD | GT  |
+| MEDELLIN           | 640.   | 0         |         | Si      | 2016   | Asistencia Global | 20   | 20   | 0   | 835 | 40. | 0   | 835 | 40. |
 And expido la poliza y voy al archivo de poliza
 And quiera realizar esta renovacion
 And ingrese a la pantalla de vehiculos
