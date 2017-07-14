@@ -27,4 +27,4 @@ And el valor de la prima total y el iva deben ser:
 
 Examples:
 | cotizacion | infoCotizacion                | riesgo   |
-| 33335550   | Ver cotización (N.° 33335550) | 33335552 |
+| 33335590   | Ver cotización (N.° 33335590) | 33335552 |

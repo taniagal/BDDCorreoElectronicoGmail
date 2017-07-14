@@ -39,7 +39,6 @@ Examples:
 
 Scenario: 3 Mensaje de alerta para tomador que requiere sarlaft
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-And copie la poliza
 When adicione un segundo tomador <tipoDocumento>, <primerNombre>, <primerApellido>
 And cotice una poliza
 And llegue a la expedicion de la poliza
