@@ -14,7 +14,7 @@ Given que tengo una cotizacion <cotizacion>
 When seleccione la opcion SI de empleado sura
 And cotice y expida la poliza
 And ingrese al resumen de la poliza expedida
-And ingrese a informacion de poliza en resumen de poliza
+And ingresar a informacion de poliza en resumen de poliza
 Then se debe mostrar en el campo empleado sura la opcion <opcion> no editable
 
 Examples:
@@ -26,7 +26,7 @@ Scenario: 2 Poliza principal sin marca de empleado SURA
 Given que tengo una cotizacion <cotizacion>
 When cotice y expida la poliza
 And ingrese al resumen de la poliza expedida
-And ingrese a informacion de poliza en resumen de poliza
+And ingresar a informacion de poliza en resumen de poliza
 Then se debe mostrar en el campo empleado sura la opcion <opcion> no editable
 Examples:
 | cotizacion |opcion |
