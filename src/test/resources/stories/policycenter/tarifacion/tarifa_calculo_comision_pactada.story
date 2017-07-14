@@ -49,26 +49,17 @@ Examples:
 | CEDULA DE CIUDADANIA | 1060447895 | 1.934.968 | 367.644 | 2.302.612 | 10    | 15    | 5     |
 
 
-Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 15 y validar UW
+Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 15 y validar mensaje bloqueante
 Given estoy cotizando una poliza:
 | cuenta      | producto | oficina | agente_oficina | tipoPoliza |
 | C1060447895 | Autos    | 019    | DIRECTO         | Individual |
 When ingrese la comision pactada en valor <valor>
-And ingrese los datos del asegurado <tipo_documento> <documento>
-And ingrese los datos de vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
-| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Clásico | Televentas |
-And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
-And seleccione todas las coberturas de comision pactada:
-| limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
-| 1.440  | 0         | 0   | 835 | 40. | Asistencia Clásica | 0   | 835 | 40 | 16   | 20   |         |
-Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>
-And expido la poliza
-And se debe generar un UW con el mensaje <mensaje>
+And seleccione la opcion siguiente
+Then se debe mostrar un mensaje <mensaje> de advertencia comision pactada
 
 Examples:
-| tipo_documento       | documento  | prima     | iva     | costo     | valor | bonoT | bonoC | mensaje                                 |
-| CEDULA DE CIUDADANIA | 1060447895 | 2.346.898 | 445.911 | 2.792.809 | 15    | 0     | 0     | La comisión pactada debe ser autorizada |
+| mensaje                                 | valor |
+| La comisión pactada no puede ser mayor a la comisión real | 15 |
 
 
 Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 10

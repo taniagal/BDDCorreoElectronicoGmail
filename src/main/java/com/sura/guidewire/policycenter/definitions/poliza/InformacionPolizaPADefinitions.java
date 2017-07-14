@@ -257,6 +257,11 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.mostrar_Mensaje_Advertencia_Financiacion(mensaje);
     }
 
+    @Then("se debe mostrar un mensaje <mensaje> de advertencia comision pactada")
+    public void mostrarMensajeComisionPactada(@Named("mensaje") String mensaje) {
+        informacionPolizaPASteps.mostrar_mensaje_advertencia_comision_pactada(mensaje);
+    }
+
     @Then("no debe permitir crear un nuevo contacto y debe mostrar el mensaje <mensaje>")
     public void validarMensajeDeMDM(@Named("mensaje") String mensaje) {
         informacionPolizaPASteps.validarMensajeDeMDM(mensaje);
