@@ -26,6 +26,11 @@ public class MetodosComunes {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    protected void waitUntilClickable(WebElement element, WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_30);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public Properties loadProperty() throws Exception {
         Properties prop = new Properties();
         InputStream input = null;

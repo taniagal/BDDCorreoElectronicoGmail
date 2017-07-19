@@ -60,7 +60,7 @@ public class PrecondicionesPage extends MetodosComunes {
         menuHerramientasInternas.click();
         menuItemDatosDeMuestraDePc.click();
         botonCarga.click();
-        wait.until(ExpectedConditions.visibilityOf(labelCargaCorrecta));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")));
         assertThat(labelCargaCorrecta.getText(), anyOf(is("Conjunto cargado \"Sura\" correctamente."),
                 is("Loaded set \"Sura\" successfully.")));
     }

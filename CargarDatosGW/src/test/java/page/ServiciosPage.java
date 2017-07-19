@@ -1,9 +1,9 @@
 package page;
 
 import core.sura.resources.MetodosComunes;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -44,8 +44,10 @@ public class ServiciosPage extends MetodosComunes {
         tabMenu.sendKeys("Admin");
         tabMenu.sendKeys(Keys.ENTER);
         waitUntilVisible(menuItemUtilidades, driver);
+        waitUntilClickable(menuItemUtilidades, driver);
         menuItemUtilidades.click();
         waitUntilVisible(botonCancelar, driver);
+        waitUntilClickable(menuItemAdministracionDeServicios, driver);
         menuItemAdministracionDeServicios.click();
         waitUntilVisible(botonEditar, driver);
     }
