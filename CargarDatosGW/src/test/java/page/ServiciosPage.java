@@ -26,6 +26,7 @@ public class ServiciosPage extends MetodosComunes {
     private WebElement botonDesactivarMocks;
 
     private static final int TIEMPO_1500 = 1500;
+    private static final int TIEMPO_5000 = 5000;
 
     public void activarMocks(WebDriver driver) {
         irAServicios(driver);
@@ -36,7 +37,7 @@ public class ServiciosPage extends MetodosComunes {
     public void desactivarMocks(WebDriver driver) {
         irAServicios(driver);
         botonDesactivarMocks.click();
-        waitUntil(TIEMPO_1500);
+        waitUntil(TIEMPO_5000);
     }
 
     public void irAServicios(WebDriver driver) {
