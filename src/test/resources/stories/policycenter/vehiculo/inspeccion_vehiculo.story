@@ -8,21 +8,18 @@ Como usuario de PolicyCenter
 Quiero ser capaz consultar de forma automatica si un vehiculo requiere o no inspeccion.
 
 Scenario: Consulta de inspeccion no valida y busqueda en el modelo de seguros
-GivenStories: stories/policycenter/login_policy.story
-
-Given se ha realizado la cotizacion <cotizacion>
-When se identifique que el vehiculo <placa> no cumple con el requisito de inspeccion
-And llegue a la expedicion de la poliza
-Then se debe mostrar en la pantalla un mensaje <mensaje> indicando que el vehiculo no tiene inspeccion
-And generar el UW Issue <mensaje> y no permitir expedir
-
-Examples:
-| cotizacion | placa  | mensaje                                                                       | requisitos                                          |
-| 22222214   | COR219 | El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. | Existen requisitos pendientes, por favor verifique. |
+Meta:
+@manual
+Given _se ha realizado la cotizacion <cotizacion>
+When  _se identifique que el vehiculo <placa> no cumple con el requisito de inspeccion
+And  _llegue a la expedicion de la poliza
+Then  _se debe mostrar en la pantalla un mensaje <mensaje> indicando que el vehiculo no tiene inspeccion
+And  _generar el UW Issue <mensaje> y no permitir expedir
 
 
 
 Scenario: Consultar inspeccion valida en SIA
+GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 | cuenta      | producto | tipoPoliza |
 | C1060447895 | Autos    | Individual |
