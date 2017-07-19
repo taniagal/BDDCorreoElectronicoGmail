@@ -441,7 +441,7 @@ public class PolizaPage extends PageUtil {
     }
 
     public void cliquearOpcionCompromiso() {
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_5000);
         btnOpcionesCompromiso.waitUntilPresent();
         clickearElemento(btnOpcionesCompromiso);
         esperarHasta(TIEMPO_3500);
