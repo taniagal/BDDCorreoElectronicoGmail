@@ -219,9 +219,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
         } else {
-            String [] abecedario = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
-                    "K", "L", "M","N","O","P","Q","R","S","T","U","V","W", "X","Y","Z" };
-            String placa = (abecedario[(int) Math.round(Math.random() * PLACA)] + abecedario[(int) Math.round(Math.random() * PLACA)]+ abecedario[(int) Math.round(Math.random() * PLACA)]) + (int) Math.floor(Math.random() * (TIEMPO_1000 - TIEMPO_9999) + TIEMPO_9999);
+            String[] abecedario = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+                    "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+            String placa = (abecedario[(int) Math.round(Math.random() * PLACA)] + abecedario[(int) Math.round(Math.random() * PLACA)] + abecedario[(int) Math.round(Math.random() * PLACA)]) + (int) Math.floor(Math.random() * (TIEMPO_1000 - TIEMPO_9999) + TIEMPO_9999);
             campoTxtPlaca.waitUntilVisible().clear();
             try {
                 ingresarDato(campoTxtPlaca, placa);
@@ -249,7 +249,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
         clickearElemento(comboBoxModelo);
-        if(!comboBoxModelo.getValue().equals(vehiculo.get(MODELO))) {
+        if (!comboBoxModelo.getValue().equals(vehiculo.get(MODELO))) {
             try {
                 seleccionarItem(comboBoxModelo, vehiculo.get(MODELO));
             } catch (StaleElementReferenceException e) {
@@ -272,7 +272,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.type(vehiculo.get("motor"));
-            campoTxtchasis.click();
+            clickearElemento(campoTxtchasis);
             esperarHasta(TIEMPO_2000);
             campoTxtchasis.type(vehiculo.get("chasis"));
             campoTxtMotor.waitUntilClickable().click();

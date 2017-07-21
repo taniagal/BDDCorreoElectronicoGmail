@@ -100,12 +100,12 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPolizaUAT() {
-        setImplicitTimeout(TIEMPO_20, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_40, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()) {
             clickearElemento(menuItemCotizacion);
         }
         resetImplicitTimeout();
-        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
+        withTimeoutOf(TIEMPO_40, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
         clickearElemento(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
