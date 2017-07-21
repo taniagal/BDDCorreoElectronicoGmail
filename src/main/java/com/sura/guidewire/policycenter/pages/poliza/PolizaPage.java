@@ -71,6 +71,8 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade botonEditarTransaccion;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarTransaccion;
+    @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation-btnInnerEl']")
+    private WebElementFacade botonIniciarCancelacion;
 
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
@@ -462,6 +464,10 @@ public class PolizaPage extends PageUtil {
     public void seleccionarOpcionRetirarTransaccion() {
         menuItemRetirarTransaccion.waitUntilPresent();
         clickearElemento(menuItemRetirarTransaccion);
+    }
+
+    public void clicIniciarCancelacion() {
+        clickearElemento(botonIniciarCancelacion);
     }
 
     public void confirmarCancelacion() {
