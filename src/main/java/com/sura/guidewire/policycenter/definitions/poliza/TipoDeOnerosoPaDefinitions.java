@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
-import com.sura.guidewire.policycenter.definitions.modificaciones.ModificacionInformacionPolizaPADefinitions;
+import com.sura.guidewire.policycenter.definitions.modificaciones.ModificaInfoPoliPADefinitions;
 import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.TipoDeOnerosoPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
@@ -22,7 +22,7 @@ public class TipoDeOnerosoPaDefinitions {
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
 
     @Steps
-    ModificacionInformacionPolizaPADefinitions informacionPolizaPADefinitions;
+    ModificaInfoPoliPADefinitions informacionPolizaPADefinitions;
 
     @Steps
     TarifaAutosSteps tarifaAutosSteps;

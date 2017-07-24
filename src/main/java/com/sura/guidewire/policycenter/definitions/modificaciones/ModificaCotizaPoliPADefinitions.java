@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ModificacionCotizacionDePolizaPADefinitions {
+public class ModificaCotizaPoliPADefinitions {
     private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
     @Steps
@@ -38,7 +38,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
 
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
-    public ModificacionCotizacionDePolizaPADefinitions(){
+    public ModificaCotizaPoliPADefinitions(){
         infoCotizacionPoliza.put("numeroPoliza", "Número de póliza");
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
         infoCotizacionPoliza.put("vigenciaPoliza", "Vigencia de la póliza");
