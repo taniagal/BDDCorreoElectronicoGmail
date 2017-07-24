@@ -26,4 +26,9 @@ public class BusquedaDeTransaccionesDefinitions {
     public void validarResultadosDeBusqueda(ExamplesTable resultados) {
         busquedaDeTransaccionesSteps.validarResultadosDeBusqueda(resultados);
     }
+
+    @Then("debo ver la informacion de la transaccion enviada desde cotizador")
+    public void verTransaccionCotizador() {
+        busquedaDeTransaccionesSteps.verTransaccionCotizador();
+    }
 }

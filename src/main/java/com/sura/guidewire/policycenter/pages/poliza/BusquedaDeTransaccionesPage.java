@@ -24,6 +24,10 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     WebElementFacade botonRestablecer;
     @FindBy(xpath = ".//*[@id='IdTransactionSearch:IdTransactionSearchScreen:IdTransactionSearchPanelSet:resultsLV-body']")
     WebElementFacade tablaResultadosDeBusqueda;
+    @FindBy(xpath = ".//*[@id='IdTransactionSearch:IdTransactionSearchScreen:IdTransactionSearchPanelSet:resultsLV:0:PolicyNumber']")
+    WebElementFacade tblNroPoliza;
+    @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_DatesDV:PolicyPerCost-inputEl']")
+    WebElementFacade labelCostoTotal;
 
     public BusquedaDeTransaccionesPage(WebDriver driver) {
         super(driver);
@@ -45,6 +49,12 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     public void clicEnElBotonBuscar() {
         botonBuscar.waitUntilPresent();
         super.clickearElemento(botonBuscar);
+    }
+
+    public void verTransaccionCotizador() {
+        String nroPoliza = tblNroPoliza.getText();
+        tblNroPoliza.click();
+        String costoTotal = labelCostoTotal.getText();
     }
 
     public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {
