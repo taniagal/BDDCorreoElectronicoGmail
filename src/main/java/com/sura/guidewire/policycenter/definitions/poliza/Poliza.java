@@ -267,9 +267,15 @@ public class Poliza {
     }
 
     @When("ingrese a informacion de poliza $variable")
-    public void cuandoingreseAInformacionDePoliza() {
+    public void cuandoingreseAInformacionDePolizaDos() {
         polizaSteps.seleccionarOpcionInformacionDePolizaDos();
     }
+
+    @When("ingresar a informacion de poliza $variable")
+    public void cuandoingreseAInformacionDePoliza() {
+        polizaSteps.seleccionarOpcionInformacionDePoliza();
+    }
+
 
     @When("ingrese a la opcion de contactos")
     public void cuandoingreseALaOpcionDeContactos() {

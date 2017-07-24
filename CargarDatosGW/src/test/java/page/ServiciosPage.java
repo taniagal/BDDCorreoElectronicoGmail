@@ -1,9 +1,9 @@
 package page;
 
 import core.sura.resources.MetodosComunes;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -26,6 +26,7 @@ public class ServiciosPage extends MetodosComunes {
     private WebElement botonDesactivarMocks;
 
     private static final int TIEMPO_1500 = 1500;
+    private static final int TIEMPO_9000 = 9000;
 
     public void activarMocks(WebDriver driver) {
         irAServicios(driver);
@@ -36,7 +37,7 @@ public class ServiciosPage extends MetodosComunes {
     public void desactivarMocks(WebDriver driver) {
         irAServicios(driver);
         botonDesactivarMocks.click();
-        waitUntil(TIEMPO_1500);
+        waitUntil(TIEMPO_9000);
     }
 
     public void irAServicios(WebDriver driver) {
@@ -44,8 +45,10 @@ public class ServiciosPage extends MetodosComunes {
         tabMenu.sendKeys("Admin");
         tabMenu.sendKeys(Keys.ENTER);
         waitUntilVisible(menuItemUtilidades, driver);
+        waitUntilClickable(menuItemUtilidades, driver);
         menuItemUtilidades.click();
         waitUntilVisible(botonCancelar, driver);
+        waitUntilClickable(menuItemAdministracionDeServicios, driver);
         menuItemAdministracionDeServicios.click();
         waitUntilVisible(botonEditar, driver);
     }

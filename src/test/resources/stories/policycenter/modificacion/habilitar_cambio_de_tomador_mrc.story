@@ -10,9 +10,9 @@ Para la solucion de multiriesgo corporativo
 
 Scenario: Validar cambio de tomador mrc y cambiar el tomador a principal a uno peps para validar mensaje
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000777776|Multiriesgo corporativo|
+Given estoy cotizando una poliza de mrc:
+| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido   | tipo_direccion          | direccion         | departamento | ciudad   | agente |
+| Multiriesgo corporativo | CEDULA DE CIUDADANIA | 03/11/1987       | MARC          | ANTHONY           | DIRECCION DE RESIDENCIA | CALLE 56Z #35Z-50 | Antioquia    | Medellin | INT-3  |
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
@@ -41,9 +41,9 @@ Examples:
 |71318883       |CEDULA DE CIUDADANIA|
 
 Scenario: Cambiar el tomador a principal a uno riesgo consultable para validar mensaje
-Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000777776|Multiriesgo corporativo|
+Given estoy cotizando una poliza de mrc:
+| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido   | tipo_direccion          | direccion         | departamento | ciudad   | agente |
+| Multiriesgo corporativo | CEDULA DE CIUDADANIA | 03/11/1987       | CHRIS          | FROOME           | DIRECCION DE RESIDENCIA | CALLE 30L #35I-50 | Antioquia    | Medellin | INT-3  |
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas

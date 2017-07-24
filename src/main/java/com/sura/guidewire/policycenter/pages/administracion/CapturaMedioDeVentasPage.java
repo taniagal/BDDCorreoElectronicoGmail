@@ -23,6 +23,8 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade menuItemCanales;
     @FindBy(xpath = ".//*[@id='AdminSaleMethodSearchPage_Ext:0']")
     private WebElementFacade tablaCanalMedioDeVenta;
+    @FindBy(xpath = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:0']")
+    private WebElementFacade tablaCanalMedioDeVentaPorCanal;
     @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_CommercialNetwork_Ext:CommercialNetwork_Ext_AdminSaleMethodSearchPage_Ext']/div")
     private WebElementFacade menuItemMedioDeVenta;
     @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_CommercialNetwork_Ext:CommercialNetwork_Ext_AdminOfficeSalesNetworkSearchPage_Ext']/div")
@@ -35,7 +37,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade botonBuscarMediosDeVenta;
     @FindBy(xpath = "//a[contains(.,'Restablecer')]")
     private WebElementFacade botonRestablecer;
-    @FindBy(xpath = ".//*[contains(@id, 'SearchPage_Ext:0')]")
+    @FindBy(xpath = ".//*[contains(@id, 'SaleChannelSearchScreen:0')]")
     private WebElementFacade tablaCanal;
     @FindBy(xpath = "//span[@id='Admin:AdminMenuActions-btnInnerEl']")
     private WebElementFacade mnuAcciones;
@@ -63,7 +65,7 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='NewSuraChannelSaleMethod_Ext:SuraChannelSaleMethodDetailScreen:OfficeDetail_BasicCardTab-btnInnerEl']")
     private WebElementFacade labelDatosBasicosMedioDeVenta;
-    @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[4]/td/div/div[2]/div/table/tbody/tr[2]/td/div/table/tbody/tr/td/div")
+    @FindBy(xpath = ".//*[contains(@id, 'SuraSaleChannelDetailScreen:2')]")
     private WebElementFacade tablaCanalNuevo;
     @FindBy(xpath = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscar;
@@ -143,6 +145,8 @@ public class CapturaMedioDeVentasPage extends PageUtil {
             listaObtenida = waitFor(tablaCanal).getText();
         } else if (tablaCanalNuevo.isVisible()) {
             listaObtenida = tablaCanalNuevo.getText();
+        } else if (tablaCanalMedioDeVentaPorCanal.isVisible()) {
+            listaObtenida = tablaCanalMedioDeVentaPorCanal.getText();
         }
         resetImplicitTimeout();
         return listaObtenida;

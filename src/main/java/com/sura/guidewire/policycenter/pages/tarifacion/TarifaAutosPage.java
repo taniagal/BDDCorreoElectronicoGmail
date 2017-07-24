@@ -179,7 +179,7 @@ public class TarifaAutosPage extends PageUtil {
 
     public void agregarAsegurado(String tipoDocumento, String documento) {
         esCambioDePoliza();
-        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemAsegurados).waitUntilPresent();
+        withTimeoutOf(TIEMPO_40, TimeUnit.SECONDS).waitFor(menuItemAsegurados).waitUntilPresent();
         clickearElemento(menuItemAsegurados);
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if ($(".message").isPresent()) {

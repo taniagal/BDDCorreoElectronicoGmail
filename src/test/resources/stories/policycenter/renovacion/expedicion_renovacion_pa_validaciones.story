@@ -8,20 +8,19 @@ Como usuario de PolicyCenter
 Quiero ser capaz de renovar de forma manual y automaticamente las politicas de auto personal.
 
 Scenario: Maximo valor accesorios y accesorios especiales
-GivenStories: stories/policycenter/login_policy.story
-Given se esta cotizando una renovacion de poliza <cotizacion>
-When emita la renovacion
-And el valor de los accesorios y accesorios especiales supere el monto permitido
-Then mostrar mensaje en los asuntos que bloquean la expedicion
+Meta:
+@manual
+Given _se esta cotizando una renovacion de poliza <cotizacion>
+When _emita la renovacion
+And _el valor de los accesorios y accesorios especiales supere el monto permitido
+Then _mostrar mensaje en los asuntos que bloquean la expedicion
 |mensaje                                                        |
 |El valor de los accesorios es mayor al 20% del valor Asegurado |
 |El valor de los accesorios especiales es mayor al valor Asegurado del vehículo. Por favor verifique.|
 
-Examples:
-|cotizacion |
-|22222336   |
 
 Scenario: Validar motor y chasis
+GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza |
 |C1060447895|Sura        |Autos   |Canal Tradicional|Individual |

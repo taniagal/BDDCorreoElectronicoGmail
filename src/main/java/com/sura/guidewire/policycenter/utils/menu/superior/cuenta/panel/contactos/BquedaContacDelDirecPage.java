@@ -7,7 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class BusquedaContactoDelDirectorioPage extends PageUtil {
+public class BquedaContacDelDirecPage extends PageUtil {
 
     @FindBy(xpath = ".//input[contains(@id,'ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl')]")
     private WebElementFacade cboTipoContacto;
@@ -21,7 +21,7 @@ public class BusquedaContactoDelDirectorioPage extends PageUtil {
     protected static final int POSICION_2 = 2;
 
 
-    public BusquedaContactoDelDirectorioPage(WebDriver driver) {
+    public BquedaContacDelDirecPage(WebDriver driver) {
         super(driver);
     }
 

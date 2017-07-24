@@ -254,7 +254,6 @@ public class GrupoDeDireccionPage extends PageUtil {
                 comboBoxVerApartirDe.sendKeys(Keys.TAB);
                 esperarHasta(TIEMPO_2000);
                 seleccionarItem(comboBoxVerApartirDe, verApartirDe);
-                comboBoxVerApartirDe.sendKeys(Keys.TAB);
             } else {
                 intentos = CONSTANTE_3;
             }

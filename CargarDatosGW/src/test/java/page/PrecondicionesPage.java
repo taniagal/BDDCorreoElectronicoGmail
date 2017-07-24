@@ -2,6 +2,7 @@ package page;
 
 
 import core.sura.resources.MetodosComunes;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,16 +10,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.By;
-
-import static org.hamcrest.CoreMatchers.anyOf;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 
 public class PrecondicionesPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
@@ -51,17 +48,19 @@ public class PrecondicionesPage extends MetodosComunes {
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_2000 = 2000;
     private static final int TIEMPO_5000 = 5000;
+    private static final int TIEMPO_10000 = 10000;
     private static final int CONSTANTE_1 = 1;
     private static final String XPATH = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']/*/table/tbody/tr[";
 
     public void cargarDatos(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
         campoTxtBuscar.sendKeys(Keys.ALT, Keys.SHIFT, "t");
+        MetodosComunes.waitUntil(TIEMPO_10000);
         waitUntilVisible(menuHerramientasInternas, driver);
         menuHerramientasInternas.click();
         menuItemDatosDeMuestraDePc.click();
         botonCarga.click();
-        wait.until(ExpectedConditions.visibilityOf(labelCargaCorrecta));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")));
         assertThat(labelCargaCorrecta.getText(), anyOf(is("Conjunto cargado \"Sura\" correctamente."),
                 is("Loaded set \"Sura\" successfully.")));
     }

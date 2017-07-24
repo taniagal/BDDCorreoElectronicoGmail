@@ -14,7 +14,7 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
-public class AjusteCalendarioAuditoriaRetiroFlotanteDefinitions {
+public class AjusteCalendAudiriaRetFlotDefinitions {
     @Steps
     PolizaSteps polizaSteps;
     @Steps

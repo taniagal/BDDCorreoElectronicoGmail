@@ -158,8 +158,7 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void iniciarCancelacionFacultativo() {
         waitFor(CONSTANTE_3).seconds();
-        String xpathBttonCancelacion = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation-btnInnerEl']";
-        getDriver().findElement(By.xpath(xpathBttonCancelacion)).click();
+        polizaPage.clicIniciarCancelacion();
     }
 
     @Step
