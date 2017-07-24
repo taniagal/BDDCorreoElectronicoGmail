@@ -6,7 +6,7 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
-public class ModificacionRenovacionPolicyInfoAseguradoDefinitions {
+public class ModificaRenovaPolicyInfoAguradoDefinitions {
 
     @Steps
     ModificacionRenovacionPolicyInfoAseguradoSteps modificacionRenovacionPolicyInfoAseguradoSteps;

@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ModificacionCotizacionDePolizaPADefinitions {
+public class ModificaCotizaPoliPADefinitions {
     private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
     @Steps
@@ -38,7 +38,8 @@ public class ModificacionCotizacionDePolizaPADefinitions {
 
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
-    public ModificacionCotizacionDePolizaPADefinitions(){
+
+    public ModificaCotizaPoliPADefinitions() {
         infoCotizacionPoliza.put("numeroPoliza", "Número de póliza");
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
         infoCotizacionPoliza.put("vigenciaPoliza", "Vigencia de la póliza");
@@ -97,7 +98,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     }
 
     @When("cotice el cambio de poliza con reaseguro especial en si")
-    public void cotizarCambioDePolizaReaseguroEspecial(){
+    public void cotizarCambioDePolizaReaseguroEspecial() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
     }
 
@@ -107,27 +108,27 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     }
 
     @Then("debo poder ver la direccion del tomador de la modificacion <direccion>, la cual se indico como principal")
-    public void validarDireccion(@Named("direccion") String direccion){
+    public void validarDireccion(@Named("direccion") String direccion) {
         cotizacionDePolizaSteps.validarDireccionTomador(direccion);
     }
 
     @Then("se debe mostrar en la columna \"Termino\" de la modificacion el limite o deducible de la cobertura en el caso de que aplique")
-    public void thenValidarTerminoCobertura(){
+    public void thenValidarTerminoCobertura() {
         cotizacionDePolizaSteps.validarTerminoCobertura();
     }
 
     @Then("se debe mostrar en la columna \"Termino\" de la modificacion el limite de la cobertura en el caso de que aplique")
-    public void thenValidarLimiteCobertura(){
+    public void thenValidarLimiteCobertura() {
         cotizacionDePolizaSteps.validarTerminoCobertura();
     }
 
     @Then("se debe mostrar en la columna \"Termino\" de la modificacion el deducible de la cobertura en el caso de que aplique")
-    public void thenValidarDeducibleCobertura(){
+    public void thenValidarDeducibleCobertura() {
         cotizacionDePolizaSteps.validarTerminoCobertura();
     }
 
     @Then("realizo la modificacion de la poliza e intento expedirla con requisitos pendientes")
-    public void modificarCotizarYExpedirPolizaConRequisitosPendientes(){
+    public void modificarCotizarYExpedirPolizaConRequisitosPendientes() {
         expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
         tarifaTasaUnicaSteps.irAArchivoDePolizaExpedida();
         cotizacionDePolizaSteps.comenzarCambioDePoliza();

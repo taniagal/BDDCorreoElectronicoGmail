@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.model.ExamplesTable;
 
-public class CancelacionPolizaConBeneficiarioOnerosoDefinitions {
+public class CancelarPolizaConOnerosoDefinitions {
 
     @Steps
     CancelacionPolizaConBeneficiarioOnerosoSteps cancelacionPolizaConBeneficiarioOnerosoSteps;
