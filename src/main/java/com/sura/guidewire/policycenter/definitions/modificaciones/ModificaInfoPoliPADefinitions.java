@@ -13,14 +13,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ModificacionInformacionPolizaPADefinitions {
+public class ModificaInfoPoliPADefinitions {
 
     private final Map<String, String> labelsInformacionPoliza = new HashMap<>();
 
     @Steps
     ModificacionInformacionPolizaPASteps modificacionInformacionPolizaPASteps;
 
-    public ModificacionInformacionPolizaPADefinitions() {
+    public ModificaInfoPoliPADefinitions() {
         labelsInformacionPoliza.put("tipoDocumento", "Tipo documento");
         labelsInformacionPoliza.put("numeroDocumento", "Número documento");
         labelsInformacionPoliza.put("nombre", "Nombre");
