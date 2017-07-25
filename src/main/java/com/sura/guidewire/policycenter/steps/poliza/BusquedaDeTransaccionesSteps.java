@@ -37,4 +37,9 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
         MatcherAssert.assertThat(resultadoPagina, Matchers.containsString(resultadoEsperado.get("estado")));
         MatcherAssert.assertThat(resultadoPagina, Matchers.containsString(resultadoEsperado.get("tipo")));
     }
+
+    @Step
+    public void verTransaccionCotizador() {
+        busquedaDeTransaccionesPage.verTransaccionCotizador();
+    }
 }
