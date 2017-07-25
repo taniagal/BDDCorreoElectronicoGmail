@@ -23,7 +23,7 @@ And cotice la poliza riesgo con el asegurado, el auto y las coberturas necesaria
 | CEDULA DE CIUDADANIA | 1234567890 | TUU225 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | 1.440. | 0         |         | Si      | 0   | 835 | 40  | 0   | 835 | 40 | 20   | 20    | Televentas | Asistencia Global |
 And el valor de la prima total y el iva deben ser:
 | primaT  | iva    |
-| 358.002 | 68.020 |
+| 358.006 | 68.021 |
 
 Examples:
 | cotizacion | infoCotizacion                | riesgo   |
