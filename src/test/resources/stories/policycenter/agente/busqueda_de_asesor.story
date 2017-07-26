@@ -14,8 +14,8 @@ Given estoy en la busqueda de agentes
 When valide los campos de la pantalla
 And ingrese un codigo de un asesor <codigoAsesor>
 Then debo ver la informacion del agente a continuacion
-| codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal                    |
-| 1681         | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 1059           | ASESORES EN DESARROLLO CALI |
+| codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal                    |codigoSucursalDos|
+| 1681         | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 1059           | ASESORES EN DESARROLLO CALI |013              |
 
 Examples:
 | codigoAsesor |
@@ -25,8 +25,8 @@ Scenario: validar la busqueda por nombre de asesor
 Given estoy en la busqueda de agentes
 When ingrese el nombre de un asesor <nombreAsesor>
 Then debo ver la informacion del agente a continuacion
-| codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal |
-|              | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 013            |          |
+| codigoAsesor | nombreAsesor                              | estado | organizacion | codigoSucursal | sucursal |codigoSucursalDos|
+|              | SANCHEZ*PULGARIN CQLII**MARIA ANA CECILIA | Activo | Sura         | 013            |          |1059             |
 
 Examples:
 | nombreAsesor      |

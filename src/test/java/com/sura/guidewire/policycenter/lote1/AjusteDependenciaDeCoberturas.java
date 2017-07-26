@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.lote5;
+package com.sura.guidewire.policycenter.lote1;
 
 import net.serenitybdd.jbehave.SerenityStory;
 

@@ -55,7 +55,7 @@ public class BusquedaDeAsesorSteps extends ScenarioSteps {
         MatcherAssert.assertThat(resultadoBusqueda.get("nombreAsesor"), Is.is(Matchers.equalTo(resultadoEsperado.get("nombreAsesor"))));
         MatcherAssert.assertThat(resultadoBusqueda.get("estado"), Is.is(Matchers.equalTo(resultadoEsperado.get("estado"))));
         MatcherAssert.assertThat(resultadoBusqueda.get("organizacion"), Is.is(Matchers.equalTo(resultadoEsperado.get("organizacion"))));
-        MatcherAssert.assertThat(resultadoBusqueda.get("codigoSucursal"), Is.is(Matchers.equalTo(resultadoEsperado.get("codigoSucursal"))));
+        MatcherAssert.assertThat(resultadoBusqueda.get("codigoSucursal"), Matchers.anyOf(Matchers.equalTo(resultadoEsperado.get("codigoSucursal")), Matchers.equalTo(resultadoEsperado.get("codigoSucursalDos"))));
         MatcherAssert.assertThat(resultadoBusqueda.get("sucursal"), Is.is(Matchers.containsString(resultadoEsperado.get("sucursal"))));
     }
 
