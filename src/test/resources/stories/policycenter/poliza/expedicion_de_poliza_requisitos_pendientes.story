@@ -28,6 +28,7 @@ And llegue a la expedicion de la poliza
 Then debo ver un mensaje bloqueante
 | mensaje                                                                                                          |
 | El contacto CAROLINA OCHOA con DNI C71318883 requiere sarlaft, diríjase a análisis de riesgo para diligenciarlo. |
+
 Examples:
 | tipo_documento       | documento |
 | CEDULA DE CIUDADANIA | 71318883  |
