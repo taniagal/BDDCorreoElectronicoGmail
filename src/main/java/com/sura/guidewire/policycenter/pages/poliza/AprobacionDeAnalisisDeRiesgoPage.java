@@ -90,7 +90,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
             esperarObjetoClikeableServidorWe(menuItemCotizacion);
         }
         while (botonBorrar.isVisible()) {
-            clickearElemento(botonBorrar);
+            esperarObjetoClikeableServidorWe(botonBorrar);
             esperarHasta(TIEMPO_2000);
         }
         esperarObjetoClikeableServidorWe(botonExpedirPoliza);
