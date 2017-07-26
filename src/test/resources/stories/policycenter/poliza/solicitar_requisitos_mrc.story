@@ -46,8 +46,8 @@ And cotice para la opcion declinar MRC
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then se debe mostrar un mensaje bloqueante
-| mensaje                                                                                                               |
-| Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
+| mensaje                                                                                                             |
+| Existen requisitos opcionales pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos. |
 
 Examples:
 | departamento | ciudad   | direccion         | descripcion       | actividad                     |medioVenta|
