@@ -364,9 +364,9 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void seleccionarOpcionSiguienteModificacion() {
         clickearElemento(botonSiguienteCambioDePoliza);
-        esperarHasta(TIEMPO_1500);
+        esperarHasta(TIEMPO_3500);
         clickearElemento(botonSiguienteCambioDePoliza);
-        esperarHasta(TIEMPO_1500);
+        esperarHasta(TIEMPO_3500);
     }
 
     public void validarMensajeFinanciacion(String mensaje) {
