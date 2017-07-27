@@ -26,10 +26,11 @@ And seleccione todas las coberturas de comision pactada:
 Then el valor del monto en cada cobertura debe ser:
 | descripcion                           | valor     |
 | Cobertura de Responsabilidad Civil    | 337.181   |
-| Cobertura de Daños                    | 4.233.483 |
-| Cobertura de Hurto                    | 1.565.398 |
-| Cobertura de Vehículo de Reemplazo    | 94.079    |
+| Cobertura de Daños                    | 4.354.341 |
+| Cobertura de Hurto                    | 1.615.996 |
+| Cobertura de Vehículo de Reemplazo    | 105.760   |
 | Cobertura de Asistencia en Viaje      | 312.500   |
+| Cobertura de Pérdida de Llaves        | 0         |
 
 Examples:
 | tipo_documento       | documento  |

@@ -30,7 +30,7 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 |tipo_documento      |documento |prima    |iva |costo    |bonoT|bonoC|TipoCo  |PolizaRef  |Documento|
-|CEDULA DE CIUDADANIA|1060447895|2.442.817|0   |2.442.817|0    |0    |Aceptado|C1060447895|123456789|
+|CEDULA DE CIUDADANIA|1060447895|2.509.069|0   |2.509.069|0    |0    |Aceptado|C1060447895|123456789|
 
 
 Scenario:  Realizar una cotizacion de autos donde el coaseguro es cedido
@@ -54,7 +54,7 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 |tipo_documento      |documento |prima    |iva    |costo    |bonoT|bonoC|TipoCo|PolizaRef|Documento|
-|CEDULA DE CIUDADANIA|1060447895|2.442.817|464.135|2.906.952|0    |0    |Cedido|         |         |
+|CEDULA DE CIUDADANIA|1060447895|2.509.069|476.723|2.985.792|0    |0    |Cedido|         |         |
 
 
 Scenario:  Realizar una cotizacion de mrc donde el coaseguro es aceptado

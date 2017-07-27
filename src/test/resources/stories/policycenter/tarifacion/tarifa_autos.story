@@ -41,12 +41,11 @@ And seleccione todas las coberturas de comision pactada:
 | 1.440  | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   | Si      |
 Then el valor del monto en cada cobertura debe ser:
 | descripcion                           | valor     |
-| Cobertura de Responsabilidad Civil    | 693.035   |
-| Cobertura de Daños                    | 9.236.856 |
-| Cobertura de Hurto                    | 4.994.363 |
-| Cobertura de Vehículo de Reemplazo    | 205.265   |
-| Cobertura de Accidentes al Conductor  | 21.875    |
-| Cobertura de Pérdida de Llaves        | 36.764    |
+| Cobertura de Responsabilidad Civil    | 735.678   |
+| Cobertura de Daños                    | 9.500.550 |
+| Cobertura de Hurto                    | 5.108.142 |
+| Cobertura de Vehículo de Reemplazo    | 230.752   |
+| Cobertura de Pérdida de Llaves        | 0         |
 | Cobertura de Asistencia en Viaje      | 312.500   |
 
 Examples:

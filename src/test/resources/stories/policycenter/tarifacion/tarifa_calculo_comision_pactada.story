@@ -26,7 +26,7 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 | tipo_documento       | documento  | prima     | iva     | costo     | valor | bonoT | bonoC |
-| CEDULA DE CIUDADANIA | 1060447895 | 2.374.961 | 451.243 | 2.826.204 | 10    | 0     | 0     |
+| CEDULA DE CIUDADANIA | 1060447895 | 2.439.373 | 463.481 | 2.902.854 | 10    | 0     | 0     |
 
 
 Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 15 y bonificacion comercial 5 y tecnica en 15
@@ -46,7 +46,7 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 | tipo_documento       | documento  | prima     | iva     | costo     | valor | bonoT | bonoC |
-| CEDULA DE CIUDADANIA | 1060447895 | 1.934.968 | 367.644 | 2.302.612 | 10    | 15    | 5     |
+| CEDULA DE CIUDADANIA | 1060447895 | 1.986.498 | 377.435 | 2.363.933 | 10    | 15    | 5     |
 
 
 Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 15 y validar mensaje bloqueante

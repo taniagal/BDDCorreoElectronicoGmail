@@ -26,7 +26,7 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 | tipo_documento       | documento  | prima      | iva       | costo      | bonoT | bonoC | valor_asegurado |
-| CEDULA DE CIUDADANIA | 1060447895 | 15.419.996 | 2.929.799 | 18.349.795 | 0     | 0     | 320000000       |
+| CEDULA DE CIUDADANIA | 1060447895 | 15.523.469 | 2.949.459 | 18.472.928 | 0     | 0     | 320000000       |
 
 
 Scenario:  Realizar una cotizacion 2 de autos con cero kilometros en no
@@ -46,4 +46,4 @@ Then el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total 
 
 Examples:
 | tipo_documento       | documento  | prima      | iva       | costo      | bonoT | bonoC | valor_asegurado |
-| CEDULA DE CIUDADANIA | 1060447895 | 20.875.732 | 3.966.389 | 24.842.121 | 0     | 0     | 420000000       |
+| CEDULA DE CIUDADANIA | 1060447895 | 20.993.469 | 3.988.759 | 24.982.228 | 0     | 0     | 420000000       |
