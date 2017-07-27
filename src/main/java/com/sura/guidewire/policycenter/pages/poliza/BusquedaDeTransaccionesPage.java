@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
+import net.serenitybdd.core.Serenity;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
@@ -53,8 +54,10 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
 
     public void verTransaccionCotizador() {
         String nroPoliza = tblNroPoliza.getText();
+        Serenity.setSessionVariable("numeroPoliza".toLowerCase().trim()).to(nroPoliza);
         tblNroPoliza.click();
         String costoTotal = labelCostoTotal.getText();
+        Serenity.setSessionVariable("valorPrima".toLowerCase().trim()).to(costoTotal);
     }
 
     public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {
