@@ -315,12 +315,13 @@ public class PolizaPage extends PageUtil {
     }
 
     public void clicRehabilitarPoliza() {
-        btnRehabilitar.waitUntilPresent().click();
-        btnAceptar.waitUntilPresent().click();
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        btnRehabilitar.waitUntilVisible().click();
+        btnAceptar.waitUntilVisible().click();
         if (btnBorrar.isVisible()) {
-            btnRehabilitar.waitUntilPresent().click();
-            btnAceptar.waitUntilPresent().click();
+            btnBorrar.click();
+            btnRehabilitar.waitUntilVisible().click();
+            btnAceptar.waitUntilVisible().click();
         }
         resetImplicitTimeout();
     }
