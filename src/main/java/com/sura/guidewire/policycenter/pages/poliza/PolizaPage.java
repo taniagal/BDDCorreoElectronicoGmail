@@ -468,7 +468,7 @@ public class PolizaPage extends PageUtil {
     }
 
     public void clicIniciarCancelacion() {
-        clickearElemento(botonIniciarCancelacion);
+        botonIniciarCancelacion.waitUntilVisible().click();
     }
 
     public void confirmarCancelacion() {
