@@ -115,8 +115,8 @@ When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | COBERTURA | ENTRADAS                                                                                  | VALOR_ENTRADAS |
-| Información de Artículos | Maquinaria y equipo |           | Valor Asegurable                                                                          | 12819500000    |
-| Información de Artículos | Maquinaria y equipo | Terremoto |                                                                                           | 12819500000    |
+| Información de Artículos | Maquinaria y equipo |           | Valor Asegurable                                                                          | 1000000        |
+| Información de Artículos | Maquinaria y equipo | Terremoto |                                                                                           | 11809600000    |
 | Información de Artículos | Maquinaria y equipo | Terremoto | Deducible porcentual terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 2              |
 And muestre los mensajes de advertencia para las reglas de coberturas
 | mensaje1          |
