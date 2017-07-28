@@ -110,7 +110,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void clickSiguiente() {
         try {
-            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilVisible();
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
         }
