@@ -80,6 +80,7 @@ public class CesionDePrimaPage extends PageUtil {
         }else{
             btnVerPrimasCedidas.sendKeys(Keys.CONTROL, Keys.ALT, "t");
         }
+        esperarHasta(TIEMPO_5000);
         waitForTextToAppear("Información de proceso por lotes");
         buscaEnTablaTareaDeLote(nombreTarea);
         esperarHasta(TIEMPO_5000);
