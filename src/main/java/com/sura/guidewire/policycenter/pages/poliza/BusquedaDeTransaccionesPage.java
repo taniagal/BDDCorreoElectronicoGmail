@@ -69,6 +69,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
             campoIdTransaccion.sendKeys(idTransaccion);
         }
         if (!aplicacionDeOrigen.isEmpty()) {
+            comboAplicacionDeOrigen.waitUntilClickable();
             seleccionarItem(comboAplicacionDeOrigen, aplicacionDeOrigen);
         }
         if (!producto.isEmpty()) {

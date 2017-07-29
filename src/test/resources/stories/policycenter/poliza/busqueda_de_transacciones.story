@@ -53,14 +53,3 @@ Then debe mostrar el mensaje <mensaje>
 Examples:
 | mensaje                             |
 | La búsqueda no devolvió resultados. |
-
-Scenario: Buscar numero de poliza por transaccion en Policy
-Meta: @manual
-Given que me encuentro en la busqueda de transacciones
-When ingreso los siguientes datos para la busqueda:
-| idTransaccion        | aplicacionDeOrigen   | producto |
-| 04007800170724341534 | Cotizador individual | Autos    |
-Then debo ver la informacion de la transaccion enviada desde cotizador
-Examples:
-|  |
-|  |
