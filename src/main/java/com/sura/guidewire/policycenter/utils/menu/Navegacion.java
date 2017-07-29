@@ -438,7 +438,7 @@ public class Navegacion extends PageUtil {
 
     public BuscarContactosPage irABuscarContactos() {
         esperarHasta(TIEMPO_2500);
-        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(mnuBuscar).shouldBePresent();
+        withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(mnuBuscar).waitUntilVisible();
         gw.desplegarMenu(mnuBuscar);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
         return new BuscarContactosPage(getDriver());
