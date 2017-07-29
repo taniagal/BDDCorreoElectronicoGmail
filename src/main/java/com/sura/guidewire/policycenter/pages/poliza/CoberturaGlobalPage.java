@@ -202,6 +202,6 @@ public class CoberturaGlobalPage extends PageUtil {
     public void darClicBotonAceptar() {
         btnAceptar.waitUntilPresent().click();
         esperarHasta(TIEMPO_3000);
-        btnCotizar.waitUntilPresent().click();
+        btnCotizar.waitUntilVisible().click();
     }
 }
