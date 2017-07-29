@@ -62,7 +62,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     public static final String XPATH_TABLA_REASEGURADORES_CIERRE = "/td";
     private static final String PAIS_ALEMANIA = "Alemania";
     private static final String PAIS_ESTADOS_UNIDOS = "Estados Unidos";
-    private static final String ASEGURADORA_MUNCHENER = "Munchener Ruckversicherungs-Gesellschaft";
+    private static final String ASEGURADORA_MUNCHENER = "MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT";
     private static final String ASEGURADORA_GENERAL_CORPORATION = "General Reinsurance Corporation";
     private static final String CONTRATO_AUTOMATICO = "Program";
     private static final int COLUMNA_NOMBRE_TABLA_PORCENTAJE_PARTICIPACION = 3;
