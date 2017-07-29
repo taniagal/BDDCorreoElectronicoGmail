@@ -24,7 +24,7 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
     private WebElementFacade lblMensaje;
 
 
-    public CotizacionRenovacionPaValidacionesPage (WebDriver driver){
+    public CotizacionRenovacionPaValidacionesPage(WebDriver driver) {
         super(driver);
     }
 
@@ -61,17 +61,17 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
         boolean validacionMensajes = false;
         for (int i = 0; i < listaMensajesRC.getRowCount(); i++) {
             mensajesRC = listaMensajesRC.getRows().get(i);
-            if(grupoMensajesRC.getText().contains(mensajesRC.get("mensaje"))){
+            if (grupoMensajesRC.getText().contains(mensajesRC.get("mensaje"))) {
                 validacionMensajes = true;
-            }else {
+            } else {
                 validacionMensajes = false;
             }
         }
         return validacionMensajes;
     }
 
-    public void limpiarMensajes (){
-        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(borraMensajeEspacioTrabajo).click();
+    public void limpiarMensajes() {
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(borraMensajeEspacioTrabajo).click();
     }
 
     public void irAInformacionPolizaRenovacion() {
@@ -80,8 +80,8 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
         WebElementFacade labelInformacionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:ttlBar']");
         clickearElemento(labelInformacionPoliza);
         WebElementFacade botonEditarTransaccion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']");
-        setImplicitTimeout(TIEMPO_5,TimeUnit.SECONDS);
-        if(botonEditarTransaccion.isPresent()){
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        if (botonEditarTransaccion.isPresent()) {
             botonEditarTransaccion.click();
             actions.sendKeys(Keys.ENTER);
         }
@@ -90,9 +90,9 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
 
     public void adicionarSegundoTomadorEnRenovacion(ExamplesTable datosTomador) {
         WebElementFacade labelTomadorSecundario = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-labelEl']");
-        waitFor(labelTomadorSecundario).shouldBePresent();
+        waitFor(labelTomadorSecundario).waitUntilVisible();
         WebElementFacade botonTomadorSecundario = findBy(".//a[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img");
-        clickearElemento(botonTomadorSecundario);
+        esperarObjetoClikeableServidorWe(botonTomadorSecundario);
         WebElementFacade itemPersonaDirectorio = findBy(".//a[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-itemEl']/span");
         clickearElemento(itemPersonaDirectorio);
         Map<String, String> informacionTomador = datosTomador.getRows().get(0);
@@ -103,11 +103,11 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
     public void realizarCotizacionDeRenovacion() {
         WebElementFacade botonCotizarInfoPolicy = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']");
         WebElementFacade botonCotizarVehiculos = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']");
-        setImplicitTimeout(TIEMPO_5,TimeUnit.SECONDS);
-        if(botonCotizarInfoPolicy.isPresent()){
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        if (botonCotizarInfoPolicy.isPresent()) {
             withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonCotizarInfoPolicy);
             clickearElemento(botonCotizarInfoPolicy);
-        }else if(botonCotizarVehiculos.isPresent()){
+        } else if (botonCotizarVehiculos.isPresent()) {
             withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonCotizarVehiculos);
             clickearElemento(botonCotizarVehiculos);
         }
