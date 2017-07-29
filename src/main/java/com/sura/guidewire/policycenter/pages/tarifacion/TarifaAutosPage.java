@@ -206,7 +206,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarAsegurado(String tipoDocumento, String documento) {
         comboBoxTipoDocumento.waitUntilPresent().clear();
         esperarHasta(TIEMPO_300);
-        comboBoxTipoDocumento.sendKeys(tipoDocumento);
+        comboBoxTipoDocumento.type(tipoDocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         esperarHasta(TIEMPO_800);
         try {
