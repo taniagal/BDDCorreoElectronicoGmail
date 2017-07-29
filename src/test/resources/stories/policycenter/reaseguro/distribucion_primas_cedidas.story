@@ -28,7 +28,7 @@ And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada 
 When Ingrese la información de los reaseguradores
 | reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
 | MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 0           |
-| General Reinsurance Corporation          | Gross rate | 20                      | 1,6            | 0                    | 0                     | 0                 | 0           |
+| GENERAL REINSURANCE CORPORATION          | Gross rate | 20                      | 1,6            | 0                    | 0                     | 0                 | 0           |
 | Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 And expido la poliza mrc
 And de clic al boton detalle
