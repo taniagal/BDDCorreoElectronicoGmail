@@ -276,7 +276,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         seleccionarItem(perdidaParcialReemplazoCambioPoliza, perdidaParcialReemplazo);
         seleccionarItem(perdidaTotalReemplazoCambioPoliza, perdidaTotalReemplazo);
         seleccionarItem(asistenciaGlobalCambioPoliza, asistencia);
-        if (txtPerdidaDeLLaves.isPresent()) {
+        if (txtPerdidaDeLLaves.isVisible()) {
             seleccionarItem(txtPerdidaDeLLaves, perdidaLlaves);
         }
     }

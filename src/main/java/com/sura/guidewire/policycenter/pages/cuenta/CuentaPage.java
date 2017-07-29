@@ -122,11 +122,15 @@ public class CuentaPage extends PageUtil {
     }
 
 
-    public void agregarTelefonoOficina(String telefonoOficina) { campoTxtTelefonoOficina.sendKeys(telefonoOficina);
+    public void agregarTelefonoOficina(String telefonoOficina) {
+        campoTxtTelefonoOficina.setWindowFocus();
+        campoTxtTelefonoOficina.sendKeys(telefonoOficina);
     }
 
-    public void agregarCorreoPrimario(String correoPrimario) { campoTxtCorreoElectronicoPrimario.sendKeys(correoPrimario); }
-    
+    public void agregarCorreoPrimario(String correoPrimario) {
+        campoTxtCorreoElectronicoPrimario.sendKeys(correoPrimario);
+    }
+
     public void actualizar() {
         botonActualizar.click();
         esperarHasta(TIEMPO_1000);
