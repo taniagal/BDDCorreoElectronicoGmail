@@ -25,13 +25,13 @@ And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
 | reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| GENERAL REINSURANCE CORPORATION          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
 | Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
-| Daños materiales  | 0,221216                    | Munchener Ruckversicherungs-Gesellschaft | 0,404905          |
-| Daños materiales  | 0,221216                    | General Reinsurance Corporation          | 0,526706          |
+| Daños materiales  | 0,221216                    | MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | 0,404905          |
+| Daños materiales  | 0,221216                    | GENERAL REINSURANCE CORPORATION          | 0,526706          |
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1984       | HECTOR        | MORENO          | DIRECCION DE RESIDENCIA | CALLE 27a #60-68 | Antioquia    | Medellin | INT-3  |
@@ -47,13 +47,13 @@ And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
 | reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| GENERAL REINSURANCE CORPORATION          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
 | Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
-| Terremoto         | 0,401613                    | Munchener Ruckversicherungs-Gesellschaft | 0,735095          |
-| Terremoto         | 0,401613                    | General Reinsurance Corporation          | 0,956221          |
+| Terremoto         | 0,401613                    | MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | 0,735095          |
+| Terremoto         | 0,401613                    | GENERAL REINSURANCE CORPORATION          | 0,956221          |
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1984       | JUAN C        | RESTREPO        | DIRECCION DE RESIDENCIA | CALLE 27a #60-68 | Antioquia    | Medellin | INT-3  |
@@ -69,13 +69,13 @@ And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
 | reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| GENERAL REINSURANCE CORPORATION          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
 | Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
-| Daños materiales  | 0,292278                    | Munchener Ruckversicherungs-Gesellschaft | 0,534972          |
-| Daños materiales  | 0,292278                    | General Reinsurance Corporation          | 0,695899          |
+| Daños materiales  | 0,292278                    | MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | 0,534972          |
+| Daños materiales  | 0,292278                    | GENERAL REINSURANCE CORPORATION          | 0,695899          |
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1984       | GABRIEL       | SILVA           | DIRECCION DE RESIDENCIA | CALLE 27a #60-68 | Antioquia    | Medellin | INT-3  |
@@ -91,13 +91,13 @@ And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
 | reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| GENERAL REINSURANCE CORPORATION          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
 | Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
-| AMIT              | 0,03278                     | Munchener Ruckversicherungs-Gesellschaft | 0,06              |
-| AMIT              | 0,03278                     | General Reinsurance Corporation          | 0,078049          |
+| AMIT              | 0,03278                     | MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | 0,06              |
+| AMIT              | 0,03278                     | GENERAL REINSURANCE CORPORATION          | 0,078049          |
 Given estoy cotizando una poliza de mrc:
 | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1984       | JENNIFER      | PEREZ           | DIRECCION DE RESIDENCIA | CALLE 27a #60-68 | Antioquia    | Medellin | INT-3  |
@@ -113,13 +113,13 @@ And cotice el articulo
 And ingrese la informacion de un acuerdo facultativo con tasa comercial deseada <descripcionDeAcuerdo>
 When Ingrese la información de los reaseguradores
 | reasegurador                             | modalidad  | porcentajeParticipacion | valorReaseguro | comisionReasegurador | comisionIntermediario | comisionPromotora | porRetenido |
-| Munchener Ruckversicherungs-Gesellschaft | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
-| General Reinsurance Corporation          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
+| MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | Gross rate | 30                      | 1,2            | 0                    | 0                     | 0                 | 10          |
+| GENERAL REINSURANCE CORPORATION          | Net Rate   | 20                      | 1,28           | 18                   | 0                     | 0                 | 20          |
 | Program                                  | Gross rate | 0                       | 0              | 0                    | 0                     | 0                 | 0           |
 Then deben aparecer los riesgos reasegurables por cada cobertura:
 | grupoDecoberturas | tasaBrutaDeCesionAutomatica | reaseguradores                           | tasaBrutaDeCesion |
-| Terremoto         | 0,330552                    | Munchener Ruckversicherungs-Gesellschaft | 0,605028          |
-| Terremoto         | 0,330552                    | General Reinsurance Corporation          | 0,787028          |
+| Terremoto         | 0,330552                    | MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT | 0,605028          |
+| Terremoto         | 0,330552                    | GENERAL REINSURANCE CORPORATION          | 0,787028          |
 
 Examples:
 | descripcionDeAcuerdo             |
