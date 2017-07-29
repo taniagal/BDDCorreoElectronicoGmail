@@ -318,11 +318,12 @@ public class PolizaPage extends PageUtil {
         setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
         btnRehabilitar.waitUntilVisible().click();
         btnAceptar.waitUntilVisible().click();
-        if (btnBorrar.isVisible()) {
-            btnBorrar.click();
-            btnRehabilitar.waitUntilVisible().click();
-            btnAceptar.waitUntilVisible().click();
+        while (btnBorrar.isVisible()) {
+            clickearElemento(btnBorrar);
+            esperarHasta(TIEMPO_3000);
         }
+        btnRehabilitar.waitUntilVisible().click();
+        btnAceptar.waitUntilVisible().click();
         resetImplicitTimeout();
     }
 
