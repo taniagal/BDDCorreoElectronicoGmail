@@ -60,6 +60,7 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
         try {
             txtNumeroDocumento.type("11".concat(Utils.cedulaRandom()));
             txtNombre.waitUntilVisible().click();
+            txtNombre.setWindowFocus();
             txtNombre.type("JOHAN");
             txtApellido.type("MUSTACHE");
             txtTelefonoTrabajo.type("435-3434");

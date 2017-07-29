@@ -114,7 +114,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
         }
-        clickearElemento(botonSiguiente);
+        clicObjeto(botonSiguiente);
     }
 
     public void clickLinkDescartarCambios() {
