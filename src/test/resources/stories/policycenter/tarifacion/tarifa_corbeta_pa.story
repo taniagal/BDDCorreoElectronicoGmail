@@ -1,5 +1,5 @@
 Meta:
-@lote5
+@lote3
 @tag equipo: 4, sprint: 12
 
 Narrative:
@@ -15,7 +15,7 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan            | medioVenta |
-| UIY456 | 2018   | 00601182         | MEDELLIN           | Particular        | null   | null  | 173900000       | null      | null    | 2    | AKT Cuidamos | Asesor     |
+| UIY456 | 2018   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | AKT Cuidamos | Asesor     |
 And seleccione todas las coberturas corbeta:
 | limite | deducible | PTH | AC | AS               | PTD |
 | 320.00 | 0         | 20  | 20 | Asistencia Motos | 20  |
