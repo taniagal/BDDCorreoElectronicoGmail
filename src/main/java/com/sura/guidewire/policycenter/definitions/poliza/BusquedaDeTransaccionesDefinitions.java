@@ -32,7 +32,7 @@ public class BusquedaDeTransaccionesDefinitions {
         busquedaDeTransaccionesSteps.verTransaccionCotizador();
     }
 
-    @Given("voy a cerrar cesion de policy lab")
+    @Then("voy a cerrar cesion de policy lab")
     public void cerrarSesionPolicy() {
         busquedaDeTransaccionesSteps.cerrarSesionPolicy();
     }
