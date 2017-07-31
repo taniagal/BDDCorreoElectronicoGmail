@@ -42,4 +42,9 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
     public void verTransaccionCotizador() {
         busquedaDeTransaccionesPage.verTransaccionCotizador();
     }
+
+    @Step
+    public void cerrarSesionPolicy() {
+        busquedaDeTransaccionesPage.cerrarSesionPolicy();
+    }
 }

@@ -29,6 +29,10 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     WebElementFacade tblNroPoliza;
     @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_DatesDV:PolicyPerCost-inputEl']")
     WebElementFacade labelCostoTotal;
+    @FindBy(xpath = ".//*[@id=':TabLinkMenuButton-btnIconEl']")
+    private WebElementFacade mnuConfiguracion;
+    @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-textEl']")
+    private WebElementFacade mnuLogOut;
 
     public BusquedaDeTransaccionesPage(WebDriver driver) {
         super(driver);
@@ -80,5 +84,10 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     public String validarResultadosDeBusqueda() {
         tablaResultadosDeBusqueda.waitUntilVisible();
         return tablaResultadosDeBusqueda.getText();
+    }
+
+    public void cerrarSesionPolicy() {
+        mnuConfiguracion.click();
+        mnuLogOut.click();
     }
 }

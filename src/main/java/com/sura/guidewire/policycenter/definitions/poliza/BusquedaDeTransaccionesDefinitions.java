@@ -31,4 +31,9 @@ public class BusquedaDeTransaccionesDefinitions {
     public void verTransaccionCotizador() {
         busquedaDeTransaccionesSteps.verTransaccionCotizador();
     }
+
+    @Given("voy a cerrar cesion de policy lab")
+    public void cerrarSesionPolicy() {
+        busquedaDeTransaccionesSteps.cerrarSesionPolicy();
+    }
 }
