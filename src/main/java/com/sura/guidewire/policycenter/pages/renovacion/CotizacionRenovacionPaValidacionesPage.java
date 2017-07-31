@@ -92,7 +92,7 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
         WebElementFacade labelTomadorSecundario = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-labelEl']");
         waitFor(labelTomadorSecundario).waitUntilVisible();
         WebElementFacade botonTomadorSecundario = findBy(".//a[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img");
-        esperarObjetoClikeableServidorWe(botonTomadorSecundario);
+        clickearElemento(botonTomadorSecundario);
         WebElementFacade itemPersonaDirectorio = findBy(".//a[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-itemEl']/span");
         clickearElemento(itemPersonaDirectorio);
         Map<String, String> informacionTomador = datosTomador.getRows().get(0);
