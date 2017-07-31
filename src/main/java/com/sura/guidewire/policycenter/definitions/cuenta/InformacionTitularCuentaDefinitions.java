@@ -22,7 +22,7 @@ public class InformacionTitularCuentaDefinitions {
     public void givenExisteTitularCuenta(@Named("tipoDoc") String tipoDoc,
                                          @Named("nombre") String nombre,
                                          @Named("apellido") String apellido) {
-        buscarContactoSteps.navegarBarraSuperior();
+        buscarContactoSteps.ir_A_Buscar_Contacto();
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, nombre, "", apellido, "");
     }
 

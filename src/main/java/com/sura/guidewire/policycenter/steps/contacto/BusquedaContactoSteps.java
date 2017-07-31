@@ -1,11 +1,12 @@
 package com.sura.guidewire.policycenter.steps.contacto;
 
-import com.sura.guidewire.policycenter.pages.contacto.BusquedaContactoPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
-import java.util.Map;
+import com.sura.guidewire.policycenter.pages.contacto.BusquedaContactoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
+import java.util.Map;
 
 public class BusquedaContactoSteps extends ScenarioSteps {
 
@@ -25,6 +26,7 @@ public class BusquedaContactoSteps extends ScenarioSteps {
         inicioPage().irABuscarContactos();
     }
 
+
     @Step
     public void ir_A_Buscar_Contacto() {
         busquedaContactoPage.irABuscarContacto();
@@ -36,7 +38,7 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial){
+    public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial) {
         busquedaContactoPage.consultarPersonaJuridaPorRazonSocial(tipoDoc, razonSocial);
     }
 
@@ -80,8 +82,8 @@ public class BusquedaContactoSteps extends ScenarioSteps {
 
     @SuppressWarnings("SameParameterValue")
     @Step
-    public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido){
-        busquedaContactoPage.validarLongitudPersonaNatural(primerNombre,"",primerApellido,"");
+    public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
+        busquedaContactoPage.validarLongitudPersonaNatural(primerNombre, "", primerApellido, "");
     }
 
     @Step
@@ -90,12 +92,12 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarLabelsPersonaNatural(Map<String, String> labelsContacto){
+    public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
         busquedaContactoPage.validarLabelsPersonaNatural(labelsContacto);
     }
 
     @Step
-    public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto){
+    public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
         busquedaContactoPage.validarLabelsPersonaJuridica(labelsContacto);
     }
 
