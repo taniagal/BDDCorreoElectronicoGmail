@@ -9,8 +9,8 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
-import page.LoginPage;
 import page.DescargaDeReporteEjecucionDeCoherenciaPage;
+import page.LoginPage;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -39,7 +39,7 @@ public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
     @Test
     public void descargarReporte() {
         initPages();
-        loginPage.login("su", "c0r3S3gur0s", driver);
+        loginPage.login("suragwsu", "suragwsu", driver);
         descargaReportePage.descargarReporte(driver);
     }
 
