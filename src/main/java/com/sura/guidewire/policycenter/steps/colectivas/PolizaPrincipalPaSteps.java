@@ -80,4 +80,9 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
     public void validarMenuOpcionFormulariosNoEsVisible() {
         MatcherAssert.assertThat("El elemento del menú Formularios es visible y debería estar oculto ", polizaPrincipalPaPages.validarMenuOpcionFormulariosNoEsVisible(), Is.is(Matchers.equalTo(false)));
     }
+
+    @Step
+    public void clicMenuVehiculo() {
+        polizaPrincipalPaPages.clicMenuVehiculo();
+    }
 }

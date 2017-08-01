@@ -29,10 +29,18 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     WebElementFacade tblNroPoliza;
     @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_DatesDV:PolicyPerCost-inputEl']")
     WebElementFacade labelCostoTotal;
+    @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_DatesDV:PolicyPerPremium-inputEl']")
+    WebElementFacade labelPrimaTotal;
+    @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_DatesDV:PolicyPerTaxes-inputEl']")
+    WebElementFacade labelImpuestoTarifa;
     @FindBy(xpath = ".//*[@id=':TabLinkMenuButton-btnIconEl']")
     private WebElementFacade mnuConfiguracion;
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-textEl']")
     private WebElementFacade mnuLogOut;
+    @FindBy(xpath = ".//*[@id='PolicyFile_PersonalAuto_Vehicles:PolicyFile_PersonalAuto_VehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
+    private WebElementFacade labelPlaca;
+    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuInfoBar:StatusAndExpDate-btnInnerEl']/span")
+    private WebElementFacade labelExpedicion;
 
     public BusquedaDeTransaccionesPage(WebDriver driver) {
         super(driver);
@@ -61,7 +69,18 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
         Serenity.setSessionVariable("numeroPoliza".toLowerCase().trim()).to(nroPoliza);
         tblNroPoliza.click();
         String costoTotal = labelCostoTotal.getText();
-        Serenity.setSessionVariable("valorPrima".toLowerCase().trim()).to(costoTotal);
+        Serenity.setSessionVariable("valorCostoTotal".toLowerCase().trim()).to(costoTotal);
+        String primaTotal = labelPrimaTotal.getText();
+        Serenity.setSessionVariable("valorPrimaTotal".toLowerCase().trim()).to(primaTotal);
+        String impuestosTarifas = labelImpuestoTarifa.getText();
+        Serenity.setSessionVariable("valorImpuesto".toLowerCase().trim()).to(impuestosTarifas);
+    }
+
+    public void capturarPlacaYExpedicion() {
+        String placa = labelPlaca.getText();
+        Serenity.setSessionVariable("valorPlaca".toLowerCase().trim()).to(placa);
+        String fechaExpedicion = labelExpedicion.getText();
+        Serenity.setSessionVariable("valorFechaExpedicion".toLowerCase().trim()).to(fechaExpedicion);
     }
 
     public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {

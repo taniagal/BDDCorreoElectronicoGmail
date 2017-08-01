@@ -12,6 +12,8 @@ public class PolizaPrincipalPaPages extends PageUtil {
 
     @FindBy(xpath = ".//*[contains(@id, ':Forms') and contains(., 'Formularios')]/div/span")
     WebElementFacade menuOpcionFormularios;
+    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Vehicles']/div")
+    WebElementFacade menuOpcionVehiculo;
 
     public static final String TITULO_COTIZACION = "Cotización";
 
@@ -183,5 +185,9 @@ public class PolizaPrincipalPaPages extends PageUtil {
 
     public boolean validarMenuOpcionFormulariosNoEsVisible(){
         return this.esElElementoWebVisible(menuOpcionFormularios);
+    }
+
+    public void clicMenuVehiculo(){
+        menuOpcionVehiculo.waitUntilVisible().click();
     }
 }

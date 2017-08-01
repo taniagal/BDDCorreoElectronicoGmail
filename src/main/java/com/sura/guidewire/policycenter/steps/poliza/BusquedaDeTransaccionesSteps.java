@@ -44,6 +44,11 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void capturarPlacaYExpedicion() {
+        busquedaDeTransaccionesPage.capturarPlacaYExpedicion();
+    }
+
+    @Step
     public void cerrarSesionPolicy() {
         busquedaDeTransaccionesPage.cerrarSesionPolicy();
     }
