@@ -2,6 +2,7 @@ package page;
 
 
 import core.sura.resources.MetodosComunes;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,10 +25,12 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
     private WebElement iconoDescargar;
     @FindBy(xpath = ".//*[@id='ConsistencyChecks:ConsistencyChecksScreen:batchProgress']/div")
     private WebElement barraDeProgreso;
+    @FindBy(xpath = "//*[@id='ConsistencyChecks:ConsistencyChecksScreen:ConsistencyChecksRunsLV-body']/div/table/tbody/tr[1]/td[6]")
+    private WebElement campoExistenErroresPrimeraFila;
 
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_1500 = 1500;
-    private static final int TIEMPO_DESCARGA = 300000;
+    private static final int LIMITE_ERRORES = 33;
     private static final String NUMERO_DE_SUBPROCESOS = "100000000";
 
     public void descargarReporte(WebDriver driver) {
@@ -46,9 +49,10 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
         waitUntil(TIEMPO_1500);
         wait.until(ExpectedConditions.visibilityOf(botonEjecutarVerificacionesDeCoherencia));
         waitUntil(TIEMPO_1500);
-        wait.until(ExpectedConditions.visibilityOf(iconoDescargar));
+        int campoExistenErrores = Integer.parseInt(campoExistenErroresPrimeraFila.getText());
+        if (campoExistenErrores > LIMITE_ERRORES) {
+            Assert.assertFalse("El valor es mayor al limite:" + campoExistenErrores, true);
+        }
         waitUntil(TIEMPO_1500);
-        iconoDescargar.click();
-        MetodosComunes.waitUntil(TIEMPO_DESCARGA);
     }
 }
