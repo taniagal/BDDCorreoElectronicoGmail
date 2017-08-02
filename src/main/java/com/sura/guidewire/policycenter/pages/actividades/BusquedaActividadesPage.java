@@ -125,7 +125,7 @@ public class BusquedaActividadesPage extends PageUtil {
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
-        esperarObjetoClikeableServidorWe(txtAsignadoA);
+        clickearElemento(txtAsignadoA);
         try {
             txtAsignadoA.sendKeys(usuario);
         } catch (StaleElementReferenceException e) {

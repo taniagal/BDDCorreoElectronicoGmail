@@ -148,7 +148,7 @@ public class NuevaCotizacionPage extends PageUtil {
         seleccionarOficinaDeRadicacionYAgente(oficina, agente);
         seleccionDeProducto(dato.get("producto"));
         if ("Autos".equals(dato.get("producto"))) {
-            withTimeoutOf(TIEMPO_40, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilVisible().click();
+            withTimeoutOf(TIEMPO_60, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilVisible().click();
             waitForTextToAppear("Información de póliza");
             comboBoxTipoPoliza.waitUntilPresent();
             try {
