@@ -41,6 +41,8 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     private WebElementFacade labelPlaca;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuInfoBar:StatusAndExpDate-btnInnerEl']/span")
     private WebElementFacade labelExpedicion;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
+    private WebElementFacade menuBuscar;
 
     public BusquedaDeTransaccionesPage(WebDriver driver) {
         super(driver);
@@ -49,6 +51,13 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     public void seleccionarLaOpcionTransacciones() {
         menuItemTransacciones.waitUntilPresent();
         super.clickearElemento(menuItemTransacciones);
+        waitForTextToAppear("Búsqueda de transacciones");
+    }
+
+    public void buscarTransacciones() {
+        menuBuscar.waitUntilPresent();
+        menuBuscar.click();
+        menuItemTransacciones.click();
         waitForTextToAppear("Búsqueda de transacciones");
     }
 

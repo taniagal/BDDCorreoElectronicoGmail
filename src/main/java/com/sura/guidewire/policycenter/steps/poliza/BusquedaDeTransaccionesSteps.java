@@ -23,6 +23,13 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void buscarTransacciones() {
+        busquedaDeTransaccionesPage.buscarTransacciones();
+        busquedaDeTransaccionesPage.seleccionarLaOpcionTransacciones();
+        busquedaDeTransaccionesPage.clicEnElBotonRestablecer();
+    }
+
+    @Step
     public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {
         busquedaDeTransaccionesPage.ingresarLosDatosDeBusqueda(filtro);
         busquedaDeTransaccionesPage.clicEnElBotonBuscar();
