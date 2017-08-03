@@ -94,7 +94,15 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
 
     public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {
         Map<String, String> datosDeBusqueda = filtro.getRows().get(0);
-        String idTransaccion = datosDeBusqueda.get("idTransaccion");
+        String session = Serenity.sessionVariableCalled("numero cotizacion".toLowerCase().trim());
+        String data =( datosDeBusqueda.get("idTransaccion"));
+        String idTransaccion ;
+        if (session!=null)
+        {
+            idTransaccion = (session);
+        }else {
+            idTransaccion = (data);
+        }
         String aplicacionDeOrigen = datosDeBusqueda.get("aplicacionDeOrigen");
         String producto = datosDeBusqueda.get("producto");
         if (!idTransaccion.isEmpty()) {
