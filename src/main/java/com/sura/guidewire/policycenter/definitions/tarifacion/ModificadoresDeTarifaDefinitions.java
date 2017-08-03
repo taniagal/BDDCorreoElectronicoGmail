@@ -94,7 +94,7 @@ public class ModificadoresDeTarifaDefinitions {
         modificadoresDeTarifaSteps.verificarRecalculoDeBonificacion(plan, placa, bonoC);
     }
 
-    @Then("al cambiar el asegurado se debe recalcular la bonificacion como poliza nueva: $datos")
+    @Then("al cambiar el asegurado se debe conservar la bonificacion como poliza nueva: $datos")
     public void verificarBonificacionAlCambiarAsegurado(ExamplesTable datos) {
         modificadoresDeTarifaSteps.verificarBonificacionAlCambiarAsegurado(datos);
     }

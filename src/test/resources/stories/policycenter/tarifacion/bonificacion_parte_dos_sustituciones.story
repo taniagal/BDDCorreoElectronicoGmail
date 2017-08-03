@@ -27,9 +27,9 @@ Then se debe conservar la bonificacion <bonoC> calculada con los siguientes plan
 | Plan Conduce Mejor |
 | Plan Motos         |
 And se debe recalcular la bonificacion como poliza nueva con el plan <plan> <placa> <bonoCo>
-And al cambiar el asegurado se debe recalcular la bonificacion como poliza nueva:
+And al cambiar el asegurado se debe conservar la bonificacion como poliza nueva:
 | tipo_documento       | documento  | bonoC | bonoT |
-| CEDULA DE CIUDADANIA | 1060447895 | 3     | 20    |
+| CEDULA DE CIUDADANIA | 1060447895 | 38    | 0     |
 When cambio la bonificacion tecnica <bonoTec>
 And agrega cobertura asistencia <asistencia>
 And cotice y expida la sustitucion
