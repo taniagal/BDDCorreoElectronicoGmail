@@ -39,8 +39,8 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     private WebElementFacade mnuLogOut;
     @FindBy(xpath = ".//*[@id='PolicyFile_PersonalAuto_Vehicles:PolicyFile_PersonalAuto_VehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade labelPlaca;
-    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuInfoBar:StatusAndExpDate-btnInnerEl']/span")
-    private WebElementFacade labelExpedicion;
+    @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_DatesDV:PolicyPerEffDate-inputEl']")
+    private WebElementFacade labelFechaInicioVigencia;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     private WebElementFacade menuBuscar;
 
@@ -88,8 +88,8 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     public void capturarPlacaYExpedicion() {
         String placa = labelPlaca.getText();
         Serenity.setSessionVariable("valorPlaca".toLowerCase().trim()).to(placa);
-        String fechaExpedicion = labelExpedicion.getText();
-        Serenity.setSessionVariable("valorFechaExpedicion".toLowerCase().trim()).to(fechaExpedicion);
+        String fechaInicioVigencia = labelFechaInicioVigencia.getText();
+        Serenity.setSessionVariable("valorFechaExpedicion".toLowerCase().trim()).to(fechaInicioVigencia);
     }
 
     public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {
