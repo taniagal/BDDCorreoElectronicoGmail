@@ -52,7 +52,7 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
 
     @Step
     public void capturarPlacaYExpedicion() {
-        busquedaDeTransaccionesPage.capturarPlacaYExpedicion();
+        busquedaDeTransaccionesPage.capturarPlaca();
     }
 
     @Step

@@ -83,13 +83,13 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
         Serenity.setSessionVariable("valorPrimaTotal".toLowerCase().trim()).to(primaTotal);
         String impuestosTarifas = labelImpuestoTarifa.getText();
         Serenity.setSessionVariable("valorImpuesto".toLowerCase().trim()).to(impuestosTarifas);
-    }
-
-    public void capturarPlacaYExpedicion() {
-        String placa = labelPlaca.getText();
-        Serenity.setSessionVariable("valorPlaca".toLowerCase().trim()).to(placa);
         String fechaInicioVigencia = labelFechaInicioVigencia.getText();
         Serenity.setSessionVariable("valorFechaExpedicion".toLowerCase().trim()).to(fechaInicioVigencia);
+    }
+
+    public void capturarPlaca() {
+        String placa = labelPlaca.getText();
+        Serenity.setSessionVariable("valorPlaca".toLowerCase().trim()).to(placa);
     }
 
     public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {
