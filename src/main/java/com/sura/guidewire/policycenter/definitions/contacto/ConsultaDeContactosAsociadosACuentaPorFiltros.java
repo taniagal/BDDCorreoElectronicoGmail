@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.definitions.contacto;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireLoginSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.CuentaSteps;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireLoginSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
@@ -37,7 +37,7 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     @When("filtre los contactos asociados a una cuenta por el rol $filtro en el combo con valor $combo")
     @Alias("filtre los contactos asociados a una cuenta por el tipo de persona $filtro en el combo con valor $combo")
     public void filtreLosContactosAsociadosAEstaCuenta(@Named("filtro") String filtro, @Named("combo") String combo) {
-        cuenta.obtenerContactosAsociadosWO().filtrarContactosAsociados(filtro,combo);
+        cuenta.obtenerContactosAsociadosWO().filtrarContactosAsociados(filtro, combo);
 
     }
 
@@ -45,7 +45,7 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     public void deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna(@Named("filtro") String filtro, @Named("columna") String columna) {
         try {
             MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
-        }catch (StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             PageUtil.esperarHasta(TIEMPO_1000);
             MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));

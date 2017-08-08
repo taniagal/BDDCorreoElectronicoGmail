@@ -15,7 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class SAPClient extends PageUtil {
-    private static final String WS_URL = "file:src/main/java/servicios/SI_os_WS_ConsultasDocCxCService.wsdl";
+    private static final String WS_URL = "file:..//BDDCoreSuraPolicy//src//main//java//servicios//SI_os_WS_ConsultasDocCxCService.wsdl";
     private static final int CONSTANTE_30 = 60;
 
     public SAPClient(WebDriver driver) {
