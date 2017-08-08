@@ -111,6 +111,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         botonAceptarMensaje.click();
         setImplicitTimeout(TIEMPO_20, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
+            botonBorrar.click();
             withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
             clickearElemento(botonExpedirPoliza);
             waitFor(botonAceptarMensaje);

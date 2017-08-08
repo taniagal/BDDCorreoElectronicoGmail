@@ -16,7 +16,7 @@ public class ConsultaPolizaDefinitions {
     BusquedaDePolizaSteps buscarNumeroPoliza;
     @Steps
     TarifaTasaUnicaSteps tasaUnicaSteps;
-    protected static String numeroPoliza = "";
+    public static String numeroPoliza = "";
 
     @When("expido la poliza y capturo el numero de poliza")
     public void expedirPoliza() {

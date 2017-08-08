@@ -53,7 +53,6 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("cotice una poliza")
     public void cuandoCotizeUnaPoliza() {
-
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
     }
 
@@ -209,7 +208,7 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.validarCampos(estadouno, menusesperados);
     }
 
-    @Then ("deben estar en estado <estadodos> las siguientes opciones $menusesperados")
+    @Then("deben estar en estado <estadodos> las siguientes opciones $menusesperados")
     public void entoncesSeDebenValidarLasSiguientesOpcionesDos(@Named("estadouno") String estadouno, @Named("estadodos") String estadodos, ExamplesTable menusesperados) {
         informacionDePolizaMrcSteps.validarCampos(estadodos, menusesperados);
     }
