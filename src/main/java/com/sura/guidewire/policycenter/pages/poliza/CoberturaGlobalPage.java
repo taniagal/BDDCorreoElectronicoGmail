@@ -68,8 +68,8 @@ public class CoberturaGlobalPage extends PageUtil {
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
     private static final String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_INICIAL = ".//div[contains(@id,'CPBlanketSura_ExtPopup') and contains(@id,'CoverageInputSet:CovPatternInputGroup-legendTitle') and contains(.,'";
     private static final String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_FINAL = "')]";
-    private static final String LBL_PESTAÑA_COBERTURAS_INICIAL = "//label[contains(.,'";
-    private static final String LBL_PESTAÑA_COBERTURAS_FINAL = "')]";
+    private static final String LBL_PESTANA_COBERTURAS_INICIAL = "//label[contains(.,'";
+    private static final String LBL_PESTANA_COBERTURAS_FINAL = "')]";
     private static final String LBL_OPCION_COBERTURA_GLOBAL_INICIAL = "//span[contains(text(),'";
     private static final String LBL_OPCION_COBERTURA_GLOBAL_FINAL = "')]";
     public static final String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
@@ -113,7 +113,7 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void validarCamposPestanaCoberturas(String estadouno, String estadodos, ExamplesTable menusesperados) {
-        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_PESTAÑA_COBERTURAS_INICIAL, LBL_PESTAÑA_COBERTURAS_FINAL);
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_PESTANA_COBERTURAS_INICIAL, LBL_PESTANA_COBERTURAS_FINAL);
     }
 
     public void validarCamposCoberturasGlobales(String estadouno, ExamplesTable menusesperados) {
