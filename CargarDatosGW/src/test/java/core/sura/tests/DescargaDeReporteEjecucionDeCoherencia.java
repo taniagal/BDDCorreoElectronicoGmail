@@ -1,5 +1,7 @@
 package core.sura.tests;
 
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 import core.sura.resources.MetodosComunes;
 import org.junit.After;
 import org.junit.Before;
@@ -11,9 +13,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import page.DescargaDeReporteEjecucionDeCoherenciaPage;
 import page.LoginPage;
-
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DescargaDeReporteEjecucionDeCoherencia extends MetodosComunes {
