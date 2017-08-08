@@ -133,11 +133,11 @@ public class GrupoDeDireccionPage extends PageUtil {
         String retencionSobreRiesgo = lblRetencionSobreElRiesgo.getText();
         Double valorRetenido = Double.parseDouble(lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6).replace(".", ""));
         Double baseReasegoContrato = Double.parseDouble(lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6).replace(".", ""));
-        BigDecimal RetencionSobreRiesgo = new BigDecimal((valorRetenido / baseReasegoContrato) * CONSTANTE_CIEN);
-        if(String.valueOf(RetencionSobreRiesgo).length() > 6){
-            calculoRetencionSobreRiesgo = String.valueOf(RetencionSobreRiesgo).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
+        BigDecimal retencionSobreElRiesgo = new BigDecimal((valorRetenido / baseReasegoContrato) * CONSTANTE_CIEN);
+        if(String.valueOf(retencionSobreElRiesgo).length() > 6){
+            calculoRetencionSobreRiesgo = String.valueOf(retencionSobreElRiesgo).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
         } else {
-            calculoRetencionSobreRiesgo = String.valueOf(RetencionSobreRiesgo).replace(".", ",");
+            calculoRetencionSobreRiesgo = String.valueOf(retencionSobreElRiesgo).replace(".", ",");
         }
         MatcherAssert.assertThat("Error en el valor Retención sobre el riesgo, expected: " + calculoRetencionSobreRiesgo +
                     BUT_WAS + retencionSobreRiesgo, retencionSobreRiesgo.contains(calculoRetencionSobreRiesgo));
@@ -146,13 +146,13 @@ public class GrupoDeDireccionPage extends PageUtil {
     public void validarProporcionCP() {
         String calculoProporcionCP;
         String proporcionCP = tblProporcionCuotaParte.getText();
-        Double RiesgoCedidoCP = Double.parseDouble(tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6).replace(".", ""));
+        Double riesgoCedidoCP = Double.parseDouble(tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6).replace(".", ""));
         Double baseReaseguroContrato = Double.parseDouble(lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6).replace(".", ""));
-        BigDecimal ProporcionCP = new BigDecimal((RiesgoCedidoCP / baseReaseguroContrato) * CONSTANTE_CIEN);
-        if(String.valueOf(ProporcionCP).length() > 6){
-            calculoProporcionCP = String.valueOf(ProporcionCP).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
+        BigDecimal decProporcionCP = new BigDecimal((riesgoCedidoCP / baseReaseguroContrato) * CONSTANTE_CIEN);
+        if(String.valueOf(decProporcionCP).length() > 6){
+            calculoProporcionCP = String.valueOf(decProporcionCP).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
         } else {
-            calculoProporcionCP = String.valueOf(ProporcionCP).replace(".", ",");
+            calculoProporcionCP = String.valueOf(decProporcionCP).replace(".", ",");
         }
         MatcherAssert.assertThat("Error en el valor de la proporción cuota parte, expected: " + proporcionCP +
                 BUT_WAS + calculoProporcionCP, proporcionCP.contains(calculoProporcionCP));
@@ -182,12 +182,12 @@ public class GrupoDeDireccionPage extends PageUtil {
     }
 
     public void validarRiesgoCedidoCP() {
-        String RiesgoCedidoCP = tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6).replace(".", "");
+        String riesgoCedidoCP = tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6).replace(".", "");
         Double limiteContratoCP = Double.parseDouble(tblLimiteContratoCp.getText().substring(CONSTANTE_1, tblLimiteContratoCp.getText().length() - CONSTANTE_6).replace(".", ""));
         Integer porcentajeCesion = Integer.parseInt(tblPorcentajeCesionCP.getText());
         BigDecimal riesgoCP = new BigDecimal(limiteContratoCP * porcentajeCesion / 100);
         String calculoRiesgoCP = String.valueOf(riesgoCP);
-        MatcherAssert.assertThat("Error en el valor riesgo cedido cuota parte, expected: " + calculoRiesgoCP + BUT_WAS + RiesgoCedidoCP, RiesgoCedidoCP.equals(calculoRiesgoCP));
+        MatcherAssert.assertThat("Error en el valor riesgo cedido cuota parte, expected: " + calculoRiesgoCP + BUT_WAS + riesgoCedidoCP, riesgoCedidoCP.equals(calculoRiesgoCP));
     }
 
     public void verificarValorRiesgoCedidoEX(ExamplesTable examplesTable) {
