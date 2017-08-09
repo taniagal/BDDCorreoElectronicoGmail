@@ -15,6 +15,7 @@ import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -23,9 +24,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class Poliza {
@@ -64,13 +62,13 @@ public class Poliza {
     }
 
     public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo() {
-        assertThat(polizaSteps.espacioDeTrabajo(),
+        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
                 Matchers.hasItems("EL valor Asegurado de la cobertura Danos materiales NO debe ser mayor al valor asegurable del Artículo Edificio"
                 ));
-        assertThat(polizaSteps.espacioDeTrabajo(),
+        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
                 Matchers.hasItems("El valor de \"Sublimite para traslados temporales de maquinaria y equipo\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
                 ));
-        assertThat(polizaSteps.espacioDeTrabajo(),
+        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
                 Matchers.hasItems("El valor de \"Sublimite para combustion espontanea de mercancias a granel\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
                 ));
     }
@@ -319,7 +317,7 @@ public class Poliza {
     public void esperoVerInhabilitadoParaModificacionLosSiguientesCampos(ExamplesTable campos) {
         for (Map<String, String> fila : campos.getRows()) {
             String campo = fila.get("CAMPOS");
-            assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), polizaSteps.elementoEsEditable(campo), Is.is(Matchers.equalTo(false)));
+            MatcherAssert.assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), polizaSteps.elementoEsEditable(campo), Is.is(Matchers.equalTo(false)));
         }
     }
 
@@ -335,13 +333,13 @@ public class Poliza {
     public void esperoVisualizarLasSiguientesRazones(ExamplesTable razones) {
         for (Map<String, String> fila : razones.getRows()) {
             String razon = fila.get("RAZONES");
-            org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.obtenerPaginInstruccionesPreviasARenovacion().obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
+            MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.obtenerPaginInstruccionesPreviasARenovacion().obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
         }
     }
 
     @Then("la $proceso es correcta si se muestra el texto: $tituloDePagina")
     public void entoncesLaCancelacionDeLaPolizaEsCorrecta(String tituloDePagina) {
-        assertThat(polizaSteps.obtenerTituloPagina(), equalTo(tituloDePagina));
+        MatcherAssert.assertThat(polizaSteps.obtenerTituloPagina(), CoreMatchers.equalTo(tituloDePagina));
     }
 
     @Then("la revocacion es correcta si no se se muestra el tipo en el campo <tipo> y se oculta el mensaje de cancelacion pendiente")
@@ -381,7 +379,7 @@ public class Poliza {
 
     @Then("se debe mostrar mensaje con el texto: $advertencia")
     public void entoncesSeDebeMostrarMensajeConElTexto(String advertencia) {
-        assertThat(polizaSteps.validarMensaje(), equalTo(advertencia));
+        MatcherAssert.assertThat(polizaSteps.validarMensaje(), CoreMatchers.equalTo(advertencia));
     }
 
     @When("ingrese a la opcion de cancelar poliza")
@@ -407,7 +405,7 @@ public class Poliza {
 
     @Then("se debe mostrar el metodo de reembolso <reembolso> sin el campo fuente")
     public void entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente(@Named("reembolso") String reembolso) {
-        MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMetodoDeReembolso(), equalTo(reembolso));
+        MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMetodoDeReembolso(), CoreMatchers.equalTo(reembolso));
         polizaSteps.validarOcultacionCampoFuente();
     }
 }
