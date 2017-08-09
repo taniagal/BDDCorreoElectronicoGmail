@@ -49,15 +49,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        FluentWait fluentWait = new FluentWait(getDriver()).
-                withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(250, TimeUnit.MILLISECONDS)
-                .ignoring(NoSuchElementException.class);
-        WebElement element = (WebElement) fluentWait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver webDriver) {
-                return getDriver().findElement(By.xpath(".//span[contains(.,'Expedir póliza')]"));
-            }}
-        );
+        esperarElemento("botonExpedirPoliza");
                 clickearElemento(botonExpedirPoliza);
                 waitFor(botonAceptarMensaje);
                 botonAceptarMensaje.click();
