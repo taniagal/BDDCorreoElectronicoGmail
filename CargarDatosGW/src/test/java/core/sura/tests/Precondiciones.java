@@ -1,9 +1,9 @@
 package core.sura.tests;
 
+import core.sura.resources.MetodosComunes;
+
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
-import core.sura.resources.MetodosComunes;
 
 import org.junit.After;
 import org.junit.Before;
