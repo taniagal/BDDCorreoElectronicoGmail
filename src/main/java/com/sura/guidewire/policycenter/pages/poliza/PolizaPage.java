@@ -22,8 +22,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static ch.lambdaj.Lambda.extract;
-import static ch.lambdaj.Lambda.on;
+import ch.lambdaj.Lambda;
 
 public class PolizaPage extends PageUtil {
 
@@ -335,7 +334,7 @@ public class PolizaPage extends PageUtil {
         waitFor(findBy(xpathMenuDesplegable)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(xpathMenuDesplegable)));
         listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
-        listaMotivos = extract(listaMotivosWE, on(WebElementFacade.class).getText());
+        listaMotivos = Lambda.extract(listaMotivosWE, Lambda.on(WebElementFacade.class).getText());
     }
 
     public List<String> obtenerMotivosDisponibles() {

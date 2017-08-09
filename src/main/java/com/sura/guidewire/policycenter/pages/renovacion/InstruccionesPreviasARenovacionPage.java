@@ -6,8 +6,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
-import static ch.lambdaj.Lambda.extract;
-import static ch.lambdaj.Lambda.on;
+import ch.lambdaj.Lambda;
 
 
 public class InstruccionesPreviasARenovacionPage extends PageObject {
@@ -39,7 +38,7 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
         waitFor(findBy(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
         listaIntruccionesWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
-        listaInstrucciones = extract(listaIntruccionesWE, on(WebElementFacade.class).getText());
+        listaInstrucciones = Lambda.extract(listaIntruccionesWE, Lambda.on(WebElementFacade.class).getText());
     }
 
     public List<String> obtenerInstruccionesDisponibles(){
@@ -69,7 +68,7 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
         waitFor(findBy(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
         listaRazonesDeRenovacionWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
-        listaRazonesDeRenovacio = extract(listaRazonesDeRenovacionWE, on(WebElementFacade.class).getText());
+        listaRazonesDeRenovacio = Lambda.extract(listaRazonesDeRenovacionWE, Lambda.on(WebElementFacade.class).getText());
     }
 
 
