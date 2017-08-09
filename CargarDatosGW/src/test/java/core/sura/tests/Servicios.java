@@ -1,8 +1,10 @@
 package core.sura.tests;
 
+import core.sura.resources.MetodosComunes;
+
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import core.sura.resources.MetodosComunes;
+
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+
 import page.LoginPage;
 import page.ServiciosPage;
 
