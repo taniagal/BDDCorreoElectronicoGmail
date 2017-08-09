@@ -1,12 +1,17 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
 
+import com.google.common.base.Function;
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.FluentWait;
 
+import javax.annotation.Nullable;
 import java.util.concurrent.TimeUnit;
 
 public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
@@ -44,34 +49,23 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
-        if (!botonExpedirPoliza.isPresent()) {
-            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemCotizacion);
-            clickearElemento(menuItemCotizacion);
-        }
-        if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
-            clickearElemento(botonBorrar);
-            waitForTextToDisappear("2011 AUDI AVEO FAMILY");
-        }
-        resetImplicitTimeout();
-        withTimeoutOf(TIEMPO_40, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
-        clickearElemento(botonExpedirPoliza);
-        waitFor(botonAceptarMensaje);
-        botonAceptarMensaje.click();
-        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
-        if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
-            try {
-                esperarHasta(TIEMPO_2000);
+        FluentWait fluentWait = new FluentWait(getDriver()).
+                withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(250, TimeUnit.MILLISECONDS)
+                .ignoring(NoSuchElementException.class);
+        WebElement element = (WebElement) fluentWait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver webDriver) {
+                return getDriver().findElement(By.xpath(".//span[contains(.,'Expedir póliza')]"));
+            }}
+        );
                 clickearElemento(botonExpedirPoliza);
                 waitFor(botonAceptarMensaje);
                 botonAceptarMensaje.click();
-            } catch (NoSuchElementException e) {
-                LOGGER.info("NoSuchElementException " + e);
-            }
-        }
-        resetImplicitTimeout();
         waitForAnyTextToAppear("Cotización Expedida", "Cambio en la póliza Expedida", "Asuntos que bloquean la expedición");
+
+
     }
+
 
     public void expedirPolizaMRCFacultativo() {
         expedirPolizaMRC();

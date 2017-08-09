@@ -10,8 +10,8 @@ Para una poliza de multiriesgo
 Scenario: Mostrar opcion de reimpresion en una submission-mrc
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
-| producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Multiriesgo corporativo | CEDULA DE CIUDADANIA | 08/12/1973       | MARIA         | OSPINA          | DIRECCION DE RESIDENCIA | CALLE 48F #25-83 | Antioquia    | Medellin | INT-3  |
+| organizacion | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion       | departamento | ciudad   | agente |
+| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 10/10/1968       | CAMILO        | LOPEZ           | DIRECCION DE RESIDENCIA | CALLE 2I #21-22 | Antioquia    | Medellin | INT-3  |
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion en edificios
 | pais     | departamento | ciudad   | direccion   | actividadEconomica            |medioVenta|
