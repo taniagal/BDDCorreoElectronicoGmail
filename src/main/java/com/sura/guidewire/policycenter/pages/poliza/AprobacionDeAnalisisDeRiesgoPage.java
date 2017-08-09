@@ -1,18 +1,14 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
 
-import com.google.common.base.Function;
-import com.sura.guidewire.policycenter.resources.PageUtil;
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.FluentWait;
 
-import javax.annotation.Nullable;
-import java.util.concurrent.TimeUnit;
+import com.sura.guidewire.policycenter.resources.PageUtil;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 
 public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
 
@@ -49,20 +45,41 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        esperarElemento("botonExpedirPoliza");
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        if (!botonExpedirPoliza.isPresent()) {
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(menuItemCotizacion);
+            clickearElemento(menuItemCotizacion);
+        }
+        if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
+            clickearElemento(botonBorrar);
+        }
+        resetImplicitTimeout();
+        withTimeoutOf(TIEMPO_40, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
+        clickearElemento(botonExpedirPoliza);
+        if (botonBorrar.isPresent()) {
+            clickearElemento(botonBorrar);
+        }
+        waitFor(botonAceptarMensaje);
+        botonAceptarMensaje.click();
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        if (botonBorrar.isPresent() && !$(".message").containsText("2011 AUDI AVEO FAMILY")) {
+            try {
+                esperarHasta(TIEMPO_2000);
                 clickearElemento(botonExpedirPoliza);
                 waitFor(botonAceptarMensaje);
                 botonAceptarMensaje.click();
+            } catch (NoSuchElementException e) {
+                LOGGER.info("NoSuchElementException " + e);
+            }
+        }
+        resetImplicitTimeout();
         waitForAnyTextToAppear("Cotización Expedida", "Cambio en la póliza Expedida", "Asuntos que bloquean la expedición");
-
-
     }
-
 
     public void expedirPolizaMRCFacultativo() {
         expedirPolizaMRC();
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (botonExpedirPoliza.isVisible()){
+        if (botonExpedirPoliza.isVisible()) {
             esperarObjetoClikeableServidorWe(botonExpedirPoliza);
             waitFor(botonAceptarMensaje);
             botonAceptarMensaje.click();
