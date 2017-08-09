@@ -4,7 +4,9 @@ package com.sura.guidewire.policycenter.definitions.modificaciones;
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.steps.modificacion.ValidacionesCambioDePolizaVehiculosSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

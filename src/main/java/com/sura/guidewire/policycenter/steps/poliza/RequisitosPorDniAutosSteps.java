@@ -3,14 +3,16 @@ package com.sura.guidewire.policycenter.steps.poliza;
 import com.sura.guidewire.policycenter.pages.poliza.RequisitosPorDniAutosPage;
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
+
+import java.util.Map;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
-
-import java.util.Map;
 
 
 public class RequisitosPorDniAutosSteps extends ScenarioSteps {

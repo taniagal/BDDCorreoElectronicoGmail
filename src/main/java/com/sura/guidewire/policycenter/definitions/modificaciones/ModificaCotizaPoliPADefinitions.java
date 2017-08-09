@@ -9,14 +9,16 @@ import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.poliza.SolicitarRequisitoPaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class ModificaCotizaPoliPADefinitions {

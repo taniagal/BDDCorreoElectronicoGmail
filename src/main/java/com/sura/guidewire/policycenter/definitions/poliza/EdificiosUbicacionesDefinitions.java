@@ -5,8 +5,13 @@ import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
@@ -16,9 +21,6 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EdificiosUbicacionesDefinitions {
     @Steps

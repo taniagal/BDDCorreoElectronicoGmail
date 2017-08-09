@@ -2,7 +2,9 @@ package com.sura.guidewire.policycenter.definitions.tarifacion;
 
 import com.sura.guidewire.policycenter.steps.poliza.DetallesDeUbicacionSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

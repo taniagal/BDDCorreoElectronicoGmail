@@ -3,7 +3,9 @@ package com.sura.guidewire.policycenter.definitions.cuenta;
 
 import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.UbicacionesDeUnaCuentaSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

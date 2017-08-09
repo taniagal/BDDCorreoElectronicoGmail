@@ -1,15 +1,17 @@
 package com.sura.guidewire.policycenter.pages.modificaciones;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import net.serenitybdd.core.pages.WebElementFacade;
+
+import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 
 
 public class PolizaFinanciadaPage extends PageUtil {

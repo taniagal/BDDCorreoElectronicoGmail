@@ -3,9 +3,11 @@ package com.sura.guidewire.policycenter.steps.contacto;
 import com.sura.guidewire.policycenter.pages.contacto.BusquedaContactoPage;
 import com.sura.guidewire.policycenter.pages.contacto.DetallesContactoPage;
 import com.sura.guidewire.policycenter.pages.contacto.DireccionPrincipalDeUnContactoPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.jbehave.core.model.ExamplesTable;
 
 public class DetallesContactoSteps extends ScenarioSteps {

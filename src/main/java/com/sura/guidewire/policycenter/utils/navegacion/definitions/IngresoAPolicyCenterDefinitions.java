@@ -2,9 +2,11 @@ package com.sura.guidewire.policycenter.utils.navegacion.definitions;
 
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireLoginSteps;
 import com.thoughtworks.selenium.SeleneseTestNgHelper;
+
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

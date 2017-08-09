@@ -9,8 +9,12 @@ import com.sura.guidewire.policycenter.steps.renovacion.InstruccionesPreviasARen
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
+
+import java.util.Map;
+
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -19,8 +23,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-
-import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;

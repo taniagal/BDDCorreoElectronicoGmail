@@ -1,17 +1,19 @@
 package com.sura.guidewire.policycenter.utils.navegacion.util.widget;
 
+import com.sura.guidewire.policycenter.resources.PageUtil;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.RenderedPageObjectView;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

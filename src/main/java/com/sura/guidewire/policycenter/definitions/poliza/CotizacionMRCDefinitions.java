@@ -4,16 +4,18 @@ import com.sura.guidewire.policycenter.steps.poliza.CotizacionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.poliza.DetalleDeAseguradoDeCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.eclipse.jetty.util.annotation.Name;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class CotizacionMRCDefinitions {

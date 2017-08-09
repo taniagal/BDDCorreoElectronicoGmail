@@ -3,19 +3,21 @@ package com.sura.guidewire.policycenter.pages.poliza;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.hamcrest.MatcherAssert;
-import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.webdriver.SerenityWebdriverManager;
+
+import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 
 public class EdificiosyUbicacionesWidget extends PageUtil {
 

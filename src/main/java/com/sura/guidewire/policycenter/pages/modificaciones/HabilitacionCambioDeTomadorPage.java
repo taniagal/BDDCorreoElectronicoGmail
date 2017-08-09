@@ -1,11 +1,13 @@
 package com.sura.guidewire.policycenter.pages.modificaciones;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
+
+import net.serenitybdd.core.pages.WebElementFacade;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 public class HabilitacionCambioDeTomadorPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:ChangePrimaryNamedInsuredButton:ChangePrimaryNamedInsuredButtonMenuIcon']/img")

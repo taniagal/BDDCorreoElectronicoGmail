@@ -2,8 +2,10 @@ package com.sura.guidewire.policycenter.definitions.contacto;
 
 import com.sura.guidewire.policycenter.pages.poliza.NuevoAseguradoNombradoPage;
 import com.sura.guidewire.policycenter.steps.contacto.ContactosAsociadosACuentasSteps;
+
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

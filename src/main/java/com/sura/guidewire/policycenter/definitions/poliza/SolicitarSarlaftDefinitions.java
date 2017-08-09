@@ -5,7 +5,9 @@ import com.sura.guidewire.policycenter.steps.modificacion.ExpedicionCambioDePoli
 import com.sura.guidewire.policycenter.steps.poliza.AnalisisDeRiesgoPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.GeneracionUwIssueRiesgosConsultablesPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.SolicitarRequisitoPaSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;

@@ -2,17 +2,20 @@ package consultaservicio;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
-import org.openqa.selenium.WebDriver;
-import servicios.*;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.soap.SOAPFaultException;
-import java.net.MalformedURLException;
-import java.net.URL;
+
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
+import org.openqa.selenium.WebDriver;
+
+import servicios.*;
 
 public class SAPClient extends PageUtil {
     private static final String WS_URL = "file:..//BDDCoreSuraPolicy//src//main//java//servicios//SI_os_WS_ConsultasDocCxCService.wsdl";

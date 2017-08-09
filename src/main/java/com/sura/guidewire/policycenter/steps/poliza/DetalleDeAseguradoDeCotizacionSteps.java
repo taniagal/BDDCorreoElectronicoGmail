@@ -1,13 +1,15 @@
 package com.sura.guidewire.policycenter.steps.poliza;
 
 
+import com.sura.guidewire.policycenter.pages.contacto.EdicionContactoAseguradoPage;
 import com.sura.guidewire.policycenter.pages.poliza.ConsultaDetalleDeAseguradosPage;
 import com.sura.guidewire.policycenter.pages.poliza.DetalleDeAseguradoDeCotizacionPage;
-import com.sura.guidewire.policycenter.pages.contacto.EdicionContactoAseguradoPage;
 import com.sura.guidewire.policycenter.pages.poliza.IngresoNuevoContactoAseguradoPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;

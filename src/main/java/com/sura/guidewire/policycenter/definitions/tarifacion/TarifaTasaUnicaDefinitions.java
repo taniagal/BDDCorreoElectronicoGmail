@@ -4,7 +4,9 @@ import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.CotizacionPADetalleSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

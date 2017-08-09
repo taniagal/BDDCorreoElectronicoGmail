@@ -4,9 +4,11 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
+
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;

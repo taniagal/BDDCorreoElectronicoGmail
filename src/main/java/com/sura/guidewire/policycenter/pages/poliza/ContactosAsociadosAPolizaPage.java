@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 

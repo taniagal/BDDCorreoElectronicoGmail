@@ -2,17 +2,19 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class CoberturaGlobalPage extends PageUtil {

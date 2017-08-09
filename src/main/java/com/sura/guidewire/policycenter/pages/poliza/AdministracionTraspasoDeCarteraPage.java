@@ -1,12 +1,14 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.List;
+
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class AdministracionTraspasoDeCarteraPage extends PageUtil {
 

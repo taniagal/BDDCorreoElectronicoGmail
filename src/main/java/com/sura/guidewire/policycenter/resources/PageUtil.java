@@ -1,9 +1,15 @@
 package com.sura.guidewire.policycenter.resources;
 
 import com.google.common.base.Function;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
@@ -12,10 +18,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class PageUtil extends PageObject {

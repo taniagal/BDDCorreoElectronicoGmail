@@ -4,8 +4,10 @@ import com.sura.guidewire.policycenter.steps.poliza.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.InspeccionVehiculoSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
+
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

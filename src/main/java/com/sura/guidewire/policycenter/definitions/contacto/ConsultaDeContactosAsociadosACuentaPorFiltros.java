@@ -3,9 +3,11 @@ package com.sura.guidewire.policycenter.definitions.contacto;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.steps.cuenta.CuentaSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireLoginSteps;
+
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.annotations.Alias;

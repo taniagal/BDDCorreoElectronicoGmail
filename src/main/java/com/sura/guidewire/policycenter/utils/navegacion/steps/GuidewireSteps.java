@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.utils.navegacion.steps;
 
 import com.sura.guidewire.policycenter.pages.GuidewirePage;
 import com.sura.guidewire.policycenter.utils.navegacion.widget.MenuNavegacionSuperiorEnum;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;

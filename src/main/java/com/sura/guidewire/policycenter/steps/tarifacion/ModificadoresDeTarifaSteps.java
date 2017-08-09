@@ -5,13 +5,15 @@ import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVeh
 import com.sura.guidewire.policycenter.pages.tarifacion.ModificadoresDeTarifaPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
+
+import java.util.Map;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
-
-import java.util.Map;
 
 public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     @Page

@@ -1,8 +1,10 @@
 package com.sura.guidewire.policycenter.steps.contacto;
 
 import com.sura.guidewire.policycenter.pages.contacto.DireccionesDeContactoVinculadasPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.jbehave.core.model.ExamplesTable;
 
 public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {

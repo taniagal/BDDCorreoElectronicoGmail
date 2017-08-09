@@ -2,7 +2,9 @@ package com.sura.guidewire.policycenter.definitions.cancelacion;
 
 import com.sura.guidewire.policycenter.steps.cancelacion.CancelacionPolizaConBeneficiarioOnerosoSteps;
 import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.model.ExamplesTable;
 

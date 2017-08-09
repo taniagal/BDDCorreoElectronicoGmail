@@ -2,8 +2,10 @@ package com.sura.guidewire.policycenter.definitions.cuenta;
 
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.steps.cuenta.DetalleRegistrosSuscripcionSteps;
+
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;

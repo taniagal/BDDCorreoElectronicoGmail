@@ -2,10 +2,12 @@ package com.sura.guidewire.policycenter.steps.poliza;
 
 
 import com.sura.guidewire.policycenter.pages.poliza.CotizacionPage;
-import net.thucydides.core.steps.ScenarioSteps;
-import org.jbehave.core.model.ExamplesTable;
 
 import java.io.Serializable;
+
+import net.thucydides.core.steps.ScenarioSteps;
+
+import org.jbehave.core.model.ExamplesTable;
 
 public class CotizacionSteps extends ScenarioSteps implements Serializable {
 

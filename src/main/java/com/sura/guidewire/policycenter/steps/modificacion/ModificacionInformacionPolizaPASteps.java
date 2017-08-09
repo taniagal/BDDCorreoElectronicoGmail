@@ -1,14 +1,15 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
 
 import com.sura.guidewire.policycenter.pages.modificaciones.ModificacionInformacionPolizaPAPage;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 
 import java.util.Map;
 
-import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.jbehave.core.model.ExamplesTable;
 
 

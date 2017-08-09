@@ -1,8 +1,10 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
+
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+
 import org.openqa.selenium.By;
 
 public class TransaccionesDePolizaWidgetObject extends PageObject{

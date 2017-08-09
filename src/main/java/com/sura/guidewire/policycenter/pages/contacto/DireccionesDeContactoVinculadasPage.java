@@ -1,9 +1,14 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.List;
+import java.util.Map;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -16,9 +21,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
-import java.util.Map;
 
 
 public class DireccionesDeContactoVinculadasPage extends PageUtil {

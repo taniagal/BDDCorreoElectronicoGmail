@@ -1,12 +1,14 @@
 package com.sura.guidewire.policycenter.steps.poliza;
 
-import com.sura.guidewire.policycenter.pages.poliza.DisponibilidadDetalleProductoPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
-import net.thucydides.core.annotations.Step;
-import net.thucydides.core.steps.ScenarioSteps;
-import org.jbehave.core.model.ExamplesTable;
+import com.sura.guidewire.policycenter.pages.poliza.DisponibilidadDetalleProductoPage;
 
 import java.util.Map;
+
+import net.thucydides.core.annotations.Step;
+import net.thucydides.core.steps.ScenarioSteps;
+
+import org.jbehave.core.model.ExamplesTable;
 
 public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
 

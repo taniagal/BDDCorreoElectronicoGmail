@@ -3,12 +3,15 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.sura.guidewire.policycenter.steps.poliza.BusquedaDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
-import consultaservicio.SAPClient;
+
+import java.net.MalformedURLException;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import java.net.MalformedURLException;
+import consultaservicio.SAPClient;
 
 public class ConsultaPolizaDefinitions {
 

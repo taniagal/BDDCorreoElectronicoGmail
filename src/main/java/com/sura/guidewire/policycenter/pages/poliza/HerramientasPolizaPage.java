@@ -2,13 +2,15 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.Map;
+
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.Map;
 
 public class HerramientasPolizaPage extends PageUtil {
     private static final String TABLA_PROGRAMA_AUDITORIA = ".//*[@id='PolicyFile_Audits:AuditInformationScreen:AuditsLV-body']/*/table/tbody/tr";

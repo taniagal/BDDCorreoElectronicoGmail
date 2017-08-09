@@ -2,11 +2,12 @@ package com.sura.guidewire.policycenter.steps.cuenta;
 
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
+
+import java.util.Map;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
-import java.util.Map;
 
 public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     private final OpcionesAdminitradorCotizaciones opcionesAdministradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());

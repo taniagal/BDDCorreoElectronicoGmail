@@ -2,18 +2,20 @@ package com.sura.guidewire.policycenter.pages.contacto;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.constantes.EnumContacto;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 
 public class NuevoContactoPage extends PageUtil {
 

@@ -9,6 +9,7 @@ import java.util.Map;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

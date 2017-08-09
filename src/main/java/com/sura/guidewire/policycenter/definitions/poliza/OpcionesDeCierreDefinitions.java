@@ -1,18 +1,20 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.DetalleDeAseguradoDeCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.DisponibilidadDetalleProductoSteps;
 import com.sura.guidewire.policycenter.steps.poliza.OpcionesDeCierreSteps;
 import com.sura.guidewire.policycenter.steps.poliza.SolicitarRequisitoPaSteps;
-import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
+
+import java.util.Map;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-
-import java.util.Map;
 
 public class OpcionesDeCierreDefinitions {
 

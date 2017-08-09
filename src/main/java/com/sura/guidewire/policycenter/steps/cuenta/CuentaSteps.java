@@ -1,10 +1,11 @@
 package com.sura.guidewire.policycenter.steps.cuenta;
 
-import com.sura.guidewire.policycenter.pages.poliza.TransaccionesDePolizaWidgetObject;
 import com.sura.guidewire.policycenter.pages.cuenta.BusquedaDeCuentaPage;
 import com.sura.guidewire.policycenter.pages.cuenta.ContactosAsociadosACuentaWidgetPage;
 import com.sura.guidewire.policycenter.pages.cuenta.CuentaPages;
+import com.sura.guidewire.policycenter.pages.poliza.TransaccionesDePolizaWidgetObject;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.MenuBuscarSteps;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;

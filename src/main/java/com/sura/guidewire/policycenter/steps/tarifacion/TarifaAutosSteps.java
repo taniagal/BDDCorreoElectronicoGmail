@@ -4,9 +4,11 @@ import com.sura.guidewire.policycenter.pages.poliza.CoberturaGlobalPage;
 import com.sura.guidewire.policycenter.pages.poliza.ExpedicionDePolizaRequisitosPendientesPage;
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaAutosSteps extends ScenarioSteps {

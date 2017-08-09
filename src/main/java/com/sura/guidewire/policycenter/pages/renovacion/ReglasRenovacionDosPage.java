@@ -2,11 +2,13 @@ package com.sura.guidewire.policycenter.pages.renovacion;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
+
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+
+import org.openqa.selenium.WebDriver;
 
 public class ReglasRenovacionDosPage extends PageUtil {
 

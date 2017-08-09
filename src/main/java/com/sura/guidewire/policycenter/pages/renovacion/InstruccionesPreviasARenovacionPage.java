@@ -1,10 +1,10 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import java.util.List;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-
-import java.util.List;
 
 import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;

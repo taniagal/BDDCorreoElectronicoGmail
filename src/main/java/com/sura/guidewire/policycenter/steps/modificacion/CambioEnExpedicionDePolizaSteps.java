@@ -1,12 +1,14 @@
 package com.sura.guidewire.policycenter.steps.modificacion;
 
-import com.sura.guidewire.policycenter.pages.poliza.AprobacionDeAnalisisDeRiesgoPage;
 import com.sura.guidewire.policycenter.pages.modificaciones.CambioEnExpedicionDePolizaPage;
+import com.sura.guidewire.policycenter.pages.poliza.AprobacionDeAnalisisDeRiesgoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 
 

@@ -1,9 +1,14 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -16,9 +21,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;

@@ -2,11 +2,13 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
+
+import net.serenitybdd.core.pages.WebElementFacade;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 public class DisponibilidadDetalleProductoPage extends PageUtil {
 

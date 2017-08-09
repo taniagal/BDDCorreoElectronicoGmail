@@ -3,12 +3,14 @@ package com.sura.guidewire.policycenter.steps.poliza;
 
 import com.sura.guidewire.policycenter.pages.poliza.CoberturaGlobalPage;
 import com.sura.guidewire.policycenter.pages.poliza.PanelSurEspacioDeTrabajoPage;
+
+import java.util.Map;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.jbehave.core.model.ExamplesTable;
 
-import java.util.Map;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CoberturaGlobalSteps extends ScenarioSteps {
     CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());

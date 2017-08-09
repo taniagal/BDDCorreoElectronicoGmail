@@ -1,9 +1,11 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 
-import com.sura.guidewire.policycenter.steps.poliza.CoaseguroSteps;
 import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
+import com.sura.guidewire.policycenter.steps.poliza.CoaseguroSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

@@ -1,9 +1,11 @@
 package com.sura.guidewire.policycenter.definitions.renovacion;
 
 
-import com.sura.guidewire.policycenter.steps.renovacion.InicioRenovacionPolizaPaSteps;
 import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
+import com.sura.guidewire.policycenter.steps.renovacion.InicioRenovacionPolizaPaSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

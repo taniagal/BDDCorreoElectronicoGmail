@@ -2,8 +2,10 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
+
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

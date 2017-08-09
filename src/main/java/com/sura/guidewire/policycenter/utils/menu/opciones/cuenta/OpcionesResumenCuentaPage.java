@@ -1,14 +1,16 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.Map;
+
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.Map;
 
 public class OpcionesResumenCuentaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:ttlBar']")

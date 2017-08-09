@@ -1,7 +1,9 @@
 package com.sura.guidewire.policycenter.pages.actividades;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.openqa.selenium.WebDriver;
 
 public class IngresoDeActividadAPolizaPage extends PageUtil {

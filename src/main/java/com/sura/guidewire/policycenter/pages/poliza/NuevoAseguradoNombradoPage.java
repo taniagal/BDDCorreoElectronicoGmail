@@ -2,14 +2,16 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.Utils;
+
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.concurrent.TimeUnit;
 
 public class NuevoAseguradoNombradoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")

@@ -1,15 +1,17 @@
 package com.sura.guidewire.policycenter.utils.navegacion.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.concurrent.TimeUnit;
 
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")

@@ -2,7 +2,9 @@ package com.sura.guidewire.policycenter.definitions.renovacion;
 
 import com.sura.guidewire.policycenter.steps.poliza.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.renovacion.CotizacionRenovacionPASteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

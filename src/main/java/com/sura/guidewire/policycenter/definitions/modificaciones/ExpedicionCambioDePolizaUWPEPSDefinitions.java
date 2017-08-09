@@ -1,10 +1,12 @@
 package com.sura.guidewire.policycenter.definitions.modificaciones;
 
-import com.sura.guidewire.policycenter.steps.poliza.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.modificacion.ExpedicionCambioDePolizaUWPEPSSteps;
+import com.sura.guidewire.policycenter.steps.poliza.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.GeneracionUwIssueRiesgosConsultablesPaSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

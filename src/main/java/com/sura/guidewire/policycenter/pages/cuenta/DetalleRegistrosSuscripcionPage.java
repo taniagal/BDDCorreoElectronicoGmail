@@ -1,18 +1,20 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.IsNull;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class DetalleRegistrosSuscripcionPage extends PageUtil {
 

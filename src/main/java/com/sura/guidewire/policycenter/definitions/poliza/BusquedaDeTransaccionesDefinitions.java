@@ -1,7 +1,9 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.sura.guidewire.policycenter.steps.poliza.BusquedaDeTransaccionesSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

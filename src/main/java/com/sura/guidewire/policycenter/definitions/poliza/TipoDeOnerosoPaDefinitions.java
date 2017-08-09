@@ -5,7 +5,9 @@ import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.TipoDeOnerosoPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ValidacionesInformacionDeVehiculoSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

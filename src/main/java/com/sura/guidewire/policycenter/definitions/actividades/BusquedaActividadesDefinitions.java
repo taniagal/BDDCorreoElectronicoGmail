@@ -2,8 +2,10 @@ package com.sura.guidewire.policycenter.definitions.actividades;
 
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.steps.actividades.BusquedaActividadesSteps;
+
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

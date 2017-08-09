@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.steps.cuenta;
 
 import com.sura.guidewire.policycenter.pages.contacto.BusquedaContactoPage;
 import com.sura.guidewire.policycenter.pages.cuenta.CuentasAsociadasAContactoPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 

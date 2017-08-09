@@ -1,16 +1,18 @@
 package com.sura.guidewire.policycenter.pages.tarifacion;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class TarifaAutosPage extends PageUtil {

@@ -2,9 +2,11 @@ package com.sura.guidewire.policycenter.steps.poliza;
 
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 

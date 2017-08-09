@@ -3,7 +3,9 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.MultiplesAsesoresSteps;
 import com.sura.guidewire.policycenter.utils.Parametros;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 

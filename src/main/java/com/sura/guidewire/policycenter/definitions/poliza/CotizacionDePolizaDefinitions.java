@@ -3,18 +3,20 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.poliza.CotizacionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.InformacionPolizaPASteps;
-import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class CotizacionDePolizaDefinitions {

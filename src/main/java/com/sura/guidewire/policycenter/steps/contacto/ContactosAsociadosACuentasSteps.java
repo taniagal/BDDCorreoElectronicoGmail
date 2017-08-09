@@ -1,10 +1,12 @@
 package com.sura.guidewire.policycenter.steps.contacto;
 
-import com.sura.guidewire.policycenter.pages.poliza.NuevoAseguradoNombradoPage;
 import com.sura.guidewire.policycenter.pages.cuenta.ContactosAsociadosACuentasPage;
+import com.sura.guidewire.policycenter.pages.poliza.NuevoAseguradoNombradoPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.panel.contactos.BquedaContacDelDirecPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.jbehave.core.model.ExamplesTable;
 
 public class ContactosAsociadosACuentasSteps extends ScenarioSteps {

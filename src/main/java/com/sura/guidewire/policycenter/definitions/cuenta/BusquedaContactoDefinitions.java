@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.definitions.cuenta;
 
 import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
-import com.sura.guidewire.policycenter.steps.contacto.BusquedaContactoSteps;
 import com.sura.guidewire.policycenter.steps.commons.PolicySteps;
+import com.sura.guidewire.policycenter.steps.contacto.BusquedaContactoSteps;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +10,7 @@ import java.util.Map;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

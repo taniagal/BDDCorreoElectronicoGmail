@@ -2,13 +2,15 @@ package com.sura.guidewire.policycenter.pages.modificaciones;
 
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.util.Map;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
-
-import java.util.Map;
 
 public class SustitucionesPage extends PageUtil {
 

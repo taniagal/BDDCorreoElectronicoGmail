@@ -4,7 +4,9 @@ import com.sura.guidewire.policycenter.steps.renovacion.CotizacionRenovacionPaVa
 import com.sura.guidewire.policycenter.steps.renovacion.ExpedicionRenovacionPASteps;
 import com.sura.guidewire.policycenter.steps.renovacion.ExpedicionRenovacionPaValidacionesSteps;
 import com.sura.guidewire.policycenter.steps.renovacion.ModificacionRenovacionCoberturasPASteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;

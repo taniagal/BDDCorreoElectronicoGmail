@@ -1,13 +1,14 @@
 package com.sura.guidewire.policycenter.utils;
 
 
-import ch.lambdaj.Lambda;
+import java.util.List;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.StringContains;
 
-import java.util.List;
+import ch.lambdaj.Lambda;
 
 public class AssertUtil {
     private AssertUtil(){

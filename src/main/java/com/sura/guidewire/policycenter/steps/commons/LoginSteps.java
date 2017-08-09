@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps.commons;
 
 import com.sura.guidewire.policycenter.pages.commons.LoginPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;

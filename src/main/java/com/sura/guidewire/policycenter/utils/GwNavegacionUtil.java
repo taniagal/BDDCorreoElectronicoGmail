@@ -1,15 +1,16 @@
 package com.sura.guidewire.policycenter.utils;
 
+import java.util.*;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.jbehave.core.model.ExamplesTable;
 import org.jbehave.core.steps.Parameters;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
-
-import java.util.*;
 
 public final class GwNavegacionUtil {
 

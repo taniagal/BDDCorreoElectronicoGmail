@@ -1,11 +1,13 @@
 package com.sura.guidewire.policycenter.steps.renovacion;
 
-import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
+import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.renovacion.RenovacionDeseoFinanciacionPaPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 

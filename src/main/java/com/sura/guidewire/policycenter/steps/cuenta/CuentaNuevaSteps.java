@@ -3,12 +3,14 @@ package com.sura.guidewire.policycenter.steps.cuenta;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.cuenta.CuentaPage;
 import com.sura.guidewire.policycenter.utils.Utils;
+
+import java.util.Map;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.jbehave.core.model.ExamplesTable;
 
-import java.util.Map;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CuentaNuevaSteps extends ScenarioSteps {
 

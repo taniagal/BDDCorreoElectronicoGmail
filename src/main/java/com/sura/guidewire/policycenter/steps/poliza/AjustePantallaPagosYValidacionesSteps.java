@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.steps.poliza;
 
 import com.sura.guidewire.policycenter.pages.poliza.AjustePantallaPagosYValidacionesPage;
 import com.sura.guidewire.policycenter.utils.Parametros;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 

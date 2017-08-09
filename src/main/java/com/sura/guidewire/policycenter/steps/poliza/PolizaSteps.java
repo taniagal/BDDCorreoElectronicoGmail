@@ -5,14 +5,16 @@ import com.sura.guidewire.policycenter.pages.poliza.PolizaPage;
 import com.sura.guidewire.policycenter.pages.renovacion.InstruccionesPreviasARenovacionPage;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.EspacioDeTrabajoWidget;
+
+import java.util.List;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-
-import java.util.List;
 
 
 public class PolizaSteps extends GuidewireSteps {

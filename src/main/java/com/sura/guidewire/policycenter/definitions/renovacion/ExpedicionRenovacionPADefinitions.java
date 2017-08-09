@@ -1,11 +1,15 @@
 package com.sura.guidewire.policycenter.definitions.renovacion;
 
 import com.google.inject.name.Named;
+import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.renovacion.ExpedicionRenovacionPASteps;
-import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
+
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.*;
+
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ExpedicionRenovacionPADefinitions {

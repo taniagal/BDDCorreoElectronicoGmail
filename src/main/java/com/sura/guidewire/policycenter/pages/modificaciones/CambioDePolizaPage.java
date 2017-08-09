@@ -5,16 +5,18 @@ import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.Parametros;
 import com.sura.guidewire.policycenter.utils.Utils;
+
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class CambioDePolizaPage extends PageUtil {

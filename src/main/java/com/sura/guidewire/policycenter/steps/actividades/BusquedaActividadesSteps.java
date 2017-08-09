@@ -1,9 +1,11 @@
 package com.sura.guidewire.policycenter.steps.actividades;
 
-import com.sura.guidewire.policycenter.pages.actividades.IngresoDeActividadAPolizaPage;
 import com.sura.guidewire.policycenter.pages.actividades.BusquedaActividadesPage;
+import com.sura.guidewire.policycenter.pages.actividades.IngresoDeActividadAPolizaPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaActividadesSteps extends ScenarioSteps {

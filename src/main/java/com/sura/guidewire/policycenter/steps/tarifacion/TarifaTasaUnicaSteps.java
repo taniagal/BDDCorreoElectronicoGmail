@@ -6,9 +6,11 @@ import com.sura.guidewire.policycenter.pages.poliza.DisponibilidadDetalleProduct
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaTasaUnicaSteps extends ScenarioSteps {

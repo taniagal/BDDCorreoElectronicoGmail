@@ -2,14 +2,16 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 
 
 import com.sura.guidewire.policycenter.steps.modificacion.CambioDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.AjustePantallaPagosYValidacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
-import com.sura.guidewire.policycenter.steps.poliza.AjustePantallaPagosYValidacionesSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.Parametros;
+
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

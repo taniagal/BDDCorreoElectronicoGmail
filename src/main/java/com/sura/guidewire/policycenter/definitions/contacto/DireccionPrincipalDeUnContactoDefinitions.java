@@ -2,7 +2,9 @@ package com.sura.guidewire.policycenter.definitions.contacto;
 
 import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.contacto.DetallesContactoSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

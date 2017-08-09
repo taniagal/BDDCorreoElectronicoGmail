@@ -4,8 +4,10 @@ package com.sura.guidewire.policycenter.definitions.modificaciones;
 import com.sura.guidewire.policycenter.steps.modificacion.ModificacionInformacionPolizaPASteps;
 import com.sura.guidewire.policycenter.steps.modificacion.ModificacionVehiculoSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
+
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
