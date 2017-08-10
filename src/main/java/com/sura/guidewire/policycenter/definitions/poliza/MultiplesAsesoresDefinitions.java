@@ -6,7 +6,11 @@ import com.sura.guidewire.policycenter.utils.Parametros;
 
 import net.thucydides.core.annotations.Steps;
 
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Alias;
+import org.jbehave.core.annotations.Aliases;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 public class MultiplesAsesoresDefinitions {

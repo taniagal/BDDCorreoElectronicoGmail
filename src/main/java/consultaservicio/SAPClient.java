@@ -15,7 +15,13 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
-import servicios.*;
+import servicios.DTNegConsultasDocCxCReq;
+import servicios.DTNegConsultasDocCxCRes;
+import servicios.DTNegRespuestaConsultasCxC;
+import servicios.P2ApplicationException;
+import servicios.SIOsWSConsultasDocCxC;
+import servicios.SIOsWSConsultasDocCxCService;
+
 
 public class SAPClient extends PageUtil {
     private static final String WS_URL = "file:..//BDDCoreSuraPolicy//src//main//java//servicios//SI_os_WS_ConsultasDocCxCService.wsdl";
