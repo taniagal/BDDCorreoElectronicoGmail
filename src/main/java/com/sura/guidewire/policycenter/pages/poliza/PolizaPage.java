@@ -1,5 +1,7 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
+import ch.lambdaj.Lambda;
+
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.List;
@@ -21,8 +23,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import ch.lambdaj.Lambda;
 
 public class PolizaPage extends PageUtil {
 
