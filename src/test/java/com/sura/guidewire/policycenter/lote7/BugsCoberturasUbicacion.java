@@ -2,5 +2,5 @@ package com.sura.guidewire.policycenter.lote7;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class BugsCoberturasUbicacion extends SerenityStory{
+public class BugsCoberturasUbicacion {
 }
