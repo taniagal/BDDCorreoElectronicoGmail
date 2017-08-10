@@ -19,15 +19,15 @@ Given estoy cotizando una poliza de mrc:
 | oficina | agente_oficina | organizacion | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | 1073    | DIRECTO        | Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 02/12/1990       | MARIO         | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
 When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la participacion del 100% de los asesores que intervienen en la poliza:
-| codigoAsesor | porcentaje | rol       |
-| 10995        | 30         | Lider     |
-| 11005        | 10         | Adicional |
-| 193          | 10         | Adicional |
-| 10686        | 10         | Adicional |
-| 10671        | 10         | Adicional |
-| 9628         | 10         | Adicional |
-| 1916         | 10         | Adicional |
-| 5676         | 10         | Adicional |
+| codigo | participacion | rol       |
+| 10995  | 30            | Lider     |
+| 11005  | 10            | Adicional |
+| 193    | 10            | Adicional |
+| 10686  | 10            | Adicional |
+| 10671  | 10            | Adicional |
+| 9628   | 10            | Adicional |
+| 1916   | 10            | Adicional |
+| 5676   | 10            | Adicional |
 Then Debe quedar un asesor con rol:
 | rol   | validarDato |
 | Lider | rol         |
@@ -40,16 +40,16 @@ Given estoy cotizando una poliza de mrc:
 | oficina | agente_oficina | organizacion | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | 1073    | DIRECTO        | Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 02/12/1990       | MARIO         | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
 When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la participacion del 100% de los asesores que intervienen en la poliza:
-| codigoAsesor | porcentaje | rol       |
-| 10995        | 30         | Lider     |
-| 11005        | 10         | Adicional |
-| 193          | 10         | Adicional |
-| 10686        | 10         | Adicional |
-| 10671        | 10         | Adicional |
-| 9628         | 10         | Adicional |
-| 1916         | 10         | Adicional |
-| 5676         | 10         | Adicional |
-| 5676         | 10         | Adicional |
+| codigo | participacion | rol       |
+| 10995  | 30            | Lider     |
+| 11005  | 10            | Adicional |
+| 193    | 10            | Adicional |
+| 10686  | 10            | Adicional |
+| 10671  | 10            | Adicional |
+| 9628   | 10            | Adicional |
+| 1916   | 10            | Adicional |
+| 5676   | 10            | Adicional |
+| 5676   | 10            | Adicional |
 Then validar el mensajes:
 | mensaje                                      |
 | La póliza debe tener máximo 8 intermediarios |
@@ -82,15 +82,15 @@ Given estoy cotizando una poliza de autos:
 | oficina | agente_oficina | organizacion | tipoPoliza | producto | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | 1059    | DIRECTO        | Sura         | Individual | Autos    | CEDULA DE CIUDADANIA | 02/12/1990       | AUTOMAN       | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
 When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la participacion del 100% de los asesores que intervienen en la poliza:
-| codigoAsesor | porcentaje | rol       |
-| 10960        | 30         | Lider     |
-| 10962        | 10         | Adicional |
-| 10787        | 10         | Adicional |
-| 10714        | 10         | Adicional |
-| 10272        | 10         | Adicional |
-| 1681         | 10         | Adicional |
-| 5676         | 10         | Adicional |
-| 5947         | 10         | Adicional |
+| codigo | participacion | rol       |
+| 10960  | 30            | Lider     |
+| 10962  | 10            | Adicional |
+| 10787  | 10            | Adicional |
+| 10714  | 10            | Adicional |
+| 10272  | 10            | Adicional |
+| 1681   | 10            | Adicional |
+| 5676   | 10            | Adicional |
+| 5947   | 10            | Adicional |
 Then Debe quedar un asesor con rol:
 | rol   | validarDato |
 | Lider | rol         |
@@ -104,16 +104,16 @@ Given estoy cotizando una poliza de autos:
 | oficina | agente_oficina | organizacion | tipoPoliza | producto | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | 1059    | DIRECTO        | Sura         | Individual | Autos    | CEDULA DE CIUDADANIA | 02/12/1990       | AUTOMAN       | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
 When Debe permitir el ingreso de maximo 8 asesores en la poliza, validando la participacion del 100% de los asesores que intervienen en la poliza:
-| codigoAsesor | porcentaje | rol       |
-| 10960        | 30         | Lider     |
-| 10962        | 10         | Adicional |
-| 10787        | 10         | Adicional |
-| 10714        | 10         | Adicional |
-| 10272        | 10         | Adicional |
-| 1681         | 10         | Adicional |
-| 5676         | 10         | Adicional |
-| 5947         | 10         | Adicional |
-| 5947         | 10         | Adicional |
+| codigo | participacion | rol       |
+| 10960  | 30            | Lider     |
+| 10962  | 10            | Adicional |
+| 10787  | 10            | Adicional |
+| 10714  | 10            | Adicional |
+| 10272  | 10            | Adicional |
+| 1681   | 10            | Adicional |
+| 5676   | 10            | Adicional |
+| 5947   | 10            | Adicional |
+| 5947   | 10            | Adicional |
 Then validar el mensajes:
 | mensaje                                      |
 | La póliza debe tener máximo 8 intermediarios |
