@@ -21,37 +21,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class MetodosComunes {
     protected static final int TIEMPO_30 = 30;
 
-
-    protected void waitUntilVisible(WebElement element, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_30);
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-    protected void waitUntilClickable(WebElement element, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_30);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
-
-    public Properties loadProperty() throws Exception {
-        Properties prop = new Properties();
-        InputStream input = null;
-        try {
-            input = new FileInputStream("src/main/resources/gradle.properties");
-            prop.load(input);
-        } catch (IOException ex) {
-            throw ex;
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    throw e;
-                }
-            }
-        }
-        return prop;
-    }
-
     public static void waitUntil(int millis) {
         Integer i = 0;
         Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
@@ -66,5 +35,35 @@ public class MetodosComunes {
             });
         } catch (TimeoutException e) {
         }
+    }
+
+    protected void waitUntilVisible(WebElement element, WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_30);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected void waitUntilClickable(WebElement element, WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_30);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public Properties loadProperty()  {
+        Properties prop = new Properties();
+        InputStream input = null;
+        try {
+            input = new FileInputStream("src/main/resources/gradle.properties");
+            prop.load(input);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    throw new RuntimeException (e);
+                }
+            }
+        }
+        return prop;
     }
 }
