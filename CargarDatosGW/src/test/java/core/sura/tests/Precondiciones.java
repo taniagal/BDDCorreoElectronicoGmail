@@ -6,6 +6,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -17,8 +18,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import page.LoginPage;
 import page.PrecondicionesPage;
-
-import static org.junit.Assert.assertEquals;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -56,7 +55,7 @@ public class Precondiciones extends MetodosComunes {
         initPages();
         loginPage.login(USUARIO, CONTRASENA, driver);
         precondicionesPage.elegirLenguaje(driver);
-        assertEquals("Mis actividades", driver.findElement(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")).getText());
+        Assert.assertEquals("Mis actividades", driver.findElement(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")).getText());
     }
 
     @Test
