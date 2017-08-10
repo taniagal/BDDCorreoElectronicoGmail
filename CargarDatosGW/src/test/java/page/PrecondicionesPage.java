@@ -4,6 +4,10 @@ import core.sura.resources.MetodosComunes;
 
 import java.util.List;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.core.Is;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,12 +16,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static org.hamcrest.CoreMatchers.anyOf;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class PrecondicionesPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
@@ -63,8 +61,8 @@ public class PrecondicionesPage extends MetodosComunes {
         menuItemDatosDeMuestraDePc.click();
         botonCarga.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")));
-        assertThat(labelCargaCorrecta.getText(), anyOf(is("Conjunto cargado \"Sura\" correctamente."),
-                is("Loaded set \"Sura\" successfully.")));
+        MatcherAssert.assertThat(labelCargaCorrecta.getText(), CoreMatchers.anyOf(Is.is("Conjunto cargado \"Sura\" correctamente."),
+                Is.is("Loaded set \"Sura\" successfully.")));
     }
 
     public void elegirLenguaje(WebDriver driver) {
@@ -128,9 +126,9 @@ public class PrecondicionesPage extends MetodosComunes {
             MetodosComunes.waitUntil(TIEMPO_5000);
             WebElement estadoSuraGMCElemento = driver.findElement(By.xpath(XPATH + suraGMC.toString() + "]/td[4]/div"));
             WebElement estadoGmcInspireElemento = driver.findElement(By.xpath(XPATH + gmcInspire.toString() + "]/td[4]/div"));
-            assertEquals("Suspended", estadoSuraGMCElemento.getText());
-            assertEquals("Suspended", estadoGmcInspireElemento.getText());
+            Assert.assertEquals("Suspended", estadoSuraGMCElemento.getText());
+            Assert.assertEquals("Suspended", estadoGmcInspireElemento.getText());
         }
-        assertTrue(encontrados);
+        Assert.assertTrue(encontrados);
     }
 }
