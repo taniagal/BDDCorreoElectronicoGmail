@@ -18,7 +18,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 
-
 public class MetodosComunes {
     protected static final int TIEMPO_30 = 30;
 
@@ -40,13 +39,13 @@ public class MetodosComunes {
             input = new FileInputStream("src/main/resources/gradle.properties");
             prop.load(input);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            throw ex;
         } finally {
             if (input != null) {
                 try {
                     input.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    throw e;
                 }
             }
         }
