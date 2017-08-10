@@ -68,12 +68,12 @@ public class MultiplesAsesoresPage extends PageUtil {
             actions.sendKeys(Keys.TAB).build().perform();
             actions.sendKeys(Keys.ENTER).build().perform();
             esperarHasta(TIEMPO_300);
-            actions.sendKeys(dato.get("codigoAsesor")).build().perform();
+            actions.sendKeys(dato.get("codigo")).build().perform();
             esperarHasta(TIEMPO_200);
             actions.sendKeys(Keys.ENTER).build().perform();
             actions.sendKeys(Keys.TAB).build().perform();
             esperarHasta(TIEMPO_1000);
-            actions.sendKeys(dato.get("porcentaje")).build().perform();
+            actions.sendKeys(dato.get("participacion")).build().perform();
             esperarHasta(TIEMPO_1000);
             actions.sendKeys(Keys.TAB).build().perform();
             esperarHasta(TIEMPO_500);
