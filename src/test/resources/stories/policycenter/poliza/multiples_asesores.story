@@ -14,7 +14,7 @@ El cambio de los asesores se hace como un traspaso de cartera y se implementará
 
 
 Scenario: 1_Agregar mas de un asesor a una poliza MRC
-GivenStories: stories/policycenter/login_policy.story
+Meta: @manual
 Given estoy cotizando una poliza de mrc:
 | oficina | agente_oficina | organizacion | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | 1073    | DIRECTO        | Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 02/12/1990       | MARIO         | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
@@ -36,6 +36,7 @@ Examples:
 |  |
 
 Scenario: 2_Agregar mas de 8 asesores a una poliza MRC
+Meta: @manual
 Given estoy cotizando una poliza de mrc:
 | oficina | agente_oficina | organizacion | producto                | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | 1073    | DIRECTO        | Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 02/12/1990       | MARIO         | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
@@ -68,6 +69,7 @@ Examples:
 
 
 Scenario: 4_Validar existencia de un solo codigo asesor MRC
+Meta: @manual
 When tenga una poliza mrc con los asesores ingresados
 Then Debe quedar un codigo de asesor:
 | mensaje                                                           | validarDato  |
@@ -78,6 +80,7 @@ Examples:
 
 
 Scenario: 5_Agregar mas de un asesor a una poliza AUTOS
+GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de autos:
 | oficina | agente_oficina | organizacion | tipoPoliza | producto | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | 1059    | DIRECTO        | Sura         | Individual | Autos    | CEDULA DE CIUDADANIA | 02/12/1990       | AUTOMAN       | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
