@@ -59,6 +59,7 @@ Examples:
 | CEDULA DE CIUDADANIA | 1060447895 | 33355338   |
 
 Scenario: 8 Expedicion de poliza riesgo en CP con riesgo consultable aceptado en poliza principal
+Meta: @manual
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese a edificios y ubicaciones
