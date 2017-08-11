@@ -58,6 +58,7 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc donde el coaseguro es aceptado
+Meta: @manual
 Given estoy cotizando una poliza de mrc:
 |producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
@@ -81,6 +82,7 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc donde el coaseguro es cedido
+Meta: @manual
 Given estoy cotizando una poliza de mrc:
 |producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
