@@ -3,5 +3,5 @@ package com.sura.guidewire.policycenter.lote3;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class AjustePantallaPagosYValidaciones extends SerenityStory {
+public class AjustePantallaPagosYValidaciones  {
 }

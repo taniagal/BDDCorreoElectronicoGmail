@@ -63,6 +63,7 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 10
+Meta: @manual
 Given estoy cotizando una poliza de mrc:
 | producto                | oficina | agente_oficina | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | 019    | DIRECTO         | CEDULA DE CIUDADANIA | 02/12/1990       | MIKASA        | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
@@ -87,6 +88,7 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 16 y validar UW
+Meta: @manual
 Given estoy cotizando una poliza de mrc:
 | producto                | oficina | agente_oficina | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | 019    | DIRECTO         | CEDULA DE CIUDADANIA | 02/12/1990       | MIKASA        | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
