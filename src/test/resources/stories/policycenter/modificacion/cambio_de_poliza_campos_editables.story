@@ -17,13 +17,14 @@ Given tengo una poliza de PA con los siguientes datos:
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
+And digite el numero fasecolda <numeroFasecolda> y modelo <modelo> de un vehiculo
 And agrega cobertura asistencia <asistencia>
 And intente cotizar el cambio de poliza
 Then expida el cambio de la poliza
 
 Examples:
-| plan               | asistencia         |
-| Plan Autos Básico  | Asistencia Básica  |
+| plan               | asistencia         |numeroFasecolda|modelo|
+| Plan Autos Básico  | Asistencia Básica  |00601182       |2016  |
 
 Scenario: Transporte de combustible
 Given tengo una poliza de PA con los siguientes datos:
@@ -71,6 +72,7 @@ Given tengo una poliza de PA con los siguientes datos:
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo a basico <plan>
+And digite el numero fasecolda <numeroFasecolda> y modelo <modelo> de un vehiculo
 And adicione un valor asegurado superior al permitido <valor>
 And agrega cobertura asistencia <asistencia>
 And agraga el valor del limite <limite>
@@ -78,8 +80,8 @@ And intente cotizar el cambio de poliza
 Then expida el cambio de la poliza
 
 Examples:
-| plan              | valor     | asistencia        | limite |
-| Plan Autos Básico | 301000000 | Asistencia Básica | 640.   |
+| plan              | valor     | asistencia        | limite |numeroFasecolda         |modelo|
+| Plan Autos Básico | 301000000 | Asistencia Básica | 640.   | 00601182               |2016  |
 
 Scenario: Validar requisitos en cambio de plan basico a otro plan
 Meta: @manual
