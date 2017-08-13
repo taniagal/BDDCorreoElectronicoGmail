@@ -84,6 +84,7 @@ public class NuevoContactoPage extends PageUtil {
     }
 
     public void ingresarPrimerNombre(String primerNombre) {
+        campoPrimerNombre.click();
         this.campoPrimerNombre.type(primerNombre);
     }
 
