@@ -36,7 +36,11 @@ public class SmokeTests extends MetodosComunes {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(WAIT_30, TimeUnit.SECONDS);
-        driver.get(prop.getProperty("url") + "/pc/PolicyCenter.do");
+        if(prop.getProperty("url").contains("https://coreseguros.suramericana.com")){
+            driver.get(prop.getProperty("url")+ "/pc");
+        }else{
+            driver.get(prop.getProperty("url") + "/pc/PolicyCenter.do");
+        }
     }
 
     private void initPages() {
