@@ -61,6 +61,23 @@ public class SmokeTests extends MetodosComunes {
                     smokeTestPage.verificarBusquedaDeUsuario(usuario, driver));
         }
     }
+    @Test
+    public void buscarUsuarioProduccion() {
+        initPages();
+        if (prop.getProperty("url").contains("coreseguros")) {
+            usuario = "smtestgw";
+            contrasenia = "sura2017";
+            loginPage.login(usuario, contrasenia, driver);
+            smokeTestPage.buscarAgenteUAT(codigoAgente, driver);
+            MatcherAssert.assertThat("Error, no se encontró el agente pero el aplicativo si está desplegado",
+                    smokeTestPage.verificarBusquedaDeAgenteUAT(codigoAgente, driver));
+        } else {
+            loginPage.login(usuario, contrasenia, driver);
+            smokeTestPage.buscarUsuario(usuario, driver);
+            MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
+                    smokeTestPage.verificarBusquedaDeUsuario(usuario, driver));
+        }
+    }
 
     @After
     public void after() {
