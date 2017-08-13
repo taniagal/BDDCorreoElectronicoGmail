@@ -11,14 +11,15 @@ Scenario: Visualizar cambios realizados a una poliza pa
 GivenStories: stories/policycenter/login_policy.story
 Given tengo una poliza de PA con los siguientes datos:
 | tipo_documento       | documento  | cuenta     | producto | tipoPoliza | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | limite | deducible | abogado | PLlaves | PTH | PPH | GTH | PTD | PPD | GT |CRPT  |CRPP   | medioVenta | AS                |
-| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | ASD324 | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | 1.440. | 0         |         | Si      | 0   | 835 | 40  | 0   | 835 | 40 | 20   | 20    | Televentas | Asistencia Global |
+| CEDULA DE CIUDADANIA | 1234567890 | C000888888 | Autos    | Individual | random | 2011   |                  | MEDELLIN (ANTIOQUIA) | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | 1.440. | 0         |         | Si      | 0   | 835 | 40  | 0   | 835 | 40 | 20   | 20    | Televentas | Asistencia Global |
 When ingrese a modificar dicha cotizacion
 And se ingrese a la opcion vehiculos
 And cambie el plan del vehiculo <plan>
+And digite el numero fasecolda <numeroFasecolda> y modelo <modelo> de un vehiculo
 Then debe existir la comparacion entre datos de poliza existente y poliza nueva
 Examples:
-| plan               |
-| Plan Autos Clásico |
+| plan               |numeroFasecolda        | modelo       |
+| Plan Autos Clásico |00601182               | 2016         |
 
 Scenario: Visualizar cambios al modificar coberturas de vehiculo
 Given tengo una poliza de PA con los siguientes datos:
