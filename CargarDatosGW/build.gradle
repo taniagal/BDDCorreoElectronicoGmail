@@ -29,7 +29,7 @@ task escribirArchivo << {
         } else if (project.getProperties().get("env") == "cap") {
             props.setProperty("url", "https://capcoreseguros.suramericana.com")
         } else if (project.getProperties().get("env") == "prod") {
-            props.setProperty("url", "https://coreseguros.suramericana.com/pc")
+            props.setProperty("url", "https://coreseguros.suramericana.com")
         } else {
             props.setProperty("url", "http://local.sura.com:8180")
         }

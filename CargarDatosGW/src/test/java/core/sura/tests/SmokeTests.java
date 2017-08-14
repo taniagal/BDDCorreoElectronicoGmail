@@ -20,14 +20,14 @@ import page.SmokeTestPage;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SmokeTests extends MetodosComunes {
+    private static final int WAIT_30 = 30;
+    Properties prop;
     private WebDriver driver;
     private LoginPage loginPage;
     private SmokeTestPage smokeTestPage;
-    private static final int WAIT_30 = 30;
     private String contrasenia = "gw";
     private String usuario = "su";
     private String codigoAgente = "7800";
-    Properties prop;
 
     @Before
     public void setUp() throws Exception {
@@ -69,20 +69,14 @@ public class SmokeTests extends MetodosComunes {
     @Test
     public void buscarUsuarioProduccion() {
         initPages();
-        if (prop.getProperty("url").contains("coreseguros")) {
-            usuario = "smtestgw";
-            contrasenia = "sura2017";
-            loginPage.login(usuario, contrasenia, driver);
-            smokeTestPage.buscarAgenteUAT(codigoAgente, driver);
-            MatcherAssert.assertThat("Error, no se encontró el agente pero el aplicativo si está desplegado",
-                    smokeTestPage.verificarBusquedaDeAgenteUAT(codigoAgente, driver));
-        } else {
-            loginPage.login(usuario, contrasenia, driver);
-            smokeTestPage.buscarUsuario(usuario, driver);
-            MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
-                    smokeTestPage.verificarBusquedaDeUsuario(usuario, driver));
-        }
+        usuario = "smtestgw";
+        contrasenia = "sura2017";
+        loginPage.login(usuario, contrasenia, driver);
+        smokeTestPage.buscarAgenteUAT(codigoAgente, driver);
+        MatcherAssert.assertThat("Error, no se encontró el agente pero el aplicativo si está desplegado",
+                smokeTestPage.verificarBusquedaDeAgenteUAT(codigoAgente, driver));
     }
+
 
     @After
     public void after() {
