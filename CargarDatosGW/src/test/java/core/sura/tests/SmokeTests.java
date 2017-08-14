@@ -36,9 +36,9 @@ public class SmokeTests extends MetodosComunes {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(WAIT_30, TimeUnit.SECONDS);
-        if(prop.getProperty("url").contains("https://coreseguros.suramericana.com")){
-            driver.get(prop.getProperty("url")+ "/pc");
-        }else{
+        if (prop.getProperty("url").contains("https://coreseguros.suramericana.com")) {
+            driver.get(prop.getProperty("url") + "/pc");
+        } else {
             driver.get(prop.getProperty("url") + "/pc/PolicyCenter.do");
         }
     }
@@ -53,6 +53,24 @@ public class SmokeTests extends MetodosComunes {
         initPages();
         if (prop.getProperty("url").contains("labcoreseguros")) {
             usuario = "luissadi";
+            contrasenia = "sura2017";
+            loginPage.login(usuario, contrasenia, driver);
+            smokeTestPage.buscarAgenteUAT(codigoAgente, driver);
+            MatcherAssert.assertThat("Error, no se encontró el agente pero el aplicativo si está desplegado",
+                    smokeTestPage.verificarBusquedaDeAgenteUAT(codigoAgente, driver));
+        } else {
+            loginPage.login(usuario, contrasenia, driver);
+            smokeTestPage.buscarUsuario(usuario, driver);
+            MatcherAssert.assertThat("Error, no se encontró el usuario pero el aplicativo si está desplegado",
+                    smokeTestPage.verificarBusquedaDeUsuario(usuario, driver));
+        }
+    }
+
+    @Test
+    public void buscarUsuarioProduccion() {
+        initPages();
+        if (prop.getProperty("url").contains("coreseguros")) {
+            usuario = "smtestgw";
             contrasenia = "sura2017";
             loginPage.login(usuario, contrasenia, driver);
             smokeTestPage.buscarAgenteUAT(codigoAgente, driver);
