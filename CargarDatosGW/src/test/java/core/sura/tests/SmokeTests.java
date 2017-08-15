@@ -28,6 +28,7 @@ public class SmokeTests extends MetodosComunes {
     private String contrasenia = "gw";
     private String usuario = "su";
     private String codigoAgente = "7800";
+    private String codigoAgentePdn = "10154";
 
     @Before
     public void setUp() throws Exception {
@@ -72,9 +73,9 @@ public class SmokeTests extends MetodosComunes {
         usuario = "smtestgw";
         contrasenia = "sura2017";
         loginPage.login(usuario, contrasenia, driver);
-        smokeTestPage.buscarAgenteUAT(codigoAgente, driver);
+        smokeTestPage.buscarAgenteUAT(codigoAgentePdn, driver);
         MatcherAssert.assertThat("Error, no se encontró el agente pero el aplicativo si está desplegado",
-                smokeTestPage.verificarBusquedaDeAgenteUAT(codigoAgente, driver));
+                smokeTestPage.verificarBusquedaDeAgenteUAT(codigoAgentePdn, driver));
     }
 
 
