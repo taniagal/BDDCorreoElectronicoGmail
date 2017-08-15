@@ -176,7 +176,7 @@ public class TarifaMRCPage extends PageUtil {
     public void cotizarArticuloBloqueado() {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
-        waitFor(By.cssSelector(".message"));
+        waitFor((WebElementFacade) $(".message"));
         botonCotizar.click();
     }
 
