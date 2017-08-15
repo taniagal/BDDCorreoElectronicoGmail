@@ -78,7 +78,7 @@ Then debo ver un mensaje bloqueante
 
 Examples:
 | numeroPoliza  | ciudad               | beneficiario    | deducible | perdidaLlaves | medioVenta |perdidaParcialReemplazo|perdidaTotalReemplazo  |asistencia                 |
-| TEST_22225550 | MEDELLIN (ANTIOQUIA) | Oneroso Leasing | 0         | Opción 1      | Televentas | 20                    |20                     |Asistencia Global          |
+| TEST_22225550 | MEDELLIN (ANTIOQUIA) | Oneroso Leasing | 0         | Si            | Televentas | 20                    |20                     |Asistencia Global          |
 
 Scenario: Maximo valor de accesorios-inspeccion-importado por terceros
 Meta: @manual
