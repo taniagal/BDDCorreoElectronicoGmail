@@ -55,8 +55,8 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         WebElementFacade elemento = null;
 
         try {
-            waitFor($(xpath)).shouldBeVisible();
-            elemento = element(find(By.xpath(xpath)));
+            waitFor((WebElementFacade) $(xpath)).shouldBeVisible();
+            elemento = element((WebElementFacade) $(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.error(" \nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);

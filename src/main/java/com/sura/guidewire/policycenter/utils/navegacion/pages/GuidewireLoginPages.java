@@ -50,8 +50,8 @@ public class GuidewireLoginPages extends PageUtil {
         WebElementFacade elemento = null;
         try {
             setImplicitTimeout(TIEMPO_1, TimeUnit.SECONDS);
-            waitFor($(xpath)).shouldBeVisible();
-            elemento = element(find(By.xpath(xpath)));
+            waitFor((WebElementFacade) $(xpath)).shouldBeVisible();
+            elemento = element((WebElementFacade) $(xpath));
             resetImplicitTimeout();
 
         } catch (NoSuchElementException e) {

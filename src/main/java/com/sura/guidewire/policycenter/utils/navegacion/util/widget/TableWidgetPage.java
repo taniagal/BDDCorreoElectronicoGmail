@@ -88,7 +88,7 @@ public class TableWidgetPage extends PageObject {
                 combo = opcionToolbar.findElement(By.xpath("tbody/tr/td/table/tbody/tr/td/input"));
                 combo.click();
                 findBy(".//ul[contains(@class,'x-list-plain')]").waitUntilVisible();
-                shouldBeVisible(findBy(".//ul[contains(@class,'x-list-plain')]"));
+                shouldBeVisible((WebElementFacade) $(".//ul[contains(@class,'x-list-plain')]"));
             }
 
         }
@@ -106,7 +106,7 @@ public class TableWidgetPage extends PageObject {
                 if ("Mostrar todos los roles".equals(valorInputDeComboBox)) {
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:roleFilters-inputEl']").click();
                     findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
-                    shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
+                    shouldBeVisible( (WebElementFacade) $(LISTA_COMBO_DESPLEGABLE));
                     iterara = false;
                 } else {
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:personCompanyFilters-inputEl']").click();
