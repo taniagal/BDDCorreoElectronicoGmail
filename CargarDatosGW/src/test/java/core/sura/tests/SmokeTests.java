@@ -28,7 +28,7 @@ public class SmokeTests extends MetodosComunes {
     private String contrasenia = "gw";
     private String usuario = "su";
     private String codigoAgente = "7800";
-    private String codigoAgentePdn = "10154";
+    private String codigoCuenta = "7195652602";
 
     @Before
     public void setUp() throws Exception {
@@ -68,14 +68,14 @@ public class SmokeTests extends MetodosComunes {
     }
 
     @Test
-    public void buscarUsuarioProduccion() {
+    public void buscarCuentaEnPdn() {
         initPages();
         usuario = "smtestgw";
         contrasenia = "sura2017";
         loginPage.login(usuario, contrasenia, driver);
-        smokeTestPage.buscarAgenteUAT(codigoAgentePdn, driver);
-        MatcherAssert.assertThat("Error, no se encontró el agente pero el aplicativo si está desplegado",
-                smokeTestPage.verificarBusquedaDeAgenteUAT(codigoAgentePdn, driver));
+        smokeTestPage.buscarCuentaPdn(codigoCuenta, driver);
+        MatcherAssert.assertThat("Error, no se encontró la cuenta pero el aplicativo si está desplegado",
+                smokeTestPage.verificarBusquedaDeCuentaPdn(codigoCuenta, driver));
     }
 
 

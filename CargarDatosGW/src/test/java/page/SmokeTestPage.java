@@ -72,4 +72,16 @@ public class SmokeTestPage extends MetodosComunes {
         waitUntilVisible(tablaDeResultadosAgentes, driver);
         return tablaDeResultadosAgentes.getText().contains(codigoAgente);
     }
+
+    public void buscarCuentaPdn(String codigoCuenta, WebDriver driver) {
+        campoTxtBuscar.sendKeys("Account " + codigoCuenta);
+        campoTxtBuscar.sendKeys(Keys.ENTER);
+        MetodosComunes.waitUntil(TIEMPO_5000);
+        waitUntilVisible(campoNumeroDeCuenta, driver);
+    }
+
+    public Boolean verificarBusquedaDeCuentaPdn(String codigoCuenta, WebDriver driver) {
+        waitUntilVisible(campoNumeroDeCuenta, driver);
+        return campoNumeroDeCuenta.getText().contains(codigoCuenta);
+    }
 }

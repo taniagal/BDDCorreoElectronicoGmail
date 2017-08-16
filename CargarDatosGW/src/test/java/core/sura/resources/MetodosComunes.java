@@ -17,9 +17,9 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-
 public class MetodosComunes {
     protected static final int TIEMPO_30 = 30;
+    protected static final int TIEMPO_5000 = 5000;
 
     public static void waitUntil(int millis) {
         Integer i = 0;
@@ -47,7 +47,7 @@ public class MetodosComunes {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public Properties loadProperty()  {
+    public Properties loadProperty() {
         Properties prop = new Properties();
         InputStream input = null;
         try {
@@ -60,7 +60,7 @@ public class MetodosComunes {
                 try {
                     input.close();
                 } catch (IOException e) {
-                    throw new RuntimeException (e);
+                    throw new RuntimeException(e);
                 }
             }
         }
