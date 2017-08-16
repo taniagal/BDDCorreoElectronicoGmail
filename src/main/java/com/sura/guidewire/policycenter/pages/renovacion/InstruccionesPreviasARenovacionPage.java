@@ -35,7 +35,7 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
 
 
-        waitFor(findBy(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
+        waitFor((WebElementFacade) $(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
         listaIntruccionesWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
         listaInstrucciones = Lambda.extract(listaIntruccionesWE, Lambda.on(WebElementFacade.class).getText());
@@ -65,7 +65,7 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
         findBy(xpathTrEtiquetaDrowbox).findBy(By.tagName("input")).click();
 
 
-        waitFor(findBy(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
+        waitFor((WebElementFacade) $(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
         listaRazonesDeRenovacionWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
         listaRazonesDeRenovacio = Lambda.extract(listaRazonesDeRenovacionWE, Lambda.on(WebElementFacade.class).getText());

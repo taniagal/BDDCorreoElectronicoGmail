@@ -73,8 +73,8 @@ public class CotizacionPage extends PageUtil {
         WebElementFacade elemento = null;
 
         try {
-            waitFor($(xpath)).shouldBeVisible();
-            elemento = element(find(By.xpath(xpath)));
+            waitFor((WebElementFacade) $(xpath)).shouldBeVisible();
+            elemento = element((WebElementFacade) $(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + TRACE + e);

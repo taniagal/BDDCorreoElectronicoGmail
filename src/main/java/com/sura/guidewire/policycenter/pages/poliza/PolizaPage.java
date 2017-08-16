@@ -331,7 +331,7 @@ public class PolizaPage extends PageUtil {
     public void desplegarMotivosCancelacion() {
         String xpathDropdownInstruccion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']";
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
-        waitFor(findBy(xpathMenuDesplegable)).waitUntilVisible();
+        waitFor((WebElementFacade) $(xpathMenuDesplegable)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(xpathMenuDesplegable)));
         listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
         listaMotivos = Lambda.extract(listaMotivosWE, Lambda.on(WebElementFacade.class).getText());

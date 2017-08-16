@@ -24,7 +24,7 @@ public class BuscarAgentePage extends PageUtil {
     }
 
     public void buscarAgentePorCodigo(String codigo) {
-        this.actions.sendKeys(textoCodigoAgente.type(codigo)).build().perform();
+        textoCodigoAgente.sendKeys(codigo);
         clicObjeto(botonBuscar);
         esperarObjetoClikeableServidor(PATHLABELCODIGOAGENTE);
         clicObjeto(linkSeleccionar);
