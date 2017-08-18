@@ -12,13 +12,7 @@ import net.thucydides.core.steps.StepInterceptor;
 
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -456,6 +450,21 @@ public class PageUtil extends PageObject {
         if (!campoTxt.getValue().equals(valorAEscribir)) {
             MatcherAssert.assertThat("Error: Se esperaba que el software ingresara el valor, pero no respondio la caja de texto" +
                     " Expected: " + valorAEscribir + BUT_WAS + campoTxt.getValue(), !campoTxt.getValue().equals(valorAEscribir));
+        }
+
+    }
+    public void buscarDatoEnTabla(String dato,String tablaFilas,String tablaColumnas,String tablaFilasColumnas) {
+        try {
+            for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
+                for (int j = 0; j < getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
+                    String valorEncontrado = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + j + "]";
+                    if (valorEncontrado == dato) {
+                        break;
+                    }
+                }
+            }
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("Exception " + e);
         }
     }
 }
