@@ -16,10 +16,15 @@ public class ResumenDePolizaAutoSteps {
     public void visualizacionPoliza() {
         resumenDePolizaAutoPage.visualizarPoliza();
     }
-    
+
     @Step
     public void verificacionDeCamposResumen(ExamplesTable datosAverificar) {
         resumenDePolizaAutoPage.verificacionDeCampos(datosAverificar);
+    }
+
+    @Step
+    public void verificarFechaInicialVigencia(String fecha) {
+        resumenDePolizaAutoPage.verificarFechaInicialVigencia(fecha);
     }
 
     @Step
