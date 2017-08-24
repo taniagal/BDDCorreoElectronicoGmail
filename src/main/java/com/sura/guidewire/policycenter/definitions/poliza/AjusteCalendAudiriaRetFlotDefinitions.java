@@ -1,14 +1,11 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
-import com.sura.guidewire.policycenter.steps.poliza.AjustePantallaPagosYValidacionesSteps;
-import com.sura.guidewire.policycenter.steps.poliza.BusquedaDePolizaSteps;
-import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
-import com.sura.guidewire.policycenter.steps.poliza.HerramientasPolizaSteps;
-import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.*;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.Parametros;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.EscritorioSteps;
 
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 import org.jbehave.core.annotations.Then;
@@ -28,7 +25,8 @@ public class AjusteCalendAudiriaRetFlotDefinitions {
     EscritorioSteps escritorioSteps;
     @Steps
     TarifaTasaUnicaSteps tasaUnicaSteps;
-    protected static String numeroPoliza = "";
+
+    protected String numeroPoliza = "";
 
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
@@ -59,7 +57,7 @@ public class AjusteCalendAudiriaRetFlotDefinitions {
     @When("ingreso a escritorio a verificar el periodo")
     public void escritorioValidar() {
         escritorioSteps.irAmenuActividad();
-        escritorioSteps.verificarAuditoriaFinal(numeroPoliza);
+        escritorioSteps.verificarAuditoriaFinal(Serenity.sessionVariableCalled("nroPoliza".toLowerCase().trim()));
     }
 
     @When("remover articulo a utilizar")
@@ -71,5 +69,6 @@ public class AjusteCalendAudiriaRetFlotDefinitions {
     public void expedirPoliza() {
         tasaUnicaSteps.expedirPoliza();
         numeroPoliza = buscarNumeroPoliza.capturarNumeroPoliza();
+        Serenity.setSessionVariable("nroPoliza".toLowerCase().trim()).to(numeroPoliza);
     }
 }
