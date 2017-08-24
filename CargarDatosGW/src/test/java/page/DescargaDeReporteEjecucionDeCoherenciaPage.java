@@ -32,7 +32,7 @@ public class DescargaDeReporteEjecucionDeCoherenciaPage extends MetodosComunes {
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_1500 = 1500;
     private static final int LIMITE_ERRORES = 33;
-    private static final String NUMERO_DE_SUBPROCESOS = "100000000";
+    private static final String NUMERO_DE_SUBPROCESOS = "20";
 
     public void descargarReporte(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
