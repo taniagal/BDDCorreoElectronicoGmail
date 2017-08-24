@@ -18,6 +18,11 @@ public class ResumenDePolizaAutoDefinitions {
         resumenDePolizaAutoSteps.visualizacionPoliza();
     }
 
+    @When("se valida fecha de inicio de vigencia: $fecha")
+    public void validoFechaInicioDeVigencia(String fecha){
+        resumenDePolizaAutoSteps.verificarFechaInicialVigencia(fecha);
+    }
+
     @Then("verifico que se encuentren los siguientes datos $datos")
     public void verificarCamposResumen(ExamplesTable datos) {
         resumenDePolizaAutoSteps.verificacionDeCamposResumen(datos);
