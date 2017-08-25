@@ -1,13 +1,12 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import java.util.List;
+import ch.lambdaj.Lambda;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
-import ch.lambdaj.Lambda;
-
+import java.util.List;
 
 public class InstruccionesPreviasARenovacionPage extends PageObject {
 
