@@ -54,13 +54,13 @@ public class MetodosComunes {
             input = new FileInputStream("src/main/resources/gradle.properties");
             prop.load(input);
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            throw new Exception(ex);
         } finally {
             if (input != null) {
                 try {
                     input.close();
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    throw new Exception(e);
                 }
             }
         }

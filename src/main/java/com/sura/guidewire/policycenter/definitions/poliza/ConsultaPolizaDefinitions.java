@@ -2,13 +2,9 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.sura.guidewire.policycenter.steps.poliza.BusquedaDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
-import consultaservicio.SAPClient;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
-import java.net.MalformedURLException;
 
 public class ConsultaPolizaDefinitions {
 
