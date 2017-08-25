@@ -3,18 +3,16 @@ package com.sura.guidewire.policycenter.pages.reaseguro;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.Utils;
-
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Map;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 public class GrupoDeDireccionPage extends PageUtil {
 
@@ -70,7 +68,7 @@ public class GrupoDeDireccionPage extends PageUtil {
 
     private static final double CONSTANTE_CIEN = 100.0;
     private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
-    private static String porcentajeDeRetencionContratoCotaparte = null;
+    private String porcentajeDeRetencionContratoCotaparte = null;
     BigDecimal bigDec;
 
     public GrupoDeDireccionPage(WebDriver driver) {

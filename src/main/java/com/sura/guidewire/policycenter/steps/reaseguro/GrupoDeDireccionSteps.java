@@ -11,7 +11,7 @@ import org.jbehave.core.model.ExamplesTable;
 public class GrupoDeDireccionSteps extends ScenarioSteps {
 
     GrupoDeDireccionPage grupoDeDireccionPage;
-    private static String fechaActual = "";
+    private String fechaActual = "";
 
     @Step
     public void validaInformacionDeCotaparte() {
