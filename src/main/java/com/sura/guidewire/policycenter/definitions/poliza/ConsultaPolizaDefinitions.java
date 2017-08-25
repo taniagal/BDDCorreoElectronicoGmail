@@ -24,9 +24,4 @@ public class ConsultaPolizaDefinitions {
         numeroPoliza = buscarNumeroPoliza.capturarNumeroPoliza();
         Serenity.setSessionVariable("noPoliza".toLowerCase().trim()).to(numeroPoliza);
     }
-
-    @Then("se valida la creacion de la poliza en SAP")
-    public void validarCreacionPolizaSaP() throws MalformedURLException {
-        SAPClient.consultaPolizaEnSap(Serenity.sessionVariableCalled("noPoliza".toLowerCase().trim()));
-    }
 }
