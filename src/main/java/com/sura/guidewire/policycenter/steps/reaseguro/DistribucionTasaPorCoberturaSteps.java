@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.steps.reaseguro;
 
-
 import com.sura.guidewire.policycenter.pages.reaseguro.DistribucionTasaPorCoberturaPage;
 
 import net.thucydides.core.annotations.Step;

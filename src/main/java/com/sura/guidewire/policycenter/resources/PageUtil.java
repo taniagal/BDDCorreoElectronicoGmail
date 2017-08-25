@@ -456,7 +456,7 @@ public class PageUtil extends PageObject {
             for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
                 for (int j = 0; j < getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
                     String valorEncontrado = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + j + "]";
-                    if (valorEncontrado == dato) {
+                    if (valorEncontrado.equals(dato)) {
                         break;
                     }
                 }

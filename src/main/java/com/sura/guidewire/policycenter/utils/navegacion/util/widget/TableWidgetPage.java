@@ -1,23 +1,21 @@
 package com.sura.guidewire.policycenter.utils.navegacion.util.widget;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.RenderedPageObjectView;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
-
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class TableWidgetPage extends PageObject {
@@ -61,10 +59,7 @@ public class TableWidgetPage extends PageObject {
     }
 
     public Boolean existenFilasEnTabla() {
-        if (!obtenerFilas().isEmpty()) {
-            return true;
-        }
-        return false;
+        return !obtenerFilas().isEmpty();
     }
 
     public List<WebElement> obtenerEncabezado() {

@@ -1,14 +1,12 @@
 package com.sura.guidewire.policycenter.utils.navegacion.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class BuscarNavBarPages extends PageObject {
@@ -25,7 +23,6 @@ public class BuscarNavBarPages extends PageObject {
     protected static final int TIEMPO_5000 = 5000;
     protected static final int TIEMPO_20 = 20;
     protected static final int TIEMPO_2 = 2;
-    private static final String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
 
     public enum Opciones {
         POLIZA("Pólizas"),

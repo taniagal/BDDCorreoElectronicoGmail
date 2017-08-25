@@ -32,7 +32,7 @@ public class PolicyDefinitions {
     }
 
     @Then("el usuario deberia poder acceder a nuevo contacto persona")
-    public void nuevoContactoPersona() throws InterruptedException {
+    public void nuevoContactoPersona() {
         pcs.nuevoContactoPersona();
     }
 }
