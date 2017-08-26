@@ -59,7 +59,7 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
     @Step
     public void validarPorcentajeRetencionRiesgoCedido() {
         grupoDeDireccionPage.validarRetencionSobreElRiesgo();
-        grupoDeDireccionPage.validarRiesgoCedidoOperativoExceso();
+        //grupoDeDireccionPage.validarRiesgoCedidoOperativoExceso();
         grupoDeDireccionPage.validarProporcionCP();
     }
 
