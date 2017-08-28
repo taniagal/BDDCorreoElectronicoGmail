@@ -64,6 +64,8 @@ public class GrupoDeDireccionPage extends PageUtil {
     WebElementFacade btnAceptarFacultativo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
     WebElementFacade txtFechaFinVigencia;
+    @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRiskDV:NetRetention-inputEl')]")
+    private WebElementFacade lblRetencionNeta;
 
 
     private static final double CONSTANTE_CIEN = 100.0;
@@ -200,11 +202,16 @@ public class GrupoDeDireccionPage extends PageUtil {
     }
 
     public void validarRiesgoCedidoOperativoExceso() {
+        String calculoRiesgoExceso;
         String riesgoCedidoCP = tblRiesgoCedidoContratoExcedenteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoExcedenteBasico.getText().length() - CONSTANTE_6).replace(".", "");
-        Double valorRetenidoCP = Double.parseDouble(lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6).replace(".", ""));
-        Double limiteInferiorExceso = Double.parseDouble(tblLimiteInferiorExceso.getText().substring(CONSTANTE_1, tblLimiteInferiorExceso.getText().length() - CONSTANTE_6).replace(".", ""));
-        BigDecimal riesgoExceso = new BigDecimal(valorRetenidoCP - limiteInferiorExceso);
-        String calculoRiesgoExceso = String.valueOf(riesgoExceso);
+        if(lblRetencionNeta.getText().equals(lblValorRetenidoCp.getText())){
+            calculoRiesgoExceso = String.valueOf(CONSTANTE_0);
+        }else{
+            Double valorRetenidoCP = Double.parseDouble(lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6).replace(".", ""));
+            Double limiteInferiorExceso = Double.parseDouble(tblLimiteInferiorExceso.getText().substring(CONSTANTE_1, tblLimiteInferiorExceso.getText().length() - CONSTANTE_6).replace(".", ""));
+            BigDecimal riesgoExceso = new BigDecimal(valorRetenidoCP - limiteInferiorExceso);
+            calculoRiesgoExceso = String.valueOf(riesgoExceso);
+        }
         MatcherAssert.assertThat("Error en el valor riesgo cedido operativo de exceso, expected: " + riesgoCedidoCP + BUT_WAS + calculoRiesgoExceso, riesgoCedidoCP.equals(calculoRiesgoExceso));
     }
 
