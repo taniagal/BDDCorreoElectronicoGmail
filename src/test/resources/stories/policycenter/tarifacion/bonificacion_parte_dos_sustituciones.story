@@ -37,4 +37,4 @@ Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
 | tipo_documento       | documento | bonoT | bonoTec | bonoC | bonoCo | placa  | plan                       | mensaje                                                                     | asistencia             |
-| CEDULA DE CIUDADANIA | 11111111  | 0     | 40      | 38    | 8      | CYU123 | Plan Utilitarios y Pesados | La bonificación no coincide con lo arrojado por el sistema, Favor verificar | Asistencia Utilitarios |
+| CEDULA DE CIUDADANIA | 11111111  | 0     | 40      | 38    | 18     | CYU123 | Plan Utilitarios y Pesados | La bonificación no coincide con lo arrojado por el sistema, Favor verificar | Asistencia Utilitarios |
