@@ -32,6 +32,13 @@ public class RequisitosPorDniAutosDefinitions {
         requisitosPorDniAutosSteps.irARequisitos();
     }
 
+    @When("vaya a la opcion requisitos en rehabilitacion y diligencie requisitos")
+    public void irARequisitosEnRehabilitacion() {
+        requisitosPorDniAutosSteps.irARequisitosEnRehabilitacion();
+        requisitosPorDniAutosSteps.diligenciarRequisitos();
+    }
+
+
     @Then("debo ver un mensaje indicando requisitos pendientes $mensaje")
     public void validarMensajeRequisitosPendientes(ExamplesTable mensaje) {
         requisitosPorDniAutosSteps.validarMensajeRequsiitosPendientes(mensaje);

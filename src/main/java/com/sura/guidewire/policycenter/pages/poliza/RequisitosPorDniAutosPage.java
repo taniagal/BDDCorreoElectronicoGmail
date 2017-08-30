@@ -2,14 +2,18 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 
 public class RequisitosPorDniAutosPage extends PageUtil {
+    @Page
+    NuevaPolizaPage nuevaPolizaPage;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestCardTab-btnInnerEl']")
     private WebElementFacade botonInteresAdicionalSubmission;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
@@ -48,6 +52,12 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade panelCancelacion;
     @FindBy(xpath = "//td[@id='SubmissionWizard:Requirements']/div/span")
     private WebElementFacade botonRequisitosExpedicion;
+    @FindBy(xpath = ".//span[contains(.,'Requisitos') and contains(@class,'x-tree-node-text ')]")
+    private WebElementFacade botonRequisitosRehabilitacion;
+    @FindBy(id = "ReinstatementWizard:RequirementsScreen:ContactsWithRequirmentsLV:0:addConinsuranceLink")
+    private WebElementFacade botonDiligenciarRequisitosuno;
+    @FindBy(id = "RequirementsByContact_ExtPopup:RequestRequirement-btnInnerEl")
+    private WebElementFacade botonDiligenciarRequisitosdos;
     @FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr[3]/td")
     private WebElementFacade tablaRequisitos;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
@@ -62,6 +72,14 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade txtTipoPoliza;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton']")
     private WebElementFacade botonBorrar;
+    @FindBy(id = "p1")
+    private WebElementFacade chckRequisitos;
+    @FindBy(id = "rbEstadoFisico6")
+    private WebElementFacade opcionRecibido;
+    @FindBy(name = "rbEstadoFisico")
+    private WebElementFacade comboEstadoFisico;
+    @FindBy(xpath= "//*[@id=\"frmRequisitos\"]/table/tbody/tr[6]/td/table/tbody/tr/td/table/tbody/tr[8]/td/table/tbody/tr/td[1]/a/img")
+    private WebElementFacade botonActualizarEstados;
 
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
@@ -98,6 +116,44 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     public void irARequisitos() {
         botonRequisitosExpedicion.waitUntilPresent();
         clickearElemento(botonRequisitosExpedicion);
+    }
+
+    public void irARequisitosEnRehabilitacion() {
+        botonRequisitosRehabilitacion.waitUntilPresent();
+        clickearElemento(botonRequisitosRehabilitacion);
+    }
+
+    public void diligenciarRequisitos(){
+        botonDiligenciarRequisitosuno.waitUntilVisible();
+        botonDiligenciarRequisitosuno.click();
+        botonDiligenciarRequisitosdos.waitUntilVisible();
+        botonDiligenciarRequisitosdos.click();
+        obtenerPestanasDelNavegador();
+        seleccionarPestanaDelNavegador(CONSTANTE_1);
+        llenarFormularioDeRequisitos();
+        cerrarPestanaDelNavegador();
+        seleccionarPestanaDelNavegador(CONSTANTE_0);
+    }
+
+    public void llenarFormularioDeRequisitos(){
+        chckRequisitos.click();
+        desplegarElementoDeLista(comboEstadoFisico);
+        opcionRecibido.click();
+        botonActualizarEstados.click();
+    }
+
+
+    public void obtenerPestanasDelNavegador(){
+        ArrayList<String> newTab = new ArrayList (getDriver().getWindowHandles());
+    }
+
+    public void seleccionarPestanaDelNavegador(int numeroTab){
+        ArrayList<String> newTab = new ArrayList (getDriver().getWindowHandles());
+        getDriver().switchTo().window(newTab.get(numeroTab));
+    }
+
+    public void cerrarPestanaDelNavegador(){
+        getDriver().close();
     }
 
     public void cotizarYExpedirPoliza() {

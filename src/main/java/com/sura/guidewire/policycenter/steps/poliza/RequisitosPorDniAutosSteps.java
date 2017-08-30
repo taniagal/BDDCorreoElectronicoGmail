@@ -41,6 +41,16 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void irARequisitosEnRehabilitacion() {
+        requisitosPorDniAutosPage.irARequisitosEnRehabilitacion();
+    }
+
+    @Step
+    public void diligenciarRequisitos() {
+        requisitosPorDniAutosPage.diligenciarRequisitos();
+    }
+
+    @Step
     public void validarMensajeRequsiitosPendientes(ExamplesTable mensaje) {
         Map<String, String> asuntosBloquantes;
         String requisitosPorDni = requisitosPorDniAutosPage.validarItems();
