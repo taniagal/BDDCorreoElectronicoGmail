@@ -140,8 +140,4 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
         mnuConfiguracion.click();
         mnuLogOut.click();
     }
-
-    public void realizarEsperaDePoliza() {
-        esperarHasta(TIEMPO_30000);
-    }
 }

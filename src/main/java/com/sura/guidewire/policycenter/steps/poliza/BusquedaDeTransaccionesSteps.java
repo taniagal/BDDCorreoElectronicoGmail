@@ -68,9 +68,4 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
     public void cerrarSesionPolicy() {
         busquedaDeTransaccionesPage.cerrarSesionPolicy();
     }
-
-    @Step
-    public void realizarEsperaDePoliza() {
-        busquedaDeTransaccionesPage.realizarEsperaDePoliza();
-    }
 }
