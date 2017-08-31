@@ -131,6 +131,11 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void ingresarMotivosRehabilitacionMigradas(String motivo, String descripcion) {
+        polizaPage.ingresarMotivosRehabilitacionMigradas(motivo, descripcion);
+    }
+
+    @Step
     public void ingresarFechaCancelacion(String fechaCancelacion) {
         polizaPage.ingresarFechaCancelacion(fechaCancelacion);
     }
@@ -148,6 +153,11 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void clicRehabilitarPoliza() {
         polizaPage.clicRehabilitarPoliza();
+    }
+
+    @Step
+    public void clicRehabilitarPolizaUat() {
+        polizaPage.clicRehabilitarPolizaUat();
     }
 
     @Step
@@ -306,6 +316,11 @@ public class PolizaSteps extends GuidewireSteps {
     public void validarQueSeMuestreValorEnCampoYNoSeaEditable(String valor) {
         obtenerPolizaPage().validarQueSeMuestreValorEnCampoYNoSeaEditable(valor);
 
+    }
+
+    @Step
+    public void ingreseaIniciarRehabilitacion() {
+        obtenerPolizaPage().ingreseaIniciarRehabilitacion();
     }
 
     @Step
