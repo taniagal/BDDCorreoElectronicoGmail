@@ -46,6 +46,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     private WebElementFacade menuBuscar;
 
+
     public BusquedaDeTransaccionesPage(WebDriver driver) {
         super(driver);
     }
@@ -73,6 +74,16 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     public void clicEnElBotonBuscar() {
         botonBuscar.waitUntilPresent();
         super.clickearElemento(botonBuscar);
+    }
+
+    public void validarPolizaExpedida(ExamplesTable filtro) {
+        int contadorIteraciones = CONSTANTE_0;
+        while (tblNroPoliza.getText().equals("") && contadorIteraciones < CONSTANTE_MAXIMO_EJECUCIONES){
+            this.botonRestablecer.waitUntilVisible().click();
+            this.ingresarLosDatosDeBusqueda(filtro);
+            this.clicEnElBotonBuscar();
+            contadorIteraciones++;
+        }
     }
 
     public void verTransaccionCotizador() {
@@ -107,6 +118,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
         }
         String aplicacionDeOrigen = datosDeBusqueda.get("aplicacionDeOrigen");
         String producto = datosDeBusqueda.get("producto");
+        esperarHasta(TIEMPO_2000);
         if (!idTransaccion.isEmpty()) {
             campoIdTransaccion.sendKeys(idTransaccion);
         }

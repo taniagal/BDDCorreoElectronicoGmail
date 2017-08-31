@@ -38,6 +38,13 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresarLosDatosDeBusquedaTransversal(ExamplesTable filtro) {
+        busquedaDeTransaccionesPage.ingresarLosDatosDeBusqueda(filtro);
+        busquedaDeTransaccionesPage.clicEnElBotonBuscar();
+        busquedaDeTransaccionesPage.validarPolizaExpedida(filtro);
+    }
+
+    @Step
     public void validarResultadosDeBusqueda(ExamplesTable resultados) {
         Map<String, String> resultadoEsperado = resultados.getRows().get(0);
         String resultadoPagina = busquedaDeTransaccionesPage.validarResultadosDeBusqueda();
