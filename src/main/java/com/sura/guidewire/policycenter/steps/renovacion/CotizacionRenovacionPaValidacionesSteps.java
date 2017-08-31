@@ -50,4 +50,9 @@ public class CotizacionRenovacionPaValidacionesSteps extends ScenarioSteps {
     public void realizarCotizacionDeRenovacion() {
         cotizacionRenovacionPAValidacionesPage.realizarCotizacionDeRenovacion();
     }
+
+    @Step
+    public void realizarCotizacionDeRenovacionEnUat() {
+        cotizacionRenovacionPAValidacionesPage.realizarCotizacionDeRenovacionEnUat();
+    }
 }

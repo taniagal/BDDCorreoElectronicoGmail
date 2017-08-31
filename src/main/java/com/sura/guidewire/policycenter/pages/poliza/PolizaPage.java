@@ -26,6 +26,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PolizaPage extends PageUtil {
 
+    protected static final int CONSTANTE_61 = 61;
+    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+    private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
+    private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
+    @Page
+    CotizacionPage cotizacionPage;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
@@ -74,75 +80,20 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade botonAceptarTransaccion;
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation-btnInnerEl']")
     private WebElementFacade botonIniciarCancelacion;
-
+    @FindBy(id = "ReinstatementWizard:Draft")
+    private WebElementFacade botonIniciarRehabilitacion;
     private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
-    private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
-    private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
     private String xpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
     private String xpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
     private String xpathMensajeDeCancelacionPolizaconOneroso = "//label[@id='CancellationWizard:CancellationWizard_QuoteScreen:WarningOnerousMessageCancellation']";
     private String xpathVerPolizExpedida = "//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']";
-    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
-    protected static final int CONSTANTE_61 = 61;
-    @Page
-    CotizacionPage cotizacionPage;
 
 
     public PolizaPage(WebDriver driver) {
         super(driver);
-    }
-
-    public enum Opcion {
-        LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
-        LINK_INFORMACION_DE_LA_POLIZA(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']/div"),
-        LINK_INFORMACION_DE_LA_POLIZA_CAMBIO(".//*[@id='SubmissionWizard:PolicyInfo']/div"),
-        ENVIO(".//*[@id='SubmissionWizard:0_header_hd']");
-        private String elemento;
-
-        Opcion(String opcion) {
-            this.elemento = opcion;
-        }
-
-        public String xpath() {
-            return elemento;
-        }
-    }
-
-    public enum Boton {
-        EDITAR_TRANSACCION_DE_POLIZA(".//a[contains(.,'Editar transacción de póliza')]");
-        private String botonXP;
-
-        Boton(String boton) {
-            this.botonXP = boton;
-        }
-
-        public String xpath() {
-            return botonXP;
-        }
-    }
-
-    public enum InformacionDeLaPolizaWidget {
-        DIV_FECHA_INICIO_VIGENCIA(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']"),
-        DIV_FECHA_DE_EXPEDICION(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-inputEl']"),
-        DIV_TIPO_LICITACION(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:TypeTender-inputEl']"),
-        LINK_AGREGAR_COASEGURO(".//a[contains(.,'Agregar coaseguro')]"),
-        LINK_AGREGAR_TOMADOR(".//a[contains(.,'Agregar') and contains(@id,'AddContactsButton')]"),
-        TD_DIV_REASEGURO_ACEPTADO(".//td[contains(@id,'reaseguroAceptado-bodyEl') and (descendant::*[contains(., 'No')])]"),
-        DIV_REASEGURO_ESPECIAL(".//div[contains(@id,'campoReaseguroEspecial-containerEl')]/table/tbody/tr/td"),
-        TD_FECHA_FIN_VIGENCIA(".//td[contains(@id,'ExpirationDate-bodyEl')]");
-
-        private String elemento;
-
-        InformacionDeLaPolizaWidget(String elemento) {
-            this.elemento = elemento;
-        }
-
-        public String xpath() {
-            return elemento;
-        }
     }
 
     public void seleccionarBotonSiguienteEnInicioDeCambioDePoliza() {
@@ -198,7 +149,6 @@ public class PolizaPage extends PageUtil {
     public void seleccionarOpcionInformacionDePolizaDos() {
         seleccionarOpcion(Opcion.LINK_INFORMACION_DE_LA_POLIZA_CAMBIO.xpath(), "Información de póliza");
     }
-
 
     public void seleccionarOpcion(String xpath, String tituloPaginaEsperada) {
         try {
@@ -297,6 +247,21 @@ public class PolizaPage extends PageUtil {
         findBy(botonSiguiente).click();
     }
 
+    public void ingresarMotivosRehabilitacionMigradas(String motivo, String descripcion) {
+        waitForTextToAppear("Iniciar la rehabilitación");
+        shouldContainText("Iniciar la rehabilitación");
+        String xpathInputMotivo = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonCode-inputEl']";
+        String xpathTextareaDescripcion = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonDescription-inputEl']";
+        String botonSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
+        findBy(xpathInputMotivo).type(motivo);
+        waitFor(TIEMPO_1).seconds();
+        findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
+        waitFor(TIEMPO_1).seconds();
+        findBy(xpathTextareaDescripcion).type(descripcion);
+        waitFor(TIEMPO_1).seconds();
+        findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
+    }
+
     public void ingresarFechaCancelacion(String fechaCancelacion) {
         txtFechaCancelacion.clear();
         txtFechaCancelacion.sendKeys(fechaCancelacion);
@@ -326,6 +291,16 @@ public class PolizaPage extends PageUtil {
         btnRehabilitar.waitUntilVisible().click();
         btnAceptar.waitUntilVisible().click();
         resetImplicitTimeout();
+    }
+
+    public void clicRehabilitarPolizaUat() {
+        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        btnRehabilitar.waitUntilVisible().click();
+        btnAceptar.waitUntilVisible().click();
+        while (btnBorrar.isVisible()) {
+            clickearElemento(btnBorrar);
+            esperarHasta(TIEMPO_3000);
+        }
     }
 
     public void desplegarMotivosCancelacion() {
@@ -509,5 +484,60 @@ public class PolizaPage extends PageUtil {
         clickearElemento(botonEditarTransaccion);
         clickearElemento(botonAceptarTransaccion);
         waitForTextToAppear("Borrador");
+    }
+
+    public void ingreseaIniciarRehabilitacion(){
+        botonIniciarRehabilitacion.click();
+        waitForTextToAppear("Iniciar la rehabilitación");
+    }
+
+    public enum Opcion {
+        LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
+        LINK_INFORMACION_DE_LA_POLIZA(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']/div"),
+        LINK_INFORMACION_DE_LA_POLIZA_CAMBIO(".//*[@id='SubmissionWizard:PolicyInfo']/div"),
+        ENVIO(".//*[@id='SubmissionWizard:0_header_hd']");
+        private String elemento;
+
+        Opcion(String opcion) {
+            this.elemento = opcion;
+        }
+
+        public String xpath() {
+            return elemento;
+        }
+    }
+
+    public enum Boton {
+        EDITAR_TRANSACCION_DE_POLIZA(".//a[contains(.,'Editar transacción de póliza')]");
+        private String botonXP;
+
+        Boton(String boton) {
+            this.botonXP = boton;
+        }
+
+        public String xpath() {
+            return botonXP;
+        }
+    }
+
+    public enum InformacionDeLaPolizaWidget {
+        DIV_FECHA_INICIO_VIGENCIA(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']"),
+        DIV_FECHA_DE_EXPEDICION(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-inputEl']"),
+        DIV_TIPO_LICITACION(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:TypeTender-inputEl']"),
+        LINK_AGREGAR_COASEGURO(".//a[contains(.,'Agregar coaseguro')]"),
+        LINK_AGREGAR_TOMADOR(".//a[contains(.,'Agregar') and contains(@id,'AddContactsButton')]"),
+        TD_DIV_REASEGURO_ACEPTADO(".//td[contains(@id,'reaseguroAceptado-bodyEl') and (descendant::*[contains(., 'No')])]"),
+        DIV_REASEGURO_ESPECIAL(".//div[contains(@id,'campoReaseguroEspecial-containerEl')]/table/tbody/tr/td"),
+        TD_FECHA_FIN_VIGENCIA(".//td[contains(@id,'ExpirationDate-bodyEl')]");
+
+        private String elemento;
+
+        InformacionDeLaPolizaWidget(String elemento) {
+            this.elemento = elemento;
+        }
+
+        public String xpath() {
+            return elemento;
+        }
     }
 }

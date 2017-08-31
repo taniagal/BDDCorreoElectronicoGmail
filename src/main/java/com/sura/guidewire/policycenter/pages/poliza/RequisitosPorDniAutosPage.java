@@ -78,7 +78,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade opcionRecibido;
     @FindBy(name = "rbEstadoFisico")
     private WebElementFacade comboEstadoFisico;
-    @FindBy(xpath= "//*[@id=\"frmRequisitos\"]/table/tbody/tr[6]/td/table/tbody/tr/td/table/tbody/tr[8]/td/table/tbody/tr/td[1]/a/img")
+    @FindBy(xpath = "//*[@id=\"frmRequisitos\"]/table/tbody/tr[6]/td/table/tbody/tr/td/table/tbody/tr[8]/td/table/tbody/tr/td[1]/a/img")
     private WebElementFacade botonActualizarEstados;
 
 
@@ -123,36 +123,30 @@ public class RequisitosPorDniAutosPage extends PageUtil {
         clickearElemento(botonRequisitosRehabilitacion);
     }
 
-    public void diligenciarRequisitos(){
+    public void diligenciarRequisitos() {
         botonDiligenciarRequisitosuno.waitUntilVisible();
         botonDiligenciarRequisitosuno.click();
         botonDiligenciarRequisitosdos.waitUntilVisible();
         botonDiligenciarRequisitosdos.click();
-        obtenerPestanasDelNavegador();
         seleccionarPestanaDelNavegador(CONSTANTE_1);
         llenarFormularioDeRequisitos();
         cerrarPestanaDelNavegador();
         seleccionarPestanaDelNavegador(CONSTANTE_0);
     }
 
-    public void llenarFormularioDeRequisitos(){
+    public void llenarFormularioDeRequisitos() {
         chckRequisitos.click();
         desplegarElementoDeLista(comboEstadoFisico);
         opcionRecibido.click();
         botonActualizarEstados.click();
     }
 
-
-    public void obtenerPestanasDelNavegador(){
-        ArrayList<String> newTab = new ArrayList (getDriver().getWindowHandles());
-    }
-
-    public void seleccionarPestanaDelNavegador(int numeroTab){
-        ArrayList<String> newTab = new ArrayList (getDriver().getWindowHandles());
+    public void seleccionarPestanaDelNavegador(int numeroTab) {
+        ArrayList<String> newTab = new ArrayList(getDriver().getWindowHandles());
         getDriver().switchTo().window(newTab.get(numeroTab));
     }
 
-    public void cerrarPestanaDelNavegador(){
+    public void cerrarPestanaDelNavegador() {
         getDriver().close();
     }
 

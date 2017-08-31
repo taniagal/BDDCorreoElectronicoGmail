@@ -150,6 +150,11 @@ public class Poliza {
         polizaSteps.ingresarMotivosRehabilitacion(motivo, descripcion);
     }
 
+    @When("ingrese a la opcion iniciar la rehabilitacion en UAT")
+    public void clicRehabilitarPolizaUat() {
+        polizaSteps.clicRehabilitarPolizaUat();
+    }
+
     @Then("se genera la cancelacion expedida")
     public void realizarCancelacion() {
         polizaSteps.realizarCancelacion();

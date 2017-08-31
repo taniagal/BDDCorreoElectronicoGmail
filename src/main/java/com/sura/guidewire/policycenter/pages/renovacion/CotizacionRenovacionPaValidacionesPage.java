@@ -24,6 +24,10 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
     private WebElementFacade borraMensajeEspacioTrabajo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
     private WebElementFacade lblMensaje;
+    @FindBy(xpath = ".//*[contains(.,'Cotizar') and contains(@id,'QuoteOrReview-btnEl')]")
+    private WebElementFacade btnCotizarRenovacion;
+    @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl")
+    private WebElementFacade btnBorrar;
 
 
     public CotizacionRenovacionPaValidacionesPage(WebDriver driver) {
@@ -114,5 +118,15 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
             clickearElemento(botonCotizarVehiculos);
         }
         resetImplicitTimeout();
+    }
+
+    public void realizarCotizacionDeRenovacionEnUat(){
+        btnCotizarRenovacion.click();
+        if(btnBorrar.isVisible()){
+            clickearElemento(btnBorrar);
+            clickearElemento(btnCotizarRenovacion);
+            waitForTextToAppear("Cotización");
+        }
+
     }
 }
