@@ -67,19 +67,19 @@ public class MultiplesAsesoresPage extends PageUtil {
             checkBoxIntermediario.click();
             actions.sendKeys(Keys.TAB).build().perform();
             actions.sendKeys(Keys.ENTER).build().perform();
-            esperarHasta(TIEMPO_300);
+            esperarHasta(TIEMPO_1000);
             actions.sendKeys(dato.get("codigo")).build().perform();
-            esperarHasta(TIEMPO_200);
+            esperarHasta(TIEMPO_1000);
             actions.sendKeys(Keys.ENTER).build().perform();
             actions.sendKeys(Keys.TAB).build().perform();
-            esperarHasta(TIEMPO_1000);
+            esperarHasta(TIEMPO_2000);
             actions.sendKeys(dato.get("participacion")).build().perform();
-            esperarHasta(TIEMPO_1000);
+            esperarHasta(TIEMPO_2000);
             actions.sendKeys(Keys.TAB).build().perform();
-            esperarHasta(TIEMPO_500);
+            esperarHasta(TIEMPO_1000);
             waitFor(celdaRol).clear();
             actions.sendKeys(dato.get("rol")).build().perform();
-            esperarHasta(TIEMPO_500);
+            esperarHasta(TIEMPO_1000);
             actions.sendKeys(Keys.TAB).build().perform();
             i++;
         }
