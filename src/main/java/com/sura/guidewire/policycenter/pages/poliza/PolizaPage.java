@@ -324,7 +324,7 @@ public class PolizaPage extends PageUtil {
 
     public Boolean esFechaPorDefectoHOY(WebElementFacade fecha) {
         waitFor(fecha);
-        if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getValue()).toLocalDate())) {
+        if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
             return Boolean.TRUE;
         }
         return Boolean.FALSE;

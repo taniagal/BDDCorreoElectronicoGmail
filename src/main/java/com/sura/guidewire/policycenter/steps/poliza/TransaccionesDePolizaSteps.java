@@ -50,4 +50,9 @@ public class TransaccionesDePolizaSteps extends ScenarioSteps{
                 transaccionesDePolizaPage.validarDiferenciasTransacciones(diferencias.get("cotizacion"), diferencias.get("cambioPoliza")),
                 Is.is(Matchers.equalTo(true)));
     }
+
+    @Step
+    public void validarTransaccionesPoliza(){
+        transaccionesDePolizaPage.validarTransaccionesPoliza();
+    }
 }

@@ -2,11 +2,14 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 public class TransaccionesDePolizaPage extends PageUtil {
@@ -34,6 +37,9 @@ public class TransaccionesDePolizaPage extends PageUtil {
     @FindBy(xpath = "//span[contains(.,'Fecha de inicio de vigencia')]")
     private WebElementFacade columnaFechaInicioVigencia;
 
+    PolizaPage polizaPage;
+
+    private static String PATHTRANSACCIONESPOLIZA = ".//*[@id='PolicyFile_Jobs:Policy_JobsScreen:DetailPanel:JobsLV-body']//tbody";
     public TransaccionesDePolizaPage(WebDriver driver) {
         super(driver);
     }
@@ -71,5 +77,37 @@ public class TransaccionesDePolizaPage extends PageUtil {
         }
         resetImplicitTimeout();
         return datosIguales;
+    }
+
+    public void validarTransaccionesPoliza(){
+        ArrayList<String> tiposTransaccionesEncontrados = new ArrayList<>();
+        for (int i=CONSTANTE_1;i<=CONSTANTE_3;i++){
+            WebElementFacade tipoTransaccion = $(PATHTRANSACCIONESPOLIZA + "/tr["+i+"]/td[3]");
+            WebElementFacade fechaTransaccion = $(PATHTRANSACCIONESPOLIZA + "/tr["+i+"]/td[4]");
+            WebElementFacade estadoTransaccion = $(PATHTRANSACCIONESPOLIZA + "/tr["+i+"]/td[5]");
+            MatcherAssert.assertThat("la fecha o el estado de transaccion no es correcto",validarFechaYEstadoTransaccion(fechaTransaccion,estadoTransaccion));
+            tiposTransaccionesEncontrados.add(tipoTransaccion.getText());
+        }
+        MatcherAssert.assertThat("No se encontro tipo de transaccion: Cancelación", encontrarTextoEnLista(tiposTransaccionesEncontrados,"Cancelación"));
+        MatcherAssert.assertThat("No se encontro tipo de transaccion: Cambio en la póliza", encontrarTextoEnLista(tiposTransaccionesEncontrados,"Cambio en la póliza"));
+        MatcherAssert.assertThat("No se encontro tipo de transaccion: Rehabilitación", encontrarTextoEnLista(tiposTransaccionesEncontrados,"Rehabilitación"));
+    }
+
+    private boolean validarFechaYEstadoTransaccion(WebElementFacade fecha, WebElementFacade estado){
+        if(polizaPage.esFechaPorDefectoHOY(fecha)){
+            if (estado.getText().equals("Expedida")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean encontrarTextoEnLista(ArrayList<String> lista, String textoBuscado){
+        for (String texto : lista){
+            if (texto.equals(textoBuscado)){
+                return true;
+            }
+        }
+        return false;
     }
 }
