@@ -32,8 +32,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Navegacion extends PageUtil {
 
-    private final PageUtil gw = new PageUtil(getDriver());
-    private final Actions act = new Actions(getDriver());
 
     // Objetos menu Escritorio
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
@@ -296,18 +294,18 @@ public class Navegacion extends PageUtil {
 
     // Navegacion menu Escritorio
     public MisActividadesPage irAMisActividades() {
-        gw.desplegarMenu(menuEscritorio);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(menuEscritorio);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(itemMisActividades).release(itemMisActividades).click().build().perform();
+        actions.moveToElement(itemMisActividades).release(itemMisActividades).click().build().perform();
         return new MisActividadesPage(getDriver());
     }
 
     public MisCuentasPage irAMisCuentas() {
-        gw.desplegarMenu(menuEscritorio);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(menuEscritorio);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuItemMisCuentas).release(mnuItemMisCuentas).click().build().perform();
+        actions.moveToElement(mnuItemMisCuentas).release(mnuItemMisCuentas).click().build().perform();
         return new MisCuentasPage(getDriver());
     }
 
@@ -327,34 +325,34 @@ public class Navegacion extends PageUtil {
     }
 
     public MisEnviosPage irAMisEnvios() {
-        gw.desplegarMenu(menuEscritorio);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(menuEscritorio);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuItemMisEnvios).release(mnuItemMisEnvios).click().build().perform();
+        actions.moveToElement(mnuItemMisEnvios).release(mnuItemMisEnvios).click().build().perform();
         return new MisEnviosPage(getDriver());
     }
 
     public MisRenovacionesPage irAMisRenovaciones() {
-        gw.desplegarMenu(menuEscritorio);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(menuEscritorio);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuItemMisRenovaciones).release(mnuItemMisRenovaciones).click().build().perform();
+        actions.moveToElement(mnuItemMisRenovaciones).release(mnuItemMisRenovaciones).click().build().perform();
         return new MisRenovacionesPage(getDriver());
     }
 
     public MisOtrasTransacPage irAMisOtrasTransacciones() {
-        gw.desplegarMenu(menuEscritorio);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(menuEscritorio);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuItemMisOtrasTrans).release(mnuItemMisOtrasTrans).click().build().perform();
+        actions.moveToElement(mnuItemMisOtrasTrans).release(mnuItemMisOtrasTrans).click().build().perform();
         return new MisOtrasTransacPage(getDriver());
     }
 
     public MisColasPage irAMisColas() {
-        gw.desplegarMenu(menuEscritorio);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(menuEscritorio);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuItemMisColas).release(mnuItemMisColas).click().build().perform();
+        actions.moveToElement(mnuItemMisColas).release(mnuItemMisColas).click().build().perform();
         return new MisColasPage(getDriver());
     }
 
@@ -366,8 +364,8 @@ public class Navegacion extends PageUtil {
         esperarHasta(TIEMPO_2500);
         clickearElemento(mnuCuenta);
         esperarHasta(TIEMPO_500);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemNuevaCuenta).release(mnuItemNuevaCuenta).click().build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.moveToElement(mnuItemNuevaCuenta).release(mnuItemNuevaCuenta).click().build().perform();
         return new NuevaCuentaPage(getDriver());
     }
 
@@ -380,39 +378,39 @@ public class Navegacion extends PageUtil {
 
     // Navegacion menu Poliza
     public NuevoEnvioPage irANuevoEnvio() {
-        gw.desplegarMenu(mnuPoliza);
-        act.moveToElement(mnuItemNuevoEnvio).release(mnuItemNuevoEnvio).click().build().perform();
+        desplegarMenu(mnuPoliza);
+        actions.moveToElement(mnuItemNuevoEnvio).release(mnuItemNuevoEnvio).click().build().perform();
         return new NuevoEnvioPage(getDriver());
     }
 
     // Navegacion menu Contacto
     public NuevaCompaniaPage irANuevaCompania() {
-        gw.desplegarMenu(mnuContact);
-        act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemNuevaCompania).release(mnuItemNuevaCompania).click().build().perform();
+        desplegarMenu(mnuContact);
+        actions.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemNuevaCompania).release(mnuItemNuevaCompania).click().build().perform();
         waitForTextToAppear("Nuevo Contacto");
         return new NuevaCompaniaPage(getDriver());
     }
 
     public NuevaPersonaPage irANuevaPersona() {
-        gw.desplegarMenu(mnuContact);
-        act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemNuevaPersona).release(mnuItemNuevaPersona).click().build().perform();
+        desplegarMenu(mnuContact);
+        actions.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemNuevaPersona).release(mnuItemNuevaPersona).click().build().perform();
         waitForTextToAppear("Nuevo Contacto");
         return new NuevaPersonaPage(getDriver());
     }
 
     public BuscarContactoPage irABuscarContacto() {
-        gw.desplegarMenu(mnuContact);
-        act.moveToElement(mnuItemContactoBusqueda).release(mnuItemContactoBusqueda).click().build().perform();
+        desplegarMenu(mnuContact);
+        actions.moveToElement(mnuItemContactoBusqueda).release(mnuItemContactoBusqueda).click().build().perform();
         return new BuscarContactoPage(getDriver());
     }
 
     public BuscarPolizasPage irABuscarPolizas() {
-        gw.desplegarMenu(mnuBuscar);
-        act.moveToElement(mnuItemBuscarPoliza).release(mnuItemBuscarPoliza).click().build().perform();
+        desplegarMenu(mnuBuscar);
+        actions.moveToElement(mnuItemBuscarPoliza).release(mnuItemBuscarPoliza).click().build().perform();
         return new BuscarPolizasPage(getDriver());
     }
 
@@ -425,654 +423,654 @@ public class Navegacion extends PageUtil {
     }
 
     public BuscarCodAgentePage irABuscarCodAgente() {
-        gw.desplegarMenu(mnuBuscar);
-        act.moveToElement(mnuItemBuscarCodAgente).release(mnuItemBuscarCodAgente).click().build().perform();
+        desplegarMenu(mnuBuscar);
+        actions.moveToElement(mnuItemBuscarCodAgente).release(mnuItemBuscarCodAgente).click().build().perform();
         return new BuscarCodAgentePage(getDriver());
     }
 
     public BuscarActividadesPage irABuscarActividades() {
-        gw.desplegarMenu(mnuBuscar);
-        act.moveToElement(mnuItemBuscarAct).release(mnuItemBuscarAct).click().build().perform();
+        desplegarMenu(mnuBuscar);
+        actions.moveToElement(mnuItemBuscarAct).release(mnuItemBuscarAct).click().build().perform();
         return new BuscarActividadesPage(getDriver());
     }
 
     public BuscarContactosPage irABuscarContactos() {
         esperarHasta(TIEMPO_2500);
         withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(mnuBuscar).waitUntilVisible();
-        gw.desplegarMenu(mnuBuscar);
-        act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
+        desplegarMenu(mnuBuscar);
+        actions.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
         return new BuscarContactosPage(getDriver());
     }
 
     // Navegacion menu Equipo
     public EquipoPage irAEquipo() {
-        gw.desplegarMenu(mnuEquipo);
-        act.moveToElement(mnuEquipo).release(mnuEquipo).click().build().perform();
+        desplegarMenu(mnuEquipo);
+        actions.moveToElement(mnuEquipo).release(mnuEquipo).click().build().perform();
         return new EquipoPage(getDriver());
     }
 
     // Navegacion menu Administracion
     public AdminUsuariosPage irAAdminUsuarios() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemUsuario).release(mnuItemUsuario).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemUsuario).release(mnuItemUsuario).click().build().perform();
         return new AdminUsuariosPage(getDriver());
     }
 
     public AdminGruposPage irAAdminGrupos() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemGrupos).release(mnuItemGrupos).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemGrupos).release(mnuItemGrupos).click().build().perform();
         return new AdminGruposPage(getDriver());
     }
 
     public AdminRolesPage irAAdminRoles() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemRoles).release(mnuItemRoles).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemRoles).release(mnuItemRoles).click().build().perform();
         return new AdminRolesPage(getDriver());
     }
 
     public AdminRegionesPage irAAdminRegiones() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemRegiones).release(mnuItemRegiones).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemRegiones).release(mnuItemRegiones).click().build().perform();
         return new AdminRegionesPage(getDriver());
     }
 
     public AdminOrganizacionesPage irAAdminOrganizaciones() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemOrganizaciones).release(mnuItemOrganizaciones).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemOrganizaciones).release(mnuItemOrganizaciones).click().build().perform();
         return new AdminOrganizacionesPage(getDriver());
     }
 
     public AdminCodAgentesPage irAAdminCodAgentes() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemCodAgente).release(mnuItemCodAgente).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemCodAgente).release(mnuItemCodAgente).click().build().perform();
         return new AdminCodAgentesPage(getDriver());
     }
 
     public AdminPerfilAutoridadPage irAAdminPerfilAutoridad() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemPerAutoridad).release(mnuItemPerAutoridad).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemPerAutoridad).release(mnuItemPerAutoridad).click().build().perform();
         return new AdminPerfilAutoridadPage(getDriver());
     }
 
     public AdminAtributosPage irAAdminAtributos() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemAtributos).release(mnuItemAtributos).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemAtributos).release(mnuItemAtributos).click().build().perform();
         return new AdminAtributosPage(getDriver());
     }
 
     public AdminGruposAfinidadPage irAAdminGruposAfinidad() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemGruposAfinidad).release(mnuItemGruposAfinidad).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemGruposAfinidad).release(mnuItemGruposAfinidad).click().build().perform();
         return new AdminGruposAfinidadPage(getDriver());
     }
 
     public AdminPatronesActividadPage irAAdminPatronesActividad() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemPatronesActividad).release(mnuItemPatronesActividad).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemPatronesActividad).release(mnuItemPatronesActividad).click().build().perform();
         return new AdminPatronesActividadPage(getDriver());
     }
 
     public AdminDiasFestivosPage irAAdminDiasFestivos() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemDiasFestivos).release(mnuItemDiasFestivos).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemDiasFestivos).release(mnuItemDiasFestivos).click().build().perform();
         return new AdminDiasFestivosPage(getDriver());
     }
 
     public AdminPatronesFormPolizaPage irAAdminPatronesFormPoliza() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemPatronesFormularioPoliza).release(mnuItemPatronesFormularioPoliza).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemPatronesFormularioPoliza).release(mnuItemPatronesFormularioPoliza).click().build().perform();
         return new AdminPatronesFormPolizaPage(getDriver());
     }
 
     public AdminRetencionPolizasPage irAAdminRetencionPolizas() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemRetenciionesPolizas).release(mnuItemRetenciionesPolizas).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemRetenciionesPolizas).release(mnuItemRetenciionesPolizas).click().build().perform();
         return new AdminRetencionPolizasPage(getDriver());
     }
 
     public AdminMensajesPage irAAdminMensajes() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemMensajes).release(mnuItemMensajes).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemMensajes).release(mnuItemMensajes).click().build().perform();
         return new AdminMensajesPage(getDriver());
     }
 
     public AdminColasMensajesPage irAAdminColasMensajes() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemColasMensajes).release(mnuItemColasMensajes).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemColasMensajes).release(mnuItemColasMensajes).click().build().perform();
         return new AdminColasMensajesPage(getDriver());
     }
 
     public AdminFlujosTrabajoPage irAAdminFlujosTrabajo() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemFlujosTrabajo).release(mnuItemFlujosTrabajo).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemFlujosTrabajo).release(mnuItemFlujosTrabajo).click().build().perform();
         return new AdminFlujosTrabajoPage(getDriver());
     }
 
     public AdminEstadistFlujoTrabajoPage irAAdminEstadistFlujoTrabajo() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemEstadisticaFlujos).release(mnuItemEstadisticaFlujos).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemEstadisticaFlujos).release(mnuItemEstadisticaFlujos).click().build().perform();
         return new AdminEstadistFlujoTrabajoPage(getDriver());
     }
 
     public AdminImportarDatosPage irAAdminImportarDatos() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemImportDatos).release(mnuItemImportDatos).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemImportDatos).release(mnuItemImportDatos).click().build().perform();
         return new AdminImportarDatosPage(getDriver());
     }
 
     public AdminExportarDatosPage irAAdminExportarDatos() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemExportDatos).release(mnuItemExportDatos).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemExportDatos).release(mnuItemExportDatos).click().build().perform();
         return new AdminExportarDatosPage(getDriver());
     }
 
     public AdminParamSecuenciaPage irAAdminParamSecuencia() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemParametrosSecuencia).release(mnuItemParametrosSecuencia).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemParametrosSecuencia).release(mnuItemParametrosSecuencia).click().build().perform();
         return new AdminParamSecuenciaPage(getDriver());
     }
 
     public AdminFormatoExportaPage irAAdminFormatoExporta() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemFormatoExpHojasCalculo).release(mnuItemFormatoExpHojasCalculo).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemFormatoExpHojasCalculo).release(mnuItemFormatoExpHojasCalculo).click().build().perform();
         return new AdminFormatoExportaPage(getDriver());
     }
 
     public AdminCambioDatosPage irAAdminCambioDatos() {
-        gw.desplegarMenu(mnuAdministracion);
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemCambioDatos).release(mnuItemCambioDatos).click().build().perform();
+        desplegarMenu(mnuAdministracion);
+        actions.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuItemCambioDatos).release(mnuItemCambioDatos).click().build().perform();
         return new AdminCambioDatosPage(getDriver());
     }
 
     // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
-        gw.desplegarMenu(mnuAccionesEscritorio);
-        act.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
+        desplegarMenu(mnuAccionesEscritorio);
+        actions.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
         return new EscritorioNuevoEnvioPage(getDriver());
     }
 
     public EscritorioNuevaCuentaPage irAEscritorioNuevaCuenta() {
         menuEscritorio.click();
-        gw.desplegarMenu(mnuAccionesEscritorio);
-        act.moveToElement(mnuAccionNuevaCuenta).release(mnuAccionNuevaCuenta).click().build().perform();
+        desplegarMenu(mnuAccionesEscritorio);
+        actions.moveToElement(mnuAccionNuevaCuenta).release(mnuAccionNuevaCuenta).click().build().perform();
         return new EscritorioNuevaCuentaPage(getDriver());
     }
 
     // Navegacion menu Acciones Cuenta
     public CuentaNuevaNotaPage irACuentaNuevaNota() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionNuevaNota).release(mnuAccionNuevaNota).click().build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionNuevaNota).release(mnuAccionNuevaNota).click().build().perform();
         return new CuentaNuevaNotaPage(getDriver());
     }
 
     public CuentaLigaDocExistePage irACuentaLigaDocExiste() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionDocNuevos).release(mnuAccionDocNuevos).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionLigarDocExistente).release(mnuAccionLigarDocExistente).click().build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionDocNuevos).release(mnuAccionDocNuevos).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionLigarDocExistente).release(mnuAccionLigarDocExistente).click().build().perform();
         return new CuentaLigaDocExistePage(getDriver());
     }
 
     public CuentaCreaDocNuevaPlantPage irACuentaCreaDocNuevaPlant() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionDocNuevos).release(mnuAccionDocNuevos).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionCrearDocPlantilla).release(mnuAccionCrearDocPlantilla).click().build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionDocNuevos).release(mnuAccionDocNuevos).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionCrearDocPlantilla).release(mnuAccionCrearDocPlantilla).click().build().perform();
         return new CuentaCreaDocNuevaPlantPage(getDriver());
     }
 
     public CuentaNuevoCorreoElecPage irACuentaNuevoCorreoElect() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionNuevoCorreo).release(mnuAccionNuevoCorreo).click().build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionNuevoCorreo).release(mnuAccionNuevoCorreo).click().build().perform();
         return new CuentaNuevoCorreoElecPage(getDriver());
     }
 
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
         waitFor(mnuAccionesCuenta).waitUntilPresent();
-        gw.desplegarMenu(mnuAccionesCuenta);
+        desplegarMenu(mnuAccionesCuenta);
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
+        actions.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
         return new CuentaNuevoEnvioPage(getDriver());
     }
 
     public CuentaNuevoEnvioPage irANuevoEnvioDeCuenta() {
         waitFor(mnuAccionesCuenta);
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
         return new CuentaNuevoEnvioPage(getDriver());
     }
 
     public CuentaRevisaNuevoCorreoPage irACuentaRevisaNuevoCorreo() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionCorreoNuevo).release(mnuAccionCorreoNuevo).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRevisarNuevoCorreo).release(mnuAccionRevisarNuevoCorreo).click().build().perform();
+        actions.moveToElement(mnuAccionCorreoNuevo).release(mnuAccionCorreoNuevo).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionRevisarNuevoCorreo).release(mnuAccionRevisarNuevoCorreo).click().build().perform();
         return new CuentaRevisaNuevoCorreoPage(getDriver());
     }
 
     public CuentaReuneAgentePage irACuentaReuneAgente() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionEntrevista).release(mnuAccionEntrevista).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionReunirseAgenteAgencia).release(mnuAccionReunirseAgenteAgencia).click().build().perform();
+        actions.moveToElement(mnuAccionEntrevista).release(mnuAccionEntrevista).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionReunirseAgenteAgencia).release(mnuAccionReunirseAgenteAgencia).click().build().perform();
         return new CuentaReuneAgentePage(getDriver());
     }
 
     public CuentaReuneAseguradoPage irACuentaReuneAsegurado() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionEntrevista).release(mnuAccionEntrevista).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionReunirseAsegurado).release(mnuAccionReunirseAsegurado).click().build().perform();
+        actions.moveToElement(mnuAccionEntrevista).release(mnuAccionEntrevista).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionReunirseAsegurado).release(mnuAccionReunirseAsegurado).click().build().perform();
         return new CuentaReuneAseguradoPage(getDriver());
     }
 
     public CuentaCancelaPolizDividPage irACuentaCancelaPolizDivid() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionCancelPolizaDividida).release(mnuAccionCancelPolizaDividida).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionCancelPolizaDividida).release(mnuAccionCancelPolizaDividida).click().build().perform();
         return new CuentaCancelaPolizDividPage(getDriver());
     }
 
     public CuentaCotizaRequeridaPage irACuentaCotizaRequerida() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionCotizacionReq).release(mnuAccionCotizacionReq).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionCotizacionReq).release(mnuAccionCotizacionReq).click().build().perform();
         return new CuentaCotizaRequeridaPage(getDriver());
     }
 
     public CuentaDiarioX30Page irACuentaDiarioX30() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionDiarioX30).release(mnuAccionDiarioX30).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionDiarioX30).release(mnuAccionDiarioX30).click().build().perform();
         return new CuentaDiarioX30Page(getDriver());
     }
 
     public CuentaDiarioX60Page irACuentaDiarioX60() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionDiarioX60).release(mnuAccionDiarioX60).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionDiarioX60).release(mnuAccionDiarioX60).click().build().perform();
         return new CuentaDiarioX60Page(getDriver());
     }
 
     public CuentaDiarioX90Page irACuentaDiarioX90() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionDiarioX90).release(mnuAccionDiarioX90).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionDiarioX90).release(mnuAccionDiarioX90).click().build().perform();
         return new CuentaDiarioX90Page(getDriver());
     }
 
     public CuentaNotificaPolizaPage irACuentaNotificaPoliza() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionNotificacionPoliza).release(mnuAccionNotificacionPoliza).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionNotificacionPoliza).release(mnuAccionNotificacionPoliza).click().build().perform();
         return new CuentaNotificaPolizaPage(getDriver());
     }
 
     public CuentaRecuerdaGeneralPage irAEscritorioRecuerdaGeneral() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRecordatorioGeneral).release(mnuAccionRecordatorioGeneral).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionRecordatorioGeneral).release(mnuAccionRecordatorioGeneral).click().build().perform();
         return new CuentaRecuerdaGeneralPage(getDriver());
     }
 
     public CuentaRevisaAgentePage irACuentaRevisaAgente() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRevisarAgente).release(mnuAccionRevisarAgente).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionRevisarAgente).release(mnuAccionRevisarAgente).click().build().perform();
         return new CuentaRevisaAgentePage(getDriver());
     }
 
     public CuentaRevPer30DiaAseguraPage irACuentaRevPer30DiaAsegura() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRevisarX30).release(mnuAccionRevisarX30).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionRevisarX30).release(mnuAccionRevisarX30).click().build().perform();
         return new CuentaRevPer30DiaAseguraPage(getDriver());
     }
 
     public CuentaRevPer45DiaAseguraPage irACuentaRevPer45DiaAsegura() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRevisarX45).release(mnuAccionRevisarX45).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionRevisarX45).release(mnuAccionRevisarX45).click().build().perform();
         return new CuentaRevPer45DiaAseguraPage(getDriver());
     }
 
     public CuentaRevPer60DiaAseguraPage irACuentaRevPer60DiaAsegura() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRevisarX60).release(mnuAccionRevisarX60).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionRevisarX60).release(mnuAccionRevisarX60).click().build().perform();
         return new CuentaRevPer60DiaAseguraPage(getDriver());
     }
 
     public CuentaRevisaRendimPage irACuentaRevisaRendim() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRevisarRendimiento).release(mnuAccionRevisarRendimiento).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionRevisarRendimiento).release(mnuAccionRevisarRendimiento).click().build().perform();
         return new CuentaRevisaRendimPage(getDriver());
     }
 
     public CuentaVerificaCoberPage irACuentaVerificaCober() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionVerificarCobertura).release(mnuAccionVerificarCobertura).click().build().perform();
+        actions.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionVerificarCobertura).release(mnuAccionVerificarCobertura).click().build().perform();
         return new CuentaVerificaCoberPage(getDriver());
     }
 
     public CuentaTransPoliACuentaPage irACuentaTransPoliACuenta() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.moveToElement(mnuAccionTransferirPolizas).release(mnuAccionTransferirPolizas).click().build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.moveToElement(mnuAccionTransferirPolizas).release(mnuAccionTransferirPolizas).click().build().perform();
         return new CuentaTransPoliACuentaPage(getDriver());
     }
 
     public CuentaReescrPoliACuentaPage irACuentaReescrPoliACuenta() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionReescribirPolizas).release(mnuAccionReescribirPolizas).click().build().perform();
+        actions.moveToElement(mnuAccionReescribirPolizas).release(mnuAccionReescribirPolizas).click().build().perform();
         return new CuentaReescrPoliACuentaPage(getDriver());
     }
 
     public CuentaCombPoliACuentaPage irACuentaCombPoliACuenta() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionCombinarCuentas).release(mnuAccionCombinarCuentas).click().build().perform();
+        actions.moveToElement(mnuAccionCombinarCuentas).release(mnuAccionCombinarCuentas).click().build().perform();
         return new CuentaCombPoliACuentaPage(getDriver());
     }
 
     public CuentaCreaAgenteNuevPage irACuentaCreaAgenteNuev() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionAgenteNuevo).release(mnuAccionAgenteNuevo).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionAgenteNuevo).release(mnuAccionAgenteNuevo).click().build().perform();
         return new CuentaCreaAgenteNuevPage(getDriver());
     }
 
     public CuentaObtAudPersoInterPage irACuentaObtAudPersoInter() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionAuditoriaInterno).release(mnuAccionAuditoriaInterno).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionAuditoriaInterno).release(mnuAccionAuditoriaInterno).click().build().perform();
         return new CuentaObtAudPersoInterPage(getDriver());
     }
 
     public CuentaObtAudServExterPage irACuentaObtAudServExter() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionAuditoriaExterna).release(mnuAccionAuditoriaExterna).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionAuditoriaExterna).release(mnuAccionAuditoriaExterna).click().build().perform();
         return new CuentaObtAudServExterPage(getDriver());
     }
 
     public CuentaObtCotizReaseguroPage irACuentaObtCotizReaseguro() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionCotizacionReaseguro).release(mnuAccionCotizacionReaseguro).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionCotizacionReaseguro).release(mnuAccionCotizacionReaseguro).click().build().perform();
         return new CuentaObtCotizReaseguroPage(getDriver());
     }
 
     public CuentaObtDatoOficPage irACuentaObtDatoOfic() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionDatosOf).release(mnuAccionDatosOf).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionDatosOf).release(mnuAccionDatosOf).click().build().perform();
         return new CuentaObtDatoOficPage(getDriver());
     }
 
     public CuentaObtInfoVehiMotoPage irACuentaObtInfoVehiMoto() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionInformesMotorizado).release(mnuAccionInformesMotorizado).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionInformesMotorizado).release(mnuAccionInformesMotorizado).click().build().perform();
         return new CuentaObtInfoVehiMotoPage(getDriver());
     }
 
     public CuentaObtInspContSiniesPage irACuentaObtInspContSinies() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionInspeccionSiniestro).release(mnuAccionInspeccionSiniestro).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionInspeccionSiniestro).release(mnuAccionInspeccionSiniestro).click().build().perform();
         return new CuentaObtInspContSiniesPage(getDriver());
     }
 
     public CuentaObtInspServExterPage irACuentaObtInspServExter() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionInspeccionExterno).release(mnuAccionInspeccionExterno).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionInspeccionExterno).release(mnuAccionInspeccionExterno).click().build().perform();
         return new CuentaObtInspServExterPage(getDriver());
     }
 
     public CuentaObtReporCredPage irACuentaObtReporCred() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionReportesCredito).release(mnuAccionReportesCredito).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionReportesCredito).release(mnuAccionReportesCredito).click().build().perform();
         return new CuentaObtReporCredPage(getDriver());
     }
 
     public CuentaRevisionLegalPage irACuentaRevisionLegal() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRevisionLegal).release(mnuAccionRevisionLegal).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionRevisionLegal).release(mnuAccionRevisionLegal).click().build().perform();
         return new CuentaRevisionLegalPage(getDriver());
     }
 
     public CuentaObtInfRiesAgenPage irACuentaObtInfRiesAgen() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionInfoAgente).release(mnuAccionInfoAgente).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionInfoAgente).release(mnuAccionInfoAgente).click().build().perform();
         return new CuentaObtInfRiesAgenPage(getDriver());
     }
 
     public CuentaTazaCotPoliManuPage irCuentaTazaCotPoliManu() {
         mnuCuenta.click();
-        gw.desplegarMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesCuenta);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionCotizarManual).release(mnuAccionCotizarManual).click().build().perform();
+        actions.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.moveToElement(mnuAccionCotizarManual).release(mnuAccionCotizarManual).click().build().perform();
         return new CuentaTazaCotPoliManuPage(getDriver());
     }
 
@@ -1088,65 +1086,65 @@ public class Navegacion extends PageUtil {
     // Navegacion menu Acciones Contacto
     public ContactoNuevaCuentaPage irAContactoNuevaCuenta() {
         mnuContact.click();
-        gw.desplegarMenu(mnuAccionesContacto);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesContacto);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionNuevaCuentaC).release(mnuAccionNuevaCuentaC).click().build().perform();
+        actions.moveToElement(mnuAccionNuevaCuentaC).release(mnuAccionNuevaCuentaC).click().build().perform();
         return new ContactoNuevaCuentaPage(getDriver());
     }
 
     // Navegacion menu Acciones Administracion
     public AdminUsuarioNuevoPage irAAdminUsuarioNuevo() {
         mnuAdministracion.click();
-        gw.desplegarMenu(mnuAccionesAdministracion);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesAdministracion);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionUsuarioNuevo).release(mnuAccionUsuarioNuevo).click().build().perform();
+        actions.moveToElement(mnuAccionUsuarioNuevo).release(mnuAccionUsuarioNuevo).click().build().perform();
         return new AdminUsuarioNuevoPage(getDriver());
     }
 
     public AdminGrupoNuevoPage irAAdminGrupoNuevo() {
         mnuAdministracion.click();
-        gw.desplegarMenu(mnuAccionesAdministracion);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesAdministracion);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionGrupoNuevo).release(mnuAccionGrupoNuevo).click().build().perform();
+        actions.moveToElement(mnuAccionGrupoNuevo).release(mnuAccionGrupoNuevo).click().build().perform();
         return new AdminGrupoNuevoPage(getDriver());
     }
 
     public AdminOrganizacionNuevaPage irAAdminOrganizacionNueva() {
         mnuAdministracion.click();
-        gw.desplegarMenu(mnuAccionesAdministracion);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesAdministracion);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionOrganizacionNueva).release(mnuAccionOrganizacionNueva).click().build().perform();
+        actions.moveToElement(mnuAccionOrganizacionNueva).release(mnuAccionOrganizacionNueva).click().build().perform();
         return new AdminOrganizacionNuevaPage(getDriver());
     }
 
     public AdminCodAgenteNuevoPage irAAdminCodAgenteNuevo() {
         mnuAdministracion.click();
-        gw.desplegarMenu(mnuAccionesAdministracion);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesAdministracion);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionCodAgenteNuevo).release(mnuAccionCodAgenteNuevo).click().build().perform();
+        actions.moveToElement(mnuAccionCodAgenteNuevo).release(mnuAccionCodAgenteNuevo).click().build().perform();
         return new AdminCodAgenteNuevoPage(getDriver());
     }
 
     public AdminNuevoGrupoAfinidadPage irAAdminNuevoGrupoAfinidad() {
         mnuAdministracion.click();
-        gw.desplegarMenu(mnuAccionesAdministracion);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesAdministracion);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionNuevoGrupoAfiinidad).release(mnuAccionNuevoGrupoAfiinidad).click().build().perform();
+        actions.moveToElement(mnuAccionNuevoGrupoAfiinidad).release(mnuAccionNuevoGrupoAfiinidad).click().build().perform();
         return new AdminNuevoGrupoAfinidadPage(getDriver());
     }
 
     public AdminVerificarErrorPatronPage irAAdminVerificarErrorPatron() {
         mnuAdministracion.click();
-        gw.desplegarMenu(mnuAccionesAdministracion);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        desplegarMenu(mnuAccionesAdministracion);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         esperarHasta(TIEMPO_300);
-        act.moveToElement(mnuAccionVerificarErroresPatron).release(mnuAccionVerificarErroresPatron).click().build().perform();
+        actions.moveToElement(mnuAccionVerificarErroresPatron).release(mnuAccionVerificarErroresPatron).click().build().perform();
         return new AdminVerificarErrorPatronPage(getDriver());
     }
 
