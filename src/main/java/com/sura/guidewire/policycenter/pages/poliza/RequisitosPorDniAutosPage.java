@@ -101,7 +101,6 @@ public class RequisitosPorDniAutosPage extends PageUtil {
         clickearElemento(botonBuscarBeneficiario);
         clickearElemento(botonSeleccionarBeneficiario);
         txtTipoBeneficiario.waitUntilPresent().click();
-        NuevaPolizaPage nuevaPolizaPage = new NuevaPolizaPage(getDriver());
         nuevaPolizaPage.seleccionarElementoDeLaLista(tipoBeneficiario);
     }
 

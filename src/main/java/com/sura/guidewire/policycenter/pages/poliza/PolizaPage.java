@@ -30,6 +30,7 @@ public class PolizaPage extends PageUtil {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
+    private static final String mensajeRehabilitacion = "Iniciar la rehabilitación";
     @Page
     CotizacionPage cotizacionPage;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
@@ -230,8 +231,8 @@ public class PolizaPage extends PageUtil {
     }
 
     public void ingresarMotivosRehabilitacion(String motivo, String descripcion) {
-        waitForTextToAppear("Iniciar la rehabilitación");
-        shouldContainText("Iniciar la rehabilitación");
+        waitForTextToAppear(mensajeRehabilitacion);
+        shouldContainText(mensajeRehabilitacion);
         String xpathInputMotivo = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonCode-inputEl']";
         String xpathTextareaDescripcion = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonDescription-inputEl']";
         String botonSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
@@ -248,8 +249,8 @@ public class PolizaPage extends PageUtil {
     }
 
     public void ingresarMotivosRehabilitacionMigradas(String motivo, String descripcion) {
-        waitForTextToAppear("Iniciar la rehabilitación");
-        shouldContainText("Iniciar la rehabilitación");
+        waitForTextToAppear(mensajeRehabilitacion);
+        shouldContainText(mensajeRehabilitacion);
         String xpathInputMotivo = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonCode-inputEl']";
         String xpathTextareaDescripcion = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonDescription-inputEl']";
         String botonSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
@@ -488,7 +489,7 @@ public class PolizaPage extends PageUtil {
 
     public void ingreseaIniciarRehabilitacion(){
         botonIniciarRehabilitacion.click();
-        waitForTextToAppear("Iniciar la rehabilitación");
+        waitForTextToAppear(mensajeRehabilitacion);
     }
 
     public enum Opcion {
