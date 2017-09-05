@@ -40,7 +40,8 @@ public class NuevaPolizaDefinitions {
         nuevaCotizacionSteps.seleccionarProducto(datos);
         tarifaAutosSteps.agregarAsegurados(dato.get("tipo_documento"), dato.get("documento"));
         tarifaAutosSteps.agregarVehiculo(datos);
-        if (dato.get("plan").equals("Plan Autos Global")){
+        String plan = "Plan Autos Global";
+        if (dato.get("plan").equals(plan)){
             nuevaCotizacionSteps.coberturasPlanGlobal(datos);
         } else{
             tarifaAutosSteps.agregarCoberturas(datos);

@@ -78,7 +78,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
 
     public void validarPolizaExpedida(ExamplesTable filtro) {
         int contadorIteraciones = CONSTANTE_0;
-        while (tblNroPoliza.getText().equals("") && contadorIteraciones < CONSTANTE_MAXIMO_EJECUCIONES){
+        while ("".equals(tblNroPoliza.getText()) && contadorIteraciones < CONSTANTE_MAXIMO_EJECUCIONES){
             this.botonRestablecer.waitUntilVisible().click();
             this.ingresarLosDatosDeBusqueda(filtro);
             this.clicEnElBotonBuscar();

@@ -1,18 +1,20 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
+
+import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
-
-import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
 
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
