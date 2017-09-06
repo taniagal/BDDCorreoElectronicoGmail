@@ -30,7 +30,8 @@ public class PolizaPage extends PageUtil {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
-    private static final String mensajeRehabilitacion = "Iniciar la rehabilitación";
+    private static final String MENSAJE_REHABILITACION
+            = "Iniciar la rehabilitación";
     @Page
     CotizacionPage cotizacionPage;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
@@ -83,14 +84,15 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade botonIniciarCancelacion;
     @FindBy(id = "ReinstatementWizard:Draft")
     private WebElementFacade botonIniciarRehabilitacion;
-    private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
+    private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyI\"input\"nfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
     private String xpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
     private String xpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
     private String xpathMensajeDeCancelacionPolizaconOneroso = "//label[@id='CancellationWizard:CancellationWizard_QuoteScreen:WarningOnerousMessageCancellation']";
     private String xpathVerPolizExpedida = "//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']";
     private List<String> listaMotivos;
-    private List<WebElementFacade> listaMotivosWE;
+    protected static String INPUT = "input";
+
 
 
     public PolizaPage(WebDriver driver) {
@@ -231,8 +233,8 @@ public class PolizaPage extends PageUtil {
     }
 
     public void ingresarMotivosRehabilitacion(String motivo, String descripcion) {
-        waitForTextToAppear(mensajeRehabilitacion);
-        shouldContainText(mensajeRehabilitacion);
+        waitForTextToAppear(MENSAJE_REHABILITACION);
+        shouldContainText(MENSAJE_REHABILITACION);
         String xpathInputMotivo = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonCode-inputEl']";
         String xpathTextareaDescripcion = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonDescription-inputEl']";
         String botonSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
@@ -249,11 +251,10 @@ public class PolizaPage extends PageUtil {
     }
 
     public void ingresarMotivosRehabilitacionMigradas(String motivo, String descripcion) {
-        waitForTextToAppear(mensajeRehabilitacion);
-        shouldContainText(mensajeRehabilitacion);
+        waitForTextToAppear(MENSAJE_REHABILITACION);
+        shouldContainText(MENSAJE_REHABILITACION);
         String xpathInputMotivo = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonCode-inputEl']";
         String xpathTextareaDescripcion = ".//*[@id='ReinstatementWizard:ReinstatementWizard_ReinstatePolicyScreen:ReinstatePolicyDV:ReasonDescription-inputEl']";
-        String botonSiguiente = ".//*[@id='ReinstatementWizard:Next-btnInnerEl']";
         findBy(xpathInputMotivo).type(motivo);
         waitFor(TIEMPO_1).seconds();
         findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
@@ -309,7 +310,7 @@ public class PolizaPage extends PageUtil {
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
         waitFor((WebElementFacade) $(xpathMenuDesplegable)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(xpathMenuDesplegable)));
-        listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
+        List<WebElementFacade> listaMotivosWE;listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
         listaMotivos = Lambda.extract(listaMotivosWE, Lambda.on(WebElementFacade.class).getText());
     }
 
@@ -489,7 +490,7 @@ public class PolizaPage extends PageUtil {
 
     public void ingreseaIniciarRehabilitacion(){
         botonIniciarRehabilitacion.click();
-        waitForTextToAppear(mensajeRehabilitacion);
+        waitForTextToAppear(MENSAJE_REHABILITACION);
     }
 
     public enum Opcion {

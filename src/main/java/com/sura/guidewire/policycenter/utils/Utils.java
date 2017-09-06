@@ -6,18 +6,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.WebDriver;
 
-public class Utils {
+public class Utils  extends PageUtil{
 
-    protected static final int CONSTANTE_1 = 1;
-    protected static final int CONSTANTE_6 = 6;
     protected static final int CONSTANTE_10000000 = 10000000;
     protected static final int CONSTANTE_99999999 = 99999999;
     protected static final int CONSTANTE_900000000 = 900000000;
     protected static final int CONSTANTE_999999999 = 999999999;
 
-    private Utils(){
+    public Utils(WebDriver driver) {
+        super(driver);
     }
 
     public static String sumarDiasALaFechaActual(int dias) {

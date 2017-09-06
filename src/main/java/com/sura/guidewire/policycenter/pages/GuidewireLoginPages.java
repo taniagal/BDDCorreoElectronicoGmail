@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -80,12 +79,21 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     }
 
     private Function<? super WebDriver, Boolean> valorDeEntradaActualizadoA(final String elemento, final String valor) {
-        return new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver webDriver) {
-                return $(elemento).getValue().equalsIgnoreCase(valor);
-            }
-        };
+        return new WebDriverBooleanFunction(elemento, valor);
     }
 
+    private class WebDriverBooleanFunction implements Function<WebDriver, Boolean> {
+        private final String elemento;
+        private final String valor;
+
+        public WebDriverBooleanFunction(String elemento, String valor) {
+            this.elemento = elemento;
+            this.valor = valor;
+        }
+
+        @Override
+        public Boolean apply(WebDriver webDriver) {
+            return $(elemento).getValue().equalsIgnoreCase(valor);
+        }
+    }
 }

@@ -24,7 +24,6 @@ import com.sura.guidewire.policycenter.utils.menu.superior.poliza.PolizaBuscarPa
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
