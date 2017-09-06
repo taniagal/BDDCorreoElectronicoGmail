@@ -30,8 +30,7 @@ public class PolizaPage extends PageUtil {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
-    private static final String MENSAJE_REHABILITACION
-            = "Iniciar la rehabilitación";
+    private static final String MENSAJE_REHABILITACION = "Iniciar la rehabilitación";
     @Page
     CotizacionPage cotizacionPage;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
