@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.utils;
 
-
 import java.util.List;
 
 import org.hamcrest.Description;
@@ -26,12 +25,9 @@ public class AssertUtil {
             this.expectedValue = expectedValue;
         }
 
-        @Override
         protected boolean matchesSafely(List<String> values) {
             return !Lambda.filter(StringContains.containsString(expectedValue), values).isEmpty();
         }
-
-        @Override
         public void describeTo(Description description) {
             description.appendText("Se esperaba una lista que contuviera un string ").appendValue(expectedValue);
         }

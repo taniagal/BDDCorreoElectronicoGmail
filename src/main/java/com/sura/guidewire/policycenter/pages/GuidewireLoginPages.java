@@ -32,7 +32,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     public static final String CBO_PAIS = ".//*[@id='country']";
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
-
+    public static final String TRACE= "\nTRACE: \n";
 
 
     @WhenPageOpens
@@ -58,13 +58,12 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
             elemento = element((WebElementFacade) $(xpath));
 
         } catch (NoSuchElementException e) {
-            LOGGER.error(" \nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.error(" \nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + TRACE + e);
         } catch (StaleElementReferenceException sere){
-            LOGGER.error(" \nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.error(" \nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + TRACE + sere);
         } catch (Exception e) {
-            LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + TRACE + e);
         }
-
         return elemento;
     }
 
@@ -80,12 +79,20 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     }
 
     private Function<? super WebDriver, Boolean> valorDeEntradaActualizadoA(final String elemento, final String valor) {
-        return new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver webDriver) {
-                return $(elemento).getValue().equalsIgnoreCase(valor);
-            }
-        };
+        return new WebDriverBooleanFunction(elemento, valor);
     }
 
+    private class WebDriverBooleanFunction implements Function<WebDriver, Boolean> {
+        private final String elemento;
+        private final String valor;
+
+        public WebDriverBooleanFunction(String elemento, String valor) {
+            this.elemento = elemento;
+            this.valor = valor;
+        }
+
+        public Boolean apply(WebDriver webDriver) {
+            return $(elemento).getValue().equalsIgnoreCase(valor);
+        }
+    }
 }
