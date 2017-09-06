@@ -309,7 +309,8 @@ public class PolizaPage extends PageUtil {
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
         waitFor((WebElementFacade) $(xpathMenuDesplegable)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(xpathMenuDesplegable)));
-        List<WebElementFacade> listaMotivosWE;listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
+        List<WebElementFacade> listaMotivosWE;
+        listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
         listaMotivos = Lambda.extract(listaMotivosWE, Lambda.on(WebElementFacade.class).getText());
     }
 

@@ -33,7 +33,7 @@ public class ResumenDePolizaAutoPage extends PageUtil {
     @FindBy(xpath = ".//*[contains(@id,'PolicyPerEffDate-inputEl')]")
     private WebElementFacade labelFechaInicioVigencia;
 
-    protected static  String fechaCotizador = "fechaCotizador";
+    protected static final String fechaCotizador = "fechaCotizador";
 
     public ResumenDePolizaAutoPage(WebDriver driver) {
         super(driver);
