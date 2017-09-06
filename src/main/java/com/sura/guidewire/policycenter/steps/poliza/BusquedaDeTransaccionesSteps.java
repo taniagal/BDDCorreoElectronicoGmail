@@ -68,4 +68,9 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
     public void cerrarSesionPolicy() {
         busquedaDeTransaccionesPage.cerrarSesionPolicy();
     }
+
+    @Step
+    public void capturarCostoTotalCotizacion() {
+        busquedaDeTransaccionesPage.capturarCostoTotalCotizacion();
+    }
 }

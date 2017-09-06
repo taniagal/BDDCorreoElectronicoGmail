@@ -45,6 +45,8 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     private WebElementFacade labelFechaInicioVigencia;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     private WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
+    WebElementFacade labelCostoTotalCotizar;
 
 
     public BusquedaDeTransaccionesPage(WebDriver driver) {
@@ -98,6 +100,11 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
         Serenity.setSessionVariable("valorImpuesto".toLowerCase().trim()).to(impuestosTarifas);
         String fechaInicioVigencia = labelFechaInicioVigencia.getText();
         Serenity.setSessionVariable("valorFechaExpedicion".toLowerCase().trim()).to(fechaInicioVigencia);
+    }
+
+    public void capturarCostoTotalCotizacion() {
+        String costoTotalCotizacion = labelCostoTotalCotizar.getText();
+        Serenity.setSessionVariable("valorCostoTotalCotizacion".toLowerCase().trim()).to(costoTotalCotizacion);
     }
 
     public void capturarPlaca() {
