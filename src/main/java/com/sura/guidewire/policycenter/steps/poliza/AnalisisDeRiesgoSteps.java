@@ -23,32 +23,32 @@ public class AnalisisDeRiesgoSteps extends ScenarioSteps {
 
 
     @Step
-    public void seleccion_opcion_analisis_de_riesgos() {
+    public void seleccionOpcionAnalisisDeRiesgos() {
         waitFor(TIEMPO_2);
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgo();
 
     }
 
     @Step
-    public void se_muestra_compromiso_bloqueado(String mensaje) {
+    public void seMuestraCompromisoBloqueado(String mensaje) {
 
         MatcherAssert.assertThat(obtenerRiesgosPage().obtenerCompromisoBloqueado().getText(), Matchers.containsString(mensaje));
 
     }
     @Step
-    public void seleccionar_opcion_analisis_de_riesgos_en_cotizacion(){
+    public void seleccionarOpcionAnalisisDeRiesgosEnCotizacion(){
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoCotizacion();
     }
     @Step
-    public void seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza(){
+    public void seleccionarOpcionAnalisisDeRiesgoEnCambioPoliza(){
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoEnCambioDePoliza();
     }
     @Step
-    public void seleccionar_opcion_analisis_de_riesgo_en_renovacion_poliza(){
+    public void seleccionarOpcionAnalisisDeRiesgoEnRenovacionPoliza(){
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoEnRenovacionDePoliza();
     }
     @Step
-    public void solicitar_aprobacion(){
+    public void solicitarAprobacion(){
         obtenerRiesgosPage().seleccionarSolicitarAprobacion();
     }
 }
