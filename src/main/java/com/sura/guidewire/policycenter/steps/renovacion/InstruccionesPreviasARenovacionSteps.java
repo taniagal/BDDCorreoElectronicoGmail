@@ -4,10 +4,11 @@ import com.sura.guidewire.policycenter.pages.renovacion.InstruccionesPreviasARen
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
-
-    private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
+   @Page
+   InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
 
     @Step
     public InstruccionesPreviasARenovacionSteps seleccionarBotonEditar() {
@@ -22,12 +23,12 @@ public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
         return this;
     }
     @Step
-    public InstruccionesPreviasARenovacionSteps seleccionar_instruccion(String instruccion) {
+    public InstruccionesPreviasARenovacionSteps seleccionarInstruccion(String instruccion) {
         instruccionesPreviasARenovacionPage.seleccionarOpcion(instruccion);
         return this;
     }
     @Step
-    public InstruccionesPreviasARenovacionSteps desplegar_lista_opcion(String opcion) {
+    public InstruccionesPreviasARenovacionSteps desplegarListaOpcion(String opcion) {
         instruccionesPreviasARenovacionPage.seleccionarListaDesplegableDeEtiqueta(opcion);
         return this;
     }

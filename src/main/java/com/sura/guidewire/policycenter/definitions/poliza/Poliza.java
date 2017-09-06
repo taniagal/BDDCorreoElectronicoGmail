@@ -310,12 +310,12 @@ public class Poliza {
 
     @When("despliegue $opcion")
     public void cuandoDespliegue(String opcion) {
-        instruccionesPreviasARenovacionSteps.desplegar_lista_opcion(opcion);
+        instruccionesPreviasARenovacionSteps.desplegarListaOpcion(opcion);
     }
 
     @When("seleccione instruccion $instruccion previa a la renovacion")
     public void cuandoSeleccioneInstruccionPreviaALaRenovacion(String instruccion) {
-        instruccionesPreviasARenovacionSteps.seleccionar_instruccion(instruccion);
+        instruccionesPreviasARenovacionSteps.seleccionarInstruccion(instruccion);
     }
 
     @Then("espero ver inhabilitado para modificacion los siguientes $campos")

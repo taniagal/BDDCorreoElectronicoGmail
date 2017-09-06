@@ -5,49 +5,50 @@ import com.sura.guidewire.policycenter.pages.renovacion.ModificacionRenovacionPo
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ModificacionRenovacionPolicyInfoAseguradoSteps extends ScenarioSteps{
-
-    private ModificacionRenovacionPolicyInfoAseguradoPage modificacionRenovacionPolicyInfoAsegurado;
+    @Page
+    ModificacionRenovacionPolicyInfoAseguradoPage modificacionRenovacionPolicyInfoAsegurado;
 
     @Step
-    public void ir_A_Informacion_De_Poliza() {
+    public void irAInformacionDePoliza() {
         modificacionRenovacionPolicyInfoAsegurado.irAInformacionDePoliza();
     }
 
     @Step
-    public void validar_Que_Se_Pueda_Adicionar_Segundo_Tomador(ExamplesTable tomadorSecundario) {
+    public void validarQueSePuedaAdicionarSegundoTomador(ExamplesTable tomadorSecundario) {
         modificacionRenovacionPolicyInfoAsegurado.validarAdicionSegundoTomador(tomadorSecundario);
     }
 
     @Step
-    public void validar_Que_El_Tomador_Principal_No_Se_Pueda_Modificar() {
+    public void validarQueElTomadorPrincipalNoSePuedaModificar() {
         modificacionRenovacionPolicyInfoAsegurado.validarNoEdicionTomadorPrincipal();
     }
 
     @Step
-    public void cambiar_Tipo_De_Plazo(ExamplesTable tipoPlazo) {
+    public void cambiarTipoDePlazo(ExamplesTable tipoPlazo) {
         modificacionRenovacionPolicyInfoAsegurado.cambiarTipoDePlazo(tipoPlazo);
     }
 
     @Step
-    public void recalcular_Fecha_Fin_Vigencia(ExamplesTable fechaVigencia) {
+    public void recalcularFechaFinVigencia(ExamplesTable fechaVigencia) {
         modificacionRenovacionPolicyInfoAsegurado.recalcularFechaFinVigencia(fechaVigencia);
     }
 
     @Step
-    public void validar_Campos_No_Editables_Informacion_Poliza() {
+    public void validarCamposNoEditablesInformacionPoliza() {
         modificacionRenovacionPolicyInfoAsegurado.validarCamposNoEditablesInfoPoliza();
     }
 
     @Step
-    public void ir_A_Pantalla_De_Asegurados() {
+    public void irAPantallaDeAsegurados() {
         modificacionRenovacionPolicyInfoAsegurado.irAAsegurados();
     }
 
     @Step
-    public void validar_Que_El_Asegurado_No_Pueda_Editarse() {
+    public void validarQueElAseguradoNoPuedaEditarse() {
         modificacionRenovacionPolicyInfoAsegurado.validarNoEdicionAsegurado();
     }
 }

@@ -9,7 +9,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class ModificacionRenovacionCoberturasPASteps extends ScenarioSteps {
 
-    private ModificacionRenovacionCoberturasPAPage modificacionRenovacionCoberturas;
+    ModificacionRenovacionCoberturasPAPage modificacionRenovacionCoberturas;
 
     @Step
     public void irAPantallaDeCoberturasAutoPersonal() {
@@ -57,7 +57,7 @@ public class ModificacionRenovacionCoberturasPASteps extends ScenarioSteps {
     }
 
     @Step
-    public void borrar_espacio_trabajo() {
+    public void borrarEspacioTrabajo() {
         modificacionRenovacionCoberturas.borrarEspacioTrabajo();
     }
 }

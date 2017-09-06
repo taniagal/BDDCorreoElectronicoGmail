@@ -26,31 +26,31 @@ public class ModificacionRenovacionVehiculoDefinitions {
 
     @When("estoy en la pantalla de Vehiculo")
     public void irAModificarVehiculo(){
-        modificacionRenovacionVehiculoSteps.ir_A_Vehiculos();
-        modificacionRenovacionVehiculoSteps.ir_A_Modificar_Vehiculo();
+        modificacionRenovacionVehiculoSteps.irAVehiculos();
+        modificacionRenovacionVehiculoSteps.irAModificarVehiculo();
     }
 
     @When("intente modificar la informacion del Vehiculo")
     public void intentarModificarInformacionVehiculo(){
-        modificacionRenovacionVehiculoSteps.ir_A_Vehiculos();
+        modificacionRenovacionVehiculoSteps.irAVehiculos();
     }
 
     @Then("se deben poder modificar los campos: Ciudad de circulacion, Tipo de servicio, Motor,\n" +
             "Chasis, Bonificacion, Suavizacion, Recargo, Descuento, Valor Asegurado, Valor accesorios,\n" +
             "Valor accesorios especiales")
     public void validarEdicionCampos(){
-        modificacionRenovacionVehiculoSteps.validar_Que_Los_Campos_Sean_Editables();
+        modificacionRenovacionVehiculoSteps.validarQueLosCamposSeanEditables();
     }
 
     @Then("no debo poder modificar los datos de: Placa, Relacion de asegurados en el caso de que solo exista un asegurado y \n" +
             "este ya esta relacionado, en el caso de que exista mas de un asegurado y ste no este  relacionado si es posible \n" +
             "relacionar el o los asegurados faltantes")
     public void validarCamposNoEditables(){
-        modificacionRenovacionVehiculoSteps.validar_Que_Los_Campos_No_Se_Puedan_Modificar();
+        modificacionRenovacionVehiculoSteps.validarQueLosCamposNoSePuedanModificar();
     }
 
     @Then("no debo poder interactuar con los vehiculos de la poliza")
     public void validarBotonesNoVisibles(){
-        modificacionRenovacionVehiculoSteps.validar_Que_Los_Botones_No_Son_Visibles();
+        modificacionRenovacionVehiculoSteps.validarQueLosBotonesNoSonVisibles();
     }
 }

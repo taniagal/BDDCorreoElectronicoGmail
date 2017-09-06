@@ -7,9 +7,11 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ReglaPreRenovacionDirPaSteps extends ScenarioSteps {
+    @Page
     ReglaPreRenovacionDirPaPage reglaPreRenovacionDirPaPage;
 
     public ReglaPreRenovacionDirPaSteps(Pages pages) {
@@ -18,13 +20,13 @@ public class ReglaPreRenovacionDirPaSteps extends ScenarioSteps {
 
 
     @Step
-    public void ingresar_instruccion_previa_a_renovacion() {
+    public void ingresarInstruccionPreviaARenovacion() {
         reglaPreRenovacionDirPaPage.ingresarARenovacion();
         reglaPreRenovacionDirPaPage.ingresaEditarInstrucciones();
     }
 
     @Step
-    public void valida_opciones_intruccion_detalles(ExamplesTable opcionesDir){
+    public void validaOpcionesIntruccionDetalles(ExamplesTable opcionesDir){
         reglaPreRenovacionDirPaPage.validaLista(opcionesDir);
     }
 }
