@@ -33,7 +33,7 @@ public class ResumenDePolizaAutoPage extends PageUtil {
     @FindBy(xpath = ".//*[contains(@id,'PolicyPerEffDate-inputEl')]")
     private WebElementFacade labelFechaInicioVigencia;
 
-    String VARIABLE_COTIZADOR = "fechacotizador";
+    protected static  String fechacotizador = "fechacotizador";
 
     public ResumenDePolizaAutoPage(WebDriver driver) {
         super(driver);
@@ -45,7 +45,7 @@ public class ResumenDePolizaAutoPage extends PageUtil {
 
     public void verificacionDeCampos(ExamplesTable camposAvalidar) {
 
-        boolean camposValidados = false;
+        boolean camposValidados ;
         Map<String, String> aVerificar = camposAvalidar.getRow(0);
 
         camposValidados = this.labelTipoDePlazo.getText().equals(aVerificar.get("txtTipoPlazo"));
@@ -58,10 +58,10 @@ public class ResumenDePolizaAutoPage extends PageUtil {
 
         String session = Serenity.sessionVariableCalled("fechaInicioVigencia".toLowerCase().trim());
         String idTransaccion;
-        if (fecha.equals(VARIABLE_COTIZADOR)) {
-            idTransaccion = (session);
+        if (fecha.equals(fechacotizador)) {
+            idTransaccion = session;
         } else {
-            idTransaccion = (fecha);
+            idTransaccion =fecha;
         }
 
         MatcherAssert.assertThat("Las fechas no coinciden", labelFechaInicioVigencia.getText(), Is.is(Matchers.is(Matchers.equalTo(idTransaccion))));

@@ -71,10 +71,8 @@ public class SAPClient extends PageUtil {
             }
         } catch (P2ApplicationException e) {
             LOGGER.error("Error en la conexion", e);
-            //LOGGER.info(e.getFaultInfo().getStandard().getFaultText());
         } catch (SOAPFaultException e) {
             LOGGER.info("SOAPFaultException ", e);
-            //LOGGER.info(e.getMessage());
         } catch (Exception e){
             LOGGER.info("Exception ", e);
         }

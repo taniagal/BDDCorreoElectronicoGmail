@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -91,6 +90,10 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
             this.valor = valor;
         }
 
+<<<<<<< HEAD
+=======
+        @Override
+>>>>>>> a2da258dd0339c6e70a8c7caaa42beaa84348997
         public Boolean apply(WebDriver webDriver) {
             return $(elemento).getValue().equalsIgnoreCase(valor);
         }
