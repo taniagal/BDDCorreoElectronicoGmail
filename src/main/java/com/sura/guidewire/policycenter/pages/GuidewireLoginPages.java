@@ -90,10 +90,6 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
             this.valor = valor;
         }
 
-<<<<<<< HEAD
-=======
-        @Override
->>>>>>> a2da258dd0339c6e70a8c7caaa42beaa84348997
         public Boolean apply(WebDriver webDriver) {
             return $(elemento).getValue().equalsIgnoreCase(valor);
         }
