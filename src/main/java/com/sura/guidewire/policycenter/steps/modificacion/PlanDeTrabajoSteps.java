@@ -4,29 +4,27 @@ import com.sura.guidewire.policycenter.pages.modificaciones.PlanDeTrabajoPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
-/**
- * Created by juanzaag on 04/11/2016.
- */
 public class PlanDeTrabajoSteps extends ScenarioSteps {
 
-
-    PlanDeTrabajoPage planDeTrabajoPage;
+    @Page
+    PlanDeTrabajoPage planDeTrabajo;
 
 
     @Step
-    public void ingresar_al_plan_de_trabajo(){
-        planDeTrabajoPage.ingresarALaOpcionPlanDeTrabajo();
-        planDeTrabajoPage.validarActividadesGeneradasEnRiesgo();
+    public void ingresarAlPlanDeTrabajo(){
+        planDeTrabajo.ingresarALaOpcionPlanDeTrabajo();
+        planDeTrabajo.validarActividadesGeneradasEnRiesgo();
     }
     @Step
-    public void ingresar_al_plan_de_trabajo_en_cambio_de_poliza(){
-        planDeTrabajoPage.ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza();
-        planDeTrabajoPage.validarActividadesGeneradasEnRiesgo();
+    public void ingresarAlPlanDeTrabajoEnCambioDePoliza(){
+        planDeTrabajo.ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza();
+        planDeTrabajo.validarActividadesGeneradasEnRiesgo();
     }
     @Step
-    public void ingresar_al_plan_de_trabajo_en_renovacion_de_poliza(){
-        planDeTrabajoPage.ingresarALaOpcionPlanDeTrabajoEnRenovacionDePoliza();
-        planDeTrabajoPage.validarActividadesGeneradasEnRiesgo();
+    public void ingresarAlPlanDeTrabajoEnRenovacionDePoliza(){
+        planDeTrabajo.ingresarALaOpcionPlanDeTrabajoEnRenovacionDePoliza();
+        planDeTrabajo.validarActividadesGeneradasEnRiesgo();
     }
 }

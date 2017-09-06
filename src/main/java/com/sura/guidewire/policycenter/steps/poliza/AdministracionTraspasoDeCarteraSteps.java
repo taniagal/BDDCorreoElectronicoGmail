@@ -6,58 +6,61 @@ import com.sura.guidewire.policycenter.pages.poliza.BusquedaDePolizaPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class AdministracionTraspasoDeCarteraSteps extends ScenarioSteps {
-
-    AdministracionTraspasoDeCarteraPage administracionTraspasoDeCarteraPage;
-    BusquedaDePolizaPage busquedaDePolizaPage;
-    BuscarAgentePage buscarAgentePage;
+    @Page
+    AdministracionTraspasoDeCarteraPage administracionTraspasoDeCartera;
+    @Page
+    BusquedaDePolizaPage busquedaDePoliza;
+    @Page
+    BuscarAgentePage buscarAgente;
 
     @Step
     public void traspasarCarteraDeAsesorAAsesor(String oldProduceCode, String newProduceCode) {
-        administracionTraspasoDeCarteraPage.clicBotonCrearNuevoProceso();
-        administracionTraspasoDeCarteraPage.seleccionarFuenteDelTraspaso("Asesor");
-        administracionTraspasoDeCarteraPage.clicBuscarOldProducerCode();
-        buscarAgentePage.buscarAgentePorCodigo(oldProduceCode);
-        administracionTraspasoDeCarteraPage.esperarPantalla();
-        administracionTraspasoDeCarteraPage.clicBuscarNewProducerCode();
-        buscarAgentePage.buscarAgentePorCodigo(newProduceCode);
-        administracionTraspasoDeCarteraPage.esperarPantalla();
-        administracionTraspasoDeCarteraPage.clicBotonSubmitBatch();
+        administracionTraspasoDeCartera.clicBotonCrearNuevoProceso();
+        administracionTraspasoDeCartera.seleccionarFuenteDelTraspaso("Asesor");
+        administracionTraspasoDeCartera.clicBuscarOldProducerCode();
+        buscarAgente.buscarAgentePorCodigo(oldProduceCode);
+        administracionTraspasoDeCartera.esperarPantalla();
+        administracionTraspasoDeCartera.clicBuscarNewProducerCode();
+        buscarAgente.buscarAgentePorCodigo(newProduceCode);
+        administracionTraspasoDeCartera.esperarPantalla();
+        administracionTraspasoDeCartera.clicBotonSubmitBatch();
     }
 
     @Step
     public void traspasarCarteraDeOficionaAOficiona(String oldOficna, String newOficna) {
-        administracionTraspasoDeCarteraPage.clicBotonCrearNuevoProceso();
-        administracionTraspasoDeCarteraPage.seleccionarFuenteDelTraspaso("Oficina");
-        administracionTraspasoDeCarteraPage.seleccionarAnteriorOficinaDeRadicacion(oldOficna);
-        administracionTraspasoDeCarteraPage.seleccionarNuevaOficinaDeRadicacion(newOficna);
-        administracionTraspasoDeCarteraPage.clicBotonSubmitBatch();
+        administracionTraspasoDeCartera.clicBotonCrearNuevoProceso();
+        administracionTraspasoDeCartera.seleccionarFuenteDelTraspaso("Oficina");
+        administracionTraspasoDeCartera.seleccionarAnteriorOficinaDeRadicacion(oldOficna);
+        administracionTraspasoDeCartera.seleccionarNuevaOficinaDeRadicacion(newOficna);
+        administracionTraspasoDeCartera.clicBotonSubmitBatch();
     }
 
     @Step
     public void traspasarCarteraEnPoliza(String numeroCuenta, String newProduceCode) {
-        administracionTraspasoDeCarteraPage.clicBotonCrearNuevoProceso();
-        administracionTraspasoDeCarteraPage.seleccionarFuenteDelTraspaso("Por poliza");
-        administracionTraspasoDeCarteraPage.clicBuscarNumeroPoliza();
-        busquedaDePolizaPage.buscarPolizaPorNumeroDeCuenta(numeroCuenta);
-        busquedaDePolizaPage.seleccionarNumeroPolizaEcontrada();
-        administracionTraspasoDeCarteraPage.esperarPantalla();
-        administracionTraspasoDeCarteraPage.modificarCodigoAsesor(newProduceCode);
+        administracionTraspasoDeCartera.clicBotonCrearNuevoProceso();
+        administracionTraspasoDeCartera.seleccionarFuenteDelTraspaso("Por poliza");
+        administracionTraspasoDeCartera.clicBuscarNumeroPoliza();
+        busquedaDePoliza.buscarPolizaPorNumeroDeCuenta(numeroCuenta);
+        busquedaDePoliza.seleccionarNumeroPolizaEcontrada();
+        administracionTraspasoDeCartera.esperarPantalla();
+        administracionTraspasoDeCartera.modificarCodigoAsesor(newProduceCode);
     }
 
     @Step
     public String consultarCodigoAsesorActual() {
-        return administracionTraspasoDeCarteraPage.consultarCodigoAsesorActual();
+        return administracionTraspasoDeCartera.consultarCodigoAsesorActual();
     }
 
     @Step
     public void agregarDiaReloj() {
-        administracionTraspasoDeCarteraPage.agregarDiaReloj();
+        administracionTraspasoDeCartera.agregarDiaReloj();
     }
 
     @Step
     public void ejecutarProceso(String nombreProceso) {
-        administracionTraspasoDeCarteraPage.ejecutarProceso(nombreProceso);
+        administracionTraspasoDeCartera.ejecutarProceso(nombreProceso);
     }
 }

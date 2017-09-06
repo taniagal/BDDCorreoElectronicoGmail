@@ -4,10 +4,12 @@ import com.sura.guidewire.policycenter.pages.cuenta.DetalleRegistrosSuscripcionP
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
 
-    private DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage;
+    @Page
+    DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage;
 
 
     @Step

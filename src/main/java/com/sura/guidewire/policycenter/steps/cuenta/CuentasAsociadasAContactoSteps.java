@@ -5,45 +5,47 @@ import com.sura.guidewire.policycenter.pages.cuenta.CuentasAsociadasAContactoPag
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
-
-    private BusquedaContactoPage busquedaContactoPage;
-    private CuentasAsociadasAContactoPage cuentasAsociadasAContactoPage;
+    @Page
+    BusquedaContactoPage busquedaContacto;
+    @Page
+    CuentasAsociadasAContactoPage cuentasAsociadasaContacto;
 
 
     @Step
     public void navegarBarraSuperior() {
-        busquedaContactoPage.irABuscarContacto();
+        busquedaContacto.irABuscarContacto();
     }
 
     @Step
     public void buscarContactoPersona(String tipoContacto, String nombre, String apellido) {
-        busquedaContactoPage.irABuscarContacto();
-        busquedaContactoPage.consultarContactoPorNombresYApellidos(tipoContacto, nombre, "", apellido, "");
-        busquedaContactoPage.seleccionarContacto();
+        busquedaContacto.irABuscarContacto();
+        busquedaContacto.consultarContactoPorNombresYApellidos(tipoContacto, nombre, "", apellido, "");
+        busquedaContacto.seleccionarContacto();
     }
 
     @Step
     public void buscarContactoEmpresa(String tipoContacto, String razonSocial){
-        busquedaContactoPage.consultarPersonaJuridaPorRazonSocial(tipoContacto, razonSocial);
-        busquedaContactoPage.seleccionarContacto();
+        busquedaContacto.consultarPersonaJuridaPorRazonSocial(tipoContacto, razonSocial);
+        busquedaContacto.seleccionarContacto();
     }
 
     @Step
     public void buscarContactoSel(String tipoContacto, String nombre, String apellido, String numero) {
-        busquedaContactoPage.irABuscarContacto();
-        busquedaContactoPage.buscarContacto(tipoContacto, nombre, apellido, numero);
+        busquedaContacto.irABuscarContacto();
+        busquedaContacto.buscarContacto(tipoContacto, nombre, apellido, numero);
     }
 
     @Step
     public void listarCuentasAsociadasAContacto(String nombre, String direccion, String telefono, String email, String rol) {
-        cuentasAsociadasAContactoPage.validarCamposLista(nombre, direccion, telefono, email, rol);
+        cuentasAsociadasaContacto.validarCamposLista(nombre, direccion, telefono, email, rol);
     }
 
     @Step
     public void validarMensajeCuenta(String mensaje) {
-        cuentasAsociadasAContactoPage.validarMensaje(mensaje);
+        cuentasAsociadasaContacto.validarMensaje(mensaje);
     }
 
 }

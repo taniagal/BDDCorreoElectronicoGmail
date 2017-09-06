@@ -16,8 +16,10 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps {
 
-    private final ModificacionCotizacionDePolizaPage cotizacionDePolizaPage = new ModificacionCotizacionDePolizaPage(getDriver());
-    CotizacionPADetallePage cotizacionPADetallePage;
+    @Page
+    ModificacionCotizacionDePolizaPage cotizacionDePolizaPage;
+    @Page
+    CotizacionPADetallePage cotizacionPADetalle;
 
     @Page
     TarifaTasaUnicaPage tasaUnicaPage;
@@ -47,6 +49,6 @@ public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps {
     }
 
     public void validarTerminoCobertura() {
-        cotizacionPADetallePage.validarTerminoCobertura();
+        cotizacionPADetalle.validarTerminoCobertura();
     }
 }

@@ -18,15 +18,17 @@ import com.sura.guidewire.policycenter.utils.menu.superior.contacto.NuevaPersona
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.CuentaBuscarPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.NuevaCuentaPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.equipo.EquipoPage;
+
 import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.*;
 import com.sura.guidewire.policycenter.utils.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.poliza.PolizaBuscarPage;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.concurrent.TimeUnit;
+
 
 
 public class Navegacion extends PageUtil {
