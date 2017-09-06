@@ -30,8 +30,7 @@ public class PolizaPage extends PageUtil {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
-    private static final String MENSAJE_REHABILITACION
-            = "Iniciar la rehabilitación";
+    private static final String MENSAJE_REHABILITACION = "Iniciar la rehabilitación";
     @Page
     CotizacionPage cotizacionPage;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
@@ -310,7 +309,8 @@ public class PolizaPage extends PageUtil {
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
         waitFor((WebElementFacade) $(xpathMenuDesplegable)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(xpathMenuDesplegable)));
-        List<WebElementFacade> listaMotivosWE;listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
+        List<WebElementFacade> listaMotivosWE;
+        listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
         listaMotivos = Lambda.extract(listaMotivosWE, Lambda.on(WebElementFacade.class).getText());
     }
 

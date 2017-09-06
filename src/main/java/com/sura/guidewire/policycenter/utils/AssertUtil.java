@@ -1,22 +1,16 @@
 package com.sura.guidewire.policycenter.utils;
 
-
-
-import ch.lambdaj.Lambda;
-
 import java.util.List;
 
-import com.sura.guidewire.policycenter.resources.PageUtil;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.StringContains;
-import org.openqa.selenium.WebDriver;
 
-public class AssertUtil extends PageUtil{
+import ch.lambdaj.Lambda;
 
-    public AssertUtil(WebDriver driver) {
-        super(driver);
+public class AssertUtil {
+    private AssertUtil(){
     }
 
     public static Matcher<List<String>> hasItemContainsString(String expectedValue) {
@@ -31,12 +25,9 @@ public class AssertUtil extends PageUtil{
             this.expectedValue = expectedValue;
         }
 
-        @Override
         protected boolean matchesSafely(List<String> values) {
             return !Lambda.filter(StringContains.containsString(expectedValue), values).isEmpty();
         }
-
-        @Override
         public void describeTo(Description description) {
             description.appendText("Se esperaba una lista que contuviera un string ").appendValue(expectedValue);
         }
