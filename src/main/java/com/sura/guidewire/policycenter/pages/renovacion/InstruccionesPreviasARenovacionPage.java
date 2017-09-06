@@ -1,12 +1,10 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
 import ch.lambdaj.Lambda;
-
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-
-import java.util.List;
 
 public class InstruccionesPreviasARenovacionPage extends PageObject {
 
@@ -16,12 +14,10 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
     private List<WebElementFacade> listaIntruccionesWE;
 
     private List<String> listaRazonesDeRenovacio;
-    private List<WebElementFacade> listaRazonesDeRenovacionWE;
 
     public void seleccionarBotonEditar() {
         waitForTextToAppear("Instrucciones previas a la renovación por el Plazo de la póliza");
         shouldContainText("Instrucciones previas a la renovación por el Plazo de la póliza");
-        
         String xpathLinkBotonEditar = "//a[contains(.,'Editar')]";
         findBy(xpathLinkBotonEditar).waitUntilVisible().click();
         waitForTextToAppear("Instrucción");
@@ -32,8 +28,6 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
 
         String xpathDropdownInstruccion = xpath;
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
-
-
         waitFor((WebElementFacade) $(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
         listaIntruccionesWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
@@ -62,14 +56,9 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
 
         String xpathTrEtiquetaDrowbox = ".//tr[child::*/label[contains(.,'" + etiqueta + "')] ]";
         findBy(xpathTrEtiquetaDrowbox).findBy(By.tagName("input")).click();
-
-
         waitFor((WebElementFacade) $(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
         shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
-        listaRazonesDeRenovacionWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
-        listaRazonesDeRenovacio = Lambda.extract(listaRazonesDeRenovacionWE, Lambda.on(WebElementFacade.class).getText());
+        List<WebElementFacade> listaRazonesDeRenovacionWe = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
+        listaRazonesDeRenovacio = Lambda.extract(listaRazonesDeRenovacionWe, Lambda.on(WebElementFacade.class).getText());
     }
-
-
-
 }

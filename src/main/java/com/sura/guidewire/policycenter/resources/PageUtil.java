@@ -1,21 +1,30 @@
 package com.sura.guidewire.policycenter.resources;
 
 import com.google.common.base.Function;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class PageUtil extends PageObject {
@@ -108,7 +117,7 @@ public class PageUtil extends PageObject {
         try {
             elemento.clear();
         } catch (StaleElementReferenceException g) {
-            LOGGER.info("StaleElementReferenceException " + g);
+            LOGGER.info("No se pudo seleccionar el elemento" + g);
             esperarHasta(TIEMPO_2000);
             elemento.clear();
         }
@@ -130,12 +139,7 @@ public class PageUtil extends PageObject {
                 TimeUnit.MILLISECONDS).pollingEvery(millis,
                 TimeUnit.MILLISECONDS);
         try {
-            wait.until(new Function<Integer, Boolean>() {
-                @Override
-                public Boolean apply(Integer i) {
-                    return false;
-                }
-            });
+            wait.until(new IntegerBooleanFunction());
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException in " + e);
         }
@@ -189,12 +193,7 @@ public class PageUtil extends PageObject {
                 .withTimeout(TIEMPO_20, TimeUnit.SECONDS)
                 .pollingEvery(TIEMPO_5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
-        return espera.until(new Function<WebDriver, WebElementFacade>() {
-            @Override
-            public WebElementFacade apply(WebDriver driver) {
-                return findBy(xpath);
-            }
-        });
+        return espera.until(new WebDriverWebElementFacadeFunction(xpath));
     }
 
     public void ingresarDato(WebElementFacade elemento, String dato) {
@@ -272,7 +271,7 @@ public class PageUtil extends PageObject {
                 clickearElemento(elemento);
                 ejecuto = true;
             } catch (Exception ex) {
-                LOGGER.info("Exception " + ex);
+                LOGGER.info("No se hizo Clic al elemento" + ex);
             }
             ejecuciones = ejecuciones + 1;
         }
@@ -371,7 +370,7 @@ public class PageUtil extends PageObject {
                 this.clicObjeto(elemento);
                 ejecuto = true;
             } catch (Exception ex) {
-                LOGGER.info("Exception " + ex);
+                LOGGER.info("No se pudo hacer clic en obejto del servidor" + ex);
             }
 
             ejecuciones = ejecuciones + 1;
@@ -463,6 +462,24 @@ public class PageUtil extends PageObject {
             }
         } catch (ElementNotVisibleException e) {
             LOGGER.info("Exception " + e);
+        }
+    }
+
+    private static class IntegerBooleanFunction implements Function<Integer, Boolean> {
+        public Boolean apply(Integer i) {
+            return false;
+        }
+    }
+
+    private class WebDriverWebElementFacadeFunction implements Function<WebDriver, WebElementFacade> {
+        private final String xpath;
+
+        public WebDriverWebElementFacadeFunction(String xpath) {
+            this.xpath = xpath;
+        }
+
+        public WebElementFacade apply(WebDriver driver) {
+            return findBy(xpath);
         }
     }
 }
