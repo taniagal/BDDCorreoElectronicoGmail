@@ -255,20 +255,20 @@ public class Poliza {
 
     @Then("se debe generar un UW Issue para solicitar la autorización y el mensaje debe ser: $mensaje")
     public void entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion(String mensaje) {
-        analisisDeRiesgoSteps.seleccion_opcion_analisis_de_riesgos();
-        analisisDeRiesgoSteps.se_muestra_compromiso_bloqueado(mensaje);
+        analisisDeRiesgoSteps.seleccionOpcionAnalisisDeRiesgos();
+        analisisDeRiesgoSteps.seMuestraCompromisoBloqueado(mensaje);
     }
 
     @When("se solicite aprobacion para los riesgos")
     public void cuandoSeSoliciteAprobacionParaLosriesgos() {
-        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgos_en_cotizacion();
-        analisisDeRiesgoSteps.solicitar_aprobacion();
+        analisisDeRiesgoSteps.seleccionarOpcionAnalisisDeRiesgosEnCotizacion();
+        analisisDeRiesgoSteps.solicitarAprobacion();
     }
 
     @When("se solicite aprobacion para los riesgos en cambio de poliza")
     public void cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza() {
-        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza();
-        analisisDeRiesgoSteps.solicitar_aprobacion();
+        analisisDeRiesgoSteps.seleccionarOpcionAnalisisDeRiesgoEnCambioPoliza();
+        analisisDeRiesgoSteps.solicitarAprobacion();
     }
 
     @When("ingrese a informacion de poliza $variable")
@@ -294,8 +294,8 @@ public class Poliza {
 
     @When("se solicite aprobacion para los riesgos en renovacion de poliza")
     public void cuandoSeSoliciteAprobacionParaLosriesgosEnRenovacionDePoliza() {
-        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_renovacion_poliza();
-        analisisDeRiesgoSteps.solicitar_aprobacion();
+        analisisDeRiesgoSteps.seleccionarOpcionAnalisisDeRiesgoEnRenovacionPoliza();
+        analisisDeRiesgoSteps.solicitarAprobacion();
     }
 
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")
