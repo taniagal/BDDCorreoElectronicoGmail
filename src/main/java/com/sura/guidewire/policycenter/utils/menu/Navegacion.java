@@ -18,6 +18,7 @@ import com.sura.guidewire.policycenter.utils.menu.superior.contacto.NuevaPersona
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.CuentaBuscarPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.NuevaCuentaPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.equipo.EquipoPage;
+
 import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.*;
 import com.sura.guidewire.policycenter.utils.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.poliza.PolizaBuscarPage;

@@ -1,12 +1,11 @@
 package com.sura.guidewire.policycenter.utils;
 
-
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 

@@ -6,13 +6,17 @@ import ch.lambdaj.Lambda;
 
 import java.util.List;
 
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.StringContains;
+import org.openqa.selenium.WebDriver;
 
-public class AssertUtil {
-    private AssertUtil(){
+public class AssertUtil extends PageUtil{
+
+    public AssertUtil(WebDriver driver) {
+        super(driver);
     }
 
     public static Matcher<List<String>> hasItemContainsString(String expectedValue) {
