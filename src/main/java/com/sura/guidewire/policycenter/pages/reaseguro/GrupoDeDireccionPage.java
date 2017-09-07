@@ -10,6 +10,7 @@ import java.util.Map;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -70,7 +71,8 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade comboBoxVerApartirDe;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRiskDV:NetRetention-inputEl')]")
     private WebElementFacade lblRetencionNeta;
-    private String porcentajeDeRetencionContratoCotaparte = null;
+    @Page
+    private String porcentajeDeRetencionContratoCotaparte ;
 
     public GrupoDeDireccionPage(WebDriver driver) {
         super(driver);
