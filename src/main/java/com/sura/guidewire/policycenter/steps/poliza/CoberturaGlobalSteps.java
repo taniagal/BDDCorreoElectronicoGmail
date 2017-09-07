@@ -14,7 +14,9 @@ import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class CoberturaGlobalSteps extends ScenarioSteps {
-    CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
+
+    @Page
+    CoberturaGlobalPage coberturaGlobalPage;
 
     @Page
     PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;

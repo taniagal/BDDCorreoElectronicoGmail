@@ -3,7 +3,6 @@ package com.sura.guidewire.policycenter.pages.renovacion;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.FindBy;

@@ -11,7 +11,9 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class AjustesDeReglasRenovacionMrcSteps {
 
+    @Page
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
+
     @Page
     public AjustesDeReglasRenovacionMrcPage ajustesDeReglasRenovacionMrcPage;
 
