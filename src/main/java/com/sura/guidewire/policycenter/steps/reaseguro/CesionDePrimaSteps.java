@@ -9,13 +9,20 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class CesionDePrimaSteps extends ScenarioSteps {
 
+    @Page
     CesionDePrimaPage cesionDePrimaPage;
+
+    @Page
     CotizacionMRCPage cotizacionMRCPage;
+
+    @Page
     CrearYEditarCumulosPage crearYEditarCumulosPage;
+
     private String numeroDeEnvio;
     public CesionDePrimaSteps(Pages pages) {
         super(pages);
