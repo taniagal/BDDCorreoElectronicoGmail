@@ -437,6 +437,11 @@ public class PolizaPage extends PageUtil {
         linkIrAlEscritorio.click();
     }
 
+    public void ingresarResumenCancelacionPoliza() {
+        "Cancelación Expedida".equals(labelCancelacionExpedida.waitUntilPresent().getText());
+        this.ingresaraResumenDeLaPolizaExpedida();
+    }
+
     public void verificarRehabilitacion() {
         "Rehabilitación Expedida".equals(labelCancelacionExpedida.waitUntilPresent().getText());
     }
