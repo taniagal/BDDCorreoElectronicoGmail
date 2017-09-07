@@ -7,9 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
-
-import mx4j.log.Log;
+import java.util.logging.LogManager;
+import mx4j.log.Logger;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,9 +16,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.LoggerFactory;
 
 
 public class MetodosComunes {
+
+    protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger("");
     protected static final int TIEMPO_30 = 30;
     protected static final int TIEMPO_5000 = 5000;
 
@@ -31,6 +33,7 @@ public class MetodosComunes {
         try {
             wait.until(new IntegerBooleanFunction());
         }catch (TimeoutException e){
+            LOGGER.info("Error" , e);
         }
     }
 
@@ -51,12 +54,13 @@ public class MetodosComunes {
             input = new FileInputStream("src/main/resources/gradle.properties");
             prop.load(input);
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            LOGGER.info("error",ex);
         } finally {
             if (input != null) {
                 try {
                     input.close();
                 } catch (IOException e) {
+                    LOGGER.info("Error",e);
                 }
             }
         }
