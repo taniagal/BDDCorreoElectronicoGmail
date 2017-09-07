@@ -11,6 +11,9 @@ import org.hamcrest.core.StringContains;
 
 public class AssertUtil {
 
+    private AssertUtil() {
+    }
+
     public static Matcher<List<String>> hasItemContainsString(String expectedValue) {
         return new HasItemContainsString(expectedValue);
     }

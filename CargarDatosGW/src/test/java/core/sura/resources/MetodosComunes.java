@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
+import mx4j.log.Log;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,23 +21,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MetodosComunes {
     protected static final int TIEMPO_30 = 30;
-
     protected static final int TIEMPO_5000 = 5000;
 
-    public static void waitUntil(int millis) {
+    public static void (int millis) {
         Integer i = 0;
         Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
                 TimeUnit.MILLISECONDS).pollingEvery(millis,
                 TimeUnit.MILLISECONDS);
         try {
-            wait.until(new Function<Integer, Boolean>() {
-                public Boolean apply(Integer i) {
-
-                    return false;
-                }
-            });
-        } catch (TimeoutException e) {
-            e.printStackTrace();
+            wait.until(new IntegerBooleanFunction());
+        }catch (TimeoutException e){
         }
     }
 
@@ -67,5 +62,12 @@ public class MetodosComunes {
             }
         }
         return prop;
+    }
+
+    private static class IntegerBooleanFunction implements Function<Integer, Boolean> {
+        public Boolean apply(Integer i) {
+
+            return false;
+        }
     }
 }
