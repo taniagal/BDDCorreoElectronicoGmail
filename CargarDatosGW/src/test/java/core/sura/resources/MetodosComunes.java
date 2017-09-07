@@ -23,7 +23,7 @@ public class MetodosComunes {
     protected static final int TIEMPO_30 = 30;
     protected static final int TIEMPO_5000 = 5000;
 
-    public static void (int millis) {
+    public static void waitUntil(int millis) {
         Integer i = 0;
         Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
                 TimeUnit.MILLISECONDS).pollingEvery(millis,
@@ -57,7 +57,6 @@ public class MetodosComunes {
                 try {
                     input.close();
                 } catch (IOException e) {
-                  e.printStackTrace();
                 }
             }
         }
