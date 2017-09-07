@@ -73,15 +73,10 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
 
 
     public void obtenerMensajeUW(ExamplesTable mensajes) {
-
         Map<String, String> mensajesAEvaluar = mensajes.getRow(0);
-        Set<String> llaves = mensajesAEvaluar.keySet();
-
         waitForTextToAppear("Asuntos que bloquean la expedición");
         String contenidoLabelMensaje = labelMensaje.getText();
-        for (String llave : llaves) {
-            MatcherAssert.assertThat("No se mostro el mensaje UW", contenidoLabelMensaje.contains(mensajesAEvaluar.get(llave)));
-        }
+        MatcherAssert.assertThat("No se mostro el mensaje UW", contenidoLabelMensaje.contains(mensajesAEvaluar.get("mensaje")));
     }
 
     public void diligencieInstruccionesPrevias(ExamplesTable datos) {
