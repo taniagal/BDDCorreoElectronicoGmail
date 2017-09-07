@@ -90,7 +90,7 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
         String llave;
         for (int i = 0; i < mensajesEsperados.size(); i++) {
             llave = "mensaje" + (i + 1);
-            listaDeMensajes = listaDeMensajes + mensajesEsperados.get(llave);
+            listaDeMensajes = listaDeMensajes.concat(mensajesEsperados.get(llave));
         }
         return listaDeMensajes;
     }

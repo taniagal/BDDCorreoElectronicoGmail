@@ -3,7 +3,6 @@ package com.sura.guidewire.policycenter.pages.poliza;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.Map;
-import java.util.Set;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
