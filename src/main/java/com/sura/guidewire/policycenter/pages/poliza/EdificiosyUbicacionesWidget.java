@@ -598,8 +598,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void ingresarInteresesAdicionalesACadaArticulo(ExamplesTable interesados) {
         for (Map<String, String> interesadosadicionales : interesados.getRows()) {
             String tipodocumento = interesadosadicionales.get(TIPODOCUMENTO);
-            String documento = interesadosadicionales.get("DOCUMENTO");
-            String tipobeneficiario = interesadosadicionales.get("TIPOBENEFICIARIO");
+            String documento = interesadosadicionales.get(DOCUMENTO);
+            String tipobeneficiario = interesadosadicionales.get(TIPOBENEFICIARIO);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
             ingresarBeneficiarioOneroso(tipobeneficiario, listaTipoOnerosoEdificios);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalMaquinariaYEquipo, documento, tipodocumento);
@@ -610,8 +610,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado) {
         for (Map<String, String> interesadosadicionalesuno : interesado.getRows()) {
             String tipodocumentos = interesadosadicionalesuno.get(TIPODOCUMENTO);
-            String documentos = interesadosadicionalesuno.get("DOCUMENTO");
-            String tipobeneficiarios = interesadosadicionalesuno.get("TIPOBENEFICIARIO");
+            String documentos = interesadosadicionalesuno.get(DOCUMENTO);
+            String tipobeneficiarios = interesadosadicionalesuno.get(TIPOBENEFICIARIO);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documentos, tipodocumentos);
             ingresarBeneficiarioOneroso(tipobeneficiarios, listaTipoOnerosoEdificios);
 
@@ -622,7 +622,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         for (Map<String, String> agregarinteresadosadicionalesuno : agregaroneroso.getRows()) {
             String agretipodocumentos = agregarinteresadosadicionalesuno.get(TIPODOCUMENTO);
             String agredocumentos = agregarinteresadosadicionalesuno.get(DOCUMENTO);
-            String agretipobeneficiarios = agregarinteresadosadicionalesuno.get("TIPOBENEFICIARIO");
+            String agretipobeneficiarios = agregarinteresadosadicionalesuno.get(TIPOBENEFICIARIO);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, agredocumentos, agretipodocumentos);
             ingresarBeneficiarioOneroso(agretipobeneficiarios, agregarTipoOnerosoEdificios);
         }
