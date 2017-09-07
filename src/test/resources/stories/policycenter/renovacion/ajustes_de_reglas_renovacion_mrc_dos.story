@@ -31,8 +31,8 @@ And cotice la renovacion
 And emita la renovacion
 And acepto la expedicion de poliza
 Then debo obtener un mensaje UW
-| mensaje                                                                                        |
-| La póliza tiene instrucción(es) previa(s) a la renovación, requiere autarización de renovación |
+|mensaje                                                                                       |
+|La póliza tiene instrucción(es) previa(s) a la renovación, requiere autarización de renovación|
 
 Examples:
 |  |

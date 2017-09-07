@@ -40,8 +40,8 @@ And acepto la expedicion de poliza
 And emita la renovacion
 And acepto la expedicion de poliza
 Then debo obtener un mensaje UW
-| mensajeUno                                                                                                                                         |
-| La póliza tiene la marca de reaseguro especial: Reaseguro aceptado. Por favor diríjase a la opción análisis de riesgo para solicitar la aprobación |
+|mensaje                                                                                                                                           |
+|La póliza tiene la marca de reaseguro especial: Reaseguro aceptado. Por favor diríjase a la opción análisis de riesgo para solicitar la aprobación|
 
 Examples:
 | tipoId               | numeroId   | opcionAgregar  | mensaje                                                                                        |
