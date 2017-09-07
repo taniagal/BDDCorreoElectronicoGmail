@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class MetodosComunes extends Page{
+public class MetodosComunes {
     protected static final int TIEMPO_30 = 30;
     protected static final int TIEMPO_5000 = 5000;
 
