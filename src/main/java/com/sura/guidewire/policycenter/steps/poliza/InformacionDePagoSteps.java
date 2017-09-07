@@ -6,10 +6,11 @@ import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInform
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class InformacionDePagoSteps extends ScenarioSteps {
 
-
+    @Page
     OpcionesInformacionDePagoPage opcionesInformacionDePagoPage;
 
     public InformacionDePagoSteps(Pages pages) {
