@@ -7,7 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class ValidacionesInformacionFacturacionPage extends PageUtil{
+public class ValidacionesInformacionFacturacionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Billing']/div")
     private WebElementFacade menuFacturacion;
@@ -18,16 +18,16 @@ public class ValidacionesInformacionFacturacionPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='PolicyFile_Billing:Policy_BillingScreen:Unbilled-labelEl']")
     private WebElementFacade campoValorPlaneado;
 
-    public ValidacionesInformacionFacturacionPage(WebDriver driver){
-        super (driver);
+    public ValidacionesInformacionFacturacionPage(WebDriver driver) {
+        super(driver);
     }
 
-    public void ingresarMenuAccionesFacturacion(){
+    public void ingresarMenuAccionesFacturacion() {
         menuFacturacion.waitUntilPresent();
         clickearElemento(menuFacturacion);
     }
 
-    public void validarInformacionFacturacion(){
+    public void validarInformacionFacturacion() {
         botonBillingCenter.waitUntilVisible();
         campoValorVencido.waitUntilVisible();
         campoValorPlaneado.waitUntilVisible();

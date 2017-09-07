@@ -53,7 +53,7 @@ public class ProcesoDeCancelacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void cerrar_cancelacion_opcion_retirar_transaccion(){
+    public void cerrar_cancelacion_opcion_retirar_transaccion() {
         cotizacionDeCancelacionPage.cerrarTransaccionPoliza();
     }
 }

@@ -22,8 +22,8 @@ public class CrearParticipanteCuentaDefinitions {
     private CrearParticipantesCuentaSteps crearParticipantesCuentaSteps;
 
 
-   @Given("que existe una cuenta <numCuenta>")
-    public void givenQueExisteUnaCuentanumCuenta(@Named("numCuenta") String numCuenta){
+    @Given("que existe una cuenta <numCuenta>")
+    public void givenQueExisteUnaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         crearParticipantesCuentaSteps.navegaBuscarCuentaPar();
         crearParticipantesCuentaSteps.buscaCuenta(numCuenta);
     }

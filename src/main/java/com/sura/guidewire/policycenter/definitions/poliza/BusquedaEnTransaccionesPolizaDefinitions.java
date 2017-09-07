@@ -14,12 +14,12 @@ public class BusquedaEnTransaccionesPolizaDefinitions {
 
 
     @When("intente ingresar al modulo de transacciones de poliza")
-    public void ingresarMenuTransaccionesPoliza(){
+    public void ingresarMenuTransaccionesPoliza() {
         ingresoTransaccionesPolizaSteps.ingresarMenuTransaciones();
     }
 
     @Then("se debe realizar busqueda por transaccion de poliza <numeroTransaccion>")
-    public void busquedaPorTransaccionPoliza(String numeroTransaccion){
+    public void busquedaPorTransaccionPoliza(String numeroTransaccion) {
         ingresoTransaccionesPolizaSteps.busquedaTransaccionPoliza(numeroTransaccion);
     }
 }

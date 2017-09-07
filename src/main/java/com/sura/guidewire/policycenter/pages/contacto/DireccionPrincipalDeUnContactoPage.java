@@ -15,6 +15,9 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class DireccionPrincipalDeUnContactoPage extends PageUtil {
+    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    DetallesContactoPage contactoPage = new DetallesContactoPage(getDriver());
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab']")
     private WebElementFacade botonDirecciones;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
@@ -40,32 +43,27 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-labelEl']")
     private WebElementFacade labelDescripcionDireccion;
 
-    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
-    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-
-    DetallesContactoPage contactoPage = new DetallesContactoPage(getDriver());
-
-    public DireccionPrincipalDeUnContactoPage(WebDriver driver){
+    public DireccionPrincipalDeUnContactoPage(WebDriver driver) {
         super(driver);
     }
 
 
-    public void irADirecciones(){
+    public void irADirecciones() {
         esperarHasta(TIEMPO_1000);
         botonDirecciones.click();
         contactoPage.botonAgregar.waitUntilPresent().click();
     }
 
     public void agregarDireccion(ExamplesTable datos) {
-        Map<String,String> dato = datos.getRow(0);
+        Map<String, String> dato = datos.getRow(0);
         esperarHasta(TIEMPO_2000);
         campoTxtDireccion.sendKeys(dato.get("direccion"));
-        seleccionarItem(comboBoxDepartamento,dato.get("departamento"));
-        esperarPorValor(comboBoxDepartamento,dato.get("departamento"));
-        seleccionarItem(comboBoxCiudad,dato.get("ciudad"));
-        esperarPorValor(comboBoxCiudad,dato.get("ciudad"));
+        seleccionarItem(comboBoxDepartamento, dato.get("departamento"));
+        esperarPorValor(comboBoxDepartamento, dato.get("departamento"));
+        seleccionarItem(comboBoxCiudad, dato.get("ciudad"));
+        esperarPorValor(comboBoxCiudad, dato.get("ciudad"));
         seleccionarItem(comboBoxTipoDireccion, dato.get("tipo_direccion"));
-        esperarPorValor(comboBoxTipoDireccion,dato.get("tipo_direccion"));
+        esperarPorValor(comboBoxTipoDireccion, dato.get("tipo_direccion"));
     }
 
 
@@ -82,7 +80,7 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
         }
         MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
-    
+
     public void validarDatosPantalla() {
         esperarHasta(TIEMPO_1000);
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
@@ -100,9 +98,9 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
     }
 
 
-    public void validarDireccion(){
+    public void validarDireccion() {
         List<WebElementFacade> contactos = getLista(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
-        MatcherAssert.assertThat("Error en la direccion agregada",contactos.get(1).getText().contains("CL 60 B # 10 - 157") || contactos.get(1).getText().contains("CALLE 60B #10-157"));
+        MatcherAssert.assertThat("Error en la direccion agregada", contactos.get(1).getText().contains("CL 60 B # 10 - 157") || contactos.get(1).getText().contains("CALLE 60B #10-157"));
     }
 
 }

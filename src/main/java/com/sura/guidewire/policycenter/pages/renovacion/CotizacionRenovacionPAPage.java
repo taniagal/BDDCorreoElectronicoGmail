@@ -17,6 +17,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class CotizacionRenovacionPAPage extends PageUtil {
 
+    private static final String CERO_COP = "$0 (COP)";
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:ttlBar']")
     private WebElementFacade labelCotizacion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:PolicyNumber-inputEl']")
@@ -64,9 +65,7 @@ public class CotizacionRenovacionPAPage extends PageUtil {
     @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td[2]/div")
     private WebElementFacade campoSubtotalPrimas;
 
-    private static final String CERO_COP = "$0 (COP)";
-
-    public CotizacionRenovacionPAPage (WebDriver driver){
+    public CotizacionRenovacionPAPage(WebDriver driver) {
         super(driver);
     }
 
@@ -89,8 +88,8 @@ public class CotizacionRenovacionPAPage extends PageUtil {
         MatcherAssert.assertThat(campoCobertura.getText(), Matchers.containsString(cobertura.get("cobertura")));
         MatcherAssert.assertThat(campoValorTermino.getText(), Matchers.containsString(cobertura.get("terminoCobertura")));
         MatcherAssert.assertThat(campoPrima.getText(), Matchers.containsString(cobertura.get("prima")));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fue $0 (COP)",!CERO_COP.equals(campoSubtotalSumaPrimas.getText()));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fue $0 (COP)",!CERO_COP.equals(campoSubtotalPrimas.getText()));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fue $0 (COP)", !CERO_COP.equals(campoSubtotalSumaPrimas.getText()));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fue $0 (COP)", !CERO_COP.equals(campoSubtotalPrimas.getText()));
     }
 
     public void validarDireccionTomador(ExamplesTable direccion) {
@@ -114,8 +113,8 @@ public class CotizacionRenovacionPAPage extends PageUtil {
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("direccion"))));
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("descripcionDireccion"))));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en prima total, fue $0 (COP)",!CERO_COP.equals(campoPrimaTotal.getText()));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en iva, fue $0 (COP)",!CERO_COP.equals(campoIva.getText()));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en costo total, fue $0 (COP)",!CERO_COP.equals(campoCostoTotal.getText()));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en prima total, fue $0 (COP)", !CERO_COP.equals(campoPrimaTotal.getText()));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en iva, fue $0 (COP)", !CERO_COP.equals(campoIva.getText()));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en costo total, fue $0 (COP)", !CERO_COP.equals(campoCostoTotal.getText()));
     }
 }

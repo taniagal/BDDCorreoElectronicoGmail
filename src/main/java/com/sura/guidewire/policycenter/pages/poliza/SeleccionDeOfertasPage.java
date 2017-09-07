@@ -13,13 +13,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class SeleccionDeOfertasPage extends PageUtil {
 
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade txtNumeroCuenta;
 
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
     private WebElementFacade btnLineaAutosPersonal;
 
-    @FindBy(xpath=".//*[@id='SubmissionWizard:Offering']/div")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Offering']/div")
     private WebElementFacade mnuOfertas;
 
     public SeleccionDeOfertasPage(WebDriver driver) {

@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.pages.modificaciones.PlanDeTrabajoPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 
 public class PlanDeTrabajoSteps extends ScenarioSteps {
@@ -13,17 +14,19 @@ public class PlanDeTrabajoSteps extends ScenarioSteps {
 
 
     @Step
-    public void ingresarAlPlanDeTrabajo(){
+    public void ingresarAlPlanDeTrabajo() {
         planDeTrabajo.ingresarALaOpcionPlanDeTrabajo();
         planDeTrabajo.validarActividadesGeneradasEnRiesgo();
     }
+
     @Step
-    public void ingresarAlPlanDeTrabajoEnCambioDePoliza(){
+    public void ingresarAlPlanDeTrabajoEnCambioDePoliza() {
         planDeTrabajo.ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza();
         planDeTrabajo.validarActividadesGeneradasEnRiesgo();
     }
+
     @Step
-    public void ingresarAlPlanDeTrabajoEnRenovacionDePoliza(){
+    public void ingresarAlPlanDeTrabajoEnRenovacionDePoliza() {
         planDeTrabajo.ingresarALaOpcionPlanDeTrabajoEnRenovacionDePoliza();
         planDeTrabajo.validarActividadesGeneradasEnRiesgo();
     }

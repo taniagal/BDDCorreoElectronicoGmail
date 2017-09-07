@@ -20,13 +20,13 @@ public class ContactoOrdenesDeTrabajoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void filtrarPorEstado(String estado){
+    public void filtrarPorEstado(String estado) {
         ordenesTrabajoPage.filtrarTransaccionesPorEstado(estado);
     }
 
     @Step
     public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
-                                           String tipo, String estado, String participante){
+                                           String tipo, String estado, String participante) {
         ordenesTrabajoPage.validarCamposTransacciones(poliza, producto, numeroTransaccion, tipo,
                 estado, participante);
     }

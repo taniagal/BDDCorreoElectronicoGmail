@@ -15,25 +15,27 @@ public class SustitucionesSteps extends ScenarioSteps {
     @Page
     SustitucionesPage sustitucionesPage;
 
-    public SustitucionesSteps(Pages pages){super(pages);}
+    public SustitucionesSteps(Pages pages) {
+        super(pages);
+    }
 
     @Step
-    public void sustitucionVehiculo(){
+    public void sustitucionVehiculo() {
         sustitucionesPage.sustitucionVehiculo();
     }
 
     @Step
-    public void verificarInfoVehiculo(ExamplesTable infoVehiculo){
+    public void verificarInfoVehiculo(ExamplesTable infoVehiculo) {
         sustitucionesPage.verificarInfoVehiculo(infoVehiculo);
     }
 
     @Step
-    public void agregarVehiculoSustituto(ExamplesTable datosAgregarVehiculo){
+    public void agregarVehiculoSustituto(ExamplesTable datosAgregarVehiculo) {
         sustitucionesPage.agregarVehiculoSustituto(datosAgregarVehiculo);
     }
 
     @Step
-    public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo){
+    public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo) {
         TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
         tarifaAutosPage.verificarCoberturasVehiculoSustituto(datosCoberturaVehiculo);
     }

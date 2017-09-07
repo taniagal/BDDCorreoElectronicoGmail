@@ -24,6 +24,17 @@ import org.openqa.selenium.support.FindBy;
 
 public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
+    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    private static final String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
+    private static final String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
+    private static final String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
+    private static final String LBL_MENU_LATERAL_INICIAL = ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static final String LBL_MENU_LATERAL_FINAL = "')]";
+    private static final String LBL_INFORMACION_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV')]/td/div";
+    private static final String LINK_MENU_LATERAL_INICIAL = ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static final String LINK_MENU_LATERAL_FINAL = "')]";
+    private static final String ASEGURADORA = "ASEGURADORA";
     @FindBy(xpath = ".//*[contains(@id, 'PolicyInfo')]/div/span")
     WebElementFacade lblInformaPolizaEnRenovacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
@@ -102,6 +113,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Accepted-inputEl']")
     WebElementFacade checkiReaseguroAceptado;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
+    WebElementFacade botonAceptarCoaseguro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade agregarCoaseguro;
     @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_true-inputEl']")
@@ -114,25 +127,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade menuItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:_msgs']")
     private WebElementFacade divMensaje2;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
-    WebElementFacade botonAceptarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:ReferencePolicyNumber-inputEl']")
     private WebElementFacade txtPolizaDeReferencia;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:DocumentNumberReference-inputEl']")
     private WebElementFacade txtNumeroDeDocumento;
-
-    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static final String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
-    private static final String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
-    private static final String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
-    private static final String LBL_MENU_LATERAL_INICIAL = ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
-    private static final String LBL_MENU_LATERAL_FINAL = "')]";
-    private static final String LBL_INFORMACION_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV')]/td/div";
-    private static final String LINK_MENU_LATERAL_INICIAL = ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
-    private static final String LINK_MENU_LATERAL_FINAL = "')]";
-    private static final String ASEGURADORA = "ASEGURADORA";
     private boolean esVisible;
-    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
 
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
@@ -250,7 +249,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionarOpcionCotizarPolizaPrincipal() {
         botonCotizar.waitUntilPresent();
         clickearElemento(botonCotizar);
-        waitForTextToAppear("Número de cotización",TIEMPO_40000);
+        waitForTextToAppear("Número de cotización", TIEMPO_40000);
     }
 
     public Integer encontrarProducto(String producto) {

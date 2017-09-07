@@ -25,13 +25,13 @@ public class UbicacionesDeUnaCuentaDefinitions {
     }
 
     @When("cuando agregue una nueva ubicacion nombre <nombre>, direccion <direccion>")
-    public void whenCuandoAgregueUnaNuevaUbicacion(@Named("nombre") String nombre,@Named("direccion") String direccion) {
-        ubicacionesDeUnaCuentaSteps.agregarUbicacion(nombre,direccion);
+    public void whenCuandoAgregueUnaNuevaUbicacion(@Named("nombre") String nombre, @Named("direccion") String direccion) {
+        ubicacionesDeUnaCuentaSteps.agregarUbicacion(nombre, direccion);
     }
 
     @When("departamento <departamento>, ciudad <ciudad>, tipo de direccion <tipo_direccion>")
-    public void andCuandoAgregueDireccion(@Named("departamento") String departamento,@Named("ciudad") String ciudad,@Named("tipo_direccion") String tipoDireccion) {
-        ubicacionesDeUnaCuentaSteps.agregarDireccion(departamento,ciudad,tipoDireccion);
+    public void andCuandoAgregueDireccion(@Named("departamento") String departamento, @Named("ciudad") String ciudad, @Named("tipo_direccion") String tipoDireccion) {
+        ubicacionesDeUnaCuentaSteps.agregarDireccion(departamento, ciudad, tipoDireccion);
     }
 
     @Then("debo poder ver el tipo de vivienda en el detalle de la ubicacion")

@@ -25,8 +25,8 @@ public class PolicySteps extends ScenarioSteps {
     }
 
     @Step
-    public void loginSeus(String pais,String usuario, String contrasenia) {
-        seus.login(pais,usuario, contrasenia);
+    public void loginSeus(String pais, String usuario, String contrasenia) {
+        seus.login(pais, usuario, contrasenia);
     }
 
     @Step

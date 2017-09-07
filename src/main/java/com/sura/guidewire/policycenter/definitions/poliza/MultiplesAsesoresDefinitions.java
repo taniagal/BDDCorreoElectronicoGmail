@@ -36,7 +36,7 @@ public class MultiplesAsesoresDefinitions {
 
     @When("tenga una poliza mrc con los asesores ingresados")
     @Alias("tenga una poliza de autos con los asesores ingresados")
-    public void asesoresIngresado(){
+    public void asesoresIngresado() {
         //escenario vacio solo para tener la narrativa en el .story
     }
 
@@ -49,7 +49,7 @@ public class MultiplesAsesoresDefinitions {
     @Then("Debe quedar un codigo de asesor:$opciones")
     public void validarCodigoAsesor(ExamplesTable opciones) {
 
-        multiplesAsesoresSteps.validarDatosDelAsesor( new Parametros(opciones));
+        multiplesAsesoresSteps.validarDatosDelAsesor(new Parametros(opciones));
     }
 
     @Then("validar el mensajes:$opciones")

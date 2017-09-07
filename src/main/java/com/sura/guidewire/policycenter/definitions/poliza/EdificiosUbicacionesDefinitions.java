@@ -23,6 +23,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
 public class EdificiosUbicacionesDefinitions {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     @Steps
     PolizaSteps polizaSteps;
     @Steps
@@ -33,9 +34,6 @@ public class EdificiosUbicacionesDefinitions {
     TarifaTasaUnicaSteps tasaUnicaSteps;
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
 
     @Given("que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>")
     public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario) {

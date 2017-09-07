@@ -19,7 +19,7 @@ public class MultiplesAsesoresSteps extends ScenarioSteps {
 
     @Step
     public void ingresarInformacionDelAsesor(ExamplesTable parametros) {
-       multiplesAsesoresPage.ingresarInformacionDelAsesor(parametros);
+        multiplesAsesoresPage.ingresarInformacionDelAsesor(parametros);
     }
 
     @Step

@@ -11,16 +11,16 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class ValidacionesListaRolesContactoSteps extends ScenarioSteps {
 
-   @Page
+    @Page
     ValidacionesListaRolesContactoPage validacionesListaRolesContactoPage;
 
-    public ValidacionesListaRolesContactoSteps (Pages pages){
+    public ValidacionesListaRolesContactoSteps(Pages pages) {
         super(pages);
     }
 
 
     @Step
-    public void validarListaContactosRoles(ExamplesTable listaContactosRoles){
+    public void validarListaContactosRoles(ExamplesTable listaContactosRoles) {
         validacionesListaRolesContactoPage.validarOpcionesAgregarRol(listaContactosRoles);
     }
 

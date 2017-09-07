@@ -34,7 +34,7 @@ public class CotizacionMRCDefinitions {
     @Steps
     DetalleDeAseguradoDeCotizacionSteps detalleDeAseguradoDeCotizacionSteps;
 
-    public CotizacionMRCDefinitions(){
+    public CotizacionMRCDefinitions() {
         labelsCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
         labelsCotizacionPoliza.put("vigenciaPoliza", "Vigencia de la póliza");
         labelsCotizacionPoliza.put("tomador", "Tomador");
@@ -66,58 +66,58 @@ public class CotizacionMRCDefinitions {
     }
 
     @Given("se registraron los riesgos y coberturas que se desean cotizar <cotizacion>")
-    public void buscarCotizacionBorrador(@Named("cotizacion") String cotizacion){
+    public void buscarCotizacionBorrador(@Named("cotizacion") String cotizacion) {
         cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
     }
 
     @When("ingrese a consultar la cotizacion")
-    public void consultarCotizacion(){
+    public void consultarCotizacion() {
         cotizacionMRCSteps.verDetalleCotizacion();
     }
 
     @When("realice la cotizacion")
-    public void ingresarACotizacion(){
+    public void ingresarACotizacion() {
         cotizacionMRCSteps.ingresarACotizacion();
     }
 
     @When("los participantes y/o ubicaciones sean riesgo consultable")
-    public void validarTipoRiesgo(){
+    public void validarTipoRiesgo() {
         cotizacionMRCSteps.validarTipoRiesgo();
     }
 
     @When("los participantes (tomador, asegurado y/o beneficiario) sean identificados como PEP")
-    public void validarRiesgoPEP(){
+    public void validarRiesgoPEP() {
         cotizacionMRCSteps.validarTipoRiesgo();
     }
 
     @When("ya exista una cotizacion en estado cotizado del mismo cliente, para el producto Multiriesgo corporativo con un\n" +
             "agente diferente al que se ingreso")
-    public void validarExclusividadCotizacion(){
+    public void validarExclusividadCotizacion() {
         cotizacionMRCSteps.validarTipoRiesgo();
     }
 
     @When("voy a crear una nueva cotizacion")
-    public void irACrearCotizacion(){
+    public void irACrearCotizacion() {
         detalleDeAseguradoDeCotizacionSteps.irACrearNuevaCotizacion();
     }
 
     @When("crear una cotizacion nueva con la cuenta <cuenta>")
-    public void crearCotizacion(@Named("cuenta") String cuenta){
+    public void crearCotizacion(@Named("cuenta") String cuenta) {
         detalleDeAseguradoDeCotizacionSteps.ingresarCuenta(cuenta);
     }
 
     @Then("debo ver la informacion de la cotizacion $informacionCotizacion")
-    public void validarInformacionCotizacion(ExamplesTable informacionCotizacion){
+    public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
         cotizacionMRCSteps.validarInformacionCotizacion(labelsCotizacionPoliza, informacionCotizacion);
     }
 
     @Then("debo ver la prima <primaTotal> a cobrar al cliente")
-    public void validarPrimaTotal(@Named("primaTotal") String primaTotal){
+    public void validarPrimaTotal(@Named("primaTotal") String primaTotal) {
         cotizacionMRCSteps.validarPrima(primaTotal);
     }
 
     @Then("se muestre el detalle de la prima por riesgo")
-    public void mostrarDetallePrima(){
+    public void mostrarDetallePrima() {
         cotizacionMRCSteps.mostrarDetallePrimaPorRiesgo(labelsCotizacionPoliza);
     }
 
@@ -137,9 +137,10 @@ public class CotizacionMRCDefinitions {
     }
 
     @Then("se debe generar un UW issue para solicitar autorizacion en la expedicion de poliza <mensaje>")
-    public void validarMensajeUWAlExpedir(@Name("mensaje") String mensaje){
+    public void validarMensajeUWAlExpedir(@Name("mensaje") String mensaje) {
         cotizacionMRCSteps.validarMensajeUWAlExpedir(mensaje);
     }
+
     @Then("se debe generar un UW issue para solicitar autorizacion al expedir la modificación de poliza <mensaje>")
     public void validarMensajeUWAlExpedirPoliza(@Name("mensaje") String mensaje) {
         cotizacionMRCSteps.validarMensajeUWAlExpedirCambio(mensaje);

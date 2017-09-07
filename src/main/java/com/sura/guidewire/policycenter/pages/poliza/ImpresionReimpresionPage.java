@@ -57,7 +57,7 @@ public class ImpresionReimpresionPage extends PageUtil {
     }
 
     public void validarNoPresenciaDeReimpresion() {
-       botonReimpresion.shouldNotBeCurrentlyVisible();
+        botonReimpresion.shouldNotBeCurrentlyVisible();
     }
 
     public void irADocumentos() {

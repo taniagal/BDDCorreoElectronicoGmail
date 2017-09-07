@@ -17,6 +17,13 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 public class CrearYEditarCumulosPage extends PageUtil {
+    private static final String PAIS_ALEMANIA = "Alemania";
+    private static final String ASEGURADORA_MUNCHENER = "MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT";
+    private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
+    private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
+    private static final double CONSTANTE_UNO = 1;
+    private static final double CONSTANTE_CIEN = 100.0;
+    private static final int CONSTANTE_MIL = 1000;
     @FindBy(xpath = ".//td[@id='SubmissionWizard:Reinsurance']/div/span")
     WebElementFacade btnReaseguro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:PolicyReinsuranceScreen:PolicyReinsuranceCV_tb:ReinsuranceWorksheet-btnInnerEl']")
@@ -53,14 +60,6 @@ public class CrearYEditarCumulosPage extends PageUtil {
     WebElementFacade btnAgreagarRiesgos;
     @FindBy(xpath = ".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Reinsurance']/div")
     WebElementFacade menuReaseguro;
-
-    private static final String PAIS_ALEMANIA = "Alemania";
-    private static final String ASEGURADORA_MUNCHENER = "MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT";
-    private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]";
-    private static final String CELDA_VALOR = "//input[@class='x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus']";
-    private static final double CONSTANTE_UNO = 1;
-    private static final double CONSTANTE_CIEN = 100.0;
-    private static final int CONSTANTE_MIL = 1000;
     private double valorTasa = 0;
 
 

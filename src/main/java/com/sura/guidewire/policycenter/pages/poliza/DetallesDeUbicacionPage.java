@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 
 
 public class DetallesDeUbicacionPage extends PageUtil {
+    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    String direccion = "";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
@@ -42,10 +44,6 @@ public class DetallesDeUbicacionPage extends PageUtil {
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB:addExistingLocations-textEl']")
     private WebElementFacade botonAgregarUbicacionExistente;
-
-
-    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    String direccion = "";
 
     public DetallesDeUbicacionPage(WebDriver driver) {
         super(driver);

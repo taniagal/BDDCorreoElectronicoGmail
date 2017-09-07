@@ -21,19 +21,15 @@ import org.openqa.selenium.WebDriver;
 
 public class InformacionPolizaPADefinitions {
 
+    private final Map<String, String> infoPoliza = new HashMap<>();
     @Managed
     WebDriver driver;
-
     @Steps
     private CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
-
     @Steps
     private InformacionPolizaPASteps informacionPolizaPASteps;
-
     @Steps
     private PolizaPrincipalPaSteps polizaPrincipalPaSteps;
-
-    private final Map<String, String> infoPoliza = new HashMap<>();
 
     public InformacionPolizaPADefinitions() {
         infoPoliza.put("labelAseguradoPrimario", "Tomador");

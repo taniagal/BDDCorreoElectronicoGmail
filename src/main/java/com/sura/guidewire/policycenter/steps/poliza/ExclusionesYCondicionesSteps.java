@@ -23,12 +23,12 @@ public class ExclusionesYCondicionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarExclusionOCondicion(){
+    public void ingresarExclusionOCondicion() {
         exclusionesYCondicionessPage.ingresarExclusionOCondicion();
     }
 
     @Step
-    public void ingresarExclusionOCondicionABuscar(String palabraABuscar){
+    public void ingresarExclusionOCondicionABuscar(String palabraABuscar) {
         exclusionesYCondicionessPage.ingresarExclusionOCondicionABuscar(palabraABuscar);
     }
 
@@ -44,7 +44,7 @@ public class ExclusionesYCondicionesSteps extends ScenarioSteps {
         exclusionesYCondicionessPage.opcionBuscar();
     }
 
-    public void validarBusqueda(ExamplesTable listaBusqueda){
+    public void validarBusqueda(ExamplesTable listaBusqueda) {
         exclusionesYCondicionessPage.validarBusquedaExclusionesYClausulas(listaBusqueda);
     }
 }

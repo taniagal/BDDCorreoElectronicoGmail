@@ -23,7 +23,7 @@ public class DetallesDeUbicacionDefinitions {
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>")
     @Then("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>, medioVenta <medioVenta>")
-    public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad, @Named("medioVenta") String medioVenta){
+    public void agregarUbicacion(@Named("direccion") String direccion, @Named("departamento") String departamento, @Named("ciudad") String ciudad, @Named("medioVenta") String medioVenta) {
         detallesDeUbicacionSteps.validarCamposNuevos();
         detallesDeUbicacionSteps.agregarDireccion(direccion, departamento, ciudad);
         detallesDeUbicacionSteps.agregarMedioDeVenta(medioVenta);
@@ -31,12 +31,12 @@ public class DetallesDeUbicacionDefinitions {
 
     @When("descripcion <descripcion>, actividad economica <actividad>")
     @Then("descripcion <descripcion>, actividad economica <actividad>")
-    public void agregarUbicacion(@Named("actividad")String actividad, @Named("descripcion")String descripcion){
+    public void agregarUbicacion(@Named("actividad") String actividad, @Named("descripcion") String descripcion) {
         detallesDeUbicacionSteps.agregarUbicacion(descripcion, actividad);
     }
 
     @When("agregue una nueva ubicacion: $datos")
-    public void agregaNuevaUbicacion(ExamplesTable datos){
+    public void agregaNuevaUbicacion(ExamplesTable datos) {
         Map<String, String> dato = datos.getRow(0);
         detallesDeUbicacionSteps.validarCamposNuevos();
         detallesDeUbicacionSteps.agregarMedioDeVenta(dato.get("medioVenta"));
@@ -46,17 +46,17 @@ public class DetallesDeUbicacionDefinitions {
     }
 
     @Then("espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaciones la nueva ubicaciOn ingresada")
-    public void verificarUbicacion(){
+    public void verificarUbicacion() {
         detallesDeUbicacionSteps.validarIngresoUbicacion();
     }
 
     @Then("que se muestre el mensaje <mensaje>")
-    public void verificarMensaje(@Named("mensaje")String mensaje){
-         detallesDeUbicacionSteps.verificarMensaje(mensaje);
+    public void verificarMensaje(@Named("mensaje") String mensaje) {
+        detallesDeUbicacionSteps.verificarMensaje(mensaje);
     }
 
     @When("seleccione el producto <producto> para expedir la poliza")
-    public void elegirProducto(@Named("producto") String producto){
+    public void elegirProducto(@Named("producto") String producto) {
         nuevaCotizacionSteps.seleccionDeProducto(producto);
     }
 }

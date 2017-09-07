@@ -21,6 +21,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
+    protected static final int CONSTANTE_4 = 4;
     @FindBy(xpath = ".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_WorkOrders']/div")
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
@@ -47,8 +48,6 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     private WebElementFacade msjTransaccionNoEncontrada;
     @FindBy(xpath = ".//*[contains(@id, 'WorkOrdersLV-body')]")
     private WebElementFacade tablaTransaccionesDeContacto;
-
-    protected static final int CONSTANTE_4 = 4;
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);

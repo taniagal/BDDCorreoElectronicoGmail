@@ -32,11 +32,11 @@ public class CuentasAsociadasAContactoDefinitions {
     }
 
     @Then("se muestra la lista de cuentas asociadas con nombre: <nombreConsulta>, direccion: <direccion>, tel: <telefono>, email: <email> y rol: <rol>")
-    public void listarCuentasAsociadas  (@Named("nombreConsulta") String nombreConsulta,
-                                         @Named("direccion") String direccion,
-                                         @Named("telefono") String telefono,
-                                         @Named("email") String email,
-                                         @Named("rol") String rol) {
+    public void listarCuentasAsociadas(@Named("nombreConsulta") String nombreConsulta,
+                                       @Named("direccion") String direccion,
+                                       @Named("telefono") String telefono,
+                                       @Named("email") String email,
+                                       @Named("rol") String rol) {
         contactoSteps.listarCuentasAsociadasAContacto(nombreConsulta, direccion, telefono, email, rol);
     }
 

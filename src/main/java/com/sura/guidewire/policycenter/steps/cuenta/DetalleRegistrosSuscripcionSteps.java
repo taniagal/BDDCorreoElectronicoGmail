@@ -4,9 +4,10 @@ import com.sura.guidewire.policycenter.pages.cuenta.DetalleRegistrosSuscripcionP
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 
-public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
+public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps {
 
     @Page
     DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage;
@@ -48,12 +49,12 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validarVisibilidadMenuAnalisisDeRiesgo(){
+    public void validarVisibilidadMenuAnalisisDeRiesgo() {
         detalleRegistrosSuscripcionPage.validarVisibilidadMenuAnalisisDeRiesgo();
     }
 
     @Step
-    public void validarVisibilidadMenuActividades(){
+    public void validarVisibilidadMenuActividades() {
         detalleRegistrosSuscripcionPage.validarVisibilidadMenuActividades();
     }
 

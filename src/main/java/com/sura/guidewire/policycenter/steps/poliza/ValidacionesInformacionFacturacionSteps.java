@@ -13,19 +13,19 @@ public class ValidacionesInformacionFacturacionSteps extends ScenarioSteps {
     @Page
     ValidacionesInformacionFacturacionPage validacionesInformacionFacturacionPage;
 
-    public ValidacionesInformacionFacturacionSteps (Pages pages){
+    public ValidacionesInformacionFacturacionSteps(Pages pages) {
 
-        super (pages);
+        super(pages);
     }
 
     @Step
-    public void ingresarMenuFacturacion(){
+    public void ingresarMenuFacturacion() {
 
         validacionesInformacionFacturacionPage.ingresarMenuAccionesFacturacion();
     }
 
     @Step
-    public void verificarInformacionDeFacturacion(){
+    public void verificarInformacionDeFacturacion() {
         validacionesInformacionFacturacionPage.validarInformacionFacturacion();
     }
 }

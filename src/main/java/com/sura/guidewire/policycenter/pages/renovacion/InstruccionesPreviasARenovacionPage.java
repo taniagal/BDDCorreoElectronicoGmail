@@ -1,7 +1,9 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
 import ch.lambdaj.Lambda;
+
 import java.util.List;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -34,17 +36,17 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
         listaInstrucciones = Lambda.extract(listaIntruccionesWE, Lambda.on(WebElementFacade.class).getText());
     }
 
-    public List<String> obtenerInstruccionesDisponibles(){
-        return  this.listaInstrucciones;
+    public List<String> obtenerInstruccionesDisponibles() {
+        return this.listaInstrucciones;
     }
 
-    public List<String> obtenerListaRazonesDeRenovacion(){
-        return  this.listaRazonesDeRenovacio;
+    public List<String> obtenerListaRazonesDeRenovacion() {
+        return this.listaRazonesDeRenovacio;
     }
 
-    public void seleccionarOpcion(String instruccionASeleccionar){
-        for (WebElementFacade instruccion : listaIntruccionesWE){
-            if (instruccion.getText().equals(instruccionASeleccionar)){
+    public void seleccionarOpcion(String instruccionASeleccionar) {
+        for (WebElementFacade instruccion : listaIntruccionesWE) {
+            if (instruccion.getText().equals(instruccionASeleccionar)) {
                 instruccion.click();
                 waitFor(1).seconds();
                 break;

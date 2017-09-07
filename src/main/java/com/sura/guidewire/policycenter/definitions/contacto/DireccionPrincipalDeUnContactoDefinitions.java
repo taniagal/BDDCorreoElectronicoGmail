@@ -30,27 +30,27 @@ public class DireccionPrincipalDeUnContactoDefinitions {
     }
 
     @When("ingrese los datos de la direccion: $datos")
-    public void agregarDireccion(ExamplesTable datos){
+    public void agregarDireccion(ExamplesTable datos) {
         detallesContactoSteps.agregar_direccion(datos);
     }
 
     @When("se actualiza el contacto")
-    public void actualizarContacto(){
+    public void actualizarContacto() {
         detallesContactoSteps.actualizar_contacto();
     }
 
     @When("agrego fila de direccion")
-    public void direccionNueva(){
+    public void direccionNueva() {
         detallesContactoSteps.agregar_nueva_direccion();
     }
 
     @Then("en la lista de direcciones agregadas se debe ver la nueva direccion estandarizada")
-    public void verificarDireccion(){
+    public void verificarDireccion() {
         detallesContactoSteps.validar_direccion();
     }
 
     @Then("el sistema me debe impedir la repeticion del tipo de direccion y mostrar el mensaje <mensaje>")
-    public void verificarRepeticionTipoDirreccion (@Named("mensaje") String mensaje){
+    public void verificarRepeticionTipoDirreccion(@Named("mensaje") String mensaje) {
         detallesContactoSteps.validar_mensaje(mensaje);
     }
 

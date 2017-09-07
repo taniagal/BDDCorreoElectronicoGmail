@@ -16,6 +16,8 @@ import org.openqa.selenium.interactions.Actions;
 
 public class BusquedaDeCuentasPage extends PageUtil {
 
+    private static final String CHECK_NO_SELECCIONADO = "Check no seleccionado";
+    Actions acciones = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     private WebElementFacade lblTipoDocumento;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDNumber-labelEl']")
@@ -98,10 +100,6 @@ public class BusquedaDeCuentasPage extends PageUtil {
     private WebElementFacade botonRestablecer;
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtIrA;
-
-    Actions acciones = new Actions(getDriver());
-
-    private static final String CHECK_NO_SELECCIONADO = "Check no seleccionado";
 
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
@@ -265,7 +263,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         acciones.click(btnBuscar).build().perform();
     }
 
-    public void seleccionarItemEnCombo(WebElementFacade elemento, String dato){
+    public void seleccionarItemEnCombo(WebElementFacade elemento, String dato) {
         elemento.clear();
         elemento.sendKeys(dato);
         elemento.sendKeys(Keys.ENTER);

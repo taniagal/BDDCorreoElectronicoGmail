@@ -84,28 +84,31 @@ import com.sura.guidewire.policycenter.utils.menu.superior.contacto.NuevaPersona
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.CuentaBuscarPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.NuevaCuentaPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.equipo.EquipoPage;
-
-
+import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.MisActividadesPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.MisColasPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.MisCuentasPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.MisEnviosPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.MisOtrasTransacPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.MisRenovacionesPage;
-import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.MisActividadesPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.poliza.PolizaBuscarPage;
+
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-
-
 public class Navegacion extends PageUtil {
 
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
+    public WebElementFacade botonVolver;
+    @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
+    WebElementFacade mnuResumenCuenta;
     // Objetos menu Escritorio
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
     private WebElementFacade menuEscritorio;
@@ -125,7 +128,6 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuCuenta;
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtIrA;
-
     // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
     private WebElementFacade mnuItemNuevaCuenta;
@@ -133,15 +135,11 @@ public class Navegacion extends PageUtil {
     private WebElementFacade campoTxtBuscar;
     @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
     private WebElementFacade campoTxtSubN;
-
     // Objetos menu Poliza
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElementFacade mnuPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-itemEl']")
     private WebElementFacade mnuItemNuevoEnvio;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
-    public WebElementFacade botonVolver;
-
     // Objetos menu Contacto
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
     private WebElementFacade mnuContact;
@@ -155,7 +153,6 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuItemContactoBusqueda;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     private WebElementFacade mnuBuscar;
-
     // Objetos menu Buscar
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_PolicySearch']")
     private WebElementFacade mnuItemBuscarPoliza;
@@ -167,11 +164,9 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuItemBuscarAct;
     @FindBy(xpath = "//*[@id='TabBar:SearchTab:Search_ContactSearch']")
     private WebElementFacade mnuItemBusquedaContacto;
-
     // Objetos menu Equipo
     @FindBy(xpath = ".//*[@id='TabBar:TeamTab-btnInnerEl']")
     private WebElementFacade mnuEquipo;
-
     // Objetos menu Administracion
     @FindBy(xpath = ".//*[@id='TabBar:AdminTab-btnWrap']")
     private WebElementFacade mnuAdministracion;
@@ -227,7 +222,6 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuItemFormatoExpHojasCalculo;
     @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Utilities:Utilities_DataChangePage-itemEl']")
     private WebElementFacade mnuItemCambioDatos;
-
     // Objetos menu Acciones Escritorio
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions']")
     private WebElementFacade mnuAccionesEscritorio;
@@ -235,7 +229,6 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuAccionNuevoEnvio;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewAccount']")
     private WebElementFacade mnuAccionNuevaCuenta;
-
     // Objetos menu Acciones Cuenta
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions-btnInnerEl']")
     private WebElementFacade mnuAccionesCuenta;
@@ -299,13 +292,11 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuAccionCombinarCuentas;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission-itemEl']")
     private WebElementFacade mnuNuevaCotizacion;
-
     // Objetos menu Acciones Contacto
     @FindBy(xpath = ".//*[@id='ContactFile:ContactFileMenuActions-btnInnerEl']")
     private WebElementFacade mnuAccionesContacto;
     @FindBy(xpath = ".//*[@id='ContactFile:ContactFileMenuActions:ContactFileMenuActions_Create:ContactFileMenuActions_NewAccount-itemEl']")
     private WebElementFacade mnuAccionNuevaCuentaC;
-
     // Objetos menu Acciones Administracion
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions-btnInnerEl']")
     private WebElementFacade mnuAccionesAdministracion;
@@ -347,14 +338,9 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuAccionRevisionLegal;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:11:item-itemEl']")
     private WebElementFacade mnuAccionCotizarManual;
-
     // Objetos menu Opciones Cuenta
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
     private WebElementFacade mnuOpcionesCuenta;
-
-    @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
-    WebElementFacade mnuResumenCuenta;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade mnuInformacionDePoliza;
 

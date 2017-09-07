@@ -14,40 +14,40 @@ public class ValidacionesMDMDefinitions {
     CuentaNuevaSteps cuentaNuevaSteps;
 
     @When("quiera crear una cuenta para un contacto e ingrese documento, tipo de documento <tipo_documento>")
-    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento){
+    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento") String tipoDocumento) {
         cuentaNuevaSteps.abrirNuevaCuenta();
         cuentaNuevaSteps.agregarDocumento(tipoDocumento);
     }
 
     @When("quiera crear una cuenta para un contacto e ingrese documento <documento>, tipo de documento <tipo_documento>")
-    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento,@Named("documento")String documento){
+    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
         cuentaNuevaSteps.abrirNuevaCuenta();
-        cuentaNuevaSteps.agregarDocumento(tipoDocumento,documento);
+        cuentaNuevaSteps.agregarDocumento(tipoDocumento, documento);
     }
 
     @When("quiera crear una cuenta para un contacto persona juridica con tipo de documento <tipo_documento> y nro documento <nro_documento>")
-    public void crearCuentaNuevaJuridica(@Named("tipo_documento")String tipoDocumento, @Named("nro_documento")String nroDocumento){
+    public void crearCuentaNuevaJuridica(@Named("tipo_documento") String tipoDocumento, @Named("nro_documento") String nroDocumento) {
         cuentaNuevaSteps.abrirNuevaCuenta();
         cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento, nroDocumento);
     }
 
     @When("nombre comercial <nombre_comercial>")
-    public void agregarNombrecomercial(@Named("nombre_comercial")String nombreComercial){
+    public void agregarNombrecomercial(@Named("nombre_comercial") String nombreComercial) {
         cuentaNuevaSteps.agregarNombreComecial(nombreComercial);
     }
 
     @When("telefono oficina <telefono_oficina>")
-    public void agregarTelefonoOficina(@Named("telefono_oficina")String telefonoOficina){
+    public void agregarTelefonoOficina(@Named("telefono_oficina") String telefonoOficina) {
         cuentaNuevaSteps.agregarTelefonoOficina(telefonoOficina);
     }
 
     @Then("no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>")
-    public void verificarMensaje(@Named("mensaje") String mensaje){
+    public void verificarMensaje(@Named("mensaje") String mensaje) {
         cuentaNuevaSteps.verificarMensaje(mensaje);
     }
 
     @Then("no debe permitir crear una nueva cuenta y no debe mostrar el mensaje <mensaje>")
-    public void verificarEstadoDeMensaje(@Named("mensaje") String mensaje){
+    public void verificarEstadoDeMensaje(@Named("mensaje") String mensaje) {
         cuentaNuevaSteps.verificarEstadoDeMensaje(mensaje);
     }
 }

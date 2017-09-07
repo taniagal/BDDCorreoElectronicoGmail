@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class OpcionesResumenCuentaPage extends PageUtil {
+    private static final String VALIDAREDITABLES = "input";
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:ttlBar']")
     private WebElementFacade lblResumenCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:OfficialIDInputSet:DocumentType-labelEl']")
@@ -89,7 +90,6 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     private WebElementFacade lblTelTrabajo;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade lblTelCelular;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:EditAccount-btnInnerEl']")
     private WebElementFacade btnEditarCuenta;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
@@ -144,15 +144,12 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     private WebElementFacade labelTipoTelefono;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:Update-btnInnerEl']")
     private WebElementFacade btnActualizar;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_ActivitiesLV_header']")
     private WebElementFacade tableActividadesActuales;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_PolicyTermsLV_header']")
     private WebElementFacade tableTerminosDeLaPoliza;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_WorkOrdersLV_header']")
     private WebElementFacade tableTransaccionesPolizaPdtes;
-
-    private static final String VALIDAREDITABLES = "input";
 
     public OpcionesResumenCuentaPage(WebDriver driver) {
         super(driver);

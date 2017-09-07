@@ -11,7 +11,8 @@ public class AccionesWidget extends PageObject {
     public void seleccionarOpcionCambioDePoliza() {
         findBy(LINK_OPCIONES_CAMBIAR_POLIZA).waitUntilVisible().waitUntilClickable().click();
     }
-    public void seleccionarOpcionRenovarPoliza(){
+
+    public void seleccionarOpcionRenovarPoliza() {
         findBy(LINK_OPCIONES_RENOVAR_POLIZA).waitUntilVisible().waitUntilClickable().click();
     }
 

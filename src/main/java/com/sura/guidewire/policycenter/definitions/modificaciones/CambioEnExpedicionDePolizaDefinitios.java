@@ -26,20 +26,20 @@ public class CambioEnExpedicionDePolizaDefinitios {
 
 
     @Given("Que tengo una cotizacion <cotizacion>")
-    public void givenQueTengoUnaCotizacioncotizacion(@Named("cotizacion")String cotizacion) {
+    public void givenQueTengoUnaCotizacioncotizacion(@Named("cotizacion") String cotizacion) {
         expedicionDePolizaSteps.navegarBarraSuperior(cotizacion);
     }
 
 
     @When("expida el cambio de una poliza")
-    public void expedirCambioDePoliza(){
+    public void expedirCambioDePoliza() {
         cambioEnExpedicionDePolizaSteps.cotizarYExpedirCambioDePoliza();
     }
 
     @Then("debe mostrar el resumen de la poliza expedida con la informacion del cambio <infoCambio>, poliza <infoPoliza>,  escritorio <escritorio>")
-    public void confirma (@Named("infoCambio")String infoCambio,
-                          @Named("infoPoliza")String infoPoliza,
-                          @Named("escritorio")String escritorio){
+    public void confirma(@Named("infoCambio") String infoCambio,
+                         @Named("infoPoliza") String infoPoliza,
+                         @Named("escritorio") String escritorio) {
         cambioEnExpedicionDePolizaSteps.validarResumenDeLaPolizaExpedida(infoCambio, infoPoliza, escritorio);
     }
 }

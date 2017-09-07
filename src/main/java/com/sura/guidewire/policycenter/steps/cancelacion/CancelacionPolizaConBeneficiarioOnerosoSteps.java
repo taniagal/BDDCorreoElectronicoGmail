@@ -19,7 +19,7 @@ public class CancelacionPolizaConBeneficiarioOnerosoSteps extends ScenarioSteps 
     }
 
     @Step
-    public void validarMensajeCompromisoCancelacion(ExamplesTable mensajeCancelar){
+    public void validarMensajeCompromisoCancelacion(ExamplesTable mensajeCancelar) {
         cancelacionPolizaConBeneficiarioOnerosoPage.validarMensajeAdvertenciaCompromisoCancelacion(mensajeCancelar);
     }
 }

@@ -7,13 +7,13 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class ValidacionesCambioDePolizaVehiculosSteps extends ScenarioSteps  {
+public class ValidacionesCambioDePolizaVehiculosSteps extends ScenarioSteps {
 
     private final ValidacionesCambioDePolizaVehiculosPage validacionesCambioDePolizaVehiculosPage = new ValidacionesCambioDePolizaVehiculosPage(getDriver());
 
     private final ModificacionCotizacionDePolizaPage cotizacionDePolizaPage = new ModificacionCotizacionDePolizaPage(getDriver());
 
-    public ValidacionesCambioDePolizaVehiculosSteps(Pages pages){
+    public ValidacionesCambioDePolizaVehiculosSteps(Pages pages) {
         super(pages);
     }
 

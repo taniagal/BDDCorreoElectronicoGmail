@@ -1,4 +1,3 @@
-
 package com.sura.guidewire.policycenter.pages.modificaciones;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
@@ -66,4 +65,4 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
         waitFor(campoDireccionModificacion).waitUntilPresent();
         MatcherAssert.assertThat(campoDireccionModificacion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
- }
+}

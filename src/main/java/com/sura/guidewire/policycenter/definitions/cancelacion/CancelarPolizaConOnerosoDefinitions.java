@@ -23,7 +23,7 @@ public class CancelarPolizaConOnerosoDefinitions {
     }
 
     @Then("se debe visualizar mensaje de advertencia al cancelar poliza por opciones de compromiso $mensajeCancelar")
-    public void validarMensajeAdvertenciaCancelacionCompromiso(ExamplesTable mensajeCancelar){
+    public void validarMensajeAdvertenciaCancelacionCompromiso(ExamplesTable mensajeCancelar) {
         polizaSteps.seleccionarOpcionCompromiso();
         polizaSteps.seleccionarOpcionCancelarAhora();
         polizaSteps.confirmarCancelacion();

@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-
 public class UbicacionesDeUnaCuentaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtIrA;
@@ -43,7 +42,7 @@ public class UbicacionesDeUnaCuentaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='AccountFile_Locations:AccountFile_LocationsScreen:AccountLocationDetailInputSet:AddressTypes-labelEl']")
     private WebElementFacade labelTipoDeDireccion;
 
-    public UbicacionesDeUnaCuentaPage(WebDriver driver){
+    public UbicacionesDeUnaCuentaPage(WebDriver driver) {
         super(driver);
     }
 
@@ -60,24 +59,24 @@ public class UbicacionesDeUnaCuentaPage extends PageUtil {
     }
 
 
-    public void agregarUbicacion(String nombreUbicacion, String direccion){
+    public void agregarUbicacion(String nombreUbicacion, String direccion) {
         botonAgregarUbicacionNueva.waitUntilPresent().click();
         campoTxtNombreUbicacion.sendKeys(nombreUbicacion);
         campoTxtDireccion.sendKeys(direccion);
     }
 
-    public void agregaDireccion(String departamento, String ciudad, String tipoDireccion){
+    public void agregaDireccion(String departamento, String ciudad, String tipoDireccion) {
         esperarHasta(TIEMPO_1000);
-        seleccionarItem(comboBoxDepartamento,departamento);
-        esperarPorValor(comboBoxDepartamento,departamento);
-        seleccionarItem(comboBoxCiudad,ciudad);
-        esperarPorValor(comboBoxCiudad,ciudad);
+        seleccionarItem(comboBoxDepartamento, departamento);
+        esperarPorValor(comboBoxDepartamento, departamento);
+        seleccionarItem(comboBoxCiudad, ciudad);
+        esperarPorValor(comboBoxCiudad, ciudad);
         seleccionarItem(comboBoxTipoDireccion, tipoDireccion);
-        esperarPorValor(comboBoxTipoDireccion,tipoDireccion);
+        esperarPorValor(comboBoxTipoDireccion, tipoDireccion);
         botonActualizar.click();
     }
 
-    public void verificarTipoDeDireccion(){
+    public void verificarTipoDeDireccion() {
         esperarHasta(TIEMPO_2000);
         labelTipoDeDireccion.waitUntilPresent();
         MatcherAssert.assertThat("No está el campo tipo de direccion", labelTipoDeDireccion.isPresent());

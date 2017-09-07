@@ -18,7 +18,7 @@ public class GeneracionUwIssueRiesgosConsultablesPaDefinitions {
     ExpedicionDePolizaSteps expedicionDePolizaSteps;
 
     @When("vaya a la opcion de analisis de riesgo")
-    public void irAAnalisisDeRiesgo(){
+    public void irAAnalisisDeRiesgo() {
         generacionUwIssueRiesgosConsultablesPaSteps.irAAnalisisDeRiesgo();
     }
 
@@ -29,7 +29,7 @@ public class GeneracionUwIssueRiesgosConsultablesPaDefinitions {
     }
 
     @Then("debo ver un UW issue por cada figura que sea riesgo consultable bloqueante $mensaje")
-    public void validarUWIssue(ExamplesTable mensaje){
+    public void validarUWIssue(ExamplesTable mensaje) {
         generacionUwIssueRiesgosConsultablesPaSteps.validarQueSeGenereUwIssue(mensaje);
     }
 }

@@ -6,7 +6,6 @@ import com.sura.guidewire.policycenter.steps.poliza.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.HerramientasPolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
-
 import com.sura.guidewire.policycenter.utils.Parametros;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.EscritorioSteps;
 
@@ -18,6 +17,7 @@ import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 public class AjusteCalendAudiriaRetFlotDefinitions {
+    protected String numeroPoliza = "";
     @Steps
     PolizaSteps polizaSteps;
     @Steps
@@ -30,9 +30,6 @@ public class AjusteCalendAudiriaRetFlotDefinitions {
     EscritorioSteps escritorioSteps;
     @Steps
     TarifaTasaUnicaSteps tasaUnicaSteps;
-
-    protected String numeroPoliza = "";
-
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
 

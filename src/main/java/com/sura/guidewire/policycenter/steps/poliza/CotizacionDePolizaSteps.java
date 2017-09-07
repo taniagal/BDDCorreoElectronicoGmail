@@ -11,11 +11,11 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 
-public class CotizacionDePolizaSteps extends ScenarioSteps  {
+public class CotizacionDePolizaSteps extends ScenarioSteps {
 
     private final CotizacionDePolizaPage cotizacionDePolizaPage = new CotizacionDePolizaPage(getDriver());
 
-    public CotizacionDePolizaSteps(Pages pages){
+    public CotizacionDePolizaSteps(Pages pages) {
         super(pages);
     }
 
@@ -51,7 +51,7 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
 
     @Step
     public void validarDatosCotizacionPEP(String asegurado, String placa) {
-        cotizacionDePolizaPage.validarDatosCotizacion(asegurado,placa);
+        cotizacionDePolizaPage.validarDatosCotizacion(asegurado, placa);
     }
 
     @Step

@@ -44,7 +44,7 @@ public class ExclusionesYCondicionesDefinitions {
     }
 
     @Then("se debe mostrar en la busqueda $listabusqueda")
-    public void entoncesSeDebeMostrarEnLaBusqueda(ExamplesTable listabusqueda){
+    public void entoncesSeDebeMostrarEnLaBusqueda(ExamplesTable listabusqueda) {
         exclusionesYCondicionesSteps.validarBusqueda(listabusqueda);
     }
 

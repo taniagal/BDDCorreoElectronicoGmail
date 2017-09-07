@@ -23,8 +23,9 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
     public void verTransaccionesContacto() {
         cuentasOrdenesTrabajoPage.seleccionarTransacciones();
     }
+
     @Step
-    public void filtrarPorEstado(String estado){
+    public void filtrarPorEstado(String estado) {
         cuentasOrdenesTrabajoPage.filtrarTransaccionesPorEstado(estado);
     }
 
@@ -37,6 +38,7 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
     public void filtrarPorTransaccion(String filtroTransaccion) {
         cuentasOrdenesTrabajoPage.filtrarTransaccionesPorTransaccion(filtroTransaccion);
     }
+
     @Step
     public void filtrarPorProducto(String filtroProducto) {
         cuentasOrdenesTrabajoPage.filtrarTransaccionesPorProducto(filtroProducto);

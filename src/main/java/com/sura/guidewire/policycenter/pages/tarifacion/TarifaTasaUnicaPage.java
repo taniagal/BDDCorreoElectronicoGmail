@@ -19,6 +19,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TarifaTasaUnicaPage extends PageUtil {
+    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    private static final int DOS = 2;
+    private static final int TREINTA_Y_TRES = 33;
+    String primaTotal = "";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet-btnInnerEl']")
     private WebElementFacade botonHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:Spreadsheet']")
@@ -108,11 +112,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:StartPolicyChangeDV:sustitutionPA_true-inputEl']")
     private WebElementFacade radioBotonEsSustitucionSi;
 
-    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static final int DOS = 2;
-    private static final int TREINTA_Y_TRES = 33;
-    String primaTotal = "";
-
     public TarifaTasaUnicaPage(WebDriver driver) {
         super(driver);
     }
@@ -185,7 +184,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         campoTxtFechaDeInicioDeVigencia.sendKeys(fechaModificacion);
         botonSiguienteCambioDePoliza.click();
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
-        if (botonAceptar.isVisible()){
+        if (botonAceptar.isVisible()) {
             botonAceptar.click();
         }
         resetImplicitTimeout();

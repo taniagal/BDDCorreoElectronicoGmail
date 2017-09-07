@@ -3,11 +3,14 @@ package com.sura.guidewire.policycenter.pages.reaseguro;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.Utils;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -15,6 +18,23 @@ import org.openqa.selenium.WebDriver;
 
 public class GrupoDeDireccionPage extends PageUtil {
 
+    private static final double CONSTANTE_CIEN = 100.0;
+    private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add']")
+    WebElementFacade btnAgregarAcuerdosFacultativos;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:1:reName']")
+    WebElementFacade btnAgregaInformacionSegundoReaseguro;
+    @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:program-inputEl']")
+    WebElementFacade checkBoxContratosAutomaticos;
+    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    WebElementFacade btnAceptar;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:ToolbarButton-btnInnerEl']")
+    WebElementFacade btnCrearAcuerdosFacultativos;
+    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
+    WebElementFacade btnAceptarFacultativo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
+    WebElementFacade txtFechaFinVigencia;
+    BigDecimal bigDec;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[5]")
     private WebElementFacade tblLimiteContratoCp;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRisksLV:RIAgreementsLV-body')]/div/table/tbody/tr[1]/td[6]")
@@ -49,28 +69,9 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade lblRetencionSobreElRiesgo;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:ViewAsOf:ViewAsOf_Arg-inputEl')]")
     private WebElementFacade comboBoxVerApartirDe;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add']")
-    WebElementFacade btnAgregarAcuerdosFacultativos;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:1:reName']")
-    WebElementFacade btnAgregaInformacionSegundoReaseguro;
-    @FindBy(xpath = ".//*[@id='SuraAgreementParticipantPopup:program-inputEl']")
-    WebElementFacade checkBoxContratosAutomaticos;
-    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
-    WebElementFacade btnAceptar;
-    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:ToolbarButton-btnInnerEl']")
-    WebElementFacade btnCrearAcuerdosFacultativos;
-    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
-    WebElementFacade btnAceptarFacultativo;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
-    WebElementFacade txtFechaFinVigencia;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRiskDV:NetRetention-inputEl')]")
     private WebElementFacade lblRetencionNeta;
-
-
-    private static final double CONSTANTE_CIEN = 100.0;
-    private static final long CONSTANTE_CONTRATO_COUTAPARTE = 4000000000L;
     private String porcentajeDeRetencionContratoCotaparte = null;
-    BigDecimal bigDec;
 
     public GrupoDeDireccionPage(WebDriver driver) {
         super(driver);
@@ -135,13 +136,13 @@ public class GrupoDeDireccionPage extends PageUtil {
         Double valorRetenido = Double.parseDouble(lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6).replace(".", ""));
         Double baseReasegoContrato = Double.parseDouble(lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6).replace(".", ""));
         BigDecimal retencionSobreElRiesgo = new BigDecimal((valorRetenido / baseReasegoContrato) * CONSTANTE_CIEN);
-        if(String.valueOf(retencionSobreElRiesgo).length() > 6){
+        if (String.valueOf(retencionSobreElRiesgo).length() > 6) {
             calculoRetencionSobreRiesgo = String.valueOf(retencionSobreElRiesgo).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
         } else {
             calculoRetencionSobreRiesgo = String.valueOf(retencionSobreElRiesgo).replace(".", ",");
         }
         MatcherAssert.assertThat("Error en el valor Retención sobre el riesgo, expected: " + calculoRetencionSobreRiesgo +
-                    BUT_WAS + retencionSobreRiesgo, retencionSobreRiesgo.contains(calculoRetencionSobreRiesgo));
+                BUT_WAS + retencionSobreRiesgo, retencionSobreRiesgo.contains(calculoRetencionSobreRiesgo));
     }
 
     public void validarProporcionCP() {
@@ -150,7 +151,7 @@ public class GrupoDeDireccionPage extends PageUtil {
         Double riesgoCedidoCP = Double.parseDouble(tblRiesgoCedidoContratoCotaparteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoCotaparteBasico.getText().length() - CONSTANTE_6).replace(".", ""));
         Double baseReaseguroContrato = Double.parseDouble(lblBaseReaseguroContratoAutomatico.getText().substring(CONSTANTE_1, lblBaseReaseguroContratoAutomatico.getText().length() - CONSTANTE_6).replace(".", ""));
         BigDecimal decProporcionCP = new BigDecimal((riesgoCedidoCP / baseReaseguroContrato) * CONSTANTE_CIEN);
-        if(String.valueOf(decProporcionCP).length() > 6){
+        if (String.valueOf(decProporcionCP).length() > 6) {
             calculoProporcionCP = String.valueOf(decProporcionCP).substring(CONSTANTE_0, CONSTANTE_7).replace(".", ",");
         } else {
             calculoProporcionCP = String.valueOf(decProporcionCP).replace(".", ",");
@@ -203,9 +204,9 @@ public class GrupoDeDireccionPage extends PageUtil {
     public void validarRiesgoCedidoOperativoExceso() {
         String calculoRiesgoExceso;
         String riesgoCedidoCP = tblRiesgoCedidoContratoExcedenteBasico.getText().substring(CONSTANTE_1, tblRiesgoCedidoContratoExcedenteBasico.getText().length() - CONSTANTE_6).replace(".", "");
-        if(lblRetencionNeta.getText().equals(lblValorRetenidoCp.getText())){
+        if (lblRetencionNeta.getText().equals(lblValorRetenidoCp.getText())) {
             calculoRiesgoExceso = String.valueOf(CONSTANTE_0);
-        }else{
+        } else {
             Double valorRetenidoCP = Double.parseDouble(lblValorRetenidoCp.getText().substring(CONSTANTE_1, lblValorRetenidoCp.getText().length() - CONSTANTE_6).replace(".", ""));
             Double limiteInferiorExceso = Double.parseDouble(tblLimiteInferiorExceso.getText().substring(CONSTANTE_1, tblLimiteInferiorExceso.getText().length() - CONSTANTE_6).replace(".", ""));
             BigDecimal riesgoExceso = new BigDecimal(valorRetenidoCP - limiteInferiorExceso);

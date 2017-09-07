@@ -28,13 +28,13 @@ public class IngresarInformacionDeCuenta extends PageObject {
         super(driver);
     }
 
-    public void ingresarRazonSocial(String razonSocial){
+    public void ingresarRazonSocial(String razonSocial) {
         waitFor(consultaRazonSocial);
         consultaRazonSocial.clear();
         consultaRazonSocial.sendKeys(razonSocial);
     }
 
-    public void ingresarNombreYApellido(String nombre, String apellido){
+    public void ingresarNombreYApellido(String nombre, String apellido) {
         waitFor(consultaPrimerNombre);
         consultaPrimerApellido.clear();
         consultaPrimerNombre.sendKeys(nombre);
@@ -42,18 +42,18 @@ public class IngresarInformacionDeCuenta extends PageObject {
         consultaPrimerApellido.sendKeys(apellido);
     }
 
-    public void clicEnBuscar(){
+    public void clicEnBuscar() {
         botonBuscarCuenta.click();
     }
 
-    public void crearCuentaNuevaPersonal(){
+    public void crearCuentaNuevaPersonal() {
         waitFor(botonCrearCuenta);
         botonCrearCuenta.click();
         waitFor(opcionCrearCuentaPersonal);
         opcionCrearCuentaPersonal.click();
     }
 
-    public void seleccionarContactoExistente(){
+    public void seleccionarContactoExistente() {
         waitFor(botonSeleccionarContactoExistente);
         botonSeleccionarContactoExistente.click();
     }

@@ -7,7 +7,7 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 
 import org.openqa.selenium.By;
 
-public class TransaccionesDePolizaWidgetObject extends PageObject{
+public class TransaccionesDePolizaWidgetObject extends PageObject {
     private static final String XPATH_DIV_CONTENEDOR_TABLA_TRANSACCIONES = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV']";
     TableWidgetPage tablaTransaccionesDePoliza;
 
@@ -17,7 +17,7 @@ public class TransaccionesDePolizaWidgetObject extends PageObject{
         return this;
     }
 
-    public void seleccionarPrimeraOcurrenciaProductoMultiriesgoCorporativo(){
+    public void seleccionarPrimeraOcurrenciaProductoMultiriesgoCorporativo() {
 
         if (tablaTransaccionesDePoliza == null) {
             obtenerTablaContactosAsociados();

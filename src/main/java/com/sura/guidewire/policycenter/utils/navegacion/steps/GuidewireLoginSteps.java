@@ -29,7 +29,7 @@ public class GuidewireLoginSteps extends ScenarioSteps {
     }
 
     @Step
-    public void loguearseAPolicycenterConRol(String rolUsuario){
+    public void loguearseAPolicycenterConRol(String rolUsuario) {
         abrirNavegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
         loginPage.ingresarPorRol(rolUsuario);
     }
@@ -44,7 +44,7 @@ public class GuidewireLoginSteps extends ScenarioSteps {
             loginPage.enter(usuario).into(loginPage.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS));
             loginPage.enter(contrasenia).into(loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS));
         }
-        if (loginPage.elemento(GuidewireLoginPages.CBO_PAIS) != null){
+        if (loginPage.elemento(GuidewireLoginPages.CBO_PAIS) != null) {
             loginPage.elemento(GuidewireLoginPages.CBO_PAIS).selectByVisibleText(pais);
             loginPage.elemento(GuidewireLoginPages.BTN_LOGIN_SEUS).click();
         }

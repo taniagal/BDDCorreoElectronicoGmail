@@ -9,7 +9,7 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class CrearParticipantesCuentaSteps extends ScenarioSteps {
-    private final OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
+    private final OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage(getDriver());
     private final BuscarNavBarPages buscarNavBarPages = new BuscarNavBarPages();
 
     public CrearParticipantesCuentaSteps(Pages pages) {
@@ -21,22 +21,22 @@ public class CrearParticipantesCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void navegaBuscarCuentaPar (){
+    public void navegaBuscarCuentaPar() {
         inicioPage().irABuscarCuentas();
     }
 
     @Step
-    public void buscaCuenta (String numCuenta){
+    public void buscaCuenta(String numCuenta) {
         buscarNavBarPages.navegacionBuscarCuenta(numCuenta);
     }
 
     @Step
-    public void creaParticipante (){
+    public void creaParticipante() {
         opcionesCrearPartcCuentaPage.navegacionCreaParticipante();
     }
 
     @Step
-    public void validaParticipante (){
+    public void validaParticipante() {
         opcionesCrearPartcCuentaPage.verificarCamposParticipantes();
     }
 }

@@ -41,9 +41,9 @@ public class NuevaPolizaDefinitions {
         tarifaAutosSteps.agregarAsegurados(dato.get("tipo_documento"), dato.get("documento"));
         tarifaAutosSteps.agregarVehiculo(datos);
         String plan = "Plan Autos Global";
-        if (dato.get("plan").equals(plan)){
+        if (dato.get("plan").equals(plan)) {
             nuevaCotizacionSteps.coberturasPlanGlobal(datos);
-        } else{
+        } else {
             tarifaAutosSteps.agregarCoberturas(datos);
         }
         tasaUnicaSteps.expedirPoliza();

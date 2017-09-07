@@ -6,10 +6,12 @@ import com.sura.guidewire.policycenter.pages.reaseguro.GrupoDeDireccionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class GrupoDeDireccionSteps extends ScenarioSteps {
 
+    @Page
     GrupoDeDireccionPage grupoDeDireccionPage;
     private String fechaActual = "";
 
@@ -65,11 +67,11 @@ public class GrupoDeDireccionSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarOpcionVerApartirDe(String verApartirDe) {
-        if (verApartirDe.startsWith("-")){
+        if (verApartirDe.startsWith("-")) {
             grupoDeDireccionPage.seleccionarOpcionVerApartirDe(fechaActual + " " + verApartirDe);
-        } else if (verApartirDe.endsWith("-")){
+        } else if (verApartirDe.endsWith("-")) {
             grupoDeDireccionPage.seleccionarOpcionVerApartirDe(verApartirDe + " " + fechaActual);
-        }else{
+        } else {
             grupoDeDireccionPage.seleccionarOpcionVerApartirDe(verApartirDe);
         }
     }

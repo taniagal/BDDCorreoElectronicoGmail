@@ -32,12 +32,12 @@ public class CoaseguroDefinitions {
     }
 
     @When("verifique el porcentaje de participacion")
-    public void verificarPorcentajeDeParticipacion(){
+    public void verificarPorcentajeDeParticipacion() {
         coaseguroSteps.verificarPorcentajeDeParticipacion();
     }
 
     @When("acepte el coaseguro")
-    public void aceptarcoaseguro(){
+    public void aceptarcoaseguro() {
         coaseguroSteps.guardarCoaseguro();
     }
 

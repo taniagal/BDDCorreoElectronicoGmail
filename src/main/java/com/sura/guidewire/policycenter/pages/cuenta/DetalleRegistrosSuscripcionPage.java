@@ -18,6 +18,8 @@ import org.openqa.selenium.WebElement;
 
 public class DetalleRegistrosSuscripcionPage extends PageUtil {
 
+    private static final String MENOS_UNO = "-1";
+    private static final int QUINCE = 15;
     @FindBy(xpath = ".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV-body']")
     WebElementFacade tablaEnvios;
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_UnderwritingFiles']/div/span")
@@ -52,9 +54,6 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
     WebElementFacade campoPaginas;
     @FindBy(xpath = "//span[contains(@class,'x-btn-icon-el x-tbar-page-next')]")
     WebElementFacade botonSiguienteTabla;
-
-    private static final String MENOS_UNO = "-1";
-    private static final int QUINCE = 15;
 
     public DetalleRegistrosSuscripcionPage(WebDriver driver) {
         super(driver);

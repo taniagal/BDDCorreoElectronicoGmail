@@ -59,7 +59,7 @@ public class AdmonCotizacionCuentaDeclinaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validaListaDeRazones(ExamplesTable listaRazones){
+    public void validaListaDeRazones(ExamplesTable listaRazones) {
         opcionesAdminitradorCotizaciones.validarOpcionesDeAgregar(listaRazones);
     }
 

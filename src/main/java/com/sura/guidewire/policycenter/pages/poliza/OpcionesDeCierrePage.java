@@ -43,9 +43,9 @@ public class OpcionesDeCierrePage extends PageUtil {
 
     public String validarItems() {
         String listaObtenida = null;
-        if(listaDeclinacion.isCurrentlyVisible()){
+        if (listaDeclinacion.isCurrentlyVisible()) {
             listaObtenida = listaDeclinacion.getText();
-        }else if(listaNoTomar.isCurrentlyVisible()){
+        } else if (listaNoTomar.isCurrentlyVisible()) {
             listaObtenida = listaNoTomar.getText();
         }
         return listaObtenida;

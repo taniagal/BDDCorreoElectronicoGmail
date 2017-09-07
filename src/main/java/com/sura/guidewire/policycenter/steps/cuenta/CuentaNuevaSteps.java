@@ -14,12 +14,12 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class CuentaNuevaSteps extends ScenarioSteps {
 
-    private String cedula = "";
-    private String nit = "";
-    private final CuentaPage cuentaPage = new CuentaPage(getDriver());
-    private static final String NOMBRECUENTA = "Busqueda";
     protected static final int CONSTANTE_6 = 6;
     protected static final int CONSTANTE_5 = 5;
+    private static final String NOMBRECUENTA = "Busqueda";
+    private final CuentaPage cuentaPage = new CuentaPage(getDriver());
+    private String cedula = "";
+    private String nit = "";
 
     public CuentaNuevaSteps(Pages pages) {
         super(pages);

@@ -12,25 +12,20 @@ import org.openqa.selenium.support.FindBy;
 
 public class ExclusionesYCondicionessPage extends PageUtil {
 
-    @Page
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
-
-    @FindBy(xpath = ".//span[contains(.,'Agregar exclusión o condición')]")
-    WebElementFacade botonExclusionesYCondiciones;
-
-    @FindBy(xpath = ".//*[@id='CoveragePatternSearchPopup:CoveragePatternSearchScreen:CoveragePatternSearchResultsLV-body']")
-    WebElementFacade tablaBusqueda;
-
-    @FindBy(xpath = "//a[@id='CoveragePatternSearchPopup:CoveragePatternSearchScreen:CoveragePatternSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade botonBuscar;
-
-    @FindBy(xpath = "//input[@id='CoveragePatternSearchPopup:CoveragePatternSearchScreen:CoveragePatternSearchDV:Keyword-inputEl']")
-    WebElementFacade txtPalabraClave;
-
     private static final String PATH_LISTA_EXCLUSIONES_Y_CONDICIONES = ".//*[contains(@id,'SubmissionWizard') and contains(.,'";
     private static final String PATH_FINAL = "')]";
     private static final String PATH_MENU_LATERAL = ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
     private static final String NOMBRE_LABEL = "Exclusiones y Condiciones";
+    @Page
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
+    @FindBy(xpath = ".//span[contains(.,'Agregar exclusión o condición')]")
+    WebElementFacade botonExclusionesYCondiciones;
+    @FindBy(xpath = ".//*[@id='CoveragePatternSearchPopup:CoveragePatternSearchScreen:CoveragePatternSearchResultsLV-body']")
+    WebElementFacade tablaBusqueda;
+    @FindBy(xpath = "//a[@id='CoveragePatternSearchPopup:CoveragePatternSearchScreen:CoveragePatternSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    WebElementFacade botonBuscar;
+    @FindBy(xpath = "//input[@id='CoveragePatternSearchPopup:CoveragePatternSearchScreen:CoveragePatternSearchDV:Keyword-inputEl']")
+    WebElementFacade txtPalabraClave;
 
 
     public ExclusionesYCondicionessPage(WebDriver driver) {

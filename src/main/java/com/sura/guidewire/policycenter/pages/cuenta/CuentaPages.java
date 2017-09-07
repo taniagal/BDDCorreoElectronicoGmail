@@ -11,7 +11,7 @@ public class CuentaPages extends PageObject {
     private static String LINK_TRANSACCIONES_DE_POLIZA = ".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']";
 
 
-    public ContactosAsociadosACuentaWidgetPage enContactos(){
+    public ContactosAsociadosACuentaWidgetPage enContactos() {
 
         String tituloDePaginaPorDefectoCuenta = "Resumen de la cuenta";
         waitForTextToAppear(tituloDePaginaPorDefectoCuenta);
@@ -26,7 +26,7 @@ public class CuentaPages extends PageObject {
         return switchToPage(ContactosAsociadosACuentaWidgetPage.class);
     }
 
-    public TransaccionesDePolizaWidgetObject enTransaccionesDePoliza(){
+    public TransaccionesDePolizaWidgetObject enTransaccionesDePoliza() {
 
         String tituloDePaginaPorDefectoCuenta = "Resumen de la cuenta";
         waitForTextToAppear(tituloDePaginaPorDefectoCuenta);

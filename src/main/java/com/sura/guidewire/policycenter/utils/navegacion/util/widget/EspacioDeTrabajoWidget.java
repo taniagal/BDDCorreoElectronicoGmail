@@ -10,7 +10,7 @@ import net.thucydides.core.steps.StepInterceptor;
 import org.slf4j.LoggerFactory;
 
 
-public class EspacioDeTrabajoWidget extends PageObject{
+public class EspacioDeTrabajoWidget extends PageObject {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -22,13 +22,13 @@ public class EspacioDeTrabajoWidget extends PageObject{
             waitForTextToAppear("Workspace");
             $(DESPLEGADORESPACIODETRABAJO).click();
         } catch (Exception e) {
-            LOGGER.info("PROBLEMA DESCONOCIDO TRACE" + e );
+            LOGGER.info("PROBLEMA DESCONOCIDO TRACE" + e);
         }
     }
 
-    public List<String> obtenerMensajesDeTrabajo(){
+    public List<String> obtenerMensajesDeTrabajo() {
         List<String> mensajesEspacioDeTrabajo = new ArrayList<>();
-        for (WebElementFacade mensaje : findAll(MENSAJESESPACIODETRABAJO)){
+        for (WebElementFacade mensaje : findAll(MENSAJESESPACIODETRABAJO)) {
             mensajesEspacioDeTrabajo.add(mensaje.getText());
         }
         return mensajesEspacioDeTrabajo;

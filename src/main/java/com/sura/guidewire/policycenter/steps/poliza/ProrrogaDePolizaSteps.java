@@ -10,7 +10,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 
-public class ProrrogaDePolizaSteps extends ScenarioSteps{
+public class ProrrogaDePolizaSteps extends ScenarioSteps {
 
     @Page
     private ProrrogaDePolizaPage prorrogaDePolizaPage;

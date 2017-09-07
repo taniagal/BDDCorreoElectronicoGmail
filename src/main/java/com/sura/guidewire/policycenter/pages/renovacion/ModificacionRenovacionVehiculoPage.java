@@ -43,11 +43,11 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl']")
     private WebElementFacade campoValorAccesoriosEspeciales;
 
-    public ModificacionRenovacionVehiculoPage(WebDriver driver){
+    public ModificacionRenovacionVehiculoPage(WebDriver driver) {
         super(driver);
     }
 
-    public void irAVehiculos(){
+    public void irAVehiculos() {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(itemVehiculos);
         esperarHasta(TIEMPO_1500);
         clickearElemento(itemVehiculos);
@@ -60,17 +60,17 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
         esperarHasta(TIEMPO_1500);
     }
 
-    private void validarQueNoSeaVisibleBtnCrearVehiculo(){
+    private void validarQueNoSeaVisibleBtnCrearVehiculo() {
         String xpathBtnCrearVehiculo = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add']";
         shouldNotBeVisible(By.xpath(xpathBtnCrearVehiculo));
     }
 
-    private void validarQueNoSeaVisibleBtnEliminarVehiculo(){
+    private void validarQueNoSeaVisibleBtnEliminarVehiculo() {
         String xpathBtnEliminarVehiculo = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Remove']";
         shouldNotBeVisible(By.xpath(xpathBtnEliminarVehiculo));
     }
 
-    public void validarEdicionCampos(){
+    public void validarEdicionCampos() {
         verificarSiCampoEsEditable(campoCiudadCirculacion, "Ciudad de Circulacion");
         verificarSiCampoEsEditable(campoTipoServicio, "tipo servicio");
         verificarSiCampoEsEditable(campoMotor, "Motor");
@@ -85,8 +85,8 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
         verificarSiCampoEsEditable(campoValorAccesoriosEspeciales, "valor accesorios especiales");
     }
 
-    public void verificarSiCampoEsEditable(WebElementFacade elemento, String nombreCampo){
-        MatcherAssert.assertThat("Error: el campo "+ nombreCampo+" debe ser editable",
+    public void verificarSiCampoEsEditable(WebElementFacade elemento, String nombreCampo) {
+        MatcherAssert.assertThat("Error: el campo " + nombreCampo + " debe ser editable",
                 elemento.getAttribute("class").contains("x-form-text"));
     }
 

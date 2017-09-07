@@ -30,7 +30,7 @@ public class InformacionDePagoDefinitions {
     }
 
     @When("seleccione la opcion pago total y pago en caja")
-    public void entoncesSeleccioneLaOpcionPagoTotalyPagoEnCaja(){
+    public void entoncesSeleccioneLaOpcionPagoTotalyPagoEnCaja() {
         informacionDePagoSteps.seleccionOpcionPagoTotalyPagoenCaja();
     }
 
@@ -50,7 +50,7 @@ public class InformacionDePagoDefinitions {
     }
 
     @Then("se debe mostrar mensaje que bloquee la expedicion <mensaje>")
-    public void entoncesSeDebeMostrarMensajeQueBloqueeLaExpedicion(@Named("mensaje") String mensaje){
+    public void entoncesSeDebeMostrarMensajeQueBloqueeLaExpedicion(@Named("mensaje") String mensaje) {
         informacionDePagoSteps.validarMensaje(mensaje);
     }
 

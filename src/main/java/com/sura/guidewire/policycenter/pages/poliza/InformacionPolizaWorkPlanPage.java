@@ -41,7 +41,7 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
 
     public void clickPlanTrabajo() {
         esperarYClickearBoton(menuItemPlanDeTrabajo);
-        if(!menuItemPlanDeTrabajo.isSelected()){
+        if (!menuItemPlanDeTrabajo.isSelected()) {
             esperarYClickearBoton(menuItemPlanDeTrabajo);
         }
     }

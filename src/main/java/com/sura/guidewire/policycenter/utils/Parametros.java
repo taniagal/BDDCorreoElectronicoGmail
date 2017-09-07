@@ -9,6 +9,10 @@ import java.util.Map;
 import org.jbehave.core.model.ExamplesTable;
 
 public class Parametros {
+    public static final String CODIGO_ASESOR = "codigoAsesor";
+    public static final String CONSTANTE_ROL = "rol";
+    public static final String AUTOMATICO = "Automatico";
+    public static final String DECLARATIVO = "Declarativo";
     private static final String PARAMETRO_CODIGOASESOR = "codigoAsesor";
     private static final String PARAMETRO_PORCENTAJE = "porcentaje";
     private static final String PARAMETRO_ROL = "rol";
@@ -19,10 +23,10 @@ public class Parametros {
     private static final String PARAMETRO_AUDITORIA = "auditoria";
     private static final String PARAMETROS_TIPO_PLAN = "tipoPlan";
     private static final String PARAMETROS_PLAN_INFORMACION = "planDeInformacion";
-
-
+    List<String> listaroles;
+    List<String> listaAgentes;
+    List<String> listaPorcentaje;
     private String planDeInformacion;
-
     private String codigoAsesor;
     private String porcentaje;
     private String rol;
@@ -32,13 +36,6 @@ public class Parametros {
     private String tipoPlan;
     private String metodoFacturacion;
     private String auditoria;
-    List<String> listaroles;
-    List<String> listaAgentes;
-    List<String> listaPorcentaje;
-    public static final String CODIGO_ASESOR = "codigoAsesor";
-    public static final String CONSTANTE_ROL = "rol";
-    public static final String AUTOMATICO = "Automatico";
-    public static final String DECLARATIVO = "Declarativo";
 
 
     public Parametros(ExamplesTable opciones) {
@@ -74,7 +71,7 @@ public class Parametros {
             }
         }
     }
-    
+
     public String getPlanDeInformacion() {
         return planDeInformacion;
     }

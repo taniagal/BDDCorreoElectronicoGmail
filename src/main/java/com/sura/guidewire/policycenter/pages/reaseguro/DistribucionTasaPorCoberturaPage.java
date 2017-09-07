@@ -19,6 +19,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DistribucionTasaPorCoberturaPage extends PageUtil {
 
+    public static final String XPATH_TABLA_REASEGURADORES_INICIO = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr";
+    public static final String XPATH_TABLA_REASEGURADORES_CIERRE = "/td";
+    private static final String PAIS_ALEMANIA = "Alemania";
+    private static final String PAIS_ESTADOS_UNIDOS = "Estados Unidos";
+    private static final String ASEGURADORA_MUNCHENER = "MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT";
+    private static final String ASEGURADORA_GENERAL_CORPORATION = "GENERAL REINSURANCE CORPORATION";
+    private static final String CONTRATO_AUTOMATICO = "Program";
+    private static final int COLUMNA_NOMBRE_TABLA_PORCENTAJE_PARTICIPACION = 3;
+    private static final int COLUMNA_NOMBRE_TABLA_FORMA_DE_COTIZACION = 5;
+    private static final int COLUMNA_NOMBRE_TABLA_VALOR = 6;
+    private static final int COLUMNA_NOMBRE_COMISION_REASEGURO_CEDIDO = 7;
+    private static final int COLUMNA_NOMBRE_COMISION_INTERMEDIARIO = 8;
+    private static final int COLUMNA_NOMBRE_COMISION_PROMOTORA = 9;
+    CrearYEditarCumulosPage crearYEditarCumulosPage;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:0:reName']")
     private WebElementFacade linkNombreReaseguradorUno;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:1:reName']")
@@ -60,22 +74,6 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade lblMensaje;
 
-    public static final String XPATH_TABLA_REASEGURADORES_INICIO = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr";
-    public static final String XPATH_TABLA_REASEGURADORES_CIERRE = "/td";
-    private static final String PAIS_ALEMANIA = "Alemania";
-    private static final String PAIS_ESTADOS_UNIDOS = "Estados Unidos";
-    private static final String ASEGURADORA_MUNCHENER = "MÜNCHENER RÜCKVERSICHERUNGS-GESELLSCHAFT";
-    private static final String ASEGURADORA_GENERAL_CORPORATION = "GENERAL REINSURANCE CORPORATION";
-    private static final String CONTRATO_AUTOMATICO = "Program";
-    private static final int COLUMNA_NOMBRE_TABLA_PORCENTAJE_PARTICIPACION = 3;
-    private static final int COLUMNA_NOMBRE_TABLA_FORMA_DE_COTIZACION = 5;
-    private static final int COLUMNA_NOMBRE_TABLA_VALOR = 6;
-    private static final int COLUMNA_NOMBRE_COMISION_REASEGURO_CEDIDO = 7;
-    private static final int COLUMNA_NOMBRE_COMISION_INTERMEDIARIO = 8;
-    private static final int COLUMNA_NOMBRE_COMISION_PROMOTORA = 9;
-
-    CrearYEditarCumulosPage crearYEditarCumulosPage;
-
     public DistribucionTasaPorCoberturaPage(WebDriver driver) {
         super(driver);
     }
@@ -85,7 +83,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         lblInformaPoliza.waitUntilVisible();
         clickearElemento(radioBotReaseguroEspecial);
         esperarHasta(TIEMPO_2000);
-        if(checkiReaseguroFacultativo.isVisible()){
+        if (checkiReaseguroFacultativo.isVisible()) {
             checkiReaseguroFacultativo.waitUntilClickable();
             esperarHasta(TIEMPO_2000);
             clickearElemento(checkiReaseguroFacultativo);
@@ -117,7 +115,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
             clickearElemento(botonCotizar);
         }
         esperarHasta(TIEMPO_1000);
-        if (botonCotizar.isPresent()){
+        if (botonCotizar.isPresent()) {
             clickearElemento(botonCotizar);
         }
         resetImplicitTimeout();

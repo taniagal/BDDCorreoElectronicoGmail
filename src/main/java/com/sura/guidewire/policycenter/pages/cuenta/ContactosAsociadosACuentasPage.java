@@ -20,6 +20,7 @@ import org.openqa.selenium.support.FindBy;
 public class ContactosAsociadosACuentasPage extends PageUtil {
 
     private static final String ASSERTMENUCREARNUEVOCONTACTO = "Elementos del menú encontrados";
+    int combos = 0;
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDetailCardTab']")
@@ -34,7 +35,6 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     private WebElementFacade tabPolizasAsociadas;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:0']")
     private WebElementFacade lblTitulo;
-
     /*
     * Informacion tab detalle de contacto
     * */
@@ -67,7 +67,6 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:RolesCardTab']")
     private WebElementFacade linkFunciones;
 
-    int combos = 0;
     public ContactosAsociadosACuentasPage(WebDriver driver) {
         super(driver);
     }
@@ -182,7 +181,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
         MatcherAssert.assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
 
-    public void opcionesPorSubMenuContactos(ExamplesTable contactosPorRoles,  Boolean oprimirClick){
+    public void opcionesPorSubMenuContactos(ExamplesTable contactosPorRoles, Boolean oprimirClick) {
         MatcherAssert.assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", contactosPorRoles, oprimirClick));
         linkFunciones.waitUntilPresent();
         clickearElemento(linkFunciones);

@@ -14,13 +14,14 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class AnalisisDeRiesgosPage extends PageUtil {
+    private static final String LABRL_ANALISIS_DE_RIESGO = "Observaciones";
+    private static String xPathSolicitarAprobacion = ".//*[contains(@id,'Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
     @FindBy(xpath = ".//*[contains(@id,'Job_RiskAnalysisScreen') and contains(@id,'RiskAnalysisCV_tb:LockForReview-btnInnerEl')]")
     private WebElementFacade botonBloqueo;
     @FindBy(xpath = ".//a[contains(.,'Borrar')]")
     private WebElementFacade botonBorrar;
     private int numeroDeRiesgos;
-    private static String xPathSolicitarAprobacion = ".//*[contains(@id,'Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
-    private static final String LABRL_ANALISIS_DE_RIESGO = "Observaciones";
+
     public AnalisisDeRiesgosPage(WebDriver driver) {
         super(driver);
     }
@@ -41,12 +42,12 @@ public class AnalisisDeRiesgosPage extends PageUtil {
 
     }
 
-    public void setNumeroDeRiesgos(int numeroDeRiesgos) {
-        this.numeroDeRiesgos = numeroDeRiesgos;
-    }
-
     public int getNumeroDeRiesgos() {
         return numeroDeRiesgos;
+    }
+
+    public void setNumeroDeRiesgos(int numeroDeRiesgos) {
+        this.numeroDeRiesgos = numeroDeRiesgos;
     }
 
     public void ingresarAOpcionAnalisisdeRiesgoCotizacion() {

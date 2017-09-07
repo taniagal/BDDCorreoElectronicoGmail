@@ -13,7 +13,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 
-public class TransaccionesDePolizaSteps extends ScenarioSteps{
+public class TransaccionesDePolizaSteps extends ScenarioSteps {
 
     @Page
     TransaccionesDePolizaPage transaccionesDePolizaPage;
@@ -52,7 +52,7 @@ public class TransaccionesDePolizaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validarTransaccionesPoliza(){
+    public void validarTransaccionesPoliza() {
         transaccionesDePolizaPage.validarTransaccionesPoliza();
     }
 }

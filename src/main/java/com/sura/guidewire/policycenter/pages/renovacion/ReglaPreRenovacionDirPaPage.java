@@ -43,14 +43,14 @@ public class ReglaPreRenovacionDirPaPage extends PageUtil {
         botonEditar.click();
     }
 
-    public void validaLista(ExamplesTable opcionesDir){
+    public void validaLista(ExamplesTable opcionesDir) {
         withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(comboBoxLista).waitUntilPresent().click();
         this.validarDatosDeLaLista(opcionesDir);
         botonCancelar.click();
         waitFor(labelResumen).waitUntilPresent();
     }
 
-    private void validarDatosDeLaLista(ExamplesTable tipoCanal){
+    private void validarDatosDeLaLista(ExamplesTable tipoCanal) {
         List<WebElementFacade> elementoInstruccion;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {

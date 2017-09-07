@@ -19,8 +19,6 @@ import org.openqa.selenium.WebDriver;
 
 // TODO: 15/06/2016 Pendiente refactor
 public class CotizacionPage extends PageUtil {
-    @Page
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']")
     public static final String TITULO_PAGINA = "//span[@id='NewSubmission:NewSubmissionScreen:ttlBar']";
     public static final String TITULO_PAGINA_SIGUIENTE = "//span[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:ttlBar']";
@@ -37,11 +35,13 @@ public class CotizacionPage extends PageUtil {
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
     public static final String LBL_OPCIONES_MENU_INICIAL = ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
     public static final String LBL_OPCIONES_MENU_FINAL = "')]";
+    public static final String TRACE = "\nTRACE: \n";
+    @Page
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
     @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_PolicyDV:HaveCoinsurance-inputEl']")
     WebElementFacade buscarInputHabilitadoEnElementoResumen;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion-labelEl']")
     WebElementFacade buscarInputHabilitadoEnElementoInformacionPoliza;
-    public static final String TRACE = "\nTRACE: \n";
 
 
     public CotizacionPage(WebDriver driver) {
@@ -95,9 +95,9 @@ public class CotizacionPage extends PageUtil {
 
     public void esCamposAseguradorasCoasegurosEditables() {
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
-      if(buscarInputHabilitadoEnElementoResumen.isPresent()){
-          MatcherAssert.assertThat(buscarInputHabilitadoEnElemento("//div[@id='PolicyFile_Summary:Policy_SummaryScreen:insuranceLV-body']/div"), Is.is(false));
-      }
-      resetImplicitTimeout();
+        if (buscarInputHabilitadoEnElementoResumen.isPresent()) {
+            MatcherAssert.assertThat(buscarInputHabilitadoEnElemento("//div[@id='PolicyFile_Summary:Policy_SummaryScreen:insuranceLV-body']/div"), Is.is(false));
+        }
+        resetImplicitTimeout();
     }
 }
