@@ -28,7 +28,7 @@ public class CambioDePolizaDefinitions {
     PolizaPrincipalPaSteps polizaPrincipalPaSteps;
 
     @Given("que voy a buscar una poliza  <buscarNumeroPoliza>")
-    public void irABuscarPoliza(String buscarNumeroPoliza){
+    public void irABuscarPoliza(String buscarNumeroPoliza) {
         cambioDePolizaSteps.irABuscarPoliza(buscarNumeroPoliza);
     }
 

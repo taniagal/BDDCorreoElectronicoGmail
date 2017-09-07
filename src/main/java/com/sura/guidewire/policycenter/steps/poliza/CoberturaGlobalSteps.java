@@ -10,10 +10,13 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class CoberturaGlobalSteps extends ScenarioSteps {
     CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
+
+    @Page
     PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
 
     public CoberturaGlobalSteps(Pages pages) {
@@ -91,5 +94,4 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
         }
         return listaDeMensajes;
     }
-
 }

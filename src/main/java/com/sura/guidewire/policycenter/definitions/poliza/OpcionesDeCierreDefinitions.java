@@ -37,7 +37,7 @@ public class OpcionesDeCierreDefinitions {
     OpcionesDeCierreSteps opcionesDeCierreSteps;
 
     @Given("voy a cotizar una poliza de autos con la cuenta, oficina, agente, producto, asegurado con tipo de documento y documento $datosCotizacion")
-    public void cotizarPoliza(ExamplesTable datosCotizacion){
+    public void cotizarPoliza(ExamplesTable datosCotizacion) {
         Map<String, String> datos = datosCotizacion.getRows().get(0);
         detalleDeAseguradoDeCotizacionSteps.irACrearNuevaCotizacion();
         detalleDeAseguradoDeCotizacionSteps.ingresarCuenta(datos.get("cuenta"));
@@ -54,7 +54,7 @@ public class OpcionesDeCierreDefinitions {
     }
 
     @When("decida no tomar la poliza")
-    public void noTomarPoliza(){
+    public void noTomarPoliza() {
         opcionesDeCierreSteps.irAOpcionesDeCierre();
         opcionesDeCierreSteps.noTomarPoliza();
     }
@@ -65,7 +65,7 @@ public class OpcionesDeCierreDefinitions {
     }
 
     @Then("deben aparecer todas las razones para no tomar la poliza $opcionesNoTomar")
-    public void validarInformacionNoTomar(ExamplesTable opcionesNoTomar){
+    public void validarInformacionNoTomar(ExamplesTable opcionesNoTomar) {
         opcionesDeCierreSteps.validarInformacionNoTomar(opcionesNoTomar);
     }
 }

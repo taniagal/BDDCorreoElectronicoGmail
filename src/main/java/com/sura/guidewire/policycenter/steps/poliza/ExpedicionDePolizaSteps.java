@@ -6,14 +6,19 @@ import com.sura.guidewire.policycenter.pages.poliza.PanelSurEspacioDeTrabajoPage
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 
 public class ExpedicionDePolizaSteps extends ScenarioSteps {
 
+    @Page
     ExpedicionDePolizaPage expedicionDePolizaPage;
-    PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
-    CotizacionMRCPage cotizacionMRCPage;
 
+    @Page
+    PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
+
+    @Page
+    CotizacionMRCPage cotizacionMRCPage;
 
     @Step
     public void navegarBarraSuperior(String cotizacion) {
@@ -24,8 +29,9 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void clicEnExpedirPoliza() {
         expedicionDePolizaPage.expedirPoliza();
     }
+
     @Step
-    public void clicEnVerCotizacion(){
+    public void clicEnVerCotizacion() {
         expedicionDePolizaPage.ingresarVerCotizacion();
     }
 

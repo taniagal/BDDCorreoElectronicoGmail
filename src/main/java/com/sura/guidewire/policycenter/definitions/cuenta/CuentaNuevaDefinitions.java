@@ -20,28 +20,29 @@ public class CuentaNuevaDefinitions {
      */
 
     @When("quiera crear una cuenta para un contacto persona natural e ingrese documento, tipo de documento <tipo_documento>")
-    public void crearCuentaNuevaPersonaNatural(@Named("tipo_documento")String tipoDocumento){
+    public void crearCuentaNuevaPersonaNatural(@Named("tipo_documento") String tipoDocumento) {
         cuentaNuevaSteps.abrirNuevaCuenta();
         cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento, "");
     }
 
     @When("fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>")
-    public void agregarNombres(@Named("fecha_nacimiento")String fechaNacimiento,@Named("primer_nombre")String primerNombre,
-                                       @Named("primer_apellido")String primerApellido){
-        cuentaNuevaSteps.agregarNombre(primerNombre,primerApellido,fechaNacimiento);
+    public void agregarNombres(@Named("fecha_nacimiento") String fechaNacimiento, @Named("primer_nombre") String primerNombre,
+                               @Named("primer_apellido") String primerApellido) {
+        cuentaNuevaSteps.agregarNombre(primerNombre, primerApellido, fechaNacimiento);
     }
 
     @When("ingrese los datos de direccion: $datos")
-    public void agregarDireccion(ExamplesTable datos){
+    public void agregarDireccion(ExamplesTable datos) {
         cuentaNuevaSteps.agregarDireccion(datos);
     }
+
     @When("nombre de organizacion <nombre_organizacion> <agente>")
-    public void agregarOrganizacion( @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
-        cuentaNuevaSteps.agregarOrganizacion(nombreOrganizacion,agente);
+    public void agregarOrganizacion(@Named("nombre_organizacion") String nombreOrganizacion, @Named("agente") String agente) {
+        cuentaNuevaSteps.agregarOrganizacion(nombreOrganizacion, agente);
     }
 
     @Then("se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural")
-    public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido")String primerApellido, @Named("primer_nombre")String primerNombre){
+    public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido") String primerApellido, @Named("primer_nombre") String primerNombre) {
         cuentaNuevaSteps.verificarCuenta(primerNombre);
     }
 
@@ -50,18 +51,18 @@ public class CuentaNuevaDefinitions {
      * ESCENARIO 2
      */
     @When("quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento> y nro documento <nro_documento>")
-    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento, @Named("nro_documento")String nroDocumento){
+    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento") String tipoDocumento, @Named("nro_documento") String nroDocumento) {
         cuentaNuevaSteps.abrirNuevaCuenta();
         cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento, nroDocumento);
     }
 
     @When("nombre empresa <razon_social>")
-    public void agregarRazonSocial(@Named("razon_social")String razonSocial){
+    public void agregarRazonSocial(@Named("razon_social") String razonSocial) {
         cuentaNuevaSteps.agregarRazonSocial(razonSocial);
     }
 
     @Then("se debe crear la cuenta con el cliente <razon_social> persona juridica")
-    public void assertCrearNuevaCuentaPersonaJuridica(@Named("razon_social")String razonSocial){
+    public void assertCrearNuevaCuentaPersonaJuridica(@Named("razon_social") String razonSocial) {
         cuentaNuevaSteps.verificarCuenta(razonSocial);
     }
 
@@ -69,7 +70,7 @@ public class CuentaNuevaDefinitions {
      * ESCENARIO 3
      */
     @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>")
-    public void verificarMensaje(@Named("mensaje")String mensaje){
+    public void verificarMensaje(@Named("mensaje") String mensaje) {
         cuentaNuevaSteps.verificarMensaje(mensaje);
         cuentaNuevaSteps.verificarMensaje(mensaje);
     }

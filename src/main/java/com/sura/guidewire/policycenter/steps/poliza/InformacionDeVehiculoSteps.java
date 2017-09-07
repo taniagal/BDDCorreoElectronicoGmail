@@ -37,7 +37,7 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
 
     @Step
     public void ingresar_valores_de_bonificacion(String valorBoniTecnica, String valorBoniComercial) {
-        opcionesInformacionDelVehiculoPage.ingresaValoresBonificacion(valorBoniTecnica , valorBoniComercial);
+        opcionesInformacionDelVehiculoPage.ingresaValoresBonificacion(valorBoniTecnica, valorBoniComercial);
     }
 
     @Step
@@ -51,7 +51,7 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_poliza_total(){
+    public void validar_poliza_total() {
         opcionesInformacionDelVehiculoPage.comparaValorAseguradoTotal();
     }
 

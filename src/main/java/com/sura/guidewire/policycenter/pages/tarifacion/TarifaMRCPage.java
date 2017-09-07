@@ -17,6 +17,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class TarifaMRCPage extends PageUtil {
+    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr";
+    public static final String ARTICULO = "articulo";
+    public static final int CONSTANTE_0 = 0;
+    public static final int CONSTANTE_8 = 8;
+    public static final double CONSTANTE_019 = 0.19;
+    double valorAsegurado = 0;
+    double primaTotal = 0;
+    String cobertura = "";
     @FindBy(xpath = ".//*[contains(@id, 'AddContactsButton-btnWrap')]")
     private WebElementFacade botonAgregarContacto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton:1:ContactType-textEl']")
@@ -87,17 +96,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtTasaGlobalEditable;
     @FindBy(id = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade chex;
-
-
-    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr";
-    public static final String ARTICULO = "articulo";
-    public static final int CONSTANTE_0 = 0;
-    public static final int CONSTANTE_8 = 8;
-    public static final double CONSTANTE_019 = 0.19;
-    double valorAsegurado = 0;
-    double primaTotal = 0;
-    String cobertura = "";
 
     public TarifaMRCPage(WebDriver driver) {
         super(driver);

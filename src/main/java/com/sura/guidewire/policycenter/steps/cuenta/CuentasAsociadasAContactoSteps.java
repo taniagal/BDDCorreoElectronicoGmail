@@ -5,6 +5,7 @@ import com.sura.guidewire.policycenter.pages.cuenta.CuentasAsociadasAContactoPag
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 
 public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
@@ -27,7 +28,7 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void buscarContactoEmpresa(String tipoContacto, String razonSocial){
+    public void buscarContactoEmpresa(String tipoContacto, String razonSocial) {
         busquedaContacto.consultarPersonaJuridaPorRazonSocial(tipoContacto, razonSocial);
         busquedaContacto.seleccionarContacto();
     }

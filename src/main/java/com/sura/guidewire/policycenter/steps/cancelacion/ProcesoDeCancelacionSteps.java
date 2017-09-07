@@ -6,9 +6,13 @@ import com.sura.guidewire.policycenter.pages.cancelacion.ProcesoDeCancelacionPag
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
+
 public class ProcesoDeCancelacionSteps extends ScenarioSteps {
 
+    @Page
     ProcesoDeCancelacionPage procesoDeCancelacionPage;
+    @Page
     CotizacionDeCancelacionPage cotizacionDeCancelacionPage;
 
     @Step
@@ -49,7 +53,7 @@ public class ProcesoDeCancelacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void cerrar_cancelacion_opcion_retirar_transaccion(){
+    public void cerrar_cancelacion_opcion_retirar_transaccion() {
         cotizacionDeCancelacionPage.cerrarTransaccionPoliza();
     }
 }

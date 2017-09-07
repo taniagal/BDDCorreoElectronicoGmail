@@ -26,7 +26,7 @@ public class ReglaPreRenovacionDirPaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validaOpcionesIntruccionDetalles(ExamplesTable opcionesDir){
+    public void validaOpcionesIntruccionDetalles(ExamplesTable opcionesDir) {
         reglaPreRenovacionDirPaPage.validaLista(opcionesDir);
     }
 }

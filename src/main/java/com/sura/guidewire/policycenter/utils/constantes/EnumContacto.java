@@ -2,12 +2,12 @@ package com.sura.guidewire.policycenter.utils.constantes;
 
 public enum EnumContacto {
 
-        CIUDAD ("Ciudad: El campo \"Ciudad\" es requerido"),
-        DEPARTAMENTO ("Departamento: El campo \"Departamento\" es requerido");
+    CIUDAD("Ciudad: El campo \"Ciudad\" es requerido"),
+    DEPARTAMENTO("Departamento: El campo \"Departamento\" es requerido");
 
     private final String mensajeRequerido;
 
-    EnumContacto(String mensaje){
+    EnumContacto(String mensaje) {
         mensajeRequerido = mensaje;
     }
 

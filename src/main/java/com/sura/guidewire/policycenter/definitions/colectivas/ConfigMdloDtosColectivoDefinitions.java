@@ -14,17 +14,17 @@ public class ConfigMdloDtosColectivoDefinitions {
 
     @When("ingrese a la informacion de la poliza")
     @Then("ingrese a la informacion de la poliza")
-    public void igresarAPolicy(){
+    public void igresarAPolicy() {
         datosColectivosSteps.ingresarAPolicyInfo();
     }
 
     @Then("se deben ver los nuevos campos agregados con sus estados iniciales respectivos <tipo_facturacion>")
-    public void verificarestadoDeCamposNuevos(@Named("tipo_facturacion") String tipoFacturacion){
+    public void verificarestadoDeCamposNuevos(@Named("tipo_facturacion") String tipoFacturacion) {
         datosColectivosSteps.verificarEstadoDeCamposNuevos(tipoFacturacion);
     }
 
     @Then("se deben ver los nuevos campos agregados con sus estados iniciales respectivos para el tipo de facturacion <tipo_facturacion>")
-    public void verificarestadoDeCamposEnFacturacionPorRiego(@Named("tipo_facturacion") String tipoFacturacion){
+    public void verificarestadoDeCamposEnFacturacionPorRiego(@Named("tipo_facturacion") String tipoFacturacion) {
         datosColectivosSteps.verificarestadoDeCamposEnFacturacionPorRiego(tipoFacturacion);
     }
 }

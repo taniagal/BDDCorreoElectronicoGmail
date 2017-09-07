@@ -1,10 +1,10 @@
 package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 
 import java.util.Map;
 
-import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 
@@ -15,6 +15,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class BusquedaDeTransaccionesPage extends PageUtil {
 
+    protected static final String PATH_TBL_TRANSACCIONES_DE_POLIZA = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_TransactionsLV-body']//tbody/";
+    protected static final String COTIZACION = "Cotización";
+    protected static final String CANCELACION = "Cancelación";
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_IdTransactionSearch']/div/span")
     WebElementFacade menuItemTransacciones;
     @FindBy(xpath = ".//*[@id='IdTransactionSearch:IdTransactionSearchScreen:IdTransactionSearchPanelSet:IdTransaction-inputEl']")
@@ -37,6 +40,8 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_DatesDV:PolicyPerTaxes-inputEl']")
     WebElementFacade labelImpuestoTarifa;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
+    WebElementFacade labelCostoTotalCotizar;
     @FindBy(xpath = ".//*[@id=':TabLinkMenuButton-btnIconEl']")
     private WebElementFacade mnuConfiguracion;
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-textEl']")
@@ -47,11 +52,6 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     private WebElementFacade labelFechaInicioVigencia;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     private WebElementFacade menuBuscar;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
-    WebElementFacade labelCostoTotalCotizar;
-    protected static final String PATH_TBL_TRANSACCIONES_DE_POLIZA = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_TransactionsLV-body']//tbody/";
-    protected static final String COTIZACION = "Cotización";
-    protected static final String CANCELACION = "Cancelación";
 
 
     public BusquedaDeTransaccionesPage(WebDriver driver) {
@@ -85,7 +85,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
 
     public void validarPolizaExpedida(ExamplesTable filtro) {
         int contadorIteraciones = CONSTANTE_0;
-        while ("".equals(tblNroPoliza.getText()) && contadorIteraciones < CONSTANTE_MAXIMO_EJECUCIONES){
+        while ("".equals(tblNroPoliza.getText()) && contadorIteraciones < CONSTANTE_MAXIMO_EJECUCIONES) {
             this.botonRestablecer.waitUntilVisible().click();
             this.ingresarLosDatosDeBusqueda(filtro);
             this.clicEnElBotonBuscar();
@@ -120,12 +120,11 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     public void ingresarLosDatosDeBusqueda(ExamplesTable filtro) {
         Map<String, String> datosDeBusqueda = filtro.getRows().get(0);
         String session = Serenity.sessionVariableCalled("numero cotizacion".toLowerCase().trim());
-        String data =( datosDeBusqueda.get("idTransaccion"));
-        String idTransaccion ;
-        if (session!=null)
-        {
+        String data = (datosDeBusqueda.get("idTransaccion"));
+        String idTransaccion;
+        if (session != null) {
             idTransaccion = (session);
-        }else {
+        } else {
             idTransaccion = (data);
         }
         String aplicacionDeOrigen = datosDeBusqueda.get("aplicacionDeOrigen");
@@ -161,16 +160,16 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
                 BUT_WAS + labelImpuestoTarifa.getText(), VALOR_PRIMA_CERO.equals(labelImpuestoTarifa.getText()));
         MatcherAssert.assertThat("Error en el valor costo total, expected: " + VALOR_PRIMA_CERO +
                 BUT_WAS + labelCostoTotal.getText(), VALOR_PRIMA_CERO.equals(labelCostoTotal.getText()));
-        for (int k = CONSTANTE_1; k < CONSTANTE_3; k++){
+        for (int k = CONSTANTE_1; k < CONSTANTE_3; k++) {
             WebElementFacade tipoTransaccion = $(PATH_TBL_TRANSACCIONES_DE_POLIZA + "tr[" + k + "]/td[5]");
             WebElementFacade fechaTransaccion = $(PATH_TBL_TRANSACCIONES_DE_POLIZA + "tr[" + k + "]/td[3]");
             WebElementFacade valorPrima = $(PATH_TBL_TRANSACCIONES_DE_POLIZA + "tr[" + k + "]/td[7]");
 
-            if(CANCELACION.equals(tipoTransaccion.getText())){
+            if (CANCELACION.equals(tipoTransaccion.getText())) {
                 MatcherAssert.assertThat("Error en el valor de la prima, expected: " + valorPrimaTotal.concat("-") +
                         BUT_WAS + valorPrima.getText(), valorPrimaTotal.concat("-").equals(valorPrima.getText()));
             }
-            if(COTIZACION.equals(tipoTransaccion.getText())){
+            if (COTIZACION.equals(tipoTransaccion.getText())) {
                 MatcherAssert.assertThat("Error en el valor de la prima, expected: " + valorPrimaTotal +
                         BUT_WAS + valorPrima.getText(), valorPrimaTotal.equals(valorPrima.getText()));
             }

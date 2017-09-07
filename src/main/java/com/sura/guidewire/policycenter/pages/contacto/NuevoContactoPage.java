@@ -70,7 +70,7 @@ public class NuevoContactoPage extends PageUtil {
         this.tipoDocumento.waitUntilPresent();
         try {
             this.tipoDocumento.clear();
-        }catch (StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException", e);
             esperarHasta(TIEMPO_2000);
             this.tipoDocumento.clear();

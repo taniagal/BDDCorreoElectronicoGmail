@@ -22,6 +22,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
+    protected static final int TIEMPO_28000 = 28000;
+    protected static final int PLACA = 25;
+    private static final String VALOR_ASEGURADO = "valor_asegurado";
+    private static final String MODELO = "modelo";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
@@ -76,13 +80,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade comboBoxNoTransporteCombustible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl']")
     private WebElementFacade comboMedioDeVenta;
-
-
-    protected static final int TIEMPO_28000 = 28000;
-    protected static final int PLACA = 25;
     private String opcion = "Si";
-    private static final String VALOR_ASEGURADO = "valor_asegurado";
-    private static final String MODELO = "modelo";
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);

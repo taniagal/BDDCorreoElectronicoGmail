@@ -14,6 +14,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -24,9 +25,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class EdificiosyUbicacionesWidget extends PageUtil {
-    private static final String  TIPODOCUMENTO = "TIPO_DE_DOCUMENTO";
-    private static final String  DOCUMENTO = "DOCUMENTO";
-    private static final String  TIPOBENEFICIARIO = "TIPOBENEFICIARIO";
+    private static final String TIPODOCUMENTO = "TIPO_DE_DOCUMENTO";
+    private static final String DOCUMENTO = "DOCUMENTO";
+    private static final String TIPOBENEFICIARIO = "TIPOBENEFICIARIO";
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
     private static final String XPATH_LEGEND_COBERTURA_DE_RIESGO = ".//legend[ (descendant::div[contains(., '";
@@ -49,7 +50,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
-
+    TableWidgetPage tabla;
+    @Page
+    NuevaPolizaPage nuevaPolizaPage;
+    @Page
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
+    Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[contains(@id,'LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding')]")
     private WebElementFacade botonAgregarArticulos;
     @FindBy(xpath = ".//a[contains(.,'Remover Riesgo')]")
@@ -132,12 +138,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonCotizar;
     @FindBy(xpath = "//a[contains(.,'Agregar ubicación')]")
     private WebElementFacade botonAgregarUbicacion;
-
-
-    TableWidgetPage tabla;
-    NuevaPolizaPage nuevaPolizaPage;
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
-    Actions act = new Actions(getDriver());
 
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {

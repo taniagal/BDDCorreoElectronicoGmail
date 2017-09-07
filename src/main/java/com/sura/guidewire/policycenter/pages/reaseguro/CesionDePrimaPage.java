@@ -17,8 +17,17 @@ import org.openqa.selenium.WebDriver;
 
 public class CesionDePrimaPage extends PageUtil {
 
+    public static final String XPATH_TABLA_PRIMAS_CEDIDAS_TR = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr";
+    private static final String ESTADO_SHIFT = "SHIFT";
+    private static final int DIEZ = 10;
+    private static final int CANTIDAD_TIPO_CONTRATO = 3;
+    private static final String BANDERA_MODIFICACION = "MODIFICACION POLIZA";
+    private static final String BANDERA_CANCELACION = "CANCELACION POLIZA";
+    private static final String BANDERA_REHABILITACION = "REHABILITACION POLIZA";
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:CededPremiumsButton')]")
     WebElementFacade btnVerPrimasCedidas;
+    String numeroDeEnvio = null;
+    int control = CONSTANTE_1;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnInnerEl']")
     private WebElementFacade btnPoliza;
     @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:0:AllTransactions']")
@@ -54,16 +63,6 @@ public class CesionDePrimaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:0']")
     private WebElementFacade labelNombreRiesgo;
 
-    String numeroDeEnvio = null;
-    int control = CONSTANTE_1;
-    private static final String ESTADO_SHIFT = "SHIFT";
-    private static final int DIEZ = 10;
-    private static final int CANTIDAD_TIPO_CONTRATO = 3;
-    private static final String BANDERA_MODIFICACION = "MODIFICACION POLIZA";
-    private static final String BANDERA_CANCELACION = "CANCELACION POLIZA";
-    private static final String BANDERA_REHABILITACION = "REHABILITACION POLIZA";
-    public static final String XPATH_TABLA_PRIMAS_CEDIDAS_TR = ".//*[@id='RICededPremiums_ConsolidatedCededPremiumPopup:RICededPremiums_ConsolidatedCededPremiumLV-body']/div/table/tbody/tr";
-
     public CesionDePrimaPage(WebDriver driver) {
         super(driver);
     }
@@ -79,7 +78,7 @@ public class CesionDePrimaPage extends PageUtil {
     public void ejecutarTareaPrimasCedidas(String nombreTarea, String estado) {
         if (estado.equals(ESTADO_SHIFT)) {
             btnVerPrimasCedidas.sendKeys(Keys.SHIFT, Keys.ALT, "t");
-        }else{
+        } else {
             btnVerPrimasCedidas.sendKeys(Keys.CONTROL, Keys.ALT, "t");
         }
         esperarHasta(TIEMPO_5000);
@@ -153,9 +152,9 @@ public class CesionDePrimaPage extends PageUtil {
         WebElementFacade tabla;
         if (BANDERA_MODIFICACION.equals(procesoPoliza)) {
             tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[12]/td[1]");
-        } else if (BANDERA_CANCELACION.equals(procesoPoliza)){
+        } else if (BANDERA_CANCELACION.equals(procesoPoliza)) {
             tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[24]/td[1]");
-        } else if (BANDERA_REHABILITACION.equals(procesoPoliza)){
+        } else if (BANDERA_REHABILITACION.equals(procesoPoliza)) {
             tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[36]/td[1]");
         } else {
             tabla = $(".//*[@id='RICededPremiums_AllPopup:RICededPremiums_AllLV-body']/div/table/tbody/tr[1]/td[1]");
@@ -187,7 +186,7 @@ public class CesionDePrimaPage extends PageUtil {
     }
 
     public void verificarPrimasCedidas(ExamplesTable datos, String bandera) {
-        for (int z = 0; z < datos.getRowCount()/CANTIDAD_TIPO_CONTRATO;z++) {
+        for (int z = 0; z < datos.getRowCount() / CANTIDAD_TIPO_CONTRATO; z++) {
             WebElementFacade linkVerConsolidadoDePrimasCedidas = $(".//*[@id='RICededPremiumsPopup:" + z + ":ConsolidatedCededPremium']");
             linkVerConsolidadoDePrimasCedidas.waitUntilPresent().click();
             esperarHasta(TIEMPO_2000);

@@ -6,10 +6,10 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class ConfiguracionModeloDeDatosColectivosSteps  extends ScenarioSteps{
+public class ConfiguracionModeloDeDatosColectivosSteps extends ScenarioSteps {
     ConfiguracionModeloDeDatosColectivosPages datosColectivosPages = new ConfiguracionModeloDeDatosColectivosPages(getDriver());
 
-    public ConfiguracionModeloDeDatosColectivosSteps(Pages pages){
+    public ConfiguracionModeloDeDatosColectivosSteps(Pages pages) {
         super(pages);
     }
 
@@ -19,7 +19,7 @@ public class ConfiguracionModeloDeDatosColectivosSteps  extends ScenarioSteps{
     }
 
     @Step
-    public void verificarEstadoDeCamposNuevos(String tipoFacturacion){
+    public void verificarEstadoDeCamposNuevos(String tipoFacturacion) {
         datosColectivosPages.verificarEstadosDeCamposNuevos(tipoFacturacion);
     }
 

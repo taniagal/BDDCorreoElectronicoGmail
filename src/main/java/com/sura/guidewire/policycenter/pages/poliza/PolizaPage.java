@@ -28,9 +28,10 @@ public class PolizaPage extends PageUtil {
 
     protected static final int CONSTANTE_61 = 61;
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+    private static final String MENSAJE_REHABILITACION = "Iniciar la rehabilitación";
+    protected static String INPUT = "input";
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:showConinsuranceLink']";
-    private static final String MENSAJE_REHABILITACION = "Iniciar la rehabilitación";
     @Page
     CotizacionPage cotizacionPage;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
@@ -90,8 +91,6 @@ public class PolizaPage extends PageUtil {
     private String xpathMensajeDeCancelacionPolizaconOneroso = "//label[@id='CancellationWizard:CancellationWizard_QuoteScreen:WarningOnerousMessageCancellation']";
     private String xpathVerPolizExpedida = "//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']";
     private List<String> listaMotivos;
-    protected static String INPUT = "input";
-
 
 
     public PolizaPage(WebDriver driver) {
@@ -493,7 +492,7 @@ public class PolizaPage extends PageUtil {
         waitForTextToAppear("Borrador");
     }
 
-    public void ingreseaIniciarRehabilitacion(){
+    public void ingreseaIniciarRehabilitacion() {
         botonIniciarRehabilitacion.click();
         waitForTextToAppear(MENSAJE_REHABILITACION);
     }

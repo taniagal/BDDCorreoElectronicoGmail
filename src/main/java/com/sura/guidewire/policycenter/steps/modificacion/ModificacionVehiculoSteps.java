@@ -6,11 +6,11 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class ModificacionVehiculoSteps extends ScenarioSteps{
+public class ModificacionVehiculoSteps extends ScenarioSteps {
 
     ModificacionVehiculoPage modificacionVehiculoPage = new ModificacionVehiculoPage(getDriver());
 
-    public ModificacionVehiculoSteps (Pages pages) {
+    public ModificacionVehiculoSteps(Pages pages) {
         super(pages);
     }
 
@@ -31,7 +31,7 @@ public class ModificacionVehiculoSteps extends ScenarioSteps{
 
     @Step
     public void registrar_Zona_De_Circulacion(String ciudadCirculacion, String medioVenta) {
-        modificacionVehiculoPage.registrarZonaCirculacion(ciudadCirculacion,medioVenta);
+        modificacionVehiculoPage.registrarZonaCirculacion(ciudadCirculacion, medioVenta);
     }
 
     @Step

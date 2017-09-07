@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class CambioDePolizaPage extends PageUtil {
+    protected static final String LABELCONSTANTE = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next']")
@@ -54,9 +55,6 @@ public class CambioDePolizaPage extends PageUtil {
     WebElementFacade radioBotonReaseguroEspeciaSi;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:CPBuildings']")
     WebElementFacade opcionEdificioYubicaciones;
-
-    protected static final String LABELCONSTANTE= ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']";
-
 
 
     public CambioDePolizaPage(WebDriver driver) {
@@ -104,7 +102,7 @@ public class CambioDePolizaPage extends PageUtil {
         clickearElemento(menuItemInformacionDePoliza);
     }
 
-    public void irAMenuEdificiosYUbicaciones(){
+    public void irAMenuEdificiosYUbicaciones() {
         opcionEdificioYubicaciones.waitUntilPresent();
         esperarObjetoClikeableServidorWe(opcionEdificioYubicaciones);
     }
@@ -120,7 +118,7 @@ public class CambioDePolizaPage extends PageUtil {
         clickearElemento(comboBoxTipoPlazo);
         try {
             withTimeoutOf(TIEMPO_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(campoTxtFechaFinDeVigencia, fecha.substring(0, TIEMPO_5)));
-        }catch (TimeoutException e) {
+        } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
         }
     }
@@ -130,9 +128,10 @@ public class CambioDePolizaPage extends PageUtil {
         clickearElemento(botonSiguientePolyceChange);
 
     }
+
     //TOOO VERIFICA
     public void validarMercanciaFlotante(Parametros parametros) {
-             WebElementFacade grupoMensajes = findBy(LABELCONSTANTE);
+        WebElementFacade grupoMensajes = findBy(LABELCONSTANTE);
         withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(parametros.getTipo()));
 

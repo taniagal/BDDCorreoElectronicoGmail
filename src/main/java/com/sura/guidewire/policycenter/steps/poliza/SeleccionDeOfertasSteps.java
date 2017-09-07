@@ -36,7 +36,7 @@ public class SeleccionDeOfertasSteps extends ScenarioSteps {
 
     @Step
     public void validarVisibilidadMenu() {
-       seleccionDeOfertasPage.validarVisibilidadMenu();
+        seleccionDeOfertasPage.validarVisibilidadMenu();
     }
 
 }

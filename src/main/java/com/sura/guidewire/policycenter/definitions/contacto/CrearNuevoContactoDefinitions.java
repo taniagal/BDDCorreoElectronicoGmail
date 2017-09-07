@@ -21,7 +21,7 @@ public class CrearNuevoContactoDefinitions {
     WebDriver driver;
 
     @Steps
-    private CrearNuevoContactoSteps crearNuevoContactoSteps ;
+    private CrearNuevoContactoSteps crearNuevoContactoSteps;
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
@@ -45,7 +45,7 @@ public class CrearNuevoContactoDefinitions {
     }
 
     @Given("que tengo un contacto creado de tipo compania con los siguientes datos $datosContacto")
-    public void crearContactoCompania(ExamplesTable datosContacto){
+    public void crearContactoCompania(ExamplesTable datosContacto) {
         Map<String, String> contacto = datosContacto.getRows().get(0);
         crearNuevoContactoSteps.nuevoContactoPersonaJuridica();
         crearNuevoContactoSteps.seleccionarTipoDocumentoPersonaNatural(contacto.get("tipoDocumento"));
@@ -104,7 +104,7 @@ public class CrearNuevoContactoDefinitions {
 
     @When("selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>")
     public void whenIngresoElNumeroDeTelefonoFijotelefonoFijo(@Named("tipoTelefonoFijo") String tipoTelefonoFijo, @Named("numeroTelefonoFijo") String numeroTelefonoFijo) {
-       crearNuevoContactoSteps.ingresarNumeroTelefonoFijo(tipoTelefonoFijo, numeroTelefonoFijo);
+        crearNuevoContactoSteps.ingresarNumeroTelefonoFijo(tipoTelefonoFijo, numeroTelefonoFijo);
     }
 
     @Then("el campo de ciudad deben ser obligatorios")

@@ -465,6 +465,7 @@ public class InicioPage extends PageUtil {
     public CuentaNuevaCotizacionPage irANuevaCotizacion() {
         return navegacion.irANuevaCotizacion();
     }
+
     // Metodos Acciones navegacion Contacto
     public ContactoNuevaCuentaPage irAContactoNuevaCuenta() {
         return navegacion.irAContactoNuevaCuenta();

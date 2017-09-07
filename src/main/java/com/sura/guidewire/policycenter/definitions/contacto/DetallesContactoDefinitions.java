@@ -22,13 +22,13 @@ public class DetallesContactoDefinitions {
      * ESCENARIO 1
      */
     @Given("tengo un contacto con <tipo_documento> c. <documento>")
-    public void givenConsultarContacto(@Named("tipo_documento") String tipoDocumento,@Named("documento") String documento){
+    public void givenConsultarContacto(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
         seusLogin.login();
     }
 
     @When("quiera ver informacion detallada del contacto con <tipo_documento> c. <documento>")
-    public void whenConsultarDetallePersonaNatural(@Named("tipo_documento") String tipoDocumento,@Named("documento") String documento) {
-        detallesContactoSteps.abrir_detalles_contacto(tipoDocumento,documento);
+    public void whenConsultarDetallePersonaNatural(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
+        detallesContactoSteps.abrir_detalles_contacto(tipoDocumento, documento);
     }
 
     @Then("se debe ver minimo la siguiente informacion definida para el panel de detalles de persona narural")
@@ -40,7 +40,7 @@ public class DetallesContactoDefinitions {
      * ESCENARIO 2
      */
     @Then("se debe ver minimo la siguiente informacion definida para el panel de detalles de persona juridica")
-    public void assertConsultarDetallePersonaJuridica(){
+    public void assertConsultarDetallePersonaJuridica() {
         detallesContactoSteps.verificar_campos_persona_juridica();
     }
 

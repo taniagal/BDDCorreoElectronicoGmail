@@ -15,16 +15,16 @@ public class IngresoTransaccionesPolizaPage extends PageUtil {
     private WebElementFacade numeroTransaccionPoliza;
 
 
-    public IngresoTransaccionesPolizaPage (WebDriver driver){
-        super (driver);
+    public IngresoTransaccionesPolizaPage(WebDriver driver) {
+        super(driver);
     }
 
-    public void ingresarMenuAccionesTransacciones(){
+    public void ingresarMenuAccionesTransacciones() {
         menuTransacciones.waitUntilPresent();
         clickearElemento(menuTransacciones);
     }
 
-    public void busquedaTransaccion(String numeroTransaccion){
+    public void busquedaTransaccion(String numeroTransaccion) {
         numeroTransaccionPoliza.waitUntilVisible();
         clickearElemento(numeroTransaccionPoliza);
         numeroTransaccionPoliza.sendKeys(numeroTransaccion);

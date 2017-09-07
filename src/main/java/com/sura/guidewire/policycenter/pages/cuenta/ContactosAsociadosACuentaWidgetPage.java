@@ -21,9 +21,9 @@ public class ContactosAsociadosACuentaWidgetPage extends PageObject {
         tablaContactos.buscarTabla(XPATH_DIV_CONTENEDOR_TABLA_CONTACTOS);
     }
 
-    public Boolean existenContactosAsociados(){
+    public Boolean existenContactosAsociados() {
         Boolean existe;
-        if (tablaContactos == null){
+        if (tablaContactos == null) {
             obtenerTablaContactosAsociados();
             existe = tablaContactos.existenFilasEnTabla();
         } else {
@@ -32,15 +32,15 @@ public class ContactosAsociadosACuentaWidgetPage extends PageObject {
         return existe;
     }
 
-    public void filtrarContactosAsociados(String filtro, String combo ){
+    public void filtrarContactosAsociados(String filtro, String combo) {
         tablaContactos.enToolbar().seleccionarDeComboConValor(combo);
         tablaContactos.opcionDeCombo(filtro);
     }
 
-    public List<String> obtenerColumna(String columna ){
+    public List<String> obtenerColumna(String columna) {
 
         List<String> filasPorColumna = new ArrayList<>();
-        for (WebElement celda : tablaContactos.obtenerColumnaDeTabla(columna)){
+        for (WebElement celda : tablaContactos.obtenerColumnaDeTabla(columna)) {
             filasPorColumna.add(celda.getText());
         }
 

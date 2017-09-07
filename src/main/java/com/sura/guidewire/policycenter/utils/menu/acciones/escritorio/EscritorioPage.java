@@ -9,17 +9,17 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class EscritorioPage extends PageUtil{
+public class EscritorioPage extends PageUtil {
+    protected static final int CONSTANTE_8 = 8;
+    private static final String PATH_ACTIVIDAD = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']";
+    private static final String TABLA_ACTIVDAD = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:DesktopActivitiesLV-body']/*/table/tbody/tr";
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
     private WebElementFacade menuEscritorio;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopActivities']")
     private WebElementFacade menuEscritorioActividad;
-
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopActivities-itemEl']")
     private WebElementFacade itemMisActividades;
-    protected static final int CONSTANTE_8 = 8;
-    private static final String PATH_ACTIVIDAD = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']";
-    private static final String TABLA_ACTIVDAD = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:DesktopActivitiesLV-body']/*/table/tbody/tr";
+
     public EscritorioPage(WebDriver driver) {
         super(driver);
     }
@@ -30,6 +30,6 @@ public class EscritorioPage extends PageUtil{
     }
 
     public void verificarAuditoriaFinal(String numeroPoliza) {
-        MatcherAssert.assertThat("No se encontro en numero de la  poliza", validarResultadoTabla(TABLA_ACTIVDAD, numeroPoliza,CONSTANTE_8));
+        MatcherAssert.assertThat("No se encontro en numero de la  poliza", validarResultadoTabla(TABLA_ACTIVDAD, numeroPoliza, CONSTANTE_8));
     }
 }

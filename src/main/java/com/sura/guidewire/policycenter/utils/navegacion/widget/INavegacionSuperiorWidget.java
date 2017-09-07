@@ -7,5 +7,6 @@ import net.serenitybdd.core.pages.WidgetObject;
 @ImplementedBy(NavegacionSuperiorWidgetImpl.class)
 public interface INavegacionSuperiorWidget extends WidgetObject {
     void deplegarMenu(MenuNavegacionSuperiorEnum menu);
+
     void seleccionarMenu(MenuNavegacionSuperiorEnum menu);
 }

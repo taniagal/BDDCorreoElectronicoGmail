@@ -10,7 +10,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-public class NotasDePolizaPage extends PageUtil{
+public class NotasDePolizaPage extends PageUtil {
 
     @FindBy(xpath = "html/body/div[1]/div[2]/div/span/div/div[4]/div[3]/div/table/tbody/tr[1]/td/div/span")
     private WebElementFacade menuNotas;
@@ -23,7 +23,7 @@ public class NotasDePolizaPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:Policy_NotesScreen:_msgs']/div")
     private WebElementFacade mensajeBusqueda;
 
-    public NotasDePolizaPage(WebDriver driver){
+    public NotasDePolizaPage(WebDriver driver) {
         super(driver);
     }
 

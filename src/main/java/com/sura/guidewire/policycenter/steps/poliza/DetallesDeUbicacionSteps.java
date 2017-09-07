@@ -6,22 +6,23 @@ import com.sura.guidewire.policycenter.pages.poliza.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 
 public class DetallesDeUbicacionSteps extends ScenarioSteps {
 
-
-
-
     private final DetallesDeUbicacionPage detallesDeUbicacionPage = new DetallesDeUbicacionPage(getDriver());
+
+    @Page
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
+
     public DetallesDeUbicacionSteps(Pages pages){
         super(pages);
     }
 
     @Step
-    public void agregarUbicacion(String descripcion, String actividad){
-       detallesDeUbicacionPage.setUbicacion(descripcion, actividad);
+    public void agregarUbicacion(String descripcion, String actividad) {
+        detallesDeUbicacionPage.setUbicacion(descripcion, actividad);
     }
 
     @Step
@@ -30,13 +31,13 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarCamposNuevos(){
+    public void validarCamposNuevos() {
         detallesDeUbicacionPage.irAUbicacion();
         detallesDeUbicacionPage.validarCamposNuevos();
     }
 
     @Step
-    public void validarIngresoUbicacion(){
+    public void validarIngresoUbicacion() {
         detallesDeUbicacionPage.validarIngresoDeUbicacion();
     }
 

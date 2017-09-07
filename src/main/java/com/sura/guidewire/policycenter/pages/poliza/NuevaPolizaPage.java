@@ -21,6 +21,12 @@ import org.openqa.selenium.WebDriver;
 public class NuevaPolizaPage extends PageUtil {
 
 
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
+    WebElementFacade txtNumeroCuenta;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
+    WebElementFacade grdNumeroCuenta;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    WebElementFacade botonBusquedaRapida;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade listaOrganizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
@@ -33,12 +39,6 @@ public class NuevaPolizaPage extends PageUtil {
     private WebElementFacade botonBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
     private WebElementFacade botonCuentas;
-    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
-    WebElementFacade txtNumeroCuenta;
-    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
-    WebElementFacade grdNumeroCuenta;
-    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
-    WebElementFacade botonBusquedaRapida;
 
 
     public NuevaPolizaPage(WebDriver driver) {

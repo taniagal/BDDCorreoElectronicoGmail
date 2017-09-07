@@ -22,7 +22,7 @@ public class ResumenCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void consultarResumenCuenta(){
+    public void consultarResumenCuenta() {
         inicioPage().irAOpcionesResumenCuenta();
     }
 
@@ -47,7 +47,7 @@ public class ResumenCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void actualizarCuenta(){
+    public void actualizarCuenta() {
         opcionesResumenCuentaPage.actualizarCuenta();
     }
 

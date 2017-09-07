@@ -9,7 +9,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
-public class HerramientasPolizaSteps  extends ScenarioSteps {
+public class HerramientasPolizaSteps extends ScenarioSteps {
 
     @Page
     private HerramientasPolizaPage herramientasPolizaPage;
@@ -18,10 +18,12 @@ public class HerramientasPolizaSteps  extends ScenarioSteps {
     public void ingresarProgramaAuditoria() {
         herramientasPolizaPage.ingresarProgramaAuditoria();
     }
+
     @Step
     public void validarProgramaAuditoria(ExamplesTable opciones) {
         herramientasPolizaPage.validarProgramaAuditoria(opciones);
     }
+
     @Step
     public void validarProgramaSinAuditoria(ExamplesTable opciones) {
         herramientasPolizaPage.validarProgramaSinAuditoria(opciones);

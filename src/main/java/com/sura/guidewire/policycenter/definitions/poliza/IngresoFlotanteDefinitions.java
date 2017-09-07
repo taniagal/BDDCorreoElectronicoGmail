@@ -19,6 +19,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
 public class IngresoFlotanteDefinitions {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     @Steps
     PolizaSteps polizaSteps;
     @Steps
@@ -31,8 +32,6 @@ public class IngresoFlotanteDefinitions {
     TarifaTasaUnicaSteps tasaUnicaSteps;
     @Steps
     CambioDePolizaSteps cambioDePolizaSteps;
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     @Given("ingresar informacion de edificio y ubicaciones")
     public void ingresarinformacionDeEdificioyUbicaciones() {
@@ -47,8 +46,9 @@ public class IngresoFlotanteDefinitions {
     public void seleccionarTipoArticuloFlotante(ExamplesTable opciones) {
         ajustePantallaPagosYValidacionesSteps.seleccionarArticuloFlotante(new Parametros(opciones));
     }
+
     @Then("validar tipo de mercancia flotante en cambio:$opciones")
-    public void validarMercanciaFlotante(ExamplesTable opciones){
+    public void validarMercanciaFlotante(ExamplesTable opciones) {
         cambioDePolizaSteps.validarMercanciaFlotante(new Parametros(opciones));
 
     }

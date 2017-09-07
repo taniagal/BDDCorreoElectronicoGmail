@@ -8,11 +8,11 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import org.jbehave.core.model.ExamplesTable;
 
-public class ExpedicionRenovacionPASteps extends ScenarioSteps{
+public class ExpedicionRenovacionPASteps extends ScenarioSteps {
 
     private final ExpedicionRenovacionPAPage expedicionRenovacionPAPage = new ExpedicionRenovacionPAPage(getDriver());
 
-    public ExpedicionRenovacionPASteps(Pages pages){
+    public ExpedicionRenovacionPASteps(Pages pages) {
         super(pages);
     }
 

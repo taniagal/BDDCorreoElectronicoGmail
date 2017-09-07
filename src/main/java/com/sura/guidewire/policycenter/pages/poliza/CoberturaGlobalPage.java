@@ -18,6 +18,19 @@ import org.openqa.selenium.WebDriver;
 
 
 public class CoberturaGlobalPage extends PageUtil {
+    public static final String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
+    public static final String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_2 = ":CoverageInputSet:CovPatternInputGroup:_checkbox']";
+    public static final String XPATH_TABLA_COBERTURA_GLOBAL_TR = ".//*[@id='CPBlanketSura_ExtPopup:3']/table/tbody/tr/td/div/table/tbody/tr";
+    public static final String XPATH_TXT_VALOR_ASEGURADO_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
+    public static final String XPATH_TXT_VALOR_ASEGURADO_PARTE_2 = ":CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']";
+    public static final String XPATH_RESULTADO_COBERTURAS_GLOBALES_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/div/table/tbody/tr";
+    private static final String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_INICIAL = ".//div[contains(@id,'CPBlanketSura_ExtPopup') and contains(@id,'CoverageInputSet:CovPatternInputGroup-legendTitle') and contains(.,'";
+    private static final String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_FINAL = "')]";
+    private static final String LBL_PESTANA_COBERTURAS_INICIAL = "//label[contains(.,'";
+    private static final String LBL_PESTANA_COBERTURAS_FINAL = "')]";
+    private static final String LBL_OPCION_COBERTURA_GLOBAL_INICIAL = "//span[contains(text(),'";
+    private static final String LBL_OPCION_COBERTURA_GLOBAL_FINAL = "')]";
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBlanket']/div")
     private WebElementFacade menuItemCoberturaGlobal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket_tb:AddBlanket-btnInnerEl']")
@@ -66,20 +79,6 @@ public class CoberturaGlobalPage extends PageUtil {
     private WebElementFacade btnAceptar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade btnCotizar;
-
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
-    private static final String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_INICIAL = ".//div[contains(@id,'CPBlanketSura_ExtPopup') and contains(@id,'CoverageInputSet:CovPatternInputGroup-legendTitle') and contains(.,'";
-    private static final String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_FINAL = "')]";
-    private static final String LBL_PESTANA_COBERTURAS_INICIAL = "//label[contains(.,'";
-    private static final String LBL_PESTANA_COBERTURAS_FINAL = "')]";
-    private static final String LBL_OPCION_COBERTURA_GLOBAL_INICIAL = "//span[contains(text(),'";
-    private static final String LBL_OPCION_COBERTURA_GLOBAL_FINAL = "')]";
-    public static final String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
-    public static final String XPATH_CHECKBOX_COBERTURA_GLOBAL_PARTE_2 = ":CoverageInputSet:CovPatternInputGroup:_checkbox']";
-    public static final String XPATH_TABLA_COBERTURA_GLOBAL_TR = ".//*[@id='CPBlanketSura_ExtPopup:3']/table/tbody/tr/td/div/table/tbody/tr";
-    public static final String XPATH_TXT_VALOR_ASEGURADO_PARTE_1 = ".//*[@id='CPBlanketSura_ExtPopup:";
-    public static final String XPATH_TXT_VALOR_ASEGURADO_PARTE_2 = ":CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']";
-    public static final String XPATH_RESULTADO_COBERTURAS_GLOBALES_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/div/table/tbody/tr";
 
 
     public CoberturaGlobalPage(WebDriver driver) {

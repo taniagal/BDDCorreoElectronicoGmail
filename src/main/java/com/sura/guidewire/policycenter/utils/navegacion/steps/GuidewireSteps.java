@@ -6,6 +6,7 @@ import com.sura.guidewire.policycenter.utils.navegacion.widget.MenuNavegacionSup
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import org.fluentlenium.core.annotation.Page;
 
 public class GuidewireSteps extends ScenarioSteps {
@@ -13,15 +14,16 @@ public class GuidewireSteps extends ScenarioSteps {
     @Page
     GuidewirePage guidewirePage;
 
-    @Steps MenuPolizaSteps menuPolizaSteps;
+    @Steps
+    MenuPolizaSteps menuPolizaSteps;
 
     @Step
-    public GuidewireSteps irANavegacionSuperior(){
+    public GuidewireSteps irANavegacionSuperior() {
         return this;
     }
 
     @Step
-    public MenuPolizaSteps desplegarMenuPoliza(){
+    public MenuPolizaSteps desplegarMenuPoliza() {
         guidewirePage.barraNavegacion().deplegarMenu(MenuNavegacionSuperiorEnum.POLIZA);
         return menuPolizaSteps;
     }

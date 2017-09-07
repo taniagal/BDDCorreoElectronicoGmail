@@ -54,7 +54,7 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
         MatcherAssert.assertThat(grupoUWIssues.getText(), Matchers.containsString(uwissues.get("UWIssue")));
     }
 
-    public void ingresarAnalisisDeRiesgo(){
+    public void ingresarAnalisisDeRiesgo() {
         clickearElemento(analisiDeRiesgoSub);
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgoSub);
     }

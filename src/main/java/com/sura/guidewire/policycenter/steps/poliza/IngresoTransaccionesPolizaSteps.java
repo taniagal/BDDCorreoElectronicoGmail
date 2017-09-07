@@ -14,19 +14,19 @@ public class IngresoTransaccionesPolizaSteps extends ScenarioSteps {
     IngresoTransaccionesPolizaPage ingresoTransaccionesPolizaPage;
 
 
-    public IngresoTransaccionesPolizaSteps(Pages pages){
+    public IngresoTransaccionesPolizaSteps(Pages pages) {
 
         super(pages);
     }
 
     @Step
-    public void ingresarMenuTransaciones(){
+    public void ingresarMenuTransaciones() {
         ingresoTransaccionesPolizaPage.ingresarMenuAccionesTransacciones();
 
     }
 
     @Step
-    public void busquedaTransaccionPoliza(String numeroTransaccion){
+    public void busquedaTransaccionPoliza(String numeroTransaccion) {
         ingresoTransaccionesPolizaPage.busquedaTransaccion(numeroTransaccion);
     }
 }

@@ -31,27 +31,29 @@ public class SolicitarSarlaftDefinitions {
 
 
     @When("intente expedir la poliza cuyas figuras requieran Sarlaft")
-    public void expedirPoliza(){
+    public void expedirPoliza() {
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
         analisisDeRiesgoPaSteps.aceptarExpedicion();
     }
 
     @When("ingrese la organizacion, canal y tipo de poliza")
-    public void ingresarOrganizacion(){
+    public void ingresarOrganizacion() {
         solicitarRequisitoPaSteps.llenarInfoPoliza();
     }
 
     @When("intente expedir la modificacion cuyas figuras requieran Sarlaft")
-    public void modificarPoliza(){
+    public void modificarPoliza() {
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
         cambioEnExpedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
     }
+
     @When("debe aparecer un mensaje bloqueante en la ventana de requisitos $mensaje")
-    public void validarMensajeBloqueante(ExamplesTable mensaje){
+    public void validarMensajeBloqueante(ExamplesTable mensaje) {
         generacionUwIssueRiesgosConsultablesPaSteps.validarMensajeBloqueanteSarlaft(mensaje);
     }
+
     @Then("debo ver un UW issue que indique que se requiere diligenciar Sarlaft $mensaje")
-    public void validarUWIssueSarlaft(ExamplesTable mensaje){
+    public void validarUWIssueSarlaft(ExamplesTable mensaje) {
         generacionUwIssueRiesgosConsultablesPaSteps.validarQueSeGenereUwIssue(mensaje);
     }
 }

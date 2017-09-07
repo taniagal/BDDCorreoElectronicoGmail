@@ -6,6 +6,7 @@ import com.sura.guidewire.policycenter.pages.poliza.AnalisisDeRiesgosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 
@@ -13,9 +14,9 @@ import org.hamcrest.Matchers;
 public class AnalisisDeRiesgoSteps extends ScenarioSteps {
 
 
-    private AnalisisDeRiesgosPage analisisDeRiesgosPage;
     protected static final int TIEMPO_2 = 2;
-
+    @Page
+    private AnalisisDeRiesgosPage analisisDeRiesgosPage;
 
     public AnalisisDeRiesgosPage obtenerRiesgosPage() {
         return this.analisisDeRiesgosPage;
@@ -35,20 +36,24 @@ public class AnalisisDeRiesgoSteps extends ScenarioSteps {
         MatcherAssert.assertThat(obtenerRiesgosPage().obtenerCompromisoBloqueado().getText(), Matchers.containsString(mensaje));
 
     }
+
     @Step
-    public void seleccionarOpcionAnalisisDeRiesgosEnCotizacion(){
+    public void seleccionarOpcionAnalisisDeRiesgosEnCotizacion() {
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoCotizacion();
     }
+
     @Step
-    public void seleccionarOpcionAnalisisDeRiesgoEnCambioPoliza(){
+    public void seleccionarOpcionAnalisisDeRiesgoEnCambioPoliza() {
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoEnCambioDePoliza();
     }
+
     @Step
-    public void seleccionarOpcionAnalisisDeRiesgoEnRenovacionPoliza(){
+    public void seleccionarOpcionAnalisisDeRiesgoEnRenovacionPoliza() {
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoEnRenovacionDePoliza();
     }
+
     @Step
-    public void solicitarAprobacion(){
+    public void solicitarAprobacion() {
         obtenerRiesgosPage().seleccionarSolicitarAprobacion();
     }
 }

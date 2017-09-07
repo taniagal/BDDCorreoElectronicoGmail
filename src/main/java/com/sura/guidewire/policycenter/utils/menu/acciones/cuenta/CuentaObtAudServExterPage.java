@@ -1,5 +1,3 @@
-
-
 package com.sura.guidewire.policycenter.utils.menu.acciones.cuenta;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;

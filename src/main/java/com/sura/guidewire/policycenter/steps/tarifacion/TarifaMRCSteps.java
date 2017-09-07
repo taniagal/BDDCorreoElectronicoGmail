@@ -76,7 +76,7 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarImpuestos(){
+    public void verificarImpuestos() {
         tarifaMRCPage.verificarImpuestos();
     }
 
@@ -91,13 +91,13 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos){
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos) {
         tarifaMRCPage.irAArticulo();
         tarifaMRCPage.seleccionarArticulosYTodadsSusCoberturas(datos);
     }
 
     @Step
-    public void verificarTarifacion(ExamplesTable datos){
+    public void verificarTarifacion(ExamplesTable datos) {
         tarifaMRCPage.verificarTarifacion(datos);
     }
 
@@ -118,7 +118,7 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingrasarIndiceVariableMaquinaria(String valor){
+    public void ingrasarIndiceVariableMaquinaria(String valor) {
         tarifaMRCPage.ingrasarIndiceVariableMaquinaria(valor);
     }
 

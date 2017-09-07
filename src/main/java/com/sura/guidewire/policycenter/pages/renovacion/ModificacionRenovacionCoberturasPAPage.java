@@ -173,7 +173,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     }
 
     public void adicionarNuevaCobertura() {
-       MatcherAssert.assertThat(checkBoxDanios.isPresent(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(checkBoxDanios.isPresent(), Is.is(Matchers.equalTo(true)));
     }
 
     public void borrarEspacioTrabajo() {

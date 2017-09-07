@@ -65,11 +65,12 @@ public class CotizacionMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarMensajeUWAlExpedir(String mensaje){
+    public void validarMensajeUWAlExpedir(String mensaje) {
         cotizacionMRCPage.validarMensajeUWAlExpedir(mensaje);
     }
+
     @Step
-    public void validarMensajeUWAlExpedirCambio(String mensaje){
+    public void validarMensajeUWAlExpedirCambio(String mensaje) {
         cotizacionMRCPage.validarMensajeUWAlExpedirCambio(mensaje);
     }
 }

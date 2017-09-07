@@ -9,8 +9,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import org.openqa.selenium.WebDriver;
 
-public class IngresoDeCoberturasPage extends PageUtil{
+public class IngresoDeCoberturasPage extends PageUtil {
 
+    PageUtil pageUtil = new PageUtil(getDriver());
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade campoLimite;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
@@ -22,30 +23,27 @@ public class IngresoDeCoberturasPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:RatingOverrideButtonDV:RatingOverrideButtonDV:ViewWorksheet']")
     private WebElementFacade botonMostrarHojaDeCalculo;
 
-
-    PageUtil pageUtil = new PageUtil(getDriver());
-
-    public IngresoDeCoberturasPage(WebDriver driver){
+    public IngresoDeCoberturasPage(WebDriver driver) {
         super(driver);
     }
 
-    public void ingresarLimite(){
+    public void ingresarLimite() {
         waitForTextToAppear("Cobertura");
-        pageUtil.seleccionarItem(campoLimite,"32.000.000");
+        pageUtil.seleccionarItem(campoLimite, "32.000.000");
     }
 
-    public void ingresarDeducible(){
-        pageUtil.seleccionarItem(campoDeducible,"0");
+    public void ingresarDeducible() {
+        pageUtil.seleccionarItem(campoDeducible, "0");
     }
 
-    public void cotizar(){
+    public void cotizar() {
         botonCotizar.click();
         withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).waitUntilPresent();
     }
 
-    public void clickEnCheckHurto(){
+    public void clickEnCheckHurto() {
         waitFor(checkHurto);
-        if("0px -15px".equals(checkHurto.getCssValue("background-position"))){
+        if ("0px -15px".equals(checkHurto.getCssValue("background-position"))) {
             checkHurto.click();
         }
     }

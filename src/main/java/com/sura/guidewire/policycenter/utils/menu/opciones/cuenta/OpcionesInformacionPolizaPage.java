@@ -21,6 +21,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class OpcionesInformacionPolizaPage extends PageUtil {
 
+    private static final int CONSTANTE_50 = 50;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
+    WebElementFacade campoTipoPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     private WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-labelEl']")
@@ -95,8 +98,6 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade campoOrganizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
     private WebElementFacade campoCanal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
-    WebElementFacade campoTipoPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     private WebElementFacade comboBoxNombreAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
@@ -123,10 +124,18 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade botonHonorarioPactadoSi;
     @FindBy(xpath = ".//input[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:AgreedFranchiseCommission-inputEl']")
     private WebElementFacade campoHonorarioPactado;
-    private static final int CONSTANTE_50 = 50;
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
         super(driver);
+    }
+
+    private static boolean esNumerico(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
     }
 
     public void seleccionarAgenteCotizacion() {
@@ -251,15 +260,6 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
             }
         } else {
             MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
-        }
-    }
-
-    private static boolean esNumerico(String cadena) {
-        try {
-            Integer.parseInt(cadena);
-            return true;
-        } catch (NumberFormatException nfe) {
-            return false;
         }
     }
 
@@ -412,7 +412,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         botonEmpleadoSuraSi.waitUntilPresent().click();
     }
 
-    public void ingresarValorHonorarioPactado(ExamplesTable valor){
+    public void ingresarValorHonorarioPactado(ExamplesTable valor) {
         botonHonorarioPactadoSi.waitUntilVisible();
         clickearElemento(botonHonorarioPactadoSi);
         campoHonorarioPactado.waitUntilVisible();

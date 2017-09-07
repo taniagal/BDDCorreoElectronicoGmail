@@ -15,6 +15,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class InformacionTitularCuentaPage extends PageUtil {
 
+    private static final String DIV = "div";
     @FindBy(xpath = ".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_AccountHolder']/div/span")
     WebElementFacade mnuInformacionTitularCuenta;
     @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:ttlBar']")
@@ -97,8 +98,6 @@ public class InformacionTitularCuentaPage extends PageUtil {
     WebElementFacade txtFechaFallecimiento;
     @FindBy(xpath = ".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonCauseOfDeath-inputEl']")
     WebElementFacade txtCausaFallecimiento;
-
-    private static final String DIV = "div";
 
     public InformacionTitularCuentaPage(WebDriver driver) {
         super(driver);

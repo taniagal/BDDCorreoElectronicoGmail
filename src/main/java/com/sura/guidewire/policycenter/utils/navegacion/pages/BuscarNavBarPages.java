@@ -12,6 +12,10 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class BuscarNavBarPages extends PageObject {
+    protected static final int TIEMPO_1000 = 1000;
+    protected static final int TIEMPO_5000 = 5000;
+    protected static final int TIEMPO_20 = 20;
+    protected static final int TIEMPO_2 = 2;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
     private WebElementFacade lblCuenta;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -21,10 +25,26 @@ public class BuscarNavBarPages extends PageObject {
     @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtIrA;
 
-    protected static final int TIEMPO_1000 = 1000;
-    protected static final int TIEMPO_5000 = 5000;
-    protected static final int TIEMPO_20 = 20;
-    protected static final int TIEMPO_2 = 2;
+    public void navegacionBuscarCuenta(String numCuenta) {
+        findBy(Opciones.CUENTAS.nombre()).waitUntilVisible().click();
+        lblCuenta.clear();
+        lblCuenta.sendKeys(numCuenta);
+        btnBuscaCuenta.click();
+        PageUtil.esperarHasta(TIEMPO_1000);
+        linkCuenta.click();
+        PageUtil.esperarHasta(TIEMPO_5000);
+    }
+
+    public void seleccionarOpcion() {
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        waitForTextToAppear("Buscar pólizas");
+    }
+
+    public void clicenOpcionCuentas() {
+        findBy(Opciones.CUENTAS.nombre()).waitUntilVisible().click();
+    }
 
     public enum Opciones {
         POLIZA("Pólizas"),
@@ -42,27 +62,5 @@ public class BuscarNavBarPages extends PageObject {
         public String nombre() {
             return opcion;
         }
-    }
-
-    public void navegacionBuscarCuenta(String numCuenta) {
-        findBy(Opciones.CUENTAS.nombre()).waitUntilVisible().click();
-        lblCuenta.clear();
-        lblCuenta.sendKeys(numCuenta);
-        btnBuscaCuenta.click();
-        PageUtil.esperarHasta(TIEMPO_1000);
-        linkCuenta.click();
-        PageUtil.esperarHasta(TIEMPO_5000);
-    }
-
-
-    public void seleccionarOpcion() {
-        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
-        campoTxtIrA.sendKeys("Search");
-        campoTxtIrA.sendKeys(Keys.ENTER);
-        waitForTextToAppear("Buscar pólizas");
-    }
-
-    public void clicenOpcionCuentas() {
-        findBy(Opciones.CUENTAS.nombre()).waitUntilVisible().click();
     }
 }

@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -60,6 +61,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade lblMensaje;
 
+
     public static final String XPATH_TABLA_REASEGURADORES_INICIO = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr";
     public static final String XPATH_TABLA_REASEGURADORES_CIERRE = "/td";
     private static final String PAIS_ALEMANIA = "Alemania";
@@ -74,6 +76,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     private static final int COLUMNA_NOMBRE_COMISION_INTERMEDIARIO = 8;
     private static final int COLUMNA_NOMBRE_COMISION_PROMOTORA = 9;
 
+    @Page
     CrearYEditarCumulosPage crearYEditarCumulosPage;
 
     public DistribucionTasaPorCoberturaPage(WebDriver driver) {
@@ -85,7 +88,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         lblInformaPoliza.waitUntilVisible();
         clickearElemento(radioBotReaseguroEspecial);
         esperarHasta(TIEMPO_2000);
-        if(checkiReaseguroFacultativo.isVisible()){
+        if (checkiReaseguroFacultativo.isVisible()) {
             checkiReaseguroFacultativo.waitUntilClickable();
             esperarHasta(TIEMPO_2000);
             clickearElemento(checkiReaseguroFacultativo);
@@ -117,7 +120,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
             clickearElemento(botonCotizar);
         }
         esperarHasta(TIEMPO_1000);
-        if (botonCotizar.isPresent()){
+        if (botonCotizar.isPresent()) {
             clickearElemento(botonCotizar);
         }
         resetImplicitTimeout();

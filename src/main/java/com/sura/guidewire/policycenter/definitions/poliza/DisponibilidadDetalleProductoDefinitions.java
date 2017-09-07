@@ -25,12 +25,12 @@ public class DisponibilidadDetalleProductoDefinitions {
     }
 
     @Given("seleccione el agente y la oficina de radicacion: $agente")
-    public void seleccionarAgente(ExamplesTable agente){
+    public void seleccionarAgente(ExamplesTable agente) {
         disponibilidadDetalleProductoSteps.seleccionarAgente(agente);
     }
 
     @When("seleccione el agente y la oficina de radicacion: $agente")
-    public void seleccionarAgenteCotizacion(ExamplesTable agente){
+    public void seleccionarAgenteCotizacion(ExamplesTable agente) {
         disponibilidadDetalleProductoSteps.seleccionarAgente(agente);
     }
 

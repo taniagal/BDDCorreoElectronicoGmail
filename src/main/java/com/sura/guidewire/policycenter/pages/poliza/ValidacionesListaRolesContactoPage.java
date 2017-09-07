@@ -25,7 +25,7 @@ public class ValidacionesListaRolesContactoPage extends PageUtil {
     private WebElementFacade botonCancelarRol;
 
 
-    public ValidacionesListaRolesContactoPage (WebDriver driver){
+    public ValidacionesListaRolesContactoPage(WebDriver driver) {
         super(driver);
     }
 
@@ -37,11 +37,11 @@ public class ValidacionesListaRolesContactoPage extends PageUtil {
     private void validarDatosDeLaListaRoles(ExamplesTable tipoRol) {
         List<WebElementFacade> elementosTipoRolesContacto;
         String tipo = tipoRol.getRows().get(0).get("roles");
-            elementosTipoRolesContacto = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll("//span[contains(@id, 'NewAccountContactPopup:ContactDetailScreen:AccountContactCV:ContactRolesDV:ContactRolesLV_tb:AddRoleButton:') and contains(@id, ':RoleType-textEl')]");
-            for (WebElementFacade lista : elementosTipoRolesContacto) {
-                if(lista.getText().contains(tipo)){
-                    MatcherAssert.assertThat("El rol " + lista.getText() + " ya se ha seleccionado en crear contacto, no se debería mostrar en la lista " , lista.getText().contains(tipo), Is.is(Matchers.equalTo(false)));
-                }
+        elementosTipoRolesContacto = withTimeoutOf(TIEMPO_1, TimeUnit.SECONDS).findAll("//span[contains(@id, 'NewAccountContactPopup:ContactDetailScreen:AccountContactCV:ContactRolesDV:ContactRolesLV_tb:AddRoleButton:') and contains(@id, ':RoleType-textEl')]");
+        for (WebElementFacade lista : elementosTipoRolesContacto) {
+            if (lista.getText().contains(tipo)) {
+                MatcherAssert.assertThat("El rol " + lista.getText() + " ya se ha seleccionado en crear contacto, no se debería mostrar en la lista ", lista.getText().contains(tipo), Is.is(Matchers.equalTo(false)));
             }
+        }
     }
 }

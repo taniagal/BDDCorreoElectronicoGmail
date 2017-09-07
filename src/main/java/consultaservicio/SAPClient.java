@@ -73,7 +73,7 @@ public class SAPClient extends PageUtil {
             LOGGER.error("Error en la conexion", e);
         } catch (SOAPFaultException e) {
             LOGGER.info("SOAPFaultException ", e);
-        } catch (Exception e){
+        } catch (Exception e) {
             LOGGER.info("Exception ", e);
         }
 

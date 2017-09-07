@@ -57,7 +57,7 @@ public class CuentasOrdenesDeTrabajoDefinitions {
     }
 
     @Then("no debo ver la poliza <transaccion> asociada a una colectiva")
-    public void validarTransaccionNoExistente(@Named("transaccion") String transaccion){
+    public void validarTransaccionNoExistente(@Named("transaccion") String transaccion) {
         cuentasOrdenesTrabajoSteps.validarTransaccionNoExistente(transaccion);
     }
 

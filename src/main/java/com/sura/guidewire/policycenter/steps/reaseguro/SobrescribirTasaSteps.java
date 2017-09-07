@@ -7,20 +7,22 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
-public class SobrescribirTasaSteps extends ScenarioSteps{
+public class SobrescribirTasaSteps extends ScenarioSteps {
 
+    @Page
     SobrescribirTasaPage sobrescribirTasaPage;
 
-    public SobrescribirTasaSteps(Pages pages){
+    public SobrescribirTasaSteps(Pages pages) {
         super(pages);
     }
 
     @Step
     public void crearAcuerdoFacultativo() {
         sobrescribirTasaPage.clicEnBotonCrearAcuerdosFacultativos();
-        MatcherAssert.assertThat("No aparecio ventana de confirmacion para el acuerdo" , sobrescribirTasaPage.validaVentanaDeConfirmacion().equals(true) );
+        MatcherAssert.assertThat("No aparecio ventana de confirmacion para el acuerdo", sobrescribirTasaPage.validaVentanaDeConfirmacion().equals(true));
         sobrescribirTasaPage.clicAceptarAcurdosFacultativos();
     }
 

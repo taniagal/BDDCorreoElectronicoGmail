@@ -5,14 +5,16 @@ import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInform
 
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class PagoPolizaPages extends PageUtil {
+    private static final String LBL_PAGO_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard')]/td";
+    @Page
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
     @FindBy(xpath = ".//*[contains(@id,'BillingInfo')]")
     private WebElementFacade menuItemPago;
-    private static final String LBL_PAGO_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard')]/td";
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
     public PagoPolizaPages(WebDriver driver) {
         super(driver);

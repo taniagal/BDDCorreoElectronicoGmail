@@ -19,16 +19,13 @@ import org.openqa.selenium.WebDriver;
 
 public class ResumenCuentaDefinitions {
 
+    private final Map<String, String> infoResumenCuenta = new HashMap<>();
     @Managed
     WebDriver driver;
-
     @Steps
     ResumenCuentaSteps resumenCuentaSteps;
-
     @Steps
     HistorialCuentaSteps historialCuentaSteps;
-
-    private final Map<String, String> infoResumenCuenta = new HashMap<>();
 
     public ResumenCuentaDefinitions() {
         infoResumenCuenta.put("lblResumenCuenta", "Resumen de la cuenta");

@@ -59,11 +59,12 @@ public class PantallasAdminAutorizaDefinitions {
     }
 
     @Then("se debe mostrar toda la informacion relacionada a la autorizacion $informacion")
-    public void visualizarInformacionRelacionadaConLaAutorizacion(ExamplesTable informacion){
+    public void visualizarInformacionRelacionadaConLaAutorizacion(ExamplesTable informacion) {
         pantallasAdministrativasAutorizacionesSteps.validarInformacionAutorizacion(informacion);
     }
+
     @When("vaya a buscar la autorizacion con regla de validacion <reglaValidacion>")
-    public void buscarReglaDeValidacion(@Named("reglaValidacion") String reglaValidacion){
+    public void buscarReglaDeValidacion(@Named("reglaValidacion") String reglaValidacion) {
         pantallasAdministrativasAutorizacionesSteps.busquedaPorReglaDeValidacion(reglaValidacion);
     }
 

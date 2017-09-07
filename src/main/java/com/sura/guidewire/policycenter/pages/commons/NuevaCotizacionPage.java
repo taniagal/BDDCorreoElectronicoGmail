@@ -23,9 +23,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NuevaCotizacionPage extends PageUtil {
+    private static final String TIPO_POLIZA = "tipoPoliza";
+    private static final String INDIVIDUAL = "Individual";
+    private static final String TABLA_SELECCION_DE_PRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/*/table/tbody";
+    private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
     @Page
     PolizaFinanciadaPage polizaFinanciadaPage;
-
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
@@ -74,11 +77,6 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade mensajes;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']")
     private WebElementFacade optSiFinanciarPoliza;
-
-    private static final String TIPO_POLIZA = "tipoPoliza";
-    private static final String INDIVIDUAL = "Individual";
-    private static final String TABLA_SELECCION_DE_PRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/*/table/tbody";
-    private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
     private String oficina = "1073";
     private String agente = "ASESOR 4 - PRUEBA TRASPASO";
 

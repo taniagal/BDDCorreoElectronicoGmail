@@ -40,7 +40,7 @@ public class InicioCancelacionDefinitions {
 
     @Then("Se debe validar la retroactividad sino cumple con <mensaje>")
     @Alias("Se debe validar la emision anticipada con <mensaje>")
-    public void thenSeDebeValidarLaRetroactividadSinoCumpleConmensaje(@Named("mensaje")String mensaje) {
+    public void thenSeDebeValidarLaRetroactividadSinoCumpleConmensaje(@Named("mensaje") String mensaje) {
         inicioCancelacionSteps.validar_mensaje_en_pantalla(mensaje);
     }
 

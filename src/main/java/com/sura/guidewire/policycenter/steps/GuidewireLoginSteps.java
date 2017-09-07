@@ -26,7 +26,7 @@ public class GuidewireLoginSteps extends ScenarioSteps {
             login.enter(usuario).into(login.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS));
             login.enter(contrasenia).into(login.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS));
         }
-        if (login.elemento(GuidewireLoginPages.CBO_PAIS) != null){
+        if (login.elemento(GuidewireLoginPages.CBO_PAIS) != null) {
             login.elemento(GuidewireLoginPages.CBO_PAIS).selectByVisibleText(pais);
             login.elemento(GuidewireLoginPages.BTN_LOGIN_SEUS).click();
         }

@@ -8,13 +8,17 @@ import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
 
+    @Page
     BusquedaDeRiesgosPage busquedaDeRiesgosPage;
+
+    @Page
     BusquedaDeTransaccionesPage busquedaDeTransaccionesPage;
 
     @Step

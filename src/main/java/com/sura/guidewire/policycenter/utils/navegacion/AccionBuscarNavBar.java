@@ -4,7 +4,7 @@ import com.sura.guidewire.policycenter.pages.cuenta.BusquedaDeCuentasPage;
 
 import net.serenitybdd.core.pages.PageObject;
 
-public class AccionBuscarNavBar extends PageObject{
+public class AccionBuscarNavBar extends PageObject {
     private static final String MENU_BUSCAR = "//a[contains(@id,'TabBar:SearchTab-btnInnerEl')]";
     private static final String OPCION_CUENTAS = "//a[contains(.,'Cuentas')]";
 
@@ -17,8 +17,6 @@ public class AccionBuscarNavBar extends PageObject{
         findBy(OPCION_CUENTAS).click();
         return switchToPage(BusquedaDeCuentasPage.class);
     }
-
-
 
 
 }

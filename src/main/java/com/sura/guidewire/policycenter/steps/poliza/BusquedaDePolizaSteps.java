@@ -5,10 +5,12 @@ import com.sura.guidewire.policycenter.pages.poliza.BusquedaDePolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
-public class BusquedaDePolizaSteps extends ScenarioSteps{
+public class BusquedaDePolizaSteps extends ScenarioSteps {
 
+    @Page
     private BusquedaDePolizaPage busquedaDePolizaPage;
 
     @Step
@@ -22,12 +24,12 @@ public class BusquedaDePolizaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda){
+    public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) {
         busquedaDePolizaPage.validarResultadosDeLaBusqueda(resultadoBusqueda);
     }
 
     @Step
-    public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta){
+    public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
         busquedaDePolizaPage.buscarPolizaPorNumeroDeCuenta(numeroCuenta);
     }
 
@@ -76,10 +78,11 @@ public class BusquedaDePolizaSteps extends ScenarioSteps{
         busquedaDePolizaPage.buscarPolizaPorNumeroDeCuentaSeleccionar(numeroCuenta);
     }
 
-    public void buscarNumeroDePoliza(){
+    public void buscarNumeroDePoliza() {
         busquedaDePolizaPage.buscarNumeroDePoliza();
 
     }
+
     @Step
     public String capturarNumeroPoliza() {
         return busquedaDePolizaPage.capturarNumeroPoliza();

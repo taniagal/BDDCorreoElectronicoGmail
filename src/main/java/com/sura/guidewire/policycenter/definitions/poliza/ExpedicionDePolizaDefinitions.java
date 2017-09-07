@@ -21,7 +21,7 @@ public class ExpedicionDePolizaDefinitions {
     PolizaPrincipalPaSteps polizaPrincipalPaSteps;
 
     @Given("Que tengo una cotizacion <cotizacion> y voy a crear una poliza")
-    public void ingresaInformacionPoliza(@Named("cotizacion")String cotizacion) {
+    public void ingresaInformacionPoliza(@Named("cotizacion") String cotizacion) {
         expedicionDePolizaSteps.navegarBarraSuperior(cotizacion);
     }
 
@@ -59,7 +59,7 @@ public class ExpedicionDePolizaDefinitions {
 
     @When("ingrese a ver cotizacion de poliza expedida")
     @Then("ingrese a ver cotizacion de poliza expedida")
-    public void cuandoIngreseAVerCotizacionDePolizExpedida(){
+    public void cuandoIngreseAVerCotizacionDePolizExpedida() {
         expedicionDePolizaSteps.clicEnVerCotizacion();
     }
 
@@ -69,7 +69,7 @@ public class ExpedicionDePolizaDefinitions {
     }
 
     @When("cancelo el mensaje <mensaje> de expedir poliza")
-    public void cancelarExpedicionDePoliza(@Named("mensaje") String mensaje){
+    public void cancelarExpedicionDePoliza(@Named("mensaje") String mensaje) {
         expedicionDePolizaSteps.clicEnCancelarDelMensajeDeConfirmacion(mensaje);
     }
 

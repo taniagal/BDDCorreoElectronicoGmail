@@ -7,6 +7,7 @@ import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.panel.contacto
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
@@ -16,8 +17,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private static final String DIRECCIONES = "DIRECCIONES";
     private static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
     private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
+
+    @Page
     private ContactosAsociadosACuentasPage contactosAsociadosACuentasPage;
+    @Page
     private BquedaContacDelDirecPage busquedaDelDirectorioPage;
+    @Page
     private NuevoAseguradoNombradoPage aseguradoNombradoPage;
 
     @Step
@@ -73,12 +78,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verOpcionesDeCreacionDeContactoPorRoleDeContactos(ExamplesTable opcionesPorRol, Boolean darClick){
+    public void verOpcionesDeCreacionDeContactoPorRoleDeContactos(ExamplesTable opcionesPorRol, Boolean darClick) {
         contactosAsociadosACuentasPage.existeOpcionesPorSubMenu(opcionesPorRol, darClick);
     }
 
     @Step
-    public void verOpcionesDeContactoPorRoles(ExamplesTable contactosPorRoles,  Boolean oprimirClick){
+    public void verOpcionesDeContactoPorRoles(ExamplesTable contactosPorRoles, Boolean oprimirClick) {
         contactosAsociadosACuentasPage.opcionesPorSubMenuContactos(contactosPorRoles, oprimirClick);
     }
 
@@ -88,30 +93,30 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public Boolean esContactoAsociado(String nombre){
+    public Boolean esContactoAsociado(String nombre) {
         return contactosAsociadosACuentasPage.esContactoAsociado(nombre);
     }
 
     @Step
-    public void buscarContactoDelDirectorio(){
+    public void buscarContactoDelDirectorio() {
         Boolean esContactoAsociadoDesdeDirectorio = busquedaDelDirectorioPage.buscarContacto("CEDULA DE CIUDADANIA", "DORIAN", "EASTMOND");
         if (esContactoAsociadoDesdeDirectorio && esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN")) {
-            contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div","porque ya tiene ese rol");
+            contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div", "porque ya tiene ese rol");
         }
     }
 
     @Step
-    public void eliminarContactoAsociando(String nombreContacto){
+    public void eliminarContactoAsociando(String nombreContacto) {
         contactosAsociadosACuentasPage.ElimnarContactoAsociado(nombreContacto);
     }
 
     @Step
-    public void contactoEliminado(String contactoEliminado){
+    public void contactoEliminado(String contactoEliminado) {
         contactosAsociadosACuentasPage.contactoEliminado(contactoEliminado);
     }
 
     @Step
-    public void verificarDireccionContacto(ExamplesTable opcionesPorRol){
+    public void verificarDireccionContacto(ExamplesTable opcionesPorRol) {
         contactosAsociadosACuentasPage.clicCrearNuevoContacto();
         contactosAsociadosACuentasPage.existeOpcionesPorSubMenu(opcionesPorRol, true);
         aseguradoNombradoPage.verificarDireccionContacto();

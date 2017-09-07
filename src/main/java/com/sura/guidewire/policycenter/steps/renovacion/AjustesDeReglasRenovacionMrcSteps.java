@@ -11,10 +11,9 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class AjustesDeReglasRenovacionMrcSteps {
 
+    private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     @Page
     public AjustesDeReglasRenovacionMrcPage ajustesDeReglasRenovacionMrcPage;
-
-    private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
 
     @Step
     public void obtenerMensajeUW(ExamplesTable mensajes) {
@@ -62,7 +61,7 @@ public class AjustesDeReglasRenovacionMrcSteps {
     }
 
     @Step
-    public void ingresarRegistrosReaseguro(ExamplesTable registros){
+    public void ingresarRegistrosReaseguro(ExamplesTable registros) {
         ajustesDeReglasRenovacionMrcPage.ingresarRegistrosReaseguro(registros);
     }
 

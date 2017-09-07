@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class ModificadoresDeTarifaPage extends PageUtil {
+    public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr";
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Remove-btnInnerEl']")
     public WebElementFacade botonEliminarVehiculo;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:Remove']")
@@ -62,16 +63,14 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     public WebElementFacade campoTxtPlaca;
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
     public WebElementFacade labelUW;
+    int bonoComercial = 0;
+    int bonoTecnico = 0;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
     @FindBy(xpath = ".//a[contains(.,'DANIEL MEJIA CUARTAS') and contains(@id,'PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV')]")
     private WebElementFacade menuItemAsegurado;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade radioBotonCehiculo0KmNo;
-
-    public static final String XPATH_TABLA_PRIMA_DE_POLIZA_TR = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr";
-    int bonoComercial = 0;
-    int bonoTecnico = 0;
 
     public ModificadoresDeTarifaPage(WebDriver driver) {
         super(driver);
@@ -202,7 +201,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
                 if (descripcionCobertura.equals(dato.get("descripcion"))) {
                     WebElementFacade montoPrima = $(XPATH_TABLA_PRIMA_DE_POLIZA_TR + "[" + i + "]/td[3]");
                     prima = montoPrima.getText().substring(CONSTANTE_1, montoPrima.getText().length() - CONSTANTE_6);
-                    MatcherAssert.assertThat("Error en el valor de la tarifa, en la cobertura " + descripcionCobertura.getText()+ ". Esperaba: " + dato.get("valor") +
+                    MatcherAssert.assertThat("Error en el valor de la tarifa, en la cobertura " + descripcionCobertura.getText() + ". Esperaba: " + dato.get("valor") +
                             " pero fue: " + prima, prima.equals(dato.get("valor")));
                     break;
                 }

@@ -21,7 +21,7 @@ public class CambioDePolizaCamposEditablesDefinitions {
 
     @When("cambie el plan del vehiculo <plan>")
     @Aliases(values = {"cambie el plan del vehiculo <plan> clasico",
-                        "cambie el plan del vehiculo a basico <plan>"})
+            "cambie el plan del vehiculo a basico <plan>"})
     public void cambiarPlanVehiculo(@Named("plan") String plan) {
         cambioDePolizaCamposEditablesSteps.cambiarPlanVehicular(plan);
     }

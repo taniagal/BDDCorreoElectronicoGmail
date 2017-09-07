@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
@@ -48,13 +49,13 @@ public class CotizacionDeCancelacionPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     WebElementFacade linkVisualizaPoliza;
 
+    @Page
     InicioCancelacionPage inicioCancelacionPage;
     ReglasRenovacionDosPage reglasRenovacionDosPage;
 
     public CotizacionDeCancelacionPage(WebDriver driver) {
         super(driver);
     }
-
 
 
     public void ingresaDatosFormulario() {
@@ -78,7 +79,7 @@ public class CotizacionDeCancelacionPage extends PageUtil {
         MatcherAssert.assertThat("Error, no se encuentra impuestos", inputImpuestoIva.isVisible());
         MatcherAssert.assertThat("Error, no se encuentra costo total", inputCostoTotal.isVisible());
         MatcherAssert.assertThat("Error, no se encuentra cambio del costo", inputCambioDeCosto.isVisible());
-        MatcherAssert.assertThat("El valor debe ser cero",  "$0".equals(inputCambioDeCosto.getText()));
+        MatcherAssert.assertThat("El valor debe ser cero", "$0".equals(inputCambioDeCosto.getText()));
         cerrarTransaccionPoliza();
     }
 

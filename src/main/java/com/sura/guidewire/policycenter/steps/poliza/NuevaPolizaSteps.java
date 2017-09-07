@@ -5,10 +5,12 @@ import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
-public class NuevaPolizaSteps extends ScenarioSteps{
+public class NuevaPolizaSteps extends ScenarioSteps {
 
+    @Page
     private NuevaPolizaPage nuevaPolizaPage;
 
     @Step

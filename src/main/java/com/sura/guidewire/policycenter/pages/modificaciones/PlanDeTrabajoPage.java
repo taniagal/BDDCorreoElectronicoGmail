@@ -21,12 +21,11 @@ public class PlanDeTrabajoPage extends PageUtil {
 
     @Page
     AnalisisDeRiesgosPage analisisDeRiesgosPage;
-
-    private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
     String xPathOpcionPlanDeTrabajo = ".//*[@id='SubmissionWizard:Workplan']";
     String xPathOpcionPlanDeTrabajoEnCambioDePoliza = ".//*[@id='PolicyChangeWizard:Workplan']";
-    @FindBy (xpath = ".//*[@id='RenewalWizard:Workplan']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:Workplan']")
     WebElementFacade xPathOpcionPlanDeTrabajoEnRenovacionDePoliza;
+    private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
 
     public PlanDeTrabajoPage(WebDriver driver) {
         super(driver);

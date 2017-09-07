@@ -9,7 +9,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import org.openqa.selenium.WebDriver;
 
-public class ProrrogaDePolizaPage extends PageUtil{
+public class ProrrogaDePolizaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:StartPolicyChangeDV:extensionPA-labelEl']")
     private WebElementFacade labelProrroga;
@@ -33,7 +33,7 @@ public class ProrrogaDePolizaPage extends PageUtil{
         clickearElemento(botonSiguiente);
     }
 
-    public String validarFechaFinVigencia(){
+    public String validarFechaFinVigencia() {
         return withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoFechaFinVigencia).getTagName();
     }
 }

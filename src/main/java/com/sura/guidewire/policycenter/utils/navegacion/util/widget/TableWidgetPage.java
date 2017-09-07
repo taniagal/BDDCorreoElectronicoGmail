@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.utils.navegacion.util.widget;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,11 +13,11 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.RenderedPageObjectView;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
-
 
 
 public class TableWidgetPage extends PageObject {
@@ -102,7 +103,7 @@ public class TableWidgetPage extends PageObject {
                 if ("Mostrar todos los roles".equals(valorInputDeComboBox)) {
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:roleFilters-inputEl']").click();
                     findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
-                    shouldBeVisible( (WebElementFacade) $(LISTA_COMBO_DESPLEGABLE));
+                    shouldBeVisible((WebElementFacade) $(LISTA_COMBO_DESPLEGABLE));
                     iterara = false;
                 } else {
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:personCompanyFilters-inputEl']").click();
@@ -117,7 +118,7 @@ public class TableWidgetPage extends PageObject {
 
     public void opcionDeCombo(String nombreDeOpcionDeCombo, String xpathDelCombo) {
         List<WebElement> opcionesDeCombo = getDriver().findElements(By.xpath(xpathDelCombo));
-                PageUtil.esperarHasta(TIEMPO_3000);
+        PageUtil.esperarHasta(TIEMPO_3000);
         for (WebElement opcion : opcionesDeCombo) {
             try {
                 if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
@@ -132,7 +133,7 @@ public class TableWidgetPage extends PageObject {
                         opcion.click();
                         fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
                     }
-                }catch (StaleElementReferenceException f) {
+                } catch (StaleElementReferenceException f) {
                     LOGGER.info("StaleElementReferenceException " + f);
                     PageUtil.esperarHasta(TIEMPO_4000);
                     if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
@@ -168,7 +169,7 @@ public class TableWidgetPage extends PageObject {
                 WebElement celda;
                 try {
                     celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
-                }catch (StaleElementReferenceException e){
+                } catch (StaleElementReferenceException e) {
                     LOGGER.info("StaleElementReferenceException " + e);
                     PageUtil.esperarHasta(TIEMPO_3000);
                     celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));

@@ -7,12 +7,14 @@ import java.io.Serializable;
 
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class CotizacionSteps extends ScenarioSteps implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Page
     private CotizacionPage cotizacionPage;
 
 
