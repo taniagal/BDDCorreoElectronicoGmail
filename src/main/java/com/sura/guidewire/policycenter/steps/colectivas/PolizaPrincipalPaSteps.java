@@ -5,12 +5,15 @@ import com.sura.guidewire.policycenter.pages.colectivas.PolizaPrincipalPaPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 
 public class PolizaPrincipalPaSteps extends ScenarioSteps {
 
+
+    @Page
     PolizaPrincipalPaPages polizaPrincipalPaPages;
 
     @Step
@@ -69,7 +72,7 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void clicMenuLateralCotizacion(){
+    public void clicMenuLateralCotizacion() {
         polizaPrincipalPaPages.clicMenuLateralCotizacion();
     }
 
