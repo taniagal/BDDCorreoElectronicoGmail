@@ -67,7 +67,7 @@ public class PolizaFinanciadaPage extends PageUtil {
     }
 
     public Map<String, String> validarNumeroCuotasAFinanciar() {
-        HashMap<String, String> numeroDeCuotas = new HashMap<>();
+        Map<String, String> numeroDeCuotas = new HashMap<>();
         conboBoxNumeroCuotas.waitUntilPresent();
         conboBoxNumeroCuotas.click();
         String cuota11 = findBy(".//li[contains(., '11')]").getText();
