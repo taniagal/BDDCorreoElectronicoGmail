@@ -33,7 +33,7 @@ public class ResumenDePolizaAutoPage extends PageUtil {
     @FindBy(xpath = ".//*[contains(@id,'PolicyPerEffDate-inputEl')]")
     private WebElementFacade labelFechaInicioVigencia;
 
-    protected static final String fechaCotizador = "fechaCotizador";
+    protected static final String FECHA_COTIZADOR = "FECHA_COTIZADOR";
 
     public ResumenDePolizaAutoPage(WebDriver driver) {
         super(driver);
@@ -58,7 +58,7 @@ public class ResumenDePolizaAutoPage extends PageUtil {
 
         String session = Serenity.sessionVariableCalled("fechaInicioVigencia".toLowerCase().trim());
         String idTransaccion;
-        if (fecha.equals(fechaCotizador)) {
+        if (fecha.equals(FECHA_COTIZADOR)) {
             idTransaccion = session;
         } else {
             idTransaccion =fecha;
