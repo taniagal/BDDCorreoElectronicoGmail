@@ -2,6 +2,9 @@ package com.sura.guidewire.policycenter.steps.modificacion;
 
 import com.sura.guidewire.policycenter.pages.modificaciones.ModificacionInformacionPolizaPAPage;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
+
+import java.util.Map;
+
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
@@ -11,15 +14,13 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.Map;
-
 
 public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
     protected static final String NROENVIOB = "nroEnvioB";
     protected static final String NROENVIOA = "nroEnvioA";
     @Page
     ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPa;
-    
+
     @Steps
     GuidewireSteps guidewire;
 
@@ -138,22 +139,22 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
-    public void consultarPolizaExpedida1(){
+    public void consultarPolizaExpedida1() {
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(Serenity.sessionVariableCalled("nroEnvioA".toLowerCase().trim()));
     }
 
     @Step
-    public void consultarPolizaExpedida2(){
+    public void consultarPolizaExpedida2() {
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(Serenity.sessionVariableCalled("nroEnvioB".toLowerCase().trim()));
     }
 
     @Step
-    public void consultarPolizaExpedida3(){
+    public void consultarPolizaExpedida3() {
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(Serenity.sessionVariableCalled("nroEnvioC".toLowerCase().trim()));
     }
 
     @Step
-    public void consultarPolizaExpedida4(){
+    public void consultarPolizaExpedida4() {
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(Serenity.sessionVariableCalled(NROENVIOA.toLowerCase().trim()));
     }
 
