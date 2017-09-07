@@ -11,13 +11,18 @@ import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
-
+    @Page
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
+
+    @Page
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
+
+    @Page
     private static NuevaPolizaPage nuevaPolizaPage;
 
     @Steps

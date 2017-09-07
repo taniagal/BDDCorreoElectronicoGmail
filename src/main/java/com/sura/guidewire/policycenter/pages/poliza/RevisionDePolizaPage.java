@@ -6,6 +6,7 @@ import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInform
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
@@ -14,11 +15,15 @@ import org.openqa.selenium.WebDriver;
  */
 public class RevisionDePolizaPage extends PageUtil {
 
-    private static final String LBL_OPCIONES_MENU_INICIAL = ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
-    private static final String LBL_OPCIONES_MENU_FINAL = "')]";
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
+
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyReview']/div/span")
     private WebElementFacade itemRevisionPoliza;
+    @Page
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
+
+
+    private static final String LBL_OPCIONES_MENU_INICIAL = ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static final String LBL_OPCIONES_MENU_FINAL = "')]";
 
     public RevisionDePolizaPage(WebDriver driver) {
         super(driver);

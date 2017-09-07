@@ -14,6 +14,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -50,7 +51,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String TIPO_DOCUMENTO = "CEDULA DE CIUDADANIA";
     private static final String VALIDACION_MENSAJE_RIESGOS = "Solo se permite ingresar un riesgo en la póliza";
     TableWidgetPage tabla;
+    @Page
     NuevaPolizaPage nuevaPolizaPage;
+    @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
     Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[contains(@id,'LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding')]")

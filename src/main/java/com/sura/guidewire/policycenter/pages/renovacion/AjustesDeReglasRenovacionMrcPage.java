@@ -80,8 +80,7 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
         waitForTextToAppear("Asuntos que bloquean la expedición");
         String contenidoLabelMensaje = labelMensaje.getText();
         for (String llave : llaves) {
-            String mensajeAux = mensajesAEvaluar.get(llave);
-            MatcherAssert.assertThat("No se mostro el mensaje UW", contenidoLabelMensaje.contains(mensajeAux));
+            MatcherAssert.assertThat("No se mostro el mensaje UW", contenidoLabelMensaje.contains(mensajesAEvaluar.get(llave)));
         }
     }
 
