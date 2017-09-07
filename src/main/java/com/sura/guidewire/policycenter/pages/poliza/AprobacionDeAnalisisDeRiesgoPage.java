@@ -123,5 +123,6 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
 
         }
         resetImplicitTimeout();
+        esperarHasta(TIEMPO_5000);
     }
 }

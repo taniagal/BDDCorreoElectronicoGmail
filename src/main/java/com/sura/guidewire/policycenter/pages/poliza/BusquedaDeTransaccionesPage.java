@@ -109,7 +109,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
 
     public void capturarCostoTotalCotizacion() {
         String costoTotalCotizacion = labelCostoTotalCotizar.getText();
-        Serenity.setSessionVariable("valorCostoTotalCotizacion".toLowerCase().trim()).to(costoTotalCotizacion);
+        Serenity.setSessionVariable("valorPrimaTotal".toLowerCase().trim()).to(costoTotalCotizacion);
     }
 
     public void capturarPlaca() {
@@ -153,7 +153,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     }
 
     public void verificarRetornoValorTotalPrima() {
-        String valorPrimaTotal = Serenity.sessionVariableCalled("valorCostoTotalCotizacion".toLowerCase().trim());
+        String valorPrimaTotal = Serenity.sessionVariableCalled("valorPrimaTotal".toLowerCase().trim());
         MatcherAssert.assertThat("Error en el valor prima total, expected: " + VALOR_PRIMA_CERO +
                 BUT_WAS + labelPrimaTotal.getText(), VALOR_PRIMA_CERO.equals(labelPrimaTotal.getText()));
         MatcherAssert.assertThat("Error en el valor impuestos y tarifas, expected: " + VALOR_PRIMA_CERO +
