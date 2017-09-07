@@ -73,4 +73,9 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
     public void capturarCostoTotalCotizacion() {
         busquedaDeTransaccionesPage.capturarCostoTotalCotizacion();
     }
+
+    @Step
+    public void verificarRetornoValorTotalPrima() {
+        busquedaDeTransaccionesPage.verificarRetornoValorTotalPrima();
+    }
 }
