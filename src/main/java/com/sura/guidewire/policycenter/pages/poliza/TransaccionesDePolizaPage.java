@@ -94,11 +94,15 @@ public class TransaccionesDePolizaPage extends PageUtil {
     }
 
     private boolean validarFechaYEstadoTransaccion(WebElementFacade fecha, WebElementFacade estado) {
+        boolean encontro;
         if (polizaPage.esFechaPorDefectoHOY(fecha)&& "Expedida".equals(estado.getText())) {
-            return true;
-        } else {
-            return false;
+            encontro = true;
+            return encontro;
+        }else{
+            encontro =false;
+            return encontro;
         }
+
     }
 
     private boolean encontrarTextoEnLista(ArrayList<String> lista, String textoBuscado) {
