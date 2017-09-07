@@ -7,6 +7,7 @@ import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.panel.contacto
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
@@ -16,8 +17,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private static final String DIRECCIONES = "DIRECCIONES";
     private static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
     private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
+
+    @Page
     private ContactosAsociadosACuentasPage contactosAsociadosACuentasPage;
+    @Page
     private BquedaContacDelDirecPage busquedaDelDirectorioPage;
+    @Page
     private NuevoAseguradoNombradoPage aseguradoNombradoPage;
 
     @Step

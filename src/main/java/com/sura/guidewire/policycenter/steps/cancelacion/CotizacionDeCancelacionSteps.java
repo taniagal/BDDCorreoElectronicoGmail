@@ -6,9 +6,11 @@ import com.sura.guidewire.policycenter.pages.cancelacion.CotizacionDeCancelacion
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
+
 public class CotizacionDeCancelacionSteps extends ScenarioSteps {
 
-
+    @Page
     CotizacionDeCancelacionPage cotizacionDeCancelacionPage;
 
     @Step
