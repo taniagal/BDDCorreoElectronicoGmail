@@ -35,7 +35,7 @@ public class MetodosComunes {
                 }
             });
         } catch (TimeoutException e) {
-            System.out.print(e.toString());
+            e.printStackTrace();
         }
     }
 
@@ -62,7 +62,7 @@ public class MetodosComunes {
                 try {
                     input.close();
                 } catch (IOException e) {
-                     System.out.print(e.toString());
+                  e.printStackTrace();
                 }
             }
         }
