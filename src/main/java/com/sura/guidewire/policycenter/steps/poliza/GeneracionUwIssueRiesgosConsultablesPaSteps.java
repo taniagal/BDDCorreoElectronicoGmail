@@ -5,11 +5,13 @@ import com.sura.guidewire.policycenter.pages.poliza.GeneracionUwIssueRiesgosCons
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class GeneracionUwIssueRiesgosConsultablesPaSteps extends ScenarioSteps {
 
-    private GeneracionUwIssueRiesgosConsultablesPaPage generacionUwIssueRiesgosConsultablesPa;
+    @Page
+    GeneracionUwIssueRiesgosConsultablesPaPage generacionUwIssueRiesgosConsultablesPa;
 
     @Step
     public void irAAnalisisDeRiesgo() {
