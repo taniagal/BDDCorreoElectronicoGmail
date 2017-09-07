@@ -51,6 +51,7 @@ public class CotizacionDeCancelacionPage extends PageUtil {
 
     @Page
     InicioCancelacionPage inicioCancelacionPage;
+    @Page
     ReglasRenovacionDosPage reglasRenovacionDosPage;
 
     public CotizacionDeCancelacionPage(WebDriver driver) {
