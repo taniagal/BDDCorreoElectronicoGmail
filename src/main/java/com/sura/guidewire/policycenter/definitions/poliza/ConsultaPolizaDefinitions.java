@@ -10,7 +10,6 @@ import org.jbehave.core.annotations.When;
 
 public class ConsultaPolizaDefinitions {
 
-    public String numeroPoliza = "";
     @Steps
     BusquedaDePolizaSteps buscarNumeroPoliza;
     @Steps
@@ -19,7 +18,7 @@ public class ConsultaPolizaDefinitions {
     @When("expido la poliza y capturo el numero de poliza")
     public void expedirPoliza() {
         tasaUnicaSteps.expedirPolizaUAT();
-        numeroPoliza = buscarNumeroPoliza.capturarNumeroPoliza();
+        String numeroPoliza = buscarNumeroPoliza.capturarNumeroPoliza();
         Serenity.setSessionVariable("noPoliza".toLowerCase().trim()).to(numeroPoliza);
     }
 }
