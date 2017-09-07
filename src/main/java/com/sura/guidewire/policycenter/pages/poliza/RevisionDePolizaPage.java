@@ -6,6 +6,7 @@ import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInform
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
@@ -16,6 +17,7 @@ public class RevisionDePolizaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyReview']/div/span")
     private WebElementFacade itemRevisionPoliza;
+    @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
 

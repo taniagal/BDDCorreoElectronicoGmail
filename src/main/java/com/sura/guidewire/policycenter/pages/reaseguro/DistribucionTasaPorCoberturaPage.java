@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -74,6 +75,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     private static final int COLUMNA_NOMBRE_COMISION_INTERMEDIARIO = 8;
     private static final int COLUMNA_NOMBRE_COMISION_PROMOTORA = 9;
 
+    @Page
     CrearYEditarCumulosPage crearYEditarCumulosPage;
 
     public DistribucionTasaPorCoberturaPage(WebDriver driver) {
