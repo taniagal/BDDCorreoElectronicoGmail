@@ -4,9 +4,11 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.Map;
 
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -47,6 +49,9 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     private WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
     WebElementFacade labelCostoTotalCotizar;
+    protected static final String PATH_TBL_TRANSACCIONES_DE_POLIZA = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_TransactionsLV-body']//tbody/";
+    protected static final String COTIZACION = "Cotización";
+    protected static final String CANCELACION = "Cancelación";
 
 
     public BusquedaDeTransaccionesPage(WebDriver driver) {
@@ -146,5 +151,31 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     public void cerrarSesionPolicy() {
         mnuConfiguracion.click();
         mnuLogOut.click();
+    }
+
+    public void verificarRetornoValorTotalPrima() {
+        String valorPrimaTotal = Serenity.sessionVariableCalled("valorCostoTotalCotizacion".toLowerCase().trim());
+        MatcherAssert.assertThat("Error en el valor prima total, expected: " + VALOR_PRIMA_CERO +
+                BUT_WAS + labelPrimaTotal.getText(), VALOR_PRIMA_CERO.equals(labelPrimaTotal.getText()));
+        MatcherAssert.assertThat("Error en el valor impuestos y tarifas, expected: " + VALOR_PRIMA_CERO +
+                BUT_WAS + labelImpuestoTarifa.getText(), VALOR_PRIMA_CERO.equals(labelImpuestoTarifa.getText()));
+        MatcherAssert.assertThat("Error en el valor costo total, expected: " + VALOR_PRIMA_CERO +
+                BUT_WAS + labelCostoTotal.getText(), VALOR_PRIMA_CERO.equals(labelCostoTotal.getText()));
+        for (int k = CONSTANTE_1; k < CONSTANTE_3; k++){
+            WebElementFacade tipoTransaccion = $(PATH_TBL_TRANSACCIONES_DE_POLIZA + "tr[" + k + "]/td[5]");
+            WebElementFacade fechaTransaccion = $(PATH_TBL_TRANSACCIONES_DE_POLIZA + "tr[" + k + "]/td[3]");
+            WebElementFacade valorPrima = $(PATH_TBL_TRANSACCIONES_DE_POLIZA + "tr[" + k + "]/td[7]");
+
+            if(CANCELACION.equals(tipoTransaccion.getText())){
+                MatcherAssert.assertThat("Error en el valor de la prima, expected: " + valorPrimaTotal.concat("-") +
+                        BUT_WAS + valorPrima.getText(), valorPrimaTotal.concat("-").equals(valorPrima.getText()));
+            }
+            if(COTIZACION.equals(tipoTransaccion.getText())){
+                MatcherAssert.assertThat("Error en el valor de la prima, expected: " + valorPrimaTotal +
+                        BUT_WAS + valorPrima.getText(), valorPrimaTotal.equals(valorPrima.getText()));
+            }
+            MatcherAssert.assertThat("Error en la fecha de transacción, expected: " + Utils.sumarDiasALaFechaActual(CONSTANTE_0) +
+                    BUT_WAS + fechaTransaccion.getText(), Utils.sumarDiasALaFechaActual(CONSTANTE_0).equals(fechaTransaccion.getText()));
+        }
     }
 }

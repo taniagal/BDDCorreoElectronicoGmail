@@ -78,6 +78,11 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
+    public void ingresarResumenCancelacionPoliza() {
+        polizaPage.ingresarResumenCancelacionPoliza();
+    }
+
+    @Step
     public void seleccionarOpcionCambiarPoliza() {
         accionesWidget.seleccionarOpcionCambioDePoliza();
     }
