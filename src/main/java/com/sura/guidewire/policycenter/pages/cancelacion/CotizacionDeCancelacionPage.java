@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
@@ -48,6 +49,7 @@ public class CotizacionDeCancelacionPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     WebElementFacade linkVisualizaPoliza;
 
+    @Page
     InicioCancelacionPage inicioCancelacionPage;
     ReglasRenovacionDosPage reglasRenovacionDosPage;
 

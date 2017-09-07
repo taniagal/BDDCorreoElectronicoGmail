@@ -7,10 +7,13 @@ import com.sura.guidewire.policycenter.utils.Parametros;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 public class AjustePantallaPagosYValidacionesPage extends PageUtil{
+
+    @Page
     private MultiplesAsesoresPage multiplesAsesoresPage;
     private  static final String CONSTANTE_NO ="NO";
     private static final String ENCABEZADO_EDIFICIO_Y_UBICACIONES = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']";
