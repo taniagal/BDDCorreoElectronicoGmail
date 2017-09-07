@@ -74,7 +74,7 @@ public class ModificacionVehiculoPage extends PageUtil {
         esperarHasta(TIEMPO_1000);
     }
 
-    public void registrarZonaCirculacion(String ciudadCirculacion,String medioVenta) {
+    public void registrarZonaCirculacion(String ciudadCirculacion, String medioVenta) {
         esperarHasta(TIEMPO_3000);
         waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
         try {

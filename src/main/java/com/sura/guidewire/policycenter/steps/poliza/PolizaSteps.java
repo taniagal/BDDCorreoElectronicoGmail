@@ -19,17 +19,16 @@ import org.hamcrest.Matchers;
 
 public class PolizaSteps extends GuidewireSteps {
 
-    @Page
-    private PolizaPage polizaPage;
-    private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
-    private static AccionesWidget accionesWidget;
-    private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
     private static final int CONSTANTE_3 = 3;
     private static final int CONSTANTE_2 = 2;
-
+    private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
+    private static AccionesWidget accionesWidget;
     @Steps
     private static BotonAccionesSteps botonAccionesSteps;
-
+    @Page
+    private PolizaPage polizaPage;
+    @Page
+    private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
 
     @Step
     public void seleccionarOpcionEdificiosYUbicaciones() {

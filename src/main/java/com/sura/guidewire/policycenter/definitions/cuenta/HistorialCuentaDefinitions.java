@@ -19,7 +19,7 @@ public class HistorialCuentaDefinitions {
 
     @Steps
     private HistorialCuentaSteps historialCuentaSteps;
-    
+
     @Given("ingreso a una cuenta <numCuenta>")
     public void givenEstoyEnUnaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
@@ -67,11 +67,11 @@ public class HistorialCuentaDefinitions {
     }
 
     @When("indique los criterios de busqueda <Usuario>, <Producto> y <FechaDesde> y <FechaHasta>")
-    public void whenIndiqueMultiplesCriterios (@Named("Usuario") String usuario,
-                                               @Named("Producto") String producto,
-                                               @Named("FechaDesde") String fechaDesde,
-                                               @Named("FechaHasta") String fechaHasta){
-        historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  producto, fechaDesde,  fechaHasta);
+    public void whenIndiqueMultiplesCriterios(@Named("Usuario") String usuario,
+                                              @Named("Producto") String producto,
+                                              @Named("FechaDesde") String fechaDesde,
+                                              @Named("FechaHasta") String fechaHasta) {
+        historialCuentaSteps.buscarCuentaConMultiplesOpciones(usuario, producto, fechaDesde, fechaHasta);
     }
 
 }

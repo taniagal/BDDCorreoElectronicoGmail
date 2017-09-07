@@ -16,6 +16,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class CoaseguroPage extends PageUtil {
+    private static final String MSJVALIDARVALORES = "No estan correctos los elementos:";
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:ReferencePolicyNumber-inputEl']")
@@ -38,8 +39,6 @@ public class CoaseguroPage extends PageUtil {
     private WebElementFacade pieDeTabla;
     @FindBy(id = "Coinsurance_ExtPopup:_msgs")
     private WebElementFacade divMensaje;
-
-    private static final String MSJVALIDARVALORES = "No estan correctos los elementos:";
 
     public CoaseguroPage(WebDriver diver) {
         super(diver);

@@ -85,6 +85,7 @@ public class MultiplesAsesoresPage extends PageUtil {
         }
         clickearElemento(botonAceptar, CONSTANTE_DOS);
     }
+
     public void validacionMensaje(Parametros parametros) {
         esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);
         verificarMensaje(labelMensajeDeValidacion, parametros.getMensaje());
@@ -129,6 +130,7 @@ public class MultiplesAsesoresPage extends PageUtil {
         WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
         return elemento.getText();
     }
+
     public void validarDatosDelAsesor(Parametros parametros) {
         if (parametros.getValidarDato().equals(Parametros.CODIGO_ASESOR)) {
             esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION);

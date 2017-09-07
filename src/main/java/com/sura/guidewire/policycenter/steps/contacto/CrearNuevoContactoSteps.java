@@ -10,10 +10,10 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class CrearNuevoContactoSteps extends ScenarioSteps {
 
+    private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
     private String cedula = "";
     private String nit = "";
     private String tipoDoc = "";
-    private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
 
     public CrearNuevoContactoSteps(Pages pages) {
         super(pages);

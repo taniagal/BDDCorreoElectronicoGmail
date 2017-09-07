@@ -24,18 +24,18 @@ public class ExpedicionRenovacionPADefinitions {
     PolizaPrincipalPaSteps polizaPrincipalPaSteps;
 
     @Given("se esta cotizando una renovacion de poliza <cotizacion>")
-    public void buscarCotizacion(@Named("cotizacion") String cotizacion){
+    public void buscarCotizacion(@Named("cotizacion") String cotizacion) {
         cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
     }
 
     @When("emita la renovacion")
-    public void emitirRenovacion(){
+    public void emitirRenovacion() {
         polizaPrincipalPaSteps.validarMenuOpcionFormulariosNoEsVisible();
         expedicionRenovacionPASteps.emitir_Renovacion();
     }
 
     @Then("se debe mostrar un mensaje que indique $mensaje")
-    public void validarMensajeAdvertencia(ExamplesTable mensaje){
+    public void validarMensajeAdvertencia(ExamplesTable mensaje) {
         expedicionRenovacionPASteps.validar_Mensaje_Advertencia_De_Renovacion(mensaje);
     }
 

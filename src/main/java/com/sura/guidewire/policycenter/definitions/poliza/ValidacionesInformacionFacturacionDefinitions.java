@@ -14,13 +14,13 @@ public class ValidacionesInformacionFacturacionDefinitions {
 
 
     @When("intente ingresar al modulo de facturacion")
-    public void ingresarMenuFacturacion(){
+    public void ingresarMenuFacturacion() {
 
         validacionesInformacionFacturacionSteps.ingresarMenuFacturacion();
     }
 
     @Then("se debe visualizar la informacion de facturacion de polizas")
-    public void verificarInformacionDeFacturacion(){
+    public void verificarInformacionDeFacturacion() {
         validacionesInformacionFacturacionSteps.verificarInformacionDeFacturacion();
     }
 }

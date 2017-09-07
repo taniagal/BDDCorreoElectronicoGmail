@@ -18,7 +18,7 @@ public class SustitucionesDefinitions {
     }
 
     @Then("verificar conservacion de informacion del vehiculo previamente eliminado $infoVehiculo")
-    public void verificarInfoVehiculo(ExamplesTable infoVehiculo){
+    public void verificarInfoVehiculo(ExamplesTable infoVehiculo) {
         sustitucionesSteps.verificarInfoVehiculo(infoVehiculo);
     }
 
@@ -28,7 +28,7 @@ public class SustitucionesDefinitions {
     }
 
     @Then("conservar las coberturas del vehículo sustituido: $datosCoberturaVehiculo")
-    public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo){
+    public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo) {
         sustitucionesSteps.verificarCoberturasVehiculoSustituto(datosCoberturaVehiculo);
     }
 }

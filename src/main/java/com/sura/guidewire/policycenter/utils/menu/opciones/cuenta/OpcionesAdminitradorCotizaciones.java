@@ -23,8 +23,11 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class OpcionesAdminitradorCotizaciones extends PageUtil {
+    private static final String SUBMITIONXPATH = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final String BOTON_ACCIONES_1 = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final int CONSTANTE_4 = 4;
     Actions act = new Actions(getDriver());
-
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:0']")
     private WebElementFacade lblCotizacionesCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManager_NewSubmission-btnInnerEl']")
@@ -63,7 +66,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private WebElementFacade labelNombreAgente;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-labelEl']")
     private WebElementFacade labelCodigoAgente;
-
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade txtCodRazon;
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
@@ -93,12 +95,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     @FindBy(xpath = ".//span[contains(.,'Retirar')]")
     private WebElementFacade botonRetirar;
     private WebElementFacade botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']");
-
-
-    private static final String SUBMITIONXPATH = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
-    private static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
-    private static final String BOTON_ACCIONES_1 = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
-    private static final int CONSTANTE_4 = 4;
     private int band = 0;
 
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {

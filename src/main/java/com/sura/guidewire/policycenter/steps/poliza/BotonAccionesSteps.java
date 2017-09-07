@@ -8,7 +8,7 @@ public class BotonAccionesSteps extends ScenarioSteps {
 
     protected static final int TIEMPO_1 = 1;
     protected static final int TIEMPO_2 = 2;
-    
+
     @Step
     public void seleccionarInstruccionesPreviasALaRenovacion() {
         waitFor(TIEMPO_1).seconds();
@@ -43,7 +43,7 @@ public class BotonAccionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public BotonAccionesSteps seleccionarPolizaARescindir(){
+    public BotonAccionesSteps seleccionarPolizaARescindir() {
         waitFor(TIEMPO_2).seconds();
         String xpathLinkRescindirPrimeraPoliza = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_RescindCancellation:0:item-textEl')]";
         waitFor(TIEMPO_1).seconds();

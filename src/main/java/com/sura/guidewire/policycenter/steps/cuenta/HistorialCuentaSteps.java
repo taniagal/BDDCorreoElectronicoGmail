@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class HistorialCuentaSteps  extends ScenarioSteps {
+public class HistorialCuentaSteps extends ScenarioSteps {
 
     private final HistorialCuentaPage historialCuentaPage = new HistorialCuentaPage(getDriver());
 
@@ -40,22 +40,22 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void validarResultadoBusqueda () {
+    public void validarResultadoBusqueda() {
         historialCuentaPage.validarResultadoBusqueda();
     }
 
     @Step
-    public void validarColumnasHistorialCuenta () {
+    public void validarColumnasHistorialCuenta() {
         historialCuentaPage.validarColumnasHistorialCuenta();
     }
 
     @Step
     public void buscarCuentaConMultiplesOpciones(String usuario, String producto, String fechaDesde, String fechaHasta) {
-        historialCuentaPage.buscarCuentaConMultiplesOpciones( usuario, producto, fechaDesde,  fechaHasta);
+        historialCuentaPage.buscarCuentaConMultiplesOpciones(usuario, producto, fechaDesde, fechaHasta);
     }
 
     @Step
-    public void validarResultadoProducto(){
+    public void validarResultadoProducto() {
         historialCuentaPage.validarResultadoProducto();
     }
 

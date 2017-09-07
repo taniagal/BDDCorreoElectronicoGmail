@@ -69,6 +69,7 @@ public class DetalleRegistrosSuscripcionDefinitions {
     public void validarVisibilidadMenuAnalisisDeRiesgo() {
         detalleRegistrosSuscripcionSteps.validarVisibilidadMenuAnalisisDeRiesgo();
     }
+
     @Then("en la sumatoria de cotizaciones me debe mostrar el titulo de <titulo>")
     public void validarTituloSumatoriaDeCotizaciones(@Named("titulo") String titulo) {
         detalleRegistrosSuscripcionSteps.validarTituloSumatoriaDeCotizaciones(titulo);

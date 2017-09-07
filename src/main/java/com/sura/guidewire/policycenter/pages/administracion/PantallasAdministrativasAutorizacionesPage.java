@@ -11,6 +11,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
+    public static final String PROPIEDADLECTURA = "readonly";
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions-btnInnerEl']")
     WebElementFacade mnuAcciones;
     @FindBy(xpath = "//span[contains(.,'Nueva autorización')]")
@@ -91,10 +92,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     WebElementFacade tblInformacionAutorizacion;
     @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtSearchPage:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     WebElementFacade btnBuscarInformacion;
-
-
     String activo = "No";
-    public static final String PROPIEDADLECTURA = "readonly";
 
     public PantallasAdministrativasAutorizacionesPage(WebDriver driver) {
         super(driver);

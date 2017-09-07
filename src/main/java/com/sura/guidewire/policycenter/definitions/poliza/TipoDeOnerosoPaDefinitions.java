@@ -30,14 +30,13 @@ public class TipoDeOnerosoPaDefinitions {
     TarifaAutosSteps tarifaAutosSteps;
 
 
-
-    @When("vaya agregar el interes adicional" )
+    @When("vaya agregar el interes adicional")
     public void agregarInteresAdicional() {
         vehiculoSteps.irAVehiculos();
         onerosoPaSteps.agregarInteresAdicional();
     }
 
-    @When("ingrese un interes adicional con tipo de beneficiario <tipoBeneficiario>" )
+    @When("ingrese un interes adicional con tipo de beneficiario <tipoBeneficiario>")
     public void agregarInteresAdicionalYTipoDeBeneficiario(@Named("tipoBeneficiario") String tipoBeneficiario) {
         vehiculoSteps.irAVehiculos();
         onerosoPaSteps.agregarInteresAdicional();
@@ -45,24 +44,24 @@ public class TipoDeOnerosoPaDefinitions {
     }
 
     @When("ingrese beneficiario oneroso en los intereses <tipoBeneficiarioOneroso>")
-    public void agregarInteresAdicionalConOneroso(String tipoBeneficiarioOneroso){
+    public void agregarInteresAdicionalConOneroso(String tipoBeneficiarioOneroso) {
         onerosoPaSteps.agregarInteresAdicionalOneroso();
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiarioOneroso);
         tarifaAutosSteps.agregarCoberturasOneroso();
     }
 
-    @When("edite los datos del interes adicional <nombre>" )
+    @When("edite los datos del interes adicional <nombre>")
     public void editarInteresAdicional(@Named("nombre") String nombre) {
         onerosoPaSteps.editarInteresAdicional(nombre);
     }
 
     @Then("debo poder ver y seleccionar los tipos de beneficiarios <tipoBeneficiario>")
-    public void verificarTipoDeBeneficiarios(@Named("tipoBeneficiario") String tipoBeneficiario){
+    public void verificarTipoDeBeneficiarios(@Named("tipoBeneficiario") String tipoBeneficiario) {
         edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
     }
 
     @Then("se debe marcar el campo Requiere certificado por defecto en SI")
-    public void verificarMarca(){
+    public void verificarMarca() {
         onerosoPaSteps.verificarMarca();
     }
 

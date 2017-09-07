@@ -37,8 +37,8 @@ public class ReglasRenovacionDosDefinitions {
     }
 
     @Then("se debe mostrar los <mensaje1> <mensaje2> de alerta")
-    public void thenSeDebeMostrarElMensaje(@Named("mensaje1")String mensaje1,
-                                           @Named("mensaje2")String mensaje2) {
+    public void thenSeDebeMostrarElMensaje(@Named("mensaje1") String mensaje1,
+                                           @Named("mensaje2") String mensaje2) {
         reglasRenovacionDosSteps.validaMensajesEnPantalla(mensaje1, mensaje2);
     }
 

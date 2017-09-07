@@ -12,21 +12,17 @@ import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-public class GuidewirePage extends PageObject{
+public class GuidewirePage extends PageObject {
 
+    protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    @Managed
+    WebDriver driver;
+    @ManagedPages
+    Pages pages;
     @FindBy(xpath = ".//*[@id=':tabs']")
     private INavegacionSuperiorWidget barraNavegacionSuperior;
 
-    protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
-
-    @Managed
-    WebDriver driver;
-
-    @ManagedPages
-    Pages pages;
-
-    public INavegacionSuperiorWidget barraNavegacion(){
+    public INavegacionSuperiorWidget barraNavegacion() {
         waitFor(3).second();
         return this.barraNavegacionSuperior;
     }

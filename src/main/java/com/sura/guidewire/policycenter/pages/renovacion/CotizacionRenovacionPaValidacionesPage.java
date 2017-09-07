@@ -120,9 +120,9 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
         resetImplicitTimeout();
     }
 
-    public void realizarCotizacionDeRenovacionEnUat(){
+    public void realizarCotizacionDeRenovacionEnUat() {
         btnCotizarRenovacion.click();
-        if(btnBorrar.isVisible()){
+        if (btnBorrar.isVisible()) {
             clickearElemento(btnBorrar);
             clickearElemento(btnCotizarRenovacion);
             waitForTextToAppear("Cotización");

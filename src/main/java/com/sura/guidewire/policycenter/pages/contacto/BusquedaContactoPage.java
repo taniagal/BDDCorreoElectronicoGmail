@@ -20,6 +20,10 @@ import org.openqa.selenium.WebElement;
 
 public class BusquedaContactoPage extends PageUtil {
 
+    protected static final int CONSTANTE_4 = 4;
+    private static final String BUSQUEDADECONTACTOS = "Búsqueda de contactos";
+    private static final String LONGITUD_VALIDA = "Longitud válida";
+    private static final String XPATH_LI_CONTAINS = ".//li[contains(.,'";
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade txtNombre;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
@@ -89,11 +93,6 @@ public class BusquedaContactoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtIrA;
 
-    private static final String BUSQUEDADECONTACTOS = "Búsqueda de contactos";
-    private static final String LONGITUD_VALIDA = "Longitud válida";
-    private static final String XPATH_LI_CONTAINS = ".//li[contains(.,'";
-    protected static final int CONSTANTE_4 = 4;
-
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
@@ -110,7 +109,7 @@ public class BusquedaContactoPage extends PageUtil {
     }
 
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial) {
-        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
         waitFor(txtRazonSocial).waitUntilVisible();
@@ -132,7 +131,7 @@ public class BusquedaContactoPage extends PageUtil {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -144,7 +143,7 @@ public class BusquedaContactoPage extends PageUtil {
 
     public void consultarContactoTipoDoc(String tipoDoc) {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
-        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();

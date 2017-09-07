@@ -13,13 +13,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
-    private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[1]/td[6]/div")
-    WebElementFacade campoInteresAdicionalNumeroDeContratoMRC;
-    @FindBy(xpath = ".//*[@name = 'ContractNumber']")
-    WebElementFacade campoInteresAdicionalNumeroDeContratoMRC2;
-
     private static final String CHECK_EDIFICIO = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']";
     private static final String CHECK_EDIFICIO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox')]";
     private static final String TXT_VALOR_RECONSTRUCCION = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl')]";
@@ -27,6 +20,12 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     private static final String TXT_VALOR_SUBLIMITE_TRANSLADO = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:') and contains(@id,'0:CoverageInputSet:CovPatternInputGroup:7:CovTermInputSet:DirectTermInput-inputEl')]";
     private static final String TXT_VALOR_SUBLIMITE_COMBUSTION = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:8:CovTermInputSet:DirectTermInput-inputEl']";
     private static final String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV-body']/*/table/tbody/tr[1]/td[6]/div")
+    WebElementFacade campoInteresAdicionalNumeroDeContratoMRC;
+    @FindBy(xpath = ".//*[@name = 'ContractNumber']")
+    WebElementFacade campoInteresAdicionalNumeroDeContratoMRC2;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
+    private WebElementFacade botonActualizar;
 
 
     public AgregarArticuloEdificiosyUbicacionesWidget(WebDriver driver) {

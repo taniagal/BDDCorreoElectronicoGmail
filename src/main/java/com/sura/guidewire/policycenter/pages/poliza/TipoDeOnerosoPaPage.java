@@ -40,9 +40,10 @@ public class TipoDeOnerosoPaPage extends PageUtil {
         actions.moveToElement(menuIntemOtrosContactos).release(menuIntemOtrosContactos).build().perform();
         clickearElemento(menuItemContacto1);
     }
-    public void verificarMarca(){
+
+    public void verificarMarca() {
         waitFor(ExpectedConditions.attributeContains(radioBotonSeNecesitaCertificadoSi, "background-position", "0px -15px"));
-        MatcherAssert.assertThat("Error no se encuentra marcado el campo Requiere certificado en Si","0px -15px".equals(radioBotonSeNecesitaCertificadoSi.getCssValue("background-position")));
+        MatcherAssert.assertThat("Error no se encuentra marcado el campo Requiere certificado en Si", "0px -15px".equals(radioBotonSeNecesitaCertificadoSi.getCssValue("background-position")));
     }
 
     public void editarInteresAdicional(String nombre) {

@@ -15,14 +15,15 @@ import org.openqa.selenium.WebDriver;
  */
 public class RevisionDePolizaPage extends PageUtil {
 
+
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyReview']/div/span")
     private WebElementFacade itemRevisionPoliza;
     @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
 
-    private static final String LBL_OPCIONES_MENU_INICIAL =  ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
-    private static final String LBL_OPCIONES_MENU_FINAL =  "')]";
+    private static final String LBL_OPCIONES_MENU_INICIAL = ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static final String LBL_OPCIONES_MENU_FINAL = "')]";
 
     public RevisionDePolizaPage(WebDriver driver) {
         super(driver);
@@ -31,11 +32,13 @@ public class RevisionDePolizaPage extends PageUtil {
     public void ingresarALaOpcionRevisionPoliza() {
         itemRevisionPoliza.waitUntilClickable().click();
     }
-    public void validarCamposOpcionRevisionDePoliza(String estadouno,String estadodos,ExamplesTable menusesperados){
-        opcionesInformacionPolizaMrcPage.validarCampos(estadouno,estadodos,menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
+
+    public void validarCamposOpcionRevisionDePoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
     }
-    public void validarCamposOpcionCotizacionDePoliza(String estadouno,String estadodos,ExamplesTable menusesperados){
-        opcionesInformacionPolizaMrcPage.validarCampos(estadouno,estadodos,menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
+
+    public void validarCamposOpcionCotizacionDePoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
     }
 
 }

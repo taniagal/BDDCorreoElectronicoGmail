@@ -58,7 +58,6 @@ public class CotizacionDeCancelacionPage extends PageUtil {
     }
 
 
-
     public void ingresaDatosFormulario() {
         seleccionarItem(inicioCancelacionPage.txtMotivo, "Por petición del cliente");
         esperarHasta(TIEMPO_1000);
@@ -80,7 +79,7 @@ public class CotizacionDeCancelacionPage extends PageUtil {
         MatcherAssert.assertThat("Error, no se encuentra impuestos", inputImpuestoIva.isVisible());
         MatcherAssert.assertThat("Error, no se encuentra costo total", inputCostoTotal.isVisible());
         MatcherAssert.assertThat("Error, no se encuentra cambio del costo", inputCambioDeCosto.isVisible());
-        MatcherAssert.assertThat("El valor debe ser cero",  "$0".equals(inputCambioDeCosto.getText()));
+        MatcherAssert.assertThat("El valor debe ser cero", "$0".equals(inputCambioDeCosto.getText()));
         cerrarTransaccionPoliza();
     }
 

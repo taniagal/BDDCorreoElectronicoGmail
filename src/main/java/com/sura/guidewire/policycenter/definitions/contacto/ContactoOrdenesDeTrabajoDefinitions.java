@@ -26,22 +26,22 @@ public class ContactoOrdenesDeTrabajoDefinitions {
 
     @Given("consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>")
     public void buscarContactoPersona(@Named("tipoContacto") String tipoContacto,
-                               @Named("nombre") String nombre,
-                               @Named("apellido") String apellido) {
+                                      @Named("nombre") String nombre,
+                                      @Named("apellido") String apellido) {
         contactoSteps.buscarContactoPersona(tipoContacto, nombre, apellido);
     }
 
     @Given("consulte  un contacto del tipo <tipoContacto> con transacciones como: <razonSocial>")
     public void buscarContactoEmpresa(@Named("tipoContacto") String tipoContacto,
-                                      @Named("razonSocial") String razonSocial){
-        contactoSteps.buscarContactoEmpresa(tipoContacto,razonSocial);
+                                      @Named("razonSocial") String razonSocial) {
+        contactoSteps.buscarContactoEmpresa(tipoContacto, razonSocial);
     }
 
     @Given("consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido> y seleccione el registro <numero>")
     public void buscarContactoSel(@Named("tipoContacto") String tipoContacto,
-                               @Named("nombre") String nombre,
-                               @Named("apellido") String apellido,
-                               @Named("numero") String numero) {
+                                  @Named("nombre") String nombre,
+                                  @Named("apellido") String apellido,
+                                  @Named("numero") String numero) {
         contactoSteps.buscarContactoSel(tipoContacto, nombre, apellido, numero);
     }
 

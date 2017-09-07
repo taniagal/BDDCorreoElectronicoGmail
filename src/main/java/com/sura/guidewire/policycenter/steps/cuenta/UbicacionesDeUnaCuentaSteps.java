@@ -10,27 +10,27 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class UbicacionesDeUnaCuentaSteps extends ScenarioSteps {
     UbicacionesDeUnaCuentaPage ubicacionesDeUnaCuentaPage = new UbicacionesDeUnaCuentaPage(getDriver());
 
-    public UbicacionesDeUnaCuentaSteps(Pages pages){
+    public UbicacionesDeUnaCuentaSteps(Pages pages) {
         super(pages);
     }
 
     @Step
-    public void irAUbicacionesDeUnaCuenta(String cuenta){
+    public void irAUbicacionesDeUnaCuenta(String cuenta) {
         ubicacionesDeUnaCuentaPage.irAUbicacionesDeUnaCuenta(cuenta);
     }
 
     @Step
-    public void agregarUbicacion(String nombreUbicacion, String direccion){
-        ubicacionesDeUnaCuentaPage.agregarUbicacion(nombreUbicacion,direccion);
+    public void agregarUbicacion(String nombreUbicacion, String direccion) {
+        ubicacionesDeUnaCuentaPage.agregarUbicacion(nombreUbicacion, direccion);
     }
 
     @Step
     public void agregarDireccion(String departamento, String ciudad, String tipoDireccion) {
-        ubicacionesDeUnaCuentaPage.agregaDireccion(departamento,ciudad,tipoDireccion);
+        ubicacionesDeUnaCuentaPage.agregaDireccion(departamento, ciudad, tipoDireccion);
     }
 
     @Step
-    public void verificarTipoDeDireccion(){
+    public void verificarTipoDeDireccion() {
         ubicacionesDeUnaCuentaPage.verificarTipoDeDireccion();
     }
 }

@@ -12,7 +12,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class InspeccionVehiculoSteps extends ScenarioSteps {
 
-    ValidacionesInformacionDeVehiculoPage vehiculoPage =  new ValidacionesInformacionDeVehiculoPage(getDriver());
+    ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
     InspeccionVehiculoPage inspeccionVehiculoPage = new InspeccionVehiculoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
 

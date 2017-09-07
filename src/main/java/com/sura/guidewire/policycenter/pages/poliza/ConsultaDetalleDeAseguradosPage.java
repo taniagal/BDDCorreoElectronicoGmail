@@ -17,8 +17,9 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 
-public class ConsultaDetalleDeAseguradosPage extends PageObject{
+public class ConsultaDetalleDeAseguradosPage extends PageObject {
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
     @FindBy(xpath = ".//*[@id='PolicyFile_PersonalAuto_Drivers:PolicyFile_PersonalAuto_DriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade campoTipoDocumento;
     @FindBy(xpath = ".//*[@id='PolicyFile_PersonalAuto_Drivers:PolicyFile_PersonalAuto_DriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -52,9 +53,7 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
     @FindBy(xpath = ".//*[@id='PolicyFile_PersonalAuto_Drivers:PolicyFile_PersonalAuto_DriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:ContactCurrency:ContactCurrencyInputSet:PreferredSettlementCurrency-inputEl']")
     WebElementFacade campoMonedaPreferida;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
-
-    public ConsultaDetalleDeAseguradosPage(WebDriver driver){
+    public ConsultaDetalleDeAseguradosPage(WebDriver driver) {
         super(driver);
     }
 
@@ -78,7 +77,7 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
             MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(asegurados.get("tipoDireccion"))));
             MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(asegurados.get("descripcionDireccion"))));
             MatcherAssert.assertThat(campoMonedaPreferida.getText(), Is.is(Matchers.equalTo(asegurados.get("moneda"))));
-        }catch (AssertionError assertionError){
+        } catch (AssertionError assertionError) {
             LOGGER.error("Algún elemento de la pantalla no es válido", assertionError);
         }
     }

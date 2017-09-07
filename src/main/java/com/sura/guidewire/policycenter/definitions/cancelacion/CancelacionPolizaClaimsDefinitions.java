@@ -17,7 +17,7 @@ public class CancelacionPolizaClaimsDefinitions {
 
     @When("ingrese el motivo de perdida total y en claims tenga dicho <motivo>")
     @Alias("ingrese el motivo de perdida total y en claims tenga otro <motivo>")
-    public void whenIngreseElMotivoDePerdidaTotalYEnClaimsTengaDichomotivo(@Named("motivo")String motivo) {
+    public void whenIngreseElMotivoDePerdidaTotalYEnClaimsTengaDichomotivo(@Named("motivo") String motivo) {
         cancelacionPolizaClaimsSteps.ingresar_motivo_de_cancelacion(motivo);
     }
 
@@ -32,7 +32,7 @@ public class CancelacionPolizaClaimsDefinitions {
     }
 
     @Then("no debe permitir iniciar la cancelacion <mensaje>")
-    public void thenNoDebePermitirIniciarLaCancelacion(@Named("mensaje")String mensaje) {
+    public void thenNoDebePermitirIniciarLaCancelacion(@Named("mensaje") String mensaje) {
         cancelacionPolizaClaimsSteps.valida_mensaje_inicio_cancelacion(mensaje);
     }
 

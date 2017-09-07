@@ -99,7 +99,7 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     public void continuarConRenovacion() {
         esperarHasta(TIEMPO_5000);
         waitForAnyTextToAppear("Borrador", "No renovando");
-        if("No renovando".equals(labelEstadoDeTransaccion.getText())){
+        if ("No renovando".equals(labelEstadoDeTransaccion.getText())) {
             clickearElemento(botonEditarTransaccion);
         }
     }

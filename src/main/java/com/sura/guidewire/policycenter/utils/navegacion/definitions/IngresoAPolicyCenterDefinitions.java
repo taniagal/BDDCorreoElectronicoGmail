@@ -16,26 +16,25 @@ import org.slf4j.LoggerFactory;
 
 public class IngresoAPolicyCenterDefinitions {
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    @Managed
+    public WebDriver driver;
     @Steps
     GuidewireLoginSteps login;
 
-    @Managed
-    public WebDriver driver;
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     @Given("Deseo ingresar como super usuario a PolicyCenter")
-    public void ingresarComoSuperUsuarioPolicyCenter(){
+    public void ingresarComoSuperUsuarioPolicyCenter() {
         //Empty Method
     }
 
     @When("Digíto usuario $usuario y contraseña $contrasenia, país $pais y enviar las credenciales")
-    public void ingresarComoSuperUsuarioPolicyCenter(String usuario, String contrasenia, String pais){
+    public void ingresarComoSuperUsuarioPolicyCenter(String usuario, String contrasenia, String pais) {
         login.getLoginPage().open();
         login.loguearseAPolicycenterComoSu(usuario, contrasenia, pais);
     }
+
     @Then("Debería acceder a PolicyCenter y ver página $tituloPagina")
-    public void ingresarAPolicyCenter(String tituloPagina){
+    public void ingresarAPolicyCenter(String tituloPagina) {
         SeleneseTestNgHelper.assertEquals(tituloPagina, login.validarQueElTituloDeLaPaginaPrincipalSeaMisActividads());
     }
 
@@ -44,7 +43,6 @@ public class IngresoAPolicyCenterDefinitions {
         login.loguearseAPolicycenterConRol(rolUsuario);
         LOGGER.info("IngresoAPolicyCenterDefinitions.dadoQueAccedoAPolicyCenterConRol");
     }
-
 
 
 }

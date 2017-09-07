@@ -5,8 +5,11 @@ import com.sura.guidewire.policycenter.pages.cuenta.BusquedaDeCuentasPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class BusquedaDeCuentasSteps extends ScenarioSteps{
+import org.fluentlenium.core.annotation.Page;
 
+public class BusquedaDeCuentasSteps extends ScenarioSteps {
+
+    @Page
     BusquedaDeCuentasPage busquedaDeCuentasPage;
 
     @Step

@@ -12,12 +12,11 @@ import org.openqa.selenium.WebDriver;
 
 public class PolizaPrincipalPaPages extends PageUtil {
 
+    public static final String TITULO_COTIZACION = "Cotización";
     @FindBy(xpath = ".//*[contains(@id, ':Forms') and contains(., 'Formularios')]/div/span")
     WebElementFacade menuOpcionFormularios;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Vehicles']/div")
     WebElementFacade menuOpcionVehiculo;
-
-    public static final String TITULO_COTIZACION = "Cotización";
 
     public PolizaPrincipalPaPages(WebDriver driver) {
         super(driver);
@@ -185,11 +184,11 @@ public class PolizaPrincipalPaPages extends PageUtil {
         return visible;
     }
 
-    public boolean validarMenuOpcionFormulariosNoEsVisible(){
+    public boolean validarMenuOpcionFormulariosNoEsVisible() {
         return this.esElElementoWebVisible(menuOpcionFormularios);
     }
 
-    public void clicMenuVehiculo(){
+    public void clicMenuVehiculo() {
         menuOpcionVehiculo.waitUntilVisible().click();
     }
 }

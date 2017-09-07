@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.utils;
 
 
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -23,7 +22,7 @@ public final class GwNavegacionUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-    private GwNavegacionUtil(){
+    private GwNavegacionUtil() {
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -45,18 +44,18 @@ public final class GwNavegacionUtil {
             return Boolean.TRUE;
 
         } catch (Exception e) {
-            LOGGER.info(""+e);
+            LOGGER.info("" + e);
             return Boolean.FALSE;
         }
     }
 
-    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick){
+    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick) {
         String menu;
         for (Map<String, String> row : opcionesPorMenu.getRows()) {
             menu = "MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel);
             LOGGER.error(menu);
             WebElement elementoSubMenu = obtenerMenuPorTextoContenido(driver, row.get(menuPrimerNivel), tipoElementoMenu);
-            if(darClick && elementoSubMenu != null){
+            if (darClick && elementoSubMenu != null) {
                 elementoSubMenu.click();
             }
 
@@ -64,7 +63,7 @@ public final class GwNavegacionUtil {
     }
 
 
-    private static Set<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable){
+    private static Set<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) {
         LOGGER.error("GuidewireUtil.obtenerNombreColumnasDeExamplesTable");
 
         Set<String> nombreColumnasTablaHS = new HashSet<>();
@@ -72,7 +71,7 @@ public final class GwNavegacionUtil {
         Iterator<String> menu = row.values().keySet().iterator();
 
         while (menu.hasNext()) {
-            String key =  menu.next();
+            String key = menu.next();
             nombreColumnasTablaHS.add(key);
         }
 
@@ -81,7 +80,7 @@ public final class GwNavegacionUtil {
     }
 
 
-    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu){
+    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) {
         LOGGER.error("GuidewireUtil.obtenerMenuPorTextoContenido");
 
         if ("LINK".equals(tipoElementoMenu)) {
@@ -93,7 +92,7 @@ public final class GwNavegacionUtil {
 
     }
 
-    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna){
+    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna) {
         List<String> valores = new ArrayList<>();
 
         Parameters row = tablaUnaColumna.getRowAsParameters(0);

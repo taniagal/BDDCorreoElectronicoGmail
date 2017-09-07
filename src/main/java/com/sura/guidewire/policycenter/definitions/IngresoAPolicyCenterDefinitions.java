@@ -23,17 +23,18 @@ public class IngresoAPolicyCenterDefinitions {
     GuidewireLoginPages guidewireLoginPages = new GuidewireLoginPages();
 
     @Given("Deseo ingresar como super usuario a PolicyCenter")
-    public void ingresarComoSuperUsuarioPolicyCenter(){
+    public void ingresarComoSuperUsuarioPolicyCenter() {
         //Empty Method
     }
 
     @When("Digíto usuario $usuario y contraseña $contrasenia, país $pais y enviar las credenciales")
-    public void ingresarComoSuperUsuarioPolicyCenter(String usuario, String contrasenia, String pais){
+    public void ingresarComoSuperUsuarioPolicyCenter(String usuario, String contrasenia, String pais) {
         guidewireLoginPages.open();
         superUsuario.logearse_a_policycenter_como_su(usuario, contrasenia, pais);
     }
+
     @Then("Debería acceder a PolicyCenter y ver página $tituloPagina")
-    public void ingresarAPolicyCenter(String tituloPagina){
+    public void ingresarAPolicyCenter(String tituloPagina) {
         SeleneseTestNgHelper.assertEquals(tituloPagina, superUsuario.validar_que_el_titulo_de_la_pagina_principal_sea_mis_actividads());
     }
 

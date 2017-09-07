@@ -15,7 +15,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 
-public class DetalleDeAseguradoDeCotizacionSteps extends ScenarioSteps{
+public class DetalleDeAseguradoDeCotizacionSteps extends ScenarioSteps {
 
     private final DetalleDeAseguradoDeCotizacionPage detalleDeAseguradoDeCotizacionPage = new DetalleDeAseguradoDeCotizacionPage(getDriver());
     private final IngresoNuevoContactoAseguradoPage ingresoNuevoContactoAseguradoPage = new IngresoNuevoContactoAseguradoPage(getDriver());
@@ -23,7 +23,7 @@ public class DetalleDeAseguradoDeCotizacionSteps extends ScenarioSteps{
     private final ConsultaDetalleDeAseguradosPage consultaDetalleDeAseguradosPage = new ConsultaDetalleDeAseguradosPage(getDriver());
 
 
-    public DetalleDeAseguradoDeCotizacionSteps(Pages pages){
+    public DetalleDeAseguradoDeCotizacionSteps(Pages pages) {
         super(pages);
     }
 

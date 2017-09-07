@@ -24,7 +24,7 @@ public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps {
     @Page
     TarifaTasaUnicaPage tasaUnicaPage;
 
-    public ModificacionCotizacionDePolizaSteps(Pages pages){
+    public ModificacionCotizacionDePolizaSteps(Pages pages) {
         super(pages);
     }
 

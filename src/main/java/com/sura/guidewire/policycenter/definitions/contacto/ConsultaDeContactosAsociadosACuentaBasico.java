@@ -18,17 +18,12 @@ import org.openqa.selenium.WebDriver;
 
 public class ConsultaDeContactosAsociadosACuentaBasico {
 
-    @Steps
-    GuidewireLoginSteps login;
-
-    @Steps
-    CuentaSteps cuenta;
-
     @Managed
     public WebDriver driver;
-
-
-
+    @Steps
+    GuidewireLoginSteps login;
+    @Steps
+    CuentaSteps cuenta;
     private String numCuenta;
 
     @Given("existe una cuenta $numCuenta")
@@ -57,7 +52,6 @@ public class ConsultaDeContactosAsociadosACuentaBasico {
     public void accesoAPolicyCenter() {
         //Empty Method
     }
-
 
 
 }

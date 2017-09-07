@@ -22,6 +22,8 @@ import org.openqa.selenium.WebElement;
 
 
 public class BusquedaDePolizaPage extends PageUtil {
+    protected static final int CONSTANTE_8 = 8;
+    protected static final int CONSTANTE_4 = 4;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyNumberCriterion-inputEl']")
     WebElementFacade txtNumeroPoliza;
     @FindBy(xpath = ".//*[contains(@id, 'PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:AccountNumber-inputEl')]")
@@ -52,10 +54,6 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade linkBotonNumeroPolizaEncontrada;
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtIrA;
-
-
-    protected static final int CONSTANTE_8 = 8;
-    protected static final int CONSTANTE_4 = 4;
 
     public BusquedaDePolizaPage(WebDriver driver) {
         super(driver);
@@ -140,7 +138,7 @@ public class BusquedaDePolizaPage extends PageUtil {
         clicObjeto(linkBotonNumeroPolizaEncontrada);
     }
 
-    public void clicEnBotonBuscar(){
+    public void clicEnBotonBuscar() {
         clickearElemento(btnBuscar);
     }
 
@@ -156,7 +154,7 @@ public class BusquedaDePolizaPage extends PageUtil {
         this.clicEnBotonBuscar();
     }
 
-    public void ingresarDatoEnCampoProducto(String producto){
+    public void ingresarDatoEnCampoProducto(String producto) {
         clickearElemento(txtProducto);
         waitFor(txtProducto).waitUntilPresent();
         txtProducto.clear();
@@ -216,14 +214,15 @@ public class BusquedaDePolizaPage extends PageUtil {
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
     }
-    public void buscarNumeroDePoliza(){
+
+    public void buscarNumeroDePoliza() {
         String poliza = Utils.quitaCaracteresACadena(numPoliza);
         irABuscarPoliza();
         buscarPolizaPorNumeroDePoliza(poliza);
 
     }
 
-    public String capturarNumeroPoliza () {
+    public String capturarNumeroPoliza() {
         return Utils.quitaCaracteresACadena(numPoliza);
     }
 }

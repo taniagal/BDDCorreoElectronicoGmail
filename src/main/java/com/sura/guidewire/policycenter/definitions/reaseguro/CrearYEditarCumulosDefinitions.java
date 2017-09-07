@@ -42,7 +42,7 @@ public class CrearYEditarCumulosDefinitions {
     }
 
     @When("intente ingresar una nueva ubicacion sin riesgo consultable $datosUbicacion")
-    public void intenteIngresarUnNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion){
+    public void intenteIngresarUnNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion) {
         edificiosUbicacionesSteps.removerRiesgos();
         edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo(datosUbicacion);
     }

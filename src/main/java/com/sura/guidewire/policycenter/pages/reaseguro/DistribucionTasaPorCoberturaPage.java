@@ -61,6 +61,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade lblMensaje;
 
+
     public static final String XPATH_TABLA_REASEGURADORES_INICIO = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr";
     public static final String XPATH_TABLA_REASEGURADORES_CIERRE = "/td";
     private static final String PAIS_ALEMANIA = "Alemania";
@@ -87,7 +88,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
         lblInformaPoliza.waitUntilVisible();
         clickearElemento(radioBotReaseguroEspecial);
         esperarHasta(TIEMPO_2000);
-        if(checkiReaseguroFacultativo.isVisible()){
+        if (checkiReaseguroFacultativo.isVisible()) {
             checkiReaseguroFacultativo.waitUntilClickable();
             esperarHasta(TIEMPO_2000);
             clickearElemento(checkiReaseguroFacultativo);
@@ -119,7 +120,7 @@ public class DistribucionTasaPorCoberturaPage extends PageUtil {
             clickearElemento(botonCotizar);
         }
         esperarHasta(TIEMPO_1000);
-        if (botonCotizar.isPresent()){
+        if (botonCotizar.isPresent()) {
             clickearElemento(botonCotizar);
         }
         resetImplicitTimeout();

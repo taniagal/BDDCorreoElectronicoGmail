@@ -11,12 +11,12 @@ import org.openqa.selenium.WebDriver;
 
 
 public class PolizasDePrimeraPerdidaPage extends PageUtil {
-    @FindBy(xpath=".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
 
-    public PolizasDePrimeraPerdidaPage(WebDriver driver){
+    public PolizasDePrimeraPerdidaPage(WebDriver driver) {
         super(driver);
     }
 

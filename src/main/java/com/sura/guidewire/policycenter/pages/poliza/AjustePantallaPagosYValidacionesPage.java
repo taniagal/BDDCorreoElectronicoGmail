@@ -11,13 +11,13 @@ import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
-public class AjustePantallaPagosYValidacionesPage extends PageUtil{
+public class AjustePantallaPagosYValidacionesPage extends PageUtil {
 
-    @Page
-    private MultiplesAsesoresPage multiplesAsesoresPage;
-    private  static final String CONSTANTE_NO ="NO";
+    private static final String CONSTANTE_NO = "NO";
     private static final String ENCABEZADO_EDIFICIO_Y_UBICACIONES = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']";
     private static final String ENCABEZADO_COTIZACION = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']";
+    @Page
+    private MultiplesAsesoresPage multiplesAsesoresPage;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:FloatType_Ext-inputEl']")
     private WebElementFacade listaTipodeMercancia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
@@ -26,42 +26,43 @@ public class AjustePantallaPagosYValidacionesPage extends PageUtil{
     private WebElementFacade labelMetodoFacturacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:PlanInputSet:PaymentMethod-inputEl']")
     private WebElementFacade labelTipoPlan;
-    @FindBy(xpath =".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:FinalAudit-inputEl']")
-    private  WebElementFacade labelNecesitaAuditoriaFinalInput;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:FinalAudit-inputEl']")
+    private WebElementFacade labelNecesitaAuditoriaFinalInput;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:FinalAudit-bodyEl']")
-    private  WebElementFacade labelNecesitaAuditoriaFinal;
+    private WebElementFacade labelNecesitaAuditoriaFinal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:PlanInputSet:PremiumReportPlan-inputEl']")
     private WebElementFacade listplanInformacionPrima;
+
     public AjustePantallaPagosYValidacionesPage(WebDriver driver) {
         super(driver);
     }
 
     public void seleccionarArticuloFlotante(Parametros parametros) {
         multiplesAsesoresPage.esperarObjetoClikeableServidor(ENCABEZADO_EDIFICIO_Y_UBICACIONES);
-        seleccionarItem(listaTipodeMercancia,parametros.getTipo());
+        seleccionarItem(listaTipodeMercancia, parametros.getTipo());
         clickearElemento(btnCotizar);
         multiplesAsesoresPage.esperarObjetoClikeableServidor(ENCABEZADO_COTIZACION);
     }
 
     public void validacionDatosDePantalla(Parametros parametros) {
-        if(parametros.getAuditoria().equals(CONSTANTE_NO)){
-            validarSiEsEditableDato(labelNecesitaAuditoriaFinalInput,parametros.getAuditoria());
+        if (parametros.getAuditoria().equals(CONSTANTE_NO)) {
+            validarSiEsEditableDato(labelNecesitaAuditoriaFinalInput, parametros.getAuditoria());
         }
         validarDatosDePantalla(parametros);
     }
 
-    public void validarDatosDePantalla(Parametros parametros){
+    public void validarDatosDePantalla(Parametros parametros) {
         boolean resultado = true;
         String txtmetodoFacturacion = labelMetodoFacturacion.getText();
         String tipoPlan = labelTipoPlan.getText();
         switch (parametros.getTipo()) {
             case Parametros.AUTOMATICO:
-                if(!(txtmetodoFacturacion.equals(parametros.getMetodoFacturacion()) && tipoPlan.equals(parametros.getTipoPlan()))){
+                if (!(txtmetodoFacturacion.equals(parametros.getMetodoFacturacion()) && tipoPlan.equals(parametros.getTipoPlan()))) {
                     MatcherAssert.assertThat("El metodo de facturacion y el tipo de plan no son iguales.", resultado);
                 }
                 break;
             case Parametros.DECLARATIVO:
-                if(!(txtmetodoFacturacion.equals(parametros.getMetodoFacturacion()) && tipoPlan.equals(parametros.getTipoPlan()))){
+                if (!(txtmetodoFacturacion.equals(parametros.getMetodoFacturacion()) && tipoPlan.equals(parametros.getTipoPlan()))) {
                     MatcherAssert.assertThat("El metodo de facturacion y el tipo de plan no son iguales.", resultado);
                 }
                 break;
@@ -70,15 +71,16 @@ public class AjustePantallaPagosYValidacionesPage extends PageUtil{
         }
 
     }
-    public void  validarSiEsEditableDato(WebElementFacade elemento, String valor){
+
+    public void validarSiEsEditableDato(WebElementFacade elemento, String valor) {
 
         boolean validarDato = elemento.getAttribute("class").contains("x-form-field x-form-text");
-        if (!(validarDato && elemento.getTextValue().equals(valor)  )) {
+        if (!(validarDato && elemento.getTextValue().equals(valor))) {
             MatcherAssert.assertThat("El campo es editable.", validarDato);
         }
     }
 
     public void seleccionarPlanInformacionPrimas(Parametros parametros) {
-        seleccionarItem(listplanInformacionPrima,parametros.getPlanDeInformacion());
+        seleccionarItem(listplanInformacionPrima, parametros.getPlanDeInformacion());
     }
 }

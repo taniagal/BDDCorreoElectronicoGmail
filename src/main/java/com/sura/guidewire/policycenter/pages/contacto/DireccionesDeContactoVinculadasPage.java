@@ -24,6 +24,17 @@ import org.slf4j.LoggerFactory;
 
 
 public class DireccionesDeContactoVinculadasPage extends PageUtil {
+    private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    private static final String XPATH_DIRECCION_DETALLE = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
+    private static final String XPATH_BOTON_ASOCIAR_DIRECCION = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']/img";
+    private static final String XPATH_BOTON_CANCELAR = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']";
+    private static final String DEPARTAMENTO = "departamento";
+    private static final String CIUDAD = "ciudad";
+    private static final String DIRECCION = "direccion";
+    private static final String DESCRIPCION = "descripcion";
+    private static final String PAIS = "pais";
+    private static final String TIPO_DIRECCION = "tipoDireccion";
+    private static final int TIEMPO_10000 = 10000;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:EditAddress']")
@@ -68,19 +79,6 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     private WebElementFacade titulo;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesCardTab-btnInnerEl']")
     private WebElementFacade pestanaDirecciones;
-
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private static final String XPATH_DIRECCION_DETALLE = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
-    private static final String XPATH_BOTON_ASOCIAR_DIRECCION = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']/img";
-    private static final String XPATH_BOTON_CANCELAR = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']";
-    private static final String DEPARTAMENTO = "departamento";
-    private static final String CIUDAD = "ciudad";
-    private static final String DIRECCION = "direccion";
-    private static final String DESCRIPCION = "descripcion";
-    private static final String PAIS = "pais";
-    private static final String TIPO_DIRECCION = "tipoDireccion";
-    private static final int TIEMPO_10000 = 10000;
 
 
     public DireccionesDeContactoVinculadasPage(WebDriver driver) {

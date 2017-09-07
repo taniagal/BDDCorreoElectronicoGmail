@@ -31,12 +31,12 @@ public class SobrescribirTasaDefinitions {
     }
 
     @Given("seleccione algunos articulos y sus cobertura: $datos")
-    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos){
+    public void seleccionarArticulosYTodadsSusCoberturas(ExamplesTable datos) {
         tarifaMRCSteps.seleccionarArticulosYTodadsSusCoberturas(datos);
     }
 
     @Given("cotice el articulo")
-    public void agregarArticulo(){
+    public void agregarArticulo() {
         tarifaMRCSteps.agregarArticulo();
     }
 
@@ -51,7 +51,7 @@ public class SobrescribirTasaDefinitions {
     }
 
     @Then("se debe validar que algun objeto reasegurable tenga asociados los acuerdos facultativos <tipoContrato>")
-    public void thenSeDebeValidarQueSiAlgunObjetoReasegurableTieneAsociadosAcuerdosFacultativos(@Named("tipoContrato")String tipoContrato) {
+    public void thenSeDebeValidarQueSiAlgunObjetoReasegurableTieneAsociadosAcuerdosFacultativos(@Named("tipoContrato") String tipoContrato) {
         sobrescribirTasaSteps.crearAcuerdoFacultativo();
         sobrescribirTasaSteps.aceptaAcuerdoFacultativo();
         sobrescribirTasaSteps.validaObjetoReasegurableSinAsociacionDeAcuerdosFacultativos(tipoContrato);

@@ -19,7 +19,7 @@ public class ResumenDePolizaAutoDefinitions {
     }
 
     @When("se valida fecha de inicio de vigencia: $fecha")
-    public void validoFechaInicioDeVigencia(String fecha){
+    public void validoFechaInicioDeVigencia(String fecha) {
         resumenDePolizaAutoSteps.verificarFechaInicialVigencia(fecha);
     }
 

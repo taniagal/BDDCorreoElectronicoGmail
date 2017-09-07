@@ -15,12 +15,11 @@ import org.fluentlenium.core.annotation.Page;
 public class CambioDePolizaSteps extends ScenarioSteps {
 
     @Page
-    private CambioDePolizaPage cambioDePolizaPage;
-
-    @Page
     NuevaCotizacionPage nuevaCotizacionPage;
     @Page
     PolizaPage polizaPage;
+    @Page
+    private CambioDePolizaPage cambioDePolizaPage;
 
     private InicioPage inicioPage() {
         return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
@@ -78,13 +77,15 @@ public class CambioDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void irAMenuEdificiosYUbicaciones(){
+    public void irAMenuEdificiosYUbicaciones() {
         cambioDePolizaPage.irAMenuEdificiosYUbicaciones();
     }
+
     @Step
     public void ingresarAEdificionYUbicacionesPolyceChange() {
         cambioDePolizaPage.ingresarAEdificionYUbicacionesPolyceChange();
     }
+
     @Step
     public void validarMercanciaFlotante(Parametros parametros) {
         cambioDePolizaPage.validarMercanciaFlotante(parametros);

@@ -21,7 +21,7 @@ public class TransaccionesDePolizaDefinitions {
     ModificacionInformacionPolizaPASteps modificacionInformacionPolizaPASteps;
 
     @Given("se requiere comparar diferentes transacciones de una poliza <numeroPoliza>")
-    public void buscarPoliza(@Named("numeroPoliza") String numeroPoliza){
+    public void buscarPoliza(@Named("numeroPoliza") String numeroPoliza) {
         modificacionInformacionPolizaPASteps.ingresarPoliza(numeroPoliza);
     }
 
@@ -44,7 +44,7 @@ public class TransaccionesDePolizaDefinitions {
     }
 
     @Then("se deben poder visualizar las diferencias entre transacciones $diferenciasTransacciones")
-    public void visualizarDiferenciasTransacciones(ExamplesTable diferenciasTransacciones){
+    public void visualizarDiferenciasTransacciones(ExamplesTable diferenciasTransacciones) {
         transaccionesDePolizaSteps.visualizarDiferenciasTransacciones(diferenciasTransacciones);
     }
 }

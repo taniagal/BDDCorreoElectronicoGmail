@@ -73,17 +73,36 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_10 = 10;
     protected static final int DIAS_31 = 31;
     protected static final int DIAS_61 = 61;
-    protected String numeroCotizacionNoTomar;
-    protected String numeroCotizacionDeclinar;
     protected static final String OPCION_SIN_VALOR = "<ninguno>";
-    protected Actions actions = new Actions(getDriver());
     protected static final String OPCIONES_MENU = "OPCIONES_MENU";
     protected static final String VALOR_PRIMA_CERO = "$0 (COP)";
     protected static final String BUT_WAS = " but was: ";
     protected static final String PERDIDA_LLAVES = "PLlaves";
+    protected String numeroCotizacionNoTomar;
+    protected String numeroCotizacionDeclinar;
+    protected Actions actions = new Actions(getDriver());
 
     public PageUtil(WebDriver driver) {
         super(driver);
+    }
+
+    /**
+     * Este metodo realiza una espera de un tiempo fijo durante un tiempo determinado, es decir, pausa la ejecucion
+     * Eg: esperarHasta(TIEMPO_3000);   este realiza una espera de 3000 milisegundos que es igual a 3 segundos
+     * Hay que tener en cuenta que se deben usar las constantes de tiempo creadas al principio de esta clase
+     *
+     * @param millis int que es la cantidad de tiempo en milisegunto que va a esperar
+     */
+    public static void esperarHasta(int millis) {
+        Integer i = 0;
+        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
+                TimeUnit.MILLISECONDS).pollingEvery(millis,
+                TimeUnit.MILLISECONDS);
+        try {
+            wait.until(new IntegerBooleanFunction());
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException in " + e);
+        }
     }
 
     /**
@@ -102,7 +121,6 @@ public class PageUtil extends PageObject {
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
     }
-
 
     /**
      * Este metodo selecciona un item que se encuentre dentro de un comboBox.
@@ -124,27 +142,6 @@ public class PageUtil extends PageObject {
         elemento.sendKeys(opcion);
         elemento.sendKeys(Keys.ENTER);
     }
-
-
-    /**
-     * Este metodo realiza una espera de un tiempo fijo durante un tiempo determinado, es decir, pausa la ejecucion
-     * Eg: esperarHasta(TIEMPO_3000);   este realiza una espera de 3000 milisegundos que es igual a 3 segundos
-     * Hay que tener en cuenta que se deben usar las constantes de tiempo creadas al principio de esta clase
-     *
-     * @param millis int que es la cantidad de tiempo en milisegunto que va a esperar
-     */
-    public static void esperarHasta(int millis) {
-        Integer i = 0;
-        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
-        try {
-            wait.until(new IntegerBooleanFunction());
-        } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException in " + e);
-        }
-    }
-
 
     /**
      * Valida que un elemento contenga un elemento contenga un string, es usado principanmente para validar mensajes
@@ -450,7 +447,8 @@ public class PageUtil extends PageObject {
         }
 
     }
-    public void buscarDatoEnTabla(String dato,String tablaFilas,String tablaColumnas,String tablaFilasColumnas) {
+
+    public void buscarDatoEnTabla(String dato, String tablaFilas, String tablaColumnas, String tablaFilasColumnas) {
         try {
             for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
                 for (int j = 0; j < getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {

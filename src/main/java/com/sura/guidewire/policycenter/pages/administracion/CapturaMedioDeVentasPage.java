@@ -15,6 +15,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class CapturaMedioDeVentasPage extends PageUtil {
 
+    protected static final String PATHMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:ttlBar']";
+    protected static final String TABLAMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:OfficesSearchResultsLV-body']/*/table/tbody/tr";
     @FindBy(xpath = ".//*[@id='Admin:MenuLinks:Admin_CommercialNetwork_Ext']/div/span")
     private WebElementFacade itemConfiguracionRedComercial;
     @FindBy(xpath = "//div[contains(.,'CanalesMedios de ventaOficinas por canal')]")
@@ -73,9 +75,6 @@ public class CapturaMedioDeVentasPage extends PageUtil {
     private WebElementFacade btnBuscar;
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoIrA;
-
-    protected static final String PATHMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:ttlBar']";
-    protected static final String TABLAMEDIOVENTAPORCANAL = ".//*[@id='AdminSuraChannelSaleMethodSearchPage_Ext:OfficesSearchResultsLV-body']/*/table/tbody/tr";
 
     public CapturaMedioDeVentasPage(WebDriver driver) {
         super(driver);

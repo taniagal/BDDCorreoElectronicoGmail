@@ -24,6 +24,7 @@ public class CesionDePrimaSteps extends ScenarioSteps {
     CrearYEditarCumulosPage crearYEditarCumulosPage;
 
     private String numeroDeEnvio;
+
     public CesionDePrimaSteps(Pages pages) {
         super(pages);
     }
@@ -63,9 +64,9 @@ public class CesionDePrimaSteps extends ScenarioSteps {
     }
 
     public void ingresarPrimasDespuesDeEjecutarTareaEnCedidas() {
-       cotizacionMRCPage.irABuscarCotizacion(numeroDeEnvio);
-       crearYEditarCumulosPage.ingresarReaseguroOpciones();
-       cesionDePrimaPage.clicEnBotonPrimasCedidas();
+        cotizacionMRCPage.irABuscarCotizacion(numeroDeEnvio);
+        crearYEditarCumulosPage.ingresarReaseguroOpciones();
+        cesionDePrimaPage.clicEnBotonPrimasCedidas();
     }
 
     public void ingresarAPrimasCedidas(String procesoPoliza) {

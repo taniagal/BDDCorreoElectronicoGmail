@@ -17,6 +17,8 @@ import org.openqa.selenium.support.FindBy;
 public class OpcionesInformacionDelVehiculoPage extends PageUtil {
 
 
+    private static final int CONSTANTE_11 = 11;
+    private static final int CONSTANTE_8 = 8;
     @FindBy(xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     WebElementFacade itemVehiculo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
@@ -67,17 +69,12 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
     WebElementFacade txtBonificacionComercial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
     WebElementFacade grupoMensajes;
+    String[] comparaValores = new String[CONSTANTE_2];
+    OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage(getDriver());
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxLimite;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade campoTxtPlaca;
-
-    private static final int CONSTANTE_11 = 11;
-    private static final int CONSTANTE_8 = 8;
-
-
-    String[] comparaValores = new String[CONSTANTE_2];
-    OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage(getDriver());
 
     public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
         super(driver);

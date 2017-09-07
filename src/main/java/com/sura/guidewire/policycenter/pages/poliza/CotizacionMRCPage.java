@@ -17,6 +17,8 @@ import org.openqa.selenium.WebDriver;
 
 
 public class CotizacionMRCPage extends PageUtil {
+    protected static final int TIEMPO_7000 = 7000;
+    CotizacionDePolizaPage cotizacionDePolizaPage = new CotizacionDePolizaPage(getDriver());
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloPagina;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
@@ -35,9 +37,6 @@ public class CotizacionMRCPage extends PageUtil {
     private WebElementFacade campoTxtSubN;
     @FindBy(xpath = ".//*[@id='RICededPremiumsPopup:__crumb__']")
     private WebElementFacade linkVolverAReaseguro;
-
-    protected static final int TIEMPO_7000 = 7000;
-    CotizacionDePolizaPage cotizacionDePolizaPage = new CotizacionDePolizaPage(getDriver());
 
 
     public CotizacionMRCPage(WebDriver driver) {
@@ -130,7 +129,7 @@ public class CotizacionMRCPage extends PageUtil {
         MatcherAssert.assertThat(findBy(".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize-inputEl']").getText(), Matchers.containsString(mensaje));
     }
 
-    public void validarMensajeUWAlExpedirCambio(String mensaje){
+    public void validarMensajeUWAlExpedirCambio(String mensaje) {
         MatcherAssert.assertThat(findBy(".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:WarningsPanelSet:0:PanelSet:Warning']").getText(), Matchers.containsString(mensaje));
 
     }

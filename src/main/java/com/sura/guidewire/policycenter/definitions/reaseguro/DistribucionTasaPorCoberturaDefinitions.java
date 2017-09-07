@@ -42,7 +42,7 @@ public class DistribucionTasaPorCoberturaDefinitions {
     }
 
     @Given("cotice el articulo")
-    public void agregarArticulo(){
+    public void agregarArticulo() {
         distribucionTasaPorCoberturaSteps.agregarArticulo();
     }
 

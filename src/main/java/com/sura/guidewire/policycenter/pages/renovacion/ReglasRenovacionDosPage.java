@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 
 public class ReglasRenovacionDosPage extends PageUtil {
 
+    private static final int CONSTANTE_8 = 8;
+    private static final double CONSTANTE_02 = 0.2;
     @FindBy(xpath = ".//*[contains(@id,'Next-btnInnerEl')]")
     WebElementFacade btnSiguinete;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']")
@@ -42,9 +44,6 @@ public class ReglasRenovacionDosPage extends PageUtil {
     WebElementFacade lblMensajes;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
     private WebElementFacade menuPoliza;
-
-    private static final int CONSTANTE_8 = 8;
-    private static final double CONSTANTE_02 = 0.2;
 
     public ReglasRenovacionDosPage(WebDriver driver) {
         super(driver);

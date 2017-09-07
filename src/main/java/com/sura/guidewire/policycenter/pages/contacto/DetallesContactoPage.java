@@ -14,6 +14,18 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class DetallesContactoPage extends PageUtil {
+    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    public static final int CONSTANTE_15 = 15;
+    public static final int CONSTANTE_14 = 14;
+    public static final int CONSTANTE_13 = 13;
+    public static final int CONSTANTE_12 = 12;
+    public static final int CONSTANTE_11 = 11;
+    public static final int CONSTANTE_8 = 8;
+    public static final int CONSTANTE_6 = 6;
+    public static final int CONSTANTE_4 = 4;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add']")
+    public WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade labelPrimerNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-labelEl']")
@@ -96,8 +108,6 @@ public class DetallesContactoPage extends PageUtil {
     private WebElementFacade campoTxtCorreoElectronicoSecundarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update-btnInnerEl']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add']")
-    public WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade campoTxtTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -108,20 +118,8 @@ public class DetallesContactoPage extends PageUtil {
     private WebElementFacade campoTxtIrA;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div")
     private WebElementFacade menuItemContactos;
-
-
     private String[] dtlContact = new String[CONSTANTE_15];
     private String[] dtlCntJ = new String[CONSTANTE_8];
-    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
-    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    public static final int CONSTANTE_15 = 15;
-    public static final int CONSTANTE_14 = 14;
-    public static final int CONSTANTE_13 = 13;
-    public static final int CONSTANTE_12 = 12;
-    public static final int CONSTANTE_11 = 11;
-    public static final int CONSTANTE_8 = 8;
-    public static final int CONSTANTE_6 = 6;
-    public static final int CONSTANTE_4 = 4;
 
 
     public DetallesContactoPage(WebDriver driver) {

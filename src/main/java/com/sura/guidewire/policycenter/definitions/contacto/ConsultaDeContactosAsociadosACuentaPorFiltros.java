@@ -25,16 +25,12 @@ import org.slf4j.LoggerFactory;
 public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static final int TIEMPO_1000 = 1000;
-
-    @Steps
-    GuidewireLoginSteps login;
-
-    @Steps
-    CuentaSteps cuenta;
-
     @Managed
     public WebDriver driver;
-
+    @Steps
+    GuidewireLoginSteps login;
+    @Steps
+    CuentaSteps cuenta;
 
     @When("filtre los contactos asociados a una cuenta por el rol $filtro en el combo con valor $combo")
     @Alias("filtre los contactos asociados a una cuenta por el tipo de persona $filtro en el combo con valor $combo")

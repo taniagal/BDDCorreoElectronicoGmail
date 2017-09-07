@@ -20,21 +20,17 @@ import org.openqa.selenium.WebDriver;
 
 public class CotizacionPADetalleDefinitions {
 
+    private final Map<String, String> infoDetalleCotizacion = new HashMap<>();
     @Managed
     WebDriver driver;
-
     @Steps
     CotizacionPADetalleSteps cotizacionPADetalleSteps;
-
     @Steps
     HistorialCuentaSteps historialCuentaSteps;
-
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
 
-    private final Map<String, String> infoDetalleCotizacion = new HashMap<>();
-
-    public CotizacionPADetalleDefinitions(){
+    public CotizacionPADetalleDefinitions() {
         infoDetalleCotizacion.put("labelVehiculo", "Vehículo 1");
         infoDetalleCotizacion.put("placa", "Placa");
         infoDetalleCotizacion.put("codigoFasecolda", "Código fasecolda");
@@ -60,17 +56,17 @@ public class CotizacionPADetalleDefinitions {
     }
 
     @Then("se debe mostrar en la columna \"Termino\" el limite o deducible de la cobertura en el caso de que aplique")
-    public void thenValidarTerminoCobertura(){
+    public void thenValidarTerminoCobertura() {
         cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 
     @Then("se debe mostrar en la columna \"Termino\" el limite de la cobertura en el caso de que aplique")
-    public void thenValidarLimiteCobertura(){
+    public void thenValidarLimiteCobertura() {
         cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 
     @Then("se debe mostrar en la columna \"Termino\" el deducible de la cobertura en el caso de que aplique")
-    public void thenValidarDeducibleCobertura(){
+    public void thenValidarDeducibleCobertura() {
         cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 }

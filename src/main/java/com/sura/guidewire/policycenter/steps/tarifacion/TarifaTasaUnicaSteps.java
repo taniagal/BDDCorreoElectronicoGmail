@@ -22,7 +22,7 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
     @Page
     AprobacionDeAnalisisDeRiesgoPage analisisDeRiesgoPage;
     @Page
-    TarifaAutosPage tarifaAutosPage ;
+    TarifaAutosPage tarifaAutosPage;
     @Page
     NuevaCotizacionPage nuevaCotizacionPage;
     @Page

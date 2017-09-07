@@ -42,28 +42,28 @@ public class OpcionesCrearPartcCuentaPage extends PageUtil {
     }
 
     public void navegacionCreaParticipante() {
-            mnuOpcionesCuenta.waitUntilPresent().click();
-            btnEditCuenta.waitUntilPresent().click();
-            btnAgregaCuenta.waitUntilPresent().click();
-            esperarHasta(TIEMPO_1000);
-            listRol.click();
-            act.sendKeys(Keys.TAB).build().perform();
-            act.sendKeys(Keys.ENTER).build().perform();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.sendKeys(Keys.ENTER).build().perform();
-            btnSelecUsuar.click();
-            lblNombreUsuario.sendKeys("su");
-            btnBuscarUsuario.click();
-            botonSeleccionar.waitUntilPresent().click();
-            lblPartArc.waitUntilPresent();
-            esperarHasta(TIEMPO_1000);
-            act.sendKeys(Keys.TAB).build().perform();
-            act.sendKeys(Keys.TAB).build().perform();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.sendKeys(Keys.ENTER).build().perform();
-            btnActualiza.click();
+        mnuOpcionesCuenta.waitUntilPresent().click();
+        btnEditCuenta.waitUntilPresent().click();
+        btnAgregaCuenta.waitUntilPresent().click();
+        esperarHasta(TIEMPO_1000);
+        listRol.click();
+        act.sendKeys(Keys.TAB).build().perform();
+        act.sendKeys(Keys.ENTER).build().perform();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ENTER).build().perform();
+        btnSelecUsuar.click();
+        lblNombreUsuario.sendKeys("su");
+        btnBuscarUsuario.click();
+        botonSeleccionar.waitUntilPresent().click();
+        lblPartArc.waitUntilPresent();
+        esperarHasta(TIEMPO_1000);
+        act.sendKeys(Keys.TAB).build().perform();
+        act.sendKeys(Keys.TAB).build().perform();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ENTER).build().perform();
+        btnActualiza.click();
     }
 
     public void verificarCamposParticipantes() {

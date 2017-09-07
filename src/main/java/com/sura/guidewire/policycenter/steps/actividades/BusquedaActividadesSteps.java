@@ -6,11 +6,14 @@ import com.sura.guidewire.policycenter.pages.actividades.IngresoDeActividadAPoli
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaActividadesSteps extends ScenarioSteps {
 
+    @Page
     BusquedaActividadesPage busquedaActividades;
+    @Page
     IngresoDeActividadAPolizaPage ingresoDeActividadAPolizaPage;
 
     @Step

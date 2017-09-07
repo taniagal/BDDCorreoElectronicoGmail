@@ -17,15 +17,15 @@ public class CancelacionPolizaConBeneficiarioOnerosoPage extends PageUtil {
     WebElementFacade mensajeCancelarCompromiso;
 
 
-    public CancelacionPolizaConBeneficiarioOnerosoPage(WebDriver driver){
+    public CancelacionPolizaConBeneficiarioOnerosoPage(WebDriver driver) {
         super(driver);
     }
 
-    public void validarMensajeAdvertenciaCancelacionPoliza(ExamplesTable mensaje){
+    public void validarMensajeAdvertenciaCancelacionPoliza(ExamplesTable mensaje) {
         verificarMensajes(mensajeCancelar, mensaje);
     }
 
-    public void validarMensajeAdvertenciaCompromisoCancelacion(ExamplesTable mensajeCancelar){
+    public void validarMensajeAdvertenciaCompromisoCancelacion(ExamplesTable mensajeCancelar) {
         verificarMensajes(mensajeCancelarCompromiso, mensajeCancelar);
     }
 }

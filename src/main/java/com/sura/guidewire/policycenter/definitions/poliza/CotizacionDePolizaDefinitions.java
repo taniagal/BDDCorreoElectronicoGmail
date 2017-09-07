@@ -20,16 +20,13 @@ import org.jbehave.core.model.ExamplesTable;
 
 
 public class CotizacionDePolizaDefinitions {
+    private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
-
     @Steps
     InformacionPolizaPASteps informacionPolizaPASteps;
-
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
-
-    private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
     public CotizacionDePolizaDefinitions() {
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");

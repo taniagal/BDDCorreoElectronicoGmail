@@ -13,21 +13,21 @@ import org.openqa.selenium.WebDriver;
 
 public class OpcionesInformacionDePagoPage extends PageUtil {
 
-    @FindBy (xpath = "//td[@id='SubmissionWizard:BillingInfo']/div")
+    @FindBy(xpath = "//td[@id='SubmissionWizard:BillingInfo']/div")
     WebElementFacade btnPago;
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:ttlBar']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:ttlBar']")
     WebElementFacade lblPago;
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:BillingMethod-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:BillingMethod-inputEl']")
     WebElementFacade lblMetodoFacturacionMrc;
-    @FindBy (xpath = ".//label[contains(.,'Plan de pagos')]")
+    @FindBy(xpath = ".//label[contains(.,'Plan de pagos')]")
     WebElementFacade lblPrograma;
-    @FindBy (xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     WebElementFacade btnInicio;
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:PlanInputSet:InstallmentPlan:BillingAdjustmentsInstallmentsLV-body']/*/table/tbody/tr[4]/td[1]/div/div")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:BillingAdjustmentsDV:PlanInputSet:InstallmentPlan:BillingAdjustmentsInstallmentsLV-body']/*/table/tbody/tr[4]/td[1]/div/div")
     WebElementFacade radioBtonPagoTotal;
-    @FindBy (xpath = "//input[contains(@id,'false-inputEl')]")
+    @FindBy(xpath = "//input[contains(@id,'false-inputEl')]")
     WebElementFacade radioBotonCaja;
-    @FindBy (xpath = "//div[@class='message']")
+    @FindBy(xpath = "//div[@class='message']")
     WebElementFacade mensajeBloqueExpedicion;
 
 
@@ -49,7 +49,7 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
         MatcherAssert.assertThat("Metodo de pago no corresponde a Factura Directa", nombreMetodoPago.equals(lblMetodoFacturacionMrc.getText()));
     }
 
-    public void validaPrograma(String programa){
+    public void validaPrograma(String programa) {
         MatcherAssert.assertThat("El Programa de pagos cambio o no corresponde al enviado por Billing", programa.equals(lblPrograma.getText()));
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilClickable();
     }
@@ -59,12 +59,12 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
-    public void seleccionOpcionPagoTotalyPagoenCaja(){
+    public void seleccionOpcionPagoTotalyPagoenCaja() {
         radioBtonPagoTotal.click();
         esperarObjetoClikeableServidorWe(radioBotonCaja);
     }
 
-    public void validarMensajeBloqueoExpedicion(String mensaje){
-        super.verificarMensaje(mensajeBloqueExpedicion,mensaje);
+    public void validarMensajeBloqueoExpedicion(String mensaje) {
+        super.verificarMensaje(mensajeBloqueExpedicion, mensaje);
     }
 }

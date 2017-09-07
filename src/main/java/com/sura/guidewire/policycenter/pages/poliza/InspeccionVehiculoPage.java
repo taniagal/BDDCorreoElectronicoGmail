@@ -19,31 +19,31 @@ import org.openqa.selenium.support.FindBy;
 
 public class InspeccionVehiculoPage extends PageUtil {
 
+    protected static final int TIEMPO_10000 = 10000;
     Actions act = new Actions(getDriver());
-
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade campoPlaca;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:VehicleNumber_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:VehicleNumber_DV-inputEl']")
     private WebElementFacade campoNumeroVehiculo;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
     private WebElementFacade campoModelo;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']")
     private WebElementFacade campoFasecolda;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']")
     private WebElementFacade campoMotor;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
     private WebElementFacade campoChasis;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-inputEl']")
     private WebElementFacade campoValorAccesorios;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl']")
     private WebElementFacade campoValorAccesoriosEspeciales;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
     private WebElementFacade campoValorAsegurado;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade radioButtonCeroKmNo;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
     private WebElementFacade botonExpedirPoliza;
-    @FindBy(xpath=".//*[@id='JobComplete:JobCompleteScreen:ttlBar']")
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:ttlBar']")
     private WebElementFacade labelCotizacionExpedida;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:LicensePlate-inputEl']")
     private WebElementFacade labelPlaca;
@@ -54,14 +54,12 @@ public class InspeccionVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:1:UWIssueRowSet:ShortDescription']")
     private WebElementFacade registroBloqueoInspeccion;
 
-    protected static final int TIEMPO_10000 = 10000;
-
-    public InspeccionVehiculoPage(WebDriver driver){
+    public InspeccionVehiculoPage(WebDriver driver) {
         super(driver);
     }
 
     public void chekear0km() {
-        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
         esperarHasta(TIEMPO_1000);
     }
 
@@ -70,13 +68,13 @@ public class InspeccionVehiculoPage extends PageUtil {
         campoPlaca.type(placa);
         act.sendKeys(Keys.TAB).build().perform();
         waitForTextToAppear("Camperos y pickups", TIEMPO_30000);
-        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(campoModelo).isDisplayed();
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(campoModelo).isDisplayed();
         campoNumeroVehiculo.click();
     }
 
     public void validarDatosVehiculo(ExamplesTable datosVehiculo) {
         esperarHasta(TIEMPO_1500);
-        for (Map<String,String> row : datosVehiculo.getRows()){
+        for (Map<String, String> row : datosVehiculo.getRows()) {
             String modelo = row.get("modelo");
             String fasecolda = row.get("codigoFasecolda");
             String motor = row.get("motor");
@@ -95,9 +93,9 @@ public class InspeccionVehiculoPage extends PageUtil {
     public void validarValorAsegurado(String valorAsegurado) {
         esperarHasta(TIEMPO_1000);
         String validacion = null;
-        try{
-            MatcherAssert.assertThat(campoValorAsegurado.getTextValue(),Is.is(Matchers.equalTo(valorAsegurado)));
-        }catch (Exception e){
+        try {
+            MatcherAssert.assertThat(campoValorAsegurado.getTextValue(), Is.is(Matchers.equalTo(valorAsegurado)));
+        } catch (Exception e) {
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }
@@ -110,22 +108,22 @@ public class InspeccionVehiculoPage extends PageUtil {
     }
 
     public void validarVehiculoSinInspeccion(String placa) {
-    withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(labelPlaca).shouldBeVisible();
-        MatcherAssert.assertThat(labelPlaca.getText(),Is.is(Matchers.equalTo(placa)));
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(labelPlaca).shouldBeVisible();
+        MatcherAssert.assertThat(labelPlaca.getText(), Is.is(Matchers.equalTo(placa)));
     }
 
     public void validarMensajeBloqueo(String mensaje) {
-        MatcherAssert.assertThat(mensajeBloqueoExpedicion.getText(),Is.is(Matchers.equalTo(mensaje)));
+        MatcherAssert.assertThat(mensajeBloqueoExpedicion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void generarUW(String mensaje) {
-        withTimeoutOf(TIEMPO_20,TimeUnit.SECONDS).waitFor(menuAnalisisRiesgo).click();
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(menuAnalisisRiesgo).click();
         esperarHasta(TIEMPO_2500);
-        MatcherAssert.assertThat(registroBloqueoInspeccion.getText(),Is.is(Matchers.equalTo(mensaje)));
+        MatcherAssert.assertThat(registroBloqueoInspeccion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void validarCotizacionExpedida() {
-        withTimeoutOf(TIEMPO_28,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
-        MatcherAssert.assertThat(labelCotizacionExpedida.getText(),Is.is(Matchers.equalTo("Cotización Expedida")));
+        withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
+        MatcherAssert.assertThat(labelCotizacionExpedida.getText(), Is.is(Matchers.equalTo("Cotización Expedida")));
     }
 }

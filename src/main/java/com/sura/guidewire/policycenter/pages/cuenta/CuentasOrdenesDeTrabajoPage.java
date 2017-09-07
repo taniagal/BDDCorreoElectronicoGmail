@@ -17,38 +17,37 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-
 public class CuentasOrdenesDeTrabajoPage extends LoginPage {
-    @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div")
+    @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div")
     private WebElementFacade mnuTransaccionesPoliza;
-    @FindBy(xpath=".//td/div/div/div/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    @FindBy(xpath = ".//td/div/div/div/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade filtroEstado;
-    @FindBy(xpath=".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:message:InfoMessage_ExtDV:message']")
+    @FindBy(xpath = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:message:InfoMessage_ExtDV:message']")
     private WebElementFacade msjTransaccionNoEncontrada;
-    @FindBy(xpath=".//table[2]/tbody/tr/td[2]/table/tbody/tr/td/input")
+    @FindBy(xpath = ".//table[2]/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade filtroTipoTransaccion;
-    @FindBy(xpath=".//table[3]/tbody/tr/td[2]/table/tbody/tr/td/input")
+    @FindBy(xpath = ".//table[3]/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade filtroProducto;
-    @FindBy(xpath=".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV-body']")
+    @FindBy(xpath = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV-body']")
     private WebElementFacade tablaTransacciones;
 
     public CuentasOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
     }
 
-    public void seleccionarTransacciones(){
+    public void seleccionarTransacciones() {
         waitFor(mnuTransaccionesPoliza);
         esperarObjetoClikeableServidorWe(this.mnuTransaccionesPoliza);
     }
 
-    public void filtrarTransaccionesPorEstado(String estado){
+    public void filtrarTransaccionesPorEstado(String estado) {
         waitFor(CONSTANTE_2).seconds();
         filtroEstado.click();
-        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4, TimeUnit.SECONDS);
         filtroEstado.sendKeys(estado);
-        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4, TimeUnit.SECONDS);
         filtroEstado.sendKeys(Keys.ENTER);
-        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(TIEMPO_4, TimeUnit.SECONDS);
     }
 
     public void validarMensaje(String mensaje) {
@@ -77,7 +76,7 @@ public class CuentasOrdenesDeTrabajoPage extends LoginPage {
         String existeTransaccion = "No existe la póliza";
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(transaccion.equals(cells.get(CONSTANTE_3).getText())){
+            if (transaccion.equals(cells.get(CONSTANTE_3).getText())) {
                 existeTransaccion = "Se encontró la póliza en las transacciones";
             }
         }

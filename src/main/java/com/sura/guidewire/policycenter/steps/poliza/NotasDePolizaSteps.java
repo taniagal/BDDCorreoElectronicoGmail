@@ -11,7 +11,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 
-public class NotasDePolizaSteps extends ScenarioSteps{
+public class NotasDePolizaSteps extends ScenarioSteps {
 
     @Page
     private NotasDePolizaPage notasDePolizaPage;

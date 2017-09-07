@@ -21,8 +21,8 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarUbicacion(String descripcion, String actividad){
-       detallesDeUbicacionPage.setUbicacion(descripcion, actividad);
+    public void agregarUbicacion(String descripcion, String actividad) {
+        detallesDeUbicacionPage.setUbicacion(descripcion, actividad);
     }
 
     @Step
@@ -31,13 +31,13 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarCamposNuevos(){
+    public void validarCamposNuevos() {
         detallesDeUbicacionPage.irAUbicacion();
         detallesDeUbicacionPage.validarCamposNuevos();
     }
 
     @Step
-    public void validarIngresoUbicacion(){
+    public void validarIngresoUbicacion() {
         detallesDeUbicacionPage.validarIngresoDeUbicacion();
     }
 

@@ -8,24 +8,9 @@ import org.openqa.selenium.WebElement;
 
 
 public class CuentaNavBarPages extends PageObject {
-    private static String MENU_CUENTA = ".//a[contains(@id,'TabBar:AccountTab')]";
-
     protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_2 = 2;
-
-    public enum Opcion {
-        BTN_NUEVA_CUENTA("//span[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']"),
-        TXT_NUMERO_COTIZACION("//input[contains(@name,'AccountNumberSearchItem')]");
-
-        private String elemento;
-        Opcion(String opcion) {
-            this.elemento = opcion;
-        }
-        public String xpath() {
-            return elemento;
-        }
-    }
-
+    private static String MENU_CUENTA = ".//a[contains(@id,'TabBar:AccountTab')]";
 
     public CuentaNavBarPages seleccionarMenu() {
         waitFor(CONSTANTE_5).seconds();
@@ -38,7 +23,6 @@ public class CuentaNavBarPages extends PageObject {
         return switchToPage(CuentaNavBarPages.class);
     }
 
-
     public void _consultarNumeroDeCuenta(String numCuenta) {
         ingresarValorEnInputYTeclearEnter(Opcion.TXT_NUMERO_COTIZACION.xpath(), numCuenta);
     }
@@ -47,5 +31,20 @@ public class CuentaNavBarPages extends PageObject {
         findBy(xpathInput).waitUntilEnabled();
         enter(valorInput).into(element(xpathInput));
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+    }
+
+    public enum Opcion {
+        BTN_NUEVA_CUENTA("//span[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']"),
+        TXT_NUMERO_COTIZACION("//input[contains(@name,'AccountNumberSearchItem')]");
+
+        private String elemento;
+
+        Opcion(String opcion) {
+            this.elemento = opcion;
+        }
+
+        public String xpath() {
+            return elemento;
+        }
     }
 }
