@@ -54,8 +54,7 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
         Set<String> llaves = datosVerificar.keySet();
         String contenidoTabla = tablaResultados.getText();
         for (String evaluando : llaves) {
-            String verificar = datosVerificar.get(evaluando);
-            MatcherAssert.assertThat("No contiene los elementos a verificar", contenidoTabla.contains(verificar));
+            MatcherAssert.assertThat("No contiene los elementos a verificar", contenidoTabla.contains(datosVerificar.get(evaluando)));
         }
     }
 
