@@ -50,11 +50,8 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
         Map<String, String> datosVerificar = aVerificar.getRow(0);
         tablaResultados.waitUntilPresent();
         clickearElemento(tablaResultados);
-        Set<String> llaves = datosVerificar.keySet();
         String contenidoTabla = tablaResultados.getText();
-        for (String evaluando : llaves) {
-            MatcherAssert.assertThat("No contiene los elementos a verificar", contenidoTabla.contains(datosVerificar.get(evaluando)));
-        }
+        MatcherAssert.assertThat("No contiene los elementos a verificar", contenidoTabla.contains(datosVerificar.get("poliza")));
     }
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
