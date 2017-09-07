@@ -166,8 +166,8 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
             WebElementFacade valorPrima = $(PATH_TBL_TRANSACCIONES_DE_POLIZA + "tr[" + k + "]/td[7]");
 
             if (CANCELACION.equals(tipoTransaccion.getText())) {
-                MatcherAssert.assertThat("Error en el valor de la prima, expected: " + valorPrimaTotal.concat("-") +
-                        BUT_WAS + valorPrima.getText(), valorPrimaTotal.concat("-").equals(valorPrima.getText()));
+                MatcherAssert.assertThat("Error en el valor de la prima, expected: " + "-".concat(valorPrimaTotal) +
+                        BUT_WAS + valorPrima.getText(), "-".concat(valorPrimaTotal).equals(valorPrima.getText()));
             }
             if (COTIZACION.equals(tipoTransaccion.getText())) {
                 MatcherAssert.assertThat("Error en el valor de la prima, expected: " + valorPrimaTotal +
