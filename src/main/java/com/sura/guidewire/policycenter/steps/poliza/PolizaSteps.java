@@ -21,7 +21,11 @@ public class PolizaSteps extends GuidewireSteps {
 
     private static final int CONSTANTE_3 = 3;
     private static final int CONSTANTE_2 = 2;
+
+    @Page
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
+
+    @Page
     private static AccionesWidget accionesWidget;
     @Steps
     private static BotonAccionesSteps botonAccionesSteps;
