@@ -11,14 +11,21 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaTasaUnicaSteps extends ScenarioSteps {
-    ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
-    TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
-    AprobacionDeAnalisisDeRiesgoPage analisisDeRiesgoPage = new AprobacionDeAnalisisDeRiesgoPage(getDriver());
-    TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
-    NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
+    @Page
+    ValidacionesInformacionDeVehiculoPage vehiculoPage;
+    @Page
+    TarifaTasaUnicaPage tasaUnicaPage;
+    @Page
+    AprobacionDeAnalisisDeRiesgoPage analisisDeRiesgoPage;
+    @Page
+    TarifaAutosPage tarifaAutosPage ;
+    @Page
+    NuevaCotizacionPage nuevaCotizacionPage;
+    @Page
     DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
     int token = 1;
 

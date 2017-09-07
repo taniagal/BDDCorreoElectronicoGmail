@@ -6,10 +6,12 @@ import com.sura.guidewire.policycenter.utils.navegacion.widget.MenuNavegacionSup
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class GuidewireSteps extends ScenarioSteps {
 
-    private GuidewirePage guidewirePage;
+    @Page
+    GuidewirePage guidewirePage;
 
     @Steps MenuPolizaSteps menuPolizaSteps;
 

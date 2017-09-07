@@ -5,10 +5,12 @@ import com.sura.guidewire.policycenter.utils.menu.acciones.escritorio.Escritorio
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class EscritorioSteps extends ScenarioSteps {
 
-    private EscritorioPage escritorioPage;
+    @Page
+    EscritorioPage escritorioPage;
     @Step
     public void irAmenuActividad() {
         escritorioPage.irAMenuActividad();

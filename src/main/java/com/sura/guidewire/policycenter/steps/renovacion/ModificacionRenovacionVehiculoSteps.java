@@ -4,33 +4,34 @@ import com.sura.guidewire.policycenter.pages.renovacion.ModificacionRenovacionVe
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class ModificacionRenovacionVehiculoSteps extends ScenarioSteps {
-
-    private ModificacionRenovacionVehiculoPage modificacionRenovacionVehiculo;
+    @Page
+    ModificacionRenovacionVehiculoPage modificacionRenovacionVehiculo;
 
     @Step
-    public void ir_A_Modificar_Vehiculo() {
+    public void irAModificarVehiculo() {
         modificacionRenovacionVehiculo.irAModificarVehiculo();
     }
 
     @Step
-    public void validar_Que_Los_Campos_Sean_Editables() {
+    public void validarQueLosCamposSeanEditables() {
         modificacionRenovacionVehiculo.validarEdicionCampos();
     }
 
     @Step
-    public void validar_Que_Los_Campos_No_Se_Puedan_Modificar() {
+    public void validarQueLosCamposNoSePuedanModificar() {
         modificacionRenovacionVehiculo.validarCamposNoEditablesVehiculo();
     }
 
     @Step
-    public void validar_Que_Los_Botones_No_Son_Visibles() {
+    public void validarQueLosBotonesNoSonVisibles() {
         modificacionRenovacionVehiculo.validarBotonesNoVisibles();
     }
 
     @Step
-    public void ir_A_Vehiculos() {
+    public void irAVehiculos() {
         modificacionRenovacionVehiculo.irAVehiculos();
     }
 }

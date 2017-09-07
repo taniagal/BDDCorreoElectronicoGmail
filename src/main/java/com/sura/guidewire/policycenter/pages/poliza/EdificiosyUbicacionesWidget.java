@@ -24,7 +24,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class EdificiosyUbicacionesWidget extends PageUtil {
-
+    private static final String  TIPODOCUMENTO = "TIPO_DE_DOCUMENTO";
+    private static final String  DOCUMENTO = "DOCUMENTO";
+    private static final String  TIPOBENEFICIARIO = "TIPOBENEFICIARIO";
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
     private static final String XPATH_LEGEND_COBERTURA_DE_RIESGO = ".//legend[ (descendant::div[contains(., '";
@@ -243,7 +245,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         agregarNuevaUbicacion("Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles", "Televentas");
     }
 
-    // TODO: 11/01/2017 : Se debe borrar este metodo, dado que esta sobrecargado, dado que se requiere variabilidad en datos
     public void ingresarNuevaUbicacionSinRiesgoConsultable() {
         agregarNuevaUbicacion("Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles", "Televentas");
     }
@@ -485,7 +486,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             inputCoberturaDeRiesgo.waitUntilPresent();
             withAction().moveToElement(inputCoberturaDeRiesgo).perform();
         } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.info("StaleElementReferenceException e " + e);
             withAction().moveToElement(inputCoberturaDeRiesgo).perform();
         }
         inputCoberturaDeRiesgo.click();
@@ -596,9 +597,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarInteresesAdicionalesACadaArticulo(ExamplesTable interesados) {
         for (Map<String, String> interesadosadicionales : interesados.getRows()) {
-            String tipodocumento = interesadosadicionales.get("TIPO_DE_DOCUMENTO");
-            String documento = interesadosadicionales.get("DOCUMENTO");
-            String tipobeneficiario = interesadosadicionales.get("TIPOBENEFICIARIO");
+            String tipodocumento = interesadosadicionales.get(TIPODOCUMENTO);
+            String documento = interesadosadicionales.get(DOCUMENTO);
+            String tipobeneficiario = interesadosadicionales.get(TIPOBENEFICIARIO);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documento, tipodocumento);
             ingresarBeneficiarioOneroso(tipobeneficiario, listaTipoOnerosoEdificios);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalMaquinariaYEquipo, documento, tipodocumento);
@@ -608,9 +609,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarInteresAdicionalAUnSoloArticulo(ExamplesTable interesado) {
         for (Map<String, String> interesadosadicionalesuno : interesado.getRows()) {
-            String tipodocumentos = interesadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
-            String documentos = interesadosadicionalesuno.get("DOCUMENTO");
-            String tipobeneficiarios = interesadosadicionalesuno.get("TIPOBENEFICIARIO");
+            String tipodocumentos = interesadosadicionalesuno.get(TIPODOCUMENTO);
+            String documentos = interesadosadicionalesuno.get(DOCUMENTO);
+            String tipobeneficiarios = interesadosadicionalesuno.get(TIPOBENEFICIARIO);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, documentos, tipodocumentos);
             ingresarBeneficiarioOneroso(tipobeneficiarios, listaTipoOnerosoEdificios);
 
@@ -619,9 +620,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void agregarInteresAdicionalCambioPoliza(ExamplesTable agregaroneroso) {
         for (Map<String, String> agregarinteresadosadicionalesuno : agregaroneroso.getRows()) {
-            String agretipodocumentos = agregarinteresadosadicionalesuno.get("TIPO_DE_DOCUMENTO");
-            String agredocumentos = agregarinteresadosadicionalesuno.get("DOCUMENTO");
-            String agretipobeneficiarios = agregarinteresadosadicionalesuno.get("TIPOBENEFICIARIO");
+            String agretipodocumentos = agregarinteresadosadicionalesuno.get(TIPODOCUMENTO);
+            String agredocumentos = agregarinteresadosadicionalesuno.get(DOCUMENTO);
+            String agretipobeneficiarios = agregarinteresadosadicionalesuno.get(TIPOBENEFICIARIO);
             agregarInteresAdicionalDelDirectorio(botonInteresAdicionalEdificios, agredocumentos, agretipodocumentos);
             ingresarBeneficiarioOneroso(agretipobeneficiarios, agregarTipoOnerosoEdificios);
         }

@@ -30,12 +30,12 @@ public class ReglaPreRenovacionDirPaDefinitions {
     @When("desee registrar una direccion de prerenovacion")
     public void whenDeseeRegistrarUnaDireccionDePrerenovacion() {
         cambioDePolizaSteps.irAMenuAcciones();
-        reglaPreRenovacionDirPaSteps.ingresar_instruccion_previa_a_renovacion();
+        reglaPreRenovacionDirPaSteps.ingresarInstruccionPreviaARenovacion();
     }
 
     @Then("se deben habilitar solo las opciones: $opcionesDir")
     public void thenhabilitarInstrucciones(ExamplesTable opcionesDir){
-        reglaPreRenovacionDirPaSteps.valida_opciones_intruccion_detalles(opcionesDir);
+        reglaPreRenovacionDirPaSteps.validaOpcionesIntruccionDetalles(opcionesDir);
     }
 
 

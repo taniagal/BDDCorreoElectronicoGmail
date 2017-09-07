@@ -5,34 +5,36 @@ import com.sura.guidewire.policycenter.pages.renovacion.ReglasRenovacionDosPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 public class ReglasRenovacionDosSteps extends ScenarioSteps {
 
+    @Page
     ReglasRenovacionDosPage reglasRenovacionDosPage;
 
     @Step
-    public void clic_siguiente_hasta_vehiculos() {
+    public void clicSiguienteHastaVehiculos() {
         reglasRenovacionDosPage.clicHastaVehiculo();
     }
 
     @Step
-    public void editar_transaccion() {
+    public void editarTransaccion() {
         reglasRenovacionDosPage.editarTransaccion();
     }
 
 
     @Step
-    public void ingresar_valor_mayor_en_accesorios() {
+    public void ingresarValorMayorEnAccesorios() {
         reglasRenovacionDosPage.ingresaValorMayorVeintePorciento();
     }
 
     @Step
-    public void ingresar_valor_mayor_del_vehiculo_en_acce_especiales() {
+    public void ingresarValorMayorDelVehiculoEnAcceEspeciales() {
         reglasRenovacionDosPage.ingresaValorAccesoriosEspeciales();
     }
 
     @Step
-    public void valida_mensajes_en_pantalla(String mensaje1, String mensaje2) {
+    public void validaMensajesEnPantalla(String mensaje1, String mensaje2) {
         reglasRenovacionDosPage.validacionMensajeValores(mensaje1);
         reglasRenovacionDosPage.validacionMensajeValores(mensaje2);
         reglasRenovacionDosPage.cerrarTransaccion();
