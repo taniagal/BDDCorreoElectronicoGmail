@@ -9,10 +9,12 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
 
+    @Page
     ExpedicionDePolizaRequisitosPendientesPage expedicionDePolizaRequisitosPendientesPage;
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
