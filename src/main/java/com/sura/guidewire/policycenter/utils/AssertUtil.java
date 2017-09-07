@@ -9,7 +9,7 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.StringContains;
 
-public class AssertUtil {
+public final class AssertUtil {
 
     private AssertUtil() {
     }
