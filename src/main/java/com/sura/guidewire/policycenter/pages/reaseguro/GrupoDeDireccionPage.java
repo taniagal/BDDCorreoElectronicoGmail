@@ -70,7 +70,7 @@ public class GrupoDeDireccionPage extends PageUtil {
     private WebElementFacade comboBoxVerApartirDe;
     @FindBy(xpath = ".//*[contains(@id,'PolicyReinsuranceCV:PerRiskDV:NetRetention-inputEl')]")
     private WebElementFacade lblRetencionNeta;
-    private String porcentajeDeRetencionContratoCotaparte = null;
+    private String porcentajeDeRetencionContratoCotaparte;
 
     public GrupoDeDireccionPage(WebDriver driver) {
         super(driver);
