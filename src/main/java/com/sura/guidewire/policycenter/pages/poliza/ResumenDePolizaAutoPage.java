@@ -16,7 +16,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ResumenDePolizaAutoPage extends PageUtil {
 
-    protected static final String FECHA_COTIZADOR = "FECHA_COTIZADOR";
+    protected static final String FECHA_COTIZADOR = "fechacotizador";
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td/div/table/tbody/tr[5]/td/table/tbody/tr/td[1]/label")
     private WebElementFacade labelTipoDePlazo;
     @FindBy(xpath = "html/body/div[1]/div[4]/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td[2]/div/table/tbody/tr[1]/td/div/table/tbody/tr[6]/td/table/tbody/tr/td[1]/label")
