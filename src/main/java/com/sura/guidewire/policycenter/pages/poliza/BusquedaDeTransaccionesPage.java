@@ -110,7 +110,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
 
     public void capturarCostoTotalCotizacion() {
         String costoTotalCotizacion = labelCostoTotalCotizar.getText();
-        Serenity.setSessionVariable("valorPrimaTotal".toLowerCase().trim()).to(costoTotalCotizacion);
+        Serenity.setSessionVariable("valor prima".toLowerCase().trim()).to(costoTotalCotizacion);
     }
 
     public void capturarPlaca() {
@@ -155,7 +155,8 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     }
 
     public void verificarRetornoValorTotalPrima() {
-        String valorPrimaTotal = Serenity.sessionVariableCalled("valorPrimaTotal".toLowerCase().trim());
+        String valorPrimaTotal = Serenity.sessionVariableCalled("valor prima".toLowerCase().trim());
+        valorPrimaTotal = valorPrimaTotal.substring(CONSTANTE_2, valorPrimaTotal.length());
         MatcherAssert.assertThat("Error en el valor prima total, expected: " + VALOR_PRIMA_CERO +
                 BUT_WAS + labelPrimaTotal.getText(), VALOR_PRIMA_CERO.equals(labelPrimaTotal.getText()));
         MatcherAssert.assertThat("Error en el valor impuestos y tarifas, expected: " + VALOR_PRIMA_CERO +
@@ -169,11 +170,11 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
 
             if (CANCELACION.equals(tipoTransaccion.getText())) {
                 MatcherAssert.assertThat("Error en el valor de la prima, expected: " + "-".concat(valorPrimaTotal) +
-                        BUT_WAS + valorPrima.getText(), "-".concat(valorPrimaTotal).equals(valorPrima.getText()));
+                        BUT_WAS + valorPrima.getText(), valorPrima.getText().contains(valorPrimaTotal) && valorPrima.getText().contains("-"));
             }
             if (COTIZACION.equals(tipoTransaccion.getText())) {
                 MatcherAssert.assertThat("Error en el valor de la prima, expected: " + valorPrimaTotal +
-                        BUT_WAS + valorPrima.getText(), valorPrimaTotal.equals(valorPrima.getText()));
+                        BUT_WAS + valorPrima.getText(), valorPrima.getText().contains(valorPrimaTotal));
             }
             MatcherAssert.assertThat("Error en la fecha de transacción, expected: " + Utils.sumarDiasALaFechaActual(CONSTANTE_0) +
                     BUT_WAS + fechaTransaccion.getText(), Utils.sumarDiasALaFechaActual(CONSTANTE_0).equals(fechaTransaccion.getText()));
