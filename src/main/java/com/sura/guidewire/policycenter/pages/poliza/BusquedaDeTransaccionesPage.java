@@ -96,6 +96,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     public void verTransaccionCotizador() {
         String nroPoliza = tblNroPoliza.getText();
         Serenity.setSessionVariable("numeroPoliza".toLowerCase().trim()).to(nroPoliza);
+        Serenity.setSessionVariable("polizaTemp".toLowerCase().trim()).to(nroPoliza);
         tblNroPoliza.click();
         String costoTotal = labelCostoTotal.getText();
         Serenity.setSessionVariable("valorCostoTotal".toLowerCase().trim()).to(costoTotal);
