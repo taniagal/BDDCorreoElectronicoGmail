@@ -131,9 +131,6 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
         String aplicacionDeOrigen = datosDeBusqueda.get("aplicacionDeOrigen");
         String producto = datosDeBusqueda.get("producto");
         esperarHasta(TIEMPO_2000);
-        if (!idTransaccion.isEmpty()) {
-            campoIdTransaccion.type(idTransaccion);
-        }
         if (!aplicacionDeOrigen.isEmpty()) {
             comboAplicacionDeOrigen.waitUntilVisible();
             seleccionarItem(comboAplicacionDeOrigen, aplicacionDeOrigen);
@@ -141,6 +138,9 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
         if (!producto.isEmpty()) {
             comboProducto.waitUntilVisible();
             seleccionarItem(comboProducto, producto);
+        }
+        if (!idTransaccion.isEmpty()) {
+            campoIdTransaccion.type(idTransaccion);
         }
     }
 
