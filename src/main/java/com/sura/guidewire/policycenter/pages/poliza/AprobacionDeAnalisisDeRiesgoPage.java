@@ -113,16 +113,15 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         clickearElemento(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
-        setImplicitTimeout(TIEMPO_20, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_40, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
             botonBorrar.click();
-            withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
-            clickearElemento(botonExpedirPoliza);
-            waitFor(botonAceptarMensaje);
-            botonAceptarMensaje.click();
-
         }
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(botonExpedirPoliza);
+        clickearElemento(botonExpedirPoliza);
+        waitFor(botonAceptarMensaje);
+        botonAceptarMensaje.click();
         resetImplicitTimeout();
-        esperarHasta(TIEMPO_5000);
+        esperarHasta(TIEMPO_30000);
     }
 }
