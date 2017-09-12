@@ -99,9 +99,11 @@ public class PageUtil extends PageObject {
      * Este metodo selecciona un item que se encuentre dentro de un comboBox.
      * Eg: seleccionarItem(comboBoxCiudad, "Medellin");
      *
-     * @param elemento WebElementFacade que es el comboBox
-     * @param opcion   String que es el elemento dentro de este
+
      */
+    public PageUtil(){
+
+    }
     public void seleccionarItem(WebElementFacade elemento, String opcion) {
         clickearElemento(elemento);
         esperarHasta(TIEMPO_500);
@@ -197,7 +199,32 @@ public class PageUtil extends PageObject {
         });
     }
 
-    public void ingresarDato(WebElementFacade elemento, String dato) {
+    public  void ingresarDato(WebElementFacade elemento, String dato) {
+        do {
+            try {
+                waitFor(elemento).waitUntilPresent();
+            } catch (StaleElementReferenceException e) {
+                LOGGER.info("StaleElementReferenceException ", e);
+                esperarHasta(TIEMPO_2000);
+                waitFor(elemento).waitUntilPresent();
+            }
+            try {
+                elemento.clear();
+            } catch (ElementNotVisibleException e) {
+                LOGGER.info("ElementNotVisibleException ", e);
+                esperarHasta(TIEMPO_2000);
+                elemento.clear();
+            } catch (StaleElementReferenceException f) {
+                LOGGER.info("StaleElementReferenceException ", f);
+                esperarHasta(TIEMPO_2000);
+                elemento.clear();
+            }
+            esperarHasta(TIEMPO_500);
+            waitFor(elemento).shouldContainText("");
+            elemento.sendKeys(dato);
+        } while (!elemento.getValue().equals(dato));
+    }
+    public void ingresarDatos(WebElementFacade elemento, String dato) {
         do {
             try {
                 waitFor(elemento).waitUntilPresent();

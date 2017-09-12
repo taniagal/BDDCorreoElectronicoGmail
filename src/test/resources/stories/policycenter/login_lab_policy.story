@@ -20,4 +20,4 @@ Then el usuario deberia ver la pagina de inicio correspondiente a su rol <messag
 
 Examples:
 | country  | usr      | pass     | message         |
-| Colombia | paolrosa | sura2017 | Mis actividades |
+| Colombia | grcegwsu | sura2017 | Mis actividades |

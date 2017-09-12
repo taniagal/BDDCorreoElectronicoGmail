@@ -1,7 +1,16 @@
 package com.sura.guidewire.policycenter.definitions.poliza;
 
-/**
- * Created by tanigral on 05/09/2017.
- */
+import com.sura.guidewire.policycenter.steps.poliza.BuscarPlacaSteps;
+import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
+
 public class BuscarPlacaDefinitions {
+
+    @Steps
+    BuscarPlacaSteps buscarPlacaSteps;
+
+    @Given("buscar placa a polizas")
+    public void buscarPlaca() {
+        buscarPlacaSteps.buscarPlaca();
+    }
 }
