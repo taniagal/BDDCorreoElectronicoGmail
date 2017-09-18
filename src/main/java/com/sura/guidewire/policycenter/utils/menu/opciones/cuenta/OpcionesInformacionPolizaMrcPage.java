@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 
@@ -141,6 +142,9 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void ingresarFechaVigencia(String fechaInicioVigencia) {
         waitInfoPoliza(lblInformaPoliza);
         txtFechaVigencia.clear();
+        if ("-1".equals(fechaInicioVigencia)){
+            fechaInicioVigencia = Utils.sumarDiasALaFechaActual(PageUtil.TIEMPO_40 * Integer.parseInt(fechaInicioVigencia));
+        }
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();
         esperarHasta(TIEMPO_2000);
