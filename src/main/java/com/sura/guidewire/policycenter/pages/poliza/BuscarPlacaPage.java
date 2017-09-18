@@ -13,7 +13,6 @@ import java.util.Iterator;
 
 public class BuscarPlacaPage extends PageUtil{
 
-
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
     private WebElementFacade btnBuscarPolizaInicial;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_PolicySearch-textEl']")
@@ -34,7 +33,7 @@ public class BuscarPlacaPage extends PageUtil{
  }
  ArrayList<String> cantidadPolizas=new ArrayList<>();
     public  void buscarPlaca() {
-    File archivoModificar=new File("C:\\Users\\tanigral\\Desktop\\poliza\\PolizasMorosas.xlsx");
+    File archivoModificar=new File("C:\\Users\\tanigral\\Desktop\\poliza\\Morosas.xlsx");
     Workbook libroModificar=null;
     try{
         libroModificar=WorkbookFactory.create(archivoModificar);
@@ -46,7 +45,7 @@ public class BuscarPlacaPage extends PageUtil{
             Iterator<Cell> celdaEncontrada=filaEncontrada.cellIterator();
             while(celdaEncontrada.hasNext()){
                 Cell celda=celdaEncontrada.next();
-                String celdaString= String.valueOf(celda.getNumericCellValue());
+                String celdaString=(celda.getStringCellValue());
                 cantidadPolizas.add((celdaString));
             }
         }
@@ -67,7 +66,7 @@ public class BuscarPlacaPage extends PageUtil{
                 celdas=filas.createCell(1);
             }
             celdas.setCellValue(placas);
-            FileOutputStream salida=new FileOutputStream("C:\\Users\\tanigral\\Desktop\\poliza\\InstruccionesPrevias11 (3).xls");
+            FileOutputStream salida=new FileOutputStream("C:\\Users\\tanigral\\Desktop\\poliza\\Morosas (4).xls");
             libroModificar.write(salida);
             salida.close();
         }
