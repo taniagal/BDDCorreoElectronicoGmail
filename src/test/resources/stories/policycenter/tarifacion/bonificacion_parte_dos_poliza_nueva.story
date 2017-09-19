@@ -20,7 +20,7 @@ And ingrese la bonificacion tecnica <bonoT> y la comercial <bonoC>
 And ingrese las coberturas de RC, asistencia y hurto:
 | limite | deducible | PTH | PPH    | GTH | abogado | AS                 |
 | 640.   | 0         | 0   | 1.040. | 40. |         | Asistencia Clásica |
-And expido la poliza
+And expido la poliza mrc
 Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
