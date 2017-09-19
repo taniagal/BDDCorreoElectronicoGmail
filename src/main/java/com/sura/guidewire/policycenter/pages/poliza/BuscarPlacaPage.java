@@ -33,7 +33,7 @@ public class BuscarPlacaPage extends PageUtil{
  }
  ArrayList<String> cantidadPolizas=new ArrayList<>();
     public  void buscarPlaca() {
-    File archivoModificar=new File("C:\\Users\\tanigral\\Desktop\\poliza\\Morosas.xlsx");
+    File archivoModificar=new File("C:\\Users\\tanigral\\Desktop\\poliza\\placas.xlsx");
     Workbook libroModificar=null;
     try{
         libroModificar=WorkbookFactory.create(archivoModificar);
@@ -66,7 +66,7 @@ public class BuscarPlacaPage extends PageUtil{
                 celdas=filas.createCell(1);
             }
             celdas.setCellValue(placas);
-            FileOutputStream salida=new FileOutputStream("C:\\Users\\tanigral\\Desktop\\poliza\\Morosas (4).xls");
+            FileOutputStream salida=new FileOutputStream("C:\\Users\\tanigral\\Desktop\\poliza\\15.xlsx");
             libroModificar.write(salida);
             salida.close();
         }

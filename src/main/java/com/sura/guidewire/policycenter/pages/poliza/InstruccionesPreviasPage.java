@@ -48,7 +48,7 @@ public class InstruccionesPreviasPage extends PageUtil {
     }
 
     public void consultarPoliza() {
-        File archivoExcel = new File("C:\\Users\\tanigral\\Desktop\\poliza\\InstruccionesPrevias2.xlsx"); //ruta del archivo xls o
+        File archivoExcel = new File("C:\\Users\\tanigral\\Desktop\\poliza\\Instrucc2.xlsx"); //ruta del archivo xls o
         Workbook libroExcel=null;
         try{
             libroExcel = WorkbookFactory.create(new FileInputStream(archivoExcel));
