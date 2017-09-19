@@ -1229,11 +1229,11 @@ public class Navegacion extends PageUtil {
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
-        waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
         esperarHasta(TIEMPO_1000);
         mnuAdmCotizaciones.waitUntilVisible();
         clickearElemento(mnuAdmCotizaciones);
+        waitForTextToAppear("Cotizaciones de la cuenta");
         esperarHasta(TIEMPO_800);
         return new OpcionesAdminitradorCotizaciones(getDriver());
     }
