@@ -27,6 +27,7 @@ Examples:
 
 
 Scenario: Crear una cuenta para un contacto persona juridica con razon social no valido (validaciones MDM)
+Meta: @manual
 When quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento> y nro documento <nro_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
