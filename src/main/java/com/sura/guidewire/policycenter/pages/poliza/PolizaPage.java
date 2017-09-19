@@ -84,7 +84,7 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade botonIniciarCancelacion;
     @FindBy(id = "ReinstatementWizard:Draft")
     private WebElementFacade botonIniciarRehabilitacion;
-    private String campoEmpleadoSura = ".//div[@id='PolicyFile_PolicyI\"input\"nfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
+    private String campoEmpleadoSura = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:PolicyInfoInputSet:PolicyEmployee_ExtInputSet:employee-inputEl']";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
     private String xpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
     private String xpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
