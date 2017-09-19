@@ -65,10 +65,10 @@ Given que voy a buscar la cuenta <numCuenta>
 And que me encuentro en los contactos de la cuenta
 When quiera actualizar la direccion de un contacto que tiene otros contactos que la usan
 Then me debe validar la informacion de los contactos que usan esa direccion:
-|nombre|primaria|telefono|correo|
-| RICARDO GIRALDO | Sí | 408-2211 | 0019@guidewire.com |
-| OSCAR GOMEZ     | Sí | 408-2211 | 0010@guidewire.com |
-| CARLOS PERALTA  | Sí | 408-2211 | 0037@guidewire.com |
+| nombre          | primaria | telefono | correo             |
+| RICARDO GIRALDO | Sí       | 4082211  | 0019@guidewire.com |
+| OSCAR GOMEZ     | Sí       | 4082211  | 0010@guidewire.com |
+| CARLOS PERALTA  | Sí       | 4082211  | 0037@guidewire.com |
 Examples:
 | numCuenta  |
 | C000484848 |

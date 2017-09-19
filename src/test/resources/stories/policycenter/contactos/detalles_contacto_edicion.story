@@ -24,7 +24,7 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 Examples:
 |tipo_documento      |documento |segundo_nombre|segundo_apellido|tipo_direccion|direccion       |profesion|estado_civil|tipo_familia|telefono_celular|telefono_residencial|telefono_trabajo|correo_electronico_primario|correo_electronico_secundario|
-|CEDULA DE CIUDADANIA|1234567892|BUSH          |PEREZ           |Vivienda      |CALLE 54B #50-25|ABOGADO  |SOLTERO     |Nuclear     |311-321-2470    |789-7856            |456-7896        |primario@mail.com          |secundario@mail.com          |
+|CEDULA DE CIUDADANIA|1234567892|BUSH          |PEREZ           |Vivienda      |CALLE 54B #50-25|ABOGADO  |SOLTERO     |Nuclear     |311-321-2470    |7897856             |4567896         |primario@mail.com          |secundario@mail.com          |
 
 
 Scenario: Editar detalles de contacto de tipo persona juridica
@@ -36,5 +36,5 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 Examples:
 |tipo_documento|documento |razon_social|tipo_direccion|direccion       |nombre_comercial|actividad_comercial          |numero_empleados|valor_activos|ventas_anuales|telefono_oficina|correo_electronico_primario|correo_electronico_secundario|
-|NIT           |9212086741|UMBRELLA    |Vivienda      |CALLE 54B #50-25|Taxi Medellin   |Acabado de productos textiles|400             |190000000    |135000000     |888-7896        |primario@mail.com          |secundario@mail.com          |
+|NIT           |9212086741|UMBRELLA    |Vivienda      |CALLE 54B #50-25|Taxi Medellin   |Acabado de productos textiles|400             |190000000    |135000000     |8887896         |primario@mail.com          |secundario@mail.com          |
 

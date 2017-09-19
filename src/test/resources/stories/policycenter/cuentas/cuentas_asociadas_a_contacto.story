@@ -16,7 +16,7 @@ When consulte  un contacto con cuentas asociadas como: <nombre> <apellido>
 Then se muestra la lista de cuentas asociadas con nombre: <nombreConsulta>, direccion: <direccion>, tel: <telefono>, email: <email> y rol: <rol>
 Examples:
 | nombre | apellido | nombreConsulta       | direccion                            | telefono | email              | rol                          |
-| DANIEL | MEJIA    | DANIEL MEJIA CUARTAS | CR 65 # 48 - 162, MEDELLIN, Colombia | 408-2219 | 0041@guidewire.com | Titular de la cuenta, Tomador|
+| DANIEL | MEJIA    | DANIEL MEJIA CUARTAS | CR 65 # 48 - 162, MEDELLIN, Colombia | 4082219  | 0041@guidewire.com | Titular de la cuenta, Tomador|
 
 
 Scenario: Visualizar pantalla vacia para las cuentas asociadas a un contacto
