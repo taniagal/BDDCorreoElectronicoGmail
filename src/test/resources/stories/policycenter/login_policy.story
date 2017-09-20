@@ -19,5 +19,5 @@ When el usuario ingresa pais <country>, username <usr> y password <pass>
 Then el usuario deberia ver la pagina de inicio correspondiente a su rol <message>
 
 Examples:
-| country  | usr | pass     | message         |
-| Colombia | su  | sura2017 | Mis actividades |
+| country  | usr       | pass     | message         |
+| Colombia | grcegwsu  | sura2017 | Mis actividades |

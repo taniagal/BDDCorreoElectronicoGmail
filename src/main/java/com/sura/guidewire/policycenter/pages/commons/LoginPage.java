@@ -49,8 +49,8 @@ public class LoginPage extends PageUtil {
         setImplicitTimeout(0, TimeUnit.SECONDS);
         if (!mnuContact.isPresent()) {
             if (usuario1.isPresent()) {
-                usuario1.sendKeys("su");
-                contrasenia1.sendKeys("gw");
+                usuario1.sendKeys("grcegwsu");
+                contrasenia1.sendKeys("sura2017");
                 btnSubmit1.click();
             } else {
                 this.usuario.waitUntilPresent();
