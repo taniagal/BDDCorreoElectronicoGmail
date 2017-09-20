@@ -57,57 +57,5 @@ And seleccione la opcion siguiente
 Then se debe mostrar un mensaje <mensaje> de advertencia comision pactada
 
 Examples:
-| mensaje                                 | valor |
-| La comisión pactada no puede ser mayor a la comisión real | 15 |
-
-
-Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 10
-Meta:@manual
-Given estoy cotizando una poliza de mrc:
-| producto                | oficina | agente_oficina | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Multiriesgo corporativo | 019    | DIRECTO         | CEDULA DE CIUDADANIA | 02/12/1990       | MIKASA        | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
-When ingrese la comision pactada en valor <valor>
-And agregue una nueva ubicacion:
-| departamento | ciudad   | direccion         | descripcion     | actividad                                  | medioVenta |
-| Antioquia    | Medellin | CR 44 A # 43 - 00 | Core de Seguros | Actividades de agencias de empleo temporal | Televentas |
-And seleccione algunos articulos y sus cobertura:
-| articulo | valor_asegurable | coberturas              |
-| Building | 150000000        | Danos,Asonada,Terremoto |
-And cotice el articulo
-Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
-| articulo | descripcion                   | valor   |
-| Edificio | Cobertura de Danos materiales | 125.417 |
-| Edificio | Cobertura de Terremoto        | 148.264 |
-| Edificio | Cobertura de Asonada          | 14.404  |
-| Edificio | Subtotal                      | 288.085 |
-
-Examples:
-| valor |
-| 10    |
-
-
-Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 16 y validar UW
-Meta:@manual
-Given estoy cotizando una poliza de mrc:
-| producto                | oficina | agente_oficina | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
-| Multiriesgo corporativo | 019    | DIRECTO         | CEDULA DE CIUDADANIA | 02/12/1990       | MIKASA        | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
-When ingrese la comision pactada en valor <valor>
-And agregue una nueva ubicacion:
-| departamento | ciudad   | direccion         | descripcion     | actividad                                  | medioVenta |
-| Antioquia    | Medellin | CR 44 A # 43 - 00 | Core de Seguros | Actividades de agencias de empleo temporal | Televentas |
-And seleccione algunos articulos y sus cobertura:
-| articulo | valor_asegurable | coberturas              |
-| Building | 150000000        | Danos,Asonada,Terremoto |
-And cotice el articulo
-Then debo poder verificar el valor de la prima para las coberuras de la cotizacion
-| articulo | descripcion                   | valor   |
-| Edificio | Cobertura de Danos materiales | 129.000 |
-| Edificio | Cobertura de Terremoto        | 152.500 |
-| Edificio | Cobertura de Asonada          | 14.816  |
-| Edificio | Subtotal                      | 296.316 |
-And expido la poliza
-And se debe generar un UW con el mensaje <mensaje>
-
-Examples:
-| valor | mensaje                                 |
-| 16    | La comisión pactada debe ser autorizada |
+| mensaje                                                   | valor |
+| La comisión pactada no puede ser mayor a la comisión real | 15    |
