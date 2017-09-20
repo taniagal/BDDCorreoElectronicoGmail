@@ -10,6 +10,22 @@ Se debe aprobar ó rechazar la autorizacion con el perfil correspondiente y lueg
 Scenario: Generar una cancelacion de poliza donde se levante autorizacion por retroactividad
 Given carga de aplicacion: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
 When se va a loguear en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
+And voy a cotizar poliza de autos:
+| cuenta     | producto | oficina | agente_oficina                     | tipoPoliza |
+| 2582024763 | Autos    | 4029    | LAS LLAVES DEL CORAZON LTDA. CQLII | Individual |
+And ingrese datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo que se va asegurar:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta | cero_kilometros |
+| random | 2017   | 08008011         | MEDELLIN           | Particular        | asdfghjkl | asdfghjkl | 57500000        | null      | null    | 2    | Plan Autos Global  | Asesor     | Si              |
+And de clic a la pantalla de coberturas
+And seleccione todas las coberturas del plan asociado:
+| limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
+| 3.040  | 0         | 0   | 850 | 40. | Asistencia Global  | 0   | 850 | 40 | 20   | 20   |         |
+And expida la poliza y capture el numero
+And se aprueba la cancelacion de la poliza
+|motivo                  |descripcion                  |
+|Por petición del cliente|Prueba cancelacion con Policy|
 
-
-Then system is in a different state
+Examples:
+| tipo_documento       | documento  |
+| CEDULA DE CIUDADANIA | 9923424349 |
