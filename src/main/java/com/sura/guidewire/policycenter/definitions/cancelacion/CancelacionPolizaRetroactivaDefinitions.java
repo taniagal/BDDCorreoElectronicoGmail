@@ -4,7 +4,6 @@ import com.sura.guidewire.policycenter.steps.cancelacion.CancelacionPolizaRetroa
 import com.sura.guidewire.policycenter.steps.cancelacion.ProcesoDeCancelacionSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.commons.PolicySteps;
-import com.sura.guidewire.policycenter.steps.poliza.AjustePantallaPagosYValidacionesSteps;
 import com.sura.guidewire.policycenter.steps.poliza.BusquedaDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
 import com.sura.guidewire.policycenter.steps.renovacion.AjustesDeReglasRenovacionMrcSteps;
