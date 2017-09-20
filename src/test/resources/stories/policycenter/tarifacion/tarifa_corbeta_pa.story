@@ -14,7 +14,7 @@ Given estoy cotizando una poliza:
 | C1060447895 | Autos    | 3300    | DIRECTO        | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan            | medioVenta |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | medioVenta |
 | UIY456 | 2018   | 00601182         | MEDELLIN           | Particular        | null   | null  | 165900000       | null      | null    | 2    | AKT Cuidamos | Asesor     |
 And seleccione todas las coberturas corbeta:
 | limite | deducible | PTH | AC | AS               | PTD |

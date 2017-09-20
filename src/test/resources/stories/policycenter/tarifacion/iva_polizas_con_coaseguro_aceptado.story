@@ -7,7 +7,6 @@ Como usuario de policy center
 Al cotizar una poliza de PA (Autos o MRC) que tenga reaseguro aceptado
 Quiero validar que el IVA debe ser cero
 
-
 Scenario:  Realizar una cotizacion de autos donde el coaseguro es aceptado
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
@@ -58,7 +57,7 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc donde el coaseguro es aceptado
-Meta: @manual
+Meta:@manual
 Given estoy cotizando una poliza de mrc:
 |producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
@@ -82,7 +81,7 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc donde el coaseguro es cedido
-Meta: @manual
+Meta:@manual
 Given estoy cotizando una poliza de mrc:
 |producto               |oficina|agente_oficina|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Multiriesgo corporativo|1059   |RANGEL        |CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |

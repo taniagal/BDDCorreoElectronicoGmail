@@ -7,7 +7,6 @@ Como usuario de policy center
 Al cotizar una poliza de PA
 Quiero ser capaz de aplicarla para los automoviles, camperos y pickup, y bicicletas una tasa diferente a la tasa dada por la tarifa tecnica en las coberturas de PT Daños y Hurto.
 
-
 Scenario:  Realizar una cotizacion de autos con comision pactada en si y valor 10
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
@@ -63,7 +62,7 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 10
-Meta: @manual
+Meta:@manual
 Given estoy cotizando una poliza de mrc:
 | producto                | oficina | agente_oficina | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | 019    | DIRECTO         | CEDULA DE CIUDADANIA | 02/12/1990       | MIKASA        | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
@@ -88,7 +87,7 @@ Examples:
 
 
 Scenario:  Realizar una cotizacion de mrc con comision pactada en si y valor 16 y validar UW
-Meta: @manual
+Meta:@manual
 Given estoy cotizando una poliza de mrc:
 | producto                | oficina | agente_oficina | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
 | Multiriesgo corporativo | 019    | DIRECTO         | CEDULA DE CIUDADANIA | 02/12/1990       | MIKASA        | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
