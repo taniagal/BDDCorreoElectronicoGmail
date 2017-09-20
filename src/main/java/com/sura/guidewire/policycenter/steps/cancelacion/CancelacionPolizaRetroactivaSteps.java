@@ -4,10 +4,13 @@ import com.sura.guidewire.policycenter.pages.cancelacion.CancelacionPolizaRetroa
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.steps.ScenarioSteps;
 
-public class CancelacionPolizaRetroactivaSteps {
+import org.fluentlenium.core.annotation.Page;
 
-    @Steps
+public class CancelacionPolizaRetroactivaSteps extends ScenarioSteps {
+
+    @Page
     CancelacionPolizaRetroactivaPage cancelacionPolizaRetroactivaPage;
 
     @Step

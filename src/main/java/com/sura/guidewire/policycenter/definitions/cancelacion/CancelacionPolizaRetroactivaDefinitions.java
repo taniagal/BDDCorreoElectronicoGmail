@@ -45,43 +45,43 @@ public class CancelacionPolizaRetroactivaDefinitions {
     AjustesDeReglasRenovacionMrcSteps ajustesDeReglasRenovacionMrcSteps;
 
 
-    @Given("carga de aplicacion: $urlAmbiente")
+    @Given("carga de aplicacion de Policy: $urlAmbiente")
     public void cargaAplicacion(String urlAmbiente) {
         cancelacionPolizaRetroactivaSteps.cargaAmbiente(urlAmbiente);
     }
 
-    @When("se va a loguear en PolicyCenter Lab: $country, $user y $password se debe mostrar: $message")
+    @When("logueo en PolicyCenter Lab: $country, $user y $password se debe mostrar: $message")
     public void loguearPolicyLaboratorio(String country, String user, String password, String message) {
         policySteps.loginSeus(country, user, password);
         policySteps.assertion(message);
     }
-    @When("voy a cotizar poliza de autos: $datosCotizacion")
+    @When("voy a cotizar poliza de autos individual: $datosCotizacion")
     public void nuevaPoliza(ExamplesTable datosCotizacion) {
         nuevaCotizacionSteps.irANuevaCotizacion();
         nuevaCotizacionSteps.seleccionarProducto(datosCotizacion);
     }
-    @When("ingrese datos del asegurado <tipo_documento> <documento>")
+    @When("ingrese datos del asegurado de policy <tipo_documento> <documento>")
     public void agregarDatosAsegurado(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
         tarifaAutosSteps.agregarAsegurados(tipoDocumento, documento);
     }
-    @When("ingrese los datos del vehiculo que se va asegurar: $datosVehiculo")
+    @When("ingrese los datos del vehiculo que va asegurar: $datosVehiculo")
     public void ingresarVehiculo(ExamplesTable datosVehiculo) {
         modificadoresDeTarifaSteps.agregarVehiculo(datosVehiculo);
     }
-    @When("de clic a la pantalla de coberturas")
+    @When("clic a la pantalla de coberturas")
     public void seleccionarBotonSiguiente() {
         tarifaAutosSteps.seleccionarBotonSiguiente();
     }
-    @When("seleccione todas las coberturas del plan asociado: $coberturas")
+    @When("seleccione todas las coberturas del plan: $coberturas")
     public void agregarTodasLasCoberturasDeComision(ExamplesTable coberturas) {
         tarifaAutosSteps.seleccionarCoberturasComisionPactada(coberturas);
     }
-    @When("expida la poliza y capture el numero")
+    @When("expedir poliza y capturar el numero")
     public void expedirYCapturarPoliza() {
         tasaUnicaSteps.expedirPolizaUAT();
         Serenity.setSessionVariable("numeroPoliza".toLowerCase().trim()).to(buscarNumeroPoliza.capturarNumeroPoliza());
     }
-    @When("se aprueba la cancelacion de la poliza $dataTable")
+    @When("aprobar la cancelacion de la poliza $dataTable")
     public void aprobarCancelacion(ExamplesTable dataTable){
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();
         polizaSteps.ingresarMotivosCancelacion(dataTable.getRow(0).get("motivo"), dataTable.getRow(0).get("descripcion"));
@@ -94,6 +94,10 @@ public class CancelacionPolizaRetroactivaDefinitions {
             polizaSteps.cliquearOpcionCompromiso();
         }
         polizaSteps.ingresarResumenCancelacionPoliza();
+    }
+    @When("voy al resumen de la poliza")
+    public void verResumenPoliza(){
+        polizaSteps.verResumenDeLaPolizaExpedida();
     }
 
     @Then("voy a cerrar sesion de policy lab")
