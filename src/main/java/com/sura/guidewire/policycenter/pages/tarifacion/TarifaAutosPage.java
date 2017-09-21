@@ -5,6 +5,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 import org.hamcrest.MatcherAssert;
@@ -40,12 +41,14 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade campoTxtNombre;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:AgreedCommission-inputEl']")
     private WebElementFacade campoTxtComisionPactada;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'Wizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl')]")
     private WebElementFacade campoPrimaTotal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'Wizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl')]")
     private WebElementFacade campoIva;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'Wizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl')]")
     private WebElementFacade campoCostoTotal;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:ChangeInCost-inputEl']")
+    private WebElementFacade cambioDelCosto;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
     private WebElementFacade campoTxtNumeroDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -530,4 +533,18 @@ public class TarifaAutosPage extends PageUtil {
         seleccionarItem(comboBoxLimite, limite);
         resetImplicitTimeout();
     }
+
+    public void capturarValoresTarifa() {
+        Serenity.setSessionVariable("valorPrimaTotal".toLowerCase().trim()).to(campoPrimaTotal.getText());
+        Serenity.setSessionVariable("valorIva".toLowerCase().trim()).to(campoIva.getText());
+        Serenity.setSessionVariable("valorCostoTotal".toLowerCase().trim()).to(campoCostoTotal.getText());
+    }
+
+    public void capturarValoresTarifaModificacion() {
+        Serenity.setSessionVariable("primaTotalModificacion".toLowerCase().trim()).to(campoPrimaTotal.getText());
+        Serenity.setSessionVariable("valorIvaModificacion".toLowerCase().trim()).to(campoIva.getText());
+        Serenity.setSessionVariable("costoTotalModificacion".toLowerCase().trim()).to(campoCostoTotal.getText());
+        Serenity.setSessionVariable("valorCambioCosto".toLowerCase().trim()).to(cambioDelCosto.getText());
+    }
+
 }

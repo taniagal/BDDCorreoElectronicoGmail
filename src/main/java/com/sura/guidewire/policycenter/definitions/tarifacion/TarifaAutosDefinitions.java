@@ -33,6 +33,21 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarValorAsegurado(valorAsegurado);
     }
 
+    @When("quiera cambiar valor asegurado en la modificacion")
+    public void cambiarValorAseguradoModificacion(@Named("valorAseguradoModificacion") String valorAseguradoModificacion) {
+        tarifaAutosSteps.cambiarValorAseguradoModificacion(valorAseguradoModificacion);
+    }
+
+    @When("quiera capturar los valores de tarifa al expedir poliza")
+    public void capturarValoresTarifa() {
+        tarifaAutosSteps.capturarValoresTarifa();
+    }
+
+    @When("quiera capturar los valores de tarifa al modificar poliza")
+    public void capturarValoresTarifaModificacion() {
+        tarifaAutosSteps.capturarValoresTarifaModificacion();
+    }
+
     @When("ingrese la informacion del vehiculo: $datosVehiculo")
     public void agregarVehiculoConAcessorios(ExamplesTable datosVehiculo) {
         tarifaAutosSteps.agregarVehiculoDos(datosVehiculo);
