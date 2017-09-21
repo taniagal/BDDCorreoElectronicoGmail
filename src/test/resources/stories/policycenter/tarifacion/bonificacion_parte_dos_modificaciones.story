@@ -23,7 +23,7 @@ And ingrese a informacion de poliza de la poliza
 And ingrese la Fecha Inicio Vigencia: -1
 And cotice una poliza
 And expido la poliza y voy al archivo de poliza
-And cambio la fecha de vigencia
+And cambio la fecha de vigencia sumando los dias a la fecha actual: 33
 And cambio la bonificacion tecnica <bonoT>
 And cotice y expida la poliza
 Then se debe generar un UW con el mensaje <mensaje>
