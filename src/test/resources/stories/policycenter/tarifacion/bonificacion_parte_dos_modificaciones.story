@@ -20,7 +20,7 @@ And ingrese las coberturas de a la modificacion:
 | limite | deducible | PTH | PPH    | GTH | abogado | AS                 |
 | 640.   | 0         | 0   | 1.040. | 40. |         | Asistencia Clásica |
 And ingrese a informacion de poliza de la poliza
-And ingrese la Fecha Inicio Vigencia: -1
+And ingrese la Fecha Inicio Vigencia: -40
 And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 And cambio la fecha de vigencia

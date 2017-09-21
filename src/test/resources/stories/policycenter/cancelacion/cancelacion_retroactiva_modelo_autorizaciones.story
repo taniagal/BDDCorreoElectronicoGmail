@@ -13,6 +13,7 @@ When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: 
 And voy a cotizar poliza de autos individual:
 | cuenta     | producto | oficina | agente_oficina                     | tipoPoliza |
 | 2582024763 | Autos    | 4029    | LAS LLAVES DEL CORAZON LTDA. CQLII | Individual |
+And ingrese la Fecha Inicio Vigencia: -60
 And ingrese datos del asegurado de policy <tipo_documento> <documento>
 And ingrese los datos del vehiculo que va asegurar:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta | cero_kilometros |
