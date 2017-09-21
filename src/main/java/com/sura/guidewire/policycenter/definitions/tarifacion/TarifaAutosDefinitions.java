@@ -43,6 +43,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarCoberturas(coberturas);
     }
 
+    @When("ingrese las coberturas e intentar cotizar: $coberturas")
+    public void agregarCoberturasYCotizar(ExamplesTable coberturas){
+        tarifaAutosSteps.agregarCoberturasYCotizar(coberturas);
+    }
+
     @When("ingrese las coberturas para la sustitucion: $coberturas")
     @Alias("ingrese las coberturas de RC, asistencia y hurto: $coberturas")
     public void agregarCoberturasSustitucion(ExamplesTable coberturas) {

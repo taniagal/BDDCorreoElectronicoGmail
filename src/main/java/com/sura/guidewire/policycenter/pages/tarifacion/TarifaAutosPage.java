@@ -165,6 +165,7 @@ public class TarifaAutosPage extends PageUtil {
         waitForTextToAppear("Cotización");
     }
 
+
     public void intentarCotizar() {
         try {
             clickearElemento(botonCotizar);

@@ -31,4 +31,8 @@ public class InformacionPolizaWorkPlanSteps extends ScenarioSteps {
     public void menuActividades() {
         informacionPolizaWorkPlanPage.validarMenuActividades();
     }
+
+    public void validarPersonaPlanDeTrabajo() {
+        informacionPolizaWorkPlanPage.validarPersonaPlanDeTrabajo();
+    }
 }

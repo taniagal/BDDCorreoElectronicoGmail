@@ -30,6 +30,10 @@ public class InformacionPolizaWorkPlanDefinitions {
     public void mostrarMenuDeActividades() {
         informacionPolizaWorkPlanSteps.menuActividades();
     }
+    @When("valide la persona a la cual le llego el plan de trabajo")
+    public void validarPersonaPlanDeTrabajo(){
+        informacionPolizaWorkPlanSteps.validarPersonaPlanDeTrabajo();
+    }
 
 
 }

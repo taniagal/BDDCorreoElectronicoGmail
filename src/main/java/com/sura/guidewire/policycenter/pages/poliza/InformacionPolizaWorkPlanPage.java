@@ -70,4 +70,8 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
         clickearElemento(botonCancelarNuevaActividad);
         botonCancelarNuevaActividad.waitUntilNotVisible();
     }
+
+    public void validarPersonaPlanDeTrabajo() {
+
+    }
 }
