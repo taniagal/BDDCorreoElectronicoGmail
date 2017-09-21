@@ -24,8 +24,8 @@ And seleccione todas las coberturas del plan:
 And expedir poliza y capturar el numero
 And voy al resumen de la poliza
 And aprobar la cancelacion de la poliza
-|motivo                  |descripcion                  |
-|Por petición del cliente|Prueba cancelacion con Policy|
+|motivo                  |descripcion                  |Fecha|
+|Por petición del cliente|Prueba cancelacion con Policy| -32 |
 
 Examples:
 | tipo_documento       | documento  |

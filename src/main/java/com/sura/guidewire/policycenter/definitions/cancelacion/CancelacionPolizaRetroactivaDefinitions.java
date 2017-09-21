@@ -85,7 +85,7 @@ public class CancelacionPolizaRetroactivaDefinitions {
     public void aprobarCancelacion(ExamplesTable dataTable){
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();
         polizaSteps.ingresarMotivosCancelacion(dataTable.getRow(0).get("motivo"), dataTable.getRow(0).get("descripcion"));
-        polizaSteps.ingresarFechaCancelacion(Utils.sumarDiasALaFechaActual(0));
+        polizaSteps.ingresarFechaCancelacion(Utils.sumarDiasALaFechaActual(Integer.parseInt(dataTable.getRow(0).get("Fecha"))));
         polizaSteps.iniciarCancelacionFacultativo();
         polizaSteps.efectuarCancelacion();
         if (dataTable.getRow(0).get("descripcion").contains("cotizador")) {
