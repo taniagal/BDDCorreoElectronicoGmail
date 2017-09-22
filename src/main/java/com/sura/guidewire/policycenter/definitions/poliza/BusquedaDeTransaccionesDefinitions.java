@@ -38,4 +38,9 @@ public class BusquedaDeTransaccionesDefinitions {
     public void cerrarSesionPolicy() {
         busquedaDeTransaccionesSteps.cerrarSesionPolicy();
     }
+
+    @Then("se verifica el valor de prima en cero al cancelar poliza")
+    public void verificarTarifaPolizaCancelada(){
+        busquedaDeTransaccionesSteps.verificarTarifaPolizaCancelada();
+    }
 }

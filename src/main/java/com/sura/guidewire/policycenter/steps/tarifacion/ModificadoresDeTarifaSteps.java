@@ -78,8 +78,8 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void cambiarFechaDeVigencia() {
-        tasaUnicaPage.cambiarFechaDeVigencia();
+    public void cambiarFechaDeVigencia(String nroDias) {
+        tasaUnicaPage.cambiarFechaDeVigencia(nroDias);
     }
 
     @Step

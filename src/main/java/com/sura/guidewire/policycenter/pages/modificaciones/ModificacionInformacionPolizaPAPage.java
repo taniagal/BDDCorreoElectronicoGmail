@@ -296,6 +296,7 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void irAOpcionVehiculos() {
+        esperarHasta(TIEMPO_5000);
         waitFor(itemVehiculos);
         itemVehiculos.click();
     }

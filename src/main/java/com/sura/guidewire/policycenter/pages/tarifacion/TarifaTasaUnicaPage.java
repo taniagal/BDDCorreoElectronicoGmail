@@ -171,11 +171,11 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuItemCambiarPoliza.waitUntilPresent().click();
     }
 
-    public void cambiarFechaDeVigencia() {
+    public void cambiarFechaDeVigencia(String nroDias) {
         clickAccionesYCambiarPoliza();
         campoTxtFechaDeInicioDeVigencia.waitUntilPresent().clear();
-        campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(TREINTA_Y_TRES));
-        botonSiguienteCambioDePoliza.click();
+        campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(Integer.parseInt(nroDias)));
+        clickearElemento(botonSiguienteCambioDePoliza);
     }
 
     public void modificarFechaVigencia(String fechaModificacion) {
