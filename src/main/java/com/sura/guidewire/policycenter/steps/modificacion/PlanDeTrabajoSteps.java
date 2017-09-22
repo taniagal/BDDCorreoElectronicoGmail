@@ -30,4 +30,8 @@ public class PlanDeTrabajoSteps extends ScenarioSteps {
         planDeTrabajo.ingresarALaOpcionPlanDeTrabajoEnRenovacionDePoliza();
         planDeTrabajo.validarActividadesGeneradasEnRiesgo();
     }
+    @Step
+    public void ingresarAlPlanDeTrabajoCancelacion(){
+        planDeTrabajo.ingresarALaOpcionPlanDeTrabajoCancelacion();
+    }
 }

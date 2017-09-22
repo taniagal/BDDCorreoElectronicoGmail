@@ -93,7 +93,6 @@ public class CancelacionPolizaRetroactivaDefinitions {
             ajustesDeReglasRenovacionMrcSteps.realizarAprobacionEspecialConVariasObservaciones();
             polizaSteps.cliquearOpcionCompromiso();
         }
-        polizaSteps.ingresarResumenCancelacionPoliza();
     }
     @When("voy al resumen de la poliza")
     public void verResumenPoliza(){
