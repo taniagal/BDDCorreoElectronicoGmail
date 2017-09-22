@@ -151,6 +151,11 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void verificarDevolucionPrima() {
+        tarifaAutosPage.verificarDevolucionPrima();
+    }
+
+    @Step
     public void seleciconarCoberturasCorbeta(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
         tarifaAutosPage.seleccionarCoberturasCorbeta(coberturas);

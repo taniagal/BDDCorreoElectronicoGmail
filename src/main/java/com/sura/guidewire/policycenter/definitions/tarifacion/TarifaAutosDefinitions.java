@@ -48,6 +48,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.capturarValoresTarifaModificacion();
     }
 
+    @Then("se verifica la devolucion de la prima al cancelar poliza")
+    public void verificarDevolucionPrima() {
+        tarifaAutosSteps.verificarDevolucionPrima();
+    }
+
     @When("ingrese la informacion del vehiculo: $datosVehiculo")
     public void agregarVehiculoConAcessorios(ExamplesTable datosVehiculo) {
         tarifaAutosSteps.agregarVehiculoDos(datosVehiculo);

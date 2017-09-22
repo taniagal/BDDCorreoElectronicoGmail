@@ -7,6 +7,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
@@ -264,8 +265,12 @@ public class PolizaPage extends PageUtil {
 
     public void ingresarFechaCancelacion(String fechaCancelacion) {
         txtFechaCancelacion.clear();
-        txtFechaCancelacion.sendKeys(fechaCancelacion);
-        actions.sendKeys(Keys.ENTER).build().perform();
+        if (!fechaCancelacion.contains("/")){
+            txtFechaCancelacion.sendKeys(Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaCancelacion)));
+        } else {
+            txtFechaCancelacion.sendKeys(fechaCancelacion);
+        }
+        actions.sendKeys(Keys.TAB).build().perform();
         esperarHasta(TIEMPO_2000);
     }
 

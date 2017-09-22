@@ -82,4 +82,9 @@ public class BusquedaDeTransaccionesSteps extends ScenarioSteps {
     public void verificarRetornoValorTotalPrima() {
         busquedaDeTransaccionesPage.verificarRetornoValorTotalPrima();
     }
+
+    @Step
+    public void verificarTarifaPolizaCancelada() {
+        busquedaDeTransaccionesPage.verificarTarifaPolizaCancelada();
+    }
 }

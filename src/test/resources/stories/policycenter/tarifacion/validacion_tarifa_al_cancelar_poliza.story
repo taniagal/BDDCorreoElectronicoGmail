@@ -28,16 +28,21 @@ And de clic al boton detalle
 And realice aprobacion especial asociada a varias observaciones
 And expido la poliza mrc sin facultativo
 And ingrese al resumen de la poliza expedida
-And cambio la fecha de vigencia sumando los dias a la fecha actual: 10
+And cambio la fecha de vigencia sumando los dias a la fecha actual: 20
 And ingrese a la opcion vehiculos
 And quiera cambiar valor asegurado en la modificacion
 And intente cotizar el cambio de poliza
 And quiera capturar los valores de tarifa al modificar poliza
 And expida el cambio de la poliza
 And ingrese al resumen de la poliza expedida
-And necesito iniciar la cancelacion
-And realice el proceso de cancelacion completo
+When ingrese los motivos de cancelacion de la poliza Motivo: Por petición del cliente, Descripción: Prueba cancelacion de poliza
+And ingrese la fecha vigente de cancelacion <fechaCancelacion>
+And inicie la cancelacion de la poliza con facultativo
+Then se verifica la devolucion de la prima al cancelar poliza
+And se realiza la cancelacion
+When ingrese al resumen de la poliza expedida
+Then se verifica el valor de prima en cero al cancelar poliza
 
 Examples:
-| tipo_documento       | documento  | valor_asegurado | ciudad                     | valorAseguradoModificacion |
-| CEDULA DE CIUDADANIA | 1264567899 | 300000000       | BOGOTA, D.C. (BOGOTA D.C.) | 200000000                  |
+| tipo_documento       | documento  | valor_asegurado | ciudad                     | valorAseguradoModificacion | fechaCancelacion |
+| CEDULA DE CIUDADANIA | 1264567899 | 300000000       | BOGOTA, D.C. (BOGOTA D.C.) | 200000000                  | 6                |

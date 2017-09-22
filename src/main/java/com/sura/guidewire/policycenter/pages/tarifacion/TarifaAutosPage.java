@@ -47,7 +47,7 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[contains(@id, 'Wizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl')]")
     private WebElementFacade campoCostoTotal;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:ChangeInCost-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id, 'Wizard_QuoteScreen:Quote_SummaryDV:ChangeInCost-inputEl')]")
     private WebElementFacade cambioDelCosto;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
     private WebElementFacade campoTxtNumeroDocumento;
@@ -544,7 +544,12 @@ public class TarifaAutosPage extends PageUtil {
         Serenity.setSessionVariable("primaTotalModificacion".toLowerCase().trim()).to(campoPrimaTotal.getText());
         Serenity.setSessionVariable("valorIvaModificacion".toLowerCase().trim()).to(campoIva.getText());
         Serenity.setSessionVariable("costoTotalModificacion".toLowerCase().trim()).to(campoCostoTotal.getText());
-        Serenity.setSessionVariable("valorCambioCosto".toLowerCase().trim()).to(cambioDelCosto.getText());
+        Serenity.setSessionVariable("cambioDelCostoModificacion".toLowerCase().trim()).to(cambioDelCosto.getText());
     }
 
+    public void verificarDevolucionPrima() {
+        String cambioCosto = Serenity.sessionVariableCalled("costoTotalModificacion".toLowerCase().trim());
+        MatcherAssert.assertThat("Error en el valor Cambio del costo al cancelar poliza, expected: " + "-".concat(cambioCosto) +
+                BUT_WAS + cambioDelCosto.getText(), "-".concat(cambioCosto).equals(cambioDelCosto.getText()));
+    }
 }
