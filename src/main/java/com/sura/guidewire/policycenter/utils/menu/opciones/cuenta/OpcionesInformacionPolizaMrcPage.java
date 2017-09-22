@@ -142,8 +142,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void ingresarFechaVigencia(String fechaInicioVigencia) {
         waitInfoPoliza(lblInformaPoliza);
         txtFechaVigencia.clear();
-        if ("-1".equals(fechaInicioVigencia)){
-            fechaInicioVigencia = Utils.sumarDiasALaFechaActual(PageUtil.TIEMPO_40 * Integer.parseInt(fechaInicioVigencia));
+        if (!fechaInicioVigencia.contains("/")){
+            fechaInicioVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaInicioVigencia));
         }
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();

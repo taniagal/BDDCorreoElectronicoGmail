@@ -7,6 +7,7 @@ import com.sura.guidewire.policycenter.steps.poliza.PolizaSteps;
 import net.thucydides.core.annotations.Steps;
 
 import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 public class PlandeTrabajoDefinitions {
 
@@ -35,6 +36,10 @@ public class PlandeTrabajoDefinitions {
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
         polizaSteps.confirmarCancelacion();
+    }
+    @When("ingrese a la opcion plan de trabajo")
+    public void seDebeGenerarActividadPorEnCancelacionDePoliza(){
+        planDeTrabajoSteps.ingresarAlPlanDeTrabajoCancelacion();
     }
 
 
