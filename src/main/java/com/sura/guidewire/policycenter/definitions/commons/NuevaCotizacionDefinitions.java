@@ -30,6 +30,10 @@ public class NuevaCotizacionDefinitions {
         nuevaCotizacionSteps.irANuevaCotizacion();
         nuevaCotizacionSteps.seleccionarProducto(datosCotizacion);
     }
+    @Given("tengo los siguientes parametros para poliza individual de autos: $datosParametros")
+    public void parametros(ExamplesTable datosParametros){
+        nuevaCotizacionSteps.capturarParametros(datosParametros);
+    }
 
     @Given("estoy cotizando una poliza de mrc: $datosCotizacion")
     @Alias("estoy cotizando una poliza de autos: $datosCotizacion")

@@ -10,9 +10,12 @@ Para poder expedir polizas de forma exitosa
 
 Scenario: Vehiculo importado por terceros,maximo valor de vehiculo, blindaje, maximo valor accesorios, maximo valor accesorios especiales, transporte combustible, zona no permitida
 GivenStories: stories/policycenter/login_policy.story
+Given tengo los siguientes parametros para poliza individual de autos:
+|oficina    |asesor     |regla                      |
+|4029       | 80301     | Transporte conbustible    |
 Given estoy cotizando una poliza:
-| cuenta      | producto | oficina | agente_oficina                                | tipoPoliza |
-| 0225097276 | Autos    | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO         | Individual |
+| cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
+| 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
@@ -36,8 +39,6 @@ And valide la persona a la cual le llego el plan de trabajo
 Examples:
 | accesorios | tipo_documento       | documento  |valor_asegurado     |
 | 2600000    | CEDULA DE CIUDADANIA | 1000283562 |405000000           |
-
-
 
 
 Scenario: Modelo vehiculo, uso vehiculo,retroactividad , placa existente, bonificaciones, valor comercial
@@ -85,7 +86,7 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion               | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
-| 11AAAA | 2015   | 35701008         | CUCUTA (NORTE DE SANTANDER)      | Público        | addsd  | dsdsdsds  | 284000000        | null      | null    | 9    | Plan Autos Global    | Televentas |
+| 11AAAA | 2015   | 35701008         | CUCUTA (NORTE DE SANTANDER)      | Público        | addsd  | dsdsdsds     | 284000000        | null      | null    | 9    | Plan Autos Global    | Televentas |
 When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |

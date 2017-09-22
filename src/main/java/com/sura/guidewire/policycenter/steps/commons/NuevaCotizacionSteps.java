@@ -141,4 +141,8 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     public void copiarEnvioRiesgo() {
         nuevaCotizacionPage.copiarEnvioRiesgo();
     }
+
+    public void capturarParametros(ExamplesTable datosParametros) {
+        nuevaCotizacionPage.datosParametros(datosParametros);
+    }
 }

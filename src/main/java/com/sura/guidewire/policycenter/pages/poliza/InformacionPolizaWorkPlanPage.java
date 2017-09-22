@@ -6,7 +6,11 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.apache.poi.ss.usermodel.*;
 import org.openqa.selenium.WebDriver;
+
+import java.io.File;
+import java.util.Iterator;
 
 
 public class InformacionPolizaWorkPlanPage extends PageUtil {
@@ -72,6 +76,34 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     }
 
     public void validarPersonaPlanDeTrabajo() {
+        File archivo=new File("D:\\workSpaces\\BDD_END_TO_END\\BDDCoreSuraPolicy\\src\\test\\resources\\data_driven\\Copia de ModeloAutorizaciones (6).xlsx");
+        Workbook libro=null;
+        try{
+            libro= WorkbookFactory.create(archivo);
+            Sheet hojaModificar= libro.getSheetAt(0);
+            Iterator<Row> filas=hojaModificar.rowIterator();
+            Row filasrecorridas;
+            while(filas.hasNext()){
+                filasrecorridas=filas.next();
+                Iterator<Cell> celdas=filasrecorridas.cellIterator();
+                Cell celdasRecorridas;
+                while(celdas.hasNext()){
+                    celdasRecorridas=celdas.next();
+                    String dato=celdasRecorridas.getStringCellValue();
+                }
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            try{
+                assert libro != null;
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
 
     }
 }

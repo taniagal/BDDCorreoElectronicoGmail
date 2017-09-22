@@ -2,6 +2,9 @@ package com.sura.guidewire.policycenter.resources;
 
 import com.google.common.base.Function;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +13,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;
 
+import org.apache.poi.ss.usermodel.*;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.By;
@@ -480,4 +484,60 @@ public class PageUtil extends PageObject {
             return findBy(xpath);
         }
     }
+
+    ArrayList<String> reglaUsuario = new ArrayList<>();
+
+    public ArrayList<ArrayList<String>> leerExcel(File archivo, int numeroHoja, ExamplesTable parametros) {
+        ArrayList<String> lista = new ArrayList<>();
+        ArrayList<ArrayList<String>> respuesta = new ArrayList<>();
+        Workbook libro = null;
+        try {
+            Map<String, String> datos = parametros.getRow(0);
+            String parametro1 = datos.get("oficina");
+            String parametro2 = datos.get("asesor");
+            String parametro3 = datos.get("regla");
+            String[] output=parametro3.split(",");
+            String parametro4 = datos.get("canal");
+            for(int i= 0;i<output.length;i++) {
+                parametro3=output[i];
+                libro = WorkbookFactory.create(archivo);
+                Sheet hoja = libro.getSheetAt(numeroHoja);
+                Iterator<Row> filas = hoja.rowIterator();
+                Row filasRecorridas;
+                while (filas.hasNext()) {
+                    filasRecorridas = filas.next();
+                    Iterator<Cell> celda = filasRecorridas.cellIterator();
+                    Cell celdaRecorrida;
+                    while (celda.hasNext()) {
+                        celdaRecorrida = celda.next();
+                        String celdas = celdaRecorrida.getStringCellValue();
+                        lista.add(celdas);
+
+                    }
+
+                    if (lista.get(0).equals(parametro1) || parametro1.equals("null")) {
+                        if (lista.get(1).equals(parametro2) || parametro2.equals("null")) {
+                                if (lista.get(2).equals(parametro3) || parametro3.equals("null")) {
+                                    if (lista.get(8).equals(parametro4) || parametro4.equals("null")) {
+                                        respuesta.add(lista);
+                                        break;
+                                    }
+                                }
+                        }
+                    }
+                    lista.clear();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return respuesta;
+    }
 }
+
+

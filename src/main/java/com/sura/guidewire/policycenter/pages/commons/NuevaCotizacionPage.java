@@ -252,4 +252,10 @@ public class NuevaCotizacionPage extends PageUtil {
         MatcherAssert.assertThat("Error, el campo fecha efectiva de cotizacion no contiene la fecha actual", campoFechaEfectivaDeCotizacion.containsText(Utils.sumarDiasALaFechaActual(0)));
         MatcherAssert.assertThat("Error, el campo fecha efectiva de cotizacion no debe ser editable", !esEditable(campoFechaEfectivaDeCotizacion));
     }
+
+    public void datosParametros(ExamplesTable datosParametros) {
+        Map<String,String >datos=datosParametros.getRow(0);
+
+
+    }
 }
