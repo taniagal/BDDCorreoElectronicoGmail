@@ -23,7 +23,7 @@ public class PlanDeTrabajoPage extends PageUtil {
     AnalisisDeRiesgosPage analisisDeRiesgosPage;
     String xPathOpcionPlanDeTrabajo = ".//*[@id='SubmissionWizard:Workplan']";
     String xPathOpcionPlanDeTrabajoEnCambioDePoliza = ".//*[@id='PolicyChangeWizard:Workplan']";
-    String xPathOpcionPlanDeTrabajoEnCancelacion=".//*[@id='CancellationWizard:Workplan']/div";
+    String xPathOpcionPlanDeTrabajoEnCancelacion=".//*[@id='CancellationWizard:Workplan']";
     @FindBy(xpath = ".//*[@id='RenewalWizard:Workplan']")
     WebElementFacade xPathOpcionPlanDeTrabajoEnRenovacionDePoliza;
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
@@ -63,8 +63,8 @@ public class PlanDeTrabajoPage extends PageUtil {
         }
     }
     public void ingresarALaOpcionPlanDeTrabajoCancelacion(){
+        esperarHasta(TIEMPO_2000);
         findBy(xPathOpcionPlanDeTrabajoEnCancelacion).click();
-        esperarHasta(TIEMPO_3000);
         waitForTextToAppear("Plan de trabajo");
     }
 }
