@@ -143,6 +143,26 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void cambiarValorAseguradoModificacion(String valorAseguradoModificacion) {
+        vehiculoPage.agregarValorAsegurado(valorAseguradoModificacion);
+    }
+
+    @Step
+    public void capturarValoresTarifa() {
+        tarifaAutosPage.capturarValoresTarifa();
+    }
+
+    @Step
+    public void capturarValoresTarifaModificacion() {
+        tarifaAutosPage.capturarValoresTarifaModificacion();
+    }
+
+    @Step
+    public void verificarDevolucionPrima() {
+        tarifaAutosPage.verificarDevolucionPrima();
+    }
+
+    @Step
     public void seleciconarCoberturasCorbeta(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
         tarifaAutosPage.seleccionarCoberturasCorbeta(coberturas);
