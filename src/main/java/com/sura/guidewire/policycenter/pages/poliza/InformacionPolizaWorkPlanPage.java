@@ -38,7 +38,6 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//*[@id='NewActivityWorksheet:NewActivityScreen:NewActivityScreen_CancelButton-btnInnerEl']")
     private WebElementFacade botonCancelarNuevaActividad;
-
     public InformacionPolizaWorkPlanPage(WebDriver driver) {
         super(driver);
     }
@@ -76,34 +75,7 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     }
 
     public void validarPersonaPlanDeTrabajo() {
-        File archivo=new File("D:\\workSpaces\\BDD_END_TO_END\\BDDCoreSuraPolicy\\src\\test\\resources\\data_driven\\Copia de ModeloAutorizaciones (6).xlsx");
-        Workbook libro=null;
-        try{
-            libro= WorkbookFactory.create(archivo);
-            Sheet hojaModificar= libro.getSheetAt(0);
-            Iterator<Row> filas=hojaModificar.rowIterator();
-            Row filasrecorridas;
-            while(filas.hasNext()){
-                filasrecorridas=filas.next();
-                Iterator<Cell> celdas=filasrecorridas.cellIterator();
-                Cell celdasRecorridas;
-                while(celdas.hasNext()){
-                    celdasRecorridas=celdas.next();
-                    String dato=celdasRecorridas.getStringCellValue();
-                }
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-        finally{
-            try{
-                assert libro != null;
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-        }
+
 
     }
 }

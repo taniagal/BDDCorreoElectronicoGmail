@@ -486,10 +486,8 @@ public class PageUtil extends PageObject {
     }
 
     ArrayList<String> reglaUsuario = new ArrayList<>();
-
-    public ArrayList<ArrayList<String>> leerExcel(File archivo, int numeroHoja, ExamplesTable parametros) {
+    public String[][] leerExcel(File archivo, int numeroHoja, ExamplesTable parametros) {
         ArrayList<String> lista = new ArrayList<>();
-        ArrayList<ArrayList<String>> respuesta = new ArrayList<>();
         Workbook libro = null;
         try {
             Map<String, String> datos = parametros.getRow(0);
@@ -497,11 +495,12 @@ public class PageUtil extends PageObject {
             String parametro2 = datos.get("asesor");
             String parametro3 = datos.get("regla");
             String[] output=parametro3.split(",");
+            String matriz[][] = new String[output.length][2];
             String parametro4 = datos.get("canal");
+            libro = WorkbookFactory.create(archivo);
+            Sheet hoja = libro.getSheetAt(numeroHoja);
             for(int i= 0;i<output.length;i++) {
                 parametro3=output[i];
-                libro = WorkbookFactory.create(archivo);
-                Sheet hoja = libro.getSheetAt(numeroHoja);
                 Iterator<Row> filas = hoja.rowIterator();
                 Row filasRecorridas;
                 while (filas.hasNext()) {
@@ -512,22 +511,24 @@ public class PageUtil extends PageObject {
                         celdaRecorrida = celda.next();
                         String celdas = celdaRecorrida.getStringCellValue();
                         lista.add(celdas);
-
                     }
 
                     if (lista.get(0).equals(parametro1) || parametro1.equals("null")) {
                         if (lista.get(1).equals(parametro2) || parametro2.equals("null")) {
                                 if (lista.get(2).equals(parametro3) || parametro3.equals("null")) {
                                     if (lista.get(8).equals(parametro4) || parametro4.equals("null")) {
-                                        respuesta.add(lista);
+                                        matriz[i][0] = lista.get(2);
+                                        matriz[i][1]=lista.get(3);
                                         break;
                                     }
                                 }
                         }
                     }
+
                     lista.clear();
                 }
             }
+            return matriz;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -536,7 +537,7 @@ public class PageUtil extends PageObject {
                 e.printStackTrace();
             }
         }
-        return respuesta;
+        return null;
     }
 }
 
