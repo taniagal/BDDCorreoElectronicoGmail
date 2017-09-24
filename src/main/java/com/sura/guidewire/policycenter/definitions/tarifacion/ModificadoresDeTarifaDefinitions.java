@@ -55,9 +55,9 @@ public class ModificadoresDeTarifaDefinitions {
         modificadoresDeTarifaSteps.verificarUW(mensaje);
     }
 
-    @When("cambio la fecha de vigencia")
-    public void cambiarFechaDeVigencia() {
-        modificadoresDeTarifaSteps.cambiarFechaDeVigencia();
+    @When("cambio la fecha de vigencia sumando los dias a la fecha actual: $nroDias")
+    public void cambiarFechaDeVigencia(String nroDias) {
+        modificadoresDeTarifaSteps.cambiarFechaDeVigencia(nroDias);
     }
 
     @Given("modifico la fecha de vigencia $fechaModificacion")

@@ -175,4 +175,13 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
                     BUT_WAS + fechaTransaccion.getText(), Utils.sumarDiasALaFechaActual(CONSTANTE_0).equals(fechaTransaccion.getText()));
         }
     }
+
+    public void verificarTarifaPolizaCancelada() {
+        MatcherAssert.assertThat("Error en Prima total, expected: " + VALOR_PRIMA_CERO +
+                BUT_WAS + labelPrimaTotal.getText(), VALOR_PRIMA_CERO.equals(labelPrimaTotal.getText()));
+        MatcherAssert.assertThat("Error en Impuestos y tarifas, expected: " + VALOR_PRIMA_CERO +
+                BUT_WAS + labelImpuestoTarifa.getText(), VALOR_PRIMA_CERO.equals(labelImpuestoTarifa.getText()));
+        MatcherAssert.assertThat("Error en Costo total, expected: " + VALOR_PRIMA_CERO +
+                BUT_WAS + labelCostoTotal.getText(), VALOR_PRIMA_CERO.equals(labelCostoTotal.getText()));
+    }
 }
