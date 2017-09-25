@@ -78,12 +78,12 @@ public class ModificadoresDeTarifaPage extends PageUtil {
 
     public void verificarBonoTecnico(String bono) {
         MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was " +
-                campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono));
+                campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().equals(bono));
     }
 
     public void verificarBonoComercial(String bono) {
         MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was " +
-                campoTxtBonificacionComercial.getValue(), campoTxtBonificacionComercial.getValue().contains(bono));
+                campoTxtBonificacionComercial.getValue(), campoTxtBonificacionComercial.getValue().equals(bono));
     }
 
     public void agregarModificadores(ExamplesTable valores) {
