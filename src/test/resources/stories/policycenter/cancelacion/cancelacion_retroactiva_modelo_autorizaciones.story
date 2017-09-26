@@ -27,7 +27,6 @@ And voy al resumen de la poliza
 And aprobar la cancelacion de la poliza
 |motivo                  |descripcion                  |Fecha|
 |Por petición del cliente|Prueba cancelacion con Policy| -32 |
-And ingrese a la opcion Analisis de Riesgo
 And ingrese a la opcion plan de trabajo
 
 Examples:

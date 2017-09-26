@@ -64,7 +64,7 @@ public class PlanDeTrabajoPage extends PageUtil {
         }
     }
     public void ingresarALaOpcionPlanDeTrabajoCancelacion(){
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_5000);
         findBy(xPathOpcionPlanDeTrabajoEnCancelacion).click();
         waitForTextToAppear("Plan de trabajo");
     }

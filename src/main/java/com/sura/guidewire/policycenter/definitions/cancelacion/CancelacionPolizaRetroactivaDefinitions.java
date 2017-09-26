@@ -81,6 +81,10 @@ public class CancelacionPolizaRetroactivaDefinitions {
         tasaUnicaSteps.expedirPolizaUAT();
         Serenity.setSessionVariable("numeroPoliza".toLowerCase().trim()).to(buscarNumeroPoliza.capturarNumeroPoliza());
     }
+    @When("expedir la poliza")
+    public void expedirPoliza() {
+        tasaUnicaSteps.expedirPolizaUAT();
+    }
     @When("aprobar la cancelacion de la poliza $dataTable")
     public void aprobarCancelacion(ExamplesTable dataTable){
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();

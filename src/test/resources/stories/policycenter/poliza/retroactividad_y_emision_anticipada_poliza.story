@@ -22,7 +22,7 @@ And clic a la pantalla de coberturas
 And seleccione todas las coberturas del plan:
 | limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
 | 3.040  | 0         | 0   | 850 | 40. | Asistencia Global  | 0   | 850 | 40 | 20   |  20  |         |
-And expedir poliza y capturar el numero
+And expedir la poliza
 
 Examples:
 | tipo_documento       | documento  |
