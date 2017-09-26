@@ -21,6 +21,8 @@ And vaya a la pantalla de coberturas
 And seleccione todas las coberturas de comision:
 | limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
 | 3.040  | 0         | 0   | 835 | 40. | Asistencia Global  | 0   | 835 | 40 | 20   | 20   |         |
+And seleccione la opcion informacion de poliza
+And ingrese la Fecha Inicio Vigencia: 0
 And agregue un nuevo valor asegurado <valor_asegurado>
 And quiera capturar los valores de tarifa al expedir poliza
 When expido la poliza mrc sin facultativo
@@ -45,4 +47,4 @@ Then se verifica el valor de prima en cero al cancelar poliza
 
 Examples:
 | tipo_documento       | documento  | valor_asegurado | ciudad                     | valorAseguradoModificacion | fechaCancelacion |
-| CEDULA DE CIUDADANIA | 1264567899 | 300000000       | BOGOTA, D.C. (BOGOTA D.C.) | 200000000                  | 6                |
+| CEDULA DE CIUDADANIA | 1264567899 | 300000000       | BOGOTA, D.C. (BOGOTA D.C.) | 200000000                  | 0                |

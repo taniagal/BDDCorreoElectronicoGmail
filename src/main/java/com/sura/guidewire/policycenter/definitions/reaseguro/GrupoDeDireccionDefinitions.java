@@ -2,11 +2,10 @@ package com.sura.guidewire.policycenter.definitions.reaseguro;
 
 
 import com.sura.guidewire.policycenter.definitions.poliza.InformacionDePolizaMrcDefinitions;
+import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.GrupoDeDireccionSteps;
-
 import net.thucydides.core.annotations.Steps;
-
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -23,6 +22,9 @@ public class GrupoDeDireccionDefinitions {
 
     @Steps
     GrupoDeDireccionSteps grupoDeDireccionSteps;
+
+    @Steps
+    InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
     @Given("ingrese la Fecha Inicio Vigencia: $fechaInicioVigencia")
     public void givenModifiqueLasFechasParaQueSeanCreadasEnDosPeriodos(String fechaInicioVigencia) {
@@ -73,7 +75,7 @@ public class GrupoDeDireccionDefinitions {
 
     @When("ingrese la Fecha Inicio Vigencia: $fechaInicioVigencia")
     public void modificarFechaInicioVigencia(String fechaInicioVigencia) {
-        informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
+        informacionDePolizaMrcSteps.ingresarFechaDeVigencia(fechaInicioVigencia);
     }
 
     @When("de clic al menu reaseguro")
