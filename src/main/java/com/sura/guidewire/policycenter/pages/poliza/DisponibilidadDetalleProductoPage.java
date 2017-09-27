@@ -29,6 +29,7 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     }
 
     public void verInformacionDePoliza() {
-        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
+        esperarYClickearBoton(opcionVerInformacionPoliza);
+        esperarHasta(TIEMPO_5000);
     }
 }
