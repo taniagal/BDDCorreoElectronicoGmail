@@ -2,10 +2,14 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.sura.guidewire.policycenter.steps.poliza.InformacionPolizaWorkPlanSteps;
 
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
+
+import java.util.ArrayList;
 
 public class InformacionPolizaWorkPlanDefinitions {
     @Steps
@@ -28,11 +32,15 @@ public class InformacionPolizaWorkPlanDefinitions {
 
     @Then("debe mostrar el menu de actividad")
     public void mostrarMenuDeActividades() {
-        informacionPolizaWorkPlanSteps.menuActividades();
+        informacionPolizaWorkPlanSteps.menuActividades()
+        ;
     }
+
     @When("valide la persona a la cual le llego el plan de trabajo")
     public void validarPersonaPlanDeTrabajo(){
-        informacionPolizaWorkPlanSteps.validarPersonaPlanDeTrabajo();
+        ArrayList<String> busquedaReglas= Serenity.sessionVariableCalled("datosBusquedaExcel".toLowerCase().trim());
+        informacionPolizaWorkPlanSteps.buscarRegla(busquedaReglas);
+
     }
 
 

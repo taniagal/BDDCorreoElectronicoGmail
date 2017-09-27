@@ -80,6 +80,15 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade comboEstadoFisico;
     @FindBy(xpath = "//*[@id=\"frmRequisitos\"]/table/tbody/tr[6]/td/table/tbody/tr/td/table/tbody/tr[8]/td/table/tbody/tr/td[1]/a/img")
     private WebElementFacade botonActualizarEstados;
+    @FindBy(xpath=".//table/tbody/tr[1]/td[2]//table//")
+    private WebElementFacade tblRequisitos;
+    public String tblColumnas=".//table/tbody/tr[1]/td[2]//table//div[contains(.,'Requisitos')]";
+    @FindBy(xpath=".//*[@id='SubmissionWizard:RequirementsScreen:ContactsWithRequirmentsLV:0:addConinsuranceLink']")
+    private WebElementFacade btnRequisitos;
+    @FindBy(xpath=".//*[@id='RequirementsByContact_ExtPopup:RequestRequirement']")
+    private WebElementFacade btnRequisitos2;
+    public String tblPubVisualRequisitos=".//*[@id='frmRequisitos']/table/tbody/tr[4]/td//td[1]";
+    public String tblColumnasItem=".//*[@id='reqCliente']//tr//td[1]";
 
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
@@ -165,6 +174,22 @@ public class RequisitosPorDniAutosPage extends PageUtil {
 
     public void expedirPoliza() {
         esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
+    }
+
+    public void diligenciarTodosLosRequisitos() {
+        if(btnRequisitos.isPresent()&& btnRequisitos.isVisible()){
+            clickearElemento(btnRequisitos);
+        }
+        if(btnRequisitos2.isPresent()&& btnRequisitos2.isVisible()){
+            clickearElemento(btnRequisitos2);
+        }
+        seleccionarPestanaDelNavegador(CONSTANTE_1);
+        aprobarRequisitos(tblPubVisualRequisitos,tblColumnasItem);
+        desplegarElementoDeLista(comboEstadoFisico);
+        opcionRecibido.click();
+        botonActualizarEstados.click();
+        cerrarPestanaDelNavegador();
+
     }
 }
 

@@ -7,6 +7,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import org.fluentlenium.core.annotation.Page;
 
+import java.util.ArrayList;
+
 
 public class InformacionPolizaWorkPlanSteps extends ScenarioSteps {
     @Page
@@ -32,7 +34,13 @@ public class InformacionPolizaWorkPlanSteps extends ScenarioSteps {
         informacionPolizaWorkPlanPage.validarMenuActividades();
     }
 
-    public void validarPersonaPlanDeTrabajo() {
-        informacionPolizaWorkPlanPage.validarPersonaPlanDeTrabajo();
+    public void validarPersonaPlanDeTrabajo(String[][] reglasRiesgoNoEstandar) {
+        informacionPolizaWorkPlanPage.validarPersonaPlanDeTrabajo(reglasRiesgoNoEstandar);
+
+    }
+
+
+    public void buscarRegla(ArrayList<String> busquedaReglas) {
+        informacionPolizaWorkPlanPage.buscarReglas(busquedaReglas);
     }
 }

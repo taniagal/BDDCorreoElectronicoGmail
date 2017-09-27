@@ -10,6 +10,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 
@@ -38,6 +39,11 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//*[@id='NewActivityWorksheet:NewActivityScreen:NewActivityScreen_CancelButton-btnInnerEl']")
     private WebElementFacade botonCancelarNuevaActividad;
+
+    public String tblFilasreglas = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table//tr";
+    public String tblColumnasReglas =".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table//td";
+    public String tblColumnasFilasReglas = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table//tr//td";
+
     public InformacionPolizaWorkPlanPage(WebDriver driver) {
         super(driver);
     }
@@ -74,8 +80,16 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
         botonCancelarNuevaActividad.waitUntilNotVisible();
     }
 
-    public void validarPersonaPlanDeTrabajo() {
+    public void validarPersonaPlanDeTrabajo(String[][] reglasRiesgoNoEstandar) {
 
+    }
+
+    public void buscarReglas(ArrayList<String> busquedaReglas) {
+        for(int i=0;i<busquedaReglas.size();i++){
+            buscarRegla(busquedaReglas.get(i),tblFilasreglas,tblColumnasReglas,tblColumnasFilasReglas);
+
+
+}
 
     }
 }

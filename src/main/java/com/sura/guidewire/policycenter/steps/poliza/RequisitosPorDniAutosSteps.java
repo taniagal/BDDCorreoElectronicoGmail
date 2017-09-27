@@ -70,6 +70,10 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     public void expedirPoliza() {
         requisitosPorDniAutosPage.expedirPoliza();
     }
+
+    public void diligenciarTodosLosRequisitos() {
+        requisitosPorDniAutosPage.diligenciarTodosLosRequisitos();
+    }
 }
 
 

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;
@@ -453,12 +454,12 @@ public class PageUtil extends PageObject {
     }
 
     public void buscarDatoEnTabla(String dato, String tablaFilas, String tablaColumnas, String tablaFilasColumnas) {
+        String reglas[][]=new String[tablaFilas.length()][tablaColumnas.length()];
         try {
             for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
                 for (int j = 0; j < getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
                     String valorEncontrado = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + j + "]";
-                    if (valorEncontrado.equals(dato)) {
-                        break;
+                    if (valorEncontrado.contains(dato)) {
                     }
                 }
             }
@@ -466,6 +467,27 @@ public class PageUtil extends PageObject {
             LOGGER.info("Exception " + e);
         }
     }
+    public void buscarRegla(String regla, String tablaFilas, String tablaColumnas, String tablaFilasColumnas){
+        String tblBuscada[][]=new String[2][getDriver().findElements(By.xpath(tablaColumnas)).size()];
+        try {
+            for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
+                for (int j = 0; j < getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
+                    String valorEncontrado = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + j + "]";
+                    if (valorEncontrado.contains(regla)) {
+                       tblBuscada[i][0]=valorEncontrado;
+                       String usuario=tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + j+1 + "]";
+                       tblBuscada[i][1]=usuario;
+                    }
+                }
+            }
+            Serenity.setSessionVariable("reglaEncontrada".toLowerCase().trim()).to(tblBuscada);
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("Exception " + e);
+        }
+
+    }
+
+
 
     private static class IntegerBooleanFunction implements Function<Integer, Boolean> {
         public Boolean apply(Integer i) {
@@ -484,9 +506,16 @@ public class PageUtil extends PageObject {
             return findBy(xpath);
         }
     }
+    public void aprobarRequisitos(String tblPubVisualRequisitos,String tblColumnasItem){
 
-    ArrayList<String> reglaUsuario = new ArrayList<>();
-    public String[][] leerExcel(File archivo, int numeroHoja, ExamplesTable parametros) {
+        for(int i=0;i<getDriver().findElements(By.xpath(tblColumnasItem)).size();i++){
+            String itemEncontrado = "//input[@value='"+i+"']";
+            WebElementFacade item=element(By.xpath(itemEncontrado));
+            clickearElemento(item);
+        }
+
+    }
+    public void leerExcel(File archivo, int numeroHoja, ExamplesTable parametros) {
         ArrayList<String> lista = new ArrayList<>();
         Workbook libro = null;
         try {
@@ -495,7 +524,7 @@ public class PageUtil extends PageObject {
             String parametro2 = datos.get("asesor");
             String parametro3 = datos.get("regla");
             String[] output=parametro3.split(",");
-            String matriz[][] = new String[output.length][2];
+            ArrayList<String> reglas=new ArrayList<>();
             String parametro4 = datos.get("canal");
             libro = WorkbookFactory.create(archivo);
             Sheet hoja = libro.getSheetAt(numeroHoja);
@@ -517,8 +546,7 @@ public class PageUtil extends PageObject {
                         if (lista.get(1).equals(parametro2) || parametro2.equals("null")) {
                                 if (lista.get(2).equals(parametro3) || parametro3.equals("null")) {
                                     if (lista.get(8).equals(parametro4) || parametro4.equals("null")) {
-                                        matriz[i][0] = lista.get(2);
-                                        matriz[i][1]=lista.get(3);
+                                        reglas.add(lista.get(2));
                                         break;
                                     }
                                 }
@@ -528,7 +556,9 @@ public class PageUtil extends PageObject {
                     lista.clear();
                 }
             }
-            return matriz;
+
+            Serenity.setSessionVariable("datosBusquedaExcel".toLowerCase().trim()).to(reglas);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -537,7 +567,6 @@ public class PageUtil extends PageObject {
                 e.printStackTrace();
             }
         }
-        return null;
     }
 }
 

@@ -80,4 +80,8 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void clicEnAceptarDelMensajeDeConfirmacionYRequisitos() {
         expedicionDePolizaPage.aceptarExpedirPolizaConRequisitosPendientes();
     }
+
+    public void menuItemCotizador() {
+        expedicionDePolizaPage.menuItemCotizador();
+    }
 }

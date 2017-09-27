@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
 
+import com.sura.guidewire.policycenter.steps.poliza.RequisitosPorDniAutosSteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 
@@ -18,6 +19,9 @@ public class ExpedicionDePolizaDefinitions {
     ExpedicionDePolizaSteps expedicionDePolizaSteps;
 
     @Steps
+    RequisitosPorDniAutosSteps requisitosPorDniAutosSteps;
+
+    @Steps
     PolizaPrincipalPaSteps polizaPrincipalPaSteps;
 
     @Given("Que tengo una cotizacion <cotizacion> y voy a crear una poliza")
@@ -29,7 +33,10 @@ public class ExpedicionDePolizaDefinitions {
     public void expedirPoliza() {
         expedicionDePolizaSteps.clicEnExpedirPoliza();
     }
-
+    @When("vuelva a la cotizacion de poliza")
+    public void menuItemCotizador() {
+        expedicionDePolizaSteps.menuItemCotizador();
+    }
     @Then("voy a expedir una poliza")
     public void expedirPolizaDos() {
         expedicionDePolizaSteps.clicEnExpedirPoliza();
@@ -95,5 +102,15 @@ public class ExpedicionDePolizaDefinitions {
     @Manual
     public void validacionBeneficiarioRiesgoConsultable() {
         // Se realiza manualmente.
+    }
+    @When("ingrese a la opcion requisitos en rehabilitacion y diligencie requisitos")
+    public void irARequisitosEnRehabilitacion() {
+        requisitosPorDniAutosSteps.irARequisitosEnRehabilitacion();
+        requisitosPorDniAutosSteps.diligenciarRequisitos();
+    }
+    @When("ingrese a la opcion requisitos a diligenciar todos los requisitos")
+    public void diligenciarRequisitos() {
+        requisitosPorDniAutosSteps.irARequisitosEnRehabilitacion();
+        requisitosPorDniAutosSteps.diligenciarTodosLosRequisitos();
     }
 }
