@@ -45,4 +45,8 @@ public class PlandeTrabajoDefinitions {
     public void seDebeGenerarReglaEnAnalisisDeRiesgoCancelacionDepoliza(){
         planDeTrabajoSteps.ingresarAlAnalisisDeRiesgoCancelacion();
     }
+    @When("ingresar a la opcion plan de trabajo en nueva poliza")
+    public void seDebeGenerarActividadesEnPolizaNueva(){
+        planDeTrabajoSteps.ingresarAlPlanDeTrabajoPolizaNueva();
+    }
 }

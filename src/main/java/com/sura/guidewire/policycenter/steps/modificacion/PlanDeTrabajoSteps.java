@@ -38,4 +38,8 @@ public class PlanDeTrabajoSteps extends ScenarioSteps {
     public void ingresarAlAnalisisDeRiesgoCancelacion(){
         planDeTrabajo.ingresarALaOpcionAnalisisDeRiesgoCancelacion();
     }
+    @Step
+    public void ingresarAlPlanDeTrabajoPolizaNueva() {
+        planDeTrabajo.ingresarALaOpcionPlanDeTrabajo();
+    }
 }

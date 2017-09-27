@@ -70,6 +70,7 @@ public class CancelacionPolizaRetroactivaDefinitions {
     }
     @When("clic a la pantalla de coberturas")
     public void seleccionarBotonSiguiente() {
+
         tarifaAutosSteps.seleccionarBotonSiguiente();
     }
     @When("seleccione todas las coberturas del plan: $coberturas")
@@ -81,9 +82,13 @@ public class CancelacionPolizaRetroactivaDefinitions {
         tasaUnicaSteps.expedirPolizaUAT();
         Serenity.setSessionVariable("numeroPoliza".toLowerCase().trim()).to(buscarNumeroPoliza.capturarNumeroPoliza());
     }
-    @When("expedir la poliza")
+    @When("expedir la poliza de autos")
     public void expedirPoliza() {
         tasaUnicaSteps.expedirPolizaUAT();
+    }
+    @When("capturar el numero de cotizacion")
+    public void capturarNumeroCotizacionPoliza() {
+        cancelacionPolizaRetroactivaSteps.capturarNumeroCotizacion();
     }
     @When("aprobar la cancelacion de la poliza $dataTable")
     public void aprobarCancelacion(ExamplesTable dataTable){
