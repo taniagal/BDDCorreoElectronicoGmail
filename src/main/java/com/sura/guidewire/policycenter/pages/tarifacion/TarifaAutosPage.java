@@ -172,9 +172,9 @@ public class TarifaAutosPage extends PageUtil {
     public void intentarCotizar() {
         try {
             clickearElemento(botonCotizar);
+            esperarHasta(TIEMPO_9999);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
-            esperarHasta(TIEMPO_2000);
             clickearElemento(botonCotizar);
         }
     }
@@ -188,7 +188,8 @@ public class TarifaAutosPage extends PageUtil {
 
     public void agregarAsegurado(String tipoDocumento, String documento) {
         esCambioDePoliza();
-        withTimeoutOf(TIEMPO_40, TimeUnit.SECONDS).waitFor(menuItemAsegurados).waitUntilPresent();
+        esperarHasta(TIEMPO_3500);
+        waitFor(menuItemAsegurados).shouldBeVisible();
         clickearElemento(menuItemAsegurados);
         setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
         if ($(".message").isPresent()) {

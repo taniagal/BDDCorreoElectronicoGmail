@@ -104,8 +104,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void clickSiguienteConMensaje() {
+        esperarHasta(TIEMPO_2000);
         clickSiguiente();
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if ($(".message").isPresent()) {
             clickSiguiente();
         }
