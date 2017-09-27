@@ -8,16 +8,15 @@ So that I can achieve a business goal
 Scenario: scenario description
 GivenStories: stories/policycenter/login_policy.story
 Given se tienen los siguientes parametros para la busqueda
-|oficina|asesor|regla                                                                                                                                             |canal |
-|4029   |      |UWInsuredValueVehicle,PAIssueVehicleMake,PAIssueValueAccesories,PAIssueValueSpecialAccesories,PAIssueExistingLicensePlate,UWIssueForBonus         |CC013 |
-
+|oficina|asesor    |regla                       |      |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |null      |                            |CC013 |
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
-| random | 2017   | 00601190         | ISTMINA (CHOCO)      | Particular        | addsd  | dsdsdsds  | 94900000        | null      | null    | 11    | Plan Autos Global | Televentas |Si                    |Si               |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion       | vehiculo_servicio | chasis | motor     | valor_asegurado  | descuento | recargo | zona   | plan               | medioVenta |
+| dag64f | 2015   | 35701008         | MEDELLIN (ANTIOQUIA)     | Particular        | addsd  | dsdsdsds  | 284000000        | null      | null    | 11     | Plan Autos Global   | Televentas |
 When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |
@@ -31,8 +30,17 @@ And se ingrese el valor de los accesorios es superior al 20% del valor asegurado
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 And cotice una poliza
 And voy a expedir una poliza
+And de click en el boton aceptar
+And ingrese a la opcion requisitos a diligenciar todos los requisitos
+And vuelva a la cotizacion de poliza
+And voy a expedir una poliza
+And de click en el boton aceptar
 And ingese al plan del trabajo
-And valide la persona a la cual le llego el plan de trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al uusuario a validar asignación de actividad
+
+
 
 Examples:
 | accesorios | tipo_documento       | documento  |valor_asegurado     |

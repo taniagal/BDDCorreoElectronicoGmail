@@ -36,12 +36,13 @@ And voy a expedir una poliza
 And ingese al plan del trabajo
 And valide la persona a la cual le llego el plan de trabajo
 
+
 Examples:
 | accesorios | tipo_documento       | documento  |valor_asegurado     |
 | 2600000    | CEDULA DE CIUDADANIA | 1000283562 |405000000           |
 
 
-Scenario: Modelo vehiculo, uso vehiculo,retroactividad , placa existente, bonificaciones, valor comercial
+Scenario: Modelo vehiculo, uso 665, n vehiculo,retroactividad , placa existente, bonificaciones, valor comercial
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |producto|tipoPoliza |oficina|agente_oficina                                |

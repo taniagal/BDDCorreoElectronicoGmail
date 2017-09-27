@@ -3,6 +3,8 @@ package com.sura.guidewire.policycenter.definitions.poliza;
 import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
 
+import com.sura.guidewire.policycenter.steps.poliza.RequisitosPorDniAutosSteps;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 
@@ -11,11 +13,16 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import java.util.ArrayList;
+
 
 public class ExpedicionDePolizaDefinitions {
 
     @Steps
     ExpedicionDePolizaSteps expedicionDePolizaSteps;
+
+    @Steps
+    RequisitosPorDniAutosSteps requisitosPorDniAutosSteps;
 
     @Steps
     PolizaPrincipalPaSteps polizaPrincipalPaSteps;
@@ -29,7 +36,10 @@ public class ExpedicionDePolizaDefinitions {
     public void expedirPoliza() {
         expedicionDePolizaSteps.clicEnExpedirPoliza();
     }
-
+    @When("vuelva a la cotizacion de poliza")
+    public void menuItemCotizador() {
+        expedicionDePolizaSteps.menuItemCotizador();
+    }
     @Then("voy a expedir una poliza")
     public void expedirPolizaDos() {
         expedicionDePolizaSteps.clicEnExpedirPoliza();
@@ -95,5 +105,24 @@ public class ExpedicionDePolizaDefinitions {
     @Manual
     public void validacionBeneficiarioRiesgoConsultable() {
         // Se realiza manualmente.
+    }
+    @When("ingrese a la opcion requisitos en rehabilitacion y diligencie requisitos")
+    public void irARequisitosEnRehabilitacion() {
+        requisitosPorDniAutosSteps.irARequisitosEnRehabilitacion();
+        requisitosPorDniAutosSteps.diligenciarRequisitos();
+    }
+    @When("ingrese a la opcion requisitos a diligenciar todos los requisitos")
+    public void diligenciarRequisitos() {
+        requisitosPorDniAutosSteps.irARequisitosEnRehabilitacion();
+        requisitosPorDniAutosSteps.diligenciarTodosLosRequisitos();
+    }
+    @When ("valide el usuario que debe aprobar una u otra regla de autorizacion")
+    public void validarUsuario(){
+        String [][]reglasEncontradas=Serenity.sessionVariableCalled("reglaEncontrada".toLowerCase().trim());
+        requisitosPorDniAutosSteps.buscarUsuarioRegla(reglasEncontradas);
+    }
+    @When("ir al uusuario a validar asignación de actividad")
+    public void validarAsignacionActividad(){
+        requisitosPorDniAutosSteps.validarAsignacionActividad();
     }
 }

@@ -12,8 +12,9 @@ import org.openqa.selenium.WebDriver;
 
 public class ReglasRenovacionDosPage extends PageUtil {
 
-    private static final int CONSTANTE_8 = 8;
+    private static int CONSTANTE_8 = 8;
     private static final double CONSTANTE_02 = 0.2;
+    private static final String CONSTANTE_09 = "";
     @FindBy(xpath = ".//*[contains(@id,'Next-btnInnerEl')]")
     WebElementFacade btnSiguinete;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']")
@@ -79,8 +80,9 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     public void ingresaValorMayorVeintePorciento() {
+        CONSTANTE_9=txtValorAsegurado.getValue().length();
         esperarHasta(TIEMPO_1000);
-        int valorDeLabel = Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
+        int valorDeLabel = Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_9));
         int valorTotalAccesorio = 1 + logicaExtraeOSumaPorcentaje(valorDeLabel, CONSTANTE_02);
         txtvalorAccesorios.clear();
         txtvalorAccesorios.click();
@@ -89,6 +91,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     public void ingresaValorAccesoriosEspeciales() {
+        CONSTANTE_8=txtValorAsegurado.getValue().length();
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(txtValorAccesoriosEspe).waitUntilClickable();
         int valorTotalAccesorioEsp = 1 + Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
         txtValorAccesoriosEspe.clear();

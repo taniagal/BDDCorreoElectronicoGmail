@@ -26,6 +26,8 @@ public class ExpedicionDePolizaPage extends PageUtil {
     WebElementFacade botonBorrar;
     @FindBy(xpath = "//a[contains(.,'Expedir póliza') and contains(@id,'JobWizardToolbarButtonSet:IssuesPolicy')]")
     WebElementFacade botonExpedirPoliza;
+    @FindBy(id = "SubmissionWizard:ViewQuote")
+    WebElementFacade mnuItemCotizacion;
     @FindBy(id = "PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl")
     WebElementFacade botonExpedirPolizaPorCambio;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
@@ -146,5 +148,13 @@ public class ExpedicionDePolizaPage extends PageUtil {
         botonBorrar.waitUntilNotVisible();
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
         withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(botonAceptarMensaje).click();
+    }
+
+    public void menuItemCotizador() {
+        if(botonBorrar.isPresent() &&botonBorrar.isVisible()){
+            clickearElemento(botonBorrar);
+        }
+        esperarHasta(4000);
+        clickearElemento(mnuItemCotizacion);
     }
 }

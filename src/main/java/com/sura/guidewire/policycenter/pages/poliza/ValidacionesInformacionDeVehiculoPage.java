@@ -81,6 +81,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl']")
     private WebElementFacade comboMedioDeVenta;
     private String opcion = "Si";
+    @FindBy(xpath = "//div[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
+    private WebElementFacade xpathPlaca;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -120,6 +122,12 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
         }
         clickearElemento(botonSiguiente);
+        if(xpathPlaca.isPresent()){
+            if(xpathPlaca.containsText("La placa DAG64F está asegurada en la póliza 800000018775, por favor verifique.")){
+                clickearElemento(botonSiguiente);
+            }
+        }
+
     }
 
     public void clickLinkDescartarCambios() {
