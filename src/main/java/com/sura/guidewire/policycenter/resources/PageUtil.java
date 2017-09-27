@@ -15,6 +15,7 @@ import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;
 
 import org.apache.poi.ss.usermodel.*;
+import org.apache.xmlbeans.impl.xb.xsdschema.FieldDocument;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.By;
@@ -74,7 +75,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_5 = 5;
     protected static final int CONSTANTE_6 = 6;
     protected static final int CONSTANTE_7 = 7;
-    protected static final int CONSTANTE_9 = 9;
+    protected static int CONSTANTE_9 = 9;
     protected static final int CONSTANTE_10 = 10;
     protected static final int DIAS_31 = 31;
     protected static final int DIAS_61 = 61;
@@ -458,7 +459,7 @@ public class PageUtil extends PageObject {
         try {
             for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
                 for (int j = 0; j < getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
-                    String valorEncontrado = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + j + "]";
+                    String valorEncontrado = tablaFilasColumnas + "//table"  + "//tr[" + i + "]" + "//td[" + j + "]";
                     if (valorEncontrado.contains(dato)) {
                     }
                 }
@@ -471,15 +472,16 @@ public class PageUtil extends PageObject {
         String tblBuscada[][]=new String[2][getDriver().findElements(By.xpath(tablaColumnas)).size()];
         try {
             for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
-                for (int j = 0; j < getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
-                    String valorEncontrado = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + j + "]";
-                    if (valorEncontrado.contains(regla)) {
+                //for (int j = 15; j <= getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
+                    String valorEncontrado =tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + (i+1) + "]" + "//td[" + (15) + "]";
+                    WebElementFacade valorRegla=element(By.xpath(valorEncontrado));
+                    if (valorRegla.getText().contains(regla)) {
                        tblBuscada[i][0]=valorEncontrado;
-                       String usuario=tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + j+1 + "]";
+                       String usuario=tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + 16+ "]";
                        tblBuscada[i][1]=usuario;
                     }
                 }
-            }
+           // }
             Serenity.setSessionVariable("reglaEncontrada".toLowerCase().trim()).to(tblBuscada);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("Exception " + e);
@@ -544,7 +546,7 @@ public class PageUtil extends PageObject {
 
                     if (lista.get(0).equals(parametro1) || parametro1.equals("null")) {
                         if (lista.get(1).equals(parametro2) || parametro2.equals("null")) {
-                                if (lista.get(2).equals(parametro3) || parametro3.equals("null")) {
+                                if (lista.get(2).contains(parametro3) || parametro3.equals("null")) {
                                     if (lista.get(8).equals(parametro4) || parametro4.equals("null")) {
                                         reglas.add(lista.get(2));
                                         break;

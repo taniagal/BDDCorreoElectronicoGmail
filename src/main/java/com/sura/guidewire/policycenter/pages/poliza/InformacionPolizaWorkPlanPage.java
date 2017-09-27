@@ -42,7 +42,7 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
 
     public String tblFilasreglas = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table//tr";
     public String tblColumnasReglas =".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table//td";
-    public String tblColumnasFilasReglas = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table//tr//td";
+    public String tblColumnasFilasReglas = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']";
 
     public InformacionPolizaWorkPlanPage(WebDriver driver) {
         super(driver);
@@ -87,7 +87,6 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     public void buscarReglas(ArrayList<String> busquedaReglas) {
         for(int i=0;i<busquedaReglas.size();i++){
             buscarRegla(busquedaReglas.get(i),tblFilasreglas,tblColumnasReglas,tblColumnasFilasReglas);
-
 
 }
 

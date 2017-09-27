@@ -8,8 +8,8 @@ So that I can achieve a business goal
 Scenario: scenario description
 GivenStories: stories/policycenter/login_policy.story
 Given se tienen los siguientes parametros para la busqueda
-|oficina|asesor    |regla                                                                                                                                                                                                                                                                                                                                                                              |canal |
-|4029   |null      |Valor asegurado,Por política de la compañía este vehículo no puede ser asegurado.,El valor de los accesorios es mayor al 20% del valor Asegurado,El valor de los accesorios especiales es mayor al valor Asegurado del vehículo. Por favor verifique.,El valor de los accesorios especiales es mayor al valor Asegurado del vehículo. Por favor verifique.,UWIssueForBonus         |CC013 |
+|oficina|asesor    |regla                       |      |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |null      |                            |CC013 |
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
@@ -36,7 +36,11 @@ And vuelva a la cotizacion de poliza
 And voy a expedir una poliza
 And de click en el boton aceptar
 And ingese al plan del trabajo
-And valide la persona a la cual le llego el plan de trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al uusuario a validar asignación de actividad
+
+
 
 Examples:
 | accesorios | tipo_documento       | documento  |valor_asegurado     |

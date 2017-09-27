@@ -36,12 +36,13 @@ public class InformacionPolizaWorkPlanDefinitions {
         ;
     }
 
-    @When("valide la persona a la cual le llego el plan de trabajo")
+    @When("valide la generacion de las reglas que deben ser autorizadas")
     public void validarPersonaPlanDeTrabajo(){
         ArrayList<String> busquedaReglas= Serenity.sessionVariableCalled("datosBusquedaExcel".toLowerCase().trim());
         informacionPolizaWorkPlanSteps.buscarRegla(busquedaReglas);
 
     }
+
 
 
 }

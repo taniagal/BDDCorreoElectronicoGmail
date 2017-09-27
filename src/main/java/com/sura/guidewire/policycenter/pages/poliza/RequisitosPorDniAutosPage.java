@@ -2,12 +2,16 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import org.apache.poi.ss.usermodel.*;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 
@@ -126,9 +130,12 @@ public class RequisitosPorDniAutosPage extends PageUtil {
         clickearElemento(botonRequisitosExpedicion);
     }
 
-    public void irARequisitosEnRehabilitacion() {
-        botonRequisitosRehabilitacion.waitUntilPresent();
-        clickearElemento(botonRequisitosRehabilitacion);
+    public void irARequisitosEnRehabilitacion()  {
+        if(botonRequisitosRehabilitacion.isPresent() && botonRequisitosRehabilitacion.isVisible()){
+            botonRequisitosRehabilitacion.waitUntilPresent();
+            clickearElemento(botonRequisitosRehabilitacion);
+        }
+
     }
 
     public void diligenciarRequisitos() {
@@ -189,7 +196,58 @@ public class RequisitosPorDniAutosPage extends PageUtil {
         opcionRecibido.click();
         botonActualizarEstados.click();
         cerrarPestanaDelNavegador();
+        seleccionarPestanaDelNavegador(CONSTANTE_0);
 
+
+    }
+
+    public void buscarUsuarioRegla(String[][] reglasEncontradas) {
+        File usuarios=new File("D:\\workSpaces\\BDD_END_TO_END\\BDDCoreSuraPolicy\\src\\test\\resources\\data_driven\\Copia de ModeloAutorizaciones (6).xlsx");
+        Workbook libro=null;
+        ArrayList<String> filaUsuario= new ArrayList<>();
+        String usuariosRed[][]=new String[reglasEncontradas.length][2];
+        try{
+            libro= WorkbookFactory.create(usuarios);
+            Sheet hoja=libro.getSheetAt(2);
+            Iterator<Row> iteradorFilas=hoja.rowIterator();
+            Row filas;
+            for(int i=0;i<reglasEncontradas.length;i++) {
+                while (iteradorFilas.hasNext()) {
+                    filas = iteradorFilas.next();
+                    Iterator<Cell> iteradorCeldas = filas.cellIterator();
+                    Cell celda;
+                    while (iteradorCeldas.hasNext()) {
+                        celda = iteradorCeldas.next();
+                        String celdas=celda.getStringCellValue();
+                        filaUsuario.add(celdas);
+                    }
+
+                    if(filaUsuario.get(0).equals(reglasEncontradas[i][0])){
+                        if(filaUsuario.get(1).equals(reglasEncontradas[i][1])){
+                               usuariosRed[i][0]=filaUsuario.get(0);
+                               usuariosRed[i][1]=filaUsuario.get(2);
+                        }
+                    }
+
+
+                    filaUsuario.clear();
+                }
+            }
+            Serenity.setSessionVariable("usuarios".toLowerCase().trim()).to(usuariosRed);
+
+        }
+        catch(Exception e){
+
+        }
+    }
+
+    public void validarAsignacionActividad() {
+        String usuarios[][]=Serenity.sessionVariableCalled("usuarios".toLowerCase().trim());
+        for(int i=0;i<usuarios.length;i++){
+            for(int j=0;j< 2;i++){
+
+            }
+        }
     }
 }
 

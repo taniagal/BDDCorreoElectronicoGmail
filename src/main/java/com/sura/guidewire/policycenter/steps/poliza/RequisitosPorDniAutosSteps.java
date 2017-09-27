@@ -70,9 +70,17 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     public void expedirPoliza() {
         requisitosPorDniAutosPage.expedirPoliza();
     }
-
+    @Step
     public void diligenciarTodosLosRequisitos() {
         requisitosPorDniAutosPage.diligenciarTodosLosRequisitos();
+    }
+    @Step
+    public void buscarUsuarioRegla(String[][] reglasEncontradas) {
+    requisitosPorDniAutosPage.buscarUsuarioRegla(reglasEncontradas);
+    }
+    @Step
+    public void validarAsignacionActividad() {
+        requisitosPorDniAutosPage.validarAsignacionActividad();
     }
 }
 

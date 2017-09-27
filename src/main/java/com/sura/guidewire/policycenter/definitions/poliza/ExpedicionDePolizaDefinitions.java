@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.steps.colectivas.PolizaPrincipalPaSteps;
 import com.sura.guidewire.policycenter.steps.poliza.ExpedicionDePolizaSteps;
 
 import com.sura.guidewire.policycenter.steps.poliza.RequisitosPorDniAutosSteps;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 
@@ -11,6 +12,8 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+
+import java.util.ArrayList;
 
 
 public class ExpedicionDePolizaDefinitions {
@@ -112,5 +115,14 @@ public class ExpedicionDePolizaDefinitions {
     public void diligenciarRequisitos() {
         requisitosPorDniAutosSteps.irARequisitosEnRehabilitacion();
         requisitosPorDniAutosSteps.diligenciarTodosLosRequisitos();
+    }
+    @When ("valide el usuario que debe aprobar una u otra regla de autorizacion")
+    public void validarUsuario(){
+        String [][]reglasEncontradas=Serenity.sessionVariableCalled("reglaEncontrada".toLowerCase().trim());
+        requisitosPorDniAutosSteps.buscarUsuarioRegla(reglasEncontradas);
+    }
+    @When("ir al uusuario a validar asignación de actividad")
+    public void validarAsignacionActividad(){
+        requisitosPorDniAutosSteps.validarAsignacionActividad();
     }
 }
