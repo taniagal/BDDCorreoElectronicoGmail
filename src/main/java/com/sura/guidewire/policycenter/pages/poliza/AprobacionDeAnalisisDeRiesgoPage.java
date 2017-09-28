@@ -101,6 +101,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
         resetImplicitTimeout();
+        esperarHasta(TIEMPO_5000);
     }
 
     public void expedirPolizaUAT() {
