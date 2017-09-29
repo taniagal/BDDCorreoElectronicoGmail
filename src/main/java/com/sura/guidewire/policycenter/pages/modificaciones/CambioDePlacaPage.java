@@ -192,12 +192,15 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void editarCambioPoliza() {
-        if (botonEditarCambioPoliza.isPresent()) {
+        if (botonEditarCambioPoliza.isPresent() && botonEditarCambioPoliza.isVisible()) {
             clickearElemento(botonEditarCambioPoliza);
-        } else if (botonEditarCambioPolizaExpedicion.isPresent()) {
+           clickearElemento(botonEditarCambioPolizaAceptar);
+
+        } else {
+            waitFor(botonEditarCambioPolizaExpedicion);
             clickearElemento(botonEditarCambioPolizaExpedicion);
+            clickearElemento(botonEditarCambioPolizaAceptar);
         }
-        clickearElemento(botonEditarCambioPolizaAceptar);
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {

@@ -86,6 +86,7 @@ public class CancelacionPolizaRetroactivaDefinitions {
     public void expedirPoliza() {
         tasaUnicaSteps.expedirPolizaUAT();
     }
+
     @When("capturar el numero de cotizacion")
     public void capturarNumeroCotizacionPoliza() {
         cancelacionPolizaRetroactivaSteps.capturarNumeroCotizacion();

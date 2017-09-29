@@ -121,7 +121,7 @@ public class ExpedicionDePolizaDefinitions {
         String [][]reglasEncontradas=Serenity.sessionVariableCalled("reglaEncontrada".toLowerCase().trim());
         requisitosPorDniAutosSteps.buscarUsuarioRegla(reglasEncontradas);
     }
-    @When("ir al uusuario a validar asignación de actividad")
+    @When("ir al usuario a validar asignación de actividad")
     public void validarAsignacionActividad(){
         requisitosPorDniAutosSteps.validarAsignacionActividad();
     }

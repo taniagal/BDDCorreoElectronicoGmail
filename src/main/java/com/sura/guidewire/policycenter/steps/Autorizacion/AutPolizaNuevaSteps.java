@@ -23,7 +23,7 @@ public class AutPolizaNuevaSteps extends ScenarioSteps {
     }
     @Step
     public void leerParametros(ExamplesTable paramatros) {
-        File archivo=new File("D:\\workSpaces\\BDD_END_TO_END\\BDDCoreSuraPolicy\\src\\test\\resources\\data_driven\\Copia de ModeloAutorizaciones (6).xlsx");
+        File archivo=new File(new File("src\\test\\resources\\data_driven\\Copia de ModeloAutorizaciones (6).xlsx").getAbsolutePath());
         autPolizaNuevaPage.leerExcel(archivo,0,paramatros);
     }
 }
