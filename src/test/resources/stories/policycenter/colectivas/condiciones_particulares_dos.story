@@ -23,8 +23,8 @@ And ingrese las coberturas necesarias:
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-| mensaje                                                                    |
-| La bonificación no coincide con lo arrojado por el sistema, Favor verifica |
+| mensaje |
+|         |
 
 
 Examples:
@@ -47,8 +47,8 @@ And ingrese las coberturas necesarias:
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-| mensaje                                                                    |
-| La bonificación no coincide con lo arrojado por el sistema, Favor verifica |
+| mensaje |
+|         |
 
 
 Examples:
@@ -71,8 +71,8 @@ And ingrese las coberturas necesarias:
 And intente cotizar
 And ingrese a analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
-| mensaje                                                                    |
-| La bonificación no coincide con lo arrojado por el sistema, Favor verifica |
+| mensaje |
+|         |
 
 
 Examples:
@@ -99,7 +99,6 @@ Then se debe permitir expedir la poliza
 Examples:
 | tipo_documento       | documento  | producto | agente_oficina | numSubscripcion | bonoT | bonoC |
 | CEDULA DE CIUDADANIA | 1060447895 | Autos    | DIRECTO        | 39355347        | 4     | 6     |
-
 
 
 Scenario: 5 Bloqueo de expedicion de vehiculo cero kilometros

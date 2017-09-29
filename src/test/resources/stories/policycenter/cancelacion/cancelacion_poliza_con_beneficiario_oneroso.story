@@ -37,7 +37,6 @@ Examples:
 | tipo_documento       | documento  | tipoBeneficiarioOneroso |
 | CEDULA DE CIUDADANIA | 1264567899 | Oneroso Leasing         |
 
-
 Scenario: Validar que se genere mensaje de alerta, al cancelar una poliza con beneficiario oneroro en MRC
 Meta: @manual
 Given estoy cotizando una poliza de mrc:
@@ -65,7 +64,3 @@ And se debe visualizar mensaje de advertencia al cancelar poliza por opciones de
 | mensaje                                                                                                                                                                                                                 |
 | La póliza tiene beneficiario oneroso, usted debe tener en su poder el paz y salvo o el documento de la entidad onerosa en donde se acepta la cancelación , gestión que de manera previa debió haber realizado el asesor |
 
-
-Examples:
-|  |
-|  |
