@@ -55,6 +55,7 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
     }
 
     public void ingresarAnalisisDeRiesgo() {
+        analisiDeRiesgoSub.waitUntilClickable();
         clickearElemento(analisiDeRiesgoSub);
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgoSub);
     }
