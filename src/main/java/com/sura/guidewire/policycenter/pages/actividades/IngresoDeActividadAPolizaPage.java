@@ -19,12 +19,12 @@ public class IngresoDeActividadAPolizaPage extends PageUtil {
         WebElementFacade opcionMenuLateralAccionesNuevaActividad = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_NewActivity-textEl']");
         WebElementFacade opcionMenuLateralAccionesRequest = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-textEl']");
         WebElementFacade opcionMenuLateralAccionesCrearAgente = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:0:item-textEl']");
-        waitFor(botonMenuLateralAcciones).waitUntilPresent().click();
-        opcionMenuLateralAccionesNuevaActividad.waitUntilPresent();
+        waitFor(botonMenuLateralAcciones).waitUntilVisible().click();
+        opcionMenuLateralAccionesNuevaActividad.waitUntilVisible();
         actions.moveToElement(opcionMenuLateralAccionesNuevaActividad).release(opcionMenuLateralAccionesNuevaActividad).build().perform();
-        opcionMenuLateralAccionesRequest.waitUntilPresent();
+        opcionMenuLateralAccionesRequest.waitUntilVisible();
         actions.moveToElement(opcionMenuLateralAccionesRequest).release(opcionMenuLateralAccionesRequest).build().perform();
-        opcionMenuLateralAccionesCrearAgente.waitUntilPresent().click();
+        opcionMenuLateralAccionesCrearAgente.waitUntilVisible().click();
     }
 
     public void crearUnaActividadPorDefectoALaPoliza() {
