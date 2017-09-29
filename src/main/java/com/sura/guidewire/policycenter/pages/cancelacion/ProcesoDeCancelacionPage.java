@@ -69,7 +69,8 @@ public class ProcesoDeCancelacionPage extends PageUtil {
     }
 
     public void darClicBotonDetalle() {
-        btnDetalle.waitUntilPresent();
+        esperarHasta(TIEMPO_5000);
+        btnDetalle.waitUntilClickable();
         clickearElemento(btnDetalle);
     }
 
