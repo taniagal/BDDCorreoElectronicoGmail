@@ -64,7 +64,7 @@ public class CambioDePolizaPage extends PageUtil {
 
     public void irAMenuAcciones() {
         esperarHasta(TIEMPO_1000);
-        menuAcciones.click();
+        menuAcciones.waitUntilClickable().click();
     }
 
     public void cambiarPoliza() {
@@ -109,8 +109,8 @@ public class CambioDePolizaPage extends PageUtil {
 
     public void cambiarFechaDeVigencia(String dias) {
         NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
-        botonEditarTransaccionDePoliza.waitUntilPresent().click();
-        botonAceptarPopup.waitUntilPresent().click();
+        botonEditarTransaccionDePoliza.waitUntilVisible().click();
+        botonAceptarPopup.waitUntilClickable().click();
         irAInformacionDePoliza();
         String fecha = Utils.sumarDiasALaFechaActual(Integer.parseInt(dias));
         campoTxtFechaInicioDeVigencia.waitUntilPresent().clear();

@@ -118,7 +118,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     }
 
     public void irAVehiculos() {
-        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(menuItemVehiculos).waitUntilPresent();
+        withTimeoutOf(TIEMPO_30, TimeUnit.SECONDS).waitFor(menuItemVehiculos).waitUntilClickable();
         clickearElemento(menuItemVehiculos);
         clickearElemento(menuItemVehiculos);
     }

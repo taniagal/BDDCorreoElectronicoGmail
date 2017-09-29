@@ -51,7 +51,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        botonExpedirPoliza.waitUntilPresent();
+        botonExpedirPoliza.waitUntilClickable();
         try {
             clickearElemento(botonExpedirPoliza);
         } catch (StaleElementReferenceException e) {
