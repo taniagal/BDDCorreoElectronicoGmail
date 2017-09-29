@@ -11,6 +11,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
@@ -28,6 +29,8 @@ public class PlanDeTrabajoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='RenewalWizard:Workplan']")
     WebElementFacade xPathOpcionPlanDeTrabajoEnRenovacionDePoliza;
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
+    @FindBy(xpath = ".//*[@id='CancellationWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table/tbody/tr[1]/td[15]")
+    private WebElementFacade xPathColumnaDeDetalleReglaUW;
 
     public PlanDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -67,6 +70,9 @@ public class PlanDeTrabajoPage extends PageUtil {
         esperarHasta(TIEMPO_5000);
         findBy(xPathOpcionPlanDeTrabajoEnCancelacion).click();
         waitForTextToAppear("Plan de trabajo");
+        while(!xPathColumnaDeDetalleReglaUW.isVisible()){
+            getDriver().navigate().refresh();
+        }
     }
     public void ingresarALaOpcionAnalisisDeRiesgoCancelacion(){
         esperarHasta(TIEMPO_2000);
