@@ -459,6 +459,15 @@ public class PolizaPage extends PageUtil {
         botonIniciarCancelacion.waitUntilVisible().click();
     }
 
+    public void validarBotonCancelarPoliza(String motivo, String descripcion){
+        for (int i=CONSTANTE_0;i<CONSTANTE_10;i++){
+            if(!botonIniciarCancelacion.isEnabled()){
+                esperarHasta(TIEMPO_1000);
+                ingresarMotivosCancelacion(motivo,descripcion);
+            }
+        }
+    }
+
     public void confirmarCancelacion() {
         botonRetirarCancelacion.waitUntilPresent();
         clickearElemento(botonRetirarCancelacion);

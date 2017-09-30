@@ -33,7 +33,6 @@ Examples:
 | tipo_documento       | documento  |
 | CEDULA DE CIUDADANIA | 9923424349 |
 
-
 Scenario: Cancelación posterior al último pago del cliente
 When voy a cotizar poliza de autos individual:
 | cuenta     | producto | oficina | agente_oficina                     | tipoPoliza |

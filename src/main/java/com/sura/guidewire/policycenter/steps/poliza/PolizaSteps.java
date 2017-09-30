@@ -345,4 +345,9 @@ public class PolizaSteps extends GuidewireSteps {
     public void cuandoEditeLaCotizacion() {
         polizaPage.cuandoEditeLaCotizacion();
     }
+
+    @Step
+    public void validarBotonCancelarPoliza(String motivo, String descripcion){
+        polizaPage.validarBotonCancelarPoliza(motivo,descripcion);
+    }
 }
