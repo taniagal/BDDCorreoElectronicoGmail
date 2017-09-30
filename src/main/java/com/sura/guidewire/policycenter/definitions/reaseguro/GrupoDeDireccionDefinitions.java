@@ -6,10 +6,7 @@ import com.sura.guidewire.policycenter.steps.poliza.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.GrupoDeDireccionSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Alias;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 
 public class GrupoDeDireccionDefinitions {
@@ -29,6 +26,11 @@ public class GrupoDeDireccionDefinitions {
     @Given("ingrese la Fecha Inicio Vigencia: $fechaInicioVigencia")
     public void givenModifiqueLasFechasParaQueSeanCreadasEnDosPeriodos(String fechaInicioVigencia) {
         informacionDePolizaMrcDefinitions.modificaFechaInicioFechaFin(fechaInicioVigencia);
+    }
+
+    @Given("MA ingrese la Fecha Inicio Vigencia: $fechaInicioVigencia Fecha fin vigencia $fechaFinVigencia")
+    public void  ingresarFechaInicioFinVigencia(String fechaInicioVigencia, String fechaFinVigencia) {
+        informacionDePolizaMrcSteps.ingresarFechaDeVigenciaMA(fechaInicioVigencia,fechaFinVigencia);
     }
 
     @When("quiera reasegurar la poliza cotizada")
@@ -78,6 +80,11 @@ public class GrupoDeDireccionDefinitions {
         informacionDePolizaMrcSteps.ingresarFechaDeVigencia(fechaInicioVigencia);
     }
 
+    @Given("ingrese la Fecha Inicio Vigencia MA: $fechaInicioVigencia")
+    public void modificarFechaInicioVigenciaMA(String fechaInicioVigencia) {
+        informacionDePolizaMrcSteps.ingresarFechaDeVigenciaMA(fechaInicioVigencia, fechaInicioVigencia);
+    }
+
     @When("de clic al menu reaseguro")
     public void clicMenuReaseguro() {
         crearYEditarCumulosSteps.clicMenuReaseguro();
@@ -102,4 +109,5 @@ public class GrupoDeDireccionDefinitions {
     public void ingresarFechaFinVigencia() {
         grupoDeDireccionSteps.ingresarFechaFinVigencia();
     }
+
 }
