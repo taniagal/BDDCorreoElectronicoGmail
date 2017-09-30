@@ -38,7 +38,7 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
     public void clickEnPagos() {
         waitPayment(btnPago);
         esperarHasta(TIEMPO_2000);
-        btnPago.click();
+        clickearElemento(btnPago);
     }
 
     public void validaIngresoAPago() {
