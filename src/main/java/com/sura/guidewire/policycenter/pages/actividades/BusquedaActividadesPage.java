@@ -59,6 +59,7 @@ public class BusquedaActividadesPage extends PageUtil {
         withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
+        esperarHasta(TIEMPO_5000);
         waitForAnyTextToAppear("Buscar pólizas", "Búsqueda de actividades");
         clickearElemento(menuBuscarActividades);
         waitForTextToAppear("Búsqueda");
