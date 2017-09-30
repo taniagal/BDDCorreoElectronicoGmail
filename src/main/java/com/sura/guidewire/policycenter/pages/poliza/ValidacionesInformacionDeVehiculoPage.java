@@ -288,7 +288,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             clickearElemento(campoTxtchasis);
             esperarHasta(TIEMPO_2000);
             campoTxtchasis.type(vehiculo.get("chasis"));
-            campoTxtMotor.waitUntilClickable().click();
+            campoTxtMotor.waitUntilClickable();
+            campoTxtMotor.click();
             esperarHasta(TIEMPO_2000);
         }
     }

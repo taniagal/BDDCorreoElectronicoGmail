@@ -19,7 +19,8 @@ public class IngresoDeActividadAPolizaPage extends PageUtil {
         WebElementFacade opcionMenuLateralAccionesNuevaActividad = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_NewActivity-textEl']");
         WebElementFacade opcionMenuLateralAccionesRequest = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-textEl']");
         WebElementFacade opcionMenuLateralAccionesCrearAgente = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:0:item-textEl']");
-        waitFor(botonMenuLateralAcciones).waitUntilVisible().click();
+        waitFor(botonMenuLateralAcciones).waitUntilVisible();
+        botonMenuLateralAcciones.click();
         opcionMenuLateralAccionesNuevaActividad.waitUntilVisible();
         actions.moveToElement(opcionMenuLateralAccionesNuevaActividad).release(opcionMenuLateralAccionesNuevaActividad).build().perform();
         opcionMenuLateralAccionesRequest.waitUntilVisible();
