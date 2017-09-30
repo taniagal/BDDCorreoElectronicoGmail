@@ -93,6 +93,16 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade btnRequisitos2;
     public String tblPubVisualRequisitos=".//*[@id='frmRequisitos']/table/tbody/tr[4]/td//td[1]";
     public String tblColumnasItem=".//*[@id='reqCliente']//tr//td[1]";
+    @FindBy(xpath=".//*[@id=':TabLinkMenuButton']")
+    private WebElementFacade btnCerrarSesion;
+    @FindBy(xpath=".//*[@id='TabBar:LogoutTabBarLink-textEl']")
+    private WebElementFacade btnCerrarAplicacion;
+    @FindBy(xpath=".//*[@id='username']")
+    private WebElementFacade txtUserLogin;
+    @FindBy(xpath=".//*[@id='password']")
+    private WebElementFacade txtPassword;
+    @FindBy(xpath=".//*[@id='lower']/input")
+    private WebElementFacade btnIniciarSesion;
 
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
@@ -131,6 +141,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void irARequisitosEnRehabilitacion()  {
+        waitFor(botonRequisitosRehabilitacion);
         if(botonRequisitosRehabilitacion.isPresent() && botonRequisitosRehabilitacion.isVisible()){
             botonRequisitosRehabilitacion.waitUntilPresent();
             clickearElemento(botonRequisitosRehabilitacion);
@@ -183,7 +194,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
         esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
     }
 
-    public void diligenciarTodosLosRequisitos() {
+    public void diligenciarTodosLosRequisitos()  {
         if(btnRequisitos.isPresent()&& btnRequisitos.isVisible()){
             clickearElemento(btnRequisitos);
         }
@@ -202,53 +213,60 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void buscarUsuarioRegla(String[][] reglasEncontradas) {
-        File usuarios=new File("D:\\workSpaces\\BDD_END_TO_END\\BDDCoreSuraPolicy\\src\\test\\resources\\data_driven\\Copia de ModeloAutorizaciones (6).xlsx");
+        File usuarios=new File("src\\test\\resources\\data_driven\\EstructuraServicio.xlsx");
         Workbook libro=null;
         ArrayList<String> filaUsuario= new ArrayList<>();
         String usuariosRed[][]=new String[reglasEncontradas.length][2];
-        try{
-            libro= WorkbookFactory.create(usuarios);
-            Sheet hoja=libro.getSheetAt(2);
-            Iterator<Row> iteradorFilas=hoja.rowIterator();
-            Row filas;
-            for(int i=0;i<reglasEncontradas.length;i++) {
+        String oficina= Serenity.sessionVariableCalled("oficina".toLowerCase());
+        try {
+            libro = WorkbookFactory.create(usuarios);
+            Sheet hoja = libro.getSheetAt(2);
+            for (int i=1;i<reglasEncontradas.length;i++) {
+                Iterator<Row> iteradorFilas = hoja.rowIterator();
+                Row filas;
                 while (iteradorFilas.hasNext()) {
                     filas = iteradorFilas.next();
                     Iterator<Cell> iteradorCeldas = filas.cellIterator();
                     Cell celda;
                     while (iteradorCeldas.hasNext()) {
                         celda = iteradorCeldas.next();
-                        String celdas=celda.getStringCellValue();
+                        String celdas = celda.getStringCellValue();
                         filaUsuario.add(celdas);
                     }
 
-                    if(filaUsuario.get(0).equals(reglasEncontradas[i][0])){
-                        if(filaUsuario.get(1).equals(reglasEncontradas[i][1])){
-                               usuariosRed[i][0]=filaUsuario.get(0);
-                               usuariosRed[i][1]=filaUsuario.get(2);
+                    if (filaUsuario.get(0).equals(reglasEncontradas[i][0])) {
+                        if (filaUsuario.get(1).equals(reglasEncontradas[i][1])) {
+                            if (filaUsuario.get(3).equals(oficina)) {
+                                usuariosRed[i][0] = filaUsuario.get(0);
+                                usuariosRed[i][1] = filaUsuario.get(2);
+                                filaUsuario.clear();
+                                break;
+                            }
                         }
                     }
-
-
                     filaUsuario.clear();
                 }
             }
             Serenity.setSessionVariable("usuarios".toLowerCase().trim()).to(usuariosRed);
-
         }
         catch(Exception e){
-
         }
     }
 
     public void validarAsignacionActividad() {
         String usuarios[][]=Serenity.sessionVariableCalled("usuarios".toLowerCase().trim());
-        for(int i=0;i<usuarios.length;i++){
-            for(int j=0;j< 2;i++){
+            for(int i=1;i<usuarios.length;i++){
+            clickearElemento(btnCerrarSesion);
+            clickearElemento(btnCerrarAplicacion);
+            txtUserLogin.click();
+            ingresarDato(txtUserLogin,usuarios[i][1]);
+            txtPassword.click();
+            ingresarDato(txtPassword,"sura2017");
+            btnIniciarSesion.click();
 
             }
         }
     }
-}
+
 
 

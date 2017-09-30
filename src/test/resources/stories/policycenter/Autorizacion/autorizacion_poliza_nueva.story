@@ -8,8 +8,8 @@ So that I can achieve a business goal
 Scenario: scenario description
 GivenStories: stories/policycenter/login_policy.story
 Given se tienen los siguientes parametros para la busqueda
-|oficina|asesor    |regla                       |      |                                                                                                                                                                                                                                                                                                                                                                     |canal |
-|4029   |null      |                            |CC013 |
+|oficina|asesor    |regla                                                                                                                                                                                    | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |null      |mayor al 20%,mayor al valor Asegurado del vehículo,límite máximo permitido,La placa DAG64F está asegurada en la póliza,no puede ser asegurado,rangos estimados por Suramericana          |CC013      |
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
@@ -20,12 +20,12 @@ When ingrese los datos del vehiculo:
 When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |
+And capturar el numero de cotizacion
 And llegue a la expedicion de la poliza
 And cuando edite la transacion de la poliza
 And agregue un nuevo valor asegurado <valor_asegurado>
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
-And seleccione la opcion importado por terceros
 And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 And cotice una poliza
@@ -38,8 +38,7 @@ And de click en el boton aceptar
 And ingese al plan del trabajo
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
-And ir al uusuario a validar asignación de actividad
-
+And ir al usuario a validar asignación de actividad
 
 
 Examples:

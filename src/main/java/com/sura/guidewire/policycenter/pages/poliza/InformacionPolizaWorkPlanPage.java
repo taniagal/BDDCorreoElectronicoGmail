@@ -85,10 +85,8 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     }
 
     public void buscarReglas(ArrayList<String> busquedaReglas) {
-        for(int i=0;i<busquedaReglas.size();i++){
-            buscarRegla(busquedaReglas.get(i),tblFilasreglas,tblColumnasReglas,tblColumnasFilasReglas);
+            buscarRegla(busquedaReglas,tblFilasreglas,tblColumnasReglas,tblColumnasFilasReglas);
 
-}
 
     }
 }

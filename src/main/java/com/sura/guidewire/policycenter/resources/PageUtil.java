@@ -468,18 +468,23 @@ public class PageUtil extends PageObject {
             LOGGER.info("Exception " + e);
         }
     }
-    public void buscarRegla(String regla, String tablaFilas, String tablaColumnas, String tablaFilasColumnas){
-        String tblBuscada[][]=new String[2][getDriver().findElements(By.xpath(tablaColumnas)).size()];
+    public void buscarRegla(ArrayList<String> regla, String tablaFilas, String tablaColumnas, String tablaFilasColumnas){
+        String tblBuscada[][]=new String[getDriver().findElements(By.xpath(tablaFilas)).size()][2];
         try {
-            for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
-                //for (int j = 15; j <= getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
-                    String valorEncontrado =tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + (i+1) + "]" + "//td[" + (15) + "]";
-                    WebElementFacade valorRegla=element(By.xpath(valorEncontrado));
-                    if (valorRegla.getText().contains(regla)) {
-                       tblBuscada[i][0]=valorEncontrado;
-                       String usuario=tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + i + "]" + "//td[" + 16+ "]";
-                       tblBuscada[i][1]=usuario;
-                    }
+            for(int j=0;j<regla.size();j++){
+              for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
+                  //for (int j = 15; j <= getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
+                  String valorEncontrado = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + (i + 1) + "]" + "//td[" + (15) + "]";
+                  WebElementFacade valorRegla = element(By.xpath(valorEncontrado));
+                  if (valorRegla.getText().contains(regla.get(j))) {
+                      tblBuscada[i][0] = valorRegla.getText();
+                      String usuario = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + (i + 1) + "]" + "//td[" + 16 + "]";
+                      WebElementFacade valorUsuario = element(By.xpath(usuario));
+                      tblBuscada[i][1] = valorUsuario.getText();
+                      break;
+                  }
+              }
+
                 }
            // }
             Serenity.setSessionVariable("reglaEncontrada".toLowerCase().trim()).to(tblBuscada);
@@ -560,6 +565,7 @@ public class PageUtil extends PageObject {
             }
 
             Serenity.setSessionVariable("datosBusquedaExcel".toLowerCase().trim()).to(reglas);
+            Serenity.setSessionVariable("oficina".toLowerCase().trim()).to(parametro1);
 
         } catch (Exception e) {
             e.printStackTrace();
