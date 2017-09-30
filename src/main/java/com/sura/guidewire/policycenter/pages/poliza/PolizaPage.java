@@ -81,6 +81,12 @@ public class PolizaPage extends PageUtil {
     private WebElementFacade botonEditarTransaccion;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarTransaccion;
+    @FindBy(xpath = "//label[contains(.,'No se encontraron resultados de policy period con id')]")
+    private WebElementFacade labelAdvertenciaCancelacion;
+    @FindBy (xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']/../following-sibling::td")
+    private WebElementFacade comboBoxMotivoFlecha;
+    @FindBy (xpath = ".//li[contains(.,'Por orden de la compañía')]")
+    private WebElementFacade comboBoxMotivoCancelacion;
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation-btnInnerEl']")
     private WebElementFacade botonIniciarCancelacion;
     @FindBy(id = "ReinstatementWizard:Draft")
@@ -461,9 +467,14 @@ public class PolizaPage extends PageUtil {
 
     public void validarBotonCancelarPoliza(String motivo, String descripcion){
         for (int i=CONSTANTE_0;i<CONSTANTE_10;i++){
-            if(!botonIniciarCancelacion.isEnabled()){
+            if(labelAdvertenciaCancelacion.isVisible()){
+                //esperarHasta(TIEMPO_1000);
+                clickearElemento(comboBoxMotivoFlecha);
+                clickearElemento(comboBoxMotivoCancelacion);
                 esperarHasta(TIEMPO_1000);
                 ingresarMotivosCancelacion(motivo,descripcion);
+            }else{
+                i=CONSTANTE_10;
             }
         }
     }
