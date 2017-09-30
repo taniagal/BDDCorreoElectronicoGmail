@@ -131,6 +131,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl')]")
     private WebElementFacade comboMedioDeVenta;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:primaryuse_DV-inputEl']")
+    private WebElementFacade comboUsovehiculo;
 
     public ExpedicionDePolizaRequisitosPendientesPage(WebDriver driver) {
         super(driver);
@@ -287,5 +289,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         seleccionarItem(comboMedioDeVenta, medioVenta);
     }
 
+    public void agregarUsoVehiculo(String usoVehiculo) {
+    seleccionarItem(comboUsovehiculo,usoVehiculo);
+    }
 }
 

@@ -13,6 +13,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import org.apache.poi.ss.usermodel.*;
 import org.fluentlenium.core.annotation.Page;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class RequisitosPorDniAutosPage extends PageUtil {
@@ -103,6 +104,12 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade txtPassword;
     @FindBy(xpath=".//*[@id='lower']/input")
     private WebElementFacade btnIniciarSesion;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtBuscar;
+    @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
+    private WebElementFacade campoTxtSubN;
+    @FindBy(xpath = ".//span[contains(text(), 'Análisis de riesgo') and contains(@class, 'x-tree-node-text')]")
+    private WebElementFacade analisisDeRiesgo;
 
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
@@ -195,6 +202,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void diligenciarTodosLosRequisitos()  {
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(btnRequisitos);
         if(btnRequisitos.isPresent()&& btnRequisitos.isVisible()){
             clickearElemento(btnRequisitos);
         }
@@ -255,6 +263,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
 
     public void validarAsignacionActividad() {
         String usuarios[][]=Serenity.sessionVariableCalled("usuarios".toLowerCase().trim());
+        String cotizacion=Serenity.sessionVariableCalled("cotizacion".toLowerCase().trim());
             for(int i=1;i<usuarios.length;i++){
             clickearElemento(btnCerrarSesion);
             clickearElemento(btnCerrarAplicacion);
@@ -263,7 +272,12 @@ public class RequisitosPorDniAutosPage extends PageUtil {
             txtPassword.click();
             ingresarDato(txtPassword,"sura2017");
             btnIniciarSesion.click();
-
+                esperarObjetoClikeableServidorWe(campoTxtBuscar.waitUntilVisible());
+                campoTxtBuscar.waitUntilVisible().sendKeys("MySubmissions");
+                campoTxtBuscar.sendKeys(Keys.ENTER);
+                campoTxtSubN.waitUntilPresent().sendKeys(cotizacion);
+                campoTxtSubN.sendKeys(Keys.ENTER);
+                clickearElemento(analisisDeRiesgo);
             }
         }
     }
