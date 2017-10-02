@@ -474,11 +474,11 @@ public class PageUtil extends PageObject {
             for(int j=0;j<regla.size();j++){
               for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
                   //for (int j = 15; j <= getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
-                  String valorEncontrado = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + (i + 1) + "]" + "//td[" + (15) + "]";
+                  String valorEncontrado = tablaFilasColumnas + "//tr[" + (i + 1) + "]" + "//td[" + (15) + "]";
                   WebElementFacade valorRegla = element(By.xpath(valorEncontrado));
                   if (valorRegla.getText().contains(regla.get(j))) {
                       tblBuscada[i][0] = valorRegla.getText();
-                      String usuario = tablaFilasColumnas + "//table" + "//tbody" + "//tr[" + (i + 1) + "]" + "//td[" + 16 + "]";
+                      String usuario = tablaFilasColumnas + "//tr[" + (i + 1) + "]" + "//td[" + 16 + "]";
                       WebElementFacade valorUsuario = element(By.xpath(usuario));
                       tblBuscada[i][1] = valorUsuario.getText();
                       break;
@@ -522,6 +522,33 @@ public class PageUtil extends PageObject {
         }
 
     }
+    public void recorrerAnalisisRiesgo(String tblFilas,String tblColumnas,String tblFilasColumnas){
+        String reglaAprobar[][]=Serenity.sessionVariableCalled("reglaAprobar".toLowerCase().trim());
+       // String [][]reglaABuscar=Serenity.sessionVariableCalled("reglaEncontrada".toLowerCase().trim());
+        //for(int j=1;j<=reglaABuscar.length;j++)
+        for(int i=2;i<=getDriver().findElements(By.xpath(tblFilas)).size();i++){
+          //  for(int j=2;j<=getDriver().findElements(By.xpath(tblColumnas)).size();j++) {
+                String reglaEncontrada = tblFilasColumnas + "//table" + "//tr[" + i + "]" + "//td[" + 2 + "]";
+                WebElementFacade reglaAnalisisRiesgo=element(By.xpath(reglaEncontrada));
+                if(reglaAnalisisRiesgo.getText().equals(reglaAprobar[0][0])){
+                    String boton=".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:"+(i-1)+":UWIssueRowSet:Approve']";
+                    WebElementFacade botonAprobar=element(By.xpath(boton));
+                    clickearElemento(botonAprobar);
+                    String botonAceptar=".//*[@id='RiskApprovalDetailsPopup:Update']";
+                    WebElementFacade aceptarAprobacion=element(By.xpath(botonAceptar));
+                    clickearElemento(aceptarAprobacion);
+                    break;
+
+
+            }
+
+
+          //  }
+
+
+        }
+    }
+
     public void leerExcel(File archivo, int numeroHoja, ExamplesTable parametros) {
         ArrayList<String> lista = new ArrayList<>();
         Workbook libro = null;
@@ -549,8 +576,8 @@ public class PageUtil extends PageObject {
                         lista.add(celdas);
                     }
 
-                    if (lista.get(0).equals(parametro1) || parametro1.equals("null")) {
-                        if (lista.get(1).equals(parametro2) || parametro2.equals("null")) {
+                    if (lista.get(0).equals(parametro1) || lista.get(0).equals("") || parametro1.equals("null")) {
+                        if (lista.get(1).equals(parametro2) || lista.get(1).equals("")|| parametro2.equals("null")) {
                                 if (lista.get(2).contains(parametro3) || parametro3.equals("null")) {
                                     if (lista.get(8).equals(parametro4) || parametro4.equals("null")) {
                                         reglas.add(lista.get(2));
@@ -575,6 +602,15 @@ public class PageUtil extends PageObject {
                 e.printStackTrace();
             }
         }
+    }
+    public String obtenerNumero(String cadena) {
+        String numeroCotizacion = "";
+        for (int i = 0; i < cadena.length(); i++) {
+            if (cadena.charAt(i) >= '0' && cadena.charAt(i) <= '9') {
+                numeroCotizacion += cadena.charAt(i);
+            }
+        }
+        return numeroCotizacion;
     }
 }
 

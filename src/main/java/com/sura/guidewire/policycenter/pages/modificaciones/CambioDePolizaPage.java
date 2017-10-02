@@ -6,6 +6,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.Parametros;
 import com.sura.guidewire.policycenter.utils.Utils;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -14,6 +15,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -55,6 +57,23 @@ public class CambioDePolizaPage extends PageUtil {
     WebElementFacade radioBotonReaseguroEspeciaSi;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:CPBuildings']")
     WebElementFacade opcionEdificioYubicaciones;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-inputEl']")
+    WebElementFacade txtAccesorios;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl']")
+    WebElementFacade txtAccesoriosEspeciales;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
+    WebElementFacade txtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_true-inputEl']")
+    WebElementFacade checkBoxCombustible;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
+    WebElementFacade txtModelo;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']")
+    WebElementFacade txtFasecolda;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:2:RateModifier-inputEl']")
+    WebElementFacade txtBonificacionComercial;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']")
+    WebElementFacade btnSiguienteModificacionPoliza;
+
 
 
     public CambioDePolizaPage(WebDriver driver) {
@@ -135,5 +154,33 @@ public class CambioDePolizaPage extends PageUtil {
         withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(parametros.getTipo()));
 
+    }
+
+    public void modificarDatosvehiculo(ExamplesTable datos) {
+        Map<String,String> datosVehiculo=datos.getRow(0);
+        ingresarDato(txtAccesorios,datosVehiculo.get("valorAccesorios"));
+        ingresarDato(txtAccesoriosEspeciales,datosVehiculo.get("valorAccesoriosEspeciales"));
+        txtValorAsegurado.clear();
+        ingresarDato(txtValorAsegurado,datosVehiculo.get("valorAsegurado"));
+        if(datosVehiculo.get("transporteCombustible").equals("Si")){
+        checkBoxCombustible.click();
+        }
+
+    }
+
+    public void cambioVehiculo(ExamplesTable cambiosVehiculo) {
+        Map<String,String> cambioVehiculo=cambiosVehiculo.getRow(0);
+        seleccionarItem(txtModelo,cambioVehiculo.get("modelo"));
+        txtFasecolda.clear();
+        txtFasecolda.click();
+        ingresarDato(txtFasecolda,cambioVehiculo.get("fasecolda"));
+        txtBonificacionComercial.clear();
+        txtBonificacionComercial.click();
+        ingresarDato(txtBonificacionComercial,cambioVehiculo.get("bonificacionComercial"));
+
+    }
+
+    public void presionarOpcionSiguiente() {
+    clickearElemento(btnSiguienteModificacionPoliza);
     }
 }

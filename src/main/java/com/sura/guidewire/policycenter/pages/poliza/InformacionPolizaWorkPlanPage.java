@@ -40,15 +40,16 @@ public class InformacionPolizaWorkPlanPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewActivityWorksheet:NewActivityScreen:NewActivityScreen_CancelButton-btnInnerEl']")
     private WebElementFacade botonCancelarNuevaActividad;
 
-    public String tblFilasreglas = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table//tr";
-    public String tblColumnasReglas =".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']//table//td";
-    public String tblColumnasFilasReglas = ".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV-body']";
+    public String tblFilasreglas = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr";
+    public String tblColumnasReglas ="//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//td";
+    public String tblColumnasFilasReglas = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table";
 
     public InformacionPolizaWorkPlanPage(WebDriver driver) {
         super(driver);
     }
 
     public void clickPlanTrabajo() {
+        esperarHasta(3000);
         esperarYClickearBoton(menuItemPlanDeTrabajo);
         if (!menuItemPlanDeTrabajo.isSelected()) {
             esperarYClickearBoton(menuItemPlanDeTrabajo);
