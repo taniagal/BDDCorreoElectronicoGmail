@@ -83,6 +83,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private String opcion = "Si";
     @FindBy(xpath = "//div[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
     private WebElementFacade xpathPlaca;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
+    private WebElementFacade xpathZonaPermitida;
+    @FindBy(xpath = "//div[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
+    private WebElementFacade xpathValorMinimo;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -122,11 +126,23 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
         }
         clickearElemento(botonSiguiente);
-        if(xpathPlaca.isPresent()){
+        if(xpathPlaca.isPresent()&& xpathPlaca.isVisible()){
             if(xpathPlaca.containsText("La placa DAG64F está asegurada en la póliza 800000018775, por favor verifique.")){
                 clickearElemento(botonSiguiente);
             }
         }
+        if(xpathZonaPermitida.isPresent()&&xpathZonaPermitida.isVisible()){
+            if(xpathZonaPermitida.containsText("Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.")){
+                clickearElemento(botonSiguiente);
+            }
+        }
+        if(xpathValorMinimo.isPresent() && xpathValorMinimo.isVisible()){
+            if(xpathValorMinimo.containsText("El valor del vehículo es inferior al tope mínimo. Por favor verifique.")){
+                clickearElemento(botonSiguiente);
+            }
+        }
+
+
 
     }
 

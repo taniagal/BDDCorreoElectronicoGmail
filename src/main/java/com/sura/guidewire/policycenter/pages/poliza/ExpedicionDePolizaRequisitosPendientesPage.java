@@ -27,8 +27,12 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade menuItemAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Imported_true-inputEl']")
     private WebElementFacade itemImportado;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Imported_true-inputEl']")
+    private WebElementFacade itemImportadoCambio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:showImported_false-inputEl']")
     private WebElementFacade itemImportadoPorTerceros;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:showImported_false-inputEl']")
+    private WebElementFacade itemImportadoPorTercerosCambio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestCardTab-btnInnerEl']")
     private WebElementFacade botonInteresAdicional;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
@@ -131,6 +135,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl')]")
     private WebElementFacade comboMedioDeVenta;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:primaryuse_DV-inputEl']")
+    private WebElementFacade comboUsovehiculo;
 
     public ExpedicionDePolizaRequisitosPendientesPage(WebDriver driver) {
         super(driver);
@@ -162,8 +168,17 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void vehiculoImportadoTerceros() {
-        clickearElemento(itemImportado);
-        clickearElemento(itemImportadoPorTerceros);
+        if(itemImportado.isVisible()){
+            clickearElemento(itemImportado);
+            clickearElemento(itemImportadoPorTerceros);
+        }
+        else{
+            if(itemImportadoCambio.isVisible()){
+                clickearElemento(itemImportadoCambio);
+                clickearElemento(itemImportadoPorTercerosCambio);
+            }
+        }
+
     }
 
     public void ingresarBeneficiarioOneroso() {
@@ -188,6 +203,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
 
     public void cotizarModificacionPoliza() {
         clickearElemento(botonCotizarModificacion);
+        esperarHasta(3000);
     }
 
     public void clickVehiculoCeroKilometros() {
@@ -287,5 +303,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         seleccionarItem(comboMedioDeVenta, medioVenta);
     }
 
+    public void agregarUsoVehiculo(String usoVehiculo) {
+    seleccionarItem(comboUsovehiculo,usoVehiculo);
+    }
 }
 

@@ -15,10 +15,7 @@ import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 
 public class CancelacionPolizaRetroactivaDefinitions {
@@ -91,6 +88,17 @@ public class CancelacionPolizaRetroactivaDefinitions {
     public void capturarNumeroCotizacionPoliza() {
         cancelacionPolizaRetroactivaSteps.capturarNumeroCotizacion();
     }
+
+    @Given("capturar el numero de cotizacion en estado borrador")
+    public void capturarCotizacionBorrador(){
+        cancelacionPolizaRetroactivaSteps.capturarNumeroCotizacion();
+    }
+
+    @When("capturar el numero de cotizacion en estado borrador")
+    public void capturarCotizacion(){
+        cancelacionPolizaRetroactivaSteps.capturarNumeroCotizacion();
+    }
+
     @When("aprobar la cancelacion de la poliza $dataTable")
     public void aprobarCancelacion(ExamplesTable dataTable){
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();

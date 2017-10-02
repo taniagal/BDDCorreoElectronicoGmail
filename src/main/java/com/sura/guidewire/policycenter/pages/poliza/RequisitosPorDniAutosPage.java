@@ -13,6 +13,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import org.apache.poi.ss.usermodel.*;
 import org.fluentlenium.core.annotation.Page;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class RequisitosPorDniAutosPage extends PageUtil {
@@ -103,7 +105,22 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade txtPassword;
     @FindBy(xpath=".//*[@id='lower']/input")
     private WebElementFacade btnIniciarSesion;
-
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtBuscar;
+    @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
+    private WebElementFacade campoTxtSubN;
+    @FindBy(xpath = ".//span[contains(text(), 'Análisis de riesgo') and contains(@class, 'x-tree-node-text')]")
+    private WebElementFacade analisisDeRiesgo;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade xpathRequisitos;
+    public String tblFilasAnalisis=".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']//table//tr";
+    public String tblColAnalisis= ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']//table//tr//td";
+    public String tblFilColAnalisis= ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']";
+    @FindBy(xpath = ".//*[contains(@id, ':Workplan')]/div/span")
+    private WebElementFacade menuItemPlanDeTrabajo;
+    public String tblPlanTrabajoUsuario= "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr";
+    @FindBy(xpath = ".//*[@id='ActivityDetailWorksheet:ActivityDetailScreen:ActivityDetailToolbarButtonSet:ActivityDetailToolbarButtons_CompleteButton']")
+    private WebElementFacade btnCompletada;
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
         super(driver);
@@ -141,11 +158,16 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void irARequisitosEnRehabilitacion()  {
-        waitFor(botonRequisitosRehabilitacion);
-        if(botonRequisitosRehabilitacion.isPresent() && botonRequisitosRehabilitacion.isVisible()){
-            botonRequisitosRehabilitacion.waitUntilPresent();
-            clickearElemento(botonRequisitosRehabilitacion);
+        esperarHasta(10000);
+        if(xpathRequisitos.isPresent() && xpathRequisitos.isVisible()){
+            if(xpathRequisitos.containsText("Existen requisitos obligatorios pendientes por adjuntar, por favor diríjase a la pestaña Requisitos para tramitarlos."));
+            waitFor(botonRequisitosRehabilitacion);
+            if(botonRequisitosRehabilitacion.isPresent() && botonRequisitosRehabilitacion.isVisible()){
+                botonRequisitosRehabilitacion.waitUntilPresent();
+                clickearElemento(botonRequisitosRehabilitacion);
+            }
         }
+
 
     }
 
@@ -195,6 +217,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void diligenciarTodosLosRequisitos()  {
+        withTimeoutOf(TIEMPO_20, TimeUnit.SECONDS).waitFor(btnRequisitos);
         if(btnRequisitos.isPresent()&& btnRequisitos.isVisible()){
             clickearElemento(btnRequisitos);
         }
@@ -254,18 +277,46 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void validarAsignacionActividad() {
-        String usuarios[][]=Serenity.sessionVariableCalled("usuarios".toLowerCase().trim());
-            for(int i=1;i<usuarios.length;i++){
-            clickearElemento(btnCerrarSesion);
-            clickearElemento(btnCerrarAplicacion);
-            txtUserLogin.click();
-            ingresarDato(txtUserLogin,usuarios[i][1]);
-            txtPassword.click();
-            ingresarDato(txtPassword,"sura2017");
-            btnIniciarSesion.click();
+        String regla[][]=new String[1][1];
+        String usuarios[][] = Serenity.sessionVariableCalled("usuarios".toLowerCase().trim());
+        String cotizacion = Serenity.sessionVariableCalled("cotizacion".toLowerCase().trim());
+        for (int i = 1; i < usuarios.length; i++) {
+            if (usuarios[i][0] != null && !usuarios[i][0].equals("") && usuarios[i][1] != null && !usuarios[i][1].equals("")) {
+                clickearElemento(btnCerrarSesion);
+                clickearElemento(btnCerrarAplicacion);
+                txtUserLogin.click();
+                ingresarDato(txtUserLogin, usuarios[i][1]);
+                txtPassword.click();
+                ingresarDato(txtPassword, "sura2017");
+                btnIniciarSesion.click();
+                esperarObjetoClikeableServidorWe(campoTxtBuscar.waitUntilVisible());
+                campoTxtBuscar.waitUntilVisible().sendKeys("MySubmissions");
+                campoTxtBuscar.sendKeys(Keys.ENTER);
+                campoTxtSubN.waitUntilPresent().sendKeys(cotizacion);
+                campoTxtSubN.sendKeys(Keys.ENTER);
+                esperarHasta(3000);
+                esperarYClickearBoton(menuItemPlanDeTrabajo);
+                if (!menuItemPlanDeTrabajo.isSelected()) {
+                    esperarYClickearBoton(menuItemPlanDeTrabajo);
+                }
 
+               for(int h = 1; h<=getDriver().findElements(By.xpath(tblPlanTrabajoUsuario)).size(); h++){
+                  String valorEncontrado=tblPlanTrabajoUsuario+"["+h+"]"+"//td["+15+"]";
+                  WebElementFacade reglaEnc=element(By.xpath(valorEncontrado));
+                  if(reglaEnc.getText().equals(usuarios[i][0])){
+                      String enlaceRevisarAprobar=".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV:"+(h-1)+":Subject']";
+                      WebElementFacade revisarActividad=element(By.xpath(enlaceRevisarAprobar));
+                      clickearElemento(revisarActividad);
+                      clickearElemento(btnCompletada);
+                      clickearElemento(analisisDeRiesgo);
+                      regla[0][0]=usuarios[i][0];
+                      Serenity.setSessionVariable("reglaAprobar".toLowerCase().trim()).to(regla);
+                      recorrerAnalisisRiesgo(tblFilasAnalisis, tblColAnalisis, tblFilColAnalisis);
+                  }
+               }
             }
         }
+    }
     }
 
 

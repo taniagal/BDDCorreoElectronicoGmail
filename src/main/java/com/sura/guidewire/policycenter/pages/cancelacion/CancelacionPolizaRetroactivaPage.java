@@ -19,7 +19,7 @@ public class CancelacionPolizaRetroactivaPage extends PageUtil {
     private WebElementFacade iconocerrar;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     private WebElementFacade btnLogIn;
-    String xPathTextoCotizacionEnPolizaNueva=".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']";
+    String xPathTextoCotizacionEnPolizaNueva = ".//*[@id='SubmissionWizard:0_header_hd-textEl']";
 
     public CancelacionPolizaRetroactivaPage(WebDriver driver) {
         super(driver);
@@ -35,15 +35,19 @@ public class CancelacionPolizaRetroactivaPage extends PageUtil {
         resetImplicitTimeout();
     }
 
-    public void cerrarSesionClaims(){
+    public void cerrarSesionClaims() {
         waitFor(icono).isPresent();
         icono.click();
         waitFor(iconocerrar).isPresent();
         iconocerrar.click();
     }
-    public void capturarNumeroCotizacion(){
+
+    public void capturarNumeroCotizacion() {
         esperarHasta(TIEMPO_5000);
-        String cotizacion= findBy(xPathTextoCotizacionEnPolizaNueva).getText();
-        Serenity.setSessionVariable("cotizacion".toLowerCase().trim()).to(cotizacion);
+        String cotizacion = findBy(xPathTextoCotizacionEnPolizaNueva).getText();
+        String numero = obtenerNumero(cotizacion);
+        Serenity.setSessionVariable("cotizacion".toLowerCase().trim()).to(numero);
     }
+
+
 }

@@ -43,6 +43,11 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     public void seleccionarImportado() {
         expedicionDePolizaRequisitosPendientesSteps.seleccionarVehiculoImportado();
     }
+    @When("seleccione el tipo de uso del vehiculo <usoVehiculo>")
+    public void tipoServicioVehiculo(@Named("usoVehiculo") String usoVehiculo){
+        expedicionDePolizaRequisitosPendientesSteps.seleccionarTipoServicio(usoVehiculo);
+
+    }
 
     @When("ingrese un beneficiario oneroso en modificacion <beneficiario>")
     public void ingresarBeneficiarioOnerosoModificacion(@Named("beneficiario") String beneficiario) {

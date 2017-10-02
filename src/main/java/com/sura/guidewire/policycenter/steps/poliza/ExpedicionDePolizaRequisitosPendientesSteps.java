@@ -4,11 +4,9 @@ import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.poliza.ExpedicionDePolizaRequisitosPendientesPage;
 import com.sura.guidewire.policycenter.pages.poliza.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
 import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
@@ -140,5 +138,9 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
     @Step
     public void ingresarCoberturasModificacion(String deducible, String perdidaLlaves, String perdidaParcialReemplazo, String perdidaTotalReemplazo, String asistencia) {
         expedicionDePolizaRequisitosPendientesPage.ingresarCoberturas(deducible, perdidaLlaves, perdidaParcialReemplazo, perdidaTotalReemplazo, asistencia);
+    }
+    @Step
+    public void seleccionarTipoServicio(String usoVehiculo) {
+    expedicionDePolizaRequisitosPendientesPage.agregarUsoVehiculo(usoVehiculo);
     }
 }

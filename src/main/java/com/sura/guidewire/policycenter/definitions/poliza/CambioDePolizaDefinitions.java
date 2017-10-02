@@ -11,6 +11,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 public class CambioDePolizaDefinitions {
@@ -45,6 +46,11 @@ public class CambioDePolizaDefinitions {
         cambioDePolizaSteps.cambiarPoliza();
     }
 
+    @When("se presione el boton siguiente en modificacion de poliza")
+    public void botonSiguienteModificaciones(){
+        cambioDePolizaSteps.presionarBotonSiguiente();
+    }
+
     @When("cambie la fecha de inicio de vigencia <dias> de pa poliza")
     public void cambiarFechaDeVigencia(@Named("dias") String dias) {
         cambioDePolizaSteps.cambiarFechaDeVigencia(dias);
@@ -73,6 +79,16 @@ public class CambioDePolizaDefinitions {
     @When("ingrese al menu edificios y ubicaciones")
     public void irAMenuEdificiosYUbicaciones() {
         cambioDePolizaSteps.irAMenuEdificiosYUbicaciones();
+    }
+
+    @When("realice los siguientes cambios para el vehiculo: $datos")
+    public void modificarVehiculo(ExamplesTable datos){
+        cambioDePolizaSteps.modificarDatosVehiculo(datos);
+    }
+
+    @When("realice los siguientes cambios en el vehiculo:$datos")
+    public void cambiarVehiculo(ExamplesTable cambiosVehiculo){
+        cambioDePolizaSteps.cambioVehiculo(cambiosVehiculo);
     }
 
 }
