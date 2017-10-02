@@ -16,9 +16,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class OpcionesInformacionPolizaMrcPage extends PageUtil {
@@ -138,12 +138,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void ingresarFechaVigencia(String fechaInicioVigencia) {
+        String fechaVigencia = fechaInicioVigencia;
         waitInfoPoliza(lblInformaPoliza);
         txtFechaVigencia.clear();
         if (!fechaInicioVigencia.contains("/")){
-            fechaInicioVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaInicioVigencia));
+            fechaVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaInicioVigencia));
         }
-        txtFechaVigencia.sendKeys(fechaInicioVigencia);
+        txtFechaVigencia.sendKeys(fechaVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();
         esperarHasta(TIEMPO_2000);
     }

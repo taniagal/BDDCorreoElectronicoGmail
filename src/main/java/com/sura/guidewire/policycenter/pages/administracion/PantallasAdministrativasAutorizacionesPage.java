@@ -18,11 +18,11 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     WebElementFacade itemNuevaAutorizacion;
     @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:issue-inputEl']")
     WebElementFacade txtReglaValidacion;
-    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:user-inputEl']")
-    WebElementFacade txtpersonaRecibe;
+    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:group-inputEl']")
+    WebElementFacade txtGrupoRecibe;
     @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:Username-inputEl']")
     WebElementFacade txtNombreUsuario;
-    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:approverGroup-inputEl']")
+    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:ApproverGroup-inputEl']")
     WebElementFacade txtGrupoAutorizador;
     @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:Office-inputEl']")
     WebElementFacade txtOficina;
@@ -114,10 +114,10 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
             ingresarDato(txtReglaValidacion, nuevaAutorizacion.get("reglaValidacion"));
 
         }
-        if (txtpersonaRecibe.getAttribute(PROPIEDADLECTURA) != null) {
+        if (txtGrupoRecibe.getAttribute(PROPIEDADLECTURA) != null) {
             agregarPersonaRecibe(nuevaAutorizacion);
         } else {
-            ingresarDato(txtpersonaRecibe, nuevaAutorizacion.get("personaRecibe"));
+            ingresarDato(txtGrupoRecibe, nuevaAutorizacion.get("personaRecibe"));
         }
         if (txtGrupoAutorizador.getAttribute(PROPIEDADLECTURA) != null) {
             agregarGrupoAutorizador(nuevaAutorizacion);
@@ -188,10 +188,12 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
 
     private void agregarReglaValidacion(Map<String, String> nuevaAutorizacion) {
         btnBuscarRegla.click();
+        esperarHasta(TIEMPO_3500);
         ingresarDato(txtNombre, nuevaAutorizacion.get("reglaValidacion"));
         btnBuscarReglaValidacion.click();
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_3500);
         btnSeleccionar.click();
+        esperarHasta(TIEMPO_3500);
     }
 
     private void seleccionarAutorizacionActiva() {
