@@ -191,7 +191,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
         esperarHasta(TIEMPO_9999);
         ingresarDato(txtNombre, nuevaAutorizacion.get("reglaValidacion"));
         btnBuscarReglaValidacion.click();
-        esperarHasta(TIEMPO_5000);
+        esperarHasta(TIEMPO_9999);
         btnSeleccionar.click();
         esperarHasta(TIEMPO_5000);
     }
@@ -229,12 +229,12 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
 
     public void busquedaPorReglaDeValidacion(String reglaValidacion) {
         itemBuscarAutorizaciones.click();
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_5000);
         btnSeleccionarRegla.click();
         txtNombre.waitUntilVisible();
         ingresarDato(txtNombre, reglaValidacion);
         btnBuscarReglaValidacion.click();
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_5000);
         btnSeleccionar.click();
         btnBuscarInformacion.click();
     }
