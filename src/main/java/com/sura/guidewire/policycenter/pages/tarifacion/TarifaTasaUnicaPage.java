@@ -21,7 +21,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class TarifaTasaUnicaPage extends PageUtil {
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static final int DOS = 2;
-    private static final int TREINTA_Y_TRES = 33;
     String primaTotal = "";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet-btnInnerEl']")
     private WebElementFacade botonHojaDeCalculo;

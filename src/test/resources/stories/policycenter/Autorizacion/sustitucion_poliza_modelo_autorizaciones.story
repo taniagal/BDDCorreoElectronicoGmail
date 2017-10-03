@@ -22,8 +22,16 @@ And capturar el numero de cotizacion
 And expedir la poliza de autos
 And ingrese al resumen de la poliza expedida
 And y realizo una modificación de una póliza de automoviles
+Then verificar conservacion de informacion del vehiculo previamente eliminado
+| ciudad_circulacion | vehiculo_servicio | zona | plan               |
+| MEDELLIN           | Particular        | 2    | Plan Autos Global  |
+And conservar Informacion del vehículo sustituido:
+| placa  | modelo | codigo_fasecolda | chasis   | motor      | valor_asegurado | descuento | recargo |
+| random | 2018   | 08008011         | asdfghjkl| asdfghjkl  | 57500000        | null      | null    |
+And conservar las coberturas del vehículo sustituido:
+| limite | deducible | AS                 | PTD | PPD  | GTD | CRPP | CRPT | PLlaves |
+| 3.040  | 0         | Asistencia Clásica | 0   | 850  | 40. | 20   |  20  |         |
 And cotice y expida la poliza
-And ingrese a la opcion plan de trabajo
 
 Examples:
 | tipo_documento       | documento  |
