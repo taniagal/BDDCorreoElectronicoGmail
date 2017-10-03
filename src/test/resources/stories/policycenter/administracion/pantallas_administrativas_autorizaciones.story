@@ -15,8 +15,8 @@ Given estoy en el menu de administracion
 When vaya al menu de acciones
 And vaya a crear una nueva autorizacion
 And cuando ingrese una nueva  autorizacion con los datos:
-| reglaValidacion                                         | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
-| A ser revisado por el asegurador 2, bloqueo obligatorio | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | No     | CC020          |
+| reglaValidacion                                         | grupoRecibe               | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
+| A ser revisado por el asegurador 2, bloqueo obligatorio | OPERACIONES SUCURSAL TUYA | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | No     | CC020          |
 And vaya a buscar la autorizacion con regla de validacion <reglaValidacion>
 Then se debe mostrar toda la informacion relacionada a la autorizacion
 | informacion                                             |

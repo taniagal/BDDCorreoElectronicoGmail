@@ -117,7 +117,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
         if (txtGrupoRecibe.getAttribute(PROPIEDADLECTURA) != null) {
             agregarPersonaRecibe(nuevaAutorizacion);
         } else {
-            ingresarDato(txtGrupoRecibe, nuevaAutorizacion.get("personaRecibe"));
+            ingresarDato(txtGrupoRecibe, nuevaAutorizacion.get("grupoRecibe"));
         }
         if (txtGrupoAutorizador.getAttribute(PROPIEDADLECTURA) != null) {
             agregarGrupoAutorizador(nuevaAutorizacion);
@@ -163,7 +163,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
         btnBuscarOficina.click();
         ingresarDato(txtNombreOficina, nuevaAutorizacion.get("oficina"));
         btnBuscarOficinaAutorizacion.click();
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_3500);
         btnSeleccionar.click();
     }
 
@@ -188,12 +188,12 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
 
     private void agregarReglaValidacion(Map<String, String> nuevaAutorizacion) {
         btnBuscarRegla.click();
-        esperarHasta(TIEMPO_3500);
+        esperarHasta(TIEMPO_9999);
         ingresarDato(txtNombre, nuevaAutorizacion.get("reglaValidacion"));
         btnBuscarReglaValidacion.click();
-        esperarHasta(TIEMPO_3500);
+        esperarHasta(TIEMPO_5000);
         btnSeleccionar.click();
-        esperarHasta(TIEMPO_3500);
+        esperarHasta(TIEMPO_5000);
     }
 
     private void seleccionarAutorizacionActiva() {
