@@ -3,7 +3,6 @@ Meta:
 @issue #CDSEG-7098
 @tag equipo: 5, sprint: 15
 
-
 Narrative:
 Como usuario de policy center en el rol de agente,csr, asegurador o gerente
 Quiero tener las pantallas de administracion de autorizacion de UW issue,
@@ -39,16 +38,19 @@ When vaya al menu de acciones
 And vaya a crear una nueva autorizacion
 And deben aparecer los siguientes campos:
 | opciones          |
+| Segmentación      |
+| Comportamiento    |
 | Regla Validación  |
-| Recibe / Persona  |
 | Recibe / Grupo    |
 | Grupo Autorizador |
 | Oficina           |
 | Asesor            |
+| Canal comercial   |
+| Colectiva         |
 | Activo            |
 And cuando ingrese una nueva autorizacion con los datos:
-| reglaValidacion                 | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
-| Bloqueo obligatorio de pregunta | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     | CC020          |
+| reglaValidacion                 | grupoRecibe               | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
+| Bloqueo obligatorio de pregunta | OPERACIONES SUCURSAL TUYA | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     | CC020          |
 Then se debe ingresar correctamente el registro
 And vaya a modificar la informacion de la autorizacion
 Then solo deben estar habilitados los campos activo e inactivo y se debe poder actualizar
@@ -61,8 +63,8 @@ Given estoy en el menu de administracion
 When vaya al menu de acciones
 And vaya a crear una nueva autorizacion
 And cuando ingrese una nueva autorizacion con los datos:
-| reglaValidacion                 | personaRecibe | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
-| Bloqueo obligatorio de pregunta | pedrvevi      | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     | CC020          |
+| reglaValidacion                 | grupoRecibe               | grupoAutorizador    | oficina                     | asesor | activo | canalcomercial |
+| Bloqueo obligatorio de pregunta | OPERACIONES SUCURSAL TUYA | APRENDIZ EL POBLADO | ASESORES EN DESARROLLO CALI | 4999   | Si     | CC020          |
 Then debe salir un mensaje indicando que el registro esta duplicado
 | mensaje            |
 | Registro duplicado |

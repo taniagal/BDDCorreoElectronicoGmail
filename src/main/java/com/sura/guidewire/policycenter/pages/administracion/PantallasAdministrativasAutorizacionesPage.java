@@ -203,6 +203,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     public void actualizarInformacionIngresada() {
         btnActualizar.waitUntilVisible();
         btnActualizar.click();
+        esperarHasta(TIEMPO_3500);
     }
 
     public void validarIngresoDeRegistro() {
@@ -228,7 +229,9 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
 
     public void busquedaPorReglaDeValidacion(String reglaValidacion) {
         itemBuscarAutorizaciones.click();
+        esperarHasta(TIEMPO_2000);
         btnSeleccionarRegla.click();
+        txtNombre.waitUntilVisible();
         ingresarDato(txtNombre, reglaValidacion);
         btnBuscarReglaValidacion.click();
         esperarHasta(TIEMPO_2000);
