@@ -80,9 +80,9 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     WebElementFacade labelRegistroDuplicado;
     @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:issue-inputEl']")
     WebElementFacade labelReglaValidacion;
-    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:user-inputEl']")
-    WebElementFacade labelRecibePersona;
-    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:approverGroup-inputEl']")
+    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:group-labelEl']")
+    WebElementFacade labelRecibeGrupo;
+    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:ApproverGroup-inputEl']")
     WebElementFacade labelGrupoAutorizador;
     @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:Office-inputEl']")
     WebElementFacade labelOficina;
@@ -221,7 +221,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
 
     public void validarEstadoDeCampos() {
         labelReglaValidacion.isDisplayed();
-        labelRecibePersona.isDisplayed();
+        labelRecibeGrupo.isDisplayed();
         labelGrupoAutorizador.isDisplayed();
         labelOficina.isDisplayed();
         btnActualizar.click();
