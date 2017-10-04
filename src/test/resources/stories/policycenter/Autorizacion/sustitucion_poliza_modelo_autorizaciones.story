@@ -7,6 +7,9 @@ se debe marcar en la cotización este campo con el parámetro "Si" y el sistema 
 Scenario: Generar una modificacion de poliza por sustitucion donde se levante autorizacion al marcar la opcion de transporta combustible en vehiculos.
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
 When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
+And se tienen los siguientes parametros para la busqueda
+|oficina|asesor     |regla                                                                              | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |10154      |combustible                                                                        | CC013     |
 And voy a cotizar poliza de autos individual:
 | cuenta     | producto | oficina | agente_oficina                     | tipoPoliza |
 | 2582024763 | Autos    | 4029    | LAS LLAVES DEL CORAZON LTDA. CQLII | Individual |
@@ -32,6 +35,10 @@ And conservar las coberturas del vehículo sustituido:
 | limite | deducible | AS                 | PTD | PPD  | GTD | CRPP | CRPT | PLlaves |
 | 3.040  | 0         | Asistencia Clásica | 0   | 850  | 40. | 20   |  20  |         |
 And cotice y expida la poliza
+When ingrese a la opcion plan de trabajo
+When valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
 
 Examples:
 | tipo_documento       | documento  |

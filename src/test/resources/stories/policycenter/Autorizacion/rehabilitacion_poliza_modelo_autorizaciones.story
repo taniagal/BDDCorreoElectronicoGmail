@@ -5,8 +5,12 @@ As a user
 I want to perform an action
 So that I can achieve a business goal
 
-Scenario: scenario description
-GivenStories: stories/policycenter/login_policy.story
+Scenario: Reglas a validar renovación de poliza: accesorios especiales, accesorios 20%, placa existente.
+Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
+When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
+And se tienen los siguientes parametros para la busqueda
+|oficina|asesor     |regla                                                                              | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |10154      |accesorios especiales, mayor al 20%, está asegurada en la póliza                   | CC013     |
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
@@ -29,9 +33,11 @@ And se ingrese el valor de los accesorios es superior al 20% del valor asegurado
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 And cotice la renovacion
 And emita la renovacion
-Then se debe mostrar un mensaje que indique
-|mensaje                                                     |
-|¿Está seguro de que desea emitir la renovación de la póliza?|
+And ingrese a la opcion plan de trabajo
+When valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
+
 Examples:
 |tipo_documento      |documento |
 |CEDULA DE CIUDADANIA|9923424349|

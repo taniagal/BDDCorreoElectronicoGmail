@@ -9,6 +9,9 @@ Se debe aprobar ó rechazar la autorizacion con el perfil correspondiente y lueg
 Scenario: Generar una cancelacion de poliza donde se levante autorizacion por retroactividad
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
 When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
+And se tienen los siguientes parametros para la busqueda
+|oficina|asesor     |regla                                          | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |10154      | retroactividad                                | CC013     |
 And voy a cotizar poliza de autos individual:
 | cuenta     | producto | oficina | agente_oficina                     | tipoPoliza |
 | 2582024763 | Autos    | 4029    | LAS LLAVES DEL CORAZON LTDA. CQLII | Individual |
@@ -28,12 +31,19 @@ And aprobar la cancelacion de la poliza
 |motivo                  |descripcion                  |Fecha|
 |Por petición del cliente|Prueba cancelacion con Policy| -32 |
 And ingrese a la opcion plan de trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
+
 
 Examples:
 | tipo_documento       | documento  |
 | CEDULA DE CIUDADANIA | 9923424349 |
 
 Scenario: Cancelación posterior al último pago del cliente
+And se tienen los siguientes parametros para la busqueda
+|oficina|asesor     |regla                                                                              | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |10154      | cancelación ingresada es superior a la fecha sugerida por servicios financieros  | CC013     |
 When voy a cotizar poliza de autos individual:
 | cuenta     | producto | oficina | agente_oficina                     | tipoPoliza |
 | 2582024763 | Autos    | 4029    | LAS LLAVES DEL CORAZON LTDA. CQLII | Individual |
@@ -52,6 +62,9 @@ And aprobar la cancelacion de la poliza
 |motivo                  |descripcion                  |Fecha|
 |Por petición del cliente|Prueba cancelacion con Policy| 0   |
 And ingrese a la opcion plan de trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
 
 Examples:
 | tipo_documento       | documento  |

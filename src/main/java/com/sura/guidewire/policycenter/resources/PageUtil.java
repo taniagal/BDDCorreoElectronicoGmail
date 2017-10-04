@@ -530,7 +530,7 @@ public class PageUtil extends PageObject {
           //  for(int j=2;j<=getDriver().findElements(By.xpath(tblColumnas)).size();j++) {
                 String reglaEncontrada = tblFilasColumnas + "//tr[" + i + "]" + "//td[" + 2 + "]";
                 WebElementFacade reglaAnalisisRiesgo=element(By.xpath(reglaEncontrada));
-                if(reglaAnalisisRiesgo.getText().equals(reglaAprobar[0][0])){
+                if(reglaAnalisisRiesgo.getText().contains(reglaAprobar[0][0])){
                     String boton=".//span[contains(.,'Análisis de riesgo')]/../../../../../../../../following-sibling::tr[3]//table//table//table"+"//tr["+i+"]"+"//td["+5+"]"+"//a[contains(.,'Aprobar')]";
                     WebElementFacade botonAprobar=element(By.xpath(boton));
                     clickearElemento(botonAprobar);

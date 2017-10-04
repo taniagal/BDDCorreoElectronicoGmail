@@ -156,7 +156,7 @@ And capturar el numero de cotizacion en estado borrador
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
-| random | 2017   | 00601190         | ISTMINA (CHOCO)      | Particular        | addsd  | dsdsdsds  | 94900000        | null      | null    | 11    | Plan Autos Global | Televentas |Si                    |                 |
+| random | 2017   | 00601190         | ISTMINA (CHOCO)      | Particular        | addsd  | dsdsdsds  | 94900000        | null      | null    | 11    | Plan Autos Global | Televentas |Si                    | Si                |
 When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |

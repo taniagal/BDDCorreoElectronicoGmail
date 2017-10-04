@@ -6,6 +6,7 @@ import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 import java.util.Map;
@@ -17,6 +18,13 @@ public class AutPolizaNuevaDefinitions {
     @Given("se tienen los siguientes parametros para la busqueda $parametros")
     public void buscarParametros(ExamplesTable paramatros){
             autPolizaNuevaSteps.leerParametros(paramatros);
+
+
+    }
+
+    @When("se tienen los siguientes parametros para la busqueda $parametros")
+    public void buscarParametrosreglas(ExamplesTable paramatros){
+        autPolizaNuevaSteps.leerParametros(paramatros);
 
 
     }
