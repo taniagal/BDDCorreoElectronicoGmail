@@ -131,6 +131,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:DocumentNumberReference-inputEl']")
     private WebElementFacade txtNumeroDeDocumento;
     private boolean esVisible;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
+    private WebElementFacade txtFechaFinVigencia;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:0']")
+    private WebElementFacade lblRegistroDelAsesor;
 
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
@@ -509,7 +513,27 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(webElementFacade).waitUntilPresent();
     }
-
+    public void ingresarFechaVigenciaMA(String fechaInicioVigencia,String fechaFinVigencia) {
+        waitInfoPoliza(lblInformaPoliza);
+        txtFechaVigencia.clear();
+        if (!fechaInicioVigencia.contains("/")){
+            fechaInicioVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaInicioVigencia));
+        }
+        if (!fechaFinVigencia.contains("/")){
+            fechaFinVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaFinVigencia));
+        }
+        txtFechaVigencia.sendKeys(fechaInicioVigencia);
+        esperarHasta(2000);
+        clickearElemento(lblRegistroDelAsesor);
+        txtFechaFinVigencia.clear();
+        txtFechaFinVigencia.sendKeys(fechaFinVigencia);
+        esperarHasta(1000);
+        clickearElemento(lblRegistroDelAsesor);
+        esperarHasta(2000);
+        clickearElemento(botonSiguiente);
+        esperarHasta(TIEMPO_9999);
+        esperarHasta(TIEMPO_9999);
+    }
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
     }
