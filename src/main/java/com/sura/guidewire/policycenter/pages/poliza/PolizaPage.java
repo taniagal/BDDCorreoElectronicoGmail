@@ -3,11 +3,11 @@ package com.sura.guidewire.policycenter.pages.poliza;
 import ch.lambdaj.Lambda;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
@@ -468,7 +468,6 @@ public class PolizaPage extends PageUtil {
     public void validarBotonCancelarPoliza(String motivo, String descripcion){
         for (int i=CONSTANTE_0;i<CONSTANTE_10;i++){
             if(labelAdvertenciaCancelacion.isVisible()){
-                //esperarHasta(TIEMPO_1000);
                 clickearElemento(comboBoxMotivoFlecha);
                 clickearElemento(comboBoxMotivoCancelacion);
                 esperarHasta(TIEMPO_1000);
