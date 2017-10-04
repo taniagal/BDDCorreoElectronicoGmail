@@ -27,4 +27,10 @@ public class CancelacionPolizaRetroactivaSteps extends ScenarioSteps {
     public void capturarNumeroCotizacion(){
         cancelacionPolizaRetroactivaPage.capturarNumeroCotizacion();
     }
+
+    @Step
+    public void capturarNumeroCotizacionModificacion() {
+        cancelacionPolizaRetroactivaPage.capturarNumeroCotizacionModificacion();
+
+    }
 }

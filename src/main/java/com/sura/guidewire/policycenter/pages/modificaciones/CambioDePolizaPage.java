@@ -170,13 +170,16 @@ public class CambioDePolizaPage extends PageUtil {
 
     public void cambioVehiculo(ExamplesTable cambiosVehiculo) {
         Map<String,String> cambioVehiculo=cambiosVehiculo.getRow(0);
-        seleccionarItem(txtModelo,cambioVehiculo.get("modelo"));
         txtFasecolda.clear();
-        txtFasecolda.click();
+        esperarHasta(2000);
         ingresarDato(txtFasecolda,cambioVehiculo.get("fasecolda"));
+        esperarHasta(2000);
+        seleccionarItem(txtModelo,cambioVehiculo.get("modelo"));
+        esperarHasta(2000);
         txtBonificacionComercial.clear();
         txtBonificacionComercial.click();
         ingresarDato(txtBonificacionComercial,cambioVehiculo.get("bonificacionComercial"));
+        esperarHasta(2000);
 
     }
 

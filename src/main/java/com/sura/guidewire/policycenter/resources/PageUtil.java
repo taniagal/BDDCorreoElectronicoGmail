@@ -528,13 +528,13 @@ public class PageUtil extends PageObject {
         //for(int j=1;j<=reglaABuscar.length;j++)
         for(int i=2;i<=getDriver().findElements(By.xpath(tblFilas)).size();i++){
           //  for(int j=2;j<=getDriver().findElements(By.xpath(tblColumnas)).size();j++) {
-                String reglaEncontrada = tblFilasColumnas + "//table" + "//tr[" + i + "]" + "//td[" + 2 + "]";
+                String reglaEncontrada = tblFilasColumnas + "//tr[" + i + "]" + "//td[" + 2 + "]";
                 WebElementFacade reglaAnalisisRiesgo=element(By.xpath(reglaEncontrada));
                 if(reglaAnalisisRiesgo.getText().equals(reglaAprobar[0][0])){
-                    String boton=".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:"+(i-1)+":UWIssueRowSet:Approve']";
+                    String boton=".//span[contains(.,'Análisis de riesgo')]/../../../../../../../../following-sibling::tr[3]//table//table//table"+"//tr["+i+"]"+"//td["+5+"]"+"//a[contains(.,'Aprobar')]";
                     WebElementFacade botonAprobar=element(By.xpath(boton));
                     clickearElemento(botonAprobar);
-                    String botonAceptar=".//*[@id='RiskApprovalDetailsPopup:Update']";
+                    String botonAceptar=".//span[contains(.,'Aceptar')]";
                     WebElementFacade aceptarAprobacion=element(By.xpath(botonAceptar));
                     clickearElemento(aceptarAprobacion);
                     break;

@@ -99,6 +99,10 @@ public class CancelacionPolizaRetroactivaDefinitions {
         cancelacionPolizaRetroactivaSteps.capturarNumeroCotizacion();
     }
 
+    @When("capturar el numero de cotizacion en estado borrador en la modificacion")
+    public void capturarCotizacionModificacion(){
+        cancelacionPolizaRetroactivaSteps.capturarNumeroCotizacionModificacion();
+    }
     @When("aprobar la cancelacion de la poliza $dataTable")
     public void aprobarCancelacion(ExamplesTable dataTable){
         polizaSteps.seleccionarBotonAcciones().seleccionarCancelarPoliza();

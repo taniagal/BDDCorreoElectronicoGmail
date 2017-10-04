@@ -28,7 +28,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     WebElementFacade botonExpedirPoliza;
     @FindBy(id = "SubmissionWizard:ViewQuote")
     WebElementFacade mnuItemCotizacion;
-    @FindBy(id = "PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl")
+    @FindBy(id = ".//span[contains(.,'Expedir póliza')]")
     WebElementFacade botonExpedirPolizaPorCambio;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;

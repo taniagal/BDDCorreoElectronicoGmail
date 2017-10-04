@@ -10,7 +10,7 @@ Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/P
 When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividades
 Given se tienen los siguientes parametros para la busqueda
 |oficina|asesor     |regla                                                                             | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
-|4029   |10154      |Placa extranjera,inferior al tope mínimo,modelo es superior al máximo permitido   |CC013      |
+|4029   |10154      |Placa extranjera,inferior al tope mínimo,modelo es superior al máximo permitido   | CC013     |
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
@@ -50,6 +50,7 @@ Given se tienen los siguientes parametros para la busqueda
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
+And capturar el numero de cotizacion en estado borrador
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion       | vehiculo_servicio | chasis | motor     | valor_asegurado  | descuento | recargo | zona   | plan               | medioVenta |
@@ -57,7 +58,6 @@ When ingrese los datos del vehiculo:
 When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |
-And capturar el numero de cotizacion
 And llegue a la expedicion de la poliza
 And cuando edite la transacion de la poliza
 And agregue un nuevo valor asegurado <valor_asegurado>
@@ -87,6 +87,7 @@ Given se tienen los siguientes parametros para la busqueda
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
+And capturar el numero de cotizacion en estado borrador
 And ingrese la Fecha Inicio Vigencia: -70
 When ingrese datos del asegurado de policy <tipo_documento> <documento>
 And ingrese los datos del vehiculo que va asegurar:
@@ -96,7 +97,6 @@ And clic a la pantalla de coberturas
 And seleccione todas las coberturas del plan:
 | limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
 | 3.040  | 0         | 0   | 850 | 40. | Asistencia Global  | 0   | 850 | 40 | 20   |  20  |         |
-And capturar el numero de cotizacion
 And expedir la poliza de autos
 And ingresar a la opcion plan de trabajo en nueva poliza
 And valide la generacion de las reglas que deben ser autorizadas
@@ -115,6 +115,7 @@ Given se tienen los siguientes parametros para la busqueda
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
+And capturar el numero de cotizacion en estado borrador
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
@@ -135,7 +136,7 @@ And ingrese a la opcion requisitos a diligenciar todos los requisitos
 And vuelva a la cotizacion de poliza
 And voy a expedir una poliza
 And de click en el boton aceptar
-And ingese al plan del trabajo
+And ingrese a la opcion plan de trabajo
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
 And ir al usuario a validar asignación de actividad
@@ -151,6 +152,7 @@ Given se tienen los siguientes parametros para la busqueda
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | PINTORES S.A. CQLII II                         | Individual |
+And capturar el numero de cotizacion en estado borrador
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
@@ -158,7 +160,6 @@ When ingrese los datos del vehiculo:
 When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |
-And capturar el numero de cotizacion
 And llegue a la expedicion de la poliza
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
@@ -171,7 +172,7 @@ And ingrese a la opcion requisitos a diligenciar todos los requisitos
 And vuelva a la cotizacion de poliza
 And voy a expedir una poliza
 And de click en el boton aceptar
-And ingese al plan del trabajo
+And ingrese a la opcion plan de trabajo
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
 And ir al usuario a validar asignación de actividad
@@ -186,6 +187,7 @@ Given se tienen los siguientes parametros para la busqueda
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
+And capturar el numero de cotizacion en estado borrador
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
 | placa   | modelo | codigo_fasecolda | ciudad_circulacion               | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
@@ -193,7 +195,6 @@ When ingrese los datos del vehiculo:
 When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |
-And capturar el numero de cotizacion
 And llegue a la expedicion de la poliza
 And cuando edite la transacion de la poliza
 And vaya a vehiculos en expedicion
@@ -203,7 +204,7 @@ And voy a expedir una poliza
 And de click en el boton aceptar
 And voy a expedir una poliza
 And de click en el boton aceptar
-And ingese al plan del trabajo
+And ingrese a la opcion plan de trabajo
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
 And ir al usuario a validar asignación de actividad
@@ -230,7 +231,7 @@ When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |
 And intente cotizar
-And ingese al plan del trabajo
+And ingrese a la opcion plan de trabajo
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
 And ir al usuario a validar asignación de actividad

@@ -113,9 +113,9 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade analisisDeRiesgo;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade xpathRequisitos;
-    public String tblFilasAnalisis=".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']//table//tr";
-    public String tblColAnalisis= ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']//table//tr//td";
-    public String tblFilColAnalisis= ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']";
+    public String tblFilasAnalisis=".//span[contains(.,'Análisis de riesgo')]/../../../../../../../../following-sibling::tr[3]//table//table//table//tr";
+    public String tblColAnalisis= ".//span[contains(.,'Análisis de riesgo')]/../../../../../../../../following-sibling::tr[3]//table//table//table//tr//td";
+    public String tblFilColAnalisis= ".//span[contains(.,'Análisis de riesgo')]/../../../../../../../../following-sibling::tr[3]//table//table//table";
     @FindBy(xpath = ".//*[contains(@id, ':Workplan')]/div/span")
     private WebElementFacade menuItemPlanDeTrabajo;
     public String tblPlanTrabajoUsuario= "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr";
@@ -257,8 +257,8 @@ public class RequisitosPorDniAutosPage extends PageUtil {
                         filaUsuario.add(celdas);
                     }
 
-                    if (filaUsuario.get(0).equals(reglasEncontradas[i][0])) {
-                        if (filaUsuario.get(1).equals(reglasEncontradas[i][1])) {
+                    if ((reglasEncontradas[i][0]).contains (filaUsuario.get(0))) {
+                        if ((reglasEncontradas[i][1]).contains(filaUsuario.get(1))) {
                             if (filaUsuario.get(3).equals(oficina)) {
                                 usuariosRed[i][0] = filaUsuario.get(0);
                                 usuariosRed[i][1] = filaUsuario.get(2);
@@ -303,7 +303,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
                for(int h = 1; h<=getDriver().findElements(By.xpath(tblPlanTrabajoUsuario)).size(); h++){
                   String valorEncontrado=tblPlanTrabajoUsuario+"["+h+"]"+"//td["+15+"]";
                   WebElementFacade reglaEnc=element(By.xpath(valorEncontrado));
-                  if(reglaEnc.getText().equals(usuarios[i][0])){
+                  if(reglaEnc.getText().contains(usuarios[i][0])){
                       String enlaceRevisarAprobar=".//*[@id='SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV:"+(h-1)+":Subject']";
                       WebElementFacade revisarActividad=element(By.xpath(enlaceRevisarAprobar));
                       clickearElemento(revisarActividad);
@@ -312,7 +312,9 @@ public class RequisitosPorDniAutosPage extends PageUtil {
                       regla[0][0]=usuarios[i][0];
                       Serenity.setSessionVariable("reglaAprobar".toLowerCase().trim()).to(regla);
                       recorrerAnalisisRiesgo(tblFilasAnalisis, tblColAnalisis, tblFilColAnalisis);
+                      continue;
                   }
+
                }
             }
         }
