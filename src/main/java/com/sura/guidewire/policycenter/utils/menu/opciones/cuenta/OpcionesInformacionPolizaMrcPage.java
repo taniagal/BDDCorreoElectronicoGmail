@@ -16,9 +16,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class OpcionesInformacionPolizaMrcPage extends PageUtil {
@@ -130,11 +130,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade txtPolizaDeReferencia;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:DocumentNumberReference-inputEl']")
     private WebElementFacade txtNumeroDeDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
-    private WebElementFacade txtFechaFinVigencia;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:0']")
-    private WebElementFacade lblRegistroDelAsesor;
-    
     private boolean esVisible;
 
 
@@ -143,37 +138,15 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void ingresarFechaVigencia(String fechaInicioVigencia) {
+        String fechaVigencia = fechaInicioVigencia;
         waitInfoPoliza(lblInformaPoliza);
         txtFechaVigencia.clear();
         if (!fechaInicioVigencia.contains("/")){
-            fechaInicioVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaInicioVigencia));
+            fechaVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaInicioVigencia));
         }
-        txtFechaVigencia.sendKeys(fechaInicioVigencia);
-        clickearElemento(botonSiguiente);
-        esperarHasta(TIEMPO_9999);
-        esperarHasta(TIEMPO_9999);
-    }
-
-    public void ingresarFechaVigenciaMA(String fechaInicioVigencia,String fechaFinVigencia) {
-        waitInfoPoliza(lblInformaPoliza);
-        txtFechaVigencia.clear();
-        if (!fechaInicioVigencia.contains("/")){
-            fechaInicioVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaInicioVigencia));
-        }
-        if (!fechaFinVigencia.contains("/")){
-            fechaFinVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaFinVigencia));
-        }
-        txtFechaVigencia.sendKeys(fechaInicioVigencia);
-        esperarHasta(2000);
-        clickearElemento(lblRegistroDelAsesor);
-        txtFechaFinVigencia.clear();
-        txtFechaFinVigencia.sendKeys(fechaFinVigencia);
-        esperarHasta(1000);
-        clickearElemento(lblRegistroDelAsesor);
-        esperarHasta(2000);
-        clickearElemento(botonSiguiente);
-        esperarHasta(TIEMPO_9999);
-        esperarHasta(TIEMPO_9999);
+        txtFechaVigencia.sendKeys(fechaVigencia);
+        actions.sendKeys(Keys.ENTER).build().perform();
+        esperarHasta(TIEMPO_2000);
     }
 
     public void ingresarTipoDeVigencia(String tipoVigencia) {

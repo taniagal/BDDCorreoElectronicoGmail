@@ -22,6 +22,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static final int DOS = 2;
     String primaTotal = "";
+
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet-btnInnerEl']")
     private WebElementFacade botonHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:Spreadsheet']")

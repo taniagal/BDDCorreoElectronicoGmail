@@ -18,11 +18,11 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     WebElementFacade itemNuevaAutorizacion;
     @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:issue-inputEl']")
     WebElementFacade txtReglaValidacion;
-    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:user-inputEl']")
-    WebElementFacade txtpersonaRecibe;
+    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:group-inputEl']")
+    WebElementFacade txtGrupoRecibe;
     @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:Username-inputEl']")
     WebElementFacade txtNombreUsuario;
-    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:approverGroup-inputEl']")
+    @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:ApproverGroup-inputEl']")
     WebElementFacade txtGrupoAutorizador;
     @FindBy(xpath = ".//*[@id='NewUWIssueInfo_Ext:UWIssueInfoDetailScreen:Office-inputEl']")
     WebElementFacade txtOficina;
@@ -80,9 +80,9 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     WebElementFacade labelRegistroDuplicado;
     @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:issue-inputEl']")
     WebElementFacade labelReglaValidacion;
-    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:user-inputEl']")
-    WebElementFacade labelRecibePersona;
-    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:approverGroup-inputEl']")
+    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:group-labelEl']")
+    WebElementFacade labelRecibeGrupo;
+    @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:ApproverGroup-inputEl']")
     WebElementFacade labelGrupoAutorizador;
     @FindBy(xpath = ".//*[@id='UWIssueInfo_ExtDetailPage:UWIssueInfoDetailScreen:Office-inputEl']")
     WebElementFacade labelOficina;
@@ -114,10 +114,10 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
             ingresarDato(txtReglaValidacion, nuevaAutorizacion.get("reglaValidacion"));
 
         }
-        if (txtpersonaRecibe.getAttribute(PROPIEDADLECTURA) != null) {
+        if (txtGrupoRecibe.getAttribute(PROPIEDADLECTURA) != null) {
             agregarPersonaRecibe(nuevaAutorizacion);
         } else {
-            ingresarDato(txtpersonaRecibe, nuevaAutorizacion.get("personaRecibe"));
+            ingresarDato(txtGrupoRecibe, nuevaAutorizacion.get("grupoRecibe"));
         }
         if (txtGrupoAutorizador.getAttribute(PROPIEDADLECTURA) != null) {
             agregarGrupoAutorizador(nuevaAutorizacion);
@@ -163,7 +163,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
         btnBuscarOficina.click();
         ingresarDato(txtNombreOficina, nuevaAutorizacion.get("oficina"));
         btnBuscarOficinaAutorizacion.click();
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_3500);
         btnSeleccionar.click();
     }
 
@@ -188,10 +188,12 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
 
     private void agregarReglaValidacion(Map<String, String> nuevaAutorizacion) {
         btnBuscarRegla.click();
+        esperarHasta(TIEMPO_9999);
         ingresarDato(txtNombre, nuevaAutorizacion.get("reglaValidacion"));
         btnBuscarReglaValidacion.click();
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_9999);
         btnSeleccionar.click();
+        esperarHasta(TIEMPO_5000);
     }
 
     private void seleccionarAutorizacionActiva() {
@@ -201,6 +203,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
     public void actualizarInformacionIngresada() {
         btnActualizar.waitUntilVisible();
         btnActualizar.click();
+        esperarHasta(TIEMPO_3500);
     }
 
     public void validarIngresoDeRegistro() {
@@ -218,7 +221,7 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
 
     public void validarEstadoDeCampos() {
         labelReglaValidacion.isDisplayed();
-        labelRecibePersona.isDisplayed();
+        labelRecibeGrupo.isDisplayed();
         labelGrupoAutorizador.isDisplayed();
         labelOficina.isDisplayed();
         btnActualizar.click();
@@ -226,10 +229,12 @@ public class PantallasAdministrativasAutorizacionesPage extends PageUtil {
 
     public void busquedaPorReglaDeValidacion(String reglaValidacion) {
         itemBuscarAutorizaciones.click();
+        esperarHasta(TIEMPO_5000);
         btnSeleccionarRegla.click();
+        txtNombre.waitUntilVisible();
         ingresarDato(txtNombre, reglaValidacion);
         btnBuscarReglaValidacion.click();
-        esperarHasta(TIEMPO_2000);
+        esperarHasta(TIEMPO_5000);
         btnSeleccionar.click();
         btnBuscarInformacion.click();
     }
