@@ -14,6 +14,7 @@ public class CuentaPages extends PageObject {
     public ContactosAsociadosACuentaWidgetPage enContactos() {
 
         String tituloDePaginaPorDefectoCuenta = "Resumen de la cuenta";
+        waitForTimeoutInMilliseconds();
         waitForTextToAppear(tituloDePaginaPorDefectoCuenta);
         shouldContainText(tituloDePaginaPorDefectoCuenta);
 
