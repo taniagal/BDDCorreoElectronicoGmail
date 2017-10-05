@@ -116,6 +116,7 @@ public class NuevaCotizacionPage extends PageUtil {
             clickearElemento(menuItemEscritorio);
         }
         resetImplicitTimeout();
+        botonAcciones.waitUntilVisible();
         botonAcciones.click();
         menuItemNuevaCotizacion.waitUntilPresent().click();
     }
