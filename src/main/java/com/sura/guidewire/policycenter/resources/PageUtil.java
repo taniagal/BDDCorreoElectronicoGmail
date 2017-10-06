@@ -533,13 +533,11 @@ public class PageUtil extends PageObject {
                 if(reglaAnalisisRiesgo.getText().contains(reglaAprobar[0][0])){
                     String boton=".//span[contains(.,'Análisis de riesgo')]/../../../../../../../../following-sibling::tr[3]//table//table//table"+"//tr["+i+"]"+"//td["+5+"]"+"//a[contains(.,'Aprobar')]";
                     WebElementFacade botonAprobar=element(By.xpath(boton));
-                    clickearElemento(botonAprobar);
+                    botonAprobar.waitUntilClickable().click();
                     String botonAceptar=".//span[contains(.,'Aceptar')]";
                     WebElementFacade aceptarAprobacion=element(By.xpath(botonAceptar));
                     clickearElemento(aceptarAprobacion);
                     break;
-
-
             }
 
 
