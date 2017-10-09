@@ -111,12 +111,20 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void clickSiguienteConMensaje() {
         esperarHasta(TIEMPO_2000);
-        clickSiguiente();
+        clickearElemento();
         setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         if ($(".message").isPresent()) {
             clickSiguiente();
         }
         resetImplicitTimeout();
+    }
+    public void clickearElemento(){
+        try {
+            withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilVisible();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+        }
+        clickearElemento(botonSiguiente);
     }
 
     public void clickSiguiente() {
@@ -141,9 +149,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
                 clickearElemento(botonSiguiente);
             }
         }
-
-
-
     }
 
     public void clickLinkDescartarCambios() {
@@ -304,6 +309,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             clickearElemento(campoTxtchasis);
             esperarHasta(TIEMPO_2000);
             campoTxtchasis.type(vehiculo.get("chasis"));
+            esperarHasta(TIEMPO_2000);
             campoTxtMotor.waitUntilClickable();
             campoTxtMotor.click();
             esperarHasta(TIEMPO_2000);

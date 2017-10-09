@@ -24,7 +24,7 @@ public class PlanDeTrabajoPage extends PageUtil {
     AnalisisDeRiesgosPage analisisDeRiesgosPage;
     String xPathOpcionPlanDeTrabajo = ".//*[@id='SubmissionWizard:Workplan']";
     String xPathOpcionPlanDeTrabajoEnCambioDePoliza = ".//*[@id='PolicyChangeWizard:Workplan']";
-    String xPathOpcionPlanDeTrabajoEnCancelacion=".//span[contains(.,'Plan de trabajo')]";
+    String xPathOpcionPlanDeTrabajoEnCancelacion=".//td/div/span[contains(.,'Plan de trabajo')]";
     String xPathOpcionAnalisisDeRiesgoEnCancelacion=".//*[@id='CancellationWizard:RiskEvaluation']";
     @FindBy(xpath = ".//*[@id='RenewalWizard:Workplan']")
     WebElementFacade xPathOpcionPlanDeTrabajoEnRenovacionDePoliza;
