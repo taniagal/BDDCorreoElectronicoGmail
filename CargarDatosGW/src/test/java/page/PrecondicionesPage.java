@@ -2,7 +2,6 @@ package page;
 
 import core.sura.resources.MetodosComunes;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import org.hamcrest.CoreMatchers;
@@ -12,7 +11,6 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PrecondicionesPage extends MetodosComunes {
@@ -45,7 +43,6 @@ public class PrecondicionesPage extends MetodosComunes {
 
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_2000 = 2000;
-    private static final int TIEMPO_10000 = 10000;
     private static final int CONSTANTE_1 = 1;
     private static final String XPATH = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']/*/table/tbody/tr[";
 

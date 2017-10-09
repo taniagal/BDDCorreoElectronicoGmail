@@ -16,6 +16,7 @@ import org.openqa.selenium.support.FindBy;
 //@DefaultUrl("http://dllocoreseguros.suramericana.com.co/pc/PolicyCenter.do")
 //@DefaultUrl("http://PQVIPF0DVJY5:8180/pc/PolicyCenter.do")
 @DefaultUrl("http://labcoreseguros.suramericana.com/pc/PolicyCenter.do")
+//@DefaultUrl("http://10.214.18.123:8180/pc/PolicyCenter.do")
 
 public class LoginPage extends PageUtil {
 
