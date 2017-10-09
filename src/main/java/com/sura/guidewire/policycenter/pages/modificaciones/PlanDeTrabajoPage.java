@@ -24,13 +24,14 @@ public class PlanDeTrabajoPage extends PageUtil {
     AnalisisDeRiesgosPage analisisDeRiesgosPage;
     String xPathOpcionPlanDeTrabajo = ".//*[@id='SubmissionWizard:Workplan']";
     String xPathOpcionPlanDeTrabajoEnCambioDePoliza = ".//*[@id='PolicyChangeWizard:Workplan']";
-    String xPathOpcionPlanDeTrabajoEnCancelacion=".//td/div/span[contains(.,'Plan de trabajo')]";
     String xPathOpcionAnalisisDeRiesgoEnCancelacion=".//*[@id='CancellationWizard:RiskEvaluation']";
     @FindBy(xpath = ".//*[@id='RenewalWizard:Workplan']")
     WebElementFacade xPathOpcionPlanDeTrabajoEnRenovacionDePoliza;
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
     @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[1]//div/div[4]//table//tr[2]//td[15]")
     private WebElementFacade xPathColumnaDeDetalleReglaUW;
+    @FindBy(xpath = ".//td/div/span[contains(.,'Plan de trabajo')]")
+    private WebElementFacade xPathOpcionPlanDeTrabajoEnCancelacion;
 
     public PlanDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -68,7 +69,7 @@ public class PlanDeTrabajoPage extends PageUtil {
     }
     public void ingresarALaOpcionPlanDeTrabajoCancelacion(){
         esperarHasta(TIEMPO_5000);
-        findBy(xPathOpcionPlanDeTrabajoEnCancelacion).click();
+        clickearElemento(xPathOpcionPlanDeTrabajoEnCancelacion);
         waitForTextToAppear("Plan de trabajo");
         while(!xPathColumnaDeDetalleReglaUW.isVisible()){
             getDriver().navigate().refresh();

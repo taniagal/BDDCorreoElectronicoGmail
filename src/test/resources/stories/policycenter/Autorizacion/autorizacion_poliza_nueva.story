@@ -28,12 +28,13 @@ And vaya a vehiculos en expedicion
 And seleccione la opcion importado por terceros
 And cotice una poliza
 And voy a expedir una poliza
-And ingese al plan del trabajo
 And de click en el boton aceptar
+And ingese al plan del trabajo
 And ingrese a la opcion requisitos a diligenciar todos los requisitos
 And vuelva a la cotizacion de poliza
 And voy a expedir una poliza
 And de click en el boton aceptar
+And espere a que salgan las validaciones de reglas correspondientes
 And ingrese a la opcion plan de trabajo
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion

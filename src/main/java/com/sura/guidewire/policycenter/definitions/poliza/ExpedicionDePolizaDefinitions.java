@@ -125,4 +125,9 @@ public class ExpedicionDePolizaDefinitions {
     public void validarAsignacionActividad(){
         requisitosPorDniAutosSteps.validarAsignacionActividad();
     }
+
+    @When("espere a que salgan las validaciones de reglas correspondientes")
+    public void validarReglasCorrespondientes(){
+        requisitosPorDniAutosSteps.validarReglasCorrespondientes();
+    }
 }

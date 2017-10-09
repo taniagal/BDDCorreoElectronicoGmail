@@ -319,7 +319,11 @@ public class RequisitosPorDniAutosPage extends PageUtil {
             }
         }
     }
+
+    public void validarReglasCorrespondientes() {
+    waitForAllTextToAppear("Asuntos que bloquean la expedición");
     }
+}
 
 
 

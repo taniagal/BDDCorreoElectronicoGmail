@@ -307,9 +307,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.type(vehiculo.get("motor"));
             clickearElemento(campoTxtchasis);
-            esperarHasta(TIEMPO_2000);
+            esperarHasta(TIEMPO_5000);
             campoTxtchasis.type(vehiculo.get("chasis"));
-            esperarHasta(TIEMPO_2000);
             campoTxtMotor.waitUntilClickable();
             campoTxtMotor.click();
             esperarHasta(TIEMPO_2000);

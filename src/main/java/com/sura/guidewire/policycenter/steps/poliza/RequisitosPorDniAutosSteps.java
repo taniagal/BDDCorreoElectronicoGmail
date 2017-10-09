@@ -82,6 +82,10 @@ public class RequisitosPorDniAutosSteps extends ScenarioSteps {
     public void validarAsignacionActividad() {
         requisitosPorDniAutosPage.validarAsignacionActividad();
     }
+    @Step
+    public void validarReglasCorrespondientes() {
+        requisitosPorDniAutosPage.validarReglasCorrespondientes();
+    }
 }
 
 
