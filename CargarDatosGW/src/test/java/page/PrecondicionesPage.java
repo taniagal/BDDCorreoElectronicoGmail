@@ -8,9 +8,13 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PrecondicionesPage extends MetodosComunes {
@@ -43,35 +47,19 @@ public class PrecondicionesPage extends MetodosComunes {
 
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_2000 = 2000;
+    private static final int TIEMPO_10000 = 10000;
     private static final int CONSTANTE_1 = 1;
     private static final String XPATH = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']/*/table/tbody/tr[";
 
-    private boolean esperaAlerta(WebDriver driver){
-        boolean rta = false;
-        try{
-            rta = driver.switchTo().alert().getText().contains("HTTP request");
-        }catch (NoAlertPresentException ex){
-            LOGGER.info("No se encuentra alerta: ",ex);
-        }
-        return rta;
-    }
-
     public void cargarDatos(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
-        boolean cargaSampleData = false;
         campoTxtBuscar.sendKeys(Keys.ALT, Keys.SHIFT, "t");
+        MetodosComunes.waitUntil(TIEMPO_10000);
         waitUntilVisible(menuHerramientasInternas, driver);
         menuHerramientasInternas.click();
         menuItemDatosDeMuestraDePc.click();
         botonCarga.click();
-        while (!cargaSampleData) {
-            if (esperaAlerta(driver)){
-                driver.switchTo().alert().accept();
-                botonCarga.click();
-            } else if (labelCargaCorrecta.isDisplayed()) {
-                cargaSampleData = true;
-            }
-        }
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")));
         MatcherAssert.assertThat(labelCargaCorrecta.getText(), CoreMatchers.anyOf(Is.is("Conjunto cargado \"Sura\" correctamente."),
                 Is.is("Loaded set \"Sura\" successfully.")));
     }
