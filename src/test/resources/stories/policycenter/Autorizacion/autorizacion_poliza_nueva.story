@@ -5,6 +5,46 @@ Como miembro de suramericana de seguros en alguno de los roles que permite gener
 Quiero poder autorizar ciertas reglas de validación asignadas a mi usuario
 Para poder expedir polizas de forma exitosa
 
+Scenario: Reglas que requieren autorizacion:Accesorios mayor al 20%, accesorios especiales,limite maximo permitido, placa existente en otra poliza, marca no permitida.
+Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
+When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividades
+Given se tienen los siguientes parametros para la busqueda
+|oficina|asesor    |regla                                                                                                                                                                                     | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |null      |mayor al 20%,mayor al valor Asegurado del vehículo,límite máximo permitido,La placa DAG64F está asegurada en la póliza,no puede ser asegurado,rangos estimados por Suramericana           |CC013      |
+Given estoy cotizando una poliza:
+| cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
+| 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
+And capturar el numero de cotizacion en estado borrador
+When ingrese los datos del asegurado <tipo_documento> <documento>
+When ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion       | vehiculo_servicio | chasis | motor     | valor_asegurado  | descuento | recargo | zona   | plan               | medioVenta |
+| dag64f | 2015   | 35701008         | MEDELLIN (ANTIOQUIA)     | Particular        | addsd  | dsdsdsds  | 284000000        | null      | null    | 2     | Plan Autos Global   | Televentas |
+When ingrese las coberturas:
+| limite | deducible | AS               |abogado|
+| 640.   | 0         | Asistencia Global|       |
+And llegue a la expedicion de la poliza
+And cuando edite la transacion de la poliza
+And agregue un nuevo valor asegurado <valor_asegurado>
+And cuando edite la transacion de la poliza
+And vaya a vehiculos en expedicion
+And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
+And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
+And cotice una poliza
+And voy a expedir una poliza
+And de click en el boton aceptar
+And voy a expedir una poliza
+And de click en el boton aceptar
+And vuelva a la cotizacion de poliza
+And voy a expedir una poliza
+And de click en el boton aceptar
+And ingrese a la opcion plan de trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
+Examples:
+| accesorios | tipo_documento       | documento  |valor_asegurado     |
+| 2600000    | CEDULA DE CIUDADANIA | 1000283562 |405000000           |
+
 Scenario: Reglas que requieren autorizacion:importado por terceros, transporta combustible no permitido., vehículos que circulen en esta zona.
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
 When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividades
