@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.lote8;
+package com.sura.guidewire.policycenter.AutoPolizaNueva;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
