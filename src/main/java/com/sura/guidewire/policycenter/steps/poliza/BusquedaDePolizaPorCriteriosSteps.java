@@ -40,6 +40,11 @@ public class BusquedaDePolizaPorCriteriosSteps {
     public void verificarInformacionPoliza(ExamplesTable verificar) {
         busquedaDePolizaPorCriteriosPage.buscarPorResultados(verificar);
     }
+    @Step
+    public void verificarInformacionPolizaTipo(ExamplesTable verificar){
+        busquedaDePolizaPorCriteriosPage.buscarPorResultadosTipoPoliza(verificar);
+    }
+
 
     @Step
     public void seleccionarTipoDocumento(String tipoDocumento) {
@@ -59,6 +64,11 @@ public class BusquedaDePolizaPorCriteriosSteps {
     @Step
     public void diligenciarCampoCriterioBusqueda(String contenido) {
         busquedaDePolizaPorCriteriosPage.diligenciarCampoCriterioBusqueda(contenido);
+    }
+
+    @Step
+    public void seleccionarTipoPoliza(String poliza) {
+        busquedaDePolizaPorCriteriosPage.seleccionarTipoPoliza(poliza);
     }
 
 }

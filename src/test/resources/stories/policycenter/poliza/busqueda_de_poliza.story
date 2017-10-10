@@ -7,6 +7,8 @@ Como usuario de PolicyCenter
 Quiero ser capaz de buscar una poliza asociada a un contacto
 Para ver el detalle de la misma
 
+
+
 Scenario: Consultar polizas por numero de poliza no existente
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar una poliza
@@ -133,3 +135,35 @@ Then debe mostrar el mensaje <mensaje>
 Examples:
 | numSubscripcion | documento  | tipoBeneficiario |  tipodocumento        | mensaje                             |
 | 33355336        | 1060447895 | Asegurado        |  CEDULA DE CIUDADANIA |La búsqueda no devolvió resultados.  |
+
+
+Scenario: Busqueda por el Numero de identificacion y tipo de poliza Individual
+Given que voy a buscar una poliza
+And limpioCampos
+When selecione la opcion tipo de documento <tipoDocumento>
+And ingreso la identificacion  <identificacion>
+And selecciono la opcion tipo de poliza <tipoPoliza>
+And busco poliza mediante el criterio seleccionado anteriormente
+Then se visualiza la informacion de la poliza tipo
+|tipo       |
+|Colectiva|
+
+Examples:
+|tipoDocumento          |identificacion|tipoPoliza|
+|CEDULA DE CIUDADANIA   |1234567891    |Individual|
+
+Scenario: Busqueda por el Numero de identificacion y tipo de poliza colectiva
+Given que voy a buscar una poliza
+And limpioCampos
+When selecione la opcion tipo de documento <tipoDocumento>
+And ingreso la identificacion  <identificacion>
+And selecciono la opcion tipo de poliza <tipoPoliza>
+And busco poliza mediante el criterio seleccionado anteriormente
+Then se visualiza la informacion de la poliza tipo
+|tipo       |
+|Individual|
+
+Examples:
+|tipoDocumento          |identificacion|tipoPoliza|
+|CEDULA DE CIUDADANIA   |1234567891    |Colectiva|
+
