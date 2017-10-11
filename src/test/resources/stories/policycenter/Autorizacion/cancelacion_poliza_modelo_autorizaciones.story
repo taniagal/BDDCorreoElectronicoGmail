@@ -10,11 +10,11 @@ Scenario: Generar una cancelacion de poliza donde se levante autorizacion por re
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
 When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
 And se tienen los siguientes parametros para la busqueda
-|oficina|asesor     |regla                                          | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
-|4029   |10154      | retroactividad                                | CC013     |
+|oficina|asesor     |regla                                          |canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |10154      |retroactividad                                 |CC013     |
 And voy a cotizar poliza de autos individual:
 | cuenta     | producto | oficina | agente_oficina                     | tipoPoliza |
-| 2582024763 | Autos    | 4029    | LAS LLAVES DEL CORAZON LTDA. CQLII | Individual |
+| 0225097276 | Autos    | 4029    | LAS LLAVES DEL CORAZON LTDA. CQLII | Individual |
 And ingrese la Fecha Inicio Vigencia: -32
 And ingrese datos del asegurado de policy <tipo_documento> <documento>
 And ingrese los datos del vehiculo que va asegurar:
@@ -30,7 +30,7 @@ And ingrese al resumen de la poliza expedida
 And aprobar la cancelacion de la poliza
 |motivo                  |descripcion                  |Fecha|
 |Por petición del cliente|Prueba cancelacion con Policy| -32 |
-And ingrese a la opcion plan de trabajo
+And ingrese a la opcion plan de trabajo para cancelacion
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
 And ir al usuario a validar asignación de actividad
@@ -38,7 +38,7 @@ And ir al usuario a validar asignación de actividad
 
 Examples:
 | tipo_documento       | documento  |
-| CEDULA DE CIUDADANIA | 9923424349 |
+| CEDULA DE CIUDADANIA | 1000283562 |
 
 Scenario: Cancelación posterior al último pago del cliente
 And se tienen los siguientes parametros para la busqueda
@@ -68,4 +68,4 @@ And ir al usuario a validar asignación de actividad
 
 Examples:
 | tipo_documento       | documento  |
-| CEDULA DE CIUDADANIA | 9923424349 |
+| CEDULA DE CIUDADANIA | 1000283562 |

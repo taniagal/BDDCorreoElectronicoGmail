@@ -35,6 +35,10 @@ public class PlanDeTrabajoSteps extends ScenarioSteps {
         planDeTrabajo.ingresarALaOpcionPlanDeTrabajoCancelacion();
     }
     @Step
+    public void ingresarAlPlanDeTrabajoSoloCancelacion(){
+        planDeTrabajo.ingresarALaOpcionPlanDeTrabajoSoloCancelacion();
+    }
+    @Step
     public void ingresarAlAnalisisDeRiesgoCancelacion(){
         planDeTrabajo.ingresarALaOpcionAnalisisDeRiesgoCancelacion();
     }

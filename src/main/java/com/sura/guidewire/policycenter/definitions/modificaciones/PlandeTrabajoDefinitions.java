@@ -41,6 +41,10 @@ public class PlandeTrabajoDefinitions {
     public void seDebeGenerarActividadPorEnCancelacionDePoliza(){
         planDeTrabajoSteps.ingresarAlPlanDeTrabajoCancelacion();
     }
+    @When("ingrese a la opcion plan de trabajo para cancelacion")
+    public void ingresarOpcionDeTrabajoCancelacion(){
+        planDeTrabajoSteps.ingresarAlPlanDeTrabajoSoloCancelacion();
+    }
     @When("ingrese a la opcion Analisis de Riesgo")
     public void seDebeGenerarReglaEnAnalisisDeRiesgoCancelacionDepoliza(){
         planDeTrabajoSteps.ingresarAlAnalisisDeRiesgoCancelacion();
