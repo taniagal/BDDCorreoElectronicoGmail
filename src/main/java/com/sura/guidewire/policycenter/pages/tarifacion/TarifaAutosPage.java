@@ -159,7 +159,7 @@ public class TarifaAutosPage extends PageUtil {
     public void desMarcarCoberturas() {
         clickearElemento(checkBoxHurto);
         comboBoxPerdidaTotalHurto.waitUntilNotVisible();
-        checkBoxDaniosCarro.click();
+        clickearElemento(checkBoxDaniosCarro);
         comboBoxPerdidaTotalDaniosDeducible.waitUntilNotVisible();
     }
 
