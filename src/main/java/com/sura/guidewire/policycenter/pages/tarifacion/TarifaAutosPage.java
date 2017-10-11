@@ -159,7 +159,7 @@ public class TarifaAutosPage extends PageUtil {
     public void desMarcarCoberturas() {
         clickearElemento(checkBoxHurto);
         comboBoxPerdidaTotalHurto.waitUntilNotVisible();
-        checkBoxDaniosCarro.click();
+        clickearElemento(checkBoxDaniosCarro);
         comboBoxPerdidaTotalDaniosDeducible.waitUntilNotVisible();
     }
 
@@ -260,8 +260,9 @@ public class TarifaAutosPage extends PageUtil {
         Map<String, String> dato = datosCoberturas.getRow(0);
         esperarPorPantallaCoberturas();
         seleccionarItem(comboBoxLimite, dato.get("limite"));
+        esperarHasta(2000);
         seleccionarItem(comboBoxDeducible, dato.get("deducible"));
-        setImplicitTimeout(TIEMPO_2, TimeUnit.SECONDS);
+        setImplicitTimeout(TIEMPO_4, TimeUnit.SECONDS);
         if (comboBoxAsistencia.isVisible() && !dato.get("AS").isEmpty()) {
             seleccionarCoberturaAsistencia(dato.get("AS"));
         }

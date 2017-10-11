@@ -134,17 +134,17 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
         }
         clickearElemento(botonSiguiente);
-        if(xpathPlaca.isPresent()&& xpathPlaca.isVisible()){
+        if(xpathPlaca.isVisible()){
             if(xpathPlaca.containsText("La placa DAG64F está asegurada en la póliza 800000018775, por favor verifique.")){
                 clickearElemento(botonSiguiente);
             }
         }
-        if(xpathZonaPermitida.isPresent()&&xpathZonaPermitida.isVisible()){
+        if(xpathZonaPermitida.isVisible()){
             if(xpathZonaPermitida.containsText("Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.")){
                 clickearElemento(botonSiguiente);
             }
         }
-        if(xpathValorMinimo.isPresent() && xpathValorMinimo.isVisible()){
+        if(xpathValorMinimo.isVisible()){
             if(xpathValorMinimo.containsText("El valor del vehículo es inferior al tope mínimo. Por favor verifique.")){
                 clickearElemento(botonSiguiente);
             }
@@ -192,6 +192,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if (opcion.equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
+
         if (opcion.equals(vehiculo.get("vehiculo_blindado"))) {
             seleccionarVehiculoBlindado();
         }
@@ -365,8 +366,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void agregarValorAsegurado(String valorAsegurado) {
+        esperarHasta(2000);
         campoTxtValorAsegurado.waitUntilPresent().clear();
         campoTxtValorAsegurado.sendKeys(valorAsegurado);
+        esperarHasta(2000);
     }
 
     public void validarQueNoPermiteAgregarMasDeUnAuto() {

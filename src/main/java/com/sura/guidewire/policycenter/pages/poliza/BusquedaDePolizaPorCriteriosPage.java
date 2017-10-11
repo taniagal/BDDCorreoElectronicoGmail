@@ -8,6 +8,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.MatcherAssert.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
@@ -29,6 +30,11 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
     private WebElementFacade campoCriterioDeBusqueda;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']")
     private WebElementFacade filaResultados;
+    @FindBy(xpath= ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyType-inputEl']")
+    private WebElementFacade comboTipoPoliza;
+
+
+
 
     public BusquedaDePolizaPorCriteriosPage(WebDriver driver) {
         super(driver);
@@ -51,6 +57,13 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
         clickearElemento(tablaResultados);
         String contenidoTabla = tablaResultados.getText();
         MatcherAssert.assertThat("No contiene los elementos a verificar", contenidoTabla.contains(datosVerificar.get("poliza")));
+    }
+
+    public void buscarPorResultadosTipoPoliza(ExamplesTable aVerificar){
+        Map<String,String> datosVerificar = aVerificar.getRow(0);
+        tablaResultados.waitUntilPresent();
+        String contenidoTabla = tablaResultados.getText();
+        MatcherAssert.assertThat("Contiene elementos no apropiados del filtro tipo de poliza",!contenidoTabla.contains(datosVerificar.get("tipo")));
     }
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
@@ -76,6 +89,13 @@ public class BusquedaDePolizaPorCriteriosPage extends PageUtil {
     public void diligenciarCampoCriterioBusqueda(String contenido) {
         if (contenido != null && !contenido.isEmpty()) {
             campoCriterioDeBusqueda.sendKeys(contenido);
+        }
+    }
+
+    public void seleccionarTipoPoliza(String tipoPoliza) {
+        if (tipoPoliza != null && !tipoPoliza.isEmpty()) {
+            waitFor(comboTipoPoliza);
+            seleccionarItem(comboTipoPoliza, tipoPoliza);
         }
     }
 }
