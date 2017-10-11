@@ -103,7 +103,7 @@ public class InspeccionVehiculoPage extends PageUtil {
 
     public void expedirPoliza() {
         botonExpedirPoliza.waitUntilPresent().click();
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_3000);
         act.sendKeys(Keys.ENTER).build().perform();
     }
 

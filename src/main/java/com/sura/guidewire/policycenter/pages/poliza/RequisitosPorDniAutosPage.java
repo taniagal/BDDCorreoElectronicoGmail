@@ -321,7 +321,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void validarReglasCorrespondientes() {
-    waitForAllTextToAppear("Asuntos que bloquean la expedición");
+        waitForAllTextToAppear("Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.");
     }
 }
 

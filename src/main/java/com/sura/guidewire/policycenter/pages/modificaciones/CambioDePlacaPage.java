@@ -85,6 +85,8 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade tablaRequisitosModificacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesLV-body']/div/table/tbody/tr/td[3]")
     private WebElementFacade tablaDetallesDelVehiculoPlaca;
+    @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl")
+    private WebElementFacade btnBorrar;
 
 
     public CambioDePlacaPage(WebDriver driver) {
@@ -192,6 +194,7 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void editarCambioPoliza() {
+
         if (botonEditarCambioPoliza.isPresent() && botonEditarCambioPoliza.isVisible()) {
             clickearElemento(botonEditarCambioPoliza);
            clickearElemento(botonEditarCambioPolizaAceptar);
