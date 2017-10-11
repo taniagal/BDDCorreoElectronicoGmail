@@ -107,6 +107,7 @@ public class NuevaPolizaPage extends PageUtil {
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(botonBusquedaRapida).shouldBePresent();
         botonBusquedaRapida.sendKeys("Account " + numeroCuenta);
         botonBusquedaRapida.sendKeys(Keys.ENTER);
+        esperarHasta(TIEMPO_3000);
         waitForTextToAppear(numeroCuenta);
     }
 }

@@ -35,6 +35,12 @@ public class BusquedaDePolizaPorCriteriosDefinitions {
         busquedaDePolizaPorCriteriosSteps.verificarInformacionPoliza(verificar);
     }
 
+    @Then("se visualiza la informacion de la poliza tipo $verificar")
+    public void visualizarInformacionPolizaTipo(ExamplesTable verificar) {
+        busquedaDePolizaPorCriteriosSteps.verificarInformacionPolizaTipo(verificar);
+    }
+
+
     @Given("limpioCampos")
     @When("limpioCampos")
     public void limpiarCampos() {
@@ -60,4 +66,10 @@ public class BusquedaDePolizaPorCriteriosDefinitions {
     public void diligenciarCampoCriterio(@Named("contenidoCampoCriterio") String contenido) {
         busquedaDePolizaPorCriteriosSteps.diligenciarCampoCriterioBusqueda(contenido);
     }
+
+    @When("selecciono la opcion tipo de poliza <tipoPoliza>")
+    public void seleccionarTipoPoliza(@Named("tipoPoliza") String poliza) {
+        busquedaDePolizaPorCriteriosSteps.seleccionarTipoPoliza(poliza);
+    }
+
 }
