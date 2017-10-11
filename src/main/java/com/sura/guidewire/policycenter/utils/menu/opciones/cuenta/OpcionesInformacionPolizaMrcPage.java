@@ -244,7 +244,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void seleccionarOpcionCotizar() {
         try {
-            botonCotizar.waitUntilPresent();
+            botonCotizar.waitUntilVisible();
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             esperarHasta(TIEMPO_2000);
