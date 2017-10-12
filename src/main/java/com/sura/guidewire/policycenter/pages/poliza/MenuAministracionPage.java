@@ -24,6 +24,7 @@ public class MenuAministracionPage extends PageUtil {
     }
 
     public void irATraspasoDeCartera() {
+        esperarHasta(TIEMPO_3500);
         actions.moveToElement(textoBusquedaRegistro).click().sendKeys(TEXTOBSUQUEDAAMIND).sendKeys(Keys.ENTER).build().perform();
         esperarObjetoClikeableServidor(".//*[@id='AdminUserSearchPage:UserSearchScreen:ttlBar']");
         clicObjeto(menuAdmnistracionTrapasoCartera);
