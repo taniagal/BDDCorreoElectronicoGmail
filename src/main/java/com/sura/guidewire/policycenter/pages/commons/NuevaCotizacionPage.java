@@ -173,7 +173,7 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void seleccionDeProducto(String nomProducto) {
         try {
-            waitForTextToAppear(nomProducto, TIEMPO_1000);
+            waitForTextToAppear(nomProducto, TIEMPO_3000);
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException ", e);
             esperarHasta(TIEMPO_1000);
