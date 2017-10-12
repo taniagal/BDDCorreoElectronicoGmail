@@ -28,9 +28,9 @@ public class PlanDeTrabajoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='RenewalWizard:Workplan']")
     WebElementFacade xPathOpcionPlanDeTrabajoEnRenovacionDePoliza;
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
-    @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[1]//div/div[4]//table//tr[1]//td[15]")
-    private WebElementFacade xPathColumnaDeDetalleReglaUW;
     @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[1]//div/div[4]//table//tr[2]//td[15]")
+    private WebElementFacade xPathColumnaDeDetalleReglaUW;
+    @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr[1]//td[15]")
     private WebElementFacade xPathColumnaDeDetalleReglaUWCancelacion;
     @FindBy(xpath = ".//td/div/span[contains(.,'Plan de trabajo')]")
     private WebElementFacade xPathOpcionPlanDeTrabajoEnCancelacion;

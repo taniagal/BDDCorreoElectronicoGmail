@@ -30,6 +30,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 
 
@@ -609,6 +610,11 @@ public class PageUtil extends PageObject {
             }
         }
         return numeroCotizacion;
+    }
+
+    protected void waitElementeUntilVisible(WebElementFacade element, int seconds) {
+        WebDriverWait webDriverWait = new WebDriverWait(getDriver(), seconds);
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
     }
 }
 

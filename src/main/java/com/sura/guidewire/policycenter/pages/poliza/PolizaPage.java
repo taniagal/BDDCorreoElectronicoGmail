@@ -357,7 +357,7 @@ public class PolizaPage extends PageUtil {
     }
 
     public void ingresaraResumenDeLaPolizaExpedida() {
-        esperarHasta(TIEMPO_3500);
+        waitElementeUntilVisible(findBy(xpathVerPolizExpedida),60);
         findBy(xpathVerPolizExpedida).click();
         waitForTextToAppear("Resumen");
     }
