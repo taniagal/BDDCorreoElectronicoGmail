@@ -516,6 +516,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
     public void ingresarFechaVigenciaMA(String fechaInicioVigencia,String fechaFinVigencia) {
         waitInfoPoliza(lblInformaPoliza);
+        esperarHasta(3000);
         txtFechaVigencia.clear();
         if (!fechaInicioVigencia.contains("/")){
             fechaInicioVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaInicioVigencia));
@@ -524,13 +525,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             fechaFinVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaFinVigencia));
         }
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
-        esperarHasta(2000);
+        esperarHasta(3000);
         clickearElemento(lblRegistroDelAsesor);
         txtFechaFinVigencia.clear();
         txtFechaFinVigencia.sendKeys(fechaFinVigencia);
-        esperarHasta(1000);
+        esperarHasta(3000);
         clickearElemento(lblRegistroDelAsesor);
-        esperarHasta(2000);
+        esperarHasta(3000);
         clickearElemento(botonSiguiente);
         esperarHasta(TIEMPO_9999);
         esperarHasta(TIEMPO_9999);
