@@ -64,8 +64,11 @@ public class ExpedicionDePolizaPage extends PageUtil {
     }
 
     public void expedirPolizaPorCambio() {
-        waitFor(ExpectedConditions.visibilityOf(botonExpedirPolizaPorCambio));
-        waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPolizaPorCambio));
+        esperarHasta(3000);
+        //waitFor(ExpectedConditions.visibilityOf(botonExpedirPolizaPorCambio));
+        //waitFor(botonExpedirPolizaPorCambio).shouldBeVisible();
+        waitElementeUntilVisible(botonExpedirPolizaPorCambio, 60);
+        //waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPolizaPorCambio));
         esperarHasta(TIEMPO_2000);
         clickearElemento(botonExpedirPolizaPorCambio);
     }
