@@ -45,6 +45,9 @@ public class ReglasRenovacionDosPage extends PageUtil {
     WebElementFacade lblMensajes;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
     private WebElementFacade menuPoliza;
+    @FindBy(xpath = ".//div/span[contains(.,'Coberturas')]")
+    private WebElementFacade mnuCoberturasAutoPersonal;
+
 
     public ReglasRenovacionDosPage(WebDriver driver) {
         super(driver);
@@ -101,6 +104,8 @@ public class ReglasRenovacionDosPage extends PageUtil {
             seleccionarItem(campoTxtCiudadDeCirculacion, "MEDELLIN (ANTIOQUIA)");
         }
         clickearElemento(btnSiguinete);
+        esperarYClickearBoton(mnuCoberturasAutoPersonal);
+
     }
 
     public int logicaExtraeOSumaPorcentaje(int valorCalcular, double porcentaje) {

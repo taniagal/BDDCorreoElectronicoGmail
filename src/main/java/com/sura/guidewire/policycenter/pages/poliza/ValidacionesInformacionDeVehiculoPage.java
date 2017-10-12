@@ -317,6 +317,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void clickVehiculoServicio() {
+        esperarHasta(1000);
         esperarObjetoClikeableServidorWe(comboBoxVehiculoServicio);
         try {
             waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));

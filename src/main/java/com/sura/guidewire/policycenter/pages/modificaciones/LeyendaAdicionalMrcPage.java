@@ -53,5 +53,11 @@ public class LeyendaAdicionalMrcPage extends PageUtil {
 
     public void clickearBotonAceptar() {
         esperarYClickearBoton(botonAceptarIngresoLeyendaAdicional);
+        try{
+
+        }
+        catch(Exception e){
+
+        }
     }
 }

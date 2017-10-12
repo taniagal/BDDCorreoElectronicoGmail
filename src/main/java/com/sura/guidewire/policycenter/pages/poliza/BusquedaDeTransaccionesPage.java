@@ -140,6 +140,7 @@ public class BusquedaDeTransaccionesPage extends PageUtil {
     }
 
     public String validarResultadosDeBusqueda() {
+        esperarHasta(TIEMPO_2000);
         tablaResultadosDeBusqueda.waitUntilVisible();
         return tablaResultadosDeBusqueda.getText();
     }
