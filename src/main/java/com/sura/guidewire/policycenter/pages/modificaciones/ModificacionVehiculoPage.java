@@ -66,7 +66,7 @@ public class ModificacionVehiculoPage extends PageUtil {
 
     public void mostrarDatosVehiculo(String claseVehiculo, String marca, String linea) {
         WebElementFacade campoClaseVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']");
-        MatcherAssert.assertThat("Error en el valor de la clase de vehiculo", campoClaseVehiculo.getText(), Is.is(Matchers.equalTo(claseVehiculo)));
+        MatcherAssert.assertThat("Error en el valor de la clase de vehiculo", campoClaseVehiculo.getValue(), Is.is(Matchers.equalTo(claseVehiculo)));
         WebElementFacade campoMarca = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']");
         MatcherAssert.assertThat("Error en el valor de la marca", campoMarca.getValue().contains(marca));
         WebElementFacade campoLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
