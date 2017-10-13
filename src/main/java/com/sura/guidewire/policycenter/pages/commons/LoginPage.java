@@ -75,6 +75,6 @@ public class LoginPage extends PageUtil {
 
         WebDriver tdriver = getDriver();
         JavascriptExecutor js = (JavascriptExecutor) tdriver;
-        js.executeScript("document.body.style.zoom='80%'");
+        js.executeScript("document.body.style.zoom='100%'");
     }
 }
