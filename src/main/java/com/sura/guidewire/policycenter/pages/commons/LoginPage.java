@@ -71,6 +71,18 @@ public class LoginPage extends PageUtil {
         resetImplicitTimeout();
     }
 
+    public void loginTraspasoCartera(String usuario, String contrasenia) {
+        setImplicitTimeout(0, TimeUnit.SECONDS);
+        if (!mnuContact.isPresent()) {
+            if (usuario1.isPresent()) {
+                usuario1.sendKeys(usuario);
+                contrasenia1.sendKeys(contrasenia);
+                btnSubmit1.click();
+            }
+        }
+        resetImplicitTimeout();
+    }
+
     public void zoomLevelDefault(){
 
         WebDriver tdriver = getDriver();

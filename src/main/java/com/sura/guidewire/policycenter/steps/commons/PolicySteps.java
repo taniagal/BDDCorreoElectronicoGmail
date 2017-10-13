@@ -30,6 +30,11 @@ public class PolicySteps extends ScenarioSteps {
     }
 
     @Step
+    public void loginTraspasoCartera(String usuario, String contrasenia) {
+        seus.loginTraspasoCartera(usuario, contrasenia);
+    }
+
+    @Step
     public void assertion(String element) {
         inicioPage().assertion(element);
     }

@@ -25,6 +25,11 @@ public class PolicyDefinitions {
         pcs.loginSeus(country, user, password);
     }
 
+    @Given("que el usuario ingresa username $user y password $password")
+    public void loginTraspasoCartera(String user, String password) {
+        pcs.loginTraspasoCartera(user, password);
+    }
+
     @Then("el usuario deberia ver la pagina de inicio correspondiente a su rol <message>")
     public void assertion(@Named("message") String msjResult) {
         pcs.assertion(msjResult);
