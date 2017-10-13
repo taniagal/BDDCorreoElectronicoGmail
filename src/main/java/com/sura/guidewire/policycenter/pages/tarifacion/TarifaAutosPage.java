@@ -215,10 +215,10 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarAsegurado(String tipoDocumento, String documento) {
         comboBoxTipoDocumento.waitUntilVisible().clear();
-        esperarHasta(TIEMPO_300);
+        esperarHasta(TIEMPO_1000);
         comboBoxTipoDocumento.type(tipoDocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
-        esperarHasta(TIEMPO_800);
+        esperarHasta(TIEMPO_1000);
         try {
             botonBuscar.waitUntilPresent();
             ingresarDato(campoTxtNumeroDocumento, documento);

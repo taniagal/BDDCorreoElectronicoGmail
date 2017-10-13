@@ -14,7 +14,7 @@ Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
 And seleccione el agente y la oficina de radicacion:
 |oficina|agente_oficina            |
-|9991   |ASESOR 1 - PRUEBA TRASPASO|
+|016    |ASESOR 4 - PRUEBA TRASPASO|
 When seleccione el producto <producto> para expedir la poliza
 And seleccione el tipo de poliza:
 |tipoPoliza|
@@ -31,7 +31,7 @@ And expido la poliza y voy al archivo de poliza
 When Ir al menu traspaso de cartera
 And Traspasar cartera de asesor a asesor:
 |oldProduceCode|newProduceCode|
-|9991          |9992          |
+|9994          |9992          |
 When Adelantar el reloj un dia
 And Ejecutar proceso<nombreProceso>
 Given que voy a buscar una poliza
