@@ -43,4 +43,7 @@ public class PolicySteps extends ScenarioSteps {
     public String obtenerPaginaActual() {
         return seus.getDriver().getCurrentUrl();
     }
+
+    @Step
+    public void reestablecerZoom(){ seus.zoomLevelDefault();}
 }

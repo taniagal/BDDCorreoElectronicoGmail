@@ -31,6 +31,11 @@ public class PolicyDefinitions {
 
     }
 
+    @Then("reestablesco el zoom de la pagina")
+    public void zoomLevelChange(){
+        pcs.reestablecerZoom();
+    }
+
     @Then("el usuario deberia poder acceder a nuevo contacto persona")
     public void nuevoContactoPersona() {
         pcs.nuevoContactoPersona();
