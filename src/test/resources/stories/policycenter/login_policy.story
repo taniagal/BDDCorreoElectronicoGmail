@@ -17,6 +17,7 @@ Scenario: autenticacion en Policy Centrer - Seus
 Given el usuario ingresa a la pagina de autenticacion de PolicyCenter - Seus
 When el usuario ingresa pais <country>, username <usr> y password <pass>
 Then el usuario deberia ver la pagina de inicio correspondiente a su rol <message>
+And reestablesco el zoom de la pagina
 
 Examples:
 | country  | usr             | pass           | message         |

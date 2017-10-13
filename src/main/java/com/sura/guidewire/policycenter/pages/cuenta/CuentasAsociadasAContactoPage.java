@@ -41,9 +41,9 @@ public class CuentasAsociadasAContactoPage extends PageUtil {
     }
 
     public void validarMensaje(String mensaje) {
-        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(mnuLateralCuenta).waitUntilPresent();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(mnuLateralCuenta).waitUntilVisible();
         mnuLateralCuenta.click();
-        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(msjCuentaNoEncontrada).waitUntilPresent();
+        withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(msjCuentaNoEncontrada).waitUntilVisible();
         MatcherAssert.assertThat(msjCuentaNoEncontrada.getText(), Matchers.containsString(mensaje));
     }
 }

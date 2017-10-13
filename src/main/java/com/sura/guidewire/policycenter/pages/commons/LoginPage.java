@@ -5,11 +5,16 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.concurrent.TimeUnit;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
 
+import net.thucydides.core.webdriver.WebdriverAssertionError;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 //@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
@@ -65,5 +70,12 @@ public class LoginPage extends PageUtil {
             }
         }
         resetImplicitTimeout();
+    }
+
+    public void zoomLevelDefault(){
+
+        WebDriver tdriver = getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) tdriver;
+        js.executeScript("document.body.style.zoom='100%'");
     }
 }
