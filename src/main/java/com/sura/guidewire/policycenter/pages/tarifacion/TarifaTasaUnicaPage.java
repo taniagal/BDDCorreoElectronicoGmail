@@ -176,6 +176,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         campoTxtFechaDeInicioDeVigencia.waitUntilPresent().clear();
         campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(Integer.parseInt(nroDias)));
         clickearElemento(botonSiguienteCambioDePoliza);
+        esperarHasta(TIEMPO_5000);
     }
 
     public void modificarFechaVigencia(String fechaModificacion) {
