@@ -28,7 +28,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     WebElementFacade botonExpedirPoliza;
     @FindBy(id = "SubmissionWizard:ViewQuote")
     WebElementFacade mnuItemCotizacion;
-    @FindBy(id = ".//span[contains(.,'Exped')]")
+    @FindBy(id = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl']")
     WebElementFacade botonExpedirPolizaPorCambio;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
@@ -67,7 +67,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
         esperarHasta(3000);
         //waitFor(ExpectedConditions.visibilityOf(botonExpedirPolizaPorCambio));
         //waitFor(botonExpedirPolizaPorCambio).shouldBeVisible();
-        botonExpedirPolizaPorCambio.getText();
+        //botonExpedirPolizaPorCambio.getText();
         waitElementeUntilVisible(botonExpedirPolizaPorCambio, 30);
         //waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPolizaPorCambio));
         esperarHasta(TIEMPO_2000);
