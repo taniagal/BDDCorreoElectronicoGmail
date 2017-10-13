@@ -173,14 +173,14 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void adicionarContacto(String tipoDocumento, String numeroDocumento) {
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_2000);
         WebElementFacade campoTxtTipoDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']");
         withTimeoutOf(TIEMPO_15, TimeUnit.SECONDS).waitFor(campoTxtTipoDocumento).typeAndTab(tipoDocumento);
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_2000);
         WebElementFacade campoTxtNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
         withTimeoutOf(TIEMPO_10, TimeUnit.SECONDS).waitFor(campoTxtNumeroDocumento).type(numeroDocumento);
         WebElementFacade botonBuscarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']");
-        esperarHasta(TIEMPO_1000);
+        esperarHasta(TIEMPO_2000);
         waitFor(botonBuscarContacto).click();
         WebElementFacade botonSeleccionarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']");
         waitFor(botonSeleccionarContacto).shouldBeVisible();
