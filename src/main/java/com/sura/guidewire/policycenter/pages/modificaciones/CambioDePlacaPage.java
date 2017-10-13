@@ -194,7 +194,6 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void editarCambioPoliza() {
-
         if (botonEditarCambioPoliza.isPresent() && botonEditarCambioPoliza.isVisible()) {
             clickearElemento(botonEditarCambioPoliza);
            clickearElemento(botonEditarCambioPolizaAceptar);

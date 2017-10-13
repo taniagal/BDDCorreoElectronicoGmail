@@ -152,6 +152,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     }
 
     public void menuItemCotizador() {
+        waitElementeUntilVisible(botonBorrar,120);
         if(botonBorrar.isPresent() &&botonBorrar.isVisible()){
             clickearElemento(botonBorrar);
         }

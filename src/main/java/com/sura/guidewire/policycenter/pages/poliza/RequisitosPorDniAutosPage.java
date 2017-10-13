@@ -78,6 +78,8 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade txtTipoPoliza;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton']")
     private WebElementFacade botonBorrar;
+    @FindBy(xpath = ".//span[contains(.,'Detalles')]")
+    private WebElementFacade botonDetalles;
     @FindBy(id = "p1")
     private WebElementFacade chckRequisitos;
     @FindBy(id = "rbEstadoFisico6")
@@ -321,6 +323,7 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     }
 
     public void validarReglasCorrespondientes() {
+        waitElementeUntilVisible(botonDetalles,120);
         waitForAllTextToAppear("Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.");
     }
 }
