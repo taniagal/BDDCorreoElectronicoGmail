@@ -35,7 +35,8 @@ Examples:
 | BLE860 |
 
 Scenario: realizar la busqueda de riesgo de poliza colectiva, validar que los resultados son correctos y el link de la placa
-Given que voy a la busqueda de riesgos
+Meta: @manual
+Given que_ voy a la busqueda de riesgos
 When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE200 |
@@ -49,7 +50,8 @@ Examples:
 | BLE200 |
 
 Scenario: validar la informacion de la poliza colectiva asociada a la placa
-Given que voy a la busqueda de riesgos
+Meta: @manual
+Given que_ voy a la busqueda de riesgos
 When este buscando un riesgo por los filtros producto y placa del vehiculo
 | producto | placa  |
 | Autos    | BLE200 |

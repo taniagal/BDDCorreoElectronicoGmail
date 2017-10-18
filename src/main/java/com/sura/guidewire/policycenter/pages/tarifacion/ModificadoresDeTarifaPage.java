@@ -164,7 +164,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
             LOGGER.info("TimeoutException " + e);
         }
         try {
-            esperarHasta(TIEMPO_2000);
+            esperarHasta(TIEMPO_3500);
             MatcherAssert.assertThat("Error, la bonificacion comercial no se recalculó, expected: " + bonoC + " but was: " +
                     campoTxtBonificacionComercialCambio.getValue(), campoTxtBonificacionComercialCambio.getValue(), Is.is(Matchers.equalToIgnoringWhiteSpace(bonoC)));
         } catch (ElementNotVisibleException e) {
