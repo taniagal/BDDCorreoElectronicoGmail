@@ -1,8 +1,9 @@
 Meta:
 
 Narrative:
-Al hacer una modificacion de póliza con fecha retroactiva de 30 días hacia atrás y 30 días hacia adelante. El sistema debe generar automáticamente un mensaje indicando que se requiere una autorización.
-Se debe aprobar ó rechazar la autorizacion con el perfil correspondiente y luego expedir la modificacion.
+Como miembro de suramericana de seguros en alguno de los roles que permite generar cotizaciones de poliza
+Quiero poder autorizar ciertas reglas de validación asignadas a mi usuario
+Para poder expedir polizas de forma exitosa
 
 Scenario: Reglas que requieren autorizacion:modelo vehiculo, valor minimo, bonificacion
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
@@ -30,8 +31,9 @@ And realice los siguientes cambios en el vehiculo:
 |1985  |01601012 |40                   |
 And capturar el numero de cotizacion en estado borrador en la modificacion
 And intente cotizar el cambio de poliza
-And voy a expedir una poliza por cambio
+And voy a expedir el cambio de una poliza
 And de click en el boton aceptar
+And voy a expedir una poliza por cambio
 And voy a expedir una poliza por cambio
 And de click en el boton aceptar
 And ingrese a la opcion plan de trabajo
@@ -63,6 +65,7 @@ And expedir la poliza de autos
 And ingrese al resumen de la poliza expedida
 And quiero relizar el cambio de una poliza
 And se presione el boton siguiente en modificacion de poliza
+And capturar el numero de cotizacion en estado borrador en la modificacion
 And quiera cambiar el tomador principal por uno existente que es pep con <numeroDocumento> y <tipoDocumento>
 And ingrese a la opcion plan de trabajo
 And valide la generacion de las reglas que deben ser autorizadas
@@ -95,6 +98,7 @@ And ingrese al resumen de la poliza expedida
 And quiero relizar el cambio de una poliza
 And se presione el boton siguiente en modificacion de poliza
 And se ingrese a la opcion vehiculos
+And capturar el numero de cotizacion en estado borrador en la modificacion
 And seleccione la opcion importado por terceros
 And realice los siguientes cambios para el vehiculo:
 |valorAsegurado|valorAccesorios|valorAccesoriosEspeciales|transporteCombustible|
@@ -124,6 +128,7 @@ And deben aparecer el numero de cuotas por las cuales puedo financiar la poliza
 | 11             |
 | 12             |
 And ingrese el numero de cuotas <numeroCuotas> a financiar
+And capturar el numero de cotizacion en estado borrador en la modificacion
 And cotice una poliza
 And expida el cambio de la poliza
 And expida el cambio de la poliza
@@ -172,11 +177,11 @@ And clic a la pantalla de coberturas
 And seleccione todas las coberturas del plan:
 | limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
 | 3.040  | 0         | 0   | 850 | 40. | Asistencia Global  | 0   | 850 | 40 | 20   |  20  |         |
-And capturar el numero de cotizacion
 And expedir la poliza de autos
 And ingrese al resumen de la poliza expedida
 And quiero relizar el cambio de una poliza
 And cambio la fecha de vigencia sumando los dias a la fecha actual: -32
+And capturar el numero de cotizacion en estado borrador en la modificacion
 And cotice y expida la poliza
 And ingrese a la opcion plan de trabajo
 
@@ -201,6 +206,7 @@ And expedir la poliza de autos
 And ingrese al resumen de la poliza expedida
 And quiero relizar el cambio de una poliza
 And cambio la fecha de vigencia sumando los dias a la fecha actual: 32
+And capturar el numero de cotizacion en estado borrador en la modificacion
 And cotice y expida la poliza
 And ingrese a la opcion plan de trabajo
 

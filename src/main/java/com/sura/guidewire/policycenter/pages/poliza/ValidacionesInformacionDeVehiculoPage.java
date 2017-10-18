@@ -50,6 +50,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade campoTxtchasis;
     @FindBy(xpath = ".//*[contains(@id, 'Wizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl')]")
     private WebElementFacade campoTxtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:2:RateModifier-inputEl']")
+    private WebElementFacade txtBonificacionComercial;
     @FindBy(xpath = ".//*[contains(@id, 'Wizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:3:RateModifier-inputEl')]")
     private WebElementFacade campoTxtDescuento;
     @FindBy(xpath = ".//*[contains(@id,'Wizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:4:RateModifier-inputEl')]")
@@ -81,6 +83,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl']")
     private WebElementFacade comboMedioDeVenta;
     private String opcion = "Si";
+    private String bonificacionComercial;
     @FindBy(xpath = "//div[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
     private WebElementFacade xpathPlaca;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
@@ -189,12 +192,16 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
         seleccionarItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         agregarDescuento(vehiculo);
+
         if (opcion.equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
-
         if (opcion.equals(vehiculo.get("vehiculo_blindado"))) {
             seleccionarVehiculoBlindado();
+        }
+        if(vehiculo.get("bonificacionComercial")!=null){
+            bonificacionComercial=vehiculo.get("bonificacionComercial");
+            agregarBonificacionComercial(bonificacionComercial);
         }
         if (opcion.equals(vehiculo.get("transporte_combustible"))) {
             seleccionarTransporteDeCombustible(opcion);
@@ -212,6 +219,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get(VALOR_ASEGURADO) +
                     " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get(VALOR_ASEGURADO)));
         }
+    }
+
+    private void agregarBonificacionComercial(String bonificacionComercial) {
+    ingresarDato(txtBonificacionComercial,bonificacionComercial);
     }
 
     public void seleccionarVehiculoCeroKilometros() {
