@@ -85,8 +85,4 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
         expedicionDePolizaPage.menuItemCotizador();
     }
 
-    @Step
-    public void expedirCambioPoliza() {
-        expedicionDePolizaPage.expedirCambioPoliza();
-    }
 }
