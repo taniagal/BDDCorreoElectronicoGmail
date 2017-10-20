@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.pages.poliza;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -137,6 +138,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade comboMedioDeVenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:primaryuse_DV-inputEl']")
     private WebElementFacade comboUsovehiculo;
+    @FindBy(xpath = ".//a[contains(.,'Expedir póliza')]")
+    private WebElementFacade botonExpedirPolizaPorCambioa;
 
     public ExpedicionDePolizaRequisitosPendientesPage(WebDriver driver) {
         super(driver);
@@ -305,6 +308,12 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
 
     public void agregarUsoVehiculo(String usoVehiculo) {
     seleccionarItem(comboUsovehiculo,usoVehiculo);
+    }
+
+    public void expedirCambioPoliza() {
+        esperarHasta(3000);
+        botonExpedirPolizaPorCambioa.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+
     }
 }
 

@@ -28,7 +28,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     WebElementFacade botonExpedirPoliza;
     @FindBy(id = "SubmissionWizard:ViewQuote")
     WebElementFacade mnuItemCotizacion;
-    @FindBy(id = ".//span[contains(.,'Expedir póliza')]")
+    @FindBy(id = ".//a[contains(.,'Expedir póliza')]")
     WebElementFacade botonExpedirPolizaPorCambio;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
@@ -159,8 +159,5 @@ public class ExpedicionDePolizaPage extends PageUtil {
         clickearElemento(mnuItemCotizacion);
     }
 
-    public void expedirCambioPoliza() {
-        esperarHasta(3000);
-        botonExpedirPolizaPorCambio.withTimeoutOf(5,TimeUnit.SECONDS).waitUntilClickable().click();
-    }
+
 }

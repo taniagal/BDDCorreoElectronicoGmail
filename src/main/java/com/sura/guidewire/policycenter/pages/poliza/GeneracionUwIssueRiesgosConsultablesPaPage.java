@@ -33,7 +33,7 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     }
 
     public void irAAnalisisDeRiesgo() {
-        clickearElemento(analisisDeRiesgo);
+        esperarYClickearBoton(analisisDeRiesgo);
         withTimeoutOf(TIEMPO_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo);
     }
 

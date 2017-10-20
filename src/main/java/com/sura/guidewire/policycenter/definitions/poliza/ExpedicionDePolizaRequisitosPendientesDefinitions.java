@@ -112,5 +112,9 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     public void cotizarCambioDePoliza() {
         expedicionDePolizaRequisitosPendientesSteps.clickOpcionCotizar();
     }
+    @When("voy a expedir el cambio de una poliza")
+    public void expedirCambioPoliza(){
+        expedicionDePolizaRequisitosPendientesSteps.expedirCambioPoliza();
+    }
 
 }

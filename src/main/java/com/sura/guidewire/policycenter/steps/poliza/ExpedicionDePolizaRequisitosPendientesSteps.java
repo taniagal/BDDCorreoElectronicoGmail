@@ -143,4 +143,8 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
     public void seleccionarTipoServicio(String usoVehiculo) {
     expedicionDePolizaRequisitosPendientesPage.agregarUsoVehiculo(usoVehiculo);
     }
+    @Step
+    public void expedirCambioPoliza() {
+        expedicionDePolizaRequisitosPendientesPage.expedirCambioPoliza();
+    }
 }
