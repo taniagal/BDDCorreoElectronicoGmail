@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.AutoPolizaNueva;
+package com.sura.guidewire.policycenter.ModeloAutorizacionesPoliza;
 
 import net.serenitybdd.jbehave.SerenityStory;
 

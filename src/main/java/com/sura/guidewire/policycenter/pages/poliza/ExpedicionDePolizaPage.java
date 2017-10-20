@@ -28,7 +28,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     WebElementFacade botonExpedirPoliza;
     @FindBy(id = "SubmissionWizard:ViewQuote")
     WebElementFacade mnuItemCotizacion;
-    @FindBy(id = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl']")
+    @FindBy(id = ".//span[contains(.,'Expedir póliza')]")
     WebElementFacade botonExpedirPolizaPorCambio;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
@@ -65,13 +65,8 @@ public class ExpedicionDePolizaPage extends PageUtil {
 
     public void expedirPolizaPorCambio() {
         esperarHasta(3000);
-        //waitFor(ExpectedConditions.visibilityOf(botonExpedirPolizaPorCambio));
-        //waitFor(botonExpedirPolizaPorCambio).shouldBeVisible();
-        //botonExpedirPolizaPorCambio.getText();
-        waitElementeUntilVisible(botonExpedirPolizaPorCambio, 30);
-        //waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPolizaPorCambio));
-        esperarHasta(TIEMPO_2000);
-        clickearElemento(botonExpedirPolizaPorCambio);
+        botonExpedirPolizaPorCambio.withTimeoutOf(5,TimeUnit.SECONDS).waitUntilClickable().click();
+
     }
 
     public void aceptarExpedirPoliza() {
@@ -162,5 +157,10 @@ public class ExpedicionDePolizaPage extends PageUtil {
         }
         esperarHasta(4000);
         clickearElemento(mnuItemCotizacion);
+    }
+
+    public void expedirCambioPoliza() {
+        esperarHasta(3000);
+        botonExpedirPolizaPorCambio.withTimeoutOf(5,TimeUnit.SECONDS).waitUntilClickable().click();
     }
 }
