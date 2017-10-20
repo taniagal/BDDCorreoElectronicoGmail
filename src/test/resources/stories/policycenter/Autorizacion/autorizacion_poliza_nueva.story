@@ -5,6 +5,43 @@ Como miembro de suramericana de seguros en alguno de los roles que permite gener
 Quiero poder autorizar ciertas reglas de validación asignadas a mi usuario
 Para poder expedir polizas de forma exitosa
 
+Scenario: 13Reglas que requieren autorizacion:importado por terceros, transporta combustible no permitido., vehículos que circulen en esta zona.
+Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
+When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividades
+Given se tienen los siguientes parametros para la busqueda
+|oficina|asesor     |regla                                                                                                                                         | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |10154      |importado por terceros,vehículos que circulen en esta zona.,transporta combustible no permitido.,                 |CC013      |
+Given estoy cotizando una poliza:
+| cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
+| 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
+And capturar el numero de cotizacion en estado borrador
+When ingrese los datos del asegurado <tipo_documento> <documento>
+When ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
+| random | 2017   | 00601190         | ISTMINA (CHOCO)      | Particular        | addsd  | dsdsdsds  | 94900000        | null      | null    | 11    | Plan Autos Global | Televentas |Si                    | Si                |
+When ingrese las coberturas:
+| limite | deducible | AS               |abogado|
+| 640.   | 0         | Asistencia Global|       |
+And cuando edite la transacion de la poliza
+And vaya a vehiculos en expedicion
+And seleccione la opcion importado por terceros
+And cotice una poliza
+And voy a expedir una poliza
+And de click en el boton aceptar
+And ingese al plan del trabajo
+And ingrese a la opcion requisitos a diligenciar todos los requisitos
+And vuelva a la cotizacion de poliza
+And voy a expedir una poliza
+And de click en el boton aceptar
+And espere a que salgan las validaciones de reglas correspondientes
+And ingrese a la opcion plan de trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
+Examples:
+| accesorios | tipo_documento       | documento  |
+| 2600000    | CEDULA DE CIUDADANIA | 1000283562 |
+
 Scenario: 14Reglas que requieren autorizacion:Placa extrangera,uso vehiculo,modelo vehiculo, valor minimo no tiene
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
 When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividades
@@ -141,42 +178,7 @@ Examples:
 | tipo_documento       | documento  |tipoPlazo|fechaInicioVigencia|usoVehiculo|
 | CEDULA DE CIUDADANIA | 1000033793 |Anual    |10/07/2017         |Familiar   |
 
-Scenario: 13Reglas que requieren autorizacion:importado por terceros, transporta combustible no permitido., vehículos que circulen en esta zona.
-Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
-When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividades
-Given se tienen los siguientes parametros para la busqueda
-|oficina|asesor     |regla                                                                                                                                         | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
-|4029   |80301      |importado por terceros,vehículos que circulen en esta zona.,transporta combustible no permitido.,                 |CC013      |
-Given estoy cotizando una poliza:
-| cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
-| 0225097276  | Autos     | 4029    | PINTORES S.A. CQLII II                         | Individual |
-And capturar el numero de cotizacion en estado borrador
-When ingrese los datos del asegurado <tipo_documento> <documento>
-When ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
-| random | 2017   | 00601190         | ISTMINA (CHOCO)      | Particular        | addsd  | dsdsdsds  | 94900000        | null      | null    | 11    | Plan Autos Global | Televentas |Si                    | Si                |
-When ingrese las coberturas:
-| limite | deducible | AS               |abogado|
-| 640.   | 0         | Asistencia Global|       |
-And cuando edite la transacion de la poliza
-And vaya a vehiculos en expedicion
-And seleccione la opcion importado por terceros
-And cotice una poliza
-And voy a expedir una poliza
-And de click en el boton aceptar
-And ingese al plan del trabajo
-And ingrese a la opcion requisitos a diligenciar todos los requisitos
-And vuelva a la cotizacion de poliza
-And voy a expedir una poliza
-And de click en el boton aceptar
-And espere a que salgan las validaciones de reglas correspondientes
-And ingrese a la opcion plan de trabajo
-And valide la generacion de las reglas que deben ser autorizadas
-And valide el usuario que debe aprobar una u otra regla de autorizacion
-And ir al usuario a validar asignación de actividad
-Examples:
-| accesorios | tipo_documento       | documento  |
-| 2600000    | CEDULA DE CIUDADANIA | 1000283562 |
+
 
 Scenario: 12Reglas que requieren autorizacion:limite maximo permitido, placa existente en otra poliza, marca no permitida.
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
