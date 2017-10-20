@@ -65,6 +65,8 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     private WebElementFacade botonActualizarExpedicion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:0_header_hd-textEl']/span")
     private WebElementFacade labelEstadoDeTransaccion;
+    @FindBy(xpath = ".//*[@id='RiskApprovalDetailsPopup:0:IssueDetailsDV:IssueNote-inputEl']")
+    private WebElementFacade txtNota;
 
     public AjustesDeReglasRenovacionMrcPage(WebDriver driver) {
         super(driver);
@@ -81,7 +83,6 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
     public void diligencieInstruccionesPrevias(ExamplesTable datos) {
 
         Map<String, String> mapaDatos = datos.getRow(0);
-
         waitFor(comboInstruccion);
         seleccionarItem(comboInstruccion, mapaDatos.get("instruccion"));
         seleccionarItem(comboRazonDeNoRenovacion, mapaDatos.get("razonNoRenovacion"));
@@ -116,6 +117,9 @@ public class AjustesDeReglasRenovacionMrcPage extends PageUtil {
         while (botonAprobacionEspecial.isVisible()) {
             botonAprobacionEspecial.click();
             esperarObjetoClikeableServidorWe(botonAceptarExpedicion);
+            esperarHasta(TIEMPO_2000);
+            txtNota.click();
+            txtNota.sendKeys("Prueba Nota");
             esperarObjetoClikeableServidorWe(botonActualizarExpedicion);
         }
         resetImplicitTimeout();
