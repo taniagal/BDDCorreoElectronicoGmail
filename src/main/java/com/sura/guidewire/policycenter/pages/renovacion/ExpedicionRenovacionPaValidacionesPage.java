@@ -44,7 +44,7 @@ public class ExpedicionRenovacionPaValidacionesPage extends PageUtil {
     public void editarInformacionVehiculoRenovacion(ExamplesTable infoVehiculo) {
         WebElementFacade validacionRetroactividad = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']/div");
         WebElementFacade itemVehiculos = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']/div/span");
-        setImplicitTimeout(TIEMPO_5, TimeUnit.SECONDS);
+        esperarHasta(TIEMPO_5000);
         clickearElemento(itemVehiculos);
         if (validacionRetroactividad.isPresent()) {
             clickearElemento(itemVehiculos);

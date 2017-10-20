@@ -525,7 +525,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             fechaFinVigencia = Utils.sumarDiasALaFechaActual(Integer.parseInt(fechaFinVigencia));
         }
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
-        esperarHasta(3000);
+        esperarHasta(3500);
         clickearElemento(lblRegistroDelAsesor);
         txtFechaFinVigencia.clear();
         txtFechaFinVigencia.sendKeys(fechaFinVigencia);
