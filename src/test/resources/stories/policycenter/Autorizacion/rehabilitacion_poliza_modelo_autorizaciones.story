@@ -33,6 +33,7 @@ And se ingrese el valor de los accesorios es superior al 20% del valor asegurado
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 And cotice la renovacion
 And emita la renovacion
+And de click en el boton aceptar
 And ingrese a la opcion plan de trabajo
 When valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
