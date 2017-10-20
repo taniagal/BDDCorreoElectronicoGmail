@@ -26,6 +26,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     protected static final int PLACA = 25;
     private static final String VALOR_ASEGURADO = "valor_asegurado";
     private static final String MODELO = "modelo";
+    private static final String CONCESIONARIO = "FRANCO ALEMAN";
+    private static final String PRODUCTO_GMAC = "Producto GMAC";
+    private static final String ERROR_CONCESIONARIO = "Error concesionario seleccionando combobox. Revisar";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
@@ -81,6 +84,12 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl']")
     private WebElementFacade comboMedioDeVenta;
     private String opcion = "Si";
+    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:concessionaire_DV-inputEl']")
+    private WebElementFacade comboBoxConcesionario;
+    @FindBy (xpath="//input[@id='Sub']")
+    private WebElementFacade msgValidacionConcesionario;
+    @FindBy (xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_ProducerDV:PolicyInfoProducerInfoInputSet:SuraMainOffice-inputEl']")
+    private WebElementFacade lblOficinaRadicacion;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -159,6 +168,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
         seleccionarItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         agregarDescuento(vehiculo);
+
         if (opcion.equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
@@ -170,6 +180,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         } else {
             opcion = "No";
             seleccionarTransporteDeCombustible(opcion);
+        }
+        if(PRODUCTO_GMAC.equals(vehiculo.get("plan"))){
+            seleccionarItem(comboBoxConcesionario,CONCESIONARIO);
         }
         try {
             MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get(VALOR_ASEGURADO) +
@@ -349,4 +362,16 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         MatcherAssert.assertThat(campoTxtMotor.getValue(), Is.is(Matchers.equalTo(campoTxtMotor.getValue().toUpperCase())));
         MatcherAssert.assertThat(campoTxtchasis.getValue(), Is.is(Matchers.equalTo(campoTxtchasis.getValue().toUpperCase())));
     }
+
+    public void verificarOficinaRadicacion(String oficina)
+    {
+        String sOficina = lblOficinaRadicacion.getText();
+        MatcherAssert.assertThat("El valor de la oficina de radicación no es correcto", sOficina.equals(oficina));
+    }
+
+    public void validarMensajeConcesionario(){
+        String sMensaje  = msgValidacionConcesionario.getText();
+        MatcherAssert.assertThat("Error en la validación del mensaje del concesionario. ",sMensaje.equals(ERROR_CONCESIONARIO));
+    }
+
 }
