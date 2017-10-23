@@ -57,7 +57,7 @@ public class PrecondicionesPage extends MetodosComunes {
         return rta;
     }
 
-    private boolean verificarLabel(WebDriver driver){
+    private boolean verificarLabel(){
         boolean respuesta = false;
         try{
             respuesta = labelCargaCorrecta.isDisplayed();
@@ -80,7 +80,7 @@ public class PrecondicionesPage extends MetodosComunes {
                 driver.switchTo().alert().accept();
                 botonCarga.click();
             } else {
-                if (verificarLabel(driver)){
+                if (verificarLabel()){
                     cargaSampleData = true;
                 }
             }
