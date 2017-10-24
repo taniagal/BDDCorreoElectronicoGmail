@@ -475,11 +475,11 @@ public class PageUtil extends PageObject {
             for(int j=0;j<regla.size();j++){
               for (int i = 0; i < getDriver().findElements(By.xpath(tablaFilas)).size(); i++) {
                   //for (int j = 15; j <= getDriver().findElements(By.xpath(tablaColumnas)).size(); j++) {
-                  String valorEncontrado = tablaFilasColumnas + "//tr[" + (i + 1) + "]" + "//td[" + (15) + "]";
+                  String valorEncontrado = tablaFilasColumnas + "//tr[" + (i+1) + "]" + "//td[" + (15) + "]";
                   WebElementFacade valorRegla = element(By.xpath(valorEncontrado));
                   if (valorRegla.getText().contains(regla.get(j))) {
                       tblBuscada[i][0] = valorRegla.getText();
-                      String usuario = tablaFilasColumnas + "//tr[" + (i + 1) + "]" + "//td[" + 16 + "]";
+                      String usuario = tablaFilasColumnas + "//tr[" + (i+1) + "]" + "//td[" + 16 + "]";
                       WebElementFacade valorUsuario = element(By.xpath(usuario));
                       tblBuscada[i][1] = valorUsuario.getText();
                       break;
@@ -535,6 +535,10 @@ public class PageUtil extends PageObject {
                     String boton=".//span[contains(.,'Análisis de riesgo')]/../../../../../../../../following-sibling::tr[3]//table//table//table"+"//tr["+i+"]"+"//td["+5+"]"+"//a[contains(.,'Aprobar')]";
                     WebElementFacade botonAprobar=element(By.xpath(boton));
                     botonAprobar.waitUntilClickable().click();
+                    String notaAprobarRegla=".//*[@id='RiskApprovalDetailsPopup:0:IssueDetailsDV:IssueNote-inputEl']";
+                    //String notaAprobarRegla=".//label[Contains(.,'Nota')]/../following-sibling::td/textarea";
+                    WebElementFacade txtNotaReglaAprobacion=element(By.xpath(notaAprobarRegla));
+                    ingresarDato(txtNotaReglaAprobacion,"Regla aprobada");
                     String botonAceptar=".//span[contains(.,'Aceptar')]";
                     WebElementFacade aceptarAprobacion=element(By.xpath(botonAceptar));
                     clickearElemento(aceptarAprobacion);

@@ -5,20 +5,20 @@ Como miembro de suramericana de seguros en alguno de los roles que permite gener
 Quiero poder autorizar ciertas reglas de validación asignadas a mi usuario
 Para poder expedir polizas de forma exitosa
 
-Scenario: 13Reglas que requieren autorizacion:importado por terceros, transporta combustible no permitido., vehículos que circulen en esta zona.
+Scenario: 13Reglas que requieren autorizacion:importado por terceros,transporta combustible no permitido.,vehículos que circulen en esta zona.
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
-When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividades
+When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividade
 Given se tienen los siguientes parametros para la busqueda
-|oficina|asesor     |regla                                                                                                                                         | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
-|4029   |10154      |importado por terceros,vehículos que circulen en esta zona.,transporta combustible no permitido.,                 |CC013      |
+|oficina|asesor     |regla                                                                                                               |canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |10154      |importado por terceros,vehículos que circulen en esta zona,Valor para campo transporta combustible no permitido     |CC013      |
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
 And capturar el numero de cotizacion en estado borrador
 When ingrese los datos del asegurado <tipo_documento> <documento>
 When ingrese los datos del vehiculo:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
-| random | 2017   | 00601190         | ISTMINA (CHOCO)      | Particular        | addsd  | dsdsdsds  | 94900000        | null      | null    | 11    | Plan Autos Global | Televentas |Si                    | Si                |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion   | vehiculo_servicio | chasis    | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
+| random | 2017   | 00601190         | ISTMINA (CHOCO)      | Particular        | dsdsdsds  | dsdsdsds  | 94900000        | null      | null    | 11    | Plan Autos Global | Televentas |Si                    | Si                |
 When ingrese las coberturas:
 | limite | deducible | AS               |abogado|
 | 640.   | 0         | Asistencia Global|       |
