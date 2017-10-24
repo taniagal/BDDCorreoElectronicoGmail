@@ -124,6 +124,7 @@ public class TableWidgetPage extends PageObject {
                 if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
                     opcion.click();
                     fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
+                    break;
                 }
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);

@@ -11,7 +11,6 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PrecondicionesPage extends MetodosComunes {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
@@ -46,11 +45,12 @@ public class PrecondicionesPage extends MetodosComunes {
     private static final int TIEMPO_10000 = 10000;
     private static final int CONSTANTE_1 = 1;
     private static final String XPATH = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']/*/table/tbody/tr[";
+    private WebDriver driver;
 
-    private boolean esperaAlerta(WebDriver driver){
+    private boolean esperaAlerta(){
         boolean rta = false;
         try{
-            rta = driver.switchTo().alert().getText().contains("HTTP request");
+            rta = this.driver.switchTo().alert().getText().contains("HTTP request");
         }catch (NoAlertPresentException ex){
             LOGGER.info("No se encontró  alerta: HTTP request",ex);
         }
@@ -63,12 +63,20 @@ public class PrecondicionesPage extends MetodosComunes {
             respuesta = labelCargaCorrecta.isDisplayed();
         }catch (StaleElementReferenceException ex){
             LOGGER.info("No se encontró label carga correcta: ",ex);
+        } catch (UnhandledAlertException ex){
+            if (esperaAlerta()){
+                this.driver.switchTo().alert().accept();
+                botonCarga.click();
+            }
+            respuesta = labelCargaCorrecta.isDisplayed();
+            LOGGER.info("No se encontró label carga correcta: ",ex);
         }
         return respuesta;
     }
 
     public void cargarDatos(WebDriver driver) {
         boolean cargaSampleData = false;
+        this.driver = driver;
         campoTxtBuscar.sendKeys(Keys.ALT, Keys.SHIFT, "t");
         MetodosComunes.waitUntil(TIEMPO_10000);
         waitUntilVisible(menuHerramientasInternas, driver);
@@ -76,8 +84,8 @@ public class PrecondicionesPage extends MetodosComunes {
         menuItemDatosDeMuestraDePc.click();
         botonCarga.click();
         while (!cargaSampleData) {
-            if (esperaAlerta(driver)){
-                driver.switchTo().alert().accept();
+            if (esperaAlerta()){
+                this.driver.switchTo().alert().accept();
                 botonCarga.click();
             } else {
                 if (verificarLabel()){
