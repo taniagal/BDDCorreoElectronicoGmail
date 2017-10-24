@@ -209,7 +209,7 @@ public class NuevaCotizacionPage extends PageUtil {
     }
 
     public void seleccionarOficinaDeRadicacionYAgente(String oficina, String agente) {
-        comboBoxOficinaDeRadicacion.waitUntilPresent();
+        comboBoxOficinaDeRadicacion.waitUntilVisible();
         seleccionarItem(comboBoxOficinaDeRadicacion, "3560");
         seleccionarItem(comboBoxOficinaDeRadicacion, oficina);
         try {
@@ -222,6 +222,7 @@ public class NuevaCotizacionPage extends PageUtil {
         comboBoxNombreAgente.clear();
         comboBoxNombreAgente.sendKeys(agente);
         comboBoxNombreAgente.sendKeys(Keys.ENTER);
+        esperarHasta(TIEMPO_300);
     }
 
     public void llenarInfoPoliza() {

@@ -2,8 +2,8 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.Map;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -136,6 +136,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[contains(@id, 'LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:SaleMethod_DV-inputEl')]")
     private WebElementFacade comboMedioDeVenta;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:_checkbox']")
+    private WebElementFacade checkCarroReemplazo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:primaryuse_DV-inputEl']")
     private WebElementFacade comboUsovehiculo;
     @FindBy(xpath = ".//a[contains(.,'Expedir póliza')]")
@@ -171,17 +173,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void vehiculoImportadoTerceros() {
-        if(itemImportado.isVisible()){
-            clickearElemento(itemImportado);
-            clickearElemento(itemImportadoPorTerceros);
-        }
-        else{
-            if(itemImportadoCambio.isVisible()){
-                clickearElemento(itemImportadoCambio);
-                clickearElemento(itemImportadoPorTercerosCambio);
-            }
-        }
-
+        clickearElemento(itemImportado);
+        clickearElemento(itemImportadoPorTerceros);
     }
 
     public void ingresarBeneficiarioOneroso() {
@@ -253,15 +246,15 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void beneficiarioOnerosoModificacion(String beneficiario) {
-        linkInteresAdicional.waitUntilPresent();
+        linkInteresAdicional.waitUntilVisible();
         clickearElemento(linkInteresAdicional);
-        botonAgregarBeneficiario.waitUntilPresent();
+        botonAgregarBeneficiario.waitUntilVisible();
         clickearElemento(botonAgregarBeneficiario);
-        menuItemOtrosContactos.waitUntilPresent();
+        menuItemOtrosContactos.waitUntilVisible();
         actions.moveToElement(menuItemOtrosContactos).release(menuItemOtrosContactos).build().perform();
-        menuItemContacto1.waitUntilPresent();
+        menuItemContacto1.waitUntilVisible();
         clickearElemento(menuItemContacto1);
-        comboBoxTipoBeneficiario.waitUntilPresent().click();
+        comboBoxTipoBeneficiario.waitUntilVisible().click();
         NuevaPolizaPage nuevaPolizaPage = new NuevaPolizaPage(getDriver());
         nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
     }
@@ -288,18 +281,26 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void ingresarCoberturas(String deducible, String perdidaLlaves, String perdidaParcialReemplazo, String perdidaTotalReemplazo, String asistencia) {
+        setImplicitTimeout(TIEMPO_3, TimeUnit.SECONDS);
         clickearElemento(botonSiguienteModificacion);
         botonBorrar.waitUntilPresent();
         clickearElemento(botonBorrar);
         botonBorrar.waitUntilNotVisible();
         seleccionarItem(txtLimiteCobertura, "640.");
         seleccionarItem(comboBoxDeducible, deducible);
-        seleccionarItem(perdidaParcialReemplazoCambioPoliza, perdidaParcialReemplazo);
+        if (perdidaParcialReemplazoCambioPoliza.isVisible()) {
+            seleccionarItem(perdidaParcialReemplazoCambioPoliza, perdidaParcialReemplazo);
+        } else {
+            checkCarroReemplazo.click();
+            esperarHasta(TIEMPO_3000);
+            seleccionarItem(perdidaParcialReemplazoCambioPoliza, perdidaParcialReemplazo);
+        }
         seleccionarItem(perdidaTotalReemplazoCambioPoliza, perdidaTotalReemplazo);
         seleccionarItem(asistenciaGlobalCambioPoliza, asistencia);
         if (txtPerdidaDeLLaves.isVisible()) {
             seleccionarItem(txtPerdidaDeLLaves, perdidaLlaves);
         }
+        resetImplicitTimeout();
     }
 
     public void seleccionarMedioDeVenta(String medioVenta) {

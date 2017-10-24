@@ -8,9 +8,13 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PrecondicionesPage extends MetodosComunes {
@@ -43,6 +47,7 @@ public class PrecondicionesPage extends MetodosComunes {
 
     private static final int TIEMPO_1000 = 1000;
     private static final int TIEMPO_2000 = 2000;
+    private static final int TIEMPO_10000 = 10000;
     private static final int CONSTANTE_1 = 1;
     private static final String XPATH = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']/*/table/tbody/tr[";
 
@@ -51,15 +56,25 @@ public class PrecondicionesPage extends MetodosComunes {
         try{
             rta = driver.switchTo().alert().getText().contains("HTTP request");
         }catch (NoAlertPresentException ex){
-            LOGGER.info("No se encuentra alerta: ",ex);
+            LOGGER.info("No se encontró  alerta: HTTP request",ex);
         }
         return rta;
     }
 
+    private boolean verificarLabel(){
+        boolean respuesta = false;
+        try{
+            respuesta = labelCargaCorrecta.isDisplayed();
+        }catch (StaleElementReferenceException ex){
+            LOGGER.info("No se encontró label carga correcta: ",ex);
+        }
+        return respuesta;
+    }
+
     public void cargarDatos(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
         boolean cargaSampleData = false;
         campoTxtBuscar.sendKeys(Keys.ALT, Keys.SHIFT, "t");
+        MetodosComunes.waitUntil(TIEMPO_10000);
         waitUntilVisible(menuHerramientasInternas, driver);
         menuHerramientasInternas.click();
         menuItemDatosDeMuestraDePc.click();
@@ -68,8 +83,10 @@ public class PrecondicionesPage extends MetodosComunes {
             if (esperaAlerta(driver)){
                 driver.switchTo().alert().accept();
                 botonCarga.click();
-            } else if (labelCargaCorrecta.isDisplayed()) {
-                cargaSampleData = true;
+            } else {
+                if (verificarLabel()){
+                    cargaSampleData = true;
+                }
             }
         }
         MatcherAssert.assertThat(labelCargaCorrecta.getText(), CoreMatchers.anyOf(Is.is("Conjunto cargado \"Sura\" correctamente."),

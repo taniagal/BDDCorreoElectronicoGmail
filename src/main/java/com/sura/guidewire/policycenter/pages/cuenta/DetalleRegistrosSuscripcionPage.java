@@ -147,6 +147,7 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
         buscarRegistrosSuscripcion();
         waitFor(lblTransaccionDetalle).waitUntilPresent().waitUntilClickable();
         lblTransaccionDetalle.click();
+        esperarHasta(TIEMPO_3000);
     }
 
     public void validarTotal(String total) {
