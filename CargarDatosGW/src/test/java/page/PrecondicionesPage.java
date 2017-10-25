@@ -8,7 +8,11 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.UnhandledAlertException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -59,6 +63,7 @@ public class PrecondicionesPage extends MetodosComunes {
         try{
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")));
         } catch (UnhandledAlertException ex){
+            LOGGER.info("UnhandledAlertException: " + ex);
             driver.switchTo().alert().accept();
             botonCarga.click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")));
