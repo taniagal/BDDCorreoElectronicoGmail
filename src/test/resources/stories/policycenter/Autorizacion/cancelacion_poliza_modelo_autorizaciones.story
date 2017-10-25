@@ -1,6 +1,4 @@
 Meta:
-@lote8
-@tag equipo: 1, sprint: modelo de autorizaciones
 
 Narrative:
 Al hacer una cancelación de poliza con fecha retroactiva que supere 30 días, el sistema debe generar automáticamente un mensaje indicando que se requiere una autorización.
