@@ -7,15 +7,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
+import jdk.nashorn.internal.runtime.options.LoggingOption;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 import org.apache.poi.ss.usermodel.*;
 import org.fluentlenium.core.annotation.Page;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class RequisitosPorDniAutosPage extends PageUtil {
     @Page
@@ -101,6 +102,8 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     private WebElementFacade btnCerrarSesion;
     @FindBy(xpath=".//*[@id='TabBar:LogoutTabBarLink-textEl']")
     private WebElementFacade btnCerrarAplicacion;
+    @FindBy(xpath=".//a[contains(.,'Aceptar')]")
+    private WebElementFacade btnAceptarCierreAplicacion;
     @FindBy(xpath=".//*[@id='username']")
     private WebElementFacade txtUserLogin;
     @FindBy(xpath=".//*[@id='password']")
@@ -123,6 +126,10 @@ public class RequisitosPorDniAutosPage extends PageUtil {
     public String tblPlanTrabajoUsuario= "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr";
     @FindBy(xpath = ".//*[@id='ActivityDetailWorksheet:ActivityDetailScreen:ActivityDetailToolbarButtonSet:ActivityDetailToolbarButtons_CompleteButton']")
     private WebElementFacade btnCompletada;
+    @FindBy(id = ".//a[contains(.,'Expedir póliza')]")
+    WebElementFacade botonExpedirPolizaAutorizacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div/span")
+    private WebElementFacade menuItemVehiculos;
 
     public RequisitosPorDniAutosPage(WebDriver driver) {
         super(driver);
@@ -278,6 +285,8 @@ public class RequisitosPorDniAutosPage extends PageUtil {
         }
     }
 
+
+
     public void validarAsignacionActividad() {
         String regla[][]=new String[1][1];
         String usuarios[][] = Serenity.sessionVariableCalled("usuarios".toLowerCase().trim());
@@ -286,6 +295,18 @@ public class RequisitosPorDniAutosPage extends PageUtil {
             if (usuarios[i][0] != null && !usuarios[i][0].equals("") && usuarios[i][1] != null && !usuarios[i][1].equals("")) {
                 clickearElemento(btnCerrarSesion);
                 clickearElemento(btnCerrarAplicacion);
+                if(btnAceptarCierreAplicacion.isVisible()) {
+                    esperarYClickearBoton(btnAceptarCierreAplicacion);
+                }
+                try{
+                    esperarHasta(6000);
+                    Alert alert = getDriver().switchTo().alert();
+                    String alertText=alert.getText();
+                    alert.accept();
+                }
+                catch(NoAlertPresentException a){
+                    LOGGER.info("No se encontro alerta",a);
+                }
                 txtUserLogin.click();
                 ingresarDato(txtUserLogin, usuarios[i][1]);
                 txtPassword.click();
@@ -320,8 +341,8 @@ public class RequisitosPorDniAutosPage extends PageUtil {
                }
             }
         }
+        clickearElemento(menuItemVehiculos);
     }
-
     public void validarReglasCorrespondientes() {
         waitElementeUntilVisible(botonDetalles,120);
         waitForAllTextToAppear("Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.");

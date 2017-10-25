@@ -20,8 +20,6 @@ import org.openqa.selenium.support.ui.Wait;
 
 
 public class CotizacionDePolizaPage extends PageUtil {
-
-    private static final int TIEMPO_40000 = 40000;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-labelEl']")
     public WebElementFacade labelNumeroCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyPeriod-labelEl']")

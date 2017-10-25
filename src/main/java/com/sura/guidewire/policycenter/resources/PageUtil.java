@@ -538,10 +538,11 @@ public class PageUtil extends PageObject {
                     String notaAprobarRegla=".//*[@id='RiskApprovalDetailsPopup:0:IssueDetailsDV:IssueNote-inputEl']";
                     //String notaAprobarRegla=".//label[Contains(.,'Nota')]/../following-sibling::td/textarea";
                     WebElementFacade txtNotaReglaAprobacion=element(By.xpath(notaAprobarRegla));
+                    waitElementeUntilVisible(txtNotaReglaAprobacion,120);
                     ingresarDato(txtNotaReglaAprobacion,"Regla aprobada");
                     String botonAceptar=".//span[contains(.,'Aceptar')]";
                     WebElementFacade aceptarAprobacion=element(By.xpath(botonAceptar));
-                    clickearElemento(aceptarAprobacion);
+                    esperarYClickearBoton(aceptarAprobacion);
                     break;
             }
 

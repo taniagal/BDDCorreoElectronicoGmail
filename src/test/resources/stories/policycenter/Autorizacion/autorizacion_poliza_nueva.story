@@ -1,13 +1,82 @@
 Meta:
+@lote8
+@tag equipo: 1, sprint: modelo de autorizaciones
 
 Narrative:
 Como miembro de suramericana de seguros en alguno de los roles que permite generar cotizaciones de poliza
 Quiero poder autorizar ciertas reglas de validación asignadas a mi usuario
 Para poder expedir polizas de forma exitosa
 
-Scenario: 13Reglas que requieren autorizacion:importado por terceros,transporta combustible no permitido.,vehículos que circulen en esta zona.
+Scenario: Reglas que requieren autorizacion:retroactividad
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
-When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividade
+When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
+Given se tienen los siguientes parametros para la busqueda
+|oficina|asesor     |regla                                           | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
+|4029   |10154      |parámetro de retroactividad definido (60 dias)  |CC013      |
+Given estoy cotizando una poliza:
+| cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
+| 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
+And capturar el numero de cotizacion en estado borrador
+And ingrese la Fecha Inicio Vigencia: -70
+When ingrese datos del asegurado de policy <tipo_documento> <documento>
+And ingrese los datos del vehiculo que va asegurar:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta | cero_kilometros |
+| random | 2018   | 08008011         | MEDELLIN           | Particular        | asdfghjkl | asdfghjkl | 57500000        | null      | null    | 2    | Plan Autos Global  | Asesor     | Si              |
+And clic a la pantalla de coberturas
+And seleccione todas las coberturas del plan:
+| limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
+| 3.040  | 0         | 0   | 850 | 40. | Asistencia Global  | 0   | 850 | 40 | 20   |  20  |         |
+And voy a expedir una poliza
+And de click en el boton aceptar
+And voy a expedir una poliza
+And de click en el boton aceptar
+And espere a que salgan las validaciones de reglas correspondientes
+And ingrese a la opcion plan de trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
+
+Examples:
+| tipo_documento       | documento  |
+| CEDULA DE CIUDADANIA | 9923424349 |
+
+
+Scenario: Reglas que requieren autorizacion:Placa extrangera,uso vehiculo,modelo vehiculo, valor minimo no tiene
+Given se tienen los siguientes parametros para la busqueda
+|oficina|asesor     |regla                                                                                                                                   | canal     |
+|4029   |10154      |Placa extranjera,inferior al tope mínimo,modelo es superior al máximo permitido,Uso de vehículo no permitido                            | CC013     |
+Given estoy cotizando una poliza:
+| cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
+| 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
+And capturar el numero de cotizacion en estado borrador
+When ingrese los datos del asegurado <tipo_documento> <documento>
+When ingrese los datos del vehiculo:
+| placa   | modelo | codigo_fasecolda | ciudad_circulacion               | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
+| 11AAAA  | 1985   | 01601012         | CUCUTA (NORTE DE SANTANDER)      | Particular        | addsd  | dsdsdsds  | 1400000         | null      | null    | 9    | Plan Autos Global  | Asesor     |
+When ingrese las coberturas:
+| limite | deducible | AS               |abogado|
+| 640.   | 0         | Asistencia Global|       |
+And cuando edite la transacion de la poliza
+And vaya a vehiculos en expedicion
+And seleccione el tipo de uso del vehiculo <usoVehiculo>
+And cotice una poliza
+And voy a expedir una poliza
+And de click en el boton aceptar
+And vaya a la opcion de analisis de riesgo
+And voy a expedir una poliza
+And de click en el boton aceptar
+And espere a que salgan las validaciones de reglas correspondientes
+And ingrese a la opcion plan de trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
+
+Examples:
+| tipo_documento       | documento  |tipoPlazo|fechaInicioVigencia|usoVehiculo  |
+| CEDULA DE CIUDADANIA | 1000033793 |Anual    |10/07/2017         |Ambulancia   |
+
+Scenario: Reglas que requieren autorizacion:importado por terceros,transporta combustible no permitido.,vehículos que circulen en esta zona.
 Given se tienen los siguientes parametros para la busqueda
 |oficina|asesor     |regla                                                                                                               |canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
 |4029   |10154      |importado por terceros,vehículos que circulen en esta zona,Valor para campo transporta combustible no permitido     |CC013      |
@@ -42,76 +111,8 @@ Examples:
 | accesorios | tipo_documento       | documento  |
 | 2600000    | CEDULA DE CIUDADANIA | 1000283562 |
 
-Scenario: 14Reglas que requieren autorizacion:Placa extrangera,uso vehiculo,modelo vehiculo, valor minimo no tiene
-Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
-When logueo en PolicyCenter Lab: Colombia, grcegwsu y sura2017 se debe mostrar: Mis actividades
-Given se tienen los siguientes parametros para la busqueda
-|oficina|asesor     |regla                                                                                                                                   | canal     |
-|4029   |10154      |Placa extranjera,inferior al tope mínimo,modelo es superior al máximo permitido,Uso de vehículo no permitido                            | CC013     |
-Given estoy cotizando una poliza:
-| cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
-| 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
-And capturar el numero de cotizacion en estado borrador
-When ingrese los datos del asegurado <tipo_documento> <documento>
-When ingrese los datos del vehiculo:
-| placa   | modelo | codigo_fasecolda | ciudad_circulacion               | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |
-| 11AAAA  | 1985   | 01601012         | CUCUTA (NORTE DE SANTANDER)      | Particular        | addsd  | dsdsdsds  | 1400000         | null      | null    | 9    | Plan Autos Global  | Asesor     |
-When ingrese las coberturas:
-| limite | deducible | AS               |abogado|
-| 640.   | 0         | Asistencia Global|       |
-And cuando edite la transacion de la poliza
-And vaya a vehiculos en expedicion
-And seleccione el tipo de uso del vehiculo <usoVehiculo>
-And cotice una poliza
-And voy a expedir una poliza
-And de click en el boton aceptar
-And vaya a la opcion de analisis de riesgo
-And voy a expedir una poliza
-And de click en el boton aceptar
-And espere a que salgan las validaciones de reglas correspondientes
-And ingrese a la opcion plan de trabajo
-And valide la generacion de las reglas que deben ser autorizadas
-And valide el usuario que debe aprobar una u otra regla de autorizacion
-And ir al usuario a validar asignación de actividad
-
-Examples:
-| tipo_documento       | documento  |tipoPlazo|fechaInicioVigencia|usoVehiculo  |
-| CEDULA DE CIUDADANIA | 1000033793 |Anual    |10/07/2017         |Ambulancia   |
 
 
-Scenario: Reglas que requieren autorizacion:retroactividad
-Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
-When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
-Given se tienen los siguientes parametros para la busqueda
-|oficina|asesor     |regla                                 | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
-|4029   |10154      |parámetro de retroactividad definido  |CC013      |
-Given estoy cotizando una poliza:
-| cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
-| 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
-And capturar el numero de cotizacion en estado borrador
-And ingrese la Fecha Inicio Vigencia: -70
-When ingrese datos del asegurado de policy <tipo_documento> <documento>
-And ingrese los datos del vehiculo que va asegurar:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis    | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta | cero_kilometros |
-| random | 2018   | 08008011         | MEDELLIN           | Particular        | asdfghjkl | asdfghjkl | 57500000        | null      | null    | 2    | Plan Autos Global  | Asesor     | Si              |
-And clic a la pantalla de coberturas
-And seleccione todas las coberturas del plan:
-| limite | deducible | PTH | PPH | GTH | AS                 | PTD | PPD | GT | CRPP | CRPT | PLlaves |
-| 3.040  | 0         | 0   | 850 | 40. | Asistencia Global  | 0   | 850 | 40 | 20   |  20  |         |
-And voy a expedir una poliza
-And de click en el boton aceptar
-And voy a expedir una poliza
-And de click en el boton aceptar
-And espere a que salgan las validaciones de reglas correspondientes
-And ingrese a la opcion plan de trabajo
-And valide la generacion de las reglas que deben ser autorizadas
-And valide la generacion de las reglas que deben ser autorizadas
-And valide el usuario que debe aprobar una u otra regla de autorizacion
-And ir al usuario a validar asignación de actividad
-
-Examples:
-| tipo_documento       | documento  |
-| CEDULA DE CIUDADANIA | 9923424349 |
 
 Scenario: 16Reglas que requieren autorizacion:bonificaciones,blindado
 Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do

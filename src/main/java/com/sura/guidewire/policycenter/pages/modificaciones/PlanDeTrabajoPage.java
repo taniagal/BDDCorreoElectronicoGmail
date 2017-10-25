@@ -70,7 +70,7 @@ public class PlanDeTrabajoPage extends PageUtil {
         }
     }
     public void ingresarALaOpcionPlanDeTrabajoCancelacion(){
-        esperarHasta(TIEMPO_5000);
+        esperarHasta(TIEMPO_30000);
         clickearElemento(xPathOpcionPlanDeTrabajoEnCancelacion);
         waitForTextToAppear("Plan de trabajo");
         while(!xPathColumnaDeDetalleReglaUW.isVisible()){
