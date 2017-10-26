@@ -10,6 +10,7 @@ import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -51,43 +52,21 @@ public class PrecondicionesPage extends MetodosComunes {
     private static final int CONSTANTE_1 = 1;
     private static final String XPATH = ".//*[@id='MessagingDestinationControlList:MessagingDestinationControlListScreen:MessagingDestinationsControlLV-body']/*/table/tbody/tr[";
 
-    private boolean esperaAlerta(WebDriver driver){
-        boolean rta = false;
-        try{
-            rta = driver.switchTo().alert().getText().contains("HTTP request");
-        }catch (NoAlertPresentException ex){
-            LOGGER.info("No se encontró  alerta: HTTP request",ex);
-        }
-        return rta;
-    }
-
-    private boolean verificarLabel(){
-        boolean respuesta = false;
-        try{
-            respuesta = labelCargaCorrecta.isDisplayed();
-        }catch (StaleElementReferenceException ex){
-            LOGGER.info("No se encontró label carga correcta: ",ex);
-        }
-        return respuesta;
-    }
-
     public void cargarDatos(WebDriver driver) {
-        boolean cargaSampleData = false;
+        WebDriverWait wait = new WebDriverWait(driver, TIEMPO_1000);
         campoTxtBuscar.sendKeys(Keys.ALT, Keys.SHIFT, "t");
         MetodosComunes.waitUntil(TIEMPO_10000);
         waitUntilVisible(menuHerramientasInternas, driver);
         menuHerramientasInternas.click();
         menuItemDatosDeMuestraDePc.click();
         botonCarga.click();
-        while (!cargaSampleData) {
-            if (esperaAlerta(driver)){
-                driver.switchTo().alert().accept();
-                botonCarga.click();
-            } else {
-                if (verificarLabel()){
-                    cargaSampleData = true;
-                }
-            }
+        try{
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")));
+        } catch (UnhandledAlertException ex){
+            LOGGER.info("UnhandledAlertException: " + ex);
+            driver.switchTo().alert().accept();
+            botonCarga.click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")));
         }
         MatcherAssert.assertThat(labelCargaCorrecta.getText(), CoreMatchers.anyOf(Is.is("Conjunto cargado \"Sura\" correctamente."),
                 Is.is("Loaded set \"Sura\" successfully.")));
