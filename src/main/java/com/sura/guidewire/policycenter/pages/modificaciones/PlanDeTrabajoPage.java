@@ -30,11 +30,11 @@ public class PlanDeTrabajoPage extends PageUtil {
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
     @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]/td/div/div/following-sibling::div/div/table/tbody/tr[2]/td[15]")
     private WebElementFacade xPathColumnaDeDetalleReglaUW;
-    @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr[1]//td[15]")
+    @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr[100]//td[15]")
     private WebElementFacade xPathColumnaDeDetalleReglaUWCancelacion;
     @FindBy(xpath = ".//td/div/span[contains(.,'Plan de trabajo')]")
     private WebElementFacade xPathOpcionPlanDeTrabajoEnCancelacion;
-    private int i=0;
+
 
     public PlanDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -71,21 +71,30 @@ public class PlanDeTrabajoPage extends PageUtil {
         }
     }
     public void ingresarALaOpcionPlanDeTrabajoCancelacion(){
+        int i=0;
         esperarHasta(TIEMPO_30000);
         clickearElemento(xPathOpcionPlanDeTrabajoEnCancelacion);
         waitForTextToAppear("Plan de trabajo");
-        while(!xPathColumnaDeDetalleReglaUW.isVisible()){
-            getDriver().navigate().refresh();
+        try {
+            while (!xPathColumnaDeDetalleReglaUWCancelacion.isVisible() && i++ < 100) {
+                Thread.sleep(600);
+                getDriver().navigate().refresh();
+            }
         }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void ingresarALaOpcionPlanDeTrabajoSoloCancelacion(){
+        int i=0;
         esperarHasta(TIEMPO_5000);
         clickearElemento(xPathOpcionPlanDeTrabajoEnCancelacion);
         waitForTextToAppear("Plan de trabajo");
         try {
             while (!xPathColumnaDeDetalleReglaUWCancelacion.isVisible() && i++ < 100) {
-                Thread.sleep(60);
+                Thread.sleep(600);
                 getDriver().navigate().refresh();
             }
         }
