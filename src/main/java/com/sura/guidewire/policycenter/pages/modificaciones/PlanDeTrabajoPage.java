@@ -34,6 +34,7 @@ public class PlanDeTrabajoPage extends PageUtil {
     private WebElementFacade xPathColumnaDeDetalleReglaUWCancelacion;
     @FindBy(xpath = ".//td/div/span[contains(.,'Plan de trabajo')]")
     private WebElementFacade xPathOpcionPlanDeTrabajoEnCancelacion;
+    private int i=0;
 
     public PlanDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -82,10 +83,19 @@ public class PlanDeTrabajoPage extends PageUtil {
         esperarHasta(TIEMPO_5000);
         clickearElemento(xPathOpcionPlanDeTrabajoEnCancelacion);
         waitForTextToAppear("Plan de trabajo");
-        while(!xPathColumnaDeDetalleReglaUWCancelacion.isVisible()){
-            getDriver().navigate().refresh();
+        try {
+            while (!xPathColumnaDeDetalleReglaUWCancelacion.isVisible() && i++ < 100) {
+                Thread.sleep(60);
+                getDriver().navigate().refresh();
+            }
         }
-    }
+        catch(Exception e){
+            e.printStackTrace();
+            }
+
+
+        }
+
 
 
     public void ingresarALaOpcionAnalisisDeRiesgoCancelacion(){

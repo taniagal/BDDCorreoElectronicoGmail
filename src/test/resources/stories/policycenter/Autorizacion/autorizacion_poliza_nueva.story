@@ -12,7 +12,7 @@ Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/P
 When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
 Given se tienen los siguientes parametros para la busqueda
 |oficina|asesor     |regla                                           | canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
-|4029   |10154      |parámetro de retroactividad definido (60 dias)  |CC013      |
+|4029   |10154      |parámetro de retroactividad definido (60 días)  |CC013      |
 Given estoy cotizando una poliza:
 | cuenta      | producto  | oficina | agente_oficina                                 | tipoPoliza |
 | 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO          | Individual |
@@ -28,6 +28,7 @@ And seleccione todas las coberturas del plan:
 | 3.040  | 0         | 0   | 850 | 40. | Asistencia Global  | 0   | 850 | 40 | 20   |  20  |         |
 And voy a expedir una poliza
 And de click en el boton aceptar
+And vaya a la opcion de analisis de riesgo
 And voy a expedir una poliza
 And de click en el boton aceptar
 And espere a que salgan las validaciones de reglas correspondientes
