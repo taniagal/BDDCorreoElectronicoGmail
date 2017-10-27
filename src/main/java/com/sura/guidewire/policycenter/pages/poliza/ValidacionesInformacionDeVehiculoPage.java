@@ -28,7 +28,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private static final String MODELO = "modelo";
     private static final String CONCESIONARIO = "FRANCO ALEMAN";
     private static final String PRODUCTO_GMAC = "Producto GMAC";
-    private static final String ERROR_CONCESIONARIO = "Error concesionario seleccionando combobox. Revisar";
+    private static final String ERROR_CONCESIONARIO = "Concesionario : Falta el campo obligatorio";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
@@ -86,7 +86,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private String opcion = "Si";
     @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:concessionaire_DV-inputEl']")
     private WebElementFacade comboBoxConcesionario;
-    @FindBy (xpath="//input[@id='Sub']")
+    @FindBy (xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
     private WebElementFacade msgValidacionConcesionario;
     @FindBy (xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_ProducerDV:PolicyInfoProducerInfoInputSet:SuraMainOffice-inputEl']")
     private WebElementFacade lblOficinaRadicacion;
@@ -181,8 +181,11 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             opcion = "No";
             seleccionarTransporteDeCombustible(opcion);
         }
-        if(PRODUCTO_GMAC.equals(vehiculo.get("plan"))){
-            seleccionarItem(comboBoxConcesionario,CONCESIONARIO);
+
+        if(PRODUCTO_GMAC.equals(vehiculo.get("plan")) && null!=vehiculo.get("valMensaje")){
+            if(vehiculo.get("valMensaje").equals("false")) {
+                seleccionarItem(comboBoxConcesionario, CONCESIONARIO);
+            }
         }
         try {
             MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get(VALOR_ASEGURADO) +
@@ -371,7 +374,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void validarMensajeConcesionario(){
         String sMensaje  = msgValidacionConcesionario.getText();
-        MatcherAssert.assertThat("Error en la validación del mensaje del concesionario. ",sMensaje.equals(ERROR_CONCESIONARIO));
+        MatcherAssert.assertThat("Error en la validación del mensaje del concesionario. ",sMensaje.contains(ERROR_CONCESIONARIO));
     }
 
 }
