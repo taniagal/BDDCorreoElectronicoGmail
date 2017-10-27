@@ -1,20 +1,15 @@
 package com.sura.guidewire.policycenter.pages.commons;
 
-
 import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.concurrent.TimeUnit;
 
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
 
-import net.thucydides.core.webdriver.WebdriverAssertionError;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 //@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
@@ -73,12 +68,10 @@ public class LoginPage extends PageUtil {
 
     public void loginTraspasoCartera(String usuario, String contrasenia) {
         setImplicitTimeout(0, TimeUnit.SECONDS);
-        if (!mnuContact.isPresent()) {
-            if (usuario1.isPresent()) {
-                usuario1.sendKeys(usuario);
-                contrasenia1.sendKeys(contrasenia);
-                btnSubmit1.click();
-            }
+        if (!mnuContact.isPresent() && usuario1.isPresent()) {
+            usuario1.sendKeys(usuario);
+            contrasenia1.sendKeys(contrasenia);
+            btnSubmit1.click();
         }
         resetImplicitTimeout();
     }
