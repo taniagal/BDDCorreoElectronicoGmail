@@ -36,6 +36,10 @@ public class ExpedicionDePolizaDefinitions {
     public void expedirPoliza() {
         expedicionDePolizaSteps.clicEnExpedirPoliza();
     }
+    @Then("voy a expedir una poliza")
+    public void expedirPolizas() {
+        expedicionDePolizaSteps.clicEnExpedirPoliza();
+    }
     @When("vuelva a la cotizacion de poliza")
     public void menuItemCotizador() {
         expedicionDePolizaSteps.menuItemCotizador();

@@ -37,6 +37,9 @@ And valide la generacion de las reglas que deben ser autorizadas
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
 And ir al usuario a validar asignación de actividad
+Then voy a expedir una poliza
+And de click en el boton aceptar poliza
+
 
 Examples:
 | tipo_documento       | documento  |

@@ -40,4 +40,8 @@ public class LeyendaAdicionalMrcDefinitions {
     public void clickearBotonAceptar() {
         leyendaAdicionalMrcSteps.clickearBotonAceptar();
     }
+    @Then("de click en el boton aceptar poliza")
+    public void clickearBotonAceptarPoliza() {
+        leyendaAdicionalMrcSteps.clickearBotonAceptar();
+    }
 }

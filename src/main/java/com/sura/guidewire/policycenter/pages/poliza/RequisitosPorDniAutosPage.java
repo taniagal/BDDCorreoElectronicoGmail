@@ -342,6 +342,8 @@ public class RequisitosPorDniAutosPage extends PageUtil {
             }
         }
         clickearElemento(menuItemVehiculos);
+       /* botonExpedirPolizaAutorizacion.waitUntilVisible();
+        esperarYClickearBoton(botonExpedirPolizaAutorizacion);*/
     }
     public void validarReglasCorrespondientes() {
         waitElementeUntilVisible(botonDetalles,120);

@@ -30,7 +30,7 @@ public class PlanDeTrabajoPage extends PageUtil {
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
     @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]/td/div/div/following-sibling::div/div/table/tbody/tr[2]/td[15]")
     private WebElementFacade xPathColumnaDeDetalleReglaUW;
-    @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr[100]//td[15]")
+    @FindBy(xpath = "//table//div/span[contains(.,'Plan de trabajo')]/../../../../../../../following-sibling::tr[2]//div/div[4]//table//tr[1]//td[15]")
     private WebElementFacade xPathColumnaDeDetalleReglaUWCancelacion;
     @FindBy(xpath = ".//td/div/span[contains(.,'Plan de trabajo')]")
     private WebElementFacade xPathOpcionPlanDeTrabajoEnCancelacion;
@@ -78,8 +78,6 @@ public class PlanDeTrabajoPage extends PageUtil {
         while (!xPathColumnaDeDetalleReglaUWCancelacion.isVisible() &&(System.currentTimeMillis()-startTime)<120000) {
                 getDriver().navigate().refresh();
             }
-
-
     }
 
     public void ingresarALaOpcionPlanDeTrabajoSoloCancelacion(){
