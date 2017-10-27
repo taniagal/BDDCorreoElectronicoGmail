@@ -71,19 +71,14 @@ public class PlanDeTrabajoPage extends PageUtil {
         }
     }
     public void ingresarALaOpcionPlanDeTrabajoCancelacion(){
-        int i=0;
         esperarHasta(TIEMPO_30000);
         clickearElemento(xPathOpcionPlanDeTrabajoEnCancelacion);
         waitForTextToAppear("Plan de trabajo");
-        try {
-            while (!xPathColumnaDeDetalleReglaUWCancelacion.isVisible() && i++ < 100) {
-                Thread.sleep(600);
+        long startTime=System.currentTimeMillis();
+        while (!xPathColumnaDeDetalleReglaUWCancelacion.isVisible() &&(System.currentTimeMillis()-startTime)<120000) {
                 getDriver().navigate().refresh();
             }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+
 
     }
 
