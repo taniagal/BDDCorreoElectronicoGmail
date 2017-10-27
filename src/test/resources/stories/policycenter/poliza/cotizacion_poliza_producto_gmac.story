@@ -24,8 +24,8 @@ And seleccione el tipo de poliza:
 |Individual|
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|valMensaje|
-|random|2011  |01601230        |MEDELLIN          |Particular       |CHASIS1  |MOTOR1 |20200000      |null     |null   |2   |Producto GMAC|Televentas|false|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor  | valor_asegurado | descuento | recargo | zona | plan          | medioVenta | valMensaje |
+| random | 2016   | 00601182         | MEDELLIN           | Particular        | CHASIS1 | MOTOR1 | 165900000       | null      | null    | 2    | Producto GMAC | Televentas | false      |
 And ingrese las coberturas a vehiculo:
 | limite | deducible | AS             |
 | 1.040 | 0         | Asistencia Gmac |
@@ -35,8 +35,8 @@ And expido la poliza mrc sin facultativo
 And ingrese al resumen de la poliza expedida
 Then verificar oficina de radicacion <oficinagmac>
 Examples:
-|numCuenta |producto|tipo_documento      |documento |numeroCuenta|nombreProceso       |oficinagmac|
-|C1060447895|Autos   |CEDULA DE CIUDADANIA|1060447895|C1060447895  |Bulk Producer Change  |41002 > OFICINA GMAC|
+| numCuenta   | producto | tipo_documento       | documento  | numeroCuenta | nombreProceso        | oficinagmac          |
+| C1060447895 | Autos    | CEDULA DE CIUDADANIA | 1060447895 | C1060447895  | Bulk Producer Change | 41002 > OFICINA GMAC |
 
 Scenario: Listar concesionarios para convenio GMAC. Validando mensaje sin seleccionar convenio y cotizando poliza
 Given que voy a buscar la cuenta <numCuenta>
@@ -50,9 +50,9 @@ And seleccione el tipo de poliza:
 |Individual|
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan              |medioVenta|valMensaje|
-|random|2011  |01601230        |MEDELLIN          |Particular       |CHASIS1  |MOTOR1 |20200000      |null     |null   |2   |Producto GMAC|Televentas|true|
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor  | valor_asegurado | descuento | recargo | zona | plan          | medioVenta | valMensaje |
+| random | 2016   | 00601182         | MEDELLIN           | Particular        | CHASIS1 | MOTOR1 | 165900000       | null      | null    | 2    | Producto GMAC | Televentas | true       |
 Then verificar mensaje de concesionario
 Examples:
-|numCuenta |producto|tipo_documento      |documento |numeroCuenta|nombreProceso       |
-|C1060447895|Autos   |CEDULA DE CIUDADANIA|1060447895|C1060447895  |Bulk Producer Change  |
+| numCuenta   | producto | tipo_documento       | documento  | numeroCuenta | nombreProceso        |
+| C1060447895 | Autos    | CEDULA DE CIUDADANIA | 1060447895 | C1060447895  | Bulk Producer Change |

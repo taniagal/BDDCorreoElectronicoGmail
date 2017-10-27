@@ -182,7 +182,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             seleccionarTransporteDeCombustible(opcion);
         }
 
-        if(PRODUCTO_GMAC.equals(vehiculo.get("plan")) && null!=vehiculo.get("valMensaje")){
+        if(PRODUCTO_GMAC.equals(vehiculo.get("plan")) && null != vehiculo.get("valMensaje")){
             if(vehiculo.get("valMensaje").equals("false")) {
                 seleccionarItem(comboBoxConcesionario, CONCESIONARIO);
             }
