@@ -313,8 +313,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
     public void irAArchivoDePoliza() {
-        waitElementeUntilVisible(linkVerPoliza,60);
-        linkVerPoliza.waitUntilPresent().click();
+        waitElementeUntilVisible(linkVerPoliza,120);
+        clickearElemento(linkVerPoliza);
     }
 
     public void guardarMontoPorCoberturas() {
