@@ -1,6 +1,4 @@
 Meta:
-@lote8
-@tag equipo: 1, sprint: modelo de autorizaciones
 
 Narrative:
 Al hacer una expedicion de póliza nueva con fecha retroactiva de 60 días hacia atrás y producción adelantada 60 días hacia adelante. El sistema debe generar automáticamente un mensaje indicando que se requiere una autorización.

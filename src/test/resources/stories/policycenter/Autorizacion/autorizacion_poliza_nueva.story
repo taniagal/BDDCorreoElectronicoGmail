@@ -1,6 +1,4 @@
 Meta:
-@lote8
-@tag equipo: 1, sprint: modelo de autorizaciones
 
 Narrative:
 Como miembro de suramericana de seguros en alguno de los roles que permite generar cotizaciones de poliza
