@@ -76,6 +76,18 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps {
         vehiculoPage.seleccionarCiudadDeCirculacion(vehiculo);
     }
 
+    @Step
+    public void verficarOficinaRadicacion(String oficina){
+        vehiculoPage.verificarOficinaRadicacion(oficina);
+    }
+
+
+    @Step
+    public void validarMensajeConcesionario(){
+        vehiculoPage.validarMensajeConcesionario();
+    }
+
+
     public void validarMayusculaDeMotorYChasis() {
         vehiculoPage.validarMayusculaDeMotorYChasis();
     }

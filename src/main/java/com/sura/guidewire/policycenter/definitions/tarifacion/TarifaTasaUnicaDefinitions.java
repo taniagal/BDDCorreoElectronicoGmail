@@ -168,4 +168,14 @@ public class TarifaTasaUnicaDefinitions {
         tasaUnicaSteps.validarElValorDeLaPrimaYElIvaParaLaPolizaRiesgo(primaRiesgo);
     }
 
+    @Then("verificar oficina de radicacion <oficinagmac>")
+    public void verificarOficinaRadicacion(@Named("oficinagmac") String oficinagmac){
+        vehiculoSteps.verficarOficinaRadicacion(oficinagmac);
+    }
+
+    @Then("verificar mensaje de concesionario")
+    public void verificarMensajeConcesionario(){
+        vehiculoSteps.validarMensajeConcesionario();
+    }
+
 }
