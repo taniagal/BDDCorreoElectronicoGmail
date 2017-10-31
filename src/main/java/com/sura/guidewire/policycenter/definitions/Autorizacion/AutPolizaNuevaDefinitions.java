@@ -18,8 +18,6 @@ public class AutPolizaNuevaDefinitions {
     @Given("se tienen los siguientes parametros para la busqueda $parametros")
     public void buscarParametros(ExamplesTable paramatros){
             autPolizaNuevaSteps.leerParametros(paramatros);
-
-
     }
 
     @When("se tienen los siguientes parametros para la busqueda $parametros")
