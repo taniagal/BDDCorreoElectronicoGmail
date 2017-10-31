@@ -78,12 +78,6 @@ Examples:
 | CEDULA DE CIUDADANIA | 9923424349 |
 
 
-
-
-
-
-
-
 Scenario: Reglas que requieren autorizacion:importado por terceros,transporta combustible no permitido.,vehículos que circulen en esta zona.
 Given se tienen los siguientes parametros para la busqueda
 |oficina|asesor     |regla                                                                                                               |canal     |                                                                                                                                                                                                                                                                                                                                                                     |canal |
