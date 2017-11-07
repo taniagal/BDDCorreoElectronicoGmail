@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.serenity-bdd:serenity-core:1.1.42">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/serenity-bdd/serenity-core/1.1.42/serenity-core-1.1.42.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/serenity-bdd/serenity-core/1.1.42/serenity-core-1.1.42-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Correo electronico gmail" skipped="0" tests="1" time="4.59" timestamp="2017-11-310 09:55:23"><testcase name="ingreso a correo electronico de gmail"><error message="org.openqa.selenium.firefox.FirefoxProfile.setEnableNativeEvents(Z)V" type="java.lang.NoSuchMethodError">org.openqa.selenium.firefox.FirefoxProfile.setEnableNativeEvents(Z)V</error><system-err>org.openqa.selenium.firefox.FirefoxProfile.setEnableNativeEvents(Z)V&#13;
+com.test.correoelectronico.navegacion.PageUtil.ingresarDato(PageUtil.java:22)&#13;
+com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:26)&#13;
+com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:15)&#13;
+com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)&#13;
+</system-err></testcase></testsuite>

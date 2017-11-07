@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.serenity-bdd:serenity-jbehave:1.13.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/serenity-bdd/serenity-jbehave/1.13.0/serenity-jbehave-1.13.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/serenity-bdd/serenity-jbehave/1.13.0/serenity-jbehave-1.13.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

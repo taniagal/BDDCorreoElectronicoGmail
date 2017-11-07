@@ -1,0 +1,6 @@
+#org.jbehave.core.embedder.StoryManager
+#Tue Nov 07 14:16:52 COT 2017
+stories.correoelectronico.correoelectronico/correo_electronico_gmail.story=27000
+threads=1
+total=27000
+threadAverage=27000

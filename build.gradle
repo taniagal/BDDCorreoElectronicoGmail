@@ -1,0 +1,39 @@
+group 'correoelectronico'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+    project.ext {
+        serenityVersion = '1.1+'
+    }
+
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath('net.serenity-bdd:serenity-gradle-plugin:' + serenityVersion)
+    }
+}
+
+dependencies {
+    compile group: 'com.google.guava', name: 'guava', version: '23.0'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:1.7.0'
+    testCompile 'org.jbehave:jbehave-core:3.9.5'
+    testCompile 'org.jbehave.site:jbehave-site-resources:3.1.1:@zip'
+    testCompile 'org.slf4j:slf4j-simple:1.7+'
+    testCompile 'net.serenity-bdd:serenity-core:'  + serenityVersion
+    testCompile 'net.serenity-bdd:serenity-junit:' + serenityVersion
+    testCompile 'net.serenity-bdd:serenity-jbehave:1.13.0'
+    testCompile 'org.seleniumhq.selenium:selenium-java:3.7.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '2.44.0'
+
+}

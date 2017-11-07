@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/com.test.correoelectronico.gmail.iml" filepath="$PROJECT_DIR$/com.test.correoelectronico.gmail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_main.iml" group="com.test.correoelectronico.gmail" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_test.iml" group="com.test.correoelectronico.gmail" />
+    </modules>
+  </component>
+</project>
