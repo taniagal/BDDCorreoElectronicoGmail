@@ -49,17 +49,16 @@
 <td>carlitoslop9876</td><td>carlosgrisales</td></tr>
 </tbody>
 </table>
-</span> <span class="keyword failed">(FAILED)</span><br/><span class="message failed">net.serenitybdd.core.exceptions.SerenityManagedException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id='identifierId']&quot;}
+</span> <span class="keyword failed">(FAILED)</span><br/><span class="message failed">net.serenitybdd.core.exceptions.SerenityManagedException: stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
 Build info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'
-System info: host: 'PQVSQ02732', ip: '10.213.8.105', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'
+System info: host: 'PQVSQ02732', ip: '172.10.101.29', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 7f1346fded89cfded28d475c078b3976
-*** Element info: {Using=xpath, value=.//*[@id='identifierId']}</span></div>
+Session ID: 548349cb54b2a473dfd804bbae2a7e2f</span></div>
 <div class="step notPerformed">And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:<span class="step parameter"><table>
 <thead>
 <tr>
@@ -92,22 +91,21 @@ public void thenDeboPoderVisualizarLaInformacionQueSeMeHaEnviadoJuntoConElUsuari
 }
 </pre></div>
 </div>
-<pre class="failure">net.serenitybdd.core.exceptions.SerenityManagedException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id='identifierId']&quot;}
+<pre class="failure">net.serenitybdd.core.exceptions.SerenityManagedException: stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
 Build info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'
-System info: host: 'PQVSQ02732', ip: '10.213.8.105', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'
+System info: host: 'PQVSQ02732', ip: '172.10.101.29', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 7f1346fded89cfded28d475c078b3976
-*** Element info: {Using=xpath, value=.//*[@id='identifierId']}
+Session ID: 548349cb54b2a473dfd804bbae2a7e2f
 	at net.serenitybdd.core.exceptions.SerenityManagedException.detachedCopyOf(SerenityManagedException.java:20)
 	at net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)
 	at net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)
 	at net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)
-	at com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.ingresarACorreoElectronico(&lt;generated&gt;)
+	at com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)
 	at com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)
 	(reflection-invoke)
 	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)

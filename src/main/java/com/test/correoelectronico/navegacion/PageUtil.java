@@ -7,10 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.ArrayList;
+
 
 public class PageUtil extends PageObject {
 
     private WebDriver driver;
+    private ArrayList<String> usuariosCorreoElectronicoGmail=new ArrayList<>();
     public void navegadorChrome(String url){
         System.setProperty("webdriver.chrome.driver", "D:\\workSpaces\\BDD_END_TO_END\\com.test.correoelectronico.gmail\\target\\chromedriver.exe");
         driver=new ChromeDriver();
@@ -45,12 +48,13 @@ public class PageUtil extends PageObject {
     protected WebDriver getInstanceOfWebDriver(){
         return driver;
     }
-    protected void buscarDatoEnTabla(String tablaFilasColumnas,String filasTabla, String columnasTabla,String dato){
+    protected void buscarDatoEnTabla(String tablaFilasColumnas,String filasTabla,String dato){
         for(int i=0;i<=getDriver().findElements(By.xpath(filasTabla)).size();i++){
-            String datoBuscar=dato;
-
-
-
+            String datoBuscar=tablaFilasColumnas+"/tr["+(i+1)+"]"+"td[@class='yX xY']";
+            WebElement datoEncontrado=driver.findElement(By.xpath(datoBuscar));
+            if(datoEncontrado.getText().contains(dato)){
+                usuariosCorreoElectronicoGmail.add(datoEncontrado.getText());
+            }
         }
 
     }

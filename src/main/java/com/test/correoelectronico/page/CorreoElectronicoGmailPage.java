@@ -1,5 +1,4 @@
 package com.test.correoelectronico.page;
-
 import com.test.correoelectronico.navegacion.PageUtil;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.By;
@@ -12,6 +11,8 @@ import java.util.Map;
 public class CorreoElectronicoGmailPage extends PageUtil{
     private WebDriver driver;
     private WebDriverWait wait;
+    String tablaFilasColumnas=".//table/tbody";
+    String filasTabla=".//table/tbody/tr[@class='zA yO']";
 
     public synchronized void createInstanceOfWebDriver(){
         if(driver == null) {
@@ -54,8 +55,13 @@ public class CorreoElectronicoGmailPage extends PageUtil{
         clickearBoton(driver.findElement(By.xpath(".//*[@id='identifierLink']")));
     }
 
-    public String ingresarAOpcionRecibidosCorreoElectronico(String correoElectronico) {
+    public ExamplesTable ingresarAOpcionRecibidosCorreoElectronico(ExamplesTable informacionMensajeRecibido) {
         clickearBoton(driver.findElement(By.xpath(".//div/span/a[contains(.,'Inbox')]")));
-        return correoElectronico;
+        Map<String,String> mensajeRecibido=informacionMensajeRecibido.getRow(0);
+        String usuarioEnviaCorreo=mensajeRecibido.get("correoElectronicoONumeroTelefonico");
+        String asuntoMensajeEnviado=mensajeRecibido.get("Prueba Correo");
+        String mensajeMensajeEnviado=mensajeRecibido.get("mensaje");
+        buscarDatoEnTabla(tablaFilasColumnas,filasTabla,usuarioEnviaCorreo);
+        return informacionMensajeRecibido;
     }
 }

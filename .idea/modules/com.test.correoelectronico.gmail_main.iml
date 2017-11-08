@@ -28,8 +28,9 @@
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-support:3.7.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jbehave:jbehave-core:4.0.5" level="project" />
     <orderEntry type="library" name="Gradle: net.serenity-bdd:serenity-core:1.1.42" level="project" />
-    <orderEntry type="library" name="Gradle: org.fluentlenium:fluentlenium-core:0.10.2" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:3.7.0" level="project" />
+    <orderEntry type="library" name="Gradle: net.sourceforge.htmlunit:htmlunit:2.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.fluentlenium:fluentlenium-core:0.10.2" level="project" />
   </component>
   <component name="sonarModuleSettings">
     <option name="localAnalysisScripName" value="&lt;PROJECT&gt;" />

@@ -17,7 +17,9 @@ When quiera acceder a la cuenta de correo electronico del usuario destinatario
 And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:
 |correoElectronicoONumeroTelefonico|contrasenia                           |
 |carlitosortq                      |123456carlitos                        |
-And ingrese a la opcion recibidos a buscar el correo del usuario que me ha enviado el mensaje:<correoElectronico>
+And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:
+|correoElectronicoONumeroTelefonico|asunto       |mensaje                                             |
+|carlitoslop9876                   |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|
 Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio
 
 Examples:

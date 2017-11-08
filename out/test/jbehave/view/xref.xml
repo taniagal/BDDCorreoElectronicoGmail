@@ -290,7 +290,7 @@ So that </localizedNarrative>
                     <step>Given puedo ingresar a gmail</step>
                     <type>SUCCESSFUL</type>
                     <parametrisedStep>Given puedo ingresar a gmail</parametrisedStep>
-                    <durationInMillis>27285</durationInMillis>
+                    <durationInMillis>6640</durationInMillis>
                   </successful>
                   <failed>
                     <step>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:&#xd;
@@ -302,19 +302,18 @@ So that </localizedNarrative>
 |correoElectronicoONumeroTelefonico|contrasenia                  |&#xd;
 |carlitoslop9876                   |carlosgrisales               |</detailMessage>
                       <cause class="net.serenitybdd.core.exceptions.SerenityManagedException">
-                        <detailMessage>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id=&apos;identifierId&apos;]&quot;}
+                        <detailMessage>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.213.8.105&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 7f1346fded89cfded28d475c078b3976
-*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</detailMessage>
-                        <cause class="org.openqa.selenium.NoSuchElementException" defined-in="java.lang.Throwable">
-                          <detailMessage>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id=&apos;identifierId&apos;]&quot;}
+Session ID: 548349cb54b2a473dfd804bbae2a7e2f</detailMessage>
+                        <cause class="org.openqa.selenium.StaleElementReferenceException" defined-in="java.lang.Throwable">
+                          <detailMessage>stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds</detailMessage>
@@ -331,21 +330,19 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                             <trace>org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)</trace>
                             <trace>org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)</trace>
                             <trace>org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)</trace>
-                            <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)</trace>
-                            <trace>org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)</trace>
-                            <trace>org.openqa.selenium.By$ByXPath.findElement(By.java:361)</trace>
-                            <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)</trace>
-                            <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:25)</trace>
+                            <trace>org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)</trace>
+                            <trace>org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:320)</trace>
+                            <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:27)</trace>
                             <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:16)</trace>
-                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.CGLIB$ingresarACorreoElectronico$2(&lt;generated&gt;)</trace>
-                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2$$FastClassByCGLIB$$c980dc34.invoke(&lt;generated&gt;)</trace>
+                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.CGLIB$ingresarACorreoElectronico$2(&lt;generated&gt;)</trace>
+                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740$$FastClassByCGLIB$$fe9cc9e3.invoke(&lt;generated&gt;)</trace>
                             <trace>net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
                             <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)</trace>
                             <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                             <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
@@ -383,11 +380,7 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                             </entry>
                             <entry>
                               <string>Session ID</string>
-                              <string>7f1346fded89cfded28d475c078b3976</string>
-                            </entry>
-                            <entry>
-                              <string>*** Element info</string>
-                              <string>{Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</string>
+                              <string>548349cb54b2a473dfd804bbae2a7e2f</string>
                             </entry>
                           </extraInfo>
                         </cause>
@@ -396,7 +389,7 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                           <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
                           <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)</trace>
                           <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                           <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
@@ -423,17 +416,16 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                           <c class="list"/>
                           <list/>
                         </suppressedExceptions>
-                        <detailedMessage>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id=&apos;identifierId&apos;]&quot;}
+                        <detailedMessage>stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.213.8.105&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 7f1346fded89cfded28d475c078b3976
-*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</detailedMessage>
+Session ID: 548349cb54b2a473dfd804bbae2a7e2f</detailedMessage>
                         <stackTrace>
                           <trace>sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</trace>
                           <trace>sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)</trace>
@@ -447,21 +439,19 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                           <trace>org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)</trace>
                           <trace>org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)</trace>
                           <trace>org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)</trace>
-                          <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)</trace>
-                          <trace>org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)</trace>
-                          <trace>org.openqa.selenium.By$ByXPath.findElement(By.java:361)</trace>
-                          <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)</trace>
-                          <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:25)</trace>
+                          <trace>org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)</trace>
+                          <trace>org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:320)</trace>
+                          <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:27)</trace>
                           <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:16)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.CGLIB$ingresarACorreoElectronico$2(&lt;generated&gt;)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2$$FastClassByCGLIB$$c980dc34.invoke(&lt;generated&gt;)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.CGLIB$ingresarACorreoElectronico$2(&lt;generated&gt;)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740$$FastClassByCGLIB$$fe9cc9e3.invoke(&lt;generated&gt;)</trace>
                           <trace>net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
                           <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)</trace>
                           <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                           <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
@@ -484,7 +474,7 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                           <trace>java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</trace>
                           <trace>java.lang.Thread.run(Thread.java:745)</trace>
                         </stackTrace>
-                        <exceptionClass>org.openqa.selenium.NoSuchElementException</exceptionClass>
+                        <exceptionClass>org.openqa.selenium.StaleElementReferenceException</exceptionClass>
                       </cause>
                       <stackTrace>
                         <trace>org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:617)</trace>
@@ -508,12 +498,12 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                         <c class="list"/>
                         <list/>
                       </suppressedExceptions>
-                      <uuid>a2a94f8a-6c7a-4a3e-bf1d-21fa98bfef72</uuid>
+                      <uuid>8cbf7639-ec8b-4868-ba83-41c955ea3278</uuid>
                     </throwable>
                     <parametrisedStep>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;
 |correoElectronicoONumeroTelefonico|contrasenia                  |&#xd;
 |carlitoslop9876                   |carlosgrisales               |］</parametrisedStep>
-                    <durationInMillis>77</durationInMillis>
+                    <durationInMillis>1188</durationInMillis>
                   </failed>
                   <notPerformed>
                     <step>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:&#xd;
@@ -576,7 +566,7 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                         <c class="list"/>
                         <list/>
                       </suppressedExceptions>
-                      <uuid>eee0a7ab-5323-47b0-b747-a5d7300fae34</uuid>
+                      <uuid>7eaf36b4-1b17-44f1-bee2-ec688413a003</uuid>
                     </throwable>
                     <durationInMillis>0</durationInMillis>
                   </pending>
@@ -695,7 +685,7 @@ Session ID: 7f1346fded89cfded28d475c078b3976
       <beforeSteps/>
       <afterSteps/>
       <timing>
-        <durationInMillis>27704</durationInMillis>
+        <durationInMillis>8334</durationInMillis>
       </timing>
       <givenStory>false</givenStory>
     </performableStory>
@@ -822,7 +812,7 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                 <step>Given puedo ingresar a gmail</step>
                 <type>SUCCESSFUL</type>
                 <parametrisedStep>Given puedo ingresar a gmail</parametrisedStep>
-                <durationInMillis>27285</durationInMillis>
+                <durationInMillis>6640</durationInMillis>
               </successful>
               <failed>
                 <step>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:&#xd;
@@ -834,19 +824,18 @@ Session ID: 7f1346fded89cfded28d475c078b3976
 |correoElectronicoONumeroTelefonico|contrasenia                  |&#xd;
 |carlitoslop9876                   |carlosgrisales               |</detailMessage>
                   <cause class="net.serenitybdd.core.exceptions.SerenityManagedException">
-                    <detailMessage>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id=&apos;identifierId&apos;]&quot;}
+                    <detailMessage>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.213.8.105&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 7f1346fded89cfded28d475c078b3976
-*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</detailMessage>
-                    <cause class="org.openqa.selenium.NoSuchElementException" defined-in="java.lang.Throwable">
-                      <detailMessage>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id=&apos;identifierId&apos;]&quot;}
+Session ID: 548349cb54b2a473dfd804bbae2a7e2f</detailMessage>
+                    <cause class="org.openqa.selenium.StaleElementReferenceException" defined-in="java.lang.Throwable">
+                      <detailMessage>stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds</detailMessage>
@@ -863,21 +852,19 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                         <trace>org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)</trace>
                         <trace>org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)</trace>
                         <trace>org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)</trace>
-                        <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)</trace>
-                        <trace>org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)</trace>
-                        <trace>org.openqa.selenium.By$ByXPath.findElement(By.java:361)</trace>
-                        <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)</trace>
-                        <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:25)</trace>
+                        <trace>org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)</trace>
+                        <trace>org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:320)</trace>
+                        <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:27)</trace>
                         <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:16)</trace>
-                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.CGLIB$ingresarACorreoElectronico$2(&lt;generated&gt;)</trace>
-                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2$$FastClassByCGLIB$$c980dc34.invoke(&lt;generated&gt;)</trace>
+                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.CGLIB$ingresarACorreoElectronico$2(&lt;generated&gt;)</trace>
+                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740$$FastClassByCGLIB$$fe9cc9e3.invoke(&lt;generated&gt;)</trace>
                         <trace>net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
                         <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)</trace>
                         <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                         <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
@@ -915,11 +902,7 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                         </entry>
                         <entry>
                           <string>Session ID</string>
-                          <string>7f1346fded89cfded28d475c078b3976</string>
-                        </entry>
-                        <entry>
-                          <string>*** Element info</string>
-                          <string>{Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</string>
+                          <string>548349cb54b2a473dfd804bbae2a7e2f</string>
                         </entry>
                       </extraInfo>
                     </cause>
@@ -928,7 +911,7 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                       <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
                       <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)</trace>
                       <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                       <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
@@ -955,17 +938,16 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                       <c class="list"/>
                       <list/>
                     </suppressedExceptions>
-                    <detailedMessage>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id=&apos;identifierId&apos;]&quot;}
+                    <detailedMessage>stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.213.8.105&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 7f1346fded89cfded28d475c078b3976
-*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</detailedMessage>
+Session ID: 548349cb54b2a473dfd804bbae2a7e2f</detailedMessage>
                     <stackTrace>
                       <trace>sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</trace>
                       <trace>sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)</trace>
@@ -979,21 +961,19 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                       <trace>org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)</trace>
                       <trace>org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)</trace>
                       <trace>org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)</trace>
-                      <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)</trace>
-                      <trace>org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)</trace>
-                      <trace>org.openqa.selenium.By$ByXPath.findElement(By.java:361)</trace>
-                      <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)</trace>
-                      <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:25)</trace>
+                      <trace>org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)</trace>
+                      <trace>org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:320)</trace>
+                      <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:27)</trace>
                       <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:16)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.CGLIB$ingresarACorreoElectronico$2(&lt;generated&gt;)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2$$FastClassByCGLIB$$c980dc34.invoke(&lt;generated&gt;)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.CGLIB$ingresarACorreoElectronico$2(&lt;generated&gt;)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740$$FastClassByCGLIB$$fe9cc9e3.invoke(&lt;generated&gt;)</trace>
                       <trace>net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5228dae2.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
                       <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)</trace>
                       <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                       <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
@@ -1016,7 +996,7 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                       <trace>java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</trace>
                       <trace>java.lang.Thread.run(Thread.java:745)</trace>
                     </stackTrace>
-                    <exceptionClass>org.openqa.selenium.NoSuchElementException</exceptionClass>
+                    <exceptionClass>org.openqa.selenium.StaleElementReferenceException</exceptionClass>
                   </cause>
                   <stackTrace>
                     <trace>org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:617)</trace>
@@ -1040,12 +1020,12 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                     <c class="list"/>
                     <list/>
                   </suppressedExceptions>
-                  <uuid>a2a94f8a-6c7a-4a3e-bf1d-21fa98bfef72</uuid>
+                  <uuid>8cbf7639-ec8b-4868-ba83-41c955ea3278</uuid>
                 </throwable>
                 <parametrisedStep>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;
 |correoElectronicoONumeroTelefonico|contrasenia                  |&#xd;
 |carlitoslop9876                   |carlosgrisales               |］</parametrisedStep>
-                <durationInMillis>77</durationInMillis>
+                <durationInMillis>1188</durationInMillis>
               </failed>
               <notPerformed>
                 <step>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:&#xd;
@@ -1108,7 +1088,7 @@ Session ID: 7f1346fded89cfded28d475c078b3976
                     <c class="list"/>
                     <list/>
                   </suppressedExceptions>
-                  <uuid>eee0a7ab-5323-47b0-b747-a5d7300fae34</uuid>
+                  <uuid>7eaf36b4-1b17-44f1-bee2-ec688413a003</uuid>
                 </throwable>
                 <durationInMillis>0</durationInMillis>
               </pending>

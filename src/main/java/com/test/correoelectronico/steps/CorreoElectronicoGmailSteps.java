@@ -1,4 +1,5 @@
 package com.test.correoelectronico.steps;
+
 import com.test.correoelectronico.page.CorreoElectronicoGmailPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -28,7 +29,9 @@ public class CorreoElectronicoGmailSteps extends ScenarioSteps {
         correoElectronicoGmailPage.salirEIngresarACorreoElectronico();
     }
     @Step
-    public void ingresarAOpcionRecibidosCorreoElectronico(String correoElectronico) {
-        String validarCorreoElectronico=correoElectronicoGmailPage.ingresarAOpcionRecibidosCorreoElectronico(correoElectronico);
+    public void ingresarAOpcionRecibidosCorreoElectronico(ExamplesTable informacionMensajeRecibido) {
+        ExamplesTable validarCorreoElectronico=correoElectronicoGmailPage.ingresarAOpcionRecibidosCorreoElectronico(informacionMensajeRecibido);
+
+
     }
 }

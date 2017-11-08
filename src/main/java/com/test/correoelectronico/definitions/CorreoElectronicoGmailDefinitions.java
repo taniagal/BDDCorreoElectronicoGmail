@@ -2,7 +2,6 @@ package com.test.correoelectronico.definitions;
 import com.test.correoelectronico.steps.CorreoElectronicoGmailSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
@@ -30,8 +29,8 @@ public class CorreoElectronicoGmailDefinitions {
     public void salirEIngresarACorreoElectronico(){
         correoElectronicoGmailSteps.salirEIngresarACorreoElectronico();
    }
-   @When("ingrese a la opcion recibidos a buscar el correo del usuario que me ha enviado el mensaje:<correoElectronico>")
-    public void ingresarAOpcionRecibidosCorreoElectronico(@Named("correoElectronico") String correoElectronico){
-        correoElectronicoGmailSteps.ingresarAOpcionRecibidosCorreoElectronico(correoElectronico);
+   @When("ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:$informacionMensajeRecibido")
+    public void ingresarAOpcionRecibidosCorreoElectronico(ExamplesTable informacionMensajeRecibido){
+        correoElectronicoGmailSteps.ingresarAOpcionRecibidosCorreoElectronico(informacionMensajeRecibido);
    }
 }
