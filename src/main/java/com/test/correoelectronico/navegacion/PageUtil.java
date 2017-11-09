@@ -1,6 +1,5 @@
 package com.test.correoelectronico.navegacion;
 
-import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -9,22 +8,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.ArrayList;
 
-
-public class PageUtil extends PageObject {
+public class PageUtil extends net.thucydides.core.pages.PageObject {
 
     private WebDriver driver;
-    private ArrayList<String> usuariosCorreoElectronicoGmail=new ArrayList<>();
-    public void navegadorChrome(String url){
+    private ArrayList<String[]> informacionCorreoElectronico;
+    private String mensajeEncontrado=".//div[@class='G3 G2']/div/div/div[1]";
+    private String correoElectronicoUsuario=".//span[@class='go']";
+
+    protected void navegadorChrome(String url){
         System.setProperty("webdriver.chrome.driver", "D:\\workSpaces\\BDD_END_TO_END\\com.test.correoelectronico.gmail\\target\\chromedriver.exe");
         driver=new ChromeDriver();
         driver.navigate().to(url);
+        informacionCorreoElectronico = new ArrayList<>();
     }
-
     protected void ingresarDato(String datoIngresar, WebElement campoIngresar){
-        //while(campoIngresar.isDisplayed() == false);
         campoIngresar.sendKeys(datoIngresar);
     }
-
     protected void clickearBoton(WebElement boton){
         try{
             long tiempoActual = System.currentTimeMillis();
@@ -38,7 +37,7 @@ public class PageUtil extends PageObject {
                 tiempoSiguiente = System.currentTimeMillis();
             }
             if(clickeado == false){
-                throw new Error("Time limit excited");
+                throw new RuntimeException("Time limit excited");
             }
         }
         catch(Exception e){
@@ -48,15 +47,25 @@ public class PageUtil extends PageObject {
     protected WebDriver getInstanceOfWebDriver(){
         return driver;
     }
-    protected void buscarDatoEnTabla(String tablaFilasColumnas,String filasTabla,String dato){
-        for(int i=0;i<=getDriver().findElements(By.xpath(filasTabla)).size();i++){
-            String datoBuscar=tablaFilasColumnas+"/tr["+(i+1)+"]"+"td[@class='yX xY']";
+    public ArrayList<String[]> buscarDatoEnTabla(String tablaFilasColumnas,String filasTabla,String dato){
+        for(int i=1;i<=driver.findElements(By.xpath(filasTabla)).size(); i++){
+            String datoBuscar=tablaFilasColumnas+"/tr["+(i)+"]"+"/td[4]/div/span";
             WebElement datoEncontrado=driver.findElement(By.xpath(datoBuscar));
             if(datoEncontrado.getText().contains(dato)){
-                usuariosCorreoElectronicoGmail.add(datoEncontrado.getText());
+                String asuntoEncontrado=".//table[@role='presentation']//td/div[2]/div/div[2]/div/h2";
+                datoEncontrado.click();
+                WebElement asuntosEncontrado=driver.findElement(By.xpath(asuntoEncontrado));
+                WebElement mensajesEncontrados=driver.findElement(By.xpath(mensajeEncontrado));
+                WebElement usuarioCorreoElectronico=driver.findElement(By.xpath(correoElectronicoUsuario));
+                informacionCorreoElectronico.add(new String[]{
+                        usuarioCorreoElectronico.getText(),
+                        asuntosEncontrado.getText(),
+                        mensajesEncontrados.getText()
+
+                });
             }
         }
-
+        return informacionCorreoElectronico;
     }
 }
 

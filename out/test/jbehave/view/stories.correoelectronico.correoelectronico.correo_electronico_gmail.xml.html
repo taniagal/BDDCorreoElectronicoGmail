@@ -13,16 +13,18 @@
 <examples keyword="Examples:">
 <step>Given puedo ingresar a gmail</step>
 <step>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:
-|correoElectronicoONumeroTelefonico|contrasenia                  |
-|carlitoslop9876                   |carlosgrisales               |</step>
+|correoElectronicoONumeroTelefonico    |contrasenia                  |
+|taniagrajalesalzate                   |)%=#!%_taniaa                |</step>
 <step>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:
-|para                             |asunto             |mensaje                                                     |
-|taniagrajalesalzate@gmail.com    |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |</step>
+|para                                       |asunto             |mensaje                                                     |
+|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |</step>
 <step>When quiera acceder a la cuenta de correo electronico del usuario destinatario</step>
 <step>And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:
-|correoElectronicoONumeroTelefonico|contrasenia                           |
-|carlitosortq                      |123456carlitos                        |</step>
-<step>And ingrese a la opcion recibidos a buscar el correo del usuario que me ha enviado el mensaje:&lt;correoElectronico&gt;</step>
+|correoElectronicoONumeroTelefonico            |contrasenia                                |
+|carlitoslop9876                               |carlosgrisales                              |</step>
+<step>And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:
+|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |
+|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|</step>
 <step>Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio</step>
 <parameters>
 <names><name>correoElectronico</name></names>
@@ -33,7 +35,7 @@
 <step outcome="successful">Given puedo ingresar a gmail</step>
 <step outcome="failed" keyword="FAILED">And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:<parameter><parameters>
 <names><name>correoElectronicoONumeroTelefonico</name><name>contrasenia</name></names>
-<values><value>carlitoslop9876</value><value>carlosgrisales</value></values>
+<values><value>taniagrajalesalzate</value><value>)%=#!%_taniaa</value></values>
 </parameters>
 </parameter><failure>net.serenitybdd.core.exceptions.SerenityManagedException: stale element reference: element is not attached to the page document
   (Session info: chrome=60.0.3112.78)
@@ -44,19 +46,23 @@ Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &ap
 System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 548349cb54b2a473dfd804bbae2a7e2f</failure></step>
+Session ID: 98aec60ade169667896c3291cd1c762d</failure></step>
 <step outcome="notPerformed" keyword="NOT PERFORMED">And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:<parameter><parameters>
 <names><name>para</name><name>asunto</name><name>mensaje</name></names>
-<values><value>taniagrajalesalzate@gmail.com</value><value>Prueba Correo</value><value>Hola Carlos esta es una prueba de correo electronico</value></values>
+<values><value>carlitoslop9876@gmail.com</value><value>Prueba Correo</value><value>Hola Carlos esta es una prueba de correo electronico</value></values>
 </parameters>
 </parameter></step>
 <step outcome="notPerformed" keyword="NOT PERFORMED">When quiera acceder a la cuenta de correo electronico del usuario destinatario</step>
 <step outcome="notPerformed" keyword="NOT PERFORMED">And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:<parameter><parameters>
 <names><name>correoElectronicoONumeroTelefonico</name><name>contrasenia</name></names>
-<values><value>carlitosortq</value><value>123456carlitos</value></values>
+<values><value>carlitoslop9876</value><value>carlosgrisales</value></values>
 </parameters>
 </parameter></step>
-<step outcome="notPerformed" keyword="NOT PERFORMED">And ingrese a la opcion recibidos a buscar el correo del usuario que me ha enviado el mensaje:<parameter>carlitoslop9876</parameter></step>
+<step outcome="notPerformed" keyword="NOT PERFORMED">And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:<parameter><parameters>
+<names><name>correoElectronicoONumeroTelefonico</name><name>asunto</name><name>mensaje</name></names>
+<values><value>carlitoslop9876</value><value>Prueba Correo</value><value>Hola Carlos esta es una prueba de correo electronico</value></values>
+</parameters>
+</parameter></step>
 <step outcome="pending" keyword="PENDING">Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio</step>
 <pendingMethod>@Then(&quot;debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio&quot;)
 @Pending
@@ -74,13 +80,13 @@ Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &ap
 System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 548349cb54b2a473dfd804bbae2a7e2f
+Session ID: 98aec60ade169667896c3291cd1c762d
 	at net.serenitybdd.core.exceptions.SerenityManagedException.detachedCopyOf(SerenityManagedException.java:20)
 	at net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)
 	at net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)
 	at net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)
-	at com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)
-	at com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)
+	at com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(&lt;generated&gt;)
+	at com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)
 	(reflection-invoke)
 	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
 	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:340)

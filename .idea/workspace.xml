@@ -1,24 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54ecd5b0-1932-4689-8c2e-3d785462a603" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" />
+    <list default="true" id="1bc16755-2081-4839-a50d-46ddaaad274f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/main/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/main/com/test/correoelectronico/navegacion/PageUtil.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/main/com/test/correoelectronico/page/CorreoElectronicoGmailPage.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/main/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/test/com/test/correoelectronico/CorreoElectronicoGmail.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.jsonac459667-b2b7-4609-8e68-d812467063f8" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.jsonee3a675c-8bde-4002-a547-03b391579c73" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.xml12ba8b1e-1ed6-47a0-9529-1a4640936965" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.xml30651aef-7c61-4bf9-82bf-7bb772f21377" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.xml3303dd31-0a83-4666-9b51-2362a1168422" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.xml51acdd1f-ba48-4743-ab69-d499f104325d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.xml8a650124-9774-44c3-ba63-1f6c6e1640a2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml001283b1-dd8e-42a7-a1a7-da98a9999977" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml07ffc6a5-a6a1-450c-967a-1f4721c0bd6b" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml095aa466-2a89-4ef5-be3d-48dc047f496b" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml0c4b6d0d-9235-48af-a06c-8c6c2fb4f178" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml0fcd5dae-9b8e-4857-bfe7-ff555c350160" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml10c2eca5-4aac-4e1c-9de9-bac316bf5312" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml11f87ab3-17ac-4343-9553-8fd99931a289" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml1ca8d730-ee33-4db1-80d4-00515e146efb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml20829361-0303-4c5b-90f7-7b76d91b69f1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml2273810b-9a18-487f-9fc6-0171855e96a8" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml2e3320cc-b943-4823-a76d-2f65d47452b6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml30852bc9-af19-4fc7-ae8f-f137200de942" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml31e062e0-9cca-47dd-a809-580352c065d3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml33782f2d-3a5f-4644-96cf-8e4fc8a2a289" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml36f645aa-f1f3-486a-8782-fbc8177db66e" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml4c545d44-c09e-442d-97be-531a191a04d5" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml4d02fd3a-2ed0-419b-84c1-de7210a80cb7" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml517cf240-ae18-4a6c-bc2c-4ff3b1371517" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml54d2651e-5199-4064-9263-3d1afd62927a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml5c6d5260-fce6-4231-ba8d-949cffea6eb1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml61fb5389-b62d-4da6-920c-aa9a08be724e" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml6c4e933a-f06f-485b-b93e-1fa0407c7bcd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml6d097b65-d5c8-4545-98ca-3b84f7e8c09e" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml718d0c01-1a65-465c-aae0-2e35a8e97ed3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml7f796383-02c1-469d-986c-1bfbc386c536" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml83bad848-8dfa-40f0-bdc4-f97ccf7084d0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml9ab8934f-40a7-43b5-ad13-f7b117439acf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml9cd1c5d1-aca3-4a5c-a59c-782213748fae" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlb02f4c52-49b2-4e74-b596-c06b39837bee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlb31c9386-1797-4aeb-aa50-52d42df332e3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlb88be871-3bbc-4142-bb10-788acae670de" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlbdf8b1dd-fbd9-4f14-bd23-aa1cb50664fa" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlbdfc574e-3ade-4607-a4fe-6e129779e822" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlce4da0ab-4a37-4084-a1d8-d658eec5e049" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlceafc31c-dd29-4fd4-9d10-f0eecf417300" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmld66e49f4-4164-4a9e-8369-1ce1e174d244" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmld828575a-da06-44c1-a9ad-3b9f3c1de529" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmldc1e9ce1-a96b-4e06-a503-6614800391b4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmle224b410-7239-468b-8ef1-56380c825f28" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmle24627e3-df72-4f65-970b-3a74088237a9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlea5ec71d-eb49-4bc2-9678-77304b204f16" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlee4ee488-e5be-42e5-8dae-286c0b5b9318" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlee724b3f-7fc6-45ee-8c79-d9ed963ca207" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xmlf1069b9c-00a1-422e-9bdd-55c1ed23f594" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/AfterStories.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/AfterStories.stats" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/AfterStories.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/BeforeStories.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/BeforeStories.stats" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/BeforeStories.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/storyDurations.props" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/AfterStories.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/AfterStories.stats.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/AfterStories.xml.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/BeforeStories.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/BeforeStories.stats.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/BeforeStories.xml.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/reports.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/xref.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/xref.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/resources/test/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/test/com.test.correoelectronico.gmail/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/com/test/correoelectronico/navegacion/PageUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/com/test/correoelectronico/page/CorreoElectronicoGmailPage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/classes/com/test/correoelectronico/CorreoElectronicoGmail.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/test/correoelectronico/page/CorreoElectronicoGmailPage.class" afterPath="$PROJECT_DIR$/out/production/classes/com/test/correoelectronico/page/CorreoElectronicoGmailPage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" afterPath="$PROJECT_DIR$/out/test/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/AfterStories.stats" afterPath="$PROJECT_DIR$/out/test/jbehave/AfterStories.stats" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_main.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/com.test.correoelectronico.gmail_test.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/AfterStories.html" afterPath="$PROJECT_DIR$/out/test/jbehave/AfterStories.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/BeforeStories.stats" afterPath="$PROJECT_DIR$/out/test/jbehave/BeforeStories.stats" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.html" afterPath="$PROJECT_DIR$/out/test/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" afterPath="$PROJECT_DIR$/out/test/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml" afterPath="$PROJECT_DIR$/out/test/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/storyDurations.props" afterPath="$PROJECT_DIR$/out/test/jbehave/storyDurations.props" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/view/AfterStories.stats.html" afterPath="$PROJECT_DIR$/out/test/jbehave/view/AfterStories.stats.html" />
@@ -30,6 +113,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml.html" afterPath="$PROJECT_DIR$/out/test/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/view/xref.json" afterPath="$PROJECT_DIR$/out/test/jbehave/view/xref.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/jbehave/view/xref.xml" afterPath="$PROJECT_DIR$/out/test/jbehave/view/xref.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story" afterPath="$PROJECT_DIR$/out/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java" />
@@ -50,19 +134,25 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="PageUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="313">
+              <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+              <folding>
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1037#1038#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,11 +160,24 @@
       <file leaf-file-name="CorreoElectronicoGmailPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="63" column="76" lean-forward="true" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+            <state relative-caret-position="275">
+              <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1984#1985#0" expanded="true" />
+                <element signature="e#2036#2037#0" expanded="true" />
+                <element signature="e#4353#4354#0" expanded="true" />
+                <element signature="e#4398#4399#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="By.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/3.7.0/74a46d0014b6110d4ff012cb1247fec72fc2768d/selenium-api-3.7.0-sources.jar!/org/openqa/selenium/By.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,25 +185,23 @@
       <file leaf-file-name="CorreoElectronicoGmailDefinitions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="33" column="66" lean-forward="false" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
+            <state relative-caret-position="204">
+              <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
               <folding>
-                <element signature="e#1507#1508#0" expanded="true" />
-                <element signature="e#1584#1585#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#810#811#0" expanded="true" />
+                <element signature="e#869#870#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PageUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
+      <file leaf-file-name="ExamplesTable.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/jbehave/jbehave-core/4.0.5/jbehave-core-4.0.5-sources.jar!/org/jbehave/core/model/ExamplesTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="50" column="80" lean-forward="false" selection-start-line="50" selection-start-column="70" selection-end-line="50" selection-end-column="80" />
-              <folding>
-                <element signature="e#1719#1720#0" expanded="true" />
-                <element signature="e#1748#1749#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="194">
+              <caret line="144" column="13" lean-forward="false" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,20 +209,22 @@
       <file leaf-file-name="CorreoElectronicoGmailSteps.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="32" column="144" lean-forward="true" selection-start-line="32" selection-start-column="144" selection-end-line="32" selection-end-column="144" />
+            <state relative-caret-position="221">
+              <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#872#873#0" expanded="true" />
+                <element signature="e#931#932#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="correo_electronico_gmail.story" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
+      <file leaf-file-name="MethodProxy.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/cglib/cglib/3.1/cglib-3.1.jar!/net/sf/cglib/proxy/MethodProxy.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="20" column="57" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="57" />
+            <state relative-caret-position="112">
+              <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -130,24 +233,31 @@
       <file leaf-file-name="CorreoElectronicoGmail.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/CorreoElectronicoGmail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="68">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessImpl.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/apps/java4/jdk1.8.0_45/src.zip!/java/lang/ProcessImpl.java">
+      <file leaf-file-name="correo_electronico_gmail.story" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="452" column="5" lean-forward="false" selection-start-line="452" selection-start-column="5" selection-end-line="452" selection-end-column="5" />
+            <state relative-caret-position="153">
+              <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -664,10 +774,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story" />
+        <option value="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PruebasUnitarias.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story" />
+        <option value="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java" />
       </list>
     </option>
@@ -682,82 +793,17 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="width" value="1366" />
-    <option name="height" value="728" />
+  <component name="MavenProjectNavigator">
+    <treeState />
   </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>Android &gt; Lint &gt; Correctness</id>
-          </State>
-          <State>
-            <id>Android &gt; Lint &gt; Internationalization</id>
-          </State>
-          <State>
-            <id>Android &gt; Lint &gt; Performance</id>
-          </State>
-          <State>
-            <id>Android &gt; Lint &gt; Security</id>
-          </State>
-          <State>
-            <id>Android &gt; Lint &gt; Usability</id>
-          </State>
-          <State>
-            <id>Android Lint for Kotlin</id>
-          </State>
-          <State>
-            <id>Ant inspections</id>
-          </State>
-          <State>
-            <id>Class structureJava</id>
-          </State>
-          <State>
-            <id>Code maturity issuesJava</id>
-          </State>
-          <State>
-            <id>Code style issuesJava</id>
-          </State>
-          <State>
-            <id>Java</id>
-          </State>
-          <State>
-            <id>Java language level migration aidsJava</id>
-          </State>
-          <State>
-            <id>Javadoc issuesJava</id>
-          </State>
-          <State>
-            <id>Kotlin</id>
-          </State>
-          <State>
-            <id>Performance issuesJava</id>
-          </State>
-          <State>
-            <id>Portability issuesJava</id>
-          </State>
-          <State>
-            <id>Probable bugsJava</id>
-          </State>
-          <State>
-            <id>TestNGJava</id>
-          </State>
-          <State>
-            <id>Threading issuesJava</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Javadoc issuesJava</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-2" />
+    <option name="y" value="-2" />
+    <option name="width" value="1378" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -774,24 +820,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="BDDCorreoElectronicoGmail" type="b2602c69:ProjectViewProjectNode" />
               <item name="BDDCorreoElectronicoGmail" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="BDDCorreoElectronicoGmail" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BDDCorreoElectronicoGmail" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="gradle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BDDCorreoElectronicoGmail" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BDDCorreoElectronicoGmail" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="gradle" type="462c0819:PsiDirectoryNode" />
-              <item name="wrapper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BDDCorreoElectronicoGmail" type="b2602c69:ProjectViewProjectNode" />
@@ -844,15 +880,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="correoelectronico" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BDDCorreoElectronicoGmail" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BDDCorreoElectronicoGmail" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="correoelectronico" type="462c0819:PsiDirectoryNode" />
               <item name="steps" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -895,16 +922,16 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="C:/workSpaces/BDD_END_TO_END/BDDCoreSuraPolicy" />
+    <property name="last_opened_file_path" value="D:/workSpaces/BDD_END_TO_END/BDDCoreSuraPolicy" />
+    <property name="SONARLINT_ANALYSIS_RESULTS_SCOPE" value="VCS changed files" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -945,6 +972,7 @@
       <patterns />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -983,18 +1011,6 @@
       </option>
       <envs />
       <patterns />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
@@ -1036,7 +1052,44 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration default="true" type="AntRunConfiguration" factoryName="Ant Target">
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
@@ -1055,6 +1108,19 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="com.test.correoelectronico.gmail" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="filePath" />
@@ -1067,44 +1133,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list />
-            </option>
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="XSLT" factoryName="XSLT">
-      <option name="myOutputFile" />
-      <option name="myOpenOutputFile" value="false" />
-      <option name="myOpenInBrowser" value="false" />
-      <option name="mySmartErrorHandling" value="true" />
-      <option name="myRunnerPort" value="34873" />
-      <option name="myVmArguments" />
-      <option name="myWorkingDirectory" />
-      <option name="myModule" />
-      <option name="myJdk" />
-      <parameters />
-      <OutputType value="CONSOLE" save-to-file="false" />
-      <FileType name="XML" />
-      <JdkChoice value="FROM_MODULE" />
-      <method />
-    </configuration>
     <recent_temporary>
       <list size="1">
         <item index="0" class="java.lang.String" itemvalue="JUnit.CorreoElectronicoGmail" />
@@ -1114,57 +1142,123 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\tanigral\AppData\Roaming\Subversion</configuration>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="54ecd5b0-1932-4689-8c2e-3d785462a603" name="Default" comment="" />
-      <created>1510095509938</created>
+      <changelist id="1bc16755-2081-4839-a50d-46ddaaad274f" name="Default" comment="" />
+      <created>1510150309957</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1510095509938</updated>
+      <updated>1510150309957</updated>
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CorreoElectronicoGmail - 2017.11.07 at 18h 09m 47s.xml">
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 22h 58m 49s.xml">
       <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CorreoElectronicoGmail - 2017.11.07 at 18h 10m 18s.xml">
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 15m 02s.xml">
+      <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 15m 56s.xml">
+      <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 16m 49s.xml">
+      <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 18m 52s.xml">
+      <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 19m 47s.xml">
+      <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 20m 31s.xml">
+      <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 23m 10s.xml">
+      <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 23m 43s.xml">
+      <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CorreoElectronicoGmail - 2017.11.08 at 23h 24m 49s.xml">
       <configuration name="CorreoElectronicoGmail" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="728" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24961714" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40359476" sideWeight="0.58877087" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.4969651" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.301059" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39932886" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4019608" sideWeight="0.41122913" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40359476" sideWeight="0.52723145" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40359476" sideWeight="0.47276855" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40359476" sideWeight="0.52723145" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40359476" sideWeight="0.47276855" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1174,85 +1268,549 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java</url>
-          <line>25</line>
+          <line>50</line>
           <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java</url>
+          <line>60</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/CorreoElectronicoGmail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/apps/java4/jdk1.8.0_45/src.zip!/java/lang/ProcessImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="452" column="5" lean-forward="false" selection-start-line="452" selection-start-column="5" selection-end-line="452" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="33" column="66" lean-forward="false" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
+        <state relative-caret-position="203">
+          <caret line="21" column="55" lean-forward="false" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
           <folding>
-            <element signature="e#1507#1508#0" expanded="true" />
-            <element signature="e#1584#1585#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="20" column="57" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="57" />
+        <state relative-caret-position="160">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="50" column="80" lean-forward="false" selection-start-line="50" selection-start-column="70" selection-end-line="50" selection-end-column="80" />
+        <state relative-caret-position="194">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
-            <element signature="e#1719#1720#0" expanded="true" />
-            <element signature="e#1748#1749#0" expanded="true" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="32" column="144" lean-forward="true" selection-start-line="32" selection-start-column="144" selection-end-line="32" selection-end-column="144" />
+        <state relative-caret-position="169">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="63" column="76" lean-forward="true" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+        <state relative-caret-position="171">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+            <element signature="e#4398#4399#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/CorreoElectronicoGmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/CorreoElectronicoGmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.44.0/4ffad0d901c7f85a46b062658741956eac3870a2/selenium-api-2.44.0-sources.jar!/org/openqa/selenium/By.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="109" column="19" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="21" column="55" lean-forward="false" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="27" column="9" lean-forward="false" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="16" column="80" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="80" />
+          <folding>
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+            <element signature="e#4398#4399#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/CorreoElectronicoGmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.44.0/4ffad0d901c7f85a46b062658741956eac3870a2/selenium-api-2.44.0-sources.jar!/org/openqa/selenium/By.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="109" column="19" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="21" column="55" lean-forward="false" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+            <element signature="e#4398#4399#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="53" column="78" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="78" />
+          <folding>
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="55" lean-forward="false" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+            <element signature="e#4398#4399#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/CorreoElectronicoGmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.44.0/4ffad0d901c7f85a46b062658741956eac3870a2/selenium-api-2.44.0-sources.jar!/org/openqa/selenium/By.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="109" column="19" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="21" column="55" lean-forward="false" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+            <element signature="e#4398#4399#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.44.0/4ffad0d901c7f85a46b062658741956eac3870a2/selenium-api-2.44.0-sources.jar!/org/openqa/selenium/By.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="109" column="19" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="21" column="55" lean-forward="false" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+            <element signature="e#4398#4399#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/CorreoElectronicoGmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.44.0/4ffad0d901c7f85a46b062658741956eac3870a2/selenium-api-2.44.0-sources.jar!/org/openqa/selenium/By.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="109" column="19" lean-forward="false" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/3.7.0/74a46d0014b6110d4ff012cb1247fec72fc2768d/selenium-api-3.7.0-sources.jar!/org/openqa/selenium/By.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/PruebasUnitarias.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PruebasUnitarias.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/correoelectronico/CorreoElectronicoGmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/cglib/cglib/3.1/cglib-3.1.jar!/net/sf/cglib/proxy/MethodProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jbehave/jbehave-core/4.0.5/jbehave-core-4.0.5-sources.jar!/org/jbehave/core/model/ExamplesTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="144" column="13" lean-forward="false" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/definitions/CorreoElectronicoGmailDefinitions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/steps/CorreoElectronicoGmailSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+          <folding>
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#4353#4354#0" expanded="true" />
+            <element signature="e#4398#4399#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1260,8 +1818,32 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="Copyright.UI">
         <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1294,6 +1876,19 @@
           </splitter-proportions>
         </settings>
       </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>com.test.correoelectronico.gmail_main|com.test.correoelectronico.gmail</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
@@ -1308,6 +1903,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Gradle: aopalliance:aopalliance:1.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

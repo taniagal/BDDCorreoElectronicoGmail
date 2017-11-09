@@ -15,16 +15,18 @@
 <h3>Examples:</h3>
 <div class="step">Given puedo ingresar a gmail</div>
 <div class="step">And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:
-|correoElectronicoONumeroTelefonico|contrasenia                  |
-|carlitoslop9876                   |carlosgrisales               |</div>
+|correoElectronicoONumeroTelefonico    |contrasenia                  |
+|taniagrajalesalzate                   |)%=#!%_taniaa                |</div>
 <div class="step">And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:
-|para                             |asunto             |mensaje                                                     |
-|taniagrajalesalzate@gmail.com    |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |</div>
+|para                                       |asunto             |mensaje                                                     |
+|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |</div>
 <div class="step">When quiera acceder a la cuenta de correo electronico del usuario destinatario</div>
 <div class="step">And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:
-|correoElectronicoONumeroTelefonico|contrasenia                           |
-|carlitosortq                      |123456carlitos                        |</div>
-<div class="step">And ingrese a la opcion recibidos a buscar el correo del usuario que me ha enviado el mensaje:&lt;correoElectronico&gt;</div>
+|correoElectronicoONumeroTelefonico            |contrasenia                                |
+|carlitoslop9876                               |carlosgrisales                              |</div>
+<div class="step">And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:
+|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |
+|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|</div>
 <div class="step">Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio</div>
 <table>
 <thead>
@@ -46,7 +48,7 @@
 </thead>
 <tbody>
 <tr>
-<td>carlitoslop9876</td><td>carlosgrisales</td></tr>
+<td>taniagrajalesalzate</td><td>)%=#!%_taniaa</td></tr>
 </tbody>
 </table>
 </span> <span class="keyword failed">(FAILED)</span><br/><span class="message failed">net.serenitybdd.core.exceptions.SerenityManagedException: stale element reference: element is not attached to the page document
@@ -58,7 +60,7 @@ Build info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.58
 System info: host: 'PQVSQ02732', ip: '172.10.101.29', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 548349cb54b2a473dfd804bbae2a7e2f</span></div>
+Session ID: 98aec60ade169667896c3291cd1c762d</span></div>
 <div class="step notPerformed">And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:<span class="step parameter"><table>
 <thead>
 <tr>
@@ -66,7 +68,7 @@ Session ID: 548349cb54b2a473dfd804bbae2a7e2f</span></div>
 </thead>
 <tbody>
 <tr>
-<td>taniagrajalesalzate@gmail.com</td><td>Prueba Correo</td><td>Hola Carlos esta es una prueba de correo electronico</td></tr>
+<td>carlitoslop9876@gmail.com</td><td>Prueba Correo</td><td>Hola Carlos esta es una prueba de correo electronico</td></tr>
 </tbody>
 </table>
 </span> <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
@@ -78,11 +80,21 @@ Session ID: 548349cb54b2a473dfd804bbae2a7e2f</span></div>
 </thead>
 <tbody>
 <tr>
-<td>carlitosortq</td><td>123456carlitos</td></tr>
+<td>carlitoslop9876</td><td>carlosgrisales</td></tr>
 </tbody>
 </table>
 </span> <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
-<div class="step notPerformed">And ingrese a la opcion recibidos a buscar el correo del usuario que me ha enviado el mensaje:<span class="step parameter">carlitoslop9876</span> <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
+<div class="step notPerformed">And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:<span class="step parameter"><table>
+<thead>
+<tr>
+<th>correoElectronicoONumeroTelefonico</th><th>asunto</th><th>mensaje</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>carlitoslop9876</td><td>Prueba Correo</td><td>Hola Carlos esta es una prueba de correo electronico</td></tr>
+</tbody>
+</table>
+</span> <span class="keyword notPerformed">(NOT PERFORMED)</span></div>
 <div class="step pending">Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio <span class="keyword pending">(PENDING)</span></div>
 <div><pre class="pending">@Then(&quot;debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio&quot;)
 @Pending
@@ -100,13 +112,13 @@ Build info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.58
 System info: host: 'PQVSQ02732', ip: '172.10.101.29', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 548349cb54b2a473dfd804bbae2a7e2f
+Session ID: 98aec60ade169667896c3291cd1c762d
 	at net.serenitybdd.core.exceptions.SerenityManagedException.detachedCopyOf(SerenityManagedException.java:20)
 	at net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)
 	at net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)
 	at net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)
-	at com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$ef019740.ingresarACorreoElectronico(&lt;generated&gt;)
-	at com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:15)
+	at com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(&lt;generated&gt;)
+	at com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)
 	(reflection-invoke)
 	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
 	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:340)

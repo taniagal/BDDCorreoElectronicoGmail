@@ -4,15 +4,19 @@ import com.test.correoelectronico.page.CorreoElectronicoGmailPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class CorreoElectronicoGmailSteps extends ScenarioSteps {
     @Page
-    CorreoElectronicoGmailPage correoElectronicoGmailPage;
-    private ExamplesTable informacion;
+     CorreoElectronicoGmailPage correoElectronicoGmailPage;
 
     @Step
-    public void ingresarACorreoElectronico(ExamplesTable informacion) {
+    public void ingresarACorreoElectronico(ExamplesTable informacion) throws InterruptedException {
         correoElectronicoGmailPage.createInstanceOfWebDriver();
         correoElectronicoGmailPage.ingresarACorreoElectronico(informacion);
     }
@@ -21,17 +25,31 @@ public class CorreoElectronicoGmailSteps extends ScenarioSteps {
         correoElectronicoGmailPage.ingresarAGmail();
     }
     @Step
-    public void enviarMensajeCorreoElectronico(ExamplesTable datosMensajeCorreoElectronico) {
+    public void enviarMensajeCorreoElectronico(ExamplesTable datosMensajeCorreoElectronico) throws InterruptedException {
         correoElectronicoGmailPage.enviarMensajeCorreoElectronico(datosMensajeCorreoElectronico);
     }
     @Step
-    public void salirEIngresarACorreoElectronico() {
+    public void salirEIngresarACorreoElectronico() throws InterruptedException {
         correoElectronicoGmailPage.salirEIngresarACorreoElectronico();
     }
     @Step
     public void ingresarAOpcionRecibidosCorreoElectronico(ExamplesTable informacionMensajeRecibido) {
-        ExamplesTable validarCorreoElectronico=correoElectronicoGmailPage.ingresarAOpcionRecibidosCorreoElectronico(informacionMensajeRecibido);
-
-
+        Map<String,String> informacionRecibida=informacionMensajeRecibido.getRow(0);
+        String usuarioEnviCorreo=informacionRecibida.get("correoElectronicoONumeroTelefonico");
+        String asuntoMensajeEnviado=informacionRecibida.get("asunto");
+        String mensajeEnviado=informacionRecibida.get("mensaje");
+        MatcherAssert.assertThat(usuarioEnviCorreo, Matchers.not(Matchers.isEmptyString()));
+        MatcherAssert.assertThat(mensajeEnviado, Matchers.not(Matchers.isEmptyString()));
+        MatcherAssert.assertThat(asuntoMensajeEnviado, Matchers.not(Matchers.isEmptyString()));
+        correoElectronicoGmailPage.ingresarAOpcionRecibidos();
+        ArrayList<String[]> datosCorreoElectronico = correoElectronicoGmailPage.obtenerDatosCorreoElectronico();
+        MatcherAssert.assertThat(datosCorreoElectronico.size(), Matchers.greaterThan(0));
+        Iterator<String[]> iterator = datosCorreoElectronico.iterator();
+        while(iterator.hasNext()){
+            String[] datos = iterator.next();
+            MatcherAssert.assertThat(datos[0], Matchers.equalTo(usuarioEnviCorreo));
+            MatcherAssert.assertThat(datos[1], Matchers.equalTo(asuntoMensajeEnviado));
+            MatcherAssert.assertThat(datos[2], Matchers.equalTo(mensajeEnviado));
+        }
     }
 }
