@@ -1,4 +1,4 @@
-<acceptance-test-run title="ingreso a correo electronico de gmail" name="ingreso a correo electronico de gmail" steps="6" successful="2" failures="0" errors="1" skipped="3" ignored="0" pending="0" annotated-result="ERROR" result="ERROR" duration="45200" timestamp="2017-11-08T23:25:13.568-05:00">
+<acceptance-test-run title="ingreso a correo electronico de gmail" name="ingreso a correo electronico de gmail" steps="6" successful="1" failures="0" errors="1" skipped="4" ignored="0" pending="0" annotated-result="ERROR" result="ERROR" duration="15372" timestamp="2017-11-09T14:37:54.302-05:00">
   <user-story id="correo_electronico_gmail" name="Correo electronico gmail" path="stories.correoelectronico.correoelectronico/correo_electronico_gmail.story"/>
   <tags>
     <tag name="Correo electronico gmail" type="story"/>
@@ -18,47 +18,45 @@
   </examples>
   <test-group name="[1] {=}" result="ERROR">
     <test-group name="Given puedo ingresar a gmail" result="SUCCESS">
-      <test-step result="SUCCESS" duration="6146">
+      <test-step result="SUCCESS" duration="14258">
         <description>Ingresar a gmail</description>
       </test-step>
     </test-group>
-    <test-group name="And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;&#xa;|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;&#xa;|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |］" result="SUCCESS">
-      <test-step result="SUCCESS" duration="37230">
+    <test-group name="And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;&#xa;|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;&#xa;|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |］" result="ERROR">
+      <test-step result="ERROR" duration="448">
         <description>Ingresar a correo electronico: ExamplesTable[tableAsString=&#xd;
 |correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
-|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |,headerSeparator=|,valueSeparator=|,ignorableSeparator=|--,parameterConverters=org.jbehave.core.steps.ParameterConverters@20b17461,tableTransformers=org.jbehave.core.model.TableTransformers@3562ef13,defaults=org.jbehave.core.steps.ConvertedParameters@66e0ddfa,headers=[correoElectronicoONumeroTelefonico, contrasenia],data=[{correoElectronicoONumeroTelefonico=taniagrajalesalzate@gmail.com, contrasenia=)%=#!%_taniaa}],properties={headerSeparator=|, valueSeparator=|, ignorableSeparator=|--},propertiesAsString=,namedParameters={=},trim=true]</description>
+|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |,headerSeparator=|,valueSeparator=|,ignorableSeparator=|--,parameterConverters=org.jbehave.core.steps.ParameterConverters@103cd68e,tableTransformers=org.jbehave.core.model.TableTransformers@77c0de97,defaults=org.jbehave.core.steps.ConvertedParameters@43d54e1a,headers=[correoElectronicoONumeroTelefonico, contrasenia],data=[{correoElectronicoONumeroTelefonico=taniagrajalesalzate@gmail.com, contrasenia=)%=#!%_taniaa}],properties={headerSeparator=|, valueSeparator=|, ignorableSeparator=|--},propertiesAsString=,namedParameters={=},trim=true]</description>
+        <error>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.254.67.102&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
+Session ID: 06f6e6d5dd35c3a95cc188460a17f63a
+*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</error>
+        <exception>org.openqa.selenium.NoSuchWindowException:no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.254.67.102&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
+Session ID: 06f6e6d5dd35c3a95cc188460a17f63a
+*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}&#xd;
+[com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30), com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:21), com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:16)]</exception>
       </test-step>
     </test-group>
-    <test-group name="And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［&#xd;&#xa;|para                                       |asunto             |mensaje                                             |&#xd;&#xa;|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|］" result="ERROR">
-      <test-step result="ERROR" duration="1182">
-        <description>Enviar mensaje correo electronico: ExamplesTable[tableAsString=&#xd;
+    <test-step result="SKIPPED" duration="1">
+      <description>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［&#xd;
 |para                                       |asunto             |mensaje                                             |&#xd;
-|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|,headerSeparator=|,valueSeparator=|,ignorableSeparator=|--,parameterConverters=org.jbehave.core.steps.ParameterConverters@20b17461,tableTransformers=org.jbehave.core.model.TableTransformers@3562ef13,defaults=org.jbehave.core.steps.ConvertedParameters@97fc311,headers=[para, asunto, mensaje],data=[{para=carlitoslop9876@gmail.com, asunto=Prueba Correo, mensaje=Hola Carlos esta es una prueba de correo electronico}],properties={headerSeparator=|, valueSeparator=|, ignorableSeparator=|--},propertiesAsString=,namedParameters={=},trim=true]</description>
-        <error>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]&quot;}
-  (Session info: chrome=60.0.3112.78)
-  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: ef44b7473bfcdf43de4a209cbfd7657a
-*** Element info: {Using=xpath, value=.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]}</error>
-        <exception>org.openqa.selenium.NoSuchElementException:no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]&quot;}
-  (Session info: chrome=60.0.3112.78)
-  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: ef44b7473bfcdf43de4a209cbfd7657a
-*** Element info: {Using=xpath, value=.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]}&#xd;
-[com.test.correoelectronico.page.CorreoElectronicoGmailPage.enviarMensajeCorreoElectronico(CorreoElectronicoGmailPage.java:47), com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.enviarMensajeCorreoElectronico(CorreoElectronicoGmailSteps.java:29), com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.enviarMensajeCorreoElectronico(CorreoElectronicoGmailDefinitions.java:24)]</exception>
-      </test-step>
-    </test-group>
+|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|］</description>
+    </test-step>
     <test-step result="SKIPPED" duration="1">
       <description>When quiera acceder a la cuenta de correo electronico del usuario destinatario</description>
     </test-step>
@@ -67,7 +65,7 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
 |correoElectronicoONumeroTelefonico                      |contrasenia                                |&#xd;
 |carlitoslop9876@gmail.com                               |carlosgrisales                             |］</description>
     </test-step>
-    <test-step result="SKIPPED" duration="1">
+    <test-step result="SKIPPED" duration="0">
       <description>Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:［&#xd;
 |correoElectronicoONumeroTelefonico             |asunto       |mensaje                                             |&#xd;
 |carlitoslop9876@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|］</description>

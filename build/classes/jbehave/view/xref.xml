@@ -292,41 +292,32 @@ So that </localizedNarrative>
                     <step>Given puedo ingresar a gmail</step>
                     <type>SUCCESSFUL</type>
                     <parametrisedStep>Given puedo ingresar a gmail</parametrisedStep>
-                    <durationInMillis>6553</durationInMillis>
+                    <durationInMillis>14640</durationInMillis>
                   </successful>
-                  <successful>
+                  <failed>
                     <step>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:&#xd;
 |correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
 |taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |</step>
-                    <type>SUCCESSFUL</type>
-                    <parametrisedStep>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;
-|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
-|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |］</parametrisedStep>
-                    <durationInMillis>37262</durationInMillis>
-                  </successful>
-                  <failed>
-                    <step>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:&#xd;
-|para                                       |asunto             |mensaje                                             |&#xd;
-|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|</step>
                     <type>FAILED</type>
                     <throwable>
-                      <detailMessage>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:&#xd;
-|para                                       |asunto             |mensaje                                             |&#xd;
-|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|</detailMessage>
+                      <detailMessage>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:&#xd;
+|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
+|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |</detailMessage>
                       <cause class="net.serenitybdd.core.exceptions.SerenityManagedException">
-                        <detailMessage>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]&quot;}
+                        <detailMessage>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.254.67.102&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: ef44b7473bfcdf43de4a209cbfd7657a
-*** Element info: {Using=xpath, value=.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]}</detailMessage>
-                        <cause class="org.openqa.selenium.NoSuchElementException" defined-in="java.lang.Throwable">
-                          <detailMessage>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]&quot;}
+Session ID: 06f6e6d5dd35c3a95cc188460a17f63a
+*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</detailMessage>
+                        <cause class="org.openqa.selenium.NoSuchWindowException" defined-in="java.lang.Throwable">
+                          <detailMessage>no such window: target window already closed
+from unknown error: web view not found
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds</detailMessage>
@@ -347,18 +338,18 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                             <trace>org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)</trace>
                             <trace>org.openqa.selenium.By$ByXPath.findElement(By.java:361)</trace>
                             <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)</trace>
-                            <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.enviarMensajeCorreoElectronico(CorreoElectronicoGmailPage.java:47)</trace>
-                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.enviarMensajeCorreoElectronico(CorreoElectronicoGmailSteps.java:29)</trace>
-                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.CGLIB$enviarMensajeCorreoElectronico$3(&lt;generated&gt;)</trace>
-                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c$$FastClassByCGLIB$$b30ba812.invoke(&lt;generated&gt;)</trace>
+                            <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30)</trace>
+                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:21)</trace>
+                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.CGLIB$ingresarACorreoElectronico$1(&lt;generated&gt;)</trace>
+                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02$$FastClassByCGLIB$$407313c1.invoke(&lt;generated&gt;)</trace>
                             <trace>net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                             <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.enviarMensajeCorreoElectronico(&lt;generated&gt;)</trace>
-                            <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.enviarMensajeCorreoElectronico(CorreoElectronicoGmailDefinitions.java:24)</trace>
+                            <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                            <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:16)</trace>
                             <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                             <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
                             <trace>sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</trace>
@@ -395,11 +386,11 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                             </entry>
                             <entry>
                               <string>Session ID</string>
-                              <string>ef44b7473bfcdf43de4a209cbfd7657a</string>
+                              <string>06f6e6d5dd35c3a95cc188460a17f63a</string>
                             </entry>
                             <entry>
                               <string>*** Element info</string>
-                              <string>{Using=xpath, value=.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]}</string>
+                              <string>{Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</string>
                             </entry>
                           </extraInfo>
                         </cause>
@@ -408,8 +399,8 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                           <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.enviarMensajeCorreoElectronico(&lt;generated&gt;)</trace>
-                          <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.enviarMensajeCorreoElectronico(CorreoElectronicoGmailDefinitions.java:24)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                          <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:16)</trace>
                           <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                           <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
                           <trace>sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</trace>
@@ -435,17 +426,17 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                           <c class="list"/>
                           <list/>
                         </suppressedExceptions>
-                        <detailedMessage>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]&quot;}
+                        <detailedMessage>no such window: target window already closed
+from unknown error: web view not found
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.254.67.102&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: ef44b7473bfcdf43de4a209cbfd7657a
-*** Element info: {Using=xpath, value=.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]}</detailedMessage>
+Session ID: 06f6e6d5dd35c3a95cc188460a17f63a
+*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</detailedMessage>
                         <stackTrace>
                           <trace>sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</trace>
                           <trace>sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)</trace>
@@ -463,18 +454,18 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
                           <trace>org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)</trace>
                           <trace>org.openqa.selenium.By$ByXPath.findElement(By.java:361)</trace>
                           <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)</trace>
-                          <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.enviarMensajeCorreoElectronico(CorreoElectronicoGmailPage.java:47)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.enviarMensajeCorreoElectronico(CorreoElectronicoGmailSteps.java:29)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.CGLIB$enviarMensajeCorreoElectronico$3(&lt;generated&gt;)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c$$FastClassByCGLIB$$b30ba812.invoke(&lt;generated&gt;)</trace>
+                          <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:21)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.CGLIB$ingresarACorreoElectronico$1(&lt;generated&gt;)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02$$FastClassByCGLIB$$407313c1.invoke(&lt;generated&gt;)</trace>
                           <trace>net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                           <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.enviarMensajeCorreoElectronico(&lt;generated&gt;)</trace>
-                          <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.enviarMensajeCorreoElectronico(CorreoElectronicoGmailDefinitions.java:24)</trace>
+                          <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                          <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:16)</trace>
                           <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                           <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
                           <trace>sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</trace>
@@ -496,7 +487,7 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
                           <trace>java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</trace>
                           <trace>java.lang.Thread.run(Thread.java:745)</trace>
                         </stackTrace>
-                        <exceptionClass>org.openqa.selenium.NoSuchElementException</exceptionClass>
+                        <exceptionClass>org.openqa.selenium.NoSuchWindowException</exceptionClass>
                       </cause>
                       <stackTrace>
                         <trace>org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:617)</trace>
@@ -520,13 +511,23 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
                         <c class="list"/>
                         <list/>
                       </suppressedExceptions>
-                      <uuid>b1a118ac-9186-4d2a-bd29-da1f17a59833</uuid>
+                      <uuid>26c4dad6-b780-4ad3-824c-96f31a738124</uuid>
                     </throwable>
+                    <parametrisedStep>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;
+|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
+|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |］</parametrisedStep>
+                    <durationInMillis>478</durationInMillis>
+                  </failed>
+                  <notPerformed>
+                    <step>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:&#xd;
+|para                                       |asunto             |mensaje                                             |&#xd;
+|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|</step>
+                    <type>NOT_PERFORMED</type>
                     <parametrisedStep>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［&#xd;
 |para                                       |asunto             |mensaje                                             |&#xd;
 |carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|］</parametrisedStep>
-                    <durationInMillis>1187</durationInMillis>
-                  </failed>
+                    <durationInMillis>0</durationInMillis>
+                  </notPerformed>
                   <notPerformed>
                     <step>When quiera acceder a la cuenta de correo electronico del usuario destinatario</step>
                     <type>NOT_PERFORMED</type>
@@ -669,7 +670,7 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
       <beforeSteps/>
       <afterSteps/>
       <timing>
-        <durationInMillis>45412</durationInMillis>
+        <durationInMillis>15722</durationInMillis>
       </timing>
       <givenStory>false</givenStory>
     </performableStory>
@@ -797,41 +798,32 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
                 <step>Given puedo ingresar a gmail</step>
                 <type>SUCCESSFUL</type>
                 <parametrisedStep>Given puedo ingresar a gmail</parametrisedStep>
-                <durationInMillis>6553</durationInMillis>
+                <durationInMillis>14640</durationInMillis>
               </successful>
-              <successful>
+              <failed>
                 <step>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:&#xd;
 |correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
 |taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |</step>
-                <type>SUCCESSFUL</type>
-                <parametrisedStep>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;
-|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
-|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |］</parametrisedStep>
-                <durationInMillis>37262</durationInMillis>
-              </successful>
-              <failed>
-                <step>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:&#xd;
-|para                                       |asunto             |mensaje                                             |&#xd;
-|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|</step>
                 <type>FAILED</type>
                 <throwable>
-                  <detailMessage>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:&#xd;
-|para                                       |asunto             |mensaje                                             |&#xd;
-|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|</detailMessage>
+                  <detailMessage>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:&#xd;
+|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
+|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |</detailMessage>
                   <cause class="net.serenitybdd.core.exceptions.SerenityManagedException">
-                    <detailMessage>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]&quot;}
+                    <detailMessage>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.254.67.102&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: ef44b7473bfcdf43de4a209cbfd7657a
-*** Element info: {Using=xpath, value=.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]}</detailMessage>
-                    <cause class="org.openqa.selenium.NoSuchElementException" defined-in="java.lang.Throwable">
-                      <detailMessage>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]&quot;}
+Session ID: 06f6e6d5dd35c3a95cc188460a17f63a
+*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</detailMessage>
+                    <cause class="org.openqa.selenium.NoSuchWindowException" defined-in="java.lang.Throwable">
+                      <detailMessage>no such window: target window already closed
+from unknown error: web view not found
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds</detailMessage>
@@ -852,18 +844,18 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                         <trace>org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)</trace>
                         <trace>org.openqa.selenium.By$ByXPath.findElement(By.java:361)</trace>
                         <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)</trace>
-                        <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.enviarMensajeCorreoElectronico(CorreoElectronicoGmailPage.java:47)</trace>
-                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.enviarMensajeCorreoElectronico(CorreoElectronicoGmailSteps.java:29)</trace>
-                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.CGLIB$enviarMensajeCorreoElectronico$3(&lt;generated&gt;)</trace>
-                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c$$FastClassByCGLIB$$b30ba812.invoke(&lt;generated&gt;)</trace>
+                        <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30)</trace>
+                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:21)</trace>
+                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.CGLIB$ingresarACorreoElectronico$1(&lt;generated&gt;)</trace>
+                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02$$FastClassByCGLIB$$407313c1.invoke(&lt;generated&gt;)</trace>
                         <trace>net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                         <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.enviarMensajeCorreoElectronico(&lt;generated&gt;)</trace>
-                        <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.enviarMensajeCorreoElectronico(CorreoElectronicoGmailDefinitions.java:24)</trace>
+                        <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                        <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:16)</trace>
                         <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                         <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
                         <trace>sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</trace>
@@ -900,11 +892,11 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                         </entry>
                         <entry>
                           <string>Session ID</string>
-                          <string>ef44b7473bfcdf43de4a209cbfd7657a</string>
+                          <string>06f6e6d5dd35c3a95cc188460a17f63a</string>
                         </entry>
                         <entry>
                           <string>*** Element info</string>
-                          <string>{Using=xpath, value=.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]}</string>
+                          <string>{Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</string>
                         </entry>
                       </extraInfo>
                     </cause>
@@ -913,8 +905,8 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                       <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.enviarMensajeCorreoElectronico(&lt;generated&gt;)</trace>
-                      <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.enviarMensajeCorreoElectronico(CorreoElectronicoGmailDefinitions.java:24)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                      <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:16)</trace>
                       <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                       <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
                       <trace>sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</trace>
@@ -940,17 +932,17 @@ Command duration or timeout: 0 milliseconds</detailMessage>
                       <c class="list"/>
                       <list/>
                     </suppressedExceptions>
-                    <detailedMessage>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]&quot;}
+                    <detailedMessage>no such window: target window already closed
+from unknown error: web view not found
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.254.67.102&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: ef44b7473bfcdf43de4a209cbfd7657a
-*** Element info: {Using=xpath, value=.//table/tbody/tr/td[2]/div/div/textarea[@role=&apos;combobox&apos;]}</detailedMessage>
+Session ID: 06f6e6d5dd35c3a95cc188460a17f63a
+*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</detailedMessage>
                     <stackTrace>
                       <trace>sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</trace>
                       <trace>sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)</trace>
@@ -968,18 +960,18 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
                       <trace>org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)</trace>
                       <trace>org.openqa.selenium.By$ByXPath.findElement(By.java:361)</trace>
                       <trace>org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)</trace>
-                      <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.enviarMensajeCorreoElectronico(CorreoElectronicoGmailPage.java:47)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.enviarMensajeCorreoElectronico(CorreoElectronicoGmailSteps.java:29)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.CGLIB$enviarMensajeCorreoElectronico$3(&lt;generated&gt;)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c$$FastClassByCGLIB$$b30ba812.invoke(&lt;generated&gt;)</trace>
+                      <trace>com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:21)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.CGLIB$ingresarACorreoElectronico$1(&lt;generated&gt;)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02$$FastClassByCGLIB$$407313c1.invoke(&lt;generated&gt;)</trace>
                       <trace>net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)</trace>
                       <trace>net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)</trace>
-                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$50c3f63c.enviarMensajeCorreoElectronico(&lt;generated&gt;)</trace>
-                      <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.enviarMensajeCorreoElectronico(CorreoElectronicoGmailDefinitions.java:24)</trace>
+                      <trace>com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$8bbb6d02.ingresarACorreoElectronico(&lt;generated&gt;)</trace>
+                      <trace>com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:16)</trace>
                       <trace>sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</trace>
                       <trace>sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</trace>
                       <trace>sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</trace>
@@ -1001,7 +993,7 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
                       <trace>java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</trace>
                       <trace>java.lang.Thread.run(Thread.java:745)</trace>
                     </stackTrace>
-                    <exceptionClass>org.openqa.selenium.NoSuchElementException</exceptionClass>
+                    <exceptionClass>org.openqa.selenium.NoSuchWindowException</exceptionClass>
                   </cause>
                   <stackTrace>
                     <trace>org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:617)</trace>
@@ -1025,13 +1017,23 @@ Session ID: ef44b7473bfcdf43de4a209cbfd7657a
                     <c class="list"/>
                     <list/>
                   </suppressedExceptions>
-                  <uuid>b1a118ac-9186-4d2a-bd29-da1f17a59833</uuid>
+                  <uuid>26c4dad6-b780-4ad3-824c-96f31a738124</uuid>
                 </throwable>
+                <parametrisedStep>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;
+|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
+|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |］</parametrisedStep>
+                <durationInMillis>478</durationInMillis>
+              </failed>
+              <notPerformed>
+                <step>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:&#xd;
+|para                                       |asunto             |mensaje                                             |&#xd;
+|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|</step>
+                <type>NOT_PERFORMED</type>
                 <parametrisedStep>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［&#xd;
 |para                                       |asunto             |mensaje                                             |&#xd;
 |carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|］</parametrisedStep>
-                <durationInMillis>1187</durationInMillis>
-              </failed>
+                <durationInMillis>0</durationInMillis>
+              </notPerformed>
               <notPerformed>
                 <step>When quiera acceder a la cuenta de correo electronico del usuario destinatario</step>
                 <type>NOT_PERFORMED</type>

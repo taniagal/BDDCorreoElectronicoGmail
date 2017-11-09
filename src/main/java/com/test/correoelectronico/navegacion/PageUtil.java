@@ -13,6 +13,7 @@ public class PageUtil extends net.thucydides.core.pages.PageObject {
     private WebDriver driver;
     private ArrayList<String[]> informacionCorreoElectronico;
     private String mensajeEncontrado=".//div[@class='G3 G2']/div/div/div[1]";
+    private String buscarUsuarioCorreoElectronico=".//*[@class='ajy']/img[@id=':cj']";
     private String correoElectronicoUsuario=".//span[@class='go']";
 
     protected void navegadorChrome(String url){
@@ -56,6 +57,8 @@ public class PageUtil extends net.thucydides.core.pages.PageObject {
                 datoEncontrado.click();
                 WebElement asuntosEncontrado=driver.findElement(By.xpath(asuntoEncontrado));
                 WebElement mensajesEncontrados=driver.findElement(By.xpath(mensajeEncontrado));
+                WebElement buscarUsuarioCorreoGmail=driver.findElement(By.xpath(buscarUsuarioCorreoElectronico));
+                buscarUsuarioCorreoGmail.click();
                 WebElement usuarioCorreoElectronico=driver.findElement(By.xpath(correoElectronicoUsuario));
                 informacionCorreoElectronico.add(new String[]{
                         usuarioCorreoElectronico.getText(),
