@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bc16755-2081-4839-a50d-46ddaaad274f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml8ca2928f-7be1-404a-abc2-dc8da4d91d89" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/test/correoelectronico/navegacion/PageUtil.class" afterPath="$PROJECT_DIR$/build/classes/main/com/test/correoelectronico/navegacion/PageUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" afterPath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/AfterStories.stats" afterPath="$PROJECT_DIR$/build/classes/jbehave/AfterStories.stats" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/BeforeStories.stats" afterPath="$PROJECT_DIR$/build/classes/jbehave/BeforeStories.stats" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.html" afterPath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" afterPath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml" afterPath="$PROJECT_DIR$/build/classes/jbehave/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/storyDurations.props" afterPath="$PROJECT_DIR$/build/classes/jbehave/storyDurations.props" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/AfterStories.stats.html" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/AfterStories.stats.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/BeforeStories.stats.html" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/BeforeStories.stats.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/index.html" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/reports.html" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/reports.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.html" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats.html" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.stats.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml.html" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/stories.correoelectronico.correoelectronico.correo_electronico_gmail.xml.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/xref.json" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/xref.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/jbehave/view/xref.xml" afterPath="$PROJECT_DIR$/build/classes/jbehave/view/xref.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/test/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story" afterPath="$PROJECT_DIR$/build/resources/test/stories.correoelectronico.correoelectronico/correo_electronico_gmail.story" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/test/correoelectronico/navegacion/PageUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.html" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.json" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.xml" afterPath="$PROJECT_DIR$/target/site/serenity/8b601049e3cd5ba8d2b8ff1340ea48fd.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml" afterPath="$PROJECT_DIR$/target/site/serenity/SERENITY-JUNIT-8b601049e3cd5ba8d2b8ff1340ea48fd.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -61,8 +42,8 @@
       <file leaf-file-name="CorreoElectronicoGmailPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="42" column="54" lean-forward="false" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
+            <state relative-caret-position="261">
+              <caret line="44" column="60" lean-forward="false" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -1088,13 +1069,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40359476" sideWeight="0.53025717" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40359476" sideWeight="0.5332829" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1108,7 +1089,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40359476" sideWeight="0.4697428" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40359476" sideWeight="0.4667171" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1587,8 +1568,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/test/correoelectronico/page/CorreoElectronicoGmailPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="42" column="54" lean-forward="false" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
+        <state relative-caret-position="261">
+          <caret line="44" column="60" lean-forward="false" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
           <folding />
         </state>
       </provider>
