@@ -1,6 +1,6 @@
 #org.jbehave.core.embedder.StoryManager
-#Fri Nov 10 00:24:22 COT 2017
-stories.correoelectronico.correoelectronico/correo_electronico_gmail.story=301000
+#Fri Nov 10 09:02:06 COT 2017
+stories.correoelectronico.correoelectronico/correo_electronico_gmail.story=304000
 threads=1
-total=301000
-threadAverage=301000
+total=304000
+threadAverage=304000

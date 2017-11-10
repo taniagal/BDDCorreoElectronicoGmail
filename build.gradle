@@ -37,3 +37,7 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '2.44.0'
 
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5-rc-2'
+}

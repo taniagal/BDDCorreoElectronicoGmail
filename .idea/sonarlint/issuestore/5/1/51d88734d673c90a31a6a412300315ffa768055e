@@ -1,5 +1,0 @@
-
-msquid:S1450"SRemove the "wait" field and declare it as a local variable in the relevant methods.(íÒá§ùÿÿÿÿ
-;squid:S1170"!Make this final field static too.(„´µ°øÿÿÿÿ
-6squid:S1170"!Make this final field static too.(ü¨Õ×
-…squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ˆð†¹
