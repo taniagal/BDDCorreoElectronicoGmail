@@ -13,80 +13,74 @@
 <examples keyword="Examples:">
 <step>Given puedo ingresar a gmail</step>
 <step>And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:
-|correoElectronicoONumeroTelefonico    |contrasenia                  |
-|taniagrajalesalzate                   |)%=#!%_taniaa                |</step>
+|correoElectronicoONumeroTelefonico              |contrasenia                  |
+|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |</step>
 <step>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:
-|para                                       |asunto             |mensaje                                                     |
-|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |</step>
+|para                                       |asunto              |mensaje                                             |
+|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|</step>
 <step>When quiera acceder a la cuenta de correo electronico del usuario destinatario</step>
 <step>And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:
-|correoElectronicoONumeroTelefonico            |contrasenia                                |
-|carlitoslop9876                               |carlosgrisales                              |</step>
-<step>And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:
-|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |
-|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|</step>
-<step>Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio</step>
+|correoElectronicoONumeroTelefonico                      |contrasenia                                |
+|carlitoslop9876@gmail.com                               |carlosgrisales                             |</step>
+<step>Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:
+|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |
+|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|</step>
 <parameters>
-<names><name>correoElectronico</name></names>
-<values><value>carlitoslop9876</value></values>
+<names><name></name></names>
+<values><value></value></values>
 </parameters>
 
-<example keyword="Example:">{correoElectronico=carlitoslop9876}</example>
+<example keyword="Example:">{=}</example>
 <step outcome="successful">Given puedo ingresar a gmail</step>
-<step outcome="failed" keyword="FAILED">And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:<parameter><parameters>
+<step outcome="successful">And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:<parameter><parameters>
 <names><name>correoElectronicoONumeroTelefonico</name><name>contrasenia</name></names>
-<values><value>taniagrajalesalzate</value><value>)%=#!%_taniaa</value></values>
+<values><value>taniagrajalesalzate@gmail.com</value><value>)%=#!%_taniaa</value></values>
 </parameters>
-</parameter><failure>net.serenitybdd.core.exceptions.SerenityManagedException: stale element reference: element is not attached to the page document
-  (Session info: chrome=60.0.3112.78)
-  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
-Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 98aec60ade169667896c3291cd1c762d</failure></step>
-<step outcome="notPerformed" keyword="NOT PERFORMED">And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:<parameter><parameters>
+</parameter></step>
+<step outcome="successful">And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:<parameter><parameters>
 <names><name>para</name><name>asunto</name><name>mensaje</name></names>
-<values><value>carlitoslop9876@gmail.com</value><value>Prueba Correo</value><value>Hola Carlos esta es una prueba de correo electronico</value></values>
+<values><value>carlitoslop9876@gmail.com</value><value>Prueba Correo15</value><value>Hola Carlos esta es una prueba de correo electronico</value></values>
 </parameters>
 </parameter></step>
-<step outcome="notPerformed" keyword="NOT PERFORMED">When quiera acceder a la cuenta de correo electronico del usuario destinatario</step>
-<step outcome="notPerformed" keyword="NOT PERFORMED">And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:<parameter><parameters>
+<step outcome="successful">When quiera acceder a la cuenta de correo electronico del usuario destinatario</step>
+<step outcome="failed" keyword="FAILED">And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:<parameter><parameters>
 <names><name>correoElectronicoONumeroTelefonico</name><name>contrasenia</name></names>
-<values><value>carlitoslop9876</value><value>carlosgrisales</value></values>
+<values><value>carlitoslop9876@gmail.com</value><value>carlosgrisales</value></values>
 </parameters>
-</parameter></step>
-<step outcome="notPerformed" keyword="NOT PERFORMED">And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:<parameter><parameters>
-<names><name>correoElectronicoONumeroTelefonico</name><name>asunto</name><name>mensaje</name></names>
-<values><value>carlitoslop9876</value><value>Prueba Correo</value><value>Hola Carlos esta es una prueba de correo electronico</value></values>
-</parameters>
-</parameter></step>
-<step outcome="pending" keyword="PENDING">Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio</step>
-<pendingMethod>@Then(&quot;debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio&quot;)
-@Pending
-public void thenDeboPoderVisualizarLaInformacionQueSeMeHaEnviadoJuntoConElUsuarioQueMeLaEnvio() {
-  // PENDING
-}
-</pendingMethod>
-</examples>
-<failure>net.serenitybdd.core.exceptions.SerenityManagedException: stale element reference: element is not attached to the page document
+</parameter><failure>net.serenitybdd.core.exceptions.SerenityManagedException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id=&apos;identifierId&apos;]&quot;}
   (Session info: chrome=60.0.3112.78)
   (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;172.10.101.29&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;192.168.200.7&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 98aec60ade169667896c3291cd1c762d
+Session ID: aa7080ad7f46bae8ea565bc641069639
+*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</failure></step>
+<step outcome="notPerformed" keyword="NOT PERFORMED">Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:<parameter><parameters>
+<names><name>correoElectronicoONumeroTelefonico</name><name>asunto</name><name>mensaje</name></names>
+<values><value>taniagrajalesalzate@gmail.com</value><value>Prueba Correo</value><value>Hola Carlos esta es una prueba de correo electronico</value></values>
+</parameters>
+</parameter></step>
+</examples>
+<failure>net.serenitybdd.core.exceptions.SerenityManagedException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id=&apos;identifierId&apos;]&quot;}
+  (Session info: chrome=60.0.3112.78)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
+System info: host: &apos;PQVSQ02732&apos;, ip: &apos;192.168.200.7&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
+Session ID: aa7080ad7f46bae8ea565bc641069639
+*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}
 	at net.serenitybdd.core.exceptions.SerenityManagedException.detachedCopyOf(SerenityManagedException.java:20)
 	at net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)
 	at net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)
 	at net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)
-	at com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(&lt;generated&gt;)
-	at com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)
+	at com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.ingresarACorreoElectronico(&lt;generated&gt;)
+	at com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoDestinatario(CorreoElectronicoGmailDefinitions.java:28)
 	(reflection-invoke)
 	at org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:599)
 	at org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:340)

@@ -120,7 +120,7 @@
               }
             },
             "examplesTable": {
-              "tableAsString": "|correoElectronico|\r\n|carlitoslop9876  |",
+              "tableAsString": "||\r\n||",
               "headerSeparator": "|",
               "valueSeparator": "|",
               "ignorableSeparator": "|--",
@@ -141,13 +141,13 @@
                 ]
               },
               "headers": [
-                "correoElectronico"
+                ""
               ],
               "data": [
                 [
                   [
-                    "correoElectronico",
-                    "carlitoslop9876"
+                    "",
+                    ""
                   ]
                 ]
               ],
@@ -171,12 +171,11 @@
             },
             "steps": [
               "Given puedo ingresar a gmail",
-              "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
-              "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |",
+              "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |",
+              "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|",
               "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-              "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |",
-              "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
-              "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio"
+              "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
+              "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|"
             ]
           }
         ],
@@ -184,7 +183,7 @@
       },
       "localizedNarrative": "As a \nI want to \nSo that ",
       "allowed": true,
-      "status": "PENDING",
+      "status": "FAILED",
       "givenStories": [],
       "scenarios": [
         {
@@ -239,7 +238,7 @@
               }
             },
             "examplesTable": {
-              "tableAsString": "|correoElectronico|\r\n|carlitoslop9876  |",
+              "tableAsString": "||\r\n||",
               "headerSeparator": "|",
               "valueSeparator": "|",
               "ignorableSeparator": "|--",
@@ -260,13 +259,13 @@
                 ]
               },
               "headers": [
-                "correoElectronico"
+                ""
               ],
               "data": [
                 [
                   [
-                    "correoElectronico",
-                    "carlitoslop9876"
+                    "",
+                    ""
                   ]
                 ]
               ],
@@ -290,12 +289,11 @@
             },
             "steps": [
               "Given puedo ingresar a gmail",
-              "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
-              "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |",
+              "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |",
+              "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|",
               "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-              "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |",
-              "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
-              "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio"
+              "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
+              "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|"
             ]
           },
           "storyPath": "stories.correoelectronico.correoelectronico/correo_electronico_gmail.story",
@@ -304,8 +302,8 @@
             {
               "parameters": [
                 [
-                  "correoElectronico",
-                  "carlitoslop9876"
+                  "",
+                  ""
                 ]
               ],
               "givenStories": [],
@@ -319,20 +317,38 @@
                     "step": "Given puedo ingresar a gmail",
                     "type": "SUCCESSFUL",
                     "parametrisedStep": "Given puedo ingresar a gmail",
-                    "durationInMillis": 5455
+                    "durationInMillis": 5927
                   },
                   {
-                    "step": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
+                    "step": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |",
+                    "type": "SUCCESSFUL",
+                    "parametrisedStep": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |］",
+                    "durationInMillis": 9078
+                  },
+                  {
+                    "step": "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|",
+                    "type": "SUCCESSFUL",
+                    "parametrisedStep": "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|］",
+                    "durationInMillis": 6548
+                  },
+                  {
+                    "step": "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
+                    "type": "SUCCESSFUL",
+                    "parametrisedStep": "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
+                    "durationInMillis": 61884
+                  },
+                  {
+                    "step": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
                     "type": "FAILED",
                     "throwable": {
-                      "detailMessage": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
+                      "detailMessage": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
                       "cause": {
                         "@class": "net.serenitybdd.core.exceptions.SerenityManagedException",
-                        "detailMessage": "org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html\nBuild info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'\nSystem info: host: 'PQVSQ02732', ip: '172.10.101.29', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\\Users\\tanigral\\AppData\\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}\nSession ID: 98aec60ade169667896c3291cd1c762d",
+                        "detailMessage": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//*[@id='identifierId']\"}\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'\nSystem info: host: 'PQVSQ02732', ip: '192.168.200.7', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\\Users\\tanigral\\AppData\\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}\nSession ID: aa7080ad7f46bae8ea565bc641069639\n*** Element info: {Using=xpath, value=.//*[@id='identifierId']}",
                         "cause": {
-                          "@class": "org.openqa.selenium.StaleElementReferenceException",
+                          "@class": "org.openqa.selenium.NoSuchElementException",
                           "@defined-in": "java.lang.Throwable",
-                          "detailMessage": "stale element reference: element is not attached to the page document\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds",
+                          "detailMessage": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//*[@id='identifierId']\"}\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds",
                           "stackTrace": [
                             "sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)",
                             "sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)",
@@ -346,20 +362,22 @@
                             "org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)",
                             "org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)",
                             "org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)",
-                            "org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)",
-                            "org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:320)",
+                            "org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)",
+                            "org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)",
+                            "org.openqa.selenium.By$ByXPath.findElement(By.java:361)",
+                            "org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)",
                             "com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30)",
                             "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:22)",
-                            "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.CGLIB$ingresarACorreoElectronico$2(<generated>)",
-                            "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319$$FastClassByCGLIB$$c2284a9d.invoke(<generated>)",
+                            "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.CGLIB$ingresarACorreoElectronico$2(<generated>)",
+                            "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700$$FastClassByCGLIB$$3ece534f.invoke(<generated>)",
                             "net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)",
                             "net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)",
                             "net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)",
                             "net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)",
                             "net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)",
                             "net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)",
-                            "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(<generated>)",
-                            "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)",
+                            "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.ingresarACorreoElectronico(<generated>)",
+                            "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoDestinatario(CorreoElectronicoGmailDefinitions.java:28)",
                             "sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)",
                             "sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)",
                             "sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
@@ -396,7 +414,11 @@
                             ],
                             [
                               "Session ID",
-                              "98aec60ade169667896c3291cd1c762d"
+                              "aa7080ad7f46bae8ea565bc641069639"
+                            ],
+                            [
+                              "*** Element info",
+                              "{Using=xpath, value=.//*[@id='identifierId']}"
                             ]
                           ]
                         },
@@ -405,8 +427,8 @@
                           "net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)",
                           "net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)",
                           "net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)",
-                          "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(<generated>)",
-                          "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)",
+                          "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.ingresarACorreoElectronico(<generated>)",
+                          "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoDestinatario(CorreoElectronicoGmailDefinitions.java:28)",
                           "sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)",
                           "sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)",
                           "sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
@@ -432,7 +454,7 @@
                           [],
                           []
                         ],
-                        "detailedMessage": "stale element reference: element is not attached to the page document\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html\nBuild info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'\nSystem info: host: 'PQVSQ02732', ip: '172.10.101.29', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\\Users\\tanigral\\AppData\\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}\nSession ID: 98aec60ade169667896c3291cd1c762d",
+                        "detailedMessage": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//*[@id='identifierId']\"}\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'\nSystem info: host: 'PQVSQ02732', ip: '192.168.200.7', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\\Users\\tanigral\\AppData\\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}\nSession ID: aa7080ad7f46bae8ea565bc641069639\n*** Element info: {Using=xpath, value=.//*[@id='identifierId']}",
                         "stackTrace": [
                           "sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)",
                           "sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)",
@@ -446,20 +468,22 @@
                           "org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)",
                           "org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)",
                           "org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)",
-                          "org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)",
-                          "org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:320)",
+                          "org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)",
+                          "org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)",
+                          "org.openqa.selenium.By$ByXPath.findElement(By.java:361)",
+                          "org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)",
                           "com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30)",
                           "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:22)",
-                          "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.CGLIB$ingresarACorreoElectronico$2(<generated>)",
-                          "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319$$FastClassByCGLIB$$c2284a9d.invoke(<generated>)",
+                          "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.CGLIB$ingresarACorreoElectronico$2(<generated>)",
+                          "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700$$FastClassByCGLIB$$3ece534f.invoke(<generated>)",
                           "net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)",
                           "net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)",
                           "net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)",
                           "net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)",
                           "net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)",
                           "net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)",
-                          "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(<generated>)",
-                          "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)",
+                          "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.ingresarACorreoElectronico(<generated>)",
+                          "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoDestinatario(CorreoElectronicoGmailDefinitions.java:28)",
                           "sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)",
                           "sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)",
                           "sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
@@ -481,7 +505,7 @@
                           "java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)",
                           "java.lang.Thread.run(Thread.java:745)"
                         ],
-                        "exceptionClass": "org.openqa.selenium.StaleElementReferenceException"
+                        "exceptionClass": "org.openqa.selenium.NoSuchElementException"
                       },
                       "stackTrace": [
                         "org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:617)",
@@ -505,67 +529,15 @@
                         [],
                         []
                       ],
-                      "uuid": "d618bda2-cb3c-487c-8fd5-3986f1b128db"
+                      "uuid": "1ab055ce-2d70-46fe-b1bf-49f0c1e554f6"
                     },
-                    "parametrisedStep": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |］",
-                    "durationInMillis": 1448
+                    "parametrisedStep": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:［\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |］",
+                    "durationInMillis": 90
                   },
                   {
-                    "step": "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |",
+                    "step": "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
                     "type": "NOT_PERFORMED",
-                    "parametrisedStep": "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |］",
-                    "durationInMillis": 0
-                  },
-                  {
-                    "step": "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-                    "type": "NOT_PERFORMED",
-                    "parametrisedStep": "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-                    "durationInMillis": 0
-                  },
-                  {
-                    "step": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |",
-                    "type": "NOT_PERFORMED",
-                    "parametrisedStep": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:［\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |］",
-                    "durationInMillis": 0
-                  },
-                  {
-                    "step": "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
-                    "type": "NOT_PERFORMED",
-                    "parametrisedStep": "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:［\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|］",
-                    "durationInMillis": 0
-                  },
-                  {
-                    "step": "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio",
-                    "type": "PENDING",
-                    "throwable": {
-                      "@class": "org.jbehave.core.failures.PendingStepFound",
-                      "detailMessage": "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio",
-                      "stackTrace": [
-                        "org.jbehave.core.steps.AbstractStepResult$Pending.<init>(AbstractStepResult.java:58)",
-                        "org.jbehave.core.steps.AbstractStepResult.pending(AbstractStepResult.java:174)",
-                        "org.jbehave.core.steps.StepCreator$PendingStep.doNotPerform(StepCreator.java:743)",
-                        "org.jbehave.core.embedder.PerformableTree$SomethingHappened.run(PerformableTree.java:372)",
-                        "org.jbehave.core.embedder.PerformableTree$PerformableSteps.perform(PerformableTree.java:1072)",
-                        "org.jbehave.core.embedder.PerformableTree$AbstractPerformableScenario.performRestartableSteps(PerformableTree.java:938)",
-                        "org.jbehave.core.embedder.PerformableTree$ExamplePerformableScenario.perform(PerformableTree.java:1011)",
-                        "org.jbehave.core.embedder.PerformableTree$PerformableScenario.perform(PerformableTree.java:883)",
-                        "org.jbehave.core.embedder.PerformableTree$PerformableStory.performScenarios(PerformableTree.java:811)",
-                        "org.jbehave.core.embedder.PerformableTree$PerformableStory.perform(PerformableTree.java:784)",
-                        "org.jbehave.core.embedder.PerformableTree.performCancellable(PerformableTree.java:416)",
-                        "org.jbehave.core.embedder.PerformableTree.perform(PerformableTree.java:387)",
-                        "org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:291)",
-                        "org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:265)",
-                        "java.util.concurrent.FutureTask.run(FutureTask.java:266)",
-                        "java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)",
-                        "java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)",
-                        "java.lang.Thread.run(Thread.java:745)"
-                      ],
-                      "suppressedExceptions": [
-                        [],
-                        []
-                      ],
-                      "uuid": "1ed1cc74-2328-4d10-8156-95d2373d2449"
-                    },
+                    "parametrisedStep": "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:［\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|］",
                     "durationInMillis": 0
                   }
                 ]
@@ -627,7 +599,7 @@
                   }
                 },
                 "examplesTable": {
-                  "tableAsString": "|correoElectronico|\r\n|carlitoslop9876  |",
+                  "tableAsString": "||\r\n||",
                   "headerSeparator": "|",
                   "valueSeparator": "|",
                   "ignorableSeparator": "|--",
@@ -648,13 +620,13 @@
                     ]
                   },
                   "headers": [
-                    "correoElectronico"
+                    ""
                   ],
                   "data": [
                     [
                       [
-                        "correoElectronico",
-                        "carlitoslop9876"
+                        "",
+                        ""
                       ]
                     ]
                   ],
@@ -678,23 +650,22 @@
                 },
                 "steps": [
                   "Given puedo ingresar a gmail",
-                  "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
-                  "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |",
+                  "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |",
+                  "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|",
                   "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-                  "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |",
-                  "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
-                  "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio"
+                  "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
+                  "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|"
                 ]
               }
             }
           ],
-          "status": "PENDING"
+          "status": "FAILED"
         }
       ],
       "beforeSteps": {},
       "afterSteps": {},
       "timing": {
-        "durationInMillis": 7316
+        "durationInMillis": 83934
       },
       "givenStory": false
     }
@@ -752,7 +723,7 @@
           }
         },
         "examplesTable": {
-          "tableAsString": "|correoElectronico|\r\n|carlitoslop9876  |",
+          "tableAsString": "||\r\n||",
           "headerSeparator": "|",
           "valueSeparator": "|",
           "ignorableSeparator": "|--",
@@ -773,13 +744,13 @@
             ]
           },
           "headers": [
-            "correoElectronico"
+            ""
           ],
           "data": [
             [
               [
-                "correoElectronico",
-                "carlitoslop9876"
+                "",
+                ""
               ]
             ]
           ],
@@ -803,12 +774,11 @@
         },
         "steps": [
           "Given puedo ingresar a gmail",
-          "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
-          "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |",
+          "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |",
+          "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|",
           "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-          "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |",
-          "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
-          "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio"
+          "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
+          "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|"
         ]
       },
       "storyPath": "stories.correoelectronico.correoelectronico/correo_electronico_gmail.story",
@@ -817,8 +787,8 @@
         {
           "parameters": [
             [
-              "correoElectronico",
-              "carlitoslop9876"
+              "",
+              ""
             ]
           ],
           "givenStories": [],
@@ -832,20 +802,38 @@
                 "step": "Given puedo ingresar a gmail",
                 "type": "SUCCESSFUL",
                 "parametrisedStep": "Given puedo ingresar a gmail",
-                "durationInMillis": 5455
+                "durationInMillis": 5927
               },
               {
-                "step": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
+                "step": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |",
+                "type": "SUCCESSFUL",
+                "parametrisedStep": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |］",
+                "durationInMillis": 9078
+              },
+              {
+                "step": "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|",
+                "type": "SUCCESSFUL",
+                "parametrisedStep": "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|］",
+                "durationInMillis": 6548
+              },
+              {
+                "step": "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
+                "type": "SUCCESSFUL",
+                "parametrisedStep": "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
+                "durationInMillis": 61884
+              },
+              {
+                "step": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
                 "type": "FAILED",
                 "throwable": {
-                  "detailMessage": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
+                  "detailMessage": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
                   "cause": {
                     "@class": "net.serenitybdd.core.exceptions.SerenityManagedException",
-                    "detailMessage": "org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html\nBuild info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'\nSystem info: host: 'PQVSQ02732', ip: '172.10.101.29', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\\Users\\tanigral\\AppData\\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}\nSession ID: 98aec60ade169667896c3291cd1c762d",
+                    "detailMessage": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//*[@id='identifierId']\"}\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'\nSystem info: host: 'PQVSQ02732', ip: '192.168.200.7', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\\Users\\tanigral\\AppData\\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}\nSession ID: aa7080ad7f46bae8ea565bc641069639\n*** Element info: {Using=xpath, value=.//*[@id='identifierId']}",
                     "cause": {
-                      "@class": "org.openqa.selenium.StaleElementReferenceException",
+                      "@class": "org.openqa.selenium.NoSuchElementException",
                       "@defined-in": "java.lang.Throwable",
-                      "detailMessage": "stale element reference: element is not attached to the page document\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds",
+                      "detailMessage": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//*[@id='identifierId']\"}\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds",
                       "stackTrace": [
                         "sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)",
                         "sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)",
@@ -859,20 +847,22 @@
                         "org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)",
                         "org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)",
                         "org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)",
-                        "org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)",
-                        "org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:320)",
+                        "org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)",
+                        "org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)",
+                        "org.openqa.selenium.By$ByXPath.findElement(By.java:361)",
+                        "org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)",
                         "com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30)",
                         "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:22)",
-                        "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.CGLIB$ingresarACorreoElectronico$2(<generated>)",
-                        "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319$$FastClassByCGLIB$$c2284a9d.invoke(<generated>)",
+                        "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.CGLIB$ingresarACorreoElectronico$2(<generated>)",
+                        "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700$$FastClassByCGLIB$$3ece534f.invoke(<generated>)",
                         "net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)",
                         "net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)",
                         "net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)",
                         "net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)",
                         "net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)",
                         "net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)",
-                        "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(<generated>)",
-                        "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)",
+                        "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.ingresarACorreoElectronico(<generated>)",
+                        "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoDestinatario(CorreoElectronicoGmailDefinitions.java:28)",
                         "sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)",
                         "sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)",
                         "sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
@@ -909,7 +899,11 @@
                         ],
                         [
                           "Session ID",
-                          "98aec60ade169667896c3291cd1c762d"
+                          "aa7080ad7f46bae8ea565bc641069639"
+                        ],
+                        [
+                          "*** Element info",
+                          "{Using=xpath, value=.//*[@id='identifierId']}"
                         ]
                       ]
                     },
@@ -918,8 +912,8 @@
                       "net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:341)",
                       "net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)",
                       "net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)",
-                      "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(<generated>)",
-                      "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)",
+                      "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.ingresarACorreoElectronico(<generated>)",
+                      "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoDestinatario(CorreoElectronicoGmailDefinitions.java:28)",
                       "sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)",
                       "sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)",
                       "sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
@@ -945,7 +939,7 @@
                       [],
                       []
                     ],
-                    "detailedMessage": "stale element reference: element is not attached to the page document\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html\nBuild info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'\nSystem info: host: 'PQVSQ02732', ip: '172.10.101.29', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\\Users\\tanigral\\AppData\\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}\nSession ID: 98aec60ade169667896c3291cd1c762d",
+                    "detailedMessage": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//*[@id='identifierId']\"}\n  (Session info: chrome=60.0.3112.78)\n  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: '3.7.0', revision: '2321c73', time: '2017-11-02T22:22:35.584Z'\nSystem info: host: 'PQVSQ02732', ip: '192.168.200.7', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_45'\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\\Users\\tanigral\\AppData\\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}\nSession ID: aa7080ad7f46bae8ea565bc641069639\n*** Element info: {Using=xpath, value=.//*[@id='identifierId']}",
                     "stackTrace": [
                       "sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)",
                       "sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)",
@@ -959,20 +953,22 @@
                       "org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)",
                       "org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)",
                       "org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)",
-                      "org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)",
-                      "org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:320)",
+                      "org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:370)",
+                      "org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:472)",
+                      "org.openqa.selenium.By$ByXPath.findElement(By.java:361)",
+                      "org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)",
                       "com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30)",
                       "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:22)",
-                      "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.CGLIB$ingresarACorreoElectronico$2(<generated>)",
-                      "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319$$FastClassByCGLIB$$c2284a9d.invoke(<generated>)",
+                      "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.CGLIB$ingresarACorreoElectronico$2(<generated>)",
+                      "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700$$FastClassByCGLIB$$3ece534f.invoke(<generated>)",
                       "net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)",
                       "net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:372)",
                       "net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:357)",
                       "net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:332)",
                       "net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:134)",
                       "net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:61)",
-                      "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$76d99319.ingresarACorreoElectronico(<generated>)",
-                      "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:14)",
+                      "com.test.correoelectronico.steps.CorreoElectronicoGmailSteps$$EnhancerByCGLIB$$5490e700.ingresarACorreoElectronico(<generated>)",
+                      "com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoDestinatario(CorreoElectronicoGmailDefinitions.java:28)",
                       "sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)",
                       "sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)",
                       "sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
@@ -994,7 +990,7 @@
                       "java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)",
                       "java.lang.Thread.run(Thread.java:745)"
                     ],
-                    "exceptionClass": "org.openqa.selenium.StaleElementReferenceException"
+                    "exceptionClass": "org.openqa.selenium.NoSuchElementException"
                   },
                   "stackTrace": [
                     "org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:617)",
@@ -1018,67 +1014,15 @@
                     [],
                     []
                   ],
-                  "uuid": "d618bda2-cb3c-487c-8fd5-3986f1b128db"
+                  "uuid": "1ab055ce-2d70-46fe-b1bf-49f0c1e554f6"
                 },
-                "parametrisedStep": "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |］",
-                "durationInMillis": 1448
+                "parametrisedStep": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:［\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |］",
+                "durationInMillis": 90
               },
               {
-                "step": "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |",
+                "step": "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
                 "type": "NOT_PERFORMED",
-                "parametrisedStep": "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |］",
-                "durationInMillis": 0
-              },
-              {
-                "step": "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-                "type": "NOT_PERFORMED",
-                "parametrisedStep": "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-                "durationInMillis": 0
-              },
-              {
-                "step": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |",
-                "type": "NOT_PERFORMED",
-                "parametrisedStep": "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:［\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |］",
-                "durationInMillis": 0
-              },
-              {
-                "step": "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
-                "type": "NOT_PERFORMED",
-                "parametrisedStep": "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:［\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|］",
-                "durationInMillis": 0
-              },
-              {
-                "step": "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio",
-                "type": "PENDING",
-                "throwable": {
-                  "@class": "org.jbehave.core.failures.PendingStepFound",
-                  "detailMessage": "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio",
-                  "stackTrace": [
-                    "org.jbehave.core.steps.AbstractStepResult$Pending.<init>(AbstractStepResult.java:58)",
-                    "org.jbehave.core.steps.AbstractStepResult.pending(AbstractStepResult.java:174)",
-                    "org.jbehave.core.steps.StepCreator$PendingStep.doNotPerform(StepCreator.java:743)",
-                    "org.jbehave.core.embedder.PerformableTree$SomethingHappened.run(PerformableTree.java:372)",
-                    "org.jbehave.core.embedder.PerformableTree$PerformableSteps.perform(PerformableTree.java:1072)",
-                    "org.jbehave.core.embedder.PerformableTree$AbstractPerformableScenario.performRestartableSteps(PerformableTree.java:938)",
-                    "org.jbehave.core.embedder.PerformableTree$ExamplePerformableScenario.perform(PerformableTree.java:1011)",
-                    "org.jbehave.core.embedder.PerformableTree$PerformableScenario.perform(PerformableTree.java:883)",
-                    "org.jbehave.core.embedder.PerformableTree$PerformableStory.performScenarios(PerformableTree.java:811)",
-                    "org.jbehave.core.embedder.PerformableTree$PerformableStory.perform(PerformableTree.java:784)",
-                    "org.jbehave.core.embedder.PerformableTree.performCancellable(PerformableTree.java:416)",
-                    "org.jbehave.core.embedder.PerformableTree.perform(PerformableTree.java:387)",
-                    "org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:291)",
-                    "org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:265)",
-                    "java.util.concurrent.FutureTask.run(FutureTask.java:266)",
-                    "java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)",
-                    "java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)",
-                    "java.lang.Thread.run(Thread.java:745)"
-                  ],
-                  "suppressedExceptions": [
-                    [],
-                    []
-                  ],
-                  "uuid": "1ed1cc74-2328-4d10-8156-95d2373d2449"
-                },
+                "parametrisedStep": "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:［\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|］",
                 "durationInMillis": 0
               }
             ]
@@ -1140,7 +1084,7 @@
               }
             },
             "examplesTable": {
-              "tableAsString": "|correoElectronico|\r\n|carlitoslop9876  |",
+              "tableAsString": "||\r\n||",
               "headerSeparator": "|",
               "valueSeparator": "|",
               "ignorableSeparator": "|--",
@@ -1161,13 +1105,13 @@
                 ]
               },
               "headers": [
-                "correoElectronico"
+                ""
               ],
               "data": [
                 [
                   [
-                    "correoElectronico",
-                    "carlitoslop9876"
+                    "",
+                    ""
                   ]
                 ]
               ],
@@ -1191,17 +1135,16 @@
             },
             "steps": [
               "Given puedo ingresar a gmail",
-              "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico    |contrasenia                  |\r\n|taniagrajalesalzate                   |)%=#!%_taniaa                |",
-              "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto             |mensaje                                                     |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico        |",
+              "And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:\r\n|correoElectronicoONumeroTelefonico              |contrasenia                  |\r\n|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |",
+              "And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:\r\n|para                                       |asunto              |mensaje                                             |\r\n|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|",
               "When quiera acceder a la cuenta de correo electronico del usuario destinatario",
-              "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico            |contrasenia                                |\r\n|carlitoslop9876                               |carlosgrisales                              |",
-              "And ingrese a la opcion recibidos a buscar el mensaje que se me ha enviado:\r\n|correoElectronicoONumeroTelefonico    |asunto       |mensaje                                             |\r\n|carlitoslop9876                       |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|",
-              "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio"
+              "And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:\r\n|correoElectronicoONumeroTelefonico                      |contrasenia                                |\r\n|carlitoslop9876@gmail.com                               |carlosgrisales                             |",
+              "Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:\r\n|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |\r\n|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|"
             ]
           }
         }
       ],
-      "status": "PENDING"
+      "status": "FAILED"
     }
   ]
 }}

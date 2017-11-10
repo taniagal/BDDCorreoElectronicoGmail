@@ -1,4 +1,4 @@
-<acceptance-test-run title="ingreso a correo electronico de gmail" name="ingreso a correo electronico de gmail" steps="6" successful="1" failures="0" errors="1" skipped="4" ignored="0" pending="0" annotated-result="ERROR" result="ERROR" duration="15372" timestamp="2017-11-09T14:37:54.302-05:00">
+<acceptance-test-run title="ingreso a correo electronico de gmail" name="ingreso a correo electronico de gmail" steps="6" successful="6" failures="0" skipped="0" ignored="0" pending="0" result="SUCCESS" duration="0" timestamp="2017-11-10T00:19:20.527-05:00">
   <user-story id="correo_electronico_gmail" name="Correo electronico gmail" path="stories.correoelectronico.correoelectronico/correo_electronico_gmail.story"/>
   <tags>
     <tag name="Correo electronico gmail" type="story"/>
@@ -11,64 +11,49 @@
       <header></header>
     </headers>
     <rows>
-      <row result="ERROR">
+      <row result="SUCCESS">
         <value></value>
       </row>
     </rows>
   </examples>
-  <test-group name="[1] {=}" result="ERROR">
+  <test-group name="[1] {=}" result="SUCCESS">
     <test-group name="Given puedo ingresar a gmail" result="SUCCESS">
-      <test-step result="SUCCESS" duration="14258">
+      <test-step result="SUCCESS" duration="5837">
         <description>Ingresar a gmail</description>
       </test-step>
     </test-group>
-    <test-group name="And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;&#xa;|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;&#xa;|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |］" result="ERROR">
-      <test-step result="ERROR" duration="448">
+    <test-group name="And puedo ingresar a mi correo electronico de gmail con la siguiente informacion:［&#xd;&#xa;|correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;&#xa;|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |］" result="SUCCESS">
+      <test-step result="SUCCESS" duration="9298">
         <description>Ingresar a correo electronico: ExamplesTable[tableAsString=&#xd;
 |correoElectronicoONumeroTelefonico              |contrasenia                  |&#xd;
-|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                             |,headerSeparator=|,valueSeparator=|,ignorableSeparator=|--,parameterConverters=org.jbehave.core.steps.ParameterConverters@103cd68e,tableTransformers=org.jbehave.core.model.TableTransformers@77c0de97,defaults=org.jbehave.core.steps.ConvertedParameters@43d54e1a,headers=[correoElectronicoONumeroTelefonico, contrasenia],data=[{correoElectronicoONumeroTelefonico=taniagrajalesalzate@gmail.com, contrasenia=)%=#!%_taniaa}],properties={headerSeparator=|, valueSeparator=|, ignorableSeparator=|--},propertiesAsString=,namedParameters={=},trim=true]</description>
-        <error>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=60.0.3112.78)
-  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.254.67.102&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 06f6e6d5dd35c3a95cc188460a17f63a
-*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}</error>
-        <exception>org.openqa.selenium.NoSuchWindowException:no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=60.0.3112.78)
-  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: &apos;3.7.0&apos;, revision: &apos;2321c73&apos;, time: &apos;2017-11-02T22:22:35.584Z&apos;
-System info: host: &apos;PQVSQ02732&apos;, ip: &apos;10.254.67.102&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_45&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.29.461591 (62ebf098771772..., userDataDir: C:\Users\tanigral\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 60.0.3112.78, webStorageEnabled: true}
-Session ID: 06f6e6d5dd35c3a95cc188460a17f63a
-*** Element info: {Using=xpath, value=.//*[@id=&apos;identifierId&apos;]}&#xd;
-[com.test.correoelectronico.page.CorreoElectronicoGmailPage.ingresarACorreoElectronico(CorreoElectronicoGmailPage.java:30), com.test.correoelectronico.steps.CorreoElectronicoGmailSteps.ingresarACorreoElectronico(CorreoElectronicoGmailSteps.java:21), com.test.correoelectronico.definitions.CorreoElectronicoGmailDefinitions.ingresarACorreoElectronico(CorreoElectronicoGmailDefinitions.java:16)]</exception>
+|taniagrajalesalzate@gmail.com                   |)%=#!%_taniaa                |,headerSeparator=|,valueSeparator=|,ignorableSeparator=|--,parameterConverters=org.jbehave.core.steps.ParameterConverters@52aeb57b,tableTransformers=org.jbehave.core.model.TableTransformers@9b30b7e,defaults=org.jbehave.core.steps.ConvertedParameters@15f70320,headers=[correoElectronicoONumeroTelefonico, contrasenia],data=[{correoElectronicoONumeroTelefonico=taniagrajalesalzate@gmail.com, contrasenia=)%=#!%_taniaa}],properties={headerSeparator=|, valueSeparator=|, ignorableSeparator=|--},propertiesAsString=,namedParameters={=},trim=true]</description>
       </test-step>
     </test-group>
-    <test-step result="SKIPPED" duration="1">
-      <description>And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［&#xd;
-|para                                       |asunto             |mensaje                                             |&#xd;
-|carlitoslop9876@gmail.com                  |Prueba Correo      |Hola Carlos esta es una prueba de correo electronico|］</description>
-    </test-step>
-    <test-step result="SKIPPED" duration="1">
-      <description>When quiera acceder a la cuenta de correo electronico del usuario destinatario</description>
-    </test-step>
-    <test-step result="SKIPPED" duration="0">
-      <description>And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:［&#xd;
+    <test-group name="And puedo enviar un mensaje de correo electronico a un usuario con los siguientes datos:［&#xd;&#xa;|para                                       |asunto              |mensaje                                             |&#xd;&#xa;|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|］" result="SUCCESS">
+      <test-step result="SUCCESS" duration="6570">
+        <description>Enviar mensaje correo electronico: ExamplesTable[tableAsString=&#xd;
+|para                                       |asunto              |mensaje                                             |&#xd;
+|carlitoslop9876@gmail.com                  |Prueba Correo15     |Hola Carlos esta es una prueba de correo electronico|,headerSeparator=|,valueSeparator=|,ignorableSeparator=|--,parameterConverters=org.jbehave.core.steps.ParameterConverters@52aeb57b,tableTransformers=org.jbehave.core.model.TableTransformers@9b30b7e,defaults=org.jbehave.core.steps.ConvertedParameters@108eac78,headers=[para, asunto, mensaje],data=[{para=carlitoslop9876@gmail.com, asunto=Prueba Correo15, mensaje=Hola Carlos esta es una prueba de correo electronico}],properties={headerSeparator=|, valueSeparator=|, ignorableSeparator=|--},propertiesAsString=,namedParameters={=},trim=true]</description>
+      </test-step>
+    </test-group>
+    <test-group name="When quiera acceder a la cuenta de correo electronico del usuario destinatario" result="SUCCESS">
+      <test-step result="SUCCESS" duration="6570">
+        <description>Salir e ingresar a correo electronico</description>
+      </test-step>
+    </test-group>
+    <test-group name="And ingrese al correo electronico al cual envie el mensaje con los siguientes datos:［&#xd;&#xa;|correoElectronicoONumeroTelefonico                      |contrasenia                                |&#xd;&#xa;|carlitoslop9876@gmail.com                               |carlosgrisales                             |］" result="SUCCESS">
+      <test-step result="SUCCESS" duration="11157">
+        <description>Ingresar a correo electronico: ExamplesTable[tableAsString=&#xd;
 |correoElectronicoONumeroTelefonico                      |contrasenia                                |&#xd;
-|carlitoslop9876@gmail.com                               |carlosgrisales                             |］</description>
-    </test-step>
-    <test-step result="SKIPPED" duration="0">
-      <description>Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:［&#xd;
-|correoElectronicoONumeroTelefonico             |asunto       |mensaje                                             |&#xd;
-|carlitoslop9876@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|］</description>
-    </test-step>
+|carlitoslop9876@gmail.com                               |carlosgrisales                             |,headerSeparator=|,valueSeparator=|,ignorableSeparator=|--,parameterConverters=org.jbehave.core.steps.ParameterConverters@52aeb57b,tableTransformers=org.jbehave.core.model.TableTransformers@9b30b7e,defaults=org.jbehave.core.steps.ConvertedParameters@7d1d7b67,headers=[correoElectronicoONumeroTelefonico, contrasenia],data=[{correoElectronicoONumeroTelefonico=carlitoslop9876@gmail.com, contrasenia=carlosgrisales}],properties={headerSeparator=|, valueSeparator=|, ignorableSeparator=|--},propertiesAsString=,namedParameters={=},trim=true]</description>
+      </test-step>
+    </test-group>
+    <test-group name="Then debo poder visualizar la informacion que se me ha enviado junto con el usuario que me la envio:&#xd;&#xa;|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |&#xd;&#xa;|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|" result="SUCCESS">
+      <test-step result="SUCCESS" duration="0">
+        <description>Ingresar a opcion recibidos correo electronico: ExamplesTable[tableAsString=&#xd;
+|correoElectronicoONumeroTelefonico                 |asunto       |mensaje                                             |&#xd;
+|taniagrajalesalzate@gmail.com                      |Prueba Correo|Hola Carlos esta es una prueba de correo electronico|,headerSeparator=|,valueSeparator=|,ignorableSeparator=|--,parameterConverters=org.jbehave.core.steps.ParameterConverters@52aeb57b,tableTransformers=org.jbehave.core.model.TableTransformers@9b30b7e,defaults=org.jbehave.core.steps.ConvertedParameters@17d7d7f5,headers=[correoElectronicoONumeroTelefonico, asunto, mensaje],data=[{correoElectronicoONumeroTelefonico=taniagrajalesalzate@gmail.com, asunto=Prueba Correo, mensaje=Hola Carlos esta es una prueba de correo electronico}],properties={headerSeparator=|, valueSeparator=|, ignorableSeparator=|--},propertiesAsString=,namedParameters={=},trim=true]</description>
+      </test-step>
+    </test-group>
   </test-group>
 </acceptance-test-run>

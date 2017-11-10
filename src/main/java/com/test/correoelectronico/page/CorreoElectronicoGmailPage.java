@@ -34,11 +34,12 @@ public class CorreoElectronicoGmailPage extends PageUtil{
         clickearBoton(driver.findElement(By.xpath(".//div[@id='passwordNext']")));
         wait = new WebDriverWait(driver,30);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//div[@class='z0']/div")));
+        Thread.sleep(2000);
     }
     public void ingresarAGmail() {
         navegadorChrome("https://gmail.com");
     }
-    public void enviarMensajeCorreoElectronico(ExamplesTable datosMensajeCorreoElectronico) throws InterruptedException { Thread.sleep(1000);
+    public void enviarMensajeCorreoElectronico(ExamplesTable datosMensajeCorreoElectronico) throws InterruptedException { Thread.sleep(2000);
         clickearBoton(driver.findElement(By.xpath(".//div[@class='z0']/div")));
         Map<String,String> datosEnvioMensajeCorreoElectronico=datosMensajeCorreoElectronico.getRow(0);
         String para=datosEnvioMensajeCorreoElectronico.get("para");
@@ -53,12 +54,13 @@ public class CorreoElectronicoGmailPage extends PageUtil{
     }
 
     public void salirEIngresarACorreoElectronico() throws InterruptedException {
+        clickearBoton(driver.findElement(By.xpath(".//*[@id='gb']/div[1]/div[1]/div[2]/div[5]/div[1]/a")));
         WebElement usuarioCorreoElectronico=driver.findElement(By.xpath(".//*[@id='gb']/div[1]/div[1]/div[2]/div[5]/div[2]/div[1]/div/div[@class='gb_Bb gb_Cb']"));
         String nombreUsuario=usuarioCorreoElectronico.getText();
         Serenity.setSessionVariable("nombreUsuarioCorreoGmail".toLowerCase().trim()).to(nombreUsuario);
-        clickearBoton(driver.findElement(By.xpath(".//*[@id='gb']/div[1]/div[1]/div[2]/div[5]/div[1]/a")));
         clickearBoton(driver.findElement(By.xpath(".//*[@id='gb_71']")));
         clickearBoton(driver.findElement(By.xpath(".//form/div/div/div/div/div[@role='button']")));
+        Thread.sleep(2000);
         clickearBoton(driver.findElement(By.xpath(".//*[@id='identifierLink']")));
         Thread.sleep(2000);
     }
@@ -66,7 +68,6 @@ public class CorreoElectronicoGmailPage extends PageUtil{
      String nombreUsuarioCorreoGmail = Serenity.sessionVariableCalled("nombreUsuarioCorreoGmail".toLowerCase().trim());
         datosCorreoElectronico = buscarDatoEnTabla(tablaFilasColumnas,filasTabla,nombreUsuarioCorreoGmail);
     }
-
     public ArrayList<String[]> obtenerDatosCorreoElectronico(){
         return datosCorreoElectronico;
     }

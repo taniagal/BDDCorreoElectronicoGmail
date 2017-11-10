@@ -1,0 +1,6 @@
+
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+…squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(§±Òÿ
+\squid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(£ò‚Ž
+Csquid:S1125")Remove the literal "false" boolean value.(«½×Îÿÿÿÿÿ
+Csquid:S1125")Remove the literal "false" boolean value.(ª¶¤—üÿÿÿÿ

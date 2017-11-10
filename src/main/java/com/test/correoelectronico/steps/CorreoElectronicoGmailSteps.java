@@ -7,6 +7,7 @@ import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -35,10 +36,10 @@ public class CorreoElectronicoGmailSteps extends ScenarioSteps {
     @Step
     public void ingresarAOpcionRecibidosCorreoElectronico(ExamplesTable informacionMensajeRecibido) {
         Map<String,String> informacionRecibida=informacionMensajeRecibido.getRow(0);
-        String usuarioEnviCorreo=informacionRecibida.get("correoElectronicoONumeroTelefonico");
+        String usuarioEnvioCorreo=informacionRecibida.get("correoElectronicoONumeroTelefonico");
         String asuntoMensajeEnviado=informacionRecibida.get("asunto");
         String mensajeEnviado=informacionRecibida.get("mensaje");
-        MatcherAssert.assertThat(usuarioEnviCorreo, Matchers.not(Matchers.isEmptyString()));
+        MatcherAssert.assertThat(usuarioEnvioCorreo, Matchers.not(Matchers.isEmptyString()));
         MatcherAssert.assertThat(mensajeEnviado, Matchers.not(Matchers.isEmptyString()));
         MatcherAssert.assertThat(asuntoMensajeEnviado, Matchers.not(Matchers.isEmptyString()));
         correoElectronicoGmailPage.ingresarAOpcionRecibidos();
@@ -47,9 +48,9 @@ public class CorreoElectronicoGmailSteps extends ScenarioSteps {
         Iterator<String[]> iterator = datosCorreoElectronico.iterator();
         while(iterator.hasNext()){
             String[] datos = iterator.next();
-            MatcherAssert.assertThat(datos[0], Matchers.equalTo(usuarioEnviCorreo));
-            MatcherAssert.assertThat(datos[1], Matchers.equalTo(asuntoMensajeEnviado));
-            MatcherAssert.assertThat(datos[2], Matchers.equalTo(mensajeEnviado));
+            MatcherAssert.assertThat(datos[0], Matchers.containsString(usuarioEnvioCorreo));
+            MatcherAssert.assertThat(datos[1], Matchers.containsString(asuntoMensajeEnviado));
+            MatcherAssert.assertThat(datos[2], Matchers.containsString(mensajeEnviado));
         }
     }
 }
