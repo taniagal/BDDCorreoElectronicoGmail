@@ -98,6 +98,40 @@ And ingese al plan del trabajo
 And valide la generacion de las reglas que deben ser autorizadas
 And valide el usuario que debe aprobar una u otra regla de autorizacion
 And ir al usuario a validar asignación de actividad
+Scenario: 3reglas de validacion para modificacion de poliza: accesorios especiales, accesorios, valor maximo vehiculo, transporte combustible
+Given carga de aplicacion de Policy: http://labcoreseguros.suramericana.com/pc/PolicyCenter.do
+When logueo en PolicyCenter Lab: Colombia, suragwsu y suragwsu se debe mostrar: Mis actividades
+Given se tienen los siguientes parametros para la busqueda
+|oficina|asesor     |regla                                                                             |canal      |
+|4029   |10154      |inferior al tope mínimo,modelo es superior al máximo permitido,bonificacion       |CC013      |
+Given estoy cotizando una poliza:
+| cuenta      | producto  | oficina | agente_oficina                                    | tipoPoliza |
+| 0225097276  | Autos     | 4029    | BELTRAN*SANABRIA CQLII**PEDRO ANTONIO             | Individual |
+When ingrese los datos del asegurado <tipo_documento> <documento>
+When ingrese los datos del vehiculo:
+| placa   | modelo | codigo_fasecolda | ciudad_circulacion         | vehiculo_servicio | chasis | motor     | valor_asegurado | descuento | recargo | zona | plan               | medioVenta |transporte_combustible|vehiculo_blindado|
+| random  | 2018   | 08008011         | MEDELLIN (ANTIOQUIA)       | Particular        | addsd  | dsdsdsds  | 57500000        | null      | null    | 2    | Plan Autos Global  | Televentas |                      |                 |
+When ingrese las coberturas:
+| limite | deducible | AS               |abogado|
+| 640.   | 0         | Asistencia Global|       |
+And expedir la poliza de autos
+And ingrese al resumen de la poliza expedida
+And quiero relizar el cambio de una poliza
+And se presione el boton siguiente en modificacion de poliza
+And se ingrese a la opcion vehiculos
+And capturar el numero de cotizacion en estado borrador en la modificacion
+And seleccione la opcion importado por terceros
+And realice los siguientes cambios para el vehiculo:
+|valorAsegurado|valorAccesorios|valorAccesoriosEspeciales|transporteCombustible|
+|401000000     |200000000      |402000000                |Si                   |
+And intente cotizar el cambio de poliza
+And voy a expedir el cambio de una poliza
+And de click en el boton aceptar
+And espere a que salgan las validaciones de reglas correspondientes
+And ingese al plan del trabajo
+And valide la generacion de las reglas que deben ser autorizadas
+And valide el usuario que debe aprobar una u otra regla de autorizacion
+And ir al usuario a validar asignación de actividad
 
 Examples:
 | tipo_documento       | documento  |

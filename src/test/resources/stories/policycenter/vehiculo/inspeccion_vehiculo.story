@@ -61,3 +61,12 @@ Then se debe permitir expedir la poliza
 And el valor asegurado se debe consultar
 And traer de la tabla fasecolda
 
+Scenario: Consulta requisito inspeccion en WS fasecolda
+Meta:
+@manual
+Given se tiene la informacion de la placa del vehiculo ingresada
+When se haga la busqueda de informacion en el WS de fasecolda
+And se cumplan las condiciones para el requisito de inspeccion
+Then se debe permitir expedir la poliza
+And el valor asegurado se debe consultar
+And traer de la tabla fasecolda
